@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: BaseAnalyzer.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a95fc1cc45391b3270b1ae2680110062.html">Analyzers</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">BaseAnalyzer.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="BaseAnalyzer_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       BaseAnalyzer.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      分析器的基类（接口），所有 analyzer 都需要继承这个接口。</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-21</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> * \brief      Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="comment"> * 析。它会读取帝国时代录像文件中的原始数据并进行必要的处理。Record 类的对象会将</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"> * 录像文件交给 Analyzer 进行解析，然后将 Analyzer 中得到的数据加工成最后的输出</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="comment"> * 结果。例如：把表示民族的数字转换成文字。 </span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html">   23</a></span>&#160;<span class="keyword">class </span><a class="code" href="classBaseAnalyzer.html">BaseAnalyzer</a> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keyword">public</span>:<span class="comment"></span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">         * \brief      构造函数，需要接收一个文件路径进行读取和解析。</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment">         * </span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment">         * \param      path                录像文件的路径</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment">         * \param      outEncoding         转换后的编码</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classBaseAnalyzer.html">BaseAnalyzer</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; path, <span class="keyword">const</span> <span class="keywordtype">string</span>&amp; outEncoding);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment">         * \brief      运行解析流程，并返回解析状态。这个函数会修改 \p valid 的值，让使用者能够通过其了解解释器的状态。比如：</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment">         *             </span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment">         *     SomeAnalyzer a = SomeAnalyzer(&#39;/path/to/test.mgx&#39;);</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment">         *     if(a.valid) {</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment">         *         dosomething();</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">         *     }</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment">         * </span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment">         * \return     true                完成了一次有效的解析（即使只读取了部分信息）</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment">         * \return     false               解析失败（没有获得任何有价值的信息）</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">bool</span> run() = 0;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment">        /**</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="comment">         * \brief      生成小地图。</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;<span class="comment">         * </span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment">         * \param      path                生成地图的存储路径</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;<span class="comment">         * \param      hd                  是否生成高清地图</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="comment">         * \return     string              地图文件的路径，如果生成失败则为空字符串</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment">         */</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keyword">virtual</span> <span class="keywordtype">string</span> generateMap(<span class="keywordtype">string</span> path, <span class="keywordtype">bool</span> hd);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a8dda8045c68b767809f6748edee7f2fa">   55</a></span>&#160;        <span class="keywordtype">bool</span> valid = <span class="keyword">false</span>; <span class="comment">///&lt; 表示解释结果的可用性</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a8524126e850353a13bf91e015164d2ca">   57</a></span>&#160;        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a8524126e850353a13bf91e015164d2ca">filename</a>; <span class="comment">///&lt; 录像文件名（去除路径后）</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#ad88f5f7f375d22214a883474eefc3803">   58</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#ad88f5f7f375d22214a883474eefc3803">playDate</a>; <span class="comment">///&lt; 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a85e2c60bd72fa023b7d7d80785e72e86">   59</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a85e2c60bd72fa023b7d7d80785e72e86">status</a>; <span class="comment">///&lt; 解析完成类型：success, fail, partly, etc.</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a2b2c1034ee0fcd626bb158de4d12e506">   60</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a2b2c1034ee0fcd626bb158de4d12e506">message</a>; <span class="comment">///&lt; 对 \p status 的具体说明</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#aa774bc0885f8306a41e20bd02bdf5472">   61</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#aa774bc0885f8306a41e20bd02bdf5472">parseMode</a>; <span class="comment">///&lt; 解析模式：normal, verbose, etc. 可以在命令行中指定</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a928672f7ca8a9910a5c63de47481e394">   62</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">double</span>      <a class="code" href="classBaseAnalyzer.html#a928672f7ca8a9910a5c63de47481e394">parseTime</a>; <span class="comment">///&lt; 解析耗时（毫秒）</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#afa11369e86385c660bb4d8e3d05d1583">   63</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#afa11369e86385c660bb4d8e3d05d1583">encoding</a>; <span class="comment">///&lt; 录像文件内字符串的原始编码</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a6142a6fa94724c2121f16b748f14f9c4">   64</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a6142a6fa94724c2121f16b748f14f9c4">language</a>; <span class="comment">///&lt; 录像文件的语言</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a75b71dcb31566ed9fc72fb3559e91a19">   65</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a75b71dcb31566ed9fc72fb3559e91a19">gameHash</a>; <span class="comment">///&lt; 代表本局游戏的唯一编码，**同一局游戏的不同视角应该是相同的**</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a52e1ed9a0c3a8232b6482a84da1dff11">   66</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a52e1ed9a0c3a8232b6482a84da1dff11">versionString</a>; <span class="comment">///&lt; 原始版本字符串，\todo 还有 \p logVersion 等版本信息也要完善</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a7503badf7cf4ded9074c3fc6d6929d7e">   67</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a7503badf7cf4ded9074c3fc6d6929d7e">instructions</a>; <span class="comment">///&lt; 游戏内自带的说明，需要转码</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a04653e73563245cedb177f5a3c9e0424">   68</a></span>&#160;<span class="comment"></span>        int32_t     <a class="code" href="classBaseAnalyzer.html#a04653e73563245cedb177f5a3c9e0424">difficulty</a>; <span class="comment">///&lt; 難易度 (0:非常に難しい、1:難しい、2:普通、3:簡単、4:非常に簡単)</span></div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a61a0d025a504bedcd2ad771041c12610">   69</a></span>&#160;<span class="comment"></span>        int32_t     <a class="code" href="classBaseAnalyzer.html#a61a0d025a504bedcd2ad771041c12610">gameType</a>; <span class="comment">///&lt; \todo 完善这个属性的解释</span></div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a6c03c3b81c3f3eeaa26e6ec8162b26aa">   70</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">float</span>       <a class="code" href="classBaseAnalyzer.html#a6c03c3b81c3f3eeaa26e6ec8162b26aa">gameSpeed</a>; <span class="comment">///&lt; \todo 也有的值是 int，要确定要到底用哪个来确定速度</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a8838371d3153138528b6170886ab6347">   71</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span>        <a class="code" href="classBaseAnalyzer.html#a8838371d3153138528b6170886ab6347">mapVisibility</a>; <span class="comment">///&lt; 地图全开（好像和迷雾不是一个概念？）</span></div>
+<div class="line"><a name="l00072"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a4f602ee866651eea4582be194a243c97">   72</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span>        <a class="code" href="classBaseAnalyzer.html#a4f602ee866651eea4582be194a243c97">fullTechTree</a>; <span class="comment">///&lt; 完整科技</span></div>
+<div class="line"><a name="l00073"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#aa95bec9be533a3e3ab5c06596f855134">   73</a></span>&#160;<span class="comment"></span>        int32_t     <a class="code" href="classBaseAnalyzer.html#aa95bec9be533a3e3ab5c06596f855134">popLimit</a>; <span class="comment">///&lt; 人口上限</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a5cd71394c2f6effb5b3b13e827bf9b7f">   74</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span>        <a class="code" href="classBaseAnalyzer.html#a5cd71394c2f6effb5b3b13e827bf9b7f">lockDiplomacy</a>; <span class="comment">///&lt; 锁定组队</span></div>
+<div class="line"><a name="l00075"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a64c93c526fa058d2e73e7076a169959c">   75</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">string</span>      <a class="code" href="classBaseAnalyzer.html#a64c93c526fa058d2e73e7076a169959c">victoryCondition</a>; <span class="comment">///&lt; \todo 关于胜利的设定很复杂，需要进一步研究，最好进游戏看一看</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a96bd248dfc47cb09476e712186ee308e">   76</a></span>&#160;<span class="comment"></span>        int32_t     <a class="code" href="classBaseAnalyzer.html#a96bd248dfc47cb09476e712186ee308e">startingAge</a>; <span class="comment">///&lt; 开始年代</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#aca2ea57629cadf4a91a01123609fdb71">   77</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">long</span>        <a class="code" href="classBaseAnalyzer.html#aca2ea57629cadf4a91a01123609fdb71">duration</a>; <span class="comment">///&lt; 游戏时长</span></div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a05ec780601478fd933b75bf9a917b49a">   78</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span>        <a class="code" href="classBaseAnalyzer.html#a05ec780601478fd933b75bf9a917b49a">isMultiplayer</a>; <span class="comment">///&lt; 是否联机游戏</span></div>
+<div class="line"><a name="l00079"></a><span class="lineno"><a class="line" href="classBaseAnalyzer.html#a90b6f189928e02ab58c41283840bc7ec">   79</a></span>&#160;<span class="comment"></span>        <span class="keywordtype">bool</span>        <a class="code" href="classBaseAnalyzer.html#a90b6f189928e02ab58c41283840bc7ec">includeAI</a>; <span class="comment">///&lt; 是否有 AI 参战</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;    <span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;};</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassBaseAnalyzer_html_a96bd248dfc47cb09476e712186ee308e"><div class="ttname"><a href="classBaseAnalyzer.html#a96bd248dfc47cb09476e712186ee308e">BaseAnalyzer::startingAge</a></div><div class="ttdeci">int32_t startingAge</div><div class="ttdoc">开始年代</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00076">BaseAnalyzer.h:76</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_afa11369e86385c660bb4d8e3d05d1583"><div class="ttname"><a href="classBaseAnalyzer.html#afa11369e86385c660bb4d8e3d05d1583">BaseAnalyzer::encoding</a></div><div class="ttdeci">string encoding</div><div class="ttdoc">录像文件内字符串的原始编码</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00063">BaseAnalyzer.h:63</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a8524126e850353a13bf91e015164d2ca"><div class="ttname"><a href="classBaseAnalyzer.html#a8524126e850353a13bf91e015164d2ca">BaseAnalyzer::filename</a></div><div class="ttdeci">string filename</div><div class="ttdoc">录像文件名（去除路径后）</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00057">BaseAnalyzer.h:57</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_aa774bc0885f8306a41e20bd02bdf5472"><div class="ttname"><a href="classBaseAnalyzer.html#aa774bc0885f8306a41e20bd02bdf5472">BaseAnalyzer::parseMode</a></div><div class="ttdeci">string parseMode</div><div class="ttdoc">解析模式：normal, verbose, etc. 可以在命令行中指定</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00061">BaseAnalyzer.h:61</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_ad88f5f7f375d22214a883474eefc3803"><div class="ttname"><a href="classBaseAnalyzer.html#ad88f5f7f375d22214a883474eefc3803">BaseAnalyzer::playDate</a></div><div class="ttdeci">string playDate</div><div class="ttdoc">游戏发生时间，对老录像只能推断</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00058">BaseAnalyzer.h:58</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_aca2ea57629cadf4a91a01123609fdb71"><div class="ttname"><a href="classBaseAnalyzer.html#aca2ea57629cadf4a91a01123609fdb71">BaseAnalyzer::duration</a></div><div class="ttdeci">long duration</div><div class="ttdoc">游戏时长</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00077">BaseAnalyzer.h:77</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a5cd71394c2f6effb5b3b13e827bf9b7f"><div class="ttname"><a href="classBaseAnalyzer.html#a5cd71394c2f6effb5b3b13e827bf9b7f">BaseAnalyzer::lockDiplomacy</a></div><div class="ttdeci">bool lockDiplomacy</div><div class="ttdoc">锁定组队</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00074">BaseAnalyzer.h:74</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a4f602ee866651eea4582be194a243c97"><div class="ttname"><a href="classBaseAnalyzer.html#a4f602ee866651eea4582be194a243c97">BaseAnalyzer::fullTechTree</a></div><div class="ttdeci">bool fullTechTree</div><div class="ttdoc">完整科技</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00072">BaseAnalyzer.h:72</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a75b71dcb31566ed9fc72fb3559e91a19"><div class="ttname"><a href="classBaseAnalyzer.html#a75b71dcb31566ed9fc72fb3559e91a19">BaseAnalyzer::gameHash</a></div><div class="ttdeci">string gameHash</div><div class="ttdoc">代表本局游戏的唯一编码，**同一局游戏的不同视角应该是相同的**</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00065">BaseAnalyzer.h:65</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a6c03c3b81c3f3eeaa26e6ec8162b26aa"><div class="ttname"><a href="classBaseAnalyzer.html#a6c03c3b81c3f3eeaa26e6ec8162b26aa">BaseAnalyzer::gameSpeed</a></div><div class="ttdeci">float gameSpeed</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00070">BaseAnalyzer.h:70</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a04653e73563245cedb177f5a3c9e0424"><div class="ttname"><a href="classBaseAnalyzer.html#a04653e73563245cedb177f5a3c9e0424">BaseAnalyzer::difficulty</a></div><div class="ttdeci">int32_t difficulty</div><div class="ttdoc">難易度 (0:非常に難しい、1:難しい、2:普通、3:簡単、4:非常に簡単)</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00068">BaseAnalyzer.h:68</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a05ec780601478fd933b75bf9a917b49a"><div class="ttname"><a href="classBaseAnalyzer.html#a05ec780601478fd933b75bf9a917b49a">BaseAnalyzer::isMultiplayer</a></div><div class="ttdeci">bool isMultiplayer</div><div class="ttdoc">是否联机游戏</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00078">BaseAnalyzer.h:78</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a85e2c60bd72fa023b7d7d80785e72e86"><div class="ttname"><a href="classBaseAnalyzer.html#a85e2c60bd72fa023b7d7d80785e72e86">BaseAnalyzer::status</a></div><div class="ttdeci">string status</div><div class="ttdoc">解析完成类型：success, fail, partly, etc.</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00059">BaseAnalyzer.h:59</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a64c93c526fa058d2e73e7076a169959c"><div class="ttname"><a href="classBaseAnalyzer.html#a64c93c526fa058d2e73e7076a169959c">BaseAnalyzer::victoryCondition</a></div><div class="ttdeci">string victoryCondition</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00075">BaseAnalyzer.h:75</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_aa95bec9be533a3e3ab5c06596f855134"><div class="ttname"><a href="classBaseAnalyzer.html#aa95bec9be533a3e3ab5c06596f855134">BaseAnalyzer::popLimit</a></div><div class="ttdeci">int32_t popLimit</div><div class="ttdoc">人口上限</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00073">BaseAnalyzer.h:73</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a928672f7ca8a9910a5c63de47481e394"><div class="ttname"><a href="classBaseAnalyzer.html#a928672f7ca8a9910a5c63de47481e394">BaseAnalyzer::parseTime</a></div><div class="ttdeci">double parseTime</div><div class="ttdoc">解析耗时（毫秒）</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00062">BaseAnalyzer.h:62</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html"><div class="ttname"><a href="classBaseAnalyzer.html">BaseAnalyzer</a></div><div class="ttdoc">Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。它会读取帝国时代录像文件中的原始数据并进行必要的处理。Record 类的对象会将 录像文件交给 Analyzer...</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00023">BaseAnalyzer.h:23</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a6142a6fa94724c2121f16b748f14f9c4"><div class="ttname"><a href="classBaseAnalyzer.html#a6142a6fa94724c2121f16b748f14f9c4">BaseAnalyzer::language</a></div><div class="ttdeci">string language</div><div class="ttdoc">录像文件的语言</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00064">BaseAnalyzer.h:64</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a8838371d3153138528b6170886ab6347"><div class="ttname"><a href="classBaseAnalyzer.html#a8838371d3153138528b6170886ab6347">BaseAnalyzer::mapVisibility</a></div><div class="ttdeci">bool mapVisibility</div><div class="ttdoc">地图全开（好像和迷雾不是一个概念？）</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00071">BaseAnalyzer.h:71</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a61a0d025a504bedcd2ad771041c12610"><div class="ttname"><a href="classBaseAnalyzer.html#a61a0d025a504bedcd2ad771041c12610">BaseAnalyzer::gameType</a></div><div class="ttdeci">int32_t gameType</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00069">BaseAnalyzer.h:69</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a52e1ed9a0c3a8232b6482a84da1dff11"><div class="ttname"><a href="classBaseAnalyzer.html#a52e1ed9a0c3a8232b6482a84da1dff11">BaseAnalyzer::versionString</a></div><div class="ttdeci">string versionString</div><div class="ttdoc">原始版本字符串，</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00066">BaseAnalyzer.h:66</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a7503badf7cf4ded9074c3fc6d6929d7e"><div class="ttname"><a href="classBaseAnalyzer.html#a7503badf7cf4ded9074c3fc6d6929d7e">BaseAnalyzer::instructions</a></div><div class="ttdeci">string instructions</div><div class="ttdoc">游戏内自带的说明，需要转码</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00067">BaseAnalyzer.h:67</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a2b2c1034ee0fcd626bb158de4d12e506"><div class="ttname"><a href="classBaseAnalyzer.html#a2b2c1034ee0fcd626bb158de4d12e506">BaseAnalyzer::message</a></div><div class="ttdeci">string message</div><div class="ttdoc">对 status 的具体说明</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00060">BaseAnalyzer.h:60</a></div></div>
+<div class="ttc" id="aclassBaseAnalyzer_html_a90b6f189928e02ab58c41283840bc7ec"><div class="ttname"><a href="classBaseAnalyzer.html#a90b6f189928e02ab58c41283840bc7ec">BaseAnalyzer::includeAI</a></div><div class="ttdeci">bool includeAI</div><div class="ttdoc">是否有 AI 参战</div><div class="ttdef"><b>Definition:</b> <a href="BaseAnalyzer_8h_source.html#l00079">BaseAnalyzer.h:79</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
