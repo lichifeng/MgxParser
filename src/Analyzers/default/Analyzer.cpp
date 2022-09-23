@@ -16,14 +16,14 @@
 
 using namespace std;
 
-bool DefaultAnalyzer::run() {
+void DefaultAnalyzer::run() {
     auto p = filesystem::path(path);
 
     if (!filesystem::exists(path))
     {
         status = "fail";
-        message = path + " does not exists.";
-        return valid = false;
+        message.append(path + " does not exists. \n");
+        throw(AnalyzerException(message));
     }
 
     filename = p.filename();
@@ -35,20 +35,22 @@ bool DefaultAnalyzer::run() {
     if (!_f.is_open())
     {
         status = "fail";
-        message = "Failed to open " + path + ".";
-        return valid = false;
+        message.append("Failed to open " + path + ". \n");
+        throw(AnalyzerException(message));
     }
     
     // Try to extract header&body streams
     if (!_locateStreams())
     {
         status = "fail";
-        message = "Failed to unzip raw header data.";
-        return valid = false;
+        message.append("Failed to unzip raw header data. \n");
+        throw(AnalyzerException(message));
     }
-    
 
-    return valid = true;
+    // Log current stage
+    status = "good";
+    message.append("Successfully extracted header&body streams from this file. Ready for data analyzing. \n");
+    
 }
 
 bool DefaultAnalyzer::_locateStreams() {
@@ -65,20 +67,66 @@ bool DefaultAnalyzer::_locateStreams() {
     _body.resize(_bodySize); ///< \note vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。
     _f.seekg(headerMeta[0]);
     _f.read((char*)_body.data(), _bodySize);
-    auto x = _body.size();
-
-    _bodyCursor = &_body[0];
 
     uintmax_t rawHeaderPos = headerMeta[1] < filesize ? 8 : 4;
     _f.seekg(rawHeaderPos);
-    ///< \todo isAOK = rawHeaderPos == 4; 如果从第五个字节开始那就说明是AOK版本
+    if (rawHeaderPos == 4) versionCode = AOK;
 
     // Try to unzip header data
     if (_inflateRawHeader() != 0) return false;
 
-    _headerCursor = &_header[0];
-    
+    // Start data analyzing
+    _analyze();
+
     return true;
+}
+
+void DefaultAnalyzer::_analyze() {
+    // Start data analyzing
+    
+    // Get logVersion
+    _switchStream(BODY_STRM);
+    _readBytes(4, &logVersion);
+    _switchStream(HEADER_STRM);
+
+    _readBytes(8, versionStr);
+    _readBytes(4, &saveVersion);
+    _setVersionCode();
+
+    _readBytes(4, &indcludeAI);
+}
+
+int DefaultAnalyzer::_setVersionCode() {
+    ///< \todo Every condition needs to be tested!
+    if (_strequal(versionStr, "TRL 9.3")) {
+        return versionCode == AOK ? AOKTRIAL : AOCTRIAL;
+    }
+    if (_strequal(versionStr, "VER 9.3")) return versionCode = AOK;
+    if (_strequal(versionStr, "VER 9.4")) {
+        if (logVersion == 3) return versionCode = AOC10;
+        if (logVersion == 5 || saveVersion >= 12.9699) return versionCode = DE;
+        if (saveVersion >= 12.4999) return versionCode = HD50;
+        if (saveVersion >= 12.4899) return versionCode = HD48;
+        if (saveVersion >= 12.3599) return versionCode = HD46;
+        if (saveVersion >= 12.3399) return versionCode = HD43;
+        if (saveVersion > 11.7601) return versionCode = HD;
+        if (logVersion == 4) return versionCode = AOC10C;
+        return versionCode = AOC;
+    }
+    if (_strequal(versionStr, "VER 9.5")) return versionCode = AOFE21;
+    if (_strequal(versionStr, "VER 9.8")) return versionCode = USERPATCH12;
+    if (_strequal(versionStr, "VER 9.9")) return versionCode = USERPATCH13;
+    if (_strequal(versionStr, "VER 9.A")) return versionCode = USERPATCH14RC1;
+    if (_strequal(versionStr, "VER 9.B")) return versionCode = USERPATCH14RC2;
+    if (_strequal(versionStr, "VER 9.C") || _strequal(versionStr, "VER 9.D")) return versionCode = USERPATCH14;
+    if (_strequal(versionStr, "VER 9.E") || _strequal(versionStr, "VER 9.F")) return versionCode = USERPATCH15;
+    if (_strequal(versionStr, "MCP 9.F")) return versionCode = MCP;
+
+    // If none above match:
+    status = "fail";
+    message.append("Detected unsupported game version.");
+    versionCode = UNSUPPORTED;
+    throw(AnalyzerException(message));
 }
 
 int DefaultAnalyzer::_inflateRawHeader()
@@ -164,7 +212,6 @@ void DefaultAnalyzer::extract(
     headerOut.write((char*)_header.data(), _header.size());
     bodyOut.write((char*)_body.data(), _body.size());
     
-
     headerOut.close();
     bodyOut.close();
 }

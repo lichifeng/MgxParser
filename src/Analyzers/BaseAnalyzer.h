@@ -39,18 +39,7 @@ class BaseAnalyzer {
          */
         BaseAnalyzer(const string& path) {}
 
-        /**
-         * \brief      运行解析流程，并返回解析状态。这个函数会修改 \p valid 的值，让使用者能够通过其了解解释器的状态。比如：
-         *             
-         *     SomeAnalyzer a = SomeAnalyzer('/path/to/test.mgx');
-         *     if(a.valid) {
-         *         dosomething();
-         *     }
-         * 
-         * \return     true                完成了一次有效的解析（即使只读取了部分信息）
-         * \return     false               解析失败（没有获得任何有价值的信息）
-         */
-        virtual bool run() = 0;
+        virtual void run() = 0; ///< 对录像信息进行解析
 
         /**
          * \brief      生成小地图。
@@ -60,8 +49,6 @@ class BaseAnalyzer {
          * \return     string              地图文件的路径，如果生成失败则为空字符串
          */
         virtual string generateMap(const string& path, bool hd) = 0;
-
-        bool valid = false; ///< 表示解释结果的可用性
 
     protected:
 

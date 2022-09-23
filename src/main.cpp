@@ -13,7 +13,7 @@
 #include <iostream>
 #include "Analyzers/default/Analyzer.h"
 
-#include <algorithm>
+#include <exception>
 
 using namespace std;
 
@@ -34,14 +34,23 @@ int main(int argc, char* argv[])
     }
 
     auto a = DefaultAnalyzer(argv[1]);
-    a.run();
+    try
+    {
+        a.run();
+    }
+    catch(const exception& e)
+    {
+        std::cerr << e.what() << '\n';
+    }
 
-    cout << "Status: " << a.status << endl;
-    cout << "Message: " << a.message <<endl;
     cout << "Filename: " << a.filename <<endl;
     cout << "Ext: " << a.ext <<endl;
+    cout << "Status: " << a.status << endl;
+    cout << "Message: " << a.message << endl;
     
-    a.extract("../header.dat", "../body.dat");
+    cout << "VersionString: " << a.versionStr << endl;
+
+    //a.extract("../header.dat", "../body.dat");
 
     return 0;
 }
