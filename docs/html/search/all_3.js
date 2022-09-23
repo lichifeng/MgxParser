@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['datastructures_2eh_9',['DataStructures.h',['../DataStructures_8h.html',1,'']]],
-  ['difficulty_10',['difficulty',['../classBaseAnalyzer.html#a04653e73563245cedb177f5a3c9e0424',1,'BaseAnalyzer']]],
-  ['duration_11',['duration',['../classBaseAnalyzer.html#aca2ea57629cadf4a91a01123609fdb71',1,'BaseAnalyzer']]]
+  ['colorrgb_17',['ColorRGB',['../structColorRGB.html',1,'']]],
+  ['convert_18',['convert',['../classEncodingConverter.html#a475c814d94ef40bdb0fc2b75f78af8ce',1,'EncodingConverter']]]
 ];

@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['colorrgb_7',['ColorRGB',['../structColorRGB.html',1,'']]],
-  ['convert_8',['convert',['../classEncodingConverter.html#a475c814d94ef40bdb0fc2b75f78af8ce',1,'EncodingConverter']]]
+  ['baseanalyzer_14',['BaseAnalyzer',['../classBaseAnalyzer.html',1,'BaseAnalyzer'],['../classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e',1,'BaseAnalyzer::BaseAnalyzer()']]],
+  ['baseanalyzer_2eh_15',['BaseAnalyzer.h',['../BaseAnalyzer_8h.html',1,'']]],
+  ['bodyvar_16',['BodyVar',['../structBodyVar.html',1,'']]]
 ];

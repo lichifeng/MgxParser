@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['generatemap_77',['generateMap',['../classBaseAnalyzer.html#a51310244dec3ef01591fef2600e4c90d',1,'BaseAnalyzer']]]
+  ['encodingconverter_79',['EncodingConverter',['../classEncodingConverter.html#ab85479c2bd5cdadede7f27d8b259e5b6',1,'EncodingConverter']]],
+  ['extract_80',['extract',['../classDefaultAnalyzer.html#ae362795d3e6f43cadf4f3ca73b29bb5c',1,'DefaultAnalyzer']]]
 ];

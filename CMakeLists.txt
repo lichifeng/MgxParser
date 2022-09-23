@@ -12,7 +12,9 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 
 aux_source_directory(./src SRC_ROOT)
-add_executable(mgxparser ${SRC_ROOT})
+aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
+add_executable(mgxparser ${SRC_ROOT} ${DEFAULT_ANALYZER})
+
 target_link_libraries(mgxparser z)
 target_link_libraries(mgxparser png)
 target_link_libraries(mgxparser pthread)

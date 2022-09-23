@@ -72,22 +72,31 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。它会读取帝国时代录像文件中的原始数据并进行必要的处理。Record 类的对象会将 录像文件交给 <a class="el" href="classAnalyzer.html">Analyzer</a> 进行解析，然后将 <a class="el" href="classAnalyzer.html">Analyzer</a> 中得到的数据加工成最后的输出 结果。例如：把表示民族的数字转换成文字。  
+<p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。  
  <a href="classBaseAnalyzer.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a>&gt;</code></p>
+<div class="dynheader">
+类 BaseAnalyzer 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classBaseAnalyzer__inherit__graph.png" border="0" usemap="#BaseAnalyzer_inherit__map" alt="Inheritance graph"/></div>
+<map name="BaseAnalyzer_inherit__map" id="BaseAnalyzer_inherit__map">
+<area shape="rect" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。" alt="" coords="13,5,124,32"/>
+<area shape="rect" href="classDefaultAnalyzer.html" title="默认解析器" alt="" coords="5,80,132,107"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:afe062f6cbe6c0122f68a14538585b3a9"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#afe062f6cbe6c0122f68a14538585b3a9">BaseAnalyzer</a> (const string &amp;path, const string &amp;outEncoding)</td></tr>
-<tr class="memdesc:afe062f6cbe6c0122f68a14538585b3a9"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，需要接收一个文件路径进行读取和解析。  <a href="classBaseAnalyzer.html#afe062f6cbe6c0122f68a14538585b3a9">更多...</a><br /></td></tr>
-<tr class="separator:afe062f6cbe6c0122f68a14538585b3a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">BaseAnalyzer</a> (const string &amp;path)</td></tr>
+<tr class="memdesc:a1537a2da1cc004214289bfb67fb3aa9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，需要接收一个文件路径进行读取和解析。  <a href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">更多...</a><br /></td></tr>
+<tr class="separator:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a763571043e33bbba8d95d3e0e39369d0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a763571043e33bbba8d95d3e0e39369d0">run</a> ()=0</td></tr>
 <tr class="memdesc:a763571043e33bbba8d95d3e0e39369d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行解析流程，并返回解析状态。这个函数会修改 <code>valid</code> 的值，让使用者能够通过其了解解释器的状态。比如：  <a href="classBaseAnalyzer.html#a763571043e33bbba8d95d3e0e39369d0">更多...</a><br /></td></tr>
 <tr class="separator:a763571043e33bbba8d95d3e0e39369d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51310244dec3ef01591fef2600e4c90d"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a51310244dec3ef01591fef2600e4c90d">generateMap</a> (string path, bool hd)</td></tr>
-<tr class="memdesc:a51310244dec3ef01591fef2600e4c90d"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成小地图。  <a href="classBaseAnalyzer.html#a51310244dec3ef01591fef2600e4c90d">更多...</a><br /></td></tr>
-<tr class="separator:a51310244dec3ef01591fef2600e4c90d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10127890a0233fff7411d244fe9336b8"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">generateMap</a> (const string &amp;path, bool hd)=0</td></tr>
+<tr class="memdesc:a10127890a0233fff7411d244fe9336b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成小地图。  <a href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">更多...</a><br /></td></tr>
+<tr class="separator:a10127890a0233fff7411d244fe9336b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public 属性</h2></td></tr>
@@ -95,136 +104,53 @@ Public 属性</h2></td></tr>
 bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a8dda8045c68b767809f6748edee7f2fa">valid</a> = false</td></tr>
 <tr class="memdesc:a8dda8045c68b767809f6748edee7f2fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示解释结果的可用性 <br /></td></tr>
 <tr class="separator:a8dda8045c68b767809f6748edee7f2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8524126e850353a13bf91e015164d2ca"><td class="memItemLeft" align="right" valign="top"><a id="a8524126e850353a13bf91e015164d2ca"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a8524126e850353a13bf91e015164d2ca">filename</a></td></tr>
-<tr class="memdesc:a8524126e850353a13bf91e015164d2ca"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件名（去除路径后） <br /></td></tr>
-<tr class="separator:a8524126e850353a13bf91e015164d2ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ad88f5f7f375d22214a883474eefc3803"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#ad88f5f7f375d22214a883474eefc3803">playDate</a></td></tr>
-<tr class="memdesc:ad88f5f7f375d22214a883474eefc3803"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏发生时间，对老录像只能推断  <a href="classBaseAnalyzer.html#ad88f5f7f375d22214a883474eefc3803">更多...</a><br /></td></tr>
-<tr class="separator:ad88f5f7f375d22214a883474eefc3803"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a85e2c60bd72fa023b7d7d80785e72e86"><td class="memItemLeft" align="right" valign="top"><a id="a85e2c60bd72fa023b7d7d80785e72e86"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a85e2c60bd72fa023b7d7d80785e72e86">status</a></td></tr>
-<tr class="memdesc:a85e2c60bd72fa023b7d7d80785e72e86"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析完成类型：success, fail, partly, etc. <br /></td></tr>
-<tr class="separator:a85e2c60bd72fa023b7d7d80785e72e86"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2b2c1034ee0fcd626bb158de4d12e506"><td class="memItemLeft" align="right" valign="top"><a id="a2b2c1034ee0fcd626bb158de4d12e506"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a2b2c1034ee0fcd626bb158de4d12e506">message</a></td></tr>
-<tr class="memdesc:a2b2c1034ee0fcd626bb158de4d12e506"><td class="mdescLeft">&#160;</td><td class="mdescRight">对 <code>status</code> 的具体说明 <br /></td></tr>
-<tr class="separator:a2b2c1034ee0fcd626bb158de4d12e506"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa774bc0885f8306a41e20bd02bdf5472"><td class="memItemLeft" align="right" valign="top"><a id="aa774bc0885f8306a41e20bd02bdf5472"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aa774bc0885f8306a41e20bd02bdf5472">parseMode</a></td></tr>
-<tr class="memdesc:aa774bc0885f8306a41e20bd02bdf5472"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析模式：normal, verbose, etc. 可以在命令行中指定 <br /></td></tr>
-<tr class="separator:aa774bc0885f8306a41e20bd02bdf5472"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a928672f7ca8a9910a5c63de47481e394"><td class="memItemLeft" align="right" valign="top"><a id="a928672f7ca8a9910a5c63de47481e394"></a>
-double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a928672f7ca8a9910a5c63de47481e394">parseTime</a></td></tr>
-<tr class="memdesc:a928672f7ca8a9910a5c63de47481e394"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒） <br /></td></tr>
-<tr class="separator:a928672f7ca8a9910a5c63de47481e394"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afa11369e86385c660bb4d8e3d05d1583"><td class="memItemLeft" align="right" valign="top"><a id="afa11369e86385c660bb4d8e3d05d1583"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#afa11369e86385c660bb4d8e3d05d1583">encoding</a></td></tr>
-<tr class="memdesc:afa11369e86385c660bb4d8e3d05d1583"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件内字符串的原始编码 <br /></td></tr>
-<tr class="separator:afa11369e86385c660bb4d8e3d05d1583"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6142a6fa94724c2121f16b748f14f9c4"><td class="memItemLeft" align="right" valign="top"><a id="a6142a6fa94724c2121f16b748f14f9c4"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a6142a6fa94724c2121f16b748f14f9c4">language</a></td></tr>
-<tr class="memdesc:a6142a6fa94724c2121f16b748f14f9c4"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件的语言 <br /></td></tr>
-<tr class="separator:a6142a6fa94724c2121f16b748f14f9c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a75b71dcb31566ed9fc72fb3559e91a19"><td class="memItemLeft" align="right" valign="top"><a id="a75b71dcb31566ed9fc72fb3559e91a19"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a75b71dcb31566ed9fc72fb3559e91a19">gameHash</a></td></tr>
-<tr class="memdesc:a75b71dcb31566ed9fc72fb3559e91a19"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表本局游戏的唯一编码，**同一局游戏的不同视角应该是相同的** <br /></td></tr>
-<tr class="separator:a75b71dcb31566ed9fc72fb3559e91a19"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a52e1ed9a0c3a8232b6482a84da1dff11"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a52e1ed9a0c3a8232b6482a84da1dff11">versionString</a></td></tr>
-<tr class="memdesc:a52e1ed9a0c3a8232b6482a84da1dff11"><td class="mdescLeft">&#160;</td><td class="mdescRight">原始版本字符串，  <a href="classBaseAnalyzer.html#a52e1ed9a0c3a8232b6482a84da1dff11">更多...</a><br /></td></tr>
-<tr class="separator:a52e1ed9a0c3a8232b6482a84da1dff11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7503badf7cf4ded9074c3fc6d6929d7e"><td class="memItemLeft" align="right" valign="top"><a id="a7503badf7cf4ded9074c3fc6d6929d7e"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a7503badf7cf4ded9074c3fc6d6929d7e">instructions</a></td></tr>
-<tr class="memdesc:a7503badf7cf4ded9074c3fc6d6929d7e"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏内自带的说明，需要转码 <br /></td></tr>
-<tr class="separator:a7503badf7cf4ded9074c3fc6d6929d7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a04653e73563245cedb177f5a3c9e0424"><td class="memItemLeft" align="right" valign="top"><a id="a04653e73563245cedb177f5a3c9e0424"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a04653e73563245cedb177f5a3c9e0424">difficulty</a></td></tr>
-<tr class="memdesc:a04653e73563245cedb177f5a3c9e0424"><td class="mdescLeft">&#160;</td><td class="mdescRight">難易度 (0:非常に難しい、1:難しい、2:普通、3:簡単、4:非常に簡単) <br /></td></tr>
-<tr class="separator:a04653e73563245cedb177f5a3c9e0424"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a61a0d025a504bedcd2ad771041c12610"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a61a0d025a504bedcd2ad771041c12610">gameType</a></td></tr>
-<tr class="separator:a61a0d025a504bedcd2ad771041c12610"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6c03c3b81c3f3eeaa26e6ec8162b26aa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a6c03c3b81c3f3eeaa26e6ec8162b26aa">gameSpeed</a></td></tr>
-<tr class="separator:a6c03c3b81c3f3eeaa26e6ec8162b26aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8838371d3153138528b6170886ab6347"><td class="memItemLeft" align="right" valign="top"><a id="a8838371d3153138528b6170886ab6347"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a8838371d3153138528b6170886ab6347">mapVisibility</a></td></tr>
-<tr class="memdesc:a8838371d3153138528b6170886ab6347"><td class="mdescLeft">&#160;</td><td class="mdescRight">地图全开（好像和迷雾不是一个概念？） <br /></td></tr>
-<tr class="separator:a8838371d3153138528b6170886ab6347"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4f602ee866651eea4582be194a243c97"><td class="memItemLeft" align="right" valign="top"><a id="a4f602ee866651eea4582be194a243c97"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a4f602ee866651eea4582be194a243c97">fullTechTree</a></td></tr>
-<tr class="memdesc:a4f602ee866651eea4582be194a243c97"><td class="mdescLeft">&#160;</td><td class="mdescRight">完整科技 <br /></td></tr>
-<tr class="separator:a4f602ee866651eea4582be194a243c97"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa95bec9be533a3e3ab5c06596f855134"><td class="memItemLeft" align="right" valign="top"><a id="aa95bec9be533a3e3ab5c06596f855134"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aa95bec9be533a3e3ab5c06596f855134">popLimit</a></td></tr>
-<tr class="memdesc:aa95bec9be533a3e3ab5c06596f855134"><td class="mdescLeft">&#160;</td><td class="mdescRight">人口上限 <br /></td></tr>
-<tr class="separator:aa95bec9be533a3e3ab5c06596f855134"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5cd71394c2f6effb5b3b13e827bf9b7f"><td class="memItemLeft" align="right" valign="top"><a id="a5cd71394c2f6effb5b3b13e827bf9b7f"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a5cd71394c2f6effb5b3b13e827bf9b7f">lockDiplomacy</a></td></tr>
-<tr class="memdesc:a5cd71394c2f6effb5b3b13e827bf9b7f"><td class="mdescLeft">&#160;</td><td class="mdescRight">锁定组队 <br /></td></tr>
-<tr class="separator:a5cd71394c2f6effb5b3b13e827bf9b7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a64c93c526fa058d2e73e7076a169959c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a64c93c526fa058d2e73e7076a169959c">victoryCondition</a></td></tr>
-<tr class="separator:a64c93c526fa058d2e73e7076a169959c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a96bd248dfc47cb09476e712186ee308e"><td class="memItemLeft" align="right" valign="top"><a id="a96bd248dfc47cb09476e712186ee308e"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a96bd248dfc47cb09476e712186ee308e">startingAge</a></td></tr>
-<tr class="memdesc:a96bd248dfc47cb09476e712186ee308e"><td class="mdescLeft">&#160;</td><td class="mdescRight">开始年代 <br /></td></tr>
-<tr class="separator:a96bd248dfc47cb09476e712186ee308e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca2ea57629cadf4a91a01123609fdb71"><td class="memItemLeft" align="right" valign="top"><a id="aca2ea57629cadf4a91a01123609fdb71"></a>
-long&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aca2ea57629cadf4a91a01123609fdb71">duration</a></td></tr>
-<tr class="memdesc:aca2ea57629cadf4a91a01123609fdb71"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏时长 <br /></td></tr>
-<tr class="separator:aca2ea57629cadf4a91a01123609fdb71"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a05ec780601478fd933b75bf9a917b49a"><td class="memItemLeft" align="right" valign="top"><a id="a05ec780601478fd933b75bf9a917b49a"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a05ec780601478fd933b75bf9a917b49a">isMultiplayer</a></td></tr>
-<tr class="memdesc:a05ec780601478fd933b75bf9a917b49a"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否联机游戏 <br /></td></tr>
-<tr class="separator:a05ec780601478fd933b75bf9a917b49a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a90b6f189928e02ab58c41283840bc7ec"><td class="memItemLeft" align="right" valign="top"><a id="a90b6f189928e02ab58c41283840bc7ec"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a90b6f189928e02ab58c41283840bc7ec">includeAI</a></td></tr>
-<tr class="memdesc:a90b6f189928e02ab58c41283840bc7ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">是否有 AI 参战 <br /></td></tr>
-<tr class="separator:a90b6f189928e02ab58c41283840bc7ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。它会读取帝国时代录像文件中的原始数据并进行必要的处理。Record 类的对象会将 录像文件交给 <a class="el" href="classAnalyzer.html">Analyzer</a> 进行解析，然后将 <a class="el" href="classAnalyzer.html">Analyzer</a> 中得到的数据加工成最后的输出 结果。例如：把表示民族的数字转换成文字。 </p>
+<div class="textblock"><p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。 </p>
+<p>类的对象会将录像文件交给 <a class="el" href="classAnalyzer.html">Analyzer</a> 进行解析，然后将 <a class="el" href="classAnalyzer.html">Analyzer</a> 中得 到的数据加工成最后的输出结果。例如：把表示民族的数字转换成文字。 （以后可以有 不同的解析器，用不同的方法进行解析）。按照设想，解析器可以有多个，每个解析器 的主要文件都应该放在<code>Analyzers/&lt;analyzer-name&gt;/</code>文件夹中。文件夹中必须包含 <code>Analyzer.h</code>文件并实现一个 <a class="el" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。">BaseAnalyzer</a> 的子类。 <br  />
+ 这个设计的使用场景设想是 这样的：正常情况下用默认解析器进行常规解析，这个过程中一般不会对 body 中的命 令进行详细分析。后续如果需要对 body 中的命令进行深入分析，那就可以再做一个专 门的解析器，跳过 header 部分的解析，只分析 body 部分即可。 </p>
 
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00023">23</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00031">31</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
-<a id="afe062f6cbe6c0122f68a14538585b3a9"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#afe062f6cbe6c0122f68a14538585b3a9">&#9670;&nbsp;</a></span>BaseAnalyzer()</h2>
+<a id="a1537a2da1cc004214289bfb67fb3aa9e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1537a2da1cc004214289bfb67fb3aa9e">&#9670;&nbsp;</a></span>BaseAnalyzer()</h2>
 
 <div class="memitem">
 <div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
       <table class="memname">
         <tr>
           <td class="memname">BaseAnalyzer::BaseAnalyzer </td>
           <td>(</td>
           <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>path</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"><em>path</em></td><td>)</td>
           <td></td>
-          <td class="paramtype">const string &amp;&#160;</td>
-          <td class="paramname"><em>outEncoding</em>&#160;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td>
         </tr>
       </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
 </div><div class="memdoc">
 
 <p>构造函数，需要接收一个文件路径进行读取和解析。 </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
     <tr><td class="paramname">path</td><td>录像文件的路径 </td></tr>
-    <tr><td class="paramname">outEncoding</td><td>转换后的编码 </td></tr>
   </table>
   </dd>
 </dl>
 
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00040">40</a> 行定义.</p>
+
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
-<a id="a51310244dec3ef01591fef2600e4c90d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a51310244dec3ef01591fef2600e4c90d">&#9670;&nbsp;</a></span>generateMap()</h2>
+<a id="a10127890a0233fff7411d244fe9336b8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10127890a0233fff7411d244fe9336b8">&#9670;&nbsp;</a></span>generateMap()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -235,7 +161,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         <tr>
           <td class="memname">virtual string BaseAnalyzer::generateMap </td>
           <td>(</td>
-          <td class="paramtype">string&#160;</td>
+          <td class="paramtype">const string &amp;&#160;</td>
           <td class="paramname"><em>path</em>, </td>
         </tr>
         <tr>
@@ -252,7 +178,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
       </table>
   </td>
   <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
   </tr>
 </table>
 </div><div class="memdoc">
@@ -266,6 +192,8 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
   </dd>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>string 地图文件的路径，如果生成失败则为空字符串 </dd></dl>
+
+<p>在 <a class="el" href="classDefaultAnalyzer.html#a08ce75f28d1c8e37929bbca33431bd9c">DefaultAnalyzer</a> 内被实现.</p>
 
 </div>
 </div>
@@ -301,95 +229,7 @@ if(a.valid) {
 <dd>
 false 解析失败（没有获得任何有价值的信息） </dd></dl>
 
-</div>
-</div>
-<h2 class="groupheader">类成员变量说明</h2>
-<a id="a6c03c3b81c3f3eeaa26e6ec8162b26aa"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6c03c3b81c3f3eeaa26e6ec8162b26aa">&#9670;&nbsp;</a></span>gameSpeed</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">float BaseAnalyzer::gameSpeed</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">待办事项:</a></b></dt><dd>也有的值是 int，要确定要到底用哪个来确定速度 </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00070">70</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a61a0d025a504bedcd2ad771041c12610"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a61a0d025a504bedcd2ad771041c12610">&#9670;&nbsp;</a></span>gameType</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">int32_t BaseAnalyzer::gameType</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">待办事项:</a></b></dt><dd>完善这个属性的解释 </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00069">69</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ad88f5f7f375d22214a883474eefc3803"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ad88f5f7f375d22214a883474eefc3803">&#9670;&nbsp;</a></span>playDate</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string BaseAnalyzer::playDate</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>游戏发生时间，对老录像只能推断 </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">待办事项:</a></b></dt><dd>有时需要从上传时间来推断，是否放在更外层的类里面？ </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00058">58</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a52e1ed9a0c3a8232b6482a84da1dff11"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a52e1ed9a0c3a8232b6482a84da1dff11">&#9670;&nbsp;</a></span>versionString</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string BaseAnalyzer::versionString</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>原始版本字符串， </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">待办事项:</a></b></dt><dd>还有 <code>logVersion</code> 等版本信息也要完善 </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00066">66</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a64c93c526fa058d2e73e7076a169959c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a64c93c526fa058d2e73e7076a169959c">&#9670;&nbsp;</a></span>victoryCondition</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">string BaseAnalyzer::victoryCondition</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">待办事项:</a></b></dt><dd>关于胜利的设定很复杂，需要进一步研究，最好进游戏看一看 </dd></dl>
-
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00075">75</a> 行定义.</p>
+<p>在 <a class="el" href="classDefaultAnalyzer.html#aeec514b5f0236393160776200874b74c">DefaultAnalyzer</a> 内被实现.</p>
 
 </div>
 </div>

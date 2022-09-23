@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encoding_83',['encoding',['../classBaseAnalyzer.html#afa11369e86385c660bb4d8e3d05d1583',1,'BaseAnalyzer']]]
+  ['ext_91',['ext',['../classDefaultAnalyzer.html#a5a7c8b2cf2a256592354ba3877f598b9',1,'DefaultAnalyzer']]]
 ];

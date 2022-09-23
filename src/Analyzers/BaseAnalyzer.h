@@ -8,6 +8,7 @@
  * \copyright  Copyright (c) 2020-2022
  * 
  */
+#pragma once
 
 #include <string>
 
@@ -15,20 +16,28 @@ using namespace std;
 
 /**
  * \brief      Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解
- * 析。它会读取帝国时代录像文件中的原始数据并进行必要的处理。Record 类的对象会将
- * 录像文件交给 Analyzer 进行解析，然后将 Analyzer 中得到的数据加工成最后的输出
- * 结果。例如：把表示民族的数字转换成文字。 
+ * 析。
  *
+ * \details    类的对象会将录像文件交给 Analyzer 进行解析，然后将 Analyzer 中得
+ * 到的数据加工成最后的输出结果。例如：把表示民族的数字转换成文字。 （以后可以有
+ * 不同的解析器，用不同的方法进行解析）。按照设想，解析器可以有多个，每个解析器
+ * 的主要文件都应该放在`Analyzers/<analyzer-name>/`文件夹中。文件夹中必须包含
+ * `Analyzer.h`文件并实现一个 BaseAnalyzer 的子类。 \n 这个设计的使用场景设想是
+ * 这样的：正常情况下用默认解析器进行常规解析，这个过程中一般不会对 body 中的命
+ * 令进行详细分析。后续如果需要对 body 中的命令进行深入分析，那就可以再做一个专
+ * 门的解析器，跳过 header 部分的解析，只分析 body 部分即可。
+ * 
  */
 class BaseAnalyzer {
     public:
+        BaseAnalyzer() {} // 之前这里没有放函数体，链接时一直提示 undefined reference to BaseAnalyzer::BaseAnalyzer()
+
         /**
          * \brief      构造函数，需要接收一个文件路径进行读取和解析。
          * 
          * \param      path                录像文件的路径
-         * \param      outEncoding         转换后的编码
          */
-        BaseAnalyzer(const string& path, const string& outEncoding);
+        BaseAnalyzer(const string& path) {}
 
         /**
          * \brief      运行解析流程，并返回解析状态。这个函数会修改 \p valid 的值，让使用者能够通过其了解解释器的状态。比如：
@@ -50,33 +59,9 @@ class BaseAnalyzer {
          * \param      hd                  是否生成高清地图
          * \return     string              地图文件的路径，如果生成失败则为空字符串
          */
-        virtual string generateMap(string path, bool hd);
+        virtual string generateMap(const string& path, bool hd) = 0;
 
         bool valid = false; ///< 表示解释结果的可用性
-
-        string      filename; ///< 录像文件名（去除路径后）
-        string      playDate; ///< 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？
-        string      status; ///< 解析完成类型：success, fail, partly, etc.
-        string      message; ///< 对 \p status 的具体说明
-        string      parseMode; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
-        double      parseTime; ///< 解析耗时（毫秒）
-        string      encoding; ///< 录像文件内字符串的原始编码
-        string      language; ///< 录像文件的语言
-        string      gameHash; ///< 代表本局游戏的唯一编码，**同一局游戏的不同视角应该是相同的**
-        string      versionString; ///< 原始版本字符串，\todo 还有 \p logVersion 等版本信息也要完善
-        string      instructions; ///< 游戏内自带的说明，需要转码
-        int32_t     difficulty; ///< 難易度 (0:非常に難しい、1:難しい、2:普通、3:簡単、4:非常に簡単)
-        int32_t     gameType; ///< \todo 完善这个属性的解释
-        float       gameSpeed; ///< \todo 也有的值是 int，要确定要到底用哪个来确定速度
-        bool        mapVisibility; ///< 地图全开（好像和迷雾不是一个概念？）
-        bool        fullTechTree; ///< 完整科技
-        int32_t     popLimit; ///< 人口上限
-        bool        lockDiplomacy; ///< 锁定组队
-        string      victoryCondition; ///< \todo 关于胜利的设定很复杂，需要进一步研究，最好进游戏看一看
-        int32_t     startingAge; ///< 开始年代
-        long        duration; ///< 游戏时长
-        bool        isMultiplayer; ///< 是否联机游戏
-        bool        includeAI; ///< 是否有 AI 参战
 
     protected:
 

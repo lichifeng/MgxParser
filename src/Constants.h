@@ -1,8 +1,8 @@
 #pragma once
 #include <map>
 
-#define HEADER_INIT 4*1024*1024
-#define ZLIB_CHUNK 8192
+#define HEADER_INIT 4*1024*1024 ///< \todo moved to src/Analyzers/default/Analyzer.cpp, delete this
+#define ZLIB_CHUNK 8192 ///< \todo moved to src/Analyzers/default/Analyzer.cpp, delete this
 #define PLAYERNAME_MAX 16 // 15 chars permitted
 #define PREMSG_MAX 248 // 247 chars input permitted
 #define PREGAMECHAT_MAX 50

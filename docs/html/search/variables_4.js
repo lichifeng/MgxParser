@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['includeai_89',['includeAI',['../classBaseAnalyzer.html#a90b6f189928e02ab58c41283840bc7ec',1,'BaseAnalyzer']]],
-  ['instructions_90',['instructions',['../classBaseAnalyzer.html#a7503badf7cf4ded9074c3fc6d6929d7e',1,'BaseAnalyzer']]],
-  ['ismultiplayer_91',['isMultiplayer',['../classBaseAnalyzer.html#a05ec780601478fd933b75bf9a917b49a',1,'BaseAnalyzer']]]
+  ['parsemode_95',['parseMode',['../classDefaultAnalyzer.html#ae8919b2f12cbf533902e9c29b4f28e81',1,'DefaultAnalyzer']]],
+  ['parsetime_96',['parseTime',['../classDefaultAnalyzer.html#a3646946d0c437c644ab5ca63ad33db9e',1,'DefaultAnalyzer']]],
+  ['path_97',['path',['../classDefaultAnalyzer.html#af6b115f679c40b4f110fc2ef6df4a2ec',1,'DefaultAnalyzer']]],
+  ['playdate_98',['playDate',['../classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300',1,'DefaultAnalyzer']]]
 ];

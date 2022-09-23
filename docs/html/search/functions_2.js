@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['encodingconverter_76',['EncodingConverter',['../classEncodingConverter.html#ab85479c2bd5cdadede7f27d8b259e5b6',1,'EncodingConverter']]]
+  ['convert_78',['convert',['../classEncodingConverter.html#a475c814d94ef40bdb0fc2b75f78af8ce',1,'EncodingConverter']]]
 ];
