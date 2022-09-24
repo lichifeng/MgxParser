@@ -86,7 +86,7 @@ $(function() {
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzers_2default_2Analyzer_8h.html">Analyzers/default/Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;exception&gt;</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
 <div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="comment"></span> </div>
@@ -99,7 +99,7 @@ $(function() {
 <div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">   27</a></span>&#160;<span class="keywordtype">int</span> <a class="code" href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a>(<span class="keywordtype">int</span> argc, <span class="keywordtype">char</span>* argv[])</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;========================================&quot;</span> &lt;&lt; endl;</div>
 <div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordflow">if</span> (argc &lt;= 1)</div>
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        cout &lt;&lt; <span class="stringliteral">&quot;No Record Specified!&quot;</span> &lt;&lt; endl;</div>
@@ -107,20 +107,33 @@ $(function() {
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keyword">auto</span> a = <a class="code" href="classDefaultAnalyzer.html">DefaultAnalyzer</a>(argv[1]);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    a.run();</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Status: &quot;</span> &lt;&lt; a.status &lt;&lt; endl;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Message: &quot;</span> &lt;&lt; a.message &lt;&lt;endl;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Filename: &quot;</span> &lt;&lt; a.filename &lt;&lt;endl;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;Ext: &quot;</span> &lt;&lt; a.ext &lt;&lt;endl;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    a.extract(<span class="stringliteral">&quot;../header.dat&quot;</span>, <span class="stringliteral">&quot;../body.dat&quot;</span>);</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        a.run();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">catch</span>(<span class="keyword">const</span> exception&amp; e)</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    {</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        std::cerr &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;!!!Exception: &quot;</span> &lt;&lt; e.what() &lt;&lt; <span class="charliteral">&#39;\n&#39;</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
 <div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;}</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;Filename: &quot;</span> &lt;&lt; a.filename &lt;&lt;endl;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;VersionString: &quot;</span> &lt;&lt; a.versionStr &lt;&lt; endl;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;SaveVersion: &quot;</span> &lt;&lt; a.saveVersion &lt;&lt; endl;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;HD version: &quot;</span> &lt;&lt; a.HD_version &lt;&lt; endl;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;HD internal version: &quot;</span> &lt;&lt; a.HD_internalVersion &lt;&lt; endl;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;VersionCode: &quot;</span> &lt;&lt; a.versionCode &lt;&lt; endl;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;Status: &quot;</span> &lt;&lt; a.status &lt;&lt; endl;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    cout &lt;&lt; setw(22) &lt;&lt; <span class="stringliteral">&quot;Message: &quot;</span> &lt;&lt; a.message &lt;&lt; endl;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    cout &lt;&lt; <span class="stringliteral">&quot;========================================&quot;</span> &lt;&lt; endl;</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="comment">//a.extract(&quot;../header.dat&quot;, &quot;../body.dat&quot;);</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160; </div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzers_2default_2Analyzer_8h_html"><div class="ttname"><a href="Analyzers_2default_2Analyzer_8h.html">Analyzer.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html"><div class="ttname"><a href="classDefaultAnalyzer.html">DefaultAnalyzer</a></div><div class="ttdoc">默认解析器</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Analyzer_8h_source.html#l00026">Analyzers/default/Analyzer.h:26</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html"><div class="ttname"><a href="classDefaultAnalyzer.html">DefaultAnalyzer</a></div><div class="ttdoc">默认解析器</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Analyzer_8h_source.html#l00035">Analyzers/default/Analyzer.h:35</a></div></div>
 <div class="ttc" id="aclassRecord_html"><div class="ttname"><a href="classRecord.html">Record</a></div><div class="ttdef"><b>Definition:</b> <a href="Record_8h_source.html#l00016">Record.h:16</a></div></div>
 <div class="ttc" id="aclassAnalyzer_html"><div class="ttname"><a href="classAnalyzer.html">Analyzer</a></div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00017">Analyzer.h:17</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdoc">主程序入口。</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00027">main.cpp:27</a></div></div>

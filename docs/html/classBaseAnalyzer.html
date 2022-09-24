@@ -65,7 +65,6 @@ $(function() {
 <div class="header">
   <div class="summary">
 <a href="#pub-methods">Public 成员函数</a> &#124;
-<a href="#pub-attribs">Public 属性</a> &#124;
 <a href="classBaseAnalyzer-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
 <div class="title">BaseAnalyzer类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
@@ -91,19 +90,13 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">BaseAnalyzer</a> (const string &amp;path)</td></tr>
 <tr class="memdesc:a1537a2da1cc004214289bfb67fb3aa9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，需要接收一个文件路径进行读取和解析。  <a href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">更多...</a><br /></td></tr>
 <tr class="separator:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a763571043e33bbba8d95d3e0e39369d0"><td class="memItemLeft" align="right" valign="top">virtual bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a763571043e33bbba8d95d3e0e39369d0">run</a> ()=0</td></tr>
-<tr class="memdesc:a763571043e33bbba8d95d3e0e39369d0"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行解析流程，并返回解析状态。这个函数会修改 <code>valid</code> 的值，让使用者能够通过其了解解释器的状态。比如：  <a href="classBaseAnalyzer.html#a763571043e33bbba8d95d3e0e39369d0">更多...</a><br /></td></tr>
-<tr class="separator:a763571043e33bbba8d95d3e0e39369d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa6f042322e88779bc6116a468bab2bec"><td class="memItemLeft" align="right" valign="top"><a id="aa6f042322e88779bc6116a468bab2bec"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec">run</a> ()=0</td></tr>
+<tr class="memdesc:aa6f042322e88779bc6116a468bab2bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">对录像信息进行解析 <br /></td></tr>
+<tr class="separator:aa6f042322e88779bc6116a468bab2bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10127890a0233fff7411d244fe9336b8"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">generateMap</a> (const string &amp;path, bool hd)=0</td></tr>
 <tr class="memdesc:a10127890a0233fff7411d244fe9336b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成小地图。  <a href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">更多...</a><br /></td></tr>
 <tr class="separator:a10127890a0233fff7411d244fe9336b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
-Public 属性</h2></td></tr>
-<tr class="memitem:a8dda8045c68b767809f6748edee7f2fa"><td class="memItemLeft" align="right" valign="top"><a id="a8dda8045c68b767809f6748edee7f2fa"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a8dda8045c68b767809f6748edee7f2fa">valid</a> = false</td></tr>
-<tr class="memdesc:a8dda8045c68b767809f6748edee7f2fa"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示解释结果的可用性 <br /></td></tr>
-<tr class="separator:a8dda8045c68b767809f6748edee7f2fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。 </p>
@@ -194,42 +187,6 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <dl class="section return"><dt>返回</dt><dd>string 地图文件的路径，如果生成失败则为空字符串 </dd></dl>
 
 <p>在 <a class="el" href="classDefaultAnalyzer.html#a08ce75f28d1c8e37929bbca33431bd9c">DefaultAnalyzer</a> 内被实现.</p>
-
-</div>
-</div>
-<a id="a763571043e33bbba8d95d3e0e39369d0"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a763571043e33bbba8d95d3e0e39369d0">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">virtual bool BaseAnalyzer::run </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>运行解析流程，并返回解析状态。这个函数会修改 <code>valid</code> 的值，让使用者能够通过其了解解释器的状态。比如： </p>
-<pre class="fragment">SomeAnalyzer a = SomeAnalyzer('/path/to/test.mgx');
-if(a.valid) {
-    dosomething();
-}
-</pre><dl class="section return"><dt>返回</dt><dd>true 完成了一次有效的解析（即使只读取了部分信息） </dd>
-<dd>
-false 解析失败（没有获得任何有价值的信息） </dd></dl>
-
-<p>在 <a class="el" href="classDefaultAnalyzer.html#aeec514b5f0236393160776200874b74c">DefaultAnalyzer</a> 内被实现.</p>
 
 </div>
 </div>

@@ -102,9 +102,10 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a1eed5db3b44e79141f15bdc965adf905"><td class="memItemLeft" align="right" valign="top"><a id="a1eed5db3b44e79141f15bdc965adf905"></a>
 &#160;</td><td class="memItemRight" valign="bottom"><b>DefaultAnalyzer</b> (const string &amp;<a class="el" href="classDefaultAnalyzer.html#af6b115f679c40b4f110fc2ef6df4a2ec">path</a>)</td></tr>
 <tr class="separator:a1eed5db3b44e79141f15bdc965adf905"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeec514b5f0236393160776200874b74c"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#aeec514b5f0236393160776200874b74c">run</a> ()</td></tr>
-<tr class="memdesc:aeec514b5f0236393160776200874b74c"><td class="mdescLeft">&#160;</td><td class="mdescRight">运行解析流程，并返回解析状态。这个函数会修改 <code>valid</code> 的值，让使用者能够通过其了解解释器的状态。比如：  <a href="classDefaultAnalyzer.html#aeec514b5f0236393160776200874b74c">更多...</a><br /></td></tr>
-<tr class="separator:aeec514b5f0236393160776200874b74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60b740e1b46bdf35356aad2b0c01fbae"><td class="memItemLeft" align="right" valign="top"><a id="a60b740e1b46bdf35356aad2b0c01fbae"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a60b740e1b46bdf35356aad2b0c01fbae">run</a> ()</td></tr>
+<tr class="memdesc:a60b740e1b46bdf35356aad2b0c01fbae"><td class="mdescLeft">&#160;</td><td class="mdescRight">对录像信息进行解析 <br /></td></tr>
+<tr class="separator:a60b740e1b46bdf35356aad2b0c01fbae"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08ce75f28d1c8e37929bbca33431bd9c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a08ce75f28d1c8e37929bbca33431bd9c">generateMap</a> (const string &amp;, bool)</td></tr>
 <tr class="memdesc:a08ce75f28d1c8e37929bbca33431bd9c"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成小地图。  <a href="classDefaultAnalyzer.html#a08ce75f28d1c8e37929bbca33431bd9c">更多...</a><br /></td></tr>
 <tr class="separator:a08ce75f28d1c8e37929bbca33431bd9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -134,6 +135,171 @@ string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 uintmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a046fd72358b587393dd77e37176bc5b6">filesize</a></td></tr>
 <tr class="memdesc:a046fd72358b587393dd77e37176bc5b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes <br /></td></tr>
 <tr class="separator:a046fd72358b587393dd77e37176bc5b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9933aa8d27576f192036d8529dfd9090"><td class="memItemLeft" align="right" valign="top"><a id="a9933aa8d27576f192036d8529dfd9090"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a9933aa8d27576f192036d8529dfd9090">logVersion</a></td></tr>
+<tr class="memdesc:a9933aa8d27576f192036d8529dfd9090"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版 <br /></td></tr>
+<tr class="separator:a9933aa8d27576f192036d8529dfd9090"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e7fa529e8797e3dc1e5ddc399e0c195"><td class="memItemLeft" align="right" valign="top"><a id="a7e7fa529e8797e3dc1e5ddc399e0c195"></a>
+char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a7e7fa529e8797e3dc1e5ddc399e0c195">versionStr</a> [8]</td></tr>
+<tr class="memdesc:a7e7fa529e8797e3dc1e5ddc399e0c195"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表游戏版本的原始字符串 <br /></td></tr>
+<tr class="separator:a7e7fa529e8797e3dc1e5ddc399e0c195"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acec5fc3632913190a73b8af2c2f0206d"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a></td></tr>
+<tr class="separator:acec5fc3632913190a73b8af2c2f0206d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8fa3a4d170acefffd14080b42ce5df58"><td class="memItemLeft" align="right" valign="top"><a id="a8fa3a4d170acefffd14080b42ce5df58"></a>
+int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a8fa3a4d170acefffd14080b42ce5df58">versionCode</a></td></tr>
+<tr class="memdesc:a8fa3a4d170acefffd14080b42ce5df58"><td class="mdescLeft">&#160;</td><td class="mdescRight">这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分 <br /></td></tr>
+<tr class="separator:a8fa3a4d170acefffd14080b42ce5df58"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a65ab0954175ce07e2ec39517a0789603"><td class="memItemLeft" align="right" valign="top"><a id="a65ab0954175ce07e2ec39517a0789603"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>indcludeAI</b></td></tr>
+<tr class="separator:a65ab0954175ce07e2ec39517a0789603"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e7798aa4f604e3ef24db76dc797754"><td class="memItemLeft" align="right" valign="top"><a id="a79e7798aa4f604e3ef24db76dc797754"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a79e7798aa4f604e3ef24db76dc797754">HD_version</a></td></tr>
+<tr class="memdesc:a79e7798aa4f604e3ef24db76dc797754"><td class="mdescLeft">&#160;</td><td class="mdescRight">hd&lt;=4.7: 1000; hd=5.8: 1006 <br /></td></tr>
+<tr class="separator:a79e7798aa4f604e3ef24db76dc797754"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3d816e078c9c5593a1f5ed49c616f82f"><td class="memItemLeft" align="right" valign="top"><a id="a3d816e078c9c5593a1f5ed49c616f82f"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_internalVersion</b></td></tr>
+<tr class="separator:a3d816e078c9c5593a1f5ed49c616f82f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae2a37e48c542b5ade1f70a09acf5a8b1"><td class="memItemLeft" align="right" valign="top"><a id="ae2a37e48c542b5ade1f70a09acf5a8b1"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_gameOptionsVersion</b></td></tr>
+<tr class="separator:ae2a37e48c542b5ade1f70a09acf5a8b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0969783cf562fdf1e1424d2a16372926"><td class="memItemLeft" align="right" valign="top"><a id="a0969783cf562fdf1e1424d2a16372926"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_DLCCount</b></td></tr>
+<tr class="separator:a0969783cf562fdf1e1424d2a16372926"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76f7c829e7b090386532eecc9481a92d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a76f7c829e7b090386532eecc9481a92d">HD_datasetRef</a></td></tr>
+<tr class="separator:a76f7c829e7b090386532eecc9481a92d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3849b4a2466673e70e4501c727800df7"><td class="memItemLeft" align="right" valign="top"><a id="a3849b4a2466673e70e4501c727800df7"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_difficultyID</b></td></tr>
+<tr class="separator:a3849b4a2466673e70e4501c727800df7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a79e3cc37b62fb879d79b2cf96d38bb28"><td class="memItemLeft" align="right" valign="top"><a id="a79e3cc37b62fb879d79b2cf96d38bb28"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_selectedMapID</b></td></tr>
+<tr class="separator:a79e3cc37b62fb879d79b2cf96d38bb28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a148c8e1eaca1cb6e7f7ae19451116974"><td class="memItemLeft" align="right" valign="top"><a id="a148c8e1eaca1cb6e7f7ae19451116974"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_resolvedMapID</b></td></tr>
+<tr class="separator:a148c8e1eaca1cb6e7f7ae19451116974"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1eac14d33cd9838946415d8cdbf390f9"><td class="memItemLeft" align="right" valign="top"><a id="a1eac14d33cd9838946415d8cdbf390f9"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_revealMap</b></td></tr>
+<tr class="separator:a1eac14d33cd9838946415d8cdbf390f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2d0e8039765dfd51959710a8604f88b5"><td class="memItemLeft" align="right" valign="top"><a id="a2d0e8039765dfd51959710a8604f88b5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_victoryTypeID</b></td></tr>
+<tr class="separator:a2d0e8039765dfd51959710a8604f88b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15f230389ac39040932c11b6441210c5"><td class="memItemLeft" align="right" valign="top"><a id="a15f230389ac39040932c11b6441210c5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_startingResourcesID</b></td></tr>
+<tr class="separator:a15f230389ac39040932c11b6441210c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a659cc9df30b552b020c3dda482d5d440"><td class="memItemLeft" align="right" valign="top"><a id="a659cc9df30b552b020c3dda482d5d440"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_startingAgeID</b></td></tr>
+<tr class="separator:a659cc9df30b552b020c3dda482d5d440"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc4428630feaddadc824af4bbf07aee"><td class="memItemLeft" align="right" valign="top"><a id="a2cc4428630feaddadc824af4bbf07aee"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_endingAgeID</b></td></tr>
+<tr class="separator:a2cc4428630feaddadc824af4bbf07aee"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae65e6b8564e8677f4ed390e7aaa9ed9d"><td class="memItemLeft" align="right" valign="top"><a id="ae65e6b8564e8677f4ed390e7aaa9ed9d"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#ae65e6b8564e8677f4ed390e7aaa9ed9d">HD_gameType</a> = -1</td></tr>
+<tr class="memdesc:ae65e6b8564e8677f4ed390e7aaa9ed9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Only when HD_version&gt;=1006 <br /></td></tr>
+<tr class="separator:ae65e6b8564e8677f4ed390e7aaa9ed9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8adfc77931e6af820a5b793cd74b1b89"><td class="memItemLeft" align="right" valign="top"><a id="a8adfc77931e6af820a5b793cd74b1b89"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_ver1000MapName</b></td></tr>
+<tr class="separator:a8adfc77931e6af820a5b793cd74b1b89"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac249a3c22f3ad3826b0af5ba31145883"><td class="memItemLeft" align="right" valign="top"><a id="ac249a3c22f3ad3826b0af5ba31145883"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_ver1000Unknown</b></td></tr>
+<tr class="separator:ac249a3c22f3ad3826b0af5ba31145883"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2cc564ed08a00aac38a8ff5388084c33"><td class="memItemLeft" align="right" valign="top"><a id="a2cc564ed08a00aac38a8ff5388084c33"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>HD_speed</b></td></tr>
+<tr class="separator:a2cc564ed08a00aac38a8ff5388084c33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3eb4c5c043aaf0b3a79d11d975f190a7"><td class="memItemLeft" align="right" valign="top"><a id="a3eb4c5c043aaf0b3a79d11d975f190a7"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_treatyLength</b></td></tr>
+<tr class="separator:a3eb4c5c043aaf0b3a79d11d975f190a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b899b61b5927339d321b56ad57461c9"><td class="memItemLeft" align="right" valign="top"><a id="a6b899b61b5927339d321b56ad57461c9"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_populationLimit</b></td></tr>
+<tr class="separator:a6b899b61b5927339d321b56ad57461c9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad02195908efdc9344269b040fa0f0c4c"><td class="memItemLeft" align="right" valign="top"><a id="ad02195908efdc9344269b040fa0f0c4c"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_numPlayers</b></td></tr>
+<tr class="separator:ad02195908efdc9344269b040fa0f0c4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a676216c1f8f4a1774d4a52dc0674cec5"><td class="memItemLeft" align="right" valign="top"><a id="a676216c1f8f4a1774d4a52dc0674cec5"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_unusedPlayerColor</b></td></tr>
+<tr class="separator:a676216c1f8f4a1774d4a52dc0674cec5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ace83880ff20edfdccdac5c825ac66917"><td class="memItemLeft" align="right" valign="top"><a id="ace83880ff20edfdccdac5c825ac66917"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_victoryAmount</b></td></tr>
+<tr class="separator:ace83880ff20edfdccdac5c825ac66917"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8411fbdaf48926118256a9439469af8"><td class="memItemLeft" align="right" valign="top"><a id="ac8411fbdaf48926118256a9439469af8"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_tradeEnabled</b></td></tr>
+<tr class="separator:ac8411fbdaf48926118256a9439469af8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1c770bb2c7481caaa8f53f20a475578c"><td class="memItemLeft" align="right" valign="top"><a id="a1c770bb2c7481caaa8f53f20a475578c"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_teamBonusDisabled</b></td></tr>
+<tr class="separator:a1c770bb2c7481caaa8f53f20a475578c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade9248b4821f1564af8b15f702ca498a"><td class="memItemLeft" align="right" valign="top"><a id="ade9248b4821f1564af8b15f702ca498a"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_randomPositions</b></td></tr>
+<tr class="separator:ade9248b4821f1564af8b15f702ca498a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabefd808b75155c0bfd24998d5503dca"><td class="memItemLeft" align="right" valign="top"><a id="aabefd808b75155c0bfd24998d5503dca"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_allTechs</b></td></tr>
+<tr class="separator:aabefd808b75155c0bfd24998d5503dca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a98f92fd14e0f2ff54bc82e124c45b796"><td class="memItemLeft" align="right" valign="top"><a id="a98f92fd14e0f2ff54bc82e124c45b796"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_numStartingUnits</b></td></tr>
+<tr class="separator:a98f92fd14e0f2ff54bc82e124c45b796"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab98fafc7e95ead3ba750ccc5cae32bce"><td class="memItemLeft" align="right" valign="top"><a id="ab98fafc7e95ead3ba750ccc5cae32bce"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_lockTeams</b></td></tr>
+<tr class="separator:ab98fafc7e95ead3ba750ccc5cae32bce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76cbba0a2250232e1e862a10678137d0"><td class="memItemLeft" align="right" valign="top"><a id="a76cbba0a2250232e1e862a10678137d0"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_lockSpeed</b></td></tr>
+<tr class="separator:a76cbba0a2250232e1e862a10678137d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad24309da8460d40ce9ddbc41da9a46cd"><td class="memItemLeft" align="right" valign="top"><a id="ad24309da8460d40ce9ddbc41da9a46cd"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_multiplayer</b></td></tr>
+<tr class="separator:ad24309da8460d40ce9ddbc41da9a46cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a544096cf3fa122a24b4da24fa6d2a12c"><td class="memItemLeft" align="right" valign="top"><a id="a544096cf3fa122a24b4da24fa6d2a12c"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_cheats</b></td></tr>
+<tr class="separator:a544096cf3fa122a24b4da24fa6d2a12c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e0e4a7dba107f456e3867a413924e2"><td class="memItemLeft" align="right" valign="top"><a id="a95e0e4a7dba107f456e3867a413924e2"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_recordGame</b></td></tr>
+<tr class="separator:a95e0e4a7dba107f456e3867a413924e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa5da528e3d1e9d756c9e78e614b7601b"><td class="memItemLeft" align="right" valign="top"><a id="aa5da528e3d1e9d756c9e78e614b7601b"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_animalsEnabled</b></td></tr>
+<tr class="separator:aa5da528e3d1e9d756c9e78e614b7601b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b355dac702a08652a3a7e78962ac2d"><td class="memItemLeft" align="right" valign="top"><a id="a90b355dac702a08652a3a7e78962ac2d"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_predatorsEnabled</b></td></tr>
+<tr class="separator:a90b355dac702a08652a3a7e78962ac2d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a195d6be32c02ba7580939e700550a074"><td class="memItemLeft" align="right" valign="top"><a id="a195d6be32c02ba7580939e700550a074"></a>
+array&lt; <a class="el" href="classPlayer.html">Player</a>, 8 &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>players</b> {}</td></tr>
+<tr class="separator:a195d6be32c02ba7580939e700550a074"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6e4ae9009f33ba503a4f2e9458278fb1"><td class="memItemLeft" align="right" valign="top"><a id="a6e4ae9009f33ba503a4f2e9458278fb1"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_fogOfWar</b></td></tr>
+<tr class="separator:a6e4ae9009f33ba503a4f2e9458278fb1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8598ec77d11222c89280bc28b30ac985"><td class="memItemLeft" align="right" valign="top"><a id="a8598ec77d11222c89280bc28b30ac985"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_cheatNotifications</b></td></tr>
+<tr class="separator:a8598ec77d11222c89280bc28b30ac985"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a521d9c4961b0ef987e431a142e35c04c"><td class="memItemLeft" align="right" valign="top"><a id="a521d9c4961b0ef987e431a142e35c04c"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_coloredChat</b></td></tr>
+<tr class="separator:a521d9c4961b0ef987e431a142e35c04c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a608deefbe7ab0207f4b4f069ad495b84"><td class="memItemLeft" align="right" valign="top"><a id="a608deefbe7ab0207f4b4f069ad495b84"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_isRanked</b></td></tr>
+<tr class="separator:a608deefbe7ab0207f4b4f069ad495b84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae26108b130f31ea7862574af60bdb8a2"><td class="memItemLeft" align="right" valign="top"><a id="ae26108b130f31ea7862574af60bdb8a2"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_allowSpecs</b></td></tr>
+<tr class="separator:ae26108b130f31ea7862574af60bdb8a2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab9fa61a22817e24ab7baabf3361d2401"><td class="memItemLeft" align="right" valign="top"><a id="ab9fa61a22817e24ab7baabf3361d2401"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_lobbyVisibility</b></td></tr>
+<tr class="separator:ab9fa61a22817e24ab7baabf3361d2401"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c953d219f7f66854c1bc608b720116c"><td class="memItemLeft" align="right" valign="top"><a id="a8c953d219f7f66854c1bc608b720116c"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_customRandomMapFileCrc</b></td></tr>
+<tr class="separator:a8c953d219f7f66854c1bc608b720116c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a234fd5b76b4c3e79932b95b8ce8f3571"><td class="memItemLeft" align="right" valign="top"><a id="a234fd5b76b4c3e79932b95b8ce8f3571"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_customScenarioOrCampaignFile</b></td></tr>
+<tr class="separator:a234fd5b76b4c3e79932b95b8ce8f3571"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75418e39346bf07bd14670262980497a"><td class="memItemLeft" align="right" valign="top"><a id="a75418e39346bf07bd14670262980497a"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_customRandomMapFile</b></td></tr>
+<tr class="separator:a75418e39346bf07bd14670262980497a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a430caae77003db82326cd37d74a769e5"><td class="memItemLeft" align="right" valign="top"><a id="a430caae77003db82326cd37d74a769e5"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_customRandomMapScenarionFile</b></td></tr>
+<tr class="separator:a430caae77003db82326cd37d74a769e5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a030914194d1ee6300c842e8009f69e7e"><td class="memItemLeft" align="right" valign="top"><a id="a030914194d1ee6300c842e8009f69e7e"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_guid</b></td></tr>
+<tr class="separator:a030914194d1ee6300c842e8009f69e7e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a26d20c019140256cddfad171f524eb38"><td class="memItemLeft" align="right" valign="top"><a id="a26d20c019140256cddfad171f524eb38"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_lobbyName</b></td></tr>
+<tr class="separator:a26d20c019140256cddfad171f524eb38"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aee21571d41c5ea64219d48594bb335b1"><td class="memItemLeft" align="right" valign="top"><a id="aee21571d41c5ea64219d48594bb335b1"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_moddedDataset</b></td></tr>
+<tr class="separator:aee21571d41c5ea64219d48594bb335b1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7d3f5dca4e070dd8c7bbf783187fc569"><td class="memItemLeft" align="right" valign="top"><a id="a7d3f5dca4e070dd8c7bbf783187fc569"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>HD_moddedDatasetWorkshopID</b></td></tr>
+<tr class="separator:a7d3f5dca4e070dd8c7bbf783187fc569"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:abf7c2565bd55dcf196adac1566e5a300"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300">playDate</a></td></tr>
 <tr class="memdesc:abf7c2565bd55dcf196adac1566e5a300"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏发生时间，对老录像只能推断  <a href="classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300">更多...</a><br /></td></tr>
 <tr class="separator:abf7c2565bd55dcf196adac1566e5a300"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -153,11 +319,6 @@ string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="cl
 double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a3646946d0c437c644ab5ca63ad33db9e">parseTime</a></td></tr>
 <tr class="memdesc:a3646946d0c437c644ab5ca63ad33db9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒） <br /></td></tr>
 <tr class="separator:a3646946d0c437c644ab5ca63ad33db9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="inherit_header pub_attribs_classBaseAnalyzer"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classBaseAnalyzer')"><img src="closed.png" alt="-"/>&#160;Public 属性 继承自 <a class="el" href="classBaseAnalyzer.html">BaseAnalyzer</a></td></tr>
-<tr class="memitem:a8dda8045c68b767809f6748edee7f2fa inherit pub_attribs_classBaseAnalyzer"><td class="memItemLeft" align="right" valign="top"><a id="a8dda8045c68b767809f6748edee7f2fa"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a8dda8045c68b767809f6748edee7f2fa">valid</a> = false</td></tr>
-<tr class="memdesc:a8dda8045c68b767809f6748edee7f2fa inherit pub_attribs_classBaseAnalyzer"><td class="mdescLeft">&#160;</td><td class="mdescRight">表示解释结果的可用性 <br /></td></tr>
-<tr class="separator:a8dda8045c68b767809f6748edee7f2fa inherit pub_attribs_classBaseAnalyzer"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
@@ -168,6 +329,28 @@ Protected 成员函数</h2></td></tr>
 int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#ab96150e820a604a024034980d7a9141c">_inflateRawHeader</a> ()</td></tr>
 <tr class="memdesc:ab96150e820a604a024034980d7a9141c"><td class="mdescLeft">&#160;</td><td class="mdescRight">解压 header 数据 <br /></td></tr>
 <tr class="separator:ab96150e820a604a024034980d7a9141c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1bb6b7148f0cc7c5bc5a1ce34d9fa558"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a1bb6b7148f0cc7c5bc5a1ce34d9fa558">_switchStream</a> (uint8_t stream=HEADER_STRM)</td></tr>
+<tr class="memdesc:a1bb6b7148f0cc7c5bc5a1ce34d9fa558"><td class="mdescLeft">&#160;</td><td class="mdescRight">切换当前工作的数据流（header 或者 body）  <a href="classDefaultAnalyzer.html#a1bb6b7148f0cc7c5bc5a1ce34d9fa558">更多...</a><br /></td></tr>
+<tr class="separator:a1bb6b7148f0cc7c5bc5a1ce34d9fa558"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a03ed3a9d1c9f3deed5597320039ff63c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a> (uintmax_t n, void *dest)</td></tr>
+<tr class="memdesc:a03ed3a9d1c9f3deed5597320039ff63c"><td class="mdescLeft">&#160;</td><td class="mdescRight">将当前位置往后 n 个字节的数据存储到一个变量上  <a href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">更多...</a><br /></td></tr>
+<tr class="separator:a03ed3a9d1c9f3deed5597320039ff63c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aebac5c4f96e2bf11ddde97844cf95a15"><td class="memItemLeft" align="right" valign="top"><a id="aebac5c4f96e2bf11ddde97844cf95a15"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#aebac5c4f96e2bf11ddde97844cf95a15">_analyze</a> ()</td></tr>
+<tr class="memdesc:aebac5c4f96e2bf11ddde97844cf95a15"><td class="mdescLeft">&#160;</td><td class="mdescRight">从 header 开始进行分析 <br /></td></tr>
+<tr class="separator:aebac5c4f96e2bf11ddde97844cf95a15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a58ee6d759fdaa74a7fbaafcf62f08789"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a58ee6d759fdaa74a7fbaafcf62f08789">_setVersionCode</a> ()</td></tr>
+<tr class="memdesc:a58ee6d759fdaa74a7fbaafcf62f08789"><td class="mdescLeft">&#160;</td><td class="mdescRight">这个不是原始数据，是自己归纳出的一个值，后面判断版本有用  <a href="classDefaultAnalyzer.html#a58ee6d759fdaa74a7fbaafcf62f08789">更多...</a><br /></td></tr>
+<tr class="separator:a58ee6d759fdaa74a7fbaafcf62f08789"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a479a532635cfc660d72adadfa074c674"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a479a532635cfc660d72adadfa074c674">_bytecmp</a> (const void *s, const void *pattern, size_t n) const</td></tr>
+<tr class="memdesc:a479a532635cfc660d72adadfa074c674"><td class="mdescLeft">&#160;</td><td class="mdescRight">Compare two C-style strings or byte sequence.  <a href="classDefaultAnalyzer.html#a479a532635cfc660d72adadfa074c674">更多...</a><br /></td></tr>
+<tr class="separator:a479a532635cfc660d72adadfa074c674"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1fa5152e53be00e0fe886b9742704c3e"><td class="memItemLeft" align="right" valign="top"><a id="a1fa5152e53be00e0fe886b9742704c3e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>_printHex</b> (int n)</td></tr>
+<tr class="separator:a1fa5152e53be00e0fe886b9742704c3e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8fd896a2f50e3c9cb3155c9da22df03"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#af8fd896a2f50e3c9cb3155c9da22df03">_headerHDAnalyzer</a> ()</td></tr>
+<tr class="memdesc:af8fd896a2f50e3c9cb3155c9da22df03"><td class="mdescLeft">&#160;</td><td class="mdescRight">分析 header 中的 HD 部分信息  <a href="classDefaultAnalyzer.html#af8fd896a2f50e3c9cb3155c9da22df03">更多...</a><br /></td></tr>
+<tr class="separator:af8fd896a2f50e3c9cb3155c9da22df03"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
@@ -175,32 +358,123 @@ Protected 属性</h2></td></tr>
 ifstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a></td></tr>
 <tr class="memdesc:a4d6c839cb063edd281b668a7e8cbca07"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件的原始流 <br /></td></tr>
 <tr class="separator:a4d6c839cb063edd281b668a7e8cbca07"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="memItemLeft" align="right" valign="top"><a id="a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"></a>
-vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a></td></tr>
-<tr class="memdesc:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">body stream <br /></td></tr>
-<tr class="separator:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abd6ae61c5ab4720873aa2b53e80aa4ee"><td class="memItemLeft" align="right" valign="top"><a id="abd6ae61c5ab4720873aa2b53e80aa4ee"></a>
-uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#abd6ae61c5ab4720873aa2b53e80aa4ee">_bodyCursor</a></td></tr>
-<tr class="memdesc:abd6ae61c5ab4720873aa2b53e80aa4ee"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取 body 数据的游标（指针） <br /></td></tr>
-<tr class="separator:abd6ae61c5ab4720873aa2b53e80aa4ee"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:acc2bc690ec772074c6a2ca5285fa7ff3"><td class="memItemLeft" align="right" valign="top"><a id="acc2bc690ec772074c6a2ca5285fa7ff3"></a>
 uintmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#acc2bc690ec772074c6a2ca5285fa7ff3">_bodySize</a></td></tr>
 <tr class="memdesc:acc2bc690ec772074c6a2ca5285fa7ff3"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 数据的长度 <br /></td></tr>
 <tr class="separator:acc2bc690ec772074c6a2ca5285fa7ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="memItemLeft" align="right" valign="top"><a id="a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a></td></tr>
+<tr class="memdesc:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="mdescLeft">&#160;</td><td class="mdescRight">body stream <br /></td></tr>
+<tr class="separator:a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a85b1378c119ffc2a724924d2c3a597de"><td class="memItemLeft" align="right" valign="top"><a id="a85b1378c119ffc2a724924d2c3a597de"></a>
 vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a></td></tr>
 <tr class="memdesc:a85b1378c119ffc2a724924d2c3a597de"><td class="mdescLeft">&#160;</td><td class="mdescRight">解压后的 header 数据 <br /></td></tr>
 <tr class="separator:a85b1378c119ffc2a724924d2c3a597de"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a748e5bd4cce8dfa0dd10d3e133988bf7"><td class="memItemLeft" align="right" valign="top"><a id="a748e5bd4cce8dfa0dd10d3e133988bf7"></a>
-uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a748e5bd4cce8dfa0dd10d3e133988bf7">_headerCursor</a></td></tr>
-<tr class="memdesc:a748e5bd4cce8dfa0dd10d3e133988bf7"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取 header 数据的游标（指针） <br /></td></tr>
-<tr class="separator:a748e5bd4cce8dfa0dd10d3e133988bf7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8e580fd9d1dac81fcd5673054a989476"><td class="memItemLeft" align="right" valign="top"><a id="a8e580fd9d1dac81fcd5673054a989476"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a></td></tr>
+<tr class="memdesc:a8e580fd9d1dac81fcd5673054a989476"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前读取数据的指针 <br /></td></tr>
+<tr class="separator:a8e580fd9d1dac81fcd5673054a989476"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fd40b34e8a98805fcb9e6c7c66c83f6"><td class="memItemLeft" align="right" valign="top"><a id="a5fd40b34e8a98805fcb9e6c7c66c83f6"></a>
+uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a5fd40b34e8a98805fcb9e6c7c66c83f6">_curStream</a></td></tr>
+<tr class="memdesc:a5fd40b34e8a98805fcb9e6c7c66c83f6"><td class="mdescLeft">&#160;</td><td class="mdescRight">当前使用的数据流 <br /></td></tr>
+<tr class="separator:a5fd40b34e8a98805fcb9e6c7c66c83f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>默认解析器 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00026">26</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00035">35</a> 行定义.</p>
 </div><h2 class="groupheader">成员函数说明</h2>
+<a id="a479a532635cfc660d72adadfa074c674"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a479a532635cfc660d72adadfa074c674">&#9670;&nbsp;</a></span>_bytecmp()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool DefaultAnalyzer::_bytecmp </td>
+          <td>(</td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>s</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">const void *&#160;</td>
+          <td class="paramname"><em>pattern</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td> const</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Compare two C-style strings or byte sequence. </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">s</td><td>string1 </td></tr>
+    <tr><td class="paramname">pattern</td><td>string2 </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>true string1 == string2 </dd>
+<dd>
+false string1 != string2 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00187">187</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af8fd896a2f50e3c9cb3155c9da22df03"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8fd896a2f50e3c9cb3155c9da22df03">&#9670;&nbsp;</a></span>_headerHDAnalyzer()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_headerHDAnalyzer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>分析 header 中的 HD 部分信息 </p>
+<dl class="section note"><dt>注解</dt><dd>Next 4 bytes should be: a3 5f 02 00. Mark a simple sign here.</dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">待办事项:</a></b></dt><dd>Next 4 bytes should be: a3 5f 02 00, but aoc-mgz indicates they are following data </dd></dl>
+<p>9 bytes + a3 5f 02 00</p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">待办事项:</a></b></dt><dd>should this map to gamehash or filehash? </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00104">104</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="version_8h_source.html#l00050">HD57</a>.</p>
+
+</div>
+</div>
 <a id="a5964f94a25af1d5beb493cb65e4c334a"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a5964f94a25af1d5beb493cb65e4c334a">&#9670;&nbsp;</a></span>_locateStreams()</h2>
 
@@ -227,10 +501,122 @@ uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 <p>对文件流进行处理，定位 header &amp; body 的起始位置 </p>
 <p>headerMeta[0]: header_len + next_pos + header_data (Data length) <br  />
  headerMeta[1]: nextPos</p>
-<p>&lt; </p><dl class="section note"><dt>注解</dt><dd>vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。</dd></dl>
-<p>&lt; </p><dl class="todo"><dt><b><a class="el" href="todo.html#_todo000002">待办事项:</a></b></dt><dd>isAOK = rawHeaderPos == 4; 如果从第五个字节开始那就说明是AOK版本 </dd></dl>
+<dl class="section note"><dt>注解</dt><dd>vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。</dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00054">54</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00058">58</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a03ed3a9d1c9f3deed5597320039ff63c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a03ed3a9d1c9f3deed5597320039ff63c">&#9670;&nbsp;</a></span>_readBytes()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_readBytes </td>
+          <td>(</td>
+          <td class="paramtype">uintmax_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">void *&#160;</td>
+          <td class="paramname"><em>dest</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>将当前位置往后 n 个字节的数据存储到一个变量上 </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">n</td><td>往后读取的字节数 </td></tr>
+    <tr><td class="paramname">dest</td><td>指向目标变量的指针 </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00148">148</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a58ee6d759fdaa74a7fbaafcf62f08789"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a58ee6d759fdaa74a7fbaafcf62f08789">&#9670;&nbsp;</a></span>_setVersionCode()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DefaultAnalyzer::_setVersionCode </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>这个不是原始数据，是自己归纳出的一个值，后面判断版本有用 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000004">待办事项:</a></b></dt><dd>Every condition needs to be tested! </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00252">252</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a1bb6b7148f0cc7c5bc5a1ce34d9fa558"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a1bb6b7148f0cc7c5bc5a1ce34d9fa558">&#9670;&nbsp;</a></span>_switchStream()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_switchStream </td>
+          <td>(</td>
+          <td class="paramtype">uint8_t&#160;</td>
+          <td class="paramname"><em>stream</em> = <code>HEADER_STRM</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>切换当前工作的数据流（header 或者 body） </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">stream</td><td>HEADER_STRM/BODY_STRM </td></tr>
+  </table>
+  </dd>
+</dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00136">136</a> 行定义.</p>
 
 </div>
 </div>
@@ -269,7 +655,7 @@ uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00156">156</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00357">357</a> 行定义.</p>
 
 </div>
 </div>
@@ -319,49 +705,28 @@ uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href=
 
 <p>实现了 <a class="el" href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">BaseAnalyzer</a>.</p>
 
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00152">152</a> 行定义.</p>
-
-</div>
-</div>
-<a id="aeec514b5f0236393160776200874b74c"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aeec514b5f0236393160776200874b74c">&#9670;&nbsp;</a></span>run()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">bool DefaultAnalyzer::run </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">virtual</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>运行解析流程，并返回解析状态。这个函数会修改 <code>valid</code> 的值，让使用者能够通过其了解解释器的状态。比如： </p>
-<pre class="fragment">SomeAnalyzer a = SomeAnalyzer('/path/to/test.mgx');
-if(a.valid) {
-    dosomething();
-}
-</pre><dl class="section return"><dt>返回</dt><dd>true 完成了一次有效的解析（即使只读取了部分信息） </dd>
-<dd>
-false 解析失败（没有获得任何有价值的信息） </dd></dl>
-
-<p>实现了 <a class="el" href="classBaseAnalyzer.html#a763571043e33bbba8d95d3e0e39369d0">BaseAnalyzer</a>.</p>
-
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00019">19</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html">Analyzers/default/Analyzer.cpp</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8cpp_source.html#l00353">353</a> 行定义.</p>
 
 </div>
 </div>
 <h2 class="groupheader">类成员变量说明</h2>
+<a id="a76f7c829e7b090386532eecc9481a92d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76f7c829e7b090386532eecc9481a92d">&#9670;&nbsp;</a></span>HD_datasetRef</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DefaultAnalyzer::HD_datasetRef</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000005">待办事项:</a></b></dt><dd>What's this? </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00071">71</a> 行定义.</p>
+
+</div>
+</div>
 <a id="abf7c2565bd55dcf196adac1566e5a300"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#abf7c2565bd55dcf196adac1566e5a300">&#9670;&nbsp;</a></span>playDate</h2>
 
@@ -375,9 +740,26 @@ false 解析失败（没有获得任何有价值的信息） </dd></dl>
 </div><div class="memdoc">
 
 <p>游戏发生时间，对老录像只能推断 </p>
-<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">待办事项:</a></b></dt><dd>有时需要从上传时间来推断，是否放在更外层的类里面？ </dd></dl>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000006">待办事项:</a></b></dt><dd>有时需要从上传时间来推断，是否放在更外层的类里面？ </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00052">52</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00121">121</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acec5fc3632913190a73b8af2c2f0206d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acec5fc3632913190a73b8af2c2f0206d">&#9670;&nbsp;</a></span>saveVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DefaultAnalyzer::saveVersion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section warning"><dt>警告</dt><dd>小数点后有许多位，比较的时候注意要合理处理，比如 &gt;11.76 要写成 &gt;11.7599 这种 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a> 第 <a class="el" href="Analyzers_2default_2Analyzer_8h_source.html#l00062">62</a> 行定义.</p>
 
 </div>
 </div>

@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['startingage_104',['startingAge',['../classDefaultAnalyzer.html#a43f9843516781b33afe4ae74d7e12657',1,'DefaultAnalyzer']]],
-  ['status_105',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
+  ['versioncode_142',['versionCode',['../classDefaultAnalyzer.html#a8fa3a4d170acefffd14080b42ce5df58',1,'DefaultAnalyzer']]],
+  ['versionstr_143',['versionStr',['../classDefaultAnalyzer.html#a7e7fa529e8797e3dc1e5ddc399e0c195',1,'DefaultAnalyzer']]]
 ];

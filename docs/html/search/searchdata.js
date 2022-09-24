@@ -1,11 +1,12 @@
 var indexSectionsWithContent =
 {
-  0: "_abcdefgimprstvå",
+  0: "_abcdefghilmprstuvå",
   1: "abcdeiprstv",
-  2: "abdem",
-  3: "_bcegmr",
-  4: "_efmpsv",
-  5: "iå"
+  2: "abdemuv",
+  3: "_bceghmr",
+  4: "_efhlmpsv",
+  5: "h",
+  6: "iå"
 };
 
 var indexSectionNames =
@@ -15,7 +16,8 @@ var indexSectionNames =
   2: "files",
   3: "functions",
   4: "variables",
-  5: "pages"
+  5: "enumvalues",
+  6: "pages"
 };
 
 var indexSectionLabels =
@@ -25,6 +27,7 @@ var indexSectionLabels =
   2: "文件",
   3: "函数",
   4: "变量",
-  5: "页"
+  5: "枚举值",
+  6: "页"
 };
 

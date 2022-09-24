@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['main_31',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_32',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['message_33',['message',['../classDefaultAnalyzer.html#a7b2727f01a52c5ff3b055a813e2e0279',1,'DefaultAnalyzer']]]
+  ['ingamemsg_46',['IngameMsg',['../structIngameMsg.html',1,'']]],
+  ['initstate_47',['InitState',['../structRealm_1_1InitState.html',1,'Realm']]],
+  ['introduction_48',['INTRODUCTION',['../md__Workspace_mgxParserCPP-master_src_README.html',1,'']]]
 ];

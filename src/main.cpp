@@ -26,12 +26,16 @@ using namespace std;
  */
 int main(int argc, char* argv[])
 {
-
+    cout << "========================================" << endl;
     if (argc <= 1)
     {
         cout << "No Record Specified!" << endl;
         return 1;
     }
+
+    // Start timing
+    double start, end, elapsed;
+    start = clock();
 
     auto a = DefaultAnalyzer(argv[1]);
     try
@@ -40,15 +44,27 @@ int main(int argc, char* argv[])
     }
     catch(const exception& e)
     {
-        std::cerr << e.what() << '\n';
+        std::cerr << setw(22) << "!!!Exception: " << e.what() << '\n';
     }
 
-    cout << "Filename: " << a.filename <<endl;
-    cout << "Ext: " << a.ext <<endl;
-    cout << "Status: " << a.status << endl;
-    cout << "Message: " << a.message << endl;
+    end = clock();
+    elapsed = (end - start) / CLOCKS_PER_SEC * 1000;
+
+    ios_base::fmtflags f( cout.flags() );
+
+    cout << setw(22) << "Parsing time: " << elapsed << " ms" << endl;
+    cout << setw(22) << "Filename: " << a.filename << endl;
+    cout << setw(22) << "VersionString: " << a.versionStr << endl;
+    cout << setw(22) << "SaveVersion: " << a.saveVersion << endl;
+    // cout << setw(22) << "HD version: " << a.HD_version << endl;
+    // cout << setw(22) << "HD internal version: " << a.HD_internalVersion << endl;
+    cout << setw(22) << "VersionCode: " << a.versionCode << endl;
+    cout << setw(22) << "Status: " << a.status << endl;
+    cout << setw(22) << "Message: " << a.message << endl;
     
-    cout << "VersionString: " << a.versionStr << endl;
+    cout.flags( f );
+
+    cout << "========================================" << endl;
 
     //a.extract("../header.dat", "../body.dat");
 

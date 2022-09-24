@@ -1,7 +1,5 @@
 var searchData=
 [
-  ['parsemode_100',['parseMode',['../classDefaultAnalyzer.html#ae8919b2f12cbf533902e9c29b4f28e81',1,'DefaultAnalyzer']]],
-  ['parsetime_101',['parseTime',['../classDefaultAnalyzer.html#a3646946d0c437c644ab5ca63ad33db9e',1,'DefaultAnalyzer']]],
-  ['playdate_102',['playDate',['../classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300',1,'DefaultAnalyzer']]],
-  ['poplimit_103',['popLimit',['../classDefaultAnalyzer.html#a684fa02898699ff19e96944f242c6e06',1,'DefaultAnalyzer']]]
+  ['saveversion_140',['saveVersion',['../classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d',1,'DefaultAnalyzer']]],
+  ['status_141',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
 ];

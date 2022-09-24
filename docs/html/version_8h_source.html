@@ -1,0 +1,143 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: version.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a95fc1cc45391b3270b1ae2680110062.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_e707855903d954fa6d0bc7016550a3a5.html">default</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">version.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="version_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       version.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      Version related stuffs.</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-23</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#define IS_TRIAL(v) (v==0&amp;&amp;v==1)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define IS_AOK(v) v==5</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#define IS_AOC(v) (v&gt;=10&amp;&amp;v&lt;20)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define IS_AOFE(v) v==20</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#define IS_UP(v) (v&gt;=50&amp;&amp;v&lt;100)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define IS_MCP(v) v==100</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#define IS_HD(v) (v&gt;=110&amp;&amp;v&lt;150)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define IS_DE(v) v==200</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">enum</span> {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="comment">// trial: &gt;=0 &amp;&amp; &lt;5</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    AOKTRIAL        = 0,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    AOCTRIAL        = 1,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="comment">// aok: &gt;=5 &amp;&amp; &lt;10</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    AOK             = 5,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// aoc/aoc10/aoc10c: &gt;=10 &amp;&amp; &lt;20</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    AOC             = 10,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    AOC10           = 11,</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    AOC10C          = 12,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// aofe: &gt;=20 &amp;&amp; &lt;50</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    AOFE21          = 20,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">// up: &gt;=50 &amp;&amp; &lt;100</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    USERPATCH12     = 50,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    USERPATCH13     = 51,</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    USERPATCH14RC1  = 52,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    USERPATCH14RC2  = 53,</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    USERPATCH14     = 54,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    USERPATCH15     = 55,</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="comment">// mcp: &gt;=100 &amp;&amp; &lt;110</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    MCP             = 100,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <span class="comment">// hd: &gt;=110 &amp;&amp; &lt;150</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    HD              = 110,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    HD43            = 111,</div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba8c5b3b21fc3efbc407ccd8249b915d83">   47</a></span>&#160;    <a class="code" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a>          = 112, <span class="comment">///&lt; 4.7, 4.6</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno"><a class="line" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5fed40ec6a9650472132fc2bdf7b566e">   48</a></span>&#160;<span class="comment"></span>    <a class="code" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5fed40ec6a9650472132fc2bdf7b566e">HD48</a>            = 113, <span class="comment">///&lt; 4.8</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baae588eb1c8f1090f5c67fc7a15079fbb">   49</a></span>&#160;<span class="comment"></span>    <a class="code" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a>          = 114, <span class="comment">///&lt; 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba03c7d6f33c63b280feec7eddeb131bd6">   50</a></span>&#160;<span class="comment"></span>    <a class="code" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba03c7d6f33c63b280feec7eddeb131bd6">HD57</a>            = 115, <span class="comment">///&lt; 5.7</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baab5907f07a40d94510f8339c0b42bb70">   51</a></span>&#160;<span class="comment"></span>    <a class="code" href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baab5907f07a40d94510f8339c0b42bb70">HD58</a>            = 116, <span class="comment">///&lt; 5.8</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="comment"></span>    <span class="comment">// de: &gt;=200 &amp;&amp; &lt;250</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    DE              = 200,</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="comment">// unsupported: =999</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    UNSUPPORTED     = 999</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;} VER;</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aversion_8h_html_a06fc87d81c62e9abb8790b6e5713c55baab5907f07a40d94510f8339c0b42bb70"><div class="ttname"><a href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baab5907f07a40d94510f8339c0b42bb70">HD58</a></div><div class="ttdeci">@ HD58</div><div class="ttdoc">5.8</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00051">version.h:51</a></div></div>
+<div class="ttc" id="aversion_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba8c5b3b21fc3efbc407ccd8249b915d83"><div class="ttname"><a href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a></div><div class="ttdeci">@ HD46_7</div><div class="ttdoc">4.7, 4.6</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00047">version.h:47</a></div></div>
+<div class="ttc" id="aversion_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba03c7d6f33c63b280feec7eddeb131bd6"><div class="ttname"><a href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba03c7d6f33c63b280feec7eddeb131bd6">HD57</a></div><div class="ttdeci">@ HD57</div><div class="ttdoc">5.7</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00050">version.h:50</a></div></div>
+<div class="ttc" id="aversion_8h_html_a06fc87d81c62e9abb8790b6e5713c55ba5fed40ec6a9650472132fc2bdf7b566e"><div class="ttname"><a href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55ba5fed40ec6a9650472132fc2bdf7b566e">HD48</a></div><div class="ttdeci">@ HD48</div><div class="ttdoc">4.8</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00048">version.h:48</a></div></div>
+<div class="ttc" id="aversion_8h_html_a06fc87d81c62e9abb8790b6e5713c55baae588eb1c8f1090f5c67fc7a15079fbb"><div class="ttname"><a href="version_8h.html#a06fc87d81c62e9abb8790b6e5713c55baae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a></div><div class="ttdeci">@ HD50_6</div><div class="ttdoc">5.0, 5.1, 5.1a, 5.3, 5.5, 5.6</div><div class="ttdef"><b>Definition:</b> <a href="version_8h_source.html#l00049">version.h:49</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

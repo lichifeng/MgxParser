@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['ingamemsg_59',['IngameMsg',['../structIngameMsg.html',1,'']]],
-  ['initstate_60',['InitState',['../structRealm_1_1InitState.html',1,'Realm']]]
+  ['ingamemsg_84',['IngameMsg',['../structIngameMsg.html',1,'']]],
+  ['initstate_85',['InitState',['../structRealm_1_1InitState.html',1,'Realm']]]
 ];
