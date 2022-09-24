@@ -3,10 +3,10 @@
 
 class Realm;
 
-class Player
+class PlayerOld
 {
 public:
-    Player()
+    PlayerOld()
         :realm(nullptr),
         number(-1),
         isHuman(false),

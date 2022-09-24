@@ -49,10 +49,14 @@ void DefaultAnalyzer::run() {
         throw(AnalyzerException(message));
     }
 
+    _f.close();
+
     // Log current stage
     status = "good";
-    message.append("Successfully extracted header&body streams from this file. Ready for data analyzing. \n");
+    message.append("[INFO] Successfully extracted header&body streams from this file. Ready for data analyzing. \n");
     
+    // Start data analyzing
+    _analyze();
 }
 
 bool DefaultAnalyzer::_locateStreams() {
@@ -77,9 +81,6 @@ bool DefaultAnalyzer::_locateStreams() {
     // Try to unzip header data
     if (_inflateRawHeader() != 0) return false;
 
-    // Start data analyzing
-    _analyze();
-
     return true;
 }
 
@@ -99,40 +100,212 @@ void DefaultAnalyzer::_analyze() {
     }
 
     if (IS_DE(versionCode)) {
-        _printHex(8);
+        _headerDEAnalyzer();
     }
+
     _readBytes(4, &indcludeAI);
+}
+
+void DefaultAnalyzer::_headerDEAnalyzer() {
+    if (saveVersion >= 25.2199) _readBytes(4, &DE_build);
+    if (saveVersion >= 26.1599) _readBytes(4, &DE_timestamp);
+    _readBytes(4, &DD_version);
+    _readBytes(4, &DD_internalVersion);
+    _readBytes(4, &DD_gameOptionsVersion);
+    _readBytes(4, &DD_DLCCount);
+    _skip(DD_DLCCount * 4);
+    _readBytes(4, &DD_datasetRef);
+    _readBytes(4, &DD_difficultyID);
+    _readBytes(4, &DD_selectedMapID);
+    _readBytes(4, &DD_resolvedMapID);
+    _readBytes(4, &DD_revealMap);
+    _readBytes(4, &DD_victoryTypeID);
+    _readBytes(4, &DD_startingResourcesID);
+    _readBytes(4, &DD_startingAgeID);
+    _readBytes(4, &DD_endingAgeID);
+    _readBytes(4, &DD_gameType);
+    _expectBytes(
+        patterns::HDseparator,
+        "[INFO] Analyzing HD-specific data section in header stream. \n", 
+        "[WARN] Unexpected validating pattern HD-specific data section in header stream. \n",
+        false
+    );
+    _skip(8); // 2 separators
+    _readBytes(4, &DD_speed);
+    _readBytes(4, &DD_treatyLength);
+    _readBytes(4, &DD_populationLimit);
+    _readBytes(4, &DD_numPlayers);
+    _readBytes(4, &DD_unusedPlayerColor);
+    _readBytes(4, &DD_victoryAmount);
+    // Next 4 bytes should be: a3 5f 02 00
+    _skip(4);
+    _readBytes(1, &DD_tradeEnabled);
+    _readBytes(1, &DD_teamBonusDisabled);
+    _readBytes(1, &DD_randomPositions);
+    _readBytes(1, &DD_allTechs);
+    _readBytes(1, &DD_numStartingUnits);
+    _readBytes(1, &DD_lockTeams);
+    _readBytes(1, &DD_lockSpeed);
+    _readBytes(1, &DD_multiplayer);
+    _readBytes(1, &DD_cheats);
+    _readBytes(1, &DD_recordGame);
+    _readBytes(1, &DD_animalsEnabled);
+    _readBytes(1, &DD_predatorsEnabled);
+    _readBytes(1, &DD_turboEnabled);
+    _readBytes(1, &DD_sharedExploration);
+    _readBytes(1, &DD_teamPositions);
+    if (saveVersion >= 13.3399) _readBytes(4, &DD_subGameMode);
+    if (saveVersion >= 13.3399) _readBytes(4, &DD_battleRoyaleTime);
+    if (saveVersion >= 25.0599) _readBytes(1, &DD_handicap);
+    // Next 4 bytes Should be: a3 5f 02 00
+    _expectBytes(
+        patterns::HDseparator,
+        "[INFO] Ready to parse DE players data, everything ok until now. \n", 
+        "[WARN] Unexpected validating pattern in DE-specific data section in header stream before players data part. \n"
+    );
+
+    // Read player data
+    for (size_t i = 0; i < 8; i++)
+    {
+        _readBytes(4, &players[i].DD_DLCID);
+        _readBytes(4, &players[i].DD_colorID);
+        _readBytes(1, &players[i].DE_selectedColor);
+        _readBytes(1, &players[i].DE_selectedTeamID);
+        _readBytes(1, &players[i].DE_resolvedTeamID);
+        players[i].DE_datCrc = hexStr(_curPos, 8, true);
+        _readBytes(1, &players[i].DD_MPGameVersion);
+        _readBytes(4, &players[i].DD_civID);
+        _readDEString(players[i].DD_AIType);
+        _readBytes(1, &players[i].DD_AICivNameIndex);
+        _readDEString(players[i].DD_AIName);
+        _readDEString(players[i].DD_name);
+        _readBytes(4, &players[i].DD_playerType);
+        _readBytes(4, &players[i].DE_profileID);
+        _skip(4); // Should be: 00 00 00 00
+        _readBytes(4, &players[i].DD_playerNumber); /// \note 不存在的话是 -1 FF FF FF FF
+        if (saveVersion < 25.2199) _readBytes(4, &players[i].DD_RMRating);
+        if (saveVersion < 25.2199) _readBytes(4, &players[i].DD_DMRating);
+        _readBytes(1, &players[i].DE_preferRandom);
+        _readBytes(1, &players[i].DE_customAI);
+        //cout << players[i].DD_RMRating << "  " << players[i].DD_DMRating << endl;
+        if (saveVersion >= 25.0599) _readBytes(8, players[i].DE_handicap); /// \todo what's this nonsense?
+    }
+    _skip(9);
+    _readBytes(1, &DD_fogOfWar);
+    _readBytes(1, &DD_cheatNotifications);
+    _readBytes(1, &DD_coloredChat);
+    _skip(4); // 0xa3, 0x5f, 0x02, 0x00
+    _readBytes(1, &DD_isRanked);
+    _readBytes(1, &DD_allowSpecs);
+    _readBytes(4, &DD_lobbyVisibility);
+    _readBytes(1, &DE_hiddenCivs);
+    _readBytes(1, &DE_matchMaking);
+    _readBytes(4, &DE_specDely);
+    if (saveVersion >= 13.1299) _readBytes(1, &DE_scenarioCiv);
+    if (saveVersion >= 13.1299) DE_RMSCrc = hexStr(_curPos, 4, true);
+    
+    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索乱撞过去了.下面是做的一些研究，找的规律
+    /// \note // de-13.03.aoe2record : 2a 00 00 00 fe ff ff ff + 59*(fe ff ff ff)
+    /// de-13.06.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-13.07.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
+    /// de-13.08.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
+    /// de-13.13.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-13.15.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-13.17.aoe2record : 2C 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-13.20.aoe2record : 2C 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-13.34.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-20.06.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-20.16.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-25.01.aoe2record : 2E 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-25.02.aoe2record : 2E 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-25.06.aoe2record : 2F 00 00 00 FE FF FF FF + 59*(00 00 00 00)
+    /// de-25.22.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
+    /// de-26.16.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
+    /// de-26.18.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
+    /// de-26.21.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
+    auto curItr = _header.begin() + (_curPos - _curStream);
+    for (size_t i = 0; i < 23; i++)
+    {
+        curItr = findPosition(
+            curItr, _header.end(),
+            patterns::HDStringSeparator.begin(), 
+            patterns::HDStringSeparator.end()
+        );
+        if (curItr != _header.end()) {
+            curItr += (4 + *((uint16_t*)(&(*curItr) + 2)));
+            _curPos = &(*curItr);
+        }
+    }
+    _skip(4); /// \note 2a/c/d/e/f 00 00 00
+    if (saveVersion >= 25.2199)
+    {
+        if (*(uint32_t*)_curPos != 0)
+            throw(AnalyzerException("[ALERT] expecting 00 00 00 00 but disppointed. \n"));
+        _skip(4);
+    } else {
+        if (*(uint32_t*)_curPos != -2)
+            throw(AnalyzerException("[ALERT] expecting FE FF FF FF but disppointed. \n"));
+        _skip(60 * 4);
+    }
+    _readBytes(8, &DE_numAIFiles);
+    if (DE_numAIFiles > 1000)
+        throw(AnalyzerException("[ALERT] Is DE_numAIFiles too big?? \n"));
+    for (size_t i = 0; i < DE_numAIFiles; i++)
+    {
+        _skip(4);
+        _skipDEString(); /// \todo AI FILENAMES deserve to be recorded.
+        _skip(4);
+    }
+    if (saveVersion >= 25.0199) _skip(8);
+    DD_guid = hexStr(_curPos, 16, true);
+    message.append("[INFO] Reached GUID milestone: " + DD_guid);
+
+
+    _readBytes(4, &HD_customRandomMapFileCrc);
+    _readHDString(HD_customScenarioOrCampaignFile);
+    _skip(8);
+    _readHDString(HD_customRandomMapFile);
+    _skip(8);
+    _readHDString(HD_customRandomMapScenarionFile);
+    _skip(8);
+    DD_guid = hexStr(_curPos, 16, true); /// \todo should this map to gamehash or filehash?
+    _readHDString(HD_lobbyName);
+    _readHDString(HD_moddedDataset);
+    HD_moddedDatasetWorkshopID = hexStr(_curPos, 4, true);
+    if (DD_version >= 1004.9999)
+    {
+        _skip(4);
+        _skipHDString();
+        _skip(4);
+    }
 }
 
 void DefaultAnalyzer::_headerHDAnalyzer() {
     int16_t  tmpInt16;
     uint8_t* tmpPos;
 
-    _readBytes(4, &HD_version);
-    if (HD_version - 1006 < 0.0001) versionCode = HD57;
-    _readBytes(4, &HD_internalVersion);
-    _readBytes(4, &HD_gameOptionsVersion);
-    _readBytes(4, &HD_DLCCount);
-    _skip(HD_DLCCount * 4);
-    _readBytes(4, &HD_datasetRef);
-    _readBytes(4, &HD_difficultyID);
-    _readBytes(4, &HD_selectedMapID);
-    _readBytes(4, &HD_resolvedMapID);
-    _readBytes(4, &HD_revealMap);
-    _readBytes(4, &HD_victoryTypeID);
-    _readBytes(4, &HD_startingResourcesID);
-    _readBytes(4, &HD_startingAgeID);
-    _readBytes(4, &HD_endingAgeID);
-    if (HD_version >= 1005.9999) _readBytes(4, &HD_gameType);
-
-    /// \note Next 4 bytes should be: a3 5f 02 00. Mark a simple sign here.
-    if (_bytecmp(_curPos, patterns::HDseparator, sizeof(patterns::HDseparator))) {
-        message.append("Analyzing HD-specific data section in header stream. \n");
-    } else {
-        message.append("Unexpected validating pattern HD-specific data section in header stream. \n");
-    }
-    _skip(4);
-    if (HD_version == 1000) {
+    _readBytes(4, &DD_version);
+    if (DD_version - 1006 < 0.0001) versionCode = HD57;
+    _readBytes(4, &DD_internalVersion);
+    _readBytes(4, &DD_gameOptionsVersion);
+    _readBytes(4, &DD_DLCCount);
+    _skip(DD_DLCCount * 4);
+    _readBytes(4, &DD_datasetRef);
+    _readBytes(4, &DD_difficultyID);
+    _readBytes(4, &DD_selectedMapID);
+    _readBytes(4, &DD_resolvedMapID);
+    _readBytes(4, &DD_revealMap);
+    _readBytes(4, &DD_victoryTypeID);
+    _readBytes(4, &DD_startingResourcesID);
+    _readBytes(4, &DD_startingAgeID);
+    _readBytes(4, &DD_endingAgeID);
+    if (DD_version >= 1005.9999) _readBytes(4, &DD_gameType);
+    _expectBytes(
+        patterns::HDseparator,
+        "[INFO] Analyzing HD-specific data section in header stream. \n", 
+        "[WARN] Unexpected validating pattern HD-specific data section in header stream. \n"
+    );
+    if (DD_version == 1000) {
         _readBytes(2, &tmpInt16);
         // Next 2 bytes should be: [ 60 0A ]
         _skip(2);
@@ -142,33 +315,33 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
     }
     // Next 4 bytes should be: a3 5f 02 00
     _skip(4);
-    _readBytes(4, &HD_speed);
-    _readBytes(4, &HD_treatyLength);
-    _readBytes(4, &HD_populationLimit);
-    _readBytes(4, &HD_numPlayers);
-    _readBytes(4, &HD_unusedPlayerColor);
-    _readBytes(4, &HD_victoryAmount);
+    _readBytes(4, &DD_speed);
+    _readBytes(4, &DD_treatyLength);
+    _readBytes(4, &DD_populationLimit);
+    _readBytes(4, &DD_numPlayers);
+    _readBytes(4, &DD_unusedPlayerColor);
+    _readBytes(4, &DD_victoryAmount);
     // Next 4 bytes should be: a3 5f 02 00
     _skip(4);
-    _readBytes(1, &HD_tradeEnabled);
-    _readBytes(1, &HD_teamBonusDisabled);
-    _readBytes(1, &HD_randomPositions);
-    _readBytes(1, &HD_allTechs);
-    _readBytes(1, &HD_numStartingUnits);
-    _readBytes(1, &HD_lockTeams);
-    _readBytes(1, &HD_lockSpeed);
-    _readBytes(1, &HD_multiplayer);
-    _readBytes(1, &HD_cheats);
-    _readBytes(1, &HD_recordGame);
-    _readBytes(1, &HD_animalsEnabled);
-    _readBytes(1, &HD_predatorsEnabled);
+    _readBytes(1, &DD_tradeEnabled);
+    _readBytes(1, &DD_teamBonusDisabled);
+    _readBytes(1, &DD_randomPositions);
+    _readBytes(1, &DD_allTechs);
+    _readBytes(1, &DD_numStartingUnits);
+    _readBytes(1, &DD_lockTeams);
+    _readBytes(1, &DD_lockSpeed);
+    _readBytes(1, &DD_multiplayer);
+    _readBytes(1, &DD_cheats);
+    _readBytes(1, &DD_recordGame);
+    _readBytes(1, &DD_animalsEnabled);
+    _readBytes(1, &DD_predatorsEnabled);
     /// \todo Next 4 bytes should be: a3 5f 02 00, but aoc-mgz indicates they are following data
     // _readBytes(1, &HD_turboEnabled);
     // _readBytes(1, &HD_sharedExploration);
     // _readBytes(1, &HD_teamPositions);
     // _skip(1); // Unknown byte
     _skip(4);
-    if (HD_version == 1000) {
+    if (DD_version == 1000) {
         _skip(120); // 40 * 3
         _skip(4); // a3 5f 02 00
         _skip(40);
@@ -185,11 +358,11 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         tmpPos = _curPos;
         _readBytes(4, &check);
         _skip(4);
-        if (HD_version >= 1005.9999) _skip(1);
+        if (DD_version >= 1005.9999) _skip(1);
         _skip(15);
         _skipHDString();
         _skip(1);
-        if (HD_version >= 1004.9999) _skipHDString();
+        if (DD_version >= 1004.9999) _skipHDString();
         _skipHDString();
         _skip(16);
         _readBytes(4, &test);
@@ -199,37 +372,37 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         // Read player data
         for (size_t i = 0; i < 8; i++)
         {
-            _readBytes(4, &players[i].DLCID);
-            _readBytes(4, &players[i].colorID);
-            if (HD_version >= 1005.9999) _skip(1);
+            _readBytes(4, &players[i].DD_DLCID);
+            _readBytes(4, &players[i].DD_colorID);
+            if (DD_version >= 1005.9999) _skip(1);
             _skip(2);
-            _readBytes(4, &players[i].datCrc);
-            _readBytes(1, &players[i].MPGameVersion);
-            _readBytes(4, &players[i].teamIndex);
-            _readBytes(4, &players[i].civID);
-            _readHDString(players[i].AIType);
-            _readBytes(1, &players[i].AICivNameIndex);
-            if (HD_version >=1004.9999) _readHDString(players[i].AIName);
-            _readHDString(players[i].name);
-            _readBytes(4, &players[i].playerType);
-            _readBytes(8, &players[i].steamID);
-            _readBytes(4, &players[i].playerNumber);
-            if (HD_version >= 1005.9999 
+            _readBytes(4, &players[i].HD_datCrc);
+            _readBytes(1, &players[i].DD_MPGameVersion);
+            _readBytes(4, &players[i].HD_teamIndex);
+            _readBytes(4, &players[i].DD_civID);
+            _readHDString(players[i].DD_AIType);
+            _readBytes(1, &players[i].DD_AICivNameIndex);
+            if (DD_version >=1004.9999) _readHDString(players[i].DD_AIName);
+            _readHDString(players[i].DD_name);
+            _readBytes(4, &players[i].DD_playerType);
+            _readBytes(8, &players[i].HD_steamID);
+            _readBytes(4, &players[i].DD_playerNumber);
+            if (DD_version >= 1005.9999 
                 && versionCode != HD50_6 
                 && versionCode != HD57)
             {
-                _readBytes(4, &players[i].HDRMRating);
-                _readBytes(4, &players[i].HDDMRating);
+                _readBytes(4, &players[i].DD_RMRating);
+                _readBytes(4, &players[i].DD_DMRating);
             }
         }
         
-        _readBytes(1, &HD_fogOfWar);
-        _readBytes(1, &HD_cheatNotifications);
-        _readBytes(1, &HD_coloredChat);
+        _readBytes(1, &DD_fogOfWar);
+        _readBytes(1, &DD_cheatNotifications);
+        _readBytes(1, &DD_coloredChat);
         _skip(13); /// 9 bytes + a3 5f 02 00
-        _readBytes(1, &HD_isRanked);
-        _readBytes(1, &HD_allowSpecs);
-        _readBytes(4, &HD_lobbyVisibility);
+        _readBytes(1, &DD_isRanked);
+        _readBytes(1, &DD_allowSpecs);
+        _readBytes(4, &DD_lobbyVisibility);
         _readBytes(4, &HD_customRandomMapFileCrc);
         _readHDString(HD_customScenarioOrCampaignFile);
         _skip(8);
@@ -237,11 +410,11 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         _skip(8);
         _readHDString(HD_customRandomMapScenarionFile);
         _skip(8);
-        HD_guid = hexStr(_curPos, 16, true); /// \todo should this map to gamehash or filehash?
+        DD_guid = hexStr(_curPos, 16, true); /// \todo should this map to gamehash or filehash?
         _readHDString(HD_lobbyName);
         _readHDString(HD_moddedDataset);
         HD_moddedDatasetWorkshopID = hexStr(_curPos, 4, true);
-        if (HD_version >= 1004.9999)
+        if (DD_version >= 1004.9999)
         {
             _skip(4);
             _skipHDString();
@@ -249,7 +422,6 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         }
         
     }
-
 }
 
 int DefaultAnalyzer::_setVersionCode() {
@@ -370,4 +542,19 @@ void DefaultAnalyzer::extract(
     
     headerOut.close();
     bodyOut.close();
+}
+
+void DefaultAnalyzer::_expectBytes(
+        const vector<uint8_t>& pattern,
+        string good, string warn,
+        bool skip,
+        bool throwExpt
+    ) {
+        if (_bytecmp(_curPos, pattern.data(), pattern.size())) {
+            message.append(good);
+        } else {
+            message.append(warn);
+            if(throwExpt) throw(AnalyzerException(warn));
+        }
+        if(skip) _curPos += pattern.size();
 }

@@ -1,6 +1,5 @@
 var searchData=
 [
-  ['hd_5fdatasetref_130',['HD_datasetRef',['../classDefaultAnalyzer.html#a76f7c829e7b090386532eecc9481a92d',1,'DefaultAnalyzer']]],
-  ['hd_5fgametype_131',['HD_gameType',['../classDefaultAnalyzer.html#ae65e6b8564e8677f4ed390e7aaa9ed9d',1,'DefaultAnalyzer']]],
-  ['hd_5fversion_132',['HD_version',['../classDefaultAnalyzer.html#a79e7798aa4f604e3ef24db76dc797754',1,'DefaultAnalyzer']]]
+  ['filename_136',['filename',['../classDefaultAnalyzer.html#abec9cd753b0812d66a7588291fb402fa',1,'DefaultAnalyzer']]],
+  ['filesize_137',['filesize',['../classDefaultAnalyzer.html#a046fd72358b587393dd77e37176bc5b6',1,'DefaultAnalyzer']]]
 ];

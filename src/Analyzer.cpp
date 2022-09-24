@@ -479,7 +479,7 @@ void Analyzer::playerMeta()
 
     int32_t index, playerType;
     uint32_t nameLen;
-    Player* p;
+    PlayerOld* p;
 
     for (int i = 0; i < 9; i++)
     {
@@ -589,7 +589,7 @@ void Analyzer::skipTriggerInfo()
 void Analyzer::teamInfo()
 {
     int teamIndex;
-    Player* player;
+    PlayerOld* player;
     for (int i = 1; i < 9; i++)
     {
         teamIndex = (int)current++[0] - 2; // raw range: 1~5, 1 -> no team
@@ -684,7 +684,7 @@ void Analyzer::startInfo()
     move(rec->mapXY[0] * rec->mapXY[1]);
     handleObjs();
 
-    // Handle Player Objects
+    // Handle PlayerOld Objects
     for(auto& realm : rec->playerData.realms)
     {
 

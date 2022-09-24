@@ -35,7 +35,7 @@ using namespace std;
 class DefaultAnalyzer: public BaseAnalyzer
 {
 public:
-    DefaultAnalyzer() {}
+    //~DefaultAnalyzer() = default;
 
     DefaultAnalyzer(const string& path) {
         this->path = path;
@@ -63,60 +63,72 @@ public:
     int               versionCode; ///< 这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分
     uint32_t          indcludeAI;
 
-    // HD-specific data from header stream
-    float             HD_version; ///< hd<=4.7: 1000; hd=5.8: 1006
-    uint32_t          HD_internalVersion;
-    uint32_t          HD_gameOptionsVersion;
-    uint32_t          HD_DLCCount;
-    uint32_t          HD_datasetRef; ///< \todo What's this?
-    uint32_t          HD_difficultyID;
-    uint32_t          HD_selectedMapID;
-    uint32_t          HD_resolvedMapID;
-    uint32_t          HD_revealMap;
-    uint32_t          HD_victoryTypeID;
-    uint32_t          HD_startingResourcesID;
-    uint32_t          HD_startingAgeID;
-    uint32_t          HD_endingAgeID;
-    uint32_t          HD_gameType = -1; ///< Only when HD_version>=1006
+    // HD/DE-specific data from header stream
+    uint32_t          DE_build;
+    uint32_t          DE_timestamp;
+    float             DD_version; ///< hd<=4.7: 1000; hd=5.8: 1006
+    uint32_t          DD_internalVersion;
+    uint32_t          DD_gameOptionsVersion;
+    uint32_t          DD_DLCCount;
+    uint32_t          DD_datasetRef; ///< \todo What's this?
+    uint32_t          DD_difficultyID;
+    uint32_t          DD_selectedMapID;
+    uint32_t          DD_resolvedMapID;
+    uint32_t          DD_revealMap;
+    uint32_t          DD_victoryTypeID;
+    uint32_t          DD_startingResourcesID;
+    uint32_t          DD_startingAgeID;
+    uint32_t          DD_endingAgeID;
+    uint32_t          DD_gameType = -1; ///< Only when DD_version>=1006
     string            HD_ver1000MapName;
     string            HD_ver1000Unknown;
-    float             HD_speed;
-    uint32_t          HD_treatyLength;
-    uint32_t          HD_populationLimit;
-    uint32_t          HD_numPlayers;
-    uint32_t          HD_unusedPlayerColor;
-    uint32_t          HD_victoryAmount;
-    uint8_t           HD_tradeEnabled;
-    uint8_t           HD_teamBonusDisabled;
-    uint8_t           HD_randomPositions;
-    uint8_t           HD_allTechs;
-    uint8_t           HD_numStartingUnits;
-    uint8_t           HD_lockTeams;
-    uint8_t           HD_lockSpeed;
-    uint8_t           HD_multiplayer;
-    uint8_t           HD_cheats;
-    uint8_t           HD_recordGame;
-    uint8_t           HD_animalsEnabled;
-    uint8_t           HD_predatorsEnabled;
-    // uint8_t           HD_turboEnabled;
-    // uint8_t           HD_sharedExploration;
-    // uint8_t           HD_teamPositions;
+    float             DD_speed;
+    uint32_t          DD_treatyLength;
+    uint32_t          DD_populationLimit;
+    uint32_t          DD_numPlayers;
+    uint32_t          DD_unusedPlayerColor;
+    uint32_t          DD_victoryAmount;
+    uint8_t           DD_tradeEnabled;
+    uint8_t           DD_teamBonusDisabled;
+    uint8_t           DD_randomPositions;
+    uint8_t           DD_allTechs;
+    uint8_t           DD_numStartingUnits;
+    uint8_t           DD_lockTeams;
+    uint8_t           DD_lockSpeed;
+    uint8_t           DD_multiplayer;
+    uint8_t           DD_cheats;
+    uint8_t           DD_recordGame;
+    uint8_t           DD_animalsEnabled;
+    uint8_t           DD_predatorsEnabled;
+    uint8_t           DD_turboEnabled;
+    uint8_t           DD_sharedExploration;
+    uint8_t           DD_teamPositions;
+    uint32_t          DD_subGameMode;
+    uint32_t          DD_battleRoyaleTime;
+    uint8_t           DD_handicap;
 
-    array<Player, 8>  players {};
-    uint8_t           HD_fogOfWar;
-    uint8_t           HD_cheatNotifications;
-    uint8_t           HD_coloredChat;
-    uint8_t           HD_isRanked;
-    uint8_t           HD_allowSpecs;
-    uint32_t          HD_lobbyVisibility;
+    array<Player, 8>  players;
+    uint8_t           DD_fogOfWar;
+    uint8_t           DD_cheatNotifications;
+    uint8_t           DD_coloredChat;
+    uint8_t           DD_isRanked;
+    uint8_t           DD_allowSpecs;
+    uint32_t          DD_lobbyVisibility;
+    uint8_t           DE_hiddenCivs;
+    uint8_t           DE_matchMaking;
+    uint32_t          DE_specDely;
+    uint8_t           DE_scenarioCiv;
+    string            DE_RMSCrc;
     uint32_t          HD_customRandomMapFileCrc;
     string            HD_customScenarioOrCampaignFile;
     string            HD_customRandomMapFile;
     string            HD_customRandomMapScenarionFile;
-    string            HD_guid;
+    string            DD_guid;
     string            HD_lobbyName;
     string            HD_moddedDataset;
     string            HD_moddedDatasetWorkshopID;
+    uint64_t          DE_numAIFiles;
+
    
     string            playDate; ///< 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？
     string            status; ///< 解析完成类型：success, fail, partly, etc.
@@ -151,6 +163,13 @@ protected:
         _curPos += n;
     }
 
+    inline void        _skipDEString()
+    {
+        int16_t l[2]; // 0x60 0x0a int16_t
+        _readBytes(4, l);
+        _skip(l[1]);
+    } ///< Skip strings in DE header data
+
     inline void        _skipHDString()
     {
         int16_t l;
@@ -158,15 +177,27 @@ protected:
         _skip(2 + l);
     } ///< Skip strings in HD header data
 
+    inline void        _readDEString(string& s)
+    {
+        uint16_t l;
+        uint8_t p[2] = {0x60, 0x0A};
+        if (!_bytecmp(_curPos, p, 2))
+            throw(AnalyzerException("[ALERT] Meet unexpected pattern when reading an DE string. \n"));
+        _skip(2);
+        _readBytes(2, &l);
+        s.assign((char*)_curPos, l);
+        _skip(l);
+    } ///< Read DE string into s.
+
     inline void        _readHDString(string& s)
     {
         uint16_t l;
         uint8_t p[2] = {0x60, 0x0A};
         _readBytes(2, &l);
         if (!_bytecmp(_curPos, p, 2))
-            throw(AnalyzerException("Meet unexpected pattern when reading an HD string."));
+            throw(AnalyzerException("[ALERT] Meet unexpected pattern when reading an HD string. \n"));
         _skip(2);
-        ///< \todo 搞不懂哪里错了，是对象的初始化问题吗？
+        s.assign((char*)_curPos, l);
         _skip(l);
     } ///< Read HD string into s.
 
@@ -189,6 +220,13 @@ protected:
         return 0 == memcmp(s, pattern, n);
     }
 
+    void        _expectBytes(
+        const vector<uint8_t>& pattern,
+        string good, string warn, 
+        bool skip = true,
+        bool throwExpt = true
+    );
+
     inline void        _printHex(int n) {
         ios_base::fmtflags f( cout.flags() );
         cout << "Now at position: " << _curPos - _curStream << endl \
@@ -203,12 +241,13 @@ protected:
     }
 
     void               _headerHDAnalyzer(); ///< 分析 header 中的 HD 部分信息
+    void               _headerDEAnalyzer(); ///< 分析 header 中的 DE 部分信息
 
     ifstream           _f; ///< 录像文件的原始流
     uintmax_t          _bodySize; ///< body 数据的长度
     vector<uint8_t>    _body; ///< body stream
     vector<uint8_t>    _header; ///< 解压后的 header 数据
  
-    uint8_t*           _curPos; ///< 当前读取数据的指针
+    uint8_t*           _curPos; ///< 当前读取数据的指针 \todo 为什么不直接用迭代器呢
     uint8_t*           _curStream; ///< 当前使用的数据流
 };

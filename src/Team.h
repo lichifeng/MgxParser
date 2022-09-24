@@ -8,7 +8,7 @@ public:
     Team(): index(-1) {}
 
     int index;
-    std::vector<Player*> players;
+    std::vector<PlayerOld*> players;
 
     inline bool valid() { return players.size(); }
 };

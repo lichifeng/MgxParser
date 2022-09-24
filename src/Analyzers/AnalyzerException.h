@@ -22,13 +22,13 @@ using namespace std;
 class AnalyzerException: public exception
 {
 private:
-    const char* _msg;
+    string _msg;
 public:
     AnalyzerException():_msg("Undocumented exception during analyzing.") {};
     AnalyzerException(const char* msg):_msg(msg) {};
-    AnalyzerException(const string msg):_msg(msg.c_str()) {};
+    AnalyzerException(const string& msg):_msg(msg) {};
 
     inline const char* what() const throw() {
-        return _msg;
+        return _msg.data();
     }
 };

@@ -13,25 +13,32 @@
 #include <cstdint>
 #include <string>
 
+using namespace std;
+
 class Player
 {
 public:
-    Player():
-        AIType("test"), AIName("test1"), name("test2")
-    {}
-    uint32_t DLCID;
-    uint32_t colorID;
-    uint32_t datCrc;
-    uint8_t MPGameVersion;
-    uint32_t teamIndex;
-    uint32_t civID;
-    string AIType;
-    uint8_t AICivNameIndex;
-    string AIName;
-    string name;
-    uint32_t playerType; ///< 0~6: absent, closed, human, eliminated, computer, cyborg, spectator
-    uint64_t steamID;
-    int32_t playerNumber;
-    uint32_t HDRMRating = 0;
-    uint32_t HDDMRating = 0;
+    uint32_t            DD_DLCID;
+    uint32_t            DD_colorID;
+    uint8_t             DE_selectedColor;
+    uint8_t             DE_selectedTeamID;
+    uint8_t             DE_resolvedTeamID;
+    uint32_t            HD_datCrc;
+    string              DE_datCrc;
+    uint8_t             DD_MPGameVersion;
+    uint32_t            HD_teamIndex;
+    uint32_t            DD_civID;
+    string              DD_AIType;
+    uint8_t             DD_AICivNameIndex;
+    string              DD_AIName;
+    string              DD_name;
+    uint32_t            DD_playerType; ///< 0~6: absent, closed, human, eliminated, computer, cyborg, spectator
+    uint64_t            HD_steamID;
+    uint32_t            DE_profileID;
+    int32_t             DD_playerNumber;
+    uint32_t            DD_RMRating = 0;
+    uint32_t            DD_DMRating = 0;
+    uint8_t             DE_preferRandom;
+    uint8_t             DE_customAI;
+    char                DE_handicap[8];
 };

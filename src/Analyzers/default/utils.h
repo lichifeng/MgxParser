@@ -11,9 +11,13 @@
 #pragma once
 
 #include <string>
+#include <algorithm>
+#include <vector>
+#include <array>
 
 namespace patterns {
-    constexpr uint8_t HDseparator[] = {0xa3, 0x5f, 0x02, 0x00};
+    vector<uint8_t> HDseparator = {0xa3, 0x5f, 0x02, 0x00};
+    vector<uint8_t> HDStringSeparator = {0x60, 0x0a};
 }
 
 constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
@@ -37,4 +41,15 @@ std::string hexStr(unsigned char*& data, int len, bool skip = false)
   }
   if (skip) data += len;
   return s;
+}
+
+template<typename T>
+T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)
+{
+    return std::search(
+        haystackBeg, haystackEnd,
+        std::boyer_moore_searcher(
+            needleBeg, needleEnd
+        )
+    );
 }

@@ -40,9 +40,9 @@ public:
     } initState;
 
     std::vector<uint8_t> searchPattern;
-    std::vector<Player*> players;
+    std::vector<PlayerOld*> players;
 
-    inline Player* addPlayer(Player& p, bool isFirstOfRealm = false)
+    inline PlayerOld* addPlayer(PlayerOld& p, bool isFirstOfRealm = false)
     {
         p.realm = this;
         if (isFirstOfRealm) p.isFirstOfRealm = this;

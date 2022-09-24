@@ -23,7 +23,7 @@ public:
     }
 
     /* get player pointer */
-    Player* getPlayer(int number)
+    PlayerOld* getPlayer(int number)
     {
         if (number > 8 || number < 1)
             return nullptr;
@@ -31,13 +31,13 @@ public:
     }
     
     /* add a new player */
-    Player* addPlayer(
+    PlayerOld* addPlayer(
         int index, 
         int number, 
         bool isHuman = false, 
         bool isSpectator = false
     ) {
-        Player& p = players[number - 1];
+        PlayerOld& p = players[number - 1];
         p.number = number;
         p.isHuman = isHuman;
         p.isSpectator = isSpectator;
@@ -54,5 +54,5 @@ public:
 
     Realm realms[8];
     Team teams[12]; // 0~3: for team 1-4;4~11: for players not teamed
-    Player players[8];
+    PlayerOld players[8];
 };

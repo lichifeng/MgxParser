@@ -96,7 +96,7 @@ $(function() {
 <div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    }</div>
 <div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
 <div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="comment">/* get player pointer */</span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classPlayer.html">Player</a>* getPlayer(<span class="keywordtype">int</span> number)</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <a class="code" href="classPlayerOld.html">PlayerOld</a>* getPlayer(<span class="keywordtype">int</span> number)</div>
 <div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
 <div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span> (number &gt; 8 || number &lt; 1)</div>
 <div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            <span class="keywordflow">return</span> <span class="keyword">nullptr</span>;</div>
@@ -104,13 +104,13 @@ $(function() {
 <div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
 <div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">/* add a new player */</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classPlayer.html">Player</a>* addPlayer(</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <a class="code" href="classPlayerOld.html">PlayerOld</a>* addPlayer(</div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="keywordtype">int</span> index, </div>
 <div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordtype">int</span> number, </div>
 <div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordtype">bool</span> isHuman = <span class="keyword">false</span>, </div>
 <div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordtype">bool</span> isSpectator = <span class="keyword">false</span></div>
 <div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    ) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classPlayer.html">Player</a>&amp; p = players[number - 1];</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classPlayerOld.html">PlayerOld</a>&amp; p = players[number - 1];</div>
 <div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        p.number = number;</div>
 <div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        p.isHuman = isHuman;</div>
 <div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        p.isSpectator = isSpectator;</div>
@@ -127,13 +127,13 @@ $(function() {
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classRealm.html">Realm</a> realms[8];</div>
 <div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <a class="code" href="classTeam.html">Team</a> teams[12]; <span class="comment">// 0~3: for team 1-4;4~11: for players not teamed</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classPlayer.html">Player</a> players[8];</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <a class="code" href="classPlayerOld.html">PlayerOld</a> players[8];</div>
 <div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassPlayerData_html"><div class="ttname"><a href="classPlayerData.html">PlayerData</a></div><div class="ttdef"><b>Definition:</b> <a href="PlayerData_8h_source.html#l00007">PlayerData.h:7</a></div></div>
 <div class="ttc" id="aclassRealm_html"><div class="ttname"><a href="classRealm.html">Realm</a></div><div class="ttdef"><b>Definition:</b> <a href="Realm_8h_source.html#l00006">Realm.h:6</a></div></div>
+<div class="ttc" id="aclassPlayerOld_html"><div class="ttname"><a href="classPlayerOld.html">PlayerOld</a></div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00006">Player.h:6</a></div></div>
 <div class="ttc" id="aclassTeam_html"><div class="ttname"><a href="classTeam.html">Team</a></div><div class="ttdef"><b>Definition:</b> <a href="Team_8h_source.html#l00005">Team.h:5</a></div></div>
-<div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00016">Analyzers/default/Player.h:16</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
