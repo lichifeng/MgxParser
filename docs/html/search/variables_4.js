@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['logversion_138',['logVersion',['../classDefaultAnalyzer.html#a9933aa8d27576f192036d8529dfd9090',1,'DefaultAnalyzer']]]
+  ['filename_162',['filename',['../classDefaultAnalyzer.html#abec9cd753b0812d66a7588291fb402fa',1,'DefaultAnalyzer']]],
+  ['filesize_163',['filesize',['../classDefaultAnalyzer.html#a046fd72358b587393dd77e37176bc5b6',1,'DefaultAnalyzer']]]
 ];

@@ -28,7 +28,7 @@ public:
     uint8_t             DD_MPGameVersion;
     uint32_t            HD_teamIndex;
     uint32_t            DD_civID;
-    string              DD_AIType;
+    string              DD_AIType; ///< in 26.21: "PromiDE";
     uint8_t             DD_AICivNameIndex;
     string              DD_AIName;
     string              DD_name;

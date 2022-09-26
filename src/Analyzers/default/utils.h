@@ -18,7 +18,12 @@
 namespace patterns {
     vector<uint8_t> HDseparator = {0xa3, 0x5f, 0x02, 0x00};
     vector<uint8_t> HDStringSeparator = {0x60, 0x0a};
+    vector<uint8_t> AIdataUnknown = {0x08, 0x00};
+    vector<uint8_t> ZEROs_4096(4096, 0x00);
+    vector<uint8_t> FFs_500(500, 0xff);
+    vector<uint8_t> AIDirtyFix = {0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27};
 }
+
 
 constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
                            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};

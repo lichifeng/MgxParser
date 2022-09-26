@@ -78,13 +78,19 @@ $(function() {
 <p>Some utility for minor jobs  
 <a href="#details">更多...</a></p>
 <div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &lt;algorithm&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 utils.h 的引用(Include)关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8h__incl.png" border="0" usemap="#utils_8h" alt=""/></div>
 <map name="utils_8h" id="utils_8h">
-<area shape="rect" title="Some utility for minor jobs" alt="" coords="5,5,68,32"/>
-<area shape="rect" title=" " alt="" coords="7,80,66,107"/>
+<area shape="rect" title="Some utility for minor jobs" alt="" coords="149,5,211,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,64,107"/>
+<area shape="rect" title=" " alt="" coords="88,80,173,107"/>
+<area shape="rect" title=" " alt="" coords="198,80,261,107"/>
+<area shape="rect" title=" " alt="" coords="285,80,341,107"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -101,15 +107,34 @@ utils.h 的引用(Include)关系图:</div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
+<tr class="memitem:a58d7b5964824a27addc533c0c0c918bd"><td class="memItemLeft" align="right" valign="top"><a id="a58d7b5964824a27addc533c0c0c918bd"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ZEROs_4096</b> (4096, 0x00)</td></tr>
+<tr class="separator:a58d7b5964824a27addc533c0c0c918bd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a08d53f635a9f2d10a8a487e1c0f5b31f"><td class="memItemLeft" align="right" valign="top"><a id="a08d53f635a9f2d10a8a487e1c0f5b31f"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::FFs_500</b> (500, 0xff)</td></tr>
+<tr class="separator:a08d53f635a9f2d10a8a487e1c0f5b31f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3276d7967d96cb127158af5b6c07b30d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a> (unsigned char *&amp;data, int len, bool skip=false)</td></tr>
 <tr class="memdesc:a3276d7967d96cb127158af5b6c07b30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to convert bytes to hex string, mainly used to generate guid in HD versions.  <a href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">更多...</a><br /></td></tr>
 <tr class="separator:a3276d7967d96cb127158af5b6c07b30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplParams" colspan="2"><a id="aacd6ba1ade7c09c80d51de21660d19db"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>findPosition</b> (T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</td></tr>
+<tr class="separator:aacd6ba1ade7c09c80d51de21660d19db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
-<tr class="memitem:a51eaff2cf031b7627471b8057a4d093f"><td class="memItemLeft" align="right" valign="top"><a id="a51eaff2cf031b7627471b8057a4d093f"></a>
-constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::HDseparator</b> [] = {0xa3, 0x5f, 0x02, 0x00}</td></tr>
-<tr class="separator:a51eaff2cf031b7627471b8057a4d093f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75d0373c72d0dc68e66e926f641cecac"><td class="memItemLeft" align="right" valign="top"><a id="a75d0373c72d0dc68e66e926f641cecac"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::HDseparator</b> = {0xa3, 0x5f, 0x02, 0x00}</td></tr>
+<tr class="separator:a75d0373c72d0dc68e66e926f641cecac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6ce8016fa400d683a199df78cf743b5a"><td class="memItemLeft" align="right" valign="top"><a id="a6ce8016fa400d683a199df78cf743b5a"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::HDStringSeparator</b> = {0x60, 0x0a}</td></tr>
+<tr class="separator:a6ce8016fa400d683a199df78cf743b5a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30839c350a0ea1e2f12030ff3d1f454a"><td class="memItemLeft" align="right" valign="top"><a id="a30839c350a0ea1e2f12030ff3d1f454a"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::AIdataUnknown</b> = {0x08, 0x00}</td></tr>
+<tr class="separator:a30839c350a0ea1e2f12030ff3d1f454a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a73bf5803a4bcd64d491e766c2fba8d9c"><td class="memItemLeft" align="right" valign="top"><a id="a73bf5803a4bcd64d491e766c2fba8d9c"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::AIDirtyFix</b> = {0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27}</td></tr>
+<tr class="separator:a73bf5803a4bcd64d491e766c2fba8d9c"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a08cfbd4924069817d1fa4939901aa0df"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>hexmap</b> []</td></tr>
 <tr class="separator:a08cfbd4924069817d1fa4939901aa0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -165,7 +190,7 @@ constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>patterns
 </dl>
 <dl class="section return"><dt>返回</dt><dd>std::string TEXT </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00031">31</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00040">40</a> 行定义.</p>
 
 </div>
 </div>
@@ -192,7 +217,7 @@ constexpr uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>patterns
 <b>初始值:</b><div class="fragment"><div class="line">= {<span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>,</div>
 <div class="line">                           <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;f&#39;</span>}</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00019">19</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00028">28</a> 行定义.</p>
 
 </div>
 </div>

@@ -84,35 +84,55 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
-<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">namespace </span>patterns {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    constexpr uint8_t HDseparator[] = {0xa3, 0x5f, 0x02, 0x00};</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;}</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;constexpr <span class="keywordtype">char</span> hexmap[] = {<span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>,</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;                           <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;f&#39;</span>};</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="comment"></span> </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="comment"> * \brief      Use to convert bytes to hex string, mainly used to generate guid</span></div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment"> * in HD versions.</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * </span></div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> * \param      data                TEXT</span></div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * \param      len                 TEXT</span></div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * \param      skip                TEXT</span></div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> * \return     std::string         TEXT</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">   31</a></span>&#160;std::string <a class="code" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*&amp; data, <span class="keywordtype">int</span> len, <span class="keywordtype">bool</span> skip = <span class="keyword">false</span>)</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;  std::string s(len * 2, <span class="charliteral">&#39; &#39;</span>);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; ++i) {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    s[2 * i]     = hexmap[(data[i] &amp; 0xF0) &gt;&gt; 4];</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    s[2 * i + 1] = hexmap[data[i] &amp; 0x0F];</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;  }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;  <span class="keywordflow">if</span> (skip) data += len;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;  <span class="keywordflow">return</span> s;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;algorithm&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keyword">namespace </span>patterns {</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    vector&lt;uint8_t&gt; HDseparator = {0xa3, 0x5f, 0x02, 0x00};</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    vector&lt;uint8_t&gt; HDStringSeparator = {0x60, 0x0a};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    vector&lt;uint8_t&gt; AIdataUnknown = {0x08, 0x00};</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    vector&lt;uint8_t&gt; ZEROs_4096(4096, 0x00);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    vector&lt;uint8_t&gt; FFs_500(500, 0xff);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    vector&lt;uint8_t&gt; AIDirtyFix = {0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;}</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160; </div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160; </div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;constexpr <span class="keywordtype">char</span> hexmap[] = {<span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;                           <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;f&#39;</span>};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"> * \brief      Use to convert bytes to hex string, mainly used to generate guid</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="comment"> * in HD versions.</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"> * \param      data                TEXT</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"> * \param      len                 TEXT</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="comment"> * \param      skip                TEXT</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;<span class="comment"> * \return     std::string         TEXT</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">   40</a></span>&#160;std::string <a class="code" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a>(<span class="keywordtype">unsigned</span> <span class="keywordtype">char</span>*&amp; data, <span class="keywordtype">int</span> len, <span class="keywordtype">bool</span> skip = <span class="keyword">false</span>)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;{</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;  std::string s(len * 2, <span class="charliteral">&#39; &#39;</span>);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;  <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; len; ++i) {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    s[2 * i]     = hexmap[(data[i] &amp; 0xF0) &gt;&gt; 4];</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    s[2 * i + 1] = hexmap[data[i] &amp; 0x0F];</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;  }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;  <span class="keywordflow">if</span> (skip) data += len;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;  <span class="keywordflow">return</span> s;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160; </div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> T&gt;</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;{</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <span class="keywordflow">return</span> std::search(</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        haystackBeg, haystackEnd,</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        std::boyer_moore_searcher(</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            needleBeg, needleEnd</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        )</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;    );</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="autils_8h_html_a3276d7967d96cb127158af5b6c07b30d"><div class="ttname"><a href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a></div><div class="ttdeci">std::string hexStr(unsigned char *&amp;data, int len, bool skip=false)</div><div class="ttdoc">Use to convert bytes to hex string, mainly used to generate guid in HD versions.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00031">utils.h:31</a></div></div>
+<div class="ttc" id="autils_8h_html_a3276d7967d96cb127158af5b6c07b30d"><div class="ttname"><a href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a></div><div class="ttdeci">std::string hexStr(unsigned char *&amp;data, int len, bool skip=false)</div><div class="ttdoc">Use to convert bytes to hex string, mainly used to generate guid in HD versions.</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00040">utils.h:40</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

@@ -12,13 +12,13 @@
 #pragma once
 
 #define IS_TRIAL(v) (v==0&&v==1)
-#define IS_AOK(v) v==5
+#define IS_AOK(v) (v==5)
 #define IS_AOC(v) (v>=10&&v<20)
-#define IS_AOFE(v) v==20
+#define IS_AOFE(v) (v==20)
 #define IS_UP(v) (v>=50&&v<100)
-#define IS_MCP(v) v==100
+#define IS_MCP(v) (v==100)
 #define IS_HD(v) (v>=110&&v<150)
-#define IS_DE(v) v==200
+#define IS_DE(v) (v==200)
 
 enum {
     // trial: >=0 && <5

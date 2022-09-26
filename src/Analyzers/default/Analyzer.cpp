@@ -15,6 +15,7 @@
 #include "zlib.h"
 #include "Analyzer.h"
 #include "utils.h"
+#include "TileStructures.h"
 
 using namespace std;
 
@@ -95,6 +96,8 @@ void DefaultAnalyzer::_analyze() {
     _readBytes(8, versionStr);
     _readBytes(4, &saveVersion);
     _setVersionCode();
+
+    // Analyze HD/DE-specific data in header data
     if (IS_HD(versionCode) && saveVersion > 12.3401) {
         _headerHDAnalyzer();
     }
@@ -102,8 +105,172 @@ void DefaultAnalyzer::_analyze() {
     if (IS_DE(versionCode)) {
         _headerDEAnalyzer();
     }
+    
+    // Analyze AI info part in header data
+    _AIAnalyzer();
 
+    // Analyze replay part in header data
+    _replayAnalyzer();
+
+    // Analyze map data in header stream
+    _mapDataAnalyzer();
+
+    // Analyze start info
+    _startInfoAnalyzer();
+}
+
+void DefaultAnalyzer::_startInfoAnalyzer() {
+    _readBytes(4, &restoreTime);
+    
+    uint32_t numParticles;
+    _readBytes(4, &numParticles);
+    _skip(numParticles * 27);
+    _printHex(40, true, "\n", __FUNCTION__);
+}
+
+void DefaultAnalyzer::_mapDataAnalyzer() {
+    _readBytes(8, &mapCoord);
+    if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
+    {
+        throw(AnalyzerException("[WARN] Abnormal map size data. \n"));
+    } else if (mapCoord[0] == mapCoord[1]) {
+        message.append("[INFO] Found desired map coordinates data. \n");
+    } else {
+        throw(AnalyzerException("[WARN] Map coordinates is weird, X != Y. \n"));
+    }
+
+    int32_t numMapZones, mapBits, numFloats;
+    mapBits = mapCoord[0] * mapCoord[1];
+    _readBytes(4, &numMapZones);
+    for (int i = 0; i < numMapZones; i++)
+    {
+        if (IS_HD(versionCode) || IS_DE(versionCode)) /// \todo 为什么不是11.76？
+            _skip(2048 + mapBits * 2);
+        else
+            _skip(1275 + mapBits);
+        _readBytes(4, &numFloats);
+        _skip(numFloats * 4 + 4);
+    }
+    
+    _readBytes(1, &allVisible);
+    _readBytes(1, &fogOfWar);
+
+    _mapBitmap = _curPos;
+    uint32_t checkVal = *(uint32_t*)(_curPos + 7 * mapBits);
+    if (IS_DE(versionCode)) {
+        _mapTileType = (saveVersion >= 13.0299 || checkVal > 1000) ? 9 : 7;
+    } else {
+        _mapTileType = (_curPos[0] == 255) ? 4 : 2;
+    }
+    _skip(_mapTileType * mapBits);
+
+    int32_t numData, numObstructions;
+    _readBytes(4, &numData);
+    _skip(4 + numData * 4);
+    for (int i = 0; i < numData; i++)
+    {
+        _readBytes(4, &numObstructions);
+        _skip(numObstructions * 8);
+    }
+    int32_t visibilityMapSize[2];
+    _readBytes(8, visibilityMapSize);
+    _skip(visibilityMapSize[0] * visibilityMapSize[1] * 4);
+}
+
+void DefaultAnalyzer::_replayAnalyzer() {
+    _skip(12);
+    _readBytes(4, &gameSpeed);
+    _skip(29);
+    _readBytes(2, &recPlayer);
+    _readBytes(1, &numPlayers); /// \note gaia included
+    if (!IS_AOK(versionCode)) { /// \todo AOK condition not tested
+        _readBytes(1, &instantBuild);
+        _readBytes(1, &cheatsEnabled);
+    }
+    _readBytes(2, &gameMode);
+    _skip(58);
+    if (IS_DE(versionCode)) _skip(8); /// \todo how about HD?
+}
+
+void DefaultAnalyzer::_AIAnalyzer() {
     _readBytes(4, &indcludeAI);
+    if (!indcludeAI) return;
+
+    _skip(2);
+    uint16_t numAIStrings = *(uint16_t*)_curPos;
+    _skip(6);
+    for (uint32_t i = 0; i < numAIStrings; i++)
+    {
+        _skip(4 + *(int32_t*)_curPos);
+    }
+    
+    if (IS_DE(versionCode)) {
+        _skip(5);
+    } else {
+        _skip(4); /// \todo 验证一下各版本的情况
+    }
+    _expectBytes(
+        patterns::AIdataUnknown,
+        "[INFO] Found AI info, now before AI_DATA section, everything OK. \n", 
+        "[WARN] Now in AI section, expecting 08 00 but disppointed. \n"
+    );
+
+    // AI Data
+    if (IS_DE(versionCode)) { /// \todo this takes too long, not acceptable
+        auto curItr = _header.begin() + (_curPos - _curStream);
+        uint16_t rulesCnt = 0;
+
+        // // Tricky skip
+        // for (size_t i = 0; i < _DD_AICount; i++)
+        // {
+        //     patterns::AIDirtyFix[4] = i;
+        //     curItr = findPosition(
+        //         curItr, _header.end(),
+        //         patterns::AIDirtyFix.begin(), 
+        //         patterns::AIDirtyFix.end()
+        //     );
+        //     _curPos = &(*curItr);
+        //     _skip(10);
+        //     _readBytes(2, &rulesCnt);
+        //     curItr += 200 * rulesCnt;
+        //     cout << "rulesCnt: " << rulesCnt << endl;
+        // }
+        // _curPos = &(*curItr);
+        
+        // Dumb skip
+        /// \todo 这里用了非常不确定的方法来跳过，没有充分验证。没有直接查找4096个0X00是出于性能考虑。
+        patterns::FFs_500.resize(1000, 0x00);
+        curItr = findPosition(
+            curItr, _header.end(),
+            patterns::FFs_500.begin(), 
+            patterns::FFs_500.end()
+        );
+        _curPos = &(*curItr);
+        _curPos += 4096 + 500;
+    } else {
+        int actionSize = 24; // See recanalyst
+        int ruleSize = 16 + 16 * actionSize; // See recanalyst
+        if (saveVersion > 11.9999) ruleSize += 0x180;
+
+        for (uint16_t i = 0, numRules; i < 8; i++)
+        {
+            _skip(10);
+            _readBytes(2, &numRules);
+            if (numRules > 10000) {
+                throw(AnalyzerException("[WARN] numRules in AI data > 1000 (maxRules is normally 10000). \n"));
+            }
+            _skip(4);
+            for (int j = 0; j++ < numRules; _skip(ruleSize));
+        }
+
+        _skip(1448); // 104 + 320 + 1024 \note 这里我在104个字节后发现了2624个FF，也不知道为什么，应该是1344
+        if (saveVersion >= 11.9599) _skip(1280); /// \todo 针对这个版本号边界要验证一下
+        _skip(4096); // 4096个00
+    }
+    
+    if (saveVersion >= 12.2999 && IS_HD(versionCode)) {
+        _skip(4); /// \todo 这里应该是 recanalyst 里的，需要验证
+    }
 }
 
 void DefaultAnalyzer::_headerDEAnalyzer() {
@@ -125,9 +292,9 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     _readBytes(4, &DD_endingAgeID);
     _readBytes(4, &DD_gameType);
     _expectBytes(
-        patterns::HDseparator,
-        "[INFO] Analyzing HD-specific data section in header stream. \n", 
-        "[WARN] Unexpected validating pattern HD-specific data section in header stream. \n",
+        patterns::HDseparator, // a3 5f 02 00
+        "[INFO] Analyzing DE-specific data section in header stream. \n", 
+        "[WARN] Unexpected validating pattern DE-specific data section in header stream. \n",
         false
     );
     _skip(8); // 2 separators
@@ -180,6 +347,7 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
         _readDEString(players[i].DD_AIName);
         _readDEString(players[i].DD_name);
         _readBytes(4, &players[i].DD_playerType);
+        if (players[i].DD_playerType == 4) ++_DD_AICount;
         _readBytes(4, &players[i].DE_profileID);
         _skip(4); // Should be: 00 00 00 00
         _readBytes(4, &players[i].DD_playerNumber); /// \note 不存在的话是 -1 FF FF FF FF
@@ -249,7 +417,7 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     }
     _readBytes(8, &DE_numAIFiles);
     if (DE_numAIFiles > 1000)
-        throw(AnalyzerException("[ALERT] Is DE_numAIFiles too big?? \n"));
+        message.append("[ALERT] Is DE_numAIFiles too big?? \n");
     for (size_t i = 0; i < DE_numAIFiles; i++)
     {
         _skip(4);
@@ -258,32 +426,31 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     }
     if (saveVersion >= 25.0199) _skip(8);
     DD_guid = hexStr(_curPos, 16, true);
-    message.append("[INFO] Reached GUID milestone: " + DD_guid);
-
-
-    _readBytes(4, &HD_customRandomMapFileCrc);
-    _readHDString(HD_customScenarioOrCampaignFile);
-    _skip(8);
-    _readHDString(HD_customRandomMapFile);
-    _skip(8);
-    _readHDString(HD_customRandomMapScenarionFile);
-    _skip(8);
-    DD_guid = hexStr(_curPos, 16, true); /// \todo should this map to gamehash or filehash?
-    _readHDString(HD_lobbyName);
-    _readHDString(HD_moddedDataset);
-    HD_moddedDatasetWorkshopID = hexStr(_curPos, 4, true);
-    if (DD_version >= 1004.9999)
-    {
-        _skip(4);
-        _skipHDString();
-        _skip(4);
+    message.append("[INFO] Reached GUID milestone: " + DD_guid + " \n");
+    _readDEString(DD_lobbyName);
+    if (saveVersion >= 25.2199) _skip(8);
+    _readDEString(DD_moddedDataset);
+    _skip(19);
+    if (saveVersion >= 13.1299) _skip(5);
+    if (saveVersion >= 13.1699) _skip(9);
+    if (saveVersion >= 20.0599) _skip(1);
+    if (saveVersion >= 20.1599) _skip(8);
+    if (saveVersion >= 25.0599) _skip(21);
+    if (saveVersion >= 25.2199) _skip(4);
+    if (saveVersion >= 26.1599) _skip(8);
+    _skipDEString();
+    _skip(5);
+    if (saveVersion >= 13.1299) _skip(1);
+    if (saveVersion < 13.1699) {
+        _skipDEString();
+        _skip(8); /// uint32 + 00 00 00 00
     }
+    if (saveVersion >= 13.1699) _skip(2);
 }
 
 void DefaultAnalyzer::_headerHDAnalyzer() {
     int16_t  tmpInt16;
     uint8_t* tmpPos;
-
     _readBytes(4, &DD_version);
     if (DD_version - 1006 < 0.0001) versionCode = HD57;
     _readBytes(4, &DD_internalVersion);
@@ -411,8 +578,8 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         _readHDString(HD_customRandomMapScenarionFile);
         _skip(8);
         DD_guid = hexStr(_curPos, 16, true); /// \todo should this map to gamehash or filehash?
-        _readHDString(HD_lobbyName);
-        _readHDString(HD_moddedDataset);
+        _readHDString(DD_lobbyName);
+        _readHDString(DD_moddedDataset);
         HD_moddedDatasetWorkshopID = hexStr(_curPos, 4, true);
         if (DD_version >= 1004.9999)
         {

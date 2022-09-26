@@ -1,5 +1,7 @@
 var searchData=
 [
-  ['team_94',['Team',['../classTeam.html',1,'']]],
-  ['tribute_95',['Tribute',['../structTribute.html',1,'']]]
+  ['team_111',['Team',['../classTeam.html',1,'']]],
+  ['tile1_112',['Tile1',['../structTile1.html',1,'']]],
+  ['tilelegacy_113',['TileLegacy',['../structTileLegacy.html',1,'']]],
+  ['tribute_114',['Tribute',['../structTribute.html',1,'']]]
 ];

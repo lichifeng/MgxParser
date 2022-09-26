@@ -21,6 +21,7 @@
 #include <cstring>
 #include <iostream>
 #include <iomanip>
+#include <iterator>
 #include "../BaseAnalyzer.h"
 #include "version.h"
 #include "../AnalyzerException.h"
@@ -82,7 +83,7 @@ public:
     uint32_t          DD_gameType = -1; ///< Only when DD_version>=1006
     string            HD_ver1000MapName;
     string            HD_ver1000Unknown;
-    float             DD_speed;
+    float             DD_speed = -1.0;
     uint32_t          DD_treatyLength;
     uint32_t          DD_populationLimit;
     uint32_t          DD_numPlayers;
@@ -124,12 +125,27 @@ public:
     string            HD_customRandomMapFile;
     string            HD_customRandomMapScenarionFile;
     string            DD_guid;
-    string            HD_lobbyName;
-    string            HD_moddedDataset;
+    string            DD_lobbyName;
+    string            DD_moddedDataset;
     string            HD_moddedDatasetWorkshopID;
     uint64_t          DE_numAIFiles;
 
-   
+    // data from replay section
+    uint32_t          gameSpeed; ///< \todo If de/hd, use data from de/hd-specific data
+    uint16_t          recPlayer; ///< \todo index or number of pov?? verify this.
+    uint8_t           numPlayers; ///< \todo gaia included, DD_numPlayers first??
+    uint8_t           instantBuild;
+    uint8_t           cheatsEnabled; ///< \todo DD_cheats??
+    uint16_t          gameMode; ///< \todo use DD_multiplayer first?? or DD_subGameMode??
+
+    // data from map data section
+    int32_t           mapCoord[2];
+    uint8_t           allVisible;
+    uint8_t           fogOfWar;
+
+    // data from start info
+    uint32_t          restoreTime;
+    
     string            playDate; ///< 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？
     string            status; ///< 解析完成类型：success, fail, partly, etc.
     string            message; ///< 对 \p status 的具体说明
@@ -150,6 +166,7 @@ protected:
         HEADER_STRM == stream ? _curStream = _header.data() : _curStream = _body.data(); 
         _curPos = _curStream;
     }
+
 
     /**
      * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
@@ -227,27 +244,49 @@ protected:
         bool throwExpt = true
     );
 
-    inline void        _printHex(int n) {
+    inline void        _printHex(int n, bool verbose = true, string tail = "\n", string funcInfo = "(null)") {
         ios_base::fmtflags f( cout.flags() );
-        cout << "Now at position: " << _curPos - _curStream << endl \
-            << "Next " << n << " bytes are: [ ";
-        for (size_t i = 0; i < n; i++)
-        {
-            cout << hex << setfill('0') << uppercase \
-                << setw(2) << (int)_curPos[i] << " ";
+        if (verbose) {
+            cout << "Function: " << funcInfo << " Position: " << _curPos - _curStream << endl \
+                << "Next " << n << " bytes are: [ ";
+            for (size_t i = 0; i < n; i++)
+            {
+                cout << hex << setfill('0') << uppercase \
+                    << setw(2) << (int)_curPos[i] << " ";
+            }
+            cout << "]" << tail;
+        } else {
+            for (size_t i = 0; i < n; i++)
+            {
+                cout << hex << setfill('0') << uppercase \
+                    << setw(2) << (int)_curPos[i] << " ";
+            }
+            cout << tail;
         }
-        cout << "]" << endl;
+        
         cout.flags( f );
     }
 
-    void               _headerHDAnalyzer(); ///< 分析 header 中的 HD 部分信息
-    void               _headerDEAnalyzer(); ///< 分析 header 中的 DE 部分信息
-
-    ifstream           _f; ///< 录像文件的原始流
-    uintmax_t          _bodySize; ///< body 数据的长度
-    vector<uint8_t>    _body; ///< body stream
-    vector<uint8_t>    _header; ///< 解压后的 header 数据
- 
-    uint8_t*           _curPos; ///< 当前读取数据的指针 \todo 为什么不直接用迭代器呢
-    uint8_t*           _curStream; ///< 当前使用的数据流
+    void                         _headerHDAnalyzer(); ///< 分析 header 中的 HD 部分信息
+    void                         _headerDEAnalyzer(); ///< 分析 header 中的 DE 部分信息
+    void                         _AIAnalyzer(); ///< 分析 header 中的 AI 部分信息
+    void                         _replayAnalyzer();
+    void                         _mapDataAnalyzer();
+    void                         _startInfoAnalyzer();
+             
+    ifstream                     _f; ///< 录像文件的原始流
+    uintmax_t                    _bodySize; ///< body 数据的长度
+    vector<uint8_t>              _body; ///< body stream
+    vector<uint8_t>              _header; ///< 解压后的 header 数据
+             
+    uint8_t*                     _curPos; ///< 当前读取数据的指针 \todo 为什么不直接用迭代器呢
+    uint8_t*                     _curStream; ///< 当前使用的数据流
+    /// \todo 感觉还是把指针改用 iterator 比较舒服，然后加一个告知当前位置的方法。
+    
+    // vector<uint8_t>::iterator    _cursor; ///< An iterator represents current working position in data stream.
+    // inline void                  _forward(int n) { advance(_cursor, n); } ///< Move current position forward by n bytes.
+    
+    uint32_t                     _DD_AICount = 0; ///< \note used to skip AI section
+    void*                        _mapBitmap;
+    uint8_t                      _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 };

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['filename_136',['filename',['../classDefaultAnalyzer.html#abec9cd753b0812d66a7588291fb402fa',1,'DefaultAnalyzer']]],
-  ['filesize_137',['filesize',['../classDefaultAnalyzer.html#a046fd72358b587393dd77e37176bc5b6',1,'DefaultAnalyzer']]]
+  ['ext_161',['ext',['../classDefaultAnalyzer.html#a5a7c8b2cf2a256592354ba3877f598b9',1,'DefaultAnalyzer']]]
 ];

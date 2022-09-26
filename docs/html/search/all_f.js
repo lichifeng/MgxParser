@@ -1,5 +1,6 @@
 var searchData=
 [
-  ['team_68',['Team',['../classTeam.html',1,'']]],
-  ['tribute_69',['Tribute',['../structTribute.html',1,'']]]
+  ['saveversion_78',['saveVersion',['../classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d',1,'DefaultAnalyzer']]],
+  ['startobject_79',['StartObject',['../structStartObject.html',1,'']]],
+  ['status_80',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
 ];

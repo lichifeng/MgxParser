@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['victorysettings_96',['VictorySettings',['../structVictorySettings.html',1,'']]]
+  ['victorysettings_115',['VictorySettings',['../structVictorySettings.html',1,'']]]
 ];
