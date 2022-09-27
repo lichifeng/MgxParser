@@ -26,6 +26,7 @@
 #include "version.h"
 #include "../AnalyzerException.h"
 #include "Player.h"
+#include "../../EncodingConverter.h"
 
 using namespace std;
 
@@ -36,7 +37,9 @@ using namespace std;
 class DefaultAnalyzer: public BaseAnalyzer
 {
 public:
-    //~DefaultAnalyzer() = default;
+    ~DefaultAnalyzer() {
+        delete _encodingConverter;
+    };
 
     DefaultAnalyzer(const string& path) {
         this->path = path;
@@ -44,6 +47,12 @@ public:
 
     void run();
     string generateMap(const string&, bool);
+
+    inline string& fixEncoding(string& s) {
+        if (nullptr == _encodingConverter) return s;
+        _encodingConverter->convert(s, s);
+        return s;
+    } ///< Convert a string from record file encoding to specified output encoding. Input string not necessarily a member of this class, so its a public function.
 
     /**
      * \brief      Extract header&body streams into separate files
@@ -146,9 +155,16 @@ public:
     // data from start info
     uint32_t          restoreTime;
 
+    // data from scenario header
+    string            scenarioFilename;
+    string            instructions;
+
     // other data
     float             scenarioVersion;
+    string            embededMapName; ///< Map name extracted from instructions, not mapped with raw number
     
+    string            rawEncoding;
+    string            outEncoding = "UTF-8";
     string            playDate; ///< 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？
     string            status; ///< 解析完成类型：success, fail, partly, etc.
     string            message; ///< 对 \p status 的具体说明
@@ -169,7 +185,6 @@ protected:
         HEADER_STRM == stream ? _curStream = _header.data() : _curStream = _body.data(); 
         _curPos = _curStream;
     }
-
 
     /**
      * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
@@ -270,6 +285,20 @@ protected:
         cout.flags( f );
     }
 
+    /**
+     * \brief      Used to find key bytes represents "Map name: " to determine
+     * string encoding of record.
+     * 
+     * \param      pattern             Key characters represents "map name:" in
+     * different languages
+     * \param      mapName             reference to embededMapName
+     * \param      patternLen          
+     * \return     true                
+     * \return     false               
+     */
+    bool                         _findEncodingPattern(const char* pattern, std::string& mapName, size_t patternLen);
+    void                         _guessEncoding();
+
     void                         _headerHDAnalyzer(); ///< 分析 header 中的 HD 部分信息
     void                         _headerDEAnalyzer(); ///< 分析 header 中的 DE 部分信息
     void                         _AIAnalyzer(); ///< 分析 header 中的 AI 部分信息
@@ -281,6 +310,8 @@ protected:
     void                         _findGameSettingsStart();
     void                         _findVictoryStart();
     void                         _findScenarioHeaderStart();
+    void                         _scenarioHeaderAnalyzer();
+    void                         _messagesAnalyzer();
              
     ifstream                     _f; ///< 录像文件的原始流
     uintmax_t                    _bodySize; ///< body 数据的长度
@@ -304,4 +335,7 @@ protected:
     uint8_t*                     _disablesStartPos;
     uint8_t*                     _victoryStartPos;
     uint8_t*                     _scenarioHeaderPos;
+    uint8_t*                     _messagesStartPos;
+
+    EncodingConverter*           _encodingConverter = nullptr;
 };

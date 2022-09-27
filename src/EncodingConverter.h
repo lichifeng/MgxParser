@@ -150,3 +150,4 @@ private:
   bool ignore_error_;
   const size_t buf_size_;
 };
+

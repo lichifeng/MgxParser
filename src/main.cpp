@@ -63,10 +63,11 @@ int main(int argc, char* argv[])
     cout << "\033[4;33;44m" << setw(30) << "VersionCode: \033[0m  " << a.versionCode << endl;
     cout << "\033[4;33;44m" << setw(30) << "Status: \033[0m  " << a.status << endl;
     cout << "\033[4;33;44m" << setw(30) << "Message: \033[0m  " << endl << a.message << endl;
+    cout << a.fixEncoding(a.instructions) << endl;
 
     //cout << "\033[31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m  " << endl;
 
-    a.extract("../header.dat", "../body.dat");
+    //a.extract("../header.dat", "../body.dat");
 
     return 0;
 }

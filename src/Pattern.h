@@ -51,7 +51,7 @@ namespace pattern
         static_cast<char>(0x8b),
         static_cast<char>(0x3a),
         static_cast<char>(0x20)
-        };
+        }; // '地图类型: '
     constexpr char zh_wide_pattern[] = { 
         static_cast<char>(0xb5), 
         static_cast<char>(0xd8), 
@@ -63,7 +63,7 @@ namespace pattern
         static_cast<char>(0xf0), 
         static_cast<char>(0xa3), 
         static_cast<char>(0xba)
-        };
+        }; // '地图类别：'
     constexpr char zh_tw_pattern[] = { 
         static_cast<char>(0xa6), 
         static_cast<char>(0x61), 
@@ -75,7 +75,7 @@ namespace pattern
         static_cast<char>(0x4f), 
         static_cast<char>(0xa1), 
         static_cast<char>(0x47)
-        };
+        }; // '地圖類別：'
     constexpr char br_pattern[] = "Tipo de Mapa: ";
     constexpr char de_pattern[] = "Kartentyp: ";
     constexpr char en_pattern[] = "Map Type: ";
@@ -97,7 +97,7 @@ namespace pattern
         static_cast<char>(0xde), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // 'マップの種類:'
     constexpr char jp_utf8_pattern[] = { 
         static_cast<char>(0xe3), 
         static_cast<char>(0x83), 
@@ -119,7 +119,7 @@ namespace pattern
         static_cast<char>(0x9e), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // 'マップの種類: '
     constexpr char ko_pattern[] = { 
         static_cast<char>(0xc1), 
         static_cast<char>(0xf6), 
@@ -132,7 +132,7 @@ namespace pattern
         static_cast<char>(0xf9), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // '지도 종류: '
     constexpr char ko_utf8_pattern[] = { 
         static_cast<char>(0xec), 
         static_cast<char>(0xa7), 
@@ -149,7 +149,7 @@ namespace pattern
         static_cast<char>(0x98), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // '지도 종류: '
     constexpr char nl_pattern[] = "Kaarttype: ";
     constexpr char ru_pattern[] = { 
         static_cast<char>(0xd2), 
@@ -163,7 +163,7 @@ namespace pattern
         static_cast<char>(0xfb), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // 'Тип карты: '
     constexpr char ru_utf8_pattern[] = { 
         static_cast<char>(0xd0), 
         static_cast<char>(0xa2), 
@@ -184,5 +184,5 @@ namespace pattern
         static_cast<char>(0x8b), 
         static_cast<char>(0x3a), 
         static_cast<char>(0x20)
-        };
+        }; // 'Тип карты: '
 }

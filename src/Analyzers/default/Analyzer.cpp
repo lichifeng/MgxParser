@@ -124,6 +124,55 @@ void DefaultAnalyzer::_analyze() {
     _findDisablesStart();
     _findVictoryStart();
     _findScenarioHeaderStart();
+
+    // Skip scenario header. Nothing valuable here except a filename.
+    // What is really needed is instructions data after this section,
+    // Which is critical data to detect file encoding.
+    _scenarioHeaderAnalyzer();
+
+    // Read messages
+    _messagesAnalyzer();
+
+}
+
+void DefaultAnalyzer::_messagesAnalyzer() {
+    uint16_t len;
+
+    _curPos = _messagesStartPos;
+    _skip(20);
+    if (!IS_AOK(versionCode)) _skip(4);
+    _readBytes(2, &len);
+
+    instructions.assign((char*)_curPos, len);
+    _curPos += len;
+    _guessEncoding();
+
+    string tmpss;
+    for (size_t i = 0; i < 10; i++)
+    {
+        _readBytes(2, &len);
+        cout << i << ": " << fixEncoding(tmpss.assign((char*)_curPos, len)) << endl;
+        _skip(len);
+    }
+    
+
+}
+
+void DefaultAnalyzer::_scenarioHeaderAnalyzer() {
+    uint16_t filenameLen;
+    _curPos = _scenarioHeaderPos;
+    _skip(4433);
+    _readBytes(2, &filenameLen);
+    if (filenameLen > 224) throw(AnalyzerException("[WARN] scenarioFilename is unsually long. \n"));
+    scenarioFilename.assign((char*)(_curPos+2), filenameLen);
+    _skip(filenameLen);
+    if (IS_DE(versionCode)) {
+        _skip(64);
+        if (saveVersion >= 13.3399) {
+            _skip(64);
+        }
+    }
+    _messagesStartPos = _curPos;
 }
 
 void DefaultAnalyzer::_findScenarioHeaderStart() {
@@ -137,13 +186,6 @@ void DefaultAnalyzer::_findScenarioHeaderStart() {
         {
             scenarioVersion = *(float*)startPoint;
             if (scenarioVersion > 1.35 && scenarioVersion < 1.55) {
-                // cout << "Found desired value: [     " << scenarioVersion <<  "    ]       at: [   " \
-                //     << searchSpan - i << "  ] before victory section. " << endl;
-                // cout << "Bytes are:           [ "; 
-                // _curPos = startPoint;
-                // _printHex(4, false, "]");
-                // cout << " Position: [ " << (_curPos - _header.data()) << " ]
-                // from header start." << endl;
                 _scenarioHeaderPos = _curPos = startPoint - 4; // 4 bytes are 00 00 00 00 before scenario version
                 message.append("[INFO] Reach _scenarioHeaderPos by scenario version range test. \n");
                 return;
@@ -175,11 +217,12 @@ void DefaultAnalyzer::_findScenarioHeaderStart() {
         scenarioSeprator.rend()
     );
     if (rFound == _header.rend()) {
+        /// \todo aoc-mgz says aok scenario version can appear in UP
         throw(AnalyzerException("[WARN] Cannot find satisfied _scenarioHeaderPos. \n"));
     } else {
+        _scenarioHeaderPos = _curPos = &*(--rFound) - 4 - scenarioSeprator.size();
         message.append("[INFO] Reach _scenarioHeaderPos and passed validation. \n");
     }
-    _scenarioHeaderPos = &*(--rFound) - 4 - scenarioSeprator.size();
 }
 
 void DefaultAnalyzer::_findVictoryStart() {
@@ -957,4 +1000,108 @@ void DefaultAnalyzer::_expectBytes(
             if(throwExpt) throw(AnalyzerException(warn));
         }
         if(skip) _curPos += pattern.size();
+}
+
+bool DefaultAnalyzer::_findEncodingPattern(const char* pattern, std::string& mapName, size_t patternLen)
+{
+    size_t pos, posEnd;
+
+    if (string::npos != (pos = instructions.find(pattern)))
+    {
+        posEnd = instructions.find('\n', pos + patternLen);
+        if (string::npos != posEnd)
+            embededMapName = instructions.substr(pos + patternLen, posEnd - pos - patternLen);
+
+        return true;
+    }
+
+    return false;
+}
+
+/**
+ * \todo aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。
+ * 
+ */
+void DefaultAnalyzer::_guessEncoding()
+{
+
+    if (_findEncodingPattern(patterns::zh_pattern, embededMapName, size(patterns::zh_pattern)))
+    {
+        rawEncoding = "cp936";
+    }
+    else if (_findEncodingPattern(patterns::zh_utf8_pattern, embededMapName, size(patterns::zh_utf8_pattern)))
+    {
+        rawEncoding = "utf-8";
+    }
+    else if (_findEncodingPattern(patterns::zh_wide_pattern, embededMapName, size(patterns::zh_wide_pattern)))
+    {
+        rawEncoding = "cp936";
+    }
+    else if (_findEncodingPattern(patterns::zh_tw_pattern, embededMapName, size(patterns::zh_tw_pattern)))
+    {
+        rawEncoding = "cp950";
+    }
+    else if (_findEncodingPattern(patterns::br_pattern, embededMapName, size(patterns::br_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::de_pattern, embededMapName, size(patterns::de_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::en_pattern, embededMapName, size(patterns::en_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::es_pattern, embededMapName, size(patterns::es_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::fr_pattern, embededMapName, size(patterns::fr_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::it_pattern, embededMapName, size(patterns::it_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (_findEncodingPattern(patterns::jp_pattern, embededMapName, size(patterns::jp_pattern)))
+    {
+        rawEncoding = "cp932";
+    }
+    else if (_findEncodingPattern(patterns::jp_utf8_pattern, embededMapName, size(patterns::jp_utf8_pattern)))
+    {
+        rawEncoding = "utf-8";
+    }
+    else if (_findEncodingPattern(patterns::ko_pattern, embededMapName, size(patterns::ko_pattern)))
+    {
+        rawEncoding = "cp949";
+    }
+    else if (_findEncodingPattern(patterns::ko_utf8_pattern, embededMapName, size(patterns::ko_utf8_pattern)))
+    {
+        rawEncoding = "utf-8";
+    }
+    else if (_findEncodingPattern(patterns::ru_pattern, embededMapName, size(patterns::ru_pattern)))
+    {
+        rawEncoding = "windows-1251";
+    }
+    else if (_findEncodingPattern(patterns::ru_utf8_pattern, embededMapName, size(patterns::ru_utf8_pattern)))
+    {
+        rawEncoding = "windows-1251";
+    }
+    else if (_findEncodingPattern(patterns::nl_pattern, embededMapName, size(patterns::nl_pattern)))
+    {
+        rawEncoding = "windows-1252";
+    }
+    else if (IS_HD(versionCode) || IS_DE(versionCode))
+    {
+        rawEncoding = "utf-8";
+    }
+    else if (rawEncoding.size() == 0)
+    {
+        rawEncoding = "gbk";
+    }
+
+    if (_encodingConverter == nullptr)
+        _encodingConverter = new EncodingConverter(outEncoding, rawEncoding);
 }
