@@ -41,4 +41,6 @@ public:
     uint8_t             DE_preferRandom;
     uint8_t             DE_customAI;
     char                DE_handicap[8];
+
+    int32_t             startingAge = -1; ///< 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)
 };

@@ -273,6 +273,11 @@ protected:
     void                         _replayAnalyzer();
     void                         _mapDataAnalyzer();
     void                         _startInfoAnalyzer();
+    void                         _findTriggerInfoStart();
+    void                         _findDisablesStart();
+    void                         _findGameSettingsStart();
+    void                         _findVictoryStart();
+    void                         _findScenarioHeaderStart();
              
     ifstream                     _f; ///< 录像文件的原始流
     uintmax_t                    _bodySize; ///< body 数据的长度
@@ -289,4 +294,11 @@ protected:
     uint32_t                     _DD_AICount = 0; ///< \note used to skip AI section
     void*                        _mapBitmap;
     uint8_t                      _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
+
+    uint8_t*                     _startInfoPos;
+    uint8_t*                     _triggerInfoPos;
+    uint8_t*                     _gameSettingsPos;
+    uint8_t*                     _disablesStartPos;
+    uint8_t*                     _victoryStartPos;
+    uint8_t*                     _scenarioHeaderPos;
 };

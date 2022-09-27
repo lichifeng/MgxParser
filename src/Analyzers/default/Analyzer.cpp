@@ -117,6 +117,194 @@ void DefaultAnalyzer::_analyze() {
 
     // Analyze start info
     _startInfoAnalyzer();
+
+    // Find some key positions first
+    _findTriggerInfoStart();
+    _findGameSettingsStart();
+    _findDisablesStart();
+    _findVictoryStart();
+// Try to conclude scenario version data rules:
+size_t distanceA = 10000;
+auto startPoint = _victoryStartPos - distanceA;
+float testedVal;
+_curPos = startPoint;
+for (size_t i = 0; i < distanceA; i++)
+{
+    testedVal = *(float*)startPoint;
+    if (testedVal > 1 && testedVal < 2) {
+        cout << "Found desired value: [     " << testedVal <<  "     ]       at: [   " \
+            << distanceA - i << "  ] before victory section. " << endl;
+        cout << "Bytes are:           [ "; 
+        _curPos = startPoint;
+        _printHex(4, false, "]");
+        cout << " Position: [ " << (_curPos - _header.data()) << " ] from header start." << endl;
+        break;
+    }
+    ++startPoint;
+}
+
+
+    _findScenarioHeaderStart();
+}
+
+void DefaultAnalyzer::_findScenarioHeaderStart() {
+    auto scenarioSeprator = IS_AOK(versionCode) ? \
+        patterns::scenarioConstantAOK : \
+        (
+            saveVersion >= 12.3599 ? \
+            patterns::scenarioConstantHD : \
+            patterns::scenarioConstantAOC
+        );
+
+    vector<uint8_t>::reverse_iterator rFound;
+    rFound = findPosition(
+        make_reverse_iterator(_header.begin() + (_victoryStartPos - _header.data())),
+        _header.rend(),
+        scenarioSeprator.rbegin(),
+        scenarioSeprator.rend()
+    );
+    if (rFound == _header.rend()) {
+        throw(AnalyzerException("[WARN] Cannot find satisfied _scenarioHeaderPos. \n"));
+    }
+    _scenarioHeaderPos = &*(--rFound) - 4 - scenarioSeprator.size();
+}
+
+void DefaultAnalyzer::_findVictoryStart() {
+    _victoryStartPos = _disablesStartPos - 12544 - 44;
+    // Check if at correct point
+    if (*(int32_t*)_victoryStartPos != -99) {
+        throw(AnalyzerException("[WARN] Check bytes not valid, _victoryStartPos seems not good. \n")); // 9d ff ff ff
+    } else {
+        message.append("[INFO] Reach _victoryStartPos and passed validation. \n");
+    }
+}
+
+void DefaultAnalyzer::_findGameSettingsStart() {
+    vector<uint8_t>::reverse_iterator rFound;
+    rFound = findPosition(
+        make_reverse_iterator(_header.begin() + (_triggerInfoPos - _header.data())),
+        _header.rend(), 
+        patterns::separator.rbegin(),
+        patterns::separator.rend()
+    );
+    _printHex(4);
+    _curPos = &(*--rFound) - 68;
+    if ((*(int32_t*)(_curPos + 68) != -1) || (*(int32_t*)(_curPos + 72) != -1)) {
+        throw(AnalyzerException("[WARN] Abnormal gamesettings start position. \n"));
+    } else {
+        message.append("[INFO] Found gamesettings start position (before starting age data). \n");
+        _gameSettingsPos = _curPos;
+    }
+}
+
+void DefaultAnalyzer::_findDisablesStart() {
+    _printHex(4);
+    _curPos = _gameSettingsPos;
+    if (!IS_DE(versionCode)) {
+        _disablesStartPos = _curPos - 5392;
+    } else {
+        _disablesStartPos = _curPos - 276;
+    }
+    if (IS_HD(versionCode)) {
+        _disablesStartPos -= 644;
+    }
+    
+    // Check if at correct point
+    if (*(int32_t*)_disablesStartPos != -99) {
+        throw(AnalyzerException("[WARN] Check bytes not valid, _disablesStartPos seems not good. \n")); // 9d ff ff ff
+    } else {
+        message.append("[INFO] Reach _disablesStartPos and passed validation. \n");
+    }
+}
+
+void DefaultAnalyzer::_findTriggerInfoStart() {
+
+    // aok ~ hd: 0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, f9, 3f (double 1.6)
+    // de < 13.34: 00 e0 ab 45 + double 2.2
+    // de >= 13.34: 
+    //     13.34: 00 e0 ab 45 + padding(1) + double 2.4
+    //     20.06: 00 e0 ab 45 + padding(1) + double 2.4
+    //     20.16: 00 e0 ab 45 + padding(11) + double 2.4
+    //     25.01: 00 e0 ab 45 + padding(11) + double 2.4
+    //     25.02: 00 e0 ab 45 + padding(11) + double 2.4
+    //     25.06: 00 e0 ab 45 + padding(11) + double 2.5
+    //     25.22: 00 e0 ab 45 + padding(11) + double 2.6
+    //     26.16: 00 e0 ab 45 + padding(11) + double 3.0
+    //     26.18: 00 e0 ab 45 + padding(11) + double 3.0
+    //     26.18: 00 e0 ab 45 + padding(11) + double 3.2
+
+    vector<uint8_t>::reverse_iterator rFound;
+    if (IS_DE(versionCode)) {
+        rFound = findPosition(
+            _header.rbegin(),
+            _header.rend(), 
+            patterns::gameSettingSign.rbegin(),
+            patterns::gameSettingSign.rend()
+        );
+        if (rFound == _header.rend()) {
+            throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
+        }
+        _curPos = &(*--rFound);
+
+        if (saveVersion < 13.3399) {
+            if (*(double*)_curPos == 2.2) {
+                _triggerInfoPos = _curPos + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }     
+        }
+        if (saveVersion < 25.0599 && saveVersion >= 13.3399) {
+            if (*(double*)(_curPos + 1) == 2.4) {
+                _triggerInfoPos = _curPos + 1 + 8;
+            } else if (*(double*)(_curPos + 11) == 2.4) {
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }
+        }
+        if (saveVersion < 25.2199 && saveVersion >= 25.0599) {
+            if (*(double*)(_curPos + 11) == 2.5) {
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }     
+        }
+        if (saveVersion < 26.1599 && saveVersion >= 25.2199) {
+            if (*(double*)(_curPos + 11) == 2.6) {
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }     
+        }
+        if (saveVersion < 26.2099 && saveVersion >= 26.1599) {
+            if (*(double*)(_curPos + 11) == 3.0) {
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }     
+        }
+        if (saveVersion >= 26.2099) {
+            if (*(double*)(_curPos + 11) == 3.2) {
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else if ((*(double*)(_curPos + 11)) > 3.2 && (*(double*)(_curPos + 11)) < 10) {
+                message.append("[WARN] Found unknown but reasonable sign of gameSetting end");
+                _triggerInfoPos = _curPos + 11 + 8;
+            } else {
+                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
+            }
+        }
+    } else {
+        rFound = findPosition(
+            _header.rbegin(),
+            _header.rend(), 
+            patterns::gameSettingSign1.rbegin(),
+            patterns::gameSettingSign1.rend()
+        );
+        if (rFound == _header.rend()) {
+            throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
+        }
+        _triggerInfoPos = _curPos = &(*--rFound);
+    }
 }
 
 void DefaultAnalyzer::_startInfoAnalyzer() {
@@ -125,7 +313,18 @@ void DefaultAnalyzer::_startInfoAnalyzer() {
     uint32_t numParticles;
     _readBytes(4, &numParticles);
     _skip(numParticles * 27);
-    _printHex(40, true, "\n", __FUNCTION__);
+
+    // A checkpoint, expecting 10060 with AOK and 40600 with higher version
+    if (*(uint32_t*)_curPos == 40600) {
+        message.append("[INFO] StartInfo section check passed, found value 40600. \n");
+    } else if ((*(uint32_t*)_curPos == 10060) && IS_AOK(versionCode)) {
+        message.append("[INFO] StartInfo section check passed, found value 10060. \n");
+    } else {
+        throw(AnalyzerException("[WARN] Cannot find expected check value 10060/40600 in start info section. \n"));
+    }
+    
+    // Pin start info position
+    _startInfoPos = _curPos + 4;
 }
 
 void DefaultAnalyzer::_mapDataAnalyzer() {
@@ -269,7 +468,7 @@ void DefaultAnalyzer::_AIAnalyzer() {
     }
     
     if (saveVersion >= 12.2999 && IS_HD(versionCode)) {
-        _skip(4); /// \todo 这里应该是 recanalyst 里的，需要验证
+        _skip(4); /// \todo 这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。
     }
 }
 
