@@ -28,6 +28,7 @@ namespace patterns {
     vector<uint8_t> scenarioConstantAOC = { 0xf6, 0x28, 0x9c, 0x3f };
     vector<uint8_t> scenarioConstantHD = { 0xae, 0x47, 0xa1, 0x3f };
     vector<uint8_t> scenarioConstantAOK = { 0x9a, 0x99, 0x99, 0x3f };
+    vector<uint8_t> scenarioConstantMGX2 = { 0xa4, 0x70, 0x9d, 0x3f };
 }
 
 

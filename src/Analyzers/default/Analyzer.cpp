@@ -123,39 +123,50 @@ void DefaultAnalyzer::_analyze() {
     _findGameSettingsStart();
     _findDisablesStart();
     _findVictoryStart();
-// Try to conclude scenario version data rules:
-size_t distanceA = 10000;
-auto startPoint = _victoryStartPos - distanceA;
-float testedVal;
-_curPos = startPoint;
-for (size_t i = 0; i < distanceA; i++)
-{
-    testedVal = *(float*)startPoint;
-    if (testedVal > 1 && testedVal < 2) {
-        cout << "Found desired value: [     " << testedVal <<  "     ]       at: [   " \
-            << distanceA - i << "  ] before victory section. " << endl;
-        cout << "Bytes are:           [ "; 
-        _curPos = startPoint;
-        _printHex(4, false, "]");
-        cout << " Position: [ " << (_curPos - _header.data()) << " ] from header start." << endl;
-        break;
-    }
-    ++startPoint;
-}
-
-
     _findScenarioHeaderStart();
 }
 
 void DefaultAnalyzer::_findScenarioHeaderStart() {
+    // Try to locate scenario version data in DE (this float in de varies
+    // among minor game versions and relative stable in previous versions.)
+    if (IS_DE(versionCode)) {
+        size_t searchSpan = 8000; // usually 5500~6500
+        auto startPoint = _victoryStartPos - searchSpan;
+        _curPos = startPoint;
+        for (size_t i = 0; i < searchSpan; i++)
+        {
+            scenarioVersion = *(float*)startPoint;
+            if (scenarioVersion > 1.35 && scenarioVersion < 1.55) {
+                // cout << "Found desired value: [     " << scenarioVersion <<  "    ]       at: [   " \
+                //     << searchSpan - i << "  ] before victory section. " << endl;
+                // cout << "Bytes are:           [ "; 
+                // _curPos = startPoint;
+                // _printHex(4, false, "]");
+                // cout << " Position: [ " << (_curPos - _header.data()) << " ]
+                // from header start." << endl;
+                _scenarioHeaderPos = _curPos = startPoint - 4; // 4 bytes are 00 00 00 00 before scenario version
+                message.append("[INFO] Reach _scenarioHeaderPos by scenario version range test. \n");
+                return;
+            }
+            ++startPoint;
+        }
+        throw(AnalyzerException("[WARN] Cannot find satisfied _scenarioHeaderPos in this DE version. \n"));
+    }
+    
+
     auto scenarioSeprator = IS_AOK(versionCode) ? \
         patterns::scenarioConstantAOK : \
         (
-            saveVersion >= 12.3599 ? \
-            patterns::scenarioConstantHD : \
+            IS_HD(versionCode) ? 
+                (
+                    /// \todo 这里应该是13.3399还是13.3599?
+                    saveVersion >= 12.3599 ? \
+                    patterns::scenarioConstantHD : \
+                    patterns::scenarioConstantMGX2
+                ) :
             patterns::scenarioConstantAOC
         );
-
+        
     vector<uint8_t>::reverse_iterator rFound;
     rFound = findPosition(
         make_reverse_iterator(_header.begin() + (_victoryStartPos - _header.data())),
@@ -165,6 +176,8 @@ void DefaultAnalyzer::_findScenarioHeaderStart() {
     );
     if (rFound == _header.rend()) {
         throw(AnalyzerException("[WARN] Cannot find satisfied _scenarioHeaderPos. \n"));
+    } else {
+        message.append("[INFO] Reach _scenarioHeaderPos and passed validation. \n");
     }
     _scenarioHeaderPos = &*(--rFound) - 4 - scenarioSeprator.size();
 }
@@ -187,8 +200,11 @@ void DefaultAnalyzer::_findGameSettingsStart() {
         patterns::separator.rbegin(),
         patterns::separator.rend()
     );
-    _printHex(4);
-    _curPos = &(*--rFound) - 68;
+    if (rFound == _header.rend()) {
+        throw(AnalyzerException("[WARN] Cannot find satisfied _gameSettingsPos. \n"));
+    } else {
+        _curPos = &(*--rFound) - 68;
+    }
     if ((*(int32_t*)(_curPos + 68) != -1) || (*(int32_t*)(_curPos + 72) != -1)) {
         throw(AnalyzerException("[WARN] Abnormal gamesettings start position. \n"));
     } else {
@@ -198,20 +214,38 @@ void DefaultAnalyzer::_findGameSettingsStart() {
 }
 
 void DefaultAnalyzer::_findDisablesStart() {
-    _printHex(4);
     _curPos = _gameSettingsPos;
     if (!IS_DE(versionCode)) {
-        _disablesStartPos = _curPos - 5392;
+        if (IS_HD(versionCode) && saveVersion < 12.3399) {
+            _disablesStartPos = _curPos - 5396;
+        } else {
+            _disablesStartPos = _curPos - 5392;
+        }
     } else {
         _disablesStartPos = _curPos - 276;
     }
-    if (IS_HD(versionCode)) {
+    if (IS_HD(versionCode) && saveVersion >= 12.3399) {
         _disablesStartPos -= 644;
     }
     
     // Check if at correct point
     if (*(int32_t*)_disablesStartPos != -99) {
-        throw(AnalyzerException("[WARN] Check bytes not valid, _disablesStartPos seems not good. \n")); // 9d ff ff ff
+        _curPos -= 4; /// 先后退四个字节再开始查找
+        for (size_t i = 0; i < 8000; i++) /// \todo 这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧
+        {
+            if (*(int32_t*)_curPos == -99)
+            {
+                _disablesStartPos = _curPos;
+                break;
+            }
+            --_curPos;
+        }
+        if (*(int32_t*)_disablesStartPos != -99)
+        {
+            throw(AnalyzerException("[WARN] Check bytes not valid, _disablesStartPos seems not good. \n")); // 9d ff ff ff
+        } else {
+            message.append("[INFO] Reach _disablesStartPos by reverse search. \n");
+        }
     } else {
         message.append("[INFO] Reach _disablesStartPos and passed validation. \n");
     }

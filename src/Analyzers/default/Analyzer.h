@@ -145,6 +145,9 @@ public:
 
     // data from start info
     uint32_t          restoreTime;
+
+    // other data
+    float             scenarioVersion;
     
     string            playDate; ///< 游戏发生时间，对老录像只能推断 \todo 有时需要从上传时间来推断，是否放在更外层的类里面？
     string            status; ///< 解析完成类型：success, fail, partly, etc.
