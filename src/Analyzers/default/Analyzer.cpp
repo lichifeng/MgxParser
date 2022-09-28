@@ -133,28 +133,43 @@ void DefaultAnalyzer::_analyze() {
     // Read messages
     _messagesAnalyzer();
 
+    // Read victory-related settings
+    _victorySettingsAnalyzer();
+}
+
+void DefaultAnalyzer::_victorySettingsAnalyzer() {
+    _curPos = _victoryStartPos;
+    _skip(4);
+    _readBytes(4, &victoryIsConquest);
+    _skip(4);
+    _readBytes(4, &victoryRelics);
+    _skip(4);
+    _readBytes(4, &victoryExplored);
+    _skip(4);
+    _readBytes(4, &victoryAnyOrAll);
+    _readBytes(4, &victoryMode);
+    _readBytes(4, &victoryScore);
+    _readBytes(4, &victoryTime);
+    
+    // Do a simple check with Unknown section
+    if (*(uint32_t*)_curPos != 3) {
+        message.append("[WARN] Check bytes following victory section seems wrong, expected 03 00 00 00.");
+    }
 }
 
 void DefaultAnalyzer::_messagesAnalyzer() {
-    uint16_t len;
-
     _curPos = _messagesStartPos;
     _skip(20);
     if (!IS_AOK(versionCode)) _skip(4);
-    _readBytes(2, &len);
 
-    instructions.assign((char*)_curPos, len);
-    _curPos += len;
+    _readPascalString(instructions);
     _guessEncoding();
 
-    string tmpss;
-    for (size_t i = 0; i < 10; i++)
-    {
-        _readBytes(2, &len);
-        cout << i << ": " << fixEncoding(tmpss.assign((char*)_curPos, len)) << endl;
-        _skip(len);
-    }
+    int totalStrs = IS_AOK(versionCode) ? 8 : 9; /// \todo 需要验证 AOK 的情况
+    for (size_t i = 0; i < totalStrs; i++)
+        _skipPascalString();
     
+    /// \note 这一节的数据剩下的就不读了，没什么用。以后再说吧。
 
 }
 

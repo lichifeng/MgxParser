@@ -156,11 +156,20 @@ public:
     uint32_t          restoreTime;
 
     // data from scenario header
+    float             scenarioVersion;
     string            scenarioFilename;
     string            instructions;
 
+    // victory conditions
+    uint32_t          victoryIsConquest;
+    uint32_t          victoryRelics;
+    uint32_t          victoryExplored;
+    uint32_t          victoryAnyOrAll;
+    uint32_t          victoryMode;
+    uint32_t          victoryScore;
+    uint32_t          victoryTime;
+
     // other data
-    float             scenarioVersion;
     string            embededMapName; ///< Map name extracted from instructions, not mapped with raw number
     
     string            rawEncoding;
@@ -196,6 +205,17 @@ protected:
     {
         memcpy(dest, _curPos, n);
         _curPos += n;
+    }
+
+    inline void       _skipPascalString() { _skip(2 + *(uint16_t*)_curPos); } ///< 跳过最常见的字符串类型
+    inline void       _readPascalString(string& s, bool convertEncodeing = true) {
+        uint16_t len;
+        _readBytes(2, &len);
+        s.assign((char*)_curPos, len);
+        if (convertEncodeing && _encodingConverter != nullptr) {
+            fixEncoding(s);
+        }
+        _curPos += len;
     }
 
     inline void        _skipDEString()
@@ -255,7 +275,7 @@ protected:
         return 0 == memcmp(s, pattern, n);
     }
 
-    void        _expectBytes(
+    void               _expectBytes(
         const vector<uint8_t>& pattern,
         string good, string warn, 
         bool skip = true,
@@ -312,6 +332,7 @@ protected:
     void                         _findScenarioHeaderStart();
     void                         _scenarioHeaderAnalyzer();
     void                         _messagesAnalyzer();
+    void                         _victorySettingsAnalyzer();
              
     ifstream                     _f; ///< 录像文件的原始流
     uintmax_t                    _bodySize; ///< body 数据的长度
