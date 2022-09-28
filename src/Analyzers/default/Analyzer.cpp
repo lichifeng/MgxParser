@@ -116,7 +116,7 @@ void DefaultAnalyzer::_analyze() {
     _mapDataAnalyzer();
 
     // Analyze start info
-    _startInfoAnalyzer();
+    _findStartInfoStart();
 
     // Find some key positions first
     _findTriggerInfoStart();
@@ -135,6 +135,113 @@ void DefaultAnalyzer::_analyze() {
 
     // Read victory-related settings
     _victorySettingsAnalyzer();
+
+    // Analyze game settings part, player names first appears here (before HD/DE versions).
+    _gameSettingsAnalyzer();
+
+    // Go back to start info section and rummage some useful pieces
+    _startInfoAnalyzer();
+}
+
+void DefaultAnalyzer::_startInfoAnalyzer() {
+    _curPos = _startInfoPos + 2 + numPlayers + 36 + 4 + 1;
+
+    auto itStart = _header.cbegin() + (_curPos - _header.data()) + 18000;
+    auto itEnd = _header.cbegin() + (_scenarioHeaderPos - _header.data() - numPlayers * 1817); // Achievement section is 1817 * numPlayers bytes
+
+    // Length of every player's data is at least 18000 bytes (and ususally much
+    // more), we can use this to escape unnecessary search
+    // First player don't need a search (and cannot, 'cuz different behavior
+    // among versions)
+    
+
+
+
+    auto found = itStart;
+    for (size_t i = 1; i < numPlayers; i++)
+    {
+        found = findPosition(
+            itStart, itEnd, 
+            players[i].searchPattern.cbegin(), 
+            players[i].searchPattern.cend()
+        );
+        if (found == itEnd) {
+            cout << "now at: " << i << " " << players[i].name << endl;;
+            throw(AnalyzerException("[WARN] Cannot find satisfied player data in startinfo. \n"));
+        }
+        players[i].dataOffset = found - _header.cbegin();
+        itStart = found + 18000;
+
+        cout << i << "th(rd/st) offset: " << players[i].dataOffset << endl;
+    }
+}
+
+/**
+ * \brief      This method also builds some search patterns used to traverse in startinfo section
+ * 
+ */
+void DefaultAnalyzer::_gameSettingsAnalyzer() {
+    _curPos = _gameSettingsPos;
+    _skip(64 + 4 + 8);
+    if (IS_HD(versionCode)) _skip(16);
+    _readBytes(4, &mapID);
+    _readBytes(4, &difficultyID);
+    _readBytes(4, &lockTeams);
+    if (IS_DE(versionCode)) {
+        _skip(29);
+        if (saveVersion >= 13.0699) _skip(1);
+        if (saveVersion >= 13.3399) _skip(132);
+        if (saveVersion >= 20.0599) _skip(1);
+        if (saveVersion >= 20.1599) _skip(4);
+        if (saveVersion >= 25.0199) _skip(4 * 16);
+        if (saveVersion >= 25.0599 && saveVersion < 26.2099) _skip(4);
+    }
+
+    uint16_t nameLen;
+    int trailBytes = 6;
+    uint8_t* namePtr;
+    for (size_t i = 0; i < 9; i++)
+    {
+        namePtr = _curPos + 8;
+        // 先获得名字长度，再把 len + lenName + trailBytes 放到 pattern 里，
+        // 供以后搜索使用， 然后再跳过或把名字转码保存下来。
+        // trailBytes 只保存了一个指针，具体用后面的几个字节组装可以试下，看
+        // 看性能表现，一般建议在[1, 6]个，第一个一般是0x16,第六个一般是
+        // 0x21，中间一个4字节的数字则根据版本不同有所区别。
+        // 要注意的是，HD/DE版本中，startinfo里的名字数据和HD/DE header里的一
+        // 样，和这里不一样。这里显示的玩家名是“玩家1”之类。
+        // 还有一个要注意的是，startinfo中字符串长度用2字节表示，这里用4字节。
+        // \todo 这里似乎只有玩家才会在HD/DE专有区块有名字信息，GAIA和AI没有。
+
+        _readBytes(4, &players[i].slot);
+        if (players[i].name.length() > 0) {
+            // Data from HD/DE header has higher priority 
+            _skip(4);
+            nameLen = players[i].name.length() + 1;
+            players[i].searchPattern.resize(2 + nameLen + trailBytes);
+            memcpy(players[i].searchPattern.data(), &nameLen, 2);
+            memcpy(players[i].searchPattern.data() + 2, players[i].name.data(), nameLen);
+            memcpy(players[i].searchPattern.data() + 2 + nameLen, _startInfoPatternTrail, trailBytes);
+            _skipPascalString(true);
+        } else {
+            _readBytes(4, &players[i].type);
+            // 两处字符串前面有\0，后面有的版本有，有的版本没有，需要判断处理
+            nameLen = *(uint32_t*)namePtr;
+            if ('\0' == *(namePtr + 4 + nameLen - 1)) {
+                players[i].searchPattern.resize(2 + nameLen + trailBytes);
+                memcpy(players[i].searchPattern.data() + 2, namePtr + 4, nameLen);
+            } else {
+                nameLen += 1;
+                players[i].searchPattern.resize(2 + nameLen + trailBytes);
+                players[i].searchPattern[2 + nameLen - 1] = '\0';
+                memcpy(players[i].searchPattern.data() + 2, namePtr + 4, nameLen - 1);
+            }
+            memcpy(players[i].searchPattern.data(), &nameLen, 2);
+            memcpy(players[i].searchPattern.data() + 2 + nameLen, _startInfoPatternTrail, trailBytes);
+            _readPascalString(players[i].name, true, true);
+        }
+    }
+
 }
 
 void DefaultAnalyzer::_victorySettingsAnalyzer() {
@@ -326,6 +433,8 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
     //     26.18: 00 e0 ab 45 + padding(11) + double 3.2
 
     vector<uint8_t>::reverse_iterator rFound;
+
+    _curPos = _startInfoPos;
     if (IS_DE(versionCode)) {
         rFound = findPosition(
             _header.rbegin(),
@@ -399,7 +508,7 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
     }
 }
 
-void DefaultAnalyzer::_startInfoAnalyzer() {
+void DefaultAnalyzer::_findStartInfoStart() {
     _readBytes(4, &restoreTime);
     
     uint32_t numParticles;
@@ -416,7 +525,13 @@ void DefaultAnalyzer::_startInfoAnalyzer() {
     }
     
     // Pin start info position
-    _startInfoPos = _curPos + 4;
+    _startInfoPos = _curPos += 4;
+
+    // Fetch search pattern trail from first player (normally GAIA), laterly
+    // used in gamesettings section.
+    _curPos += 2 + numPlayers + 36 + 4 + 1;
+    _skipPascalString();
+    _startInfoPatternTrail = _curPos;
 }
 
 void DefaultAnalyzer::_mapDataAnalyzer() {
@@ -623,7 +738,7 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     );
 
     // Read player data
-    for (size_t i = 0; i < 8; i++)
+    for (size_t i = 1; i < 9; i++)
     {
         _readBytes(4, &players[i].DD_DLCID);
         _readBytes(4, &players[i].DD_colorID);
@@ -636,9 +751,9 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
         _readDEString(players[i].DD_AIType);
         _readBytes(1, &players[i].DD_AICivNameIndex);
         _readDEString(players[i].DD_AIName);
-        _readDEString(players[i].DD_name);
-        _readBytes(4, &players[i].DD_playerType);
-        if (players[i].DD_playerType == 4) ++_DD_AICount;
+        _readDEString(players[i].name);
+        _readBytes(4, &players[i].type);
+        if (players[i].type == 4) ++_DD_AICount;
         _readBytes(4, &players[i].DE_profileID);
         _skip(4); // Should be: 00 00 00 00
         _readBytes(4, &players[i].DD_playerNumber); /// \note 不存在的话是 -1 FF FF FF FF
@@ -828,7 +943,7 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         _curPos = tmpPos;
 
         // Read player data
-        for (size_t i = 0; i < 8; i++)
+        for (size_t i = 1; i < 9; i++)
         {
             _readBytes(4, &players[i].DD_DLCID);
             _readBytes(4, &players[i].DD_colorID);
@@ -841,8 +956,8 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
             _readHDString(players[i].DD_AIType);
             _readBytes(1, &players[i].DD_AICivNameIndex);
             if (DD_version >=1004.9999) _readHDString(players[i].DD_AIName);
-            _readHDString(players[i].DD_name);
-            _readBytes(4, &players[i].DD_playerType);
+            _readHDString(players[i].name);
+            _readBytes(4, &players[i].type);
             _readBytes(8, &players[i].HD_steamID);
             _readBytes(4, &players[i].DD_playerNumber);
             if (DD_version >= 1005.9999 

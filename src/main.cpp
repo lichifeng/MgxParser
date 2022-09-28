@@ -45,7 +45,7 @@ int main(int argc, char* argv[])
     }
     catch(const exception& e)
     {
-        std::cerr << setw(25) << endl << "!!!Exception: " << e.what();
+        std::cerr << setw(25) << endl << "!!!Exception: " << e.what() << endl;;
     }
 
     cout << "\033[0m";

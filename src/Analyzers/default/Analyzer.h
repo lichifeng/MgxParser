@@ -95,7 +95,7 @@ public:
     float             DD_speed = -1.0;
     uint32_t          DD_treatyLength;
     uint32_t          DD_populationLimit;
-    uint32_t          DD_numPlayers;
+    uint32_t          DD_numPlayers = 0; ///< \note Gaia not included
     uint32_t          DD_unusedPlayerColor;
     uint32_t          DD_victoryAmount;
     uint8_t           DD_tradeEnabled;
@@ -117,7 +117,7 @@ public:
     uint32_t          DD_battleRoyaleTime;
     uint8_t           DD_handicap;
 
-    array<Player, 8>  players;
+    array<Player, 9>  players;
     uint8_t           DD_fogOfWar;
     uint8_t           DD_cheatNotifications;
     uint8_t           DD_coloredChat;
@@ -169,6 +169,11 @@ public:
     uint32_t          victoryScore;
     uint32_t          victoryTime;
 
+    // game settings
+    uint32_t          mapID;
+    uint32_t          difficultyID;
+    uint32_t          lockTeams;
+
     // other data
     string            embededMapName; ///< Map name extracted from instructions, not mapped with raw number
     
@@ -207,15 +212,30 @@ protected:
         _curPos += n;
     }
 
-    inline void       _skipPascalString() { _skip(2 + *(uint16_t*)_curPos); } ///< 跳过最常见的字符串类型
-    inline void       _readPascalString(string& s, bool convertEncodeing = true) {
-        uint16_t len;
-        _readBytes(2, &len);
-        s.assign((char*)_curPos, len);
+    inline void       _skipPascalString(bool lengthLong = false) {
+        uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
+        uint32_t lenInt = lengthLong ? 4 : 2;
+
+        if (lenStr > 1000) throw(AnalyzerException("[WARN] Got an unexpected string length. \n"));
+
+        _skip(lenInt + lenStr);
+        
+         
+    } ///< 跳过最常见的字符串类型
+
+    void              _readPascalString(string& s, bool convertEncodeing = true, bool lengthLong = false) {
+        uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
+        uint32_t lenInt = lengthLong ? 4 : 2;
+
+        if (lenStr > 1000) throw(AnalyzerException("[WARN] Got an unexpected string length. \n"));
+
+        _skip(lenInt);
+        s.assign((char*)_curPos, lenStr);
+        _skip(lenStr);
+
         if (convertEncodeing && _encodingConverter != nullptr) {
             fixEncoding(s);
         }
-        _curPos += len;
     }
 
     inline void        _skipDEString()
@@ -324,7 +344,7 @@ protected:
     void                         _AIAnalyzer(); ///< 分析 header 中的 AI 部分信息
     void                         _replayAnalyzer();
     void                         _mapDataAnalyzer();
-    void                         _startInfoAnalyzer();
+    void                         _findStartInfoStart();
     void                         _findTriggerInfoStart();
     void                         _findDisablesStart();
     void                         _findGameSettingsStart();
@@ -333,6 +353,8 @@ protected:
     void                         _scenarioHeaderAnalyzer();
     void                         _messagesAnalyzer();
     void                         _victorySettingsAnalyzer();
+    void                         _gameSettingsAnalyzer();
+    void                         _startInfoAnalyzer();
              
     ifstream                     _f; ///< 录像文件的原始流
     uintmax_t                    _bodySize; ///< body 数据的长度
@@ -347,6 +369,7 @@ protected:
     // inline void                  _forward(int n) { advance(_cursor, n); } ///< Move current position forward by n bytes.
     
     uint32_t                     _DD_AICount = 0; ///< \note used to skip AI section
+    uint8_t*                     _startInfoPatternTrail;
     void*                        _mapBitmap;
     uint8_t                      _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 
