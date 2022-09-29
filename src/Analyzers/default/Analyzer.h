@@ -66,6 +66,14 @@ public:
     string            filename; ///< 录像文件名（去除路径后）
     string            ext; ///< 录像文件扩展名
     uintmax_t         filesize; ///< 录像文件大小，单位是 bytes
+
+    /**
+     * \details      设定用于startinfo 中玩家信息搜索时的特征字节长度。在设定为6
+     * 时，一个包含 AI 信息的 DE 录像文件解析花费 210ms；在设定为 5 时，花费 92ms；
+     * 在设定为4时，花费126MS；在设定为3时，花费125MS；在设定为2时，花费149MS；
+     * 在设定为1时，花费228MS。
+     */
+    uint16_t          trailBytes = 5;
    
     uint32_t          logVersion; ///< body 的前4个字节，与版本有关，可以识别A/C版
     char              versionStr[8]; ///< 代表游戏版本的原始字符串
@@ -354,6 +362,7 @@ protected:
     void                         _messagesAnalyzer();
     void                         _victorySettingsAnalyzer();
     void                         _gameSettingsAnalyzer();
+    void                         _searchInitialPlayersDataPos();
     void                         _startInfoAnalyzer();
              
     ifstream                     _f; ///< 录像文件的原始流

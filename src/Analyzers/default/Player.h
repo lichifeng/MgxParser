@@ -19,6 +19,7 @@ class Player
 {
 public:
     bool                valid() { return type >= 2 && type <= 10; }
+    bool                initialDataFound() { return dataOffset > 0; }
 
     uint32_t            DD_DLCID;
     uint32_t            DD_colorID;
@@ -43,6 +44,11 @@ public:
     uint8_t             DE_preferRandom;
     uint8_t             DE_customAI;
     char                DE_handicap[8];
+    float               modVersionID;
+    float               initCamera[2] = {-1.0, -1.0};
+    uint8_t             civID;
+    uint8_t             colorID;
+
 
     // int32_t             startingAge = -1; ///< 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)
     int32_t             slot = -1;

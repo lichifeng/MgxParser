@@ -139,23 +139,66 @@ void DefaultAnalyzer::_analyze() {
     // Analyze game settings part, player names first appears here (before HD/DE versions).
     _gameSettingsAnalyzer();
 
-    // Go back to start info section and rummage some useful pieces
+    // Search initial player data postion
+    _searchInitialPlayersDataPos();
+
+    // Go back to player initial data position and rummage some useful pieces
     _startInfoAnalyzer();
 }
 
 void DefaultAnalyzer::_startInfoAnalyzer() {
+    uint32_t numHeaderData = *(uint32_t*)(_startInfoPatternTrail + 1);
+
+    for (auto p : players) {
+        if (p.initialDataFound() && p.valid()) {
+            _curPos = _header.data() + p.dataOffset;
+            _skip(2 + numPlayers + 36 + 4 + 1);
+            _skipPascalString();
+            _skip(762);
+            if (saveVersion >= 11.7599) _skip(36);
+            if (IS_DE(versionCode) || IS_HD(versionCode)) _skip(4 * (numHeaderData - 198));
+            if (versionCode == USERPATCH15 || versionCode == MCP) {
+                _readBytes(4, &p.modVersionID);
+                _skip(4 * 7 + 4 * 28);
+            }
+            if (versionCode == MCP) _skip(4 * 65);
+            _skip(1);
+            _readBytes(8, p.initCamera);
+
+            // Do some check here
+            if (
+                   p.initCamera[0] < 0 
+                || p.initCamera[0] > mapCoord[0] 
+                || p.initCamera[1] < 0
+                || p.initCamera[1] > mapCoord[1]
+            ) {
+                message.append("[WARN] Bad init camera was found. \n");
+                p.initCamera[0] = p.initCamera[1] = -1.0;
+                continue;
+            }
+
+
+            if (!IS_AOK(versionCode)) _skip(*(float*)_curPos * 4);
+            _skip(4 + 1);
+            _readBytes(1, &p.civID);
+            _skip(3);
+            _readBytes(1, &p.colorID);
+        }
+    }
+}
+
+void DefaultAnalyzer::_searchInitialPlayersDataPos() {
     _curPos = _startInfoPos + 2 + numPlayers + 36 + 4 + 1;
 
-    auto itStart = _header.cbegin() + (_curPos - _header.data()) + 18000;
+    uint32_t easySkip = 35100 + mapCoord[0] * mapCoord[1];
+    auto itStart = _header.cbegin() + (_curPos - _header.data()) + easySkip;
     auto itEnd = _header.cbegin() + (_scenarioHeaderPos - _header.data() - numPlayers * 1817); // Achievement section is 1817 * numPlayers bytes
 
     // Length of every player's data is at least 18000 bytes (and ususally much
     // more), we can use this to escape unnecessary search
     // First player don't need a search (and cannot, 'cuz different behavior
     // among versions)
-    
-
-
+    players[0].dataOffset = _curPos - _header.data();
 
     auto found = itStart;
     for (size_t i = 1; i < numPlayers; i++)
@@ -169,11 +212,10 @@ void DefaultAnalyzer::_startInfoAnalyzer() {
             cout << "now at: " << i << " " << players[i].name << endl;;
             throw(AnalyzerException("[WARN] Cannot find satisfied player data in startinfo. \n"));
         }
-        players[i].dataOffset = found - _header.cbegin();
-        itStart = found + 18000;
-
-        cout << i << "th(rd/st) offset: " << players[i].dataOffset << endl;
+        players[i].dataOffset = found - _header.cbegin() - (2 + numPlayers + 36 + 4 + 1);
+        itStart = found + easySkip;
     }
+    message.append("[INFO] Located player initial data position in start info section. \n");
 }
 
 /**
@@ -184,7 +226,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer() {
     _curPos = _gameSettingsPos;
     _skip(64 + 4 + 8);
     if (IS_HD(versionCode)) _skip(16);
-    _readBytes(4, &mapID);
+    if (!IS_AOK(versionCode)) _readBytes(4, &mapID);
     _readBytes(4, &difficultyID);
     _readBytes(4, &lockTeams);
     if (IS_DE(versionCode)) {
@@ -198,7 +240,6 @@ void DefaultAnalyzer::_gameSettingsAnalyzer() {
     }
 
     uint16_t nameLen;
-    int trailBytes = 6;
     uint8_t* namePtr;
     for (size_t i = 0; i < 9; i++)
     {
@@ -741,13 +782,13 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     for (size_t i = 1; i < 9; i++)
     {
         _readBytes(4, &players[i].DD_DLCID);
-        _readBytes(4, &players[i].DD_colorID);
+        _readBytes(4, &players[i].colorID);
         _readBytes(1, &players[i].DE_selectedColor);
         _readBytes(1, &players[i].DE_selectedTeamID);
         _readBytes(1, &players[i].DE_resolvedTeamID);
         players[i].DE_datCrc = hexStr(_curPos, 8, true);
         _readBytes(1, &players[i].DD_MPGameVersion);
-        _readBytes(4, &players[i].DD_civID);
+        _readBytes(4, &players[i].civID);
         _readDEString(players[i].DD_AIType);
         _readBytes(1, &players[i].DD_AICivNameIndex);
         _readDEString(players[i].DD_AIName);
@@ -946,13 +987,13 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         for (size_t i = 1; i < 9; i++)
         {
             _readBytes(4, &players[i].DD_DLCID);
-            _readBytes(4, &players[i].DD_colorID);
+            _readBytes(4, &players[i].colorID);
             if (DD_version >= 1005.9999) _skip(1);
             _skip(2);
             _readBytes(4, &players[i].HD_datCrc);
             _readBytes(1, &players[i].DD_MPGameVersion);
             _readBytes(4, &players[i].HD_teamIndex);
-            _readBytes(4, &players[i].DD_civID);
+            _readBytes(4, &players[i].civID);
             _readHDString(players[i].DD_AIType);
             _readBytes(1, &players[i].DD_AICivNameIndex);
             if (DD_version >=1004.9999) _readHDString(players[i].DD_AIName);
