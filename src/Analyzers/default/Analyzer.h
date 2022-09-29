@@ -43,6 +43,7 @@ public:
 
     DefaultAnalyzer(const string& path) {
         this->path = path;
+        chat.resize(50);
     }
 
     void run();
@@ -75,7 +76,7 @@ public:
      */
     uint16_t          trailBytes = 5;
     uint32_t          easySkipBase = 35100;
-    uint32_t          triggerStartSearchRange = 15;
+    uint32_t          triggerStartSearchRange = 11;
    
     uint32_t          logVersion; ///< body 的前4个字节，与版本有关，可以识别A/C版
     char              versionStr[8]; ///< 代表游戏版本的原始字符串
@@ -94,7 +95,7 @@ public:
     uint32_t          DD_difficultyID;
     uint32_t          DD_selectedMapID;
     uint32_t          DD_resolvedMapID;
-    uint32_t          DD_revealMap;
+    uint32_t          revealMap = 999; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
     uint32_t          DD_victoryTypeID;
     uint32_t          DD_startingResourcesID;
     uint32_t          DD_startingAgeID;
@@ -128,7 +129,7 @@ public:
     uint8_t           DD_handicap;
 
     array<Player, 9>  players;
-    uint8_t           DD_fogOfWar;
+    uint8_t           DD_fogOfWar; ///< \todo combine with lobby one(4 bytes)
     uint8_t           DD_cheatNotifications;
     uint8_t           DD_coloredChat;
     uint8_t           DD_isRanked;
@@ -160,7 +161,7 @@ public:
     // data from map data section
     int32_t           mapCoord[2];
     uint8_t           allVisible;
-    uint8_t           fogOfWar;
+    uint8_t           fogOfWar; ///< \todo 有三处出现这个值，到底取哪一处？
 
     // data from start info
     uint32_t          restoreTime;
@@ -183,6 +184,15 @@ public:
     uint32_t          mapID;
     uint32_t          difficultyID;
     uint32_t          lockTeams;
+
+    // lobby settings
+    uint32_t          mapSize;
+    uint32_t          populationLimit; ///< \todo combine with DD_pop...
+    uint8_t           gameType; ///< \todo 这个可以和上面的合并吗？
+    uint8_t           lockDiplomacy; ///< \todo 和lockteams可以合并吗？
+    uint8_t           treatyLength; ///< \todo 可以和上面的合并吗？
+    vector<string>    chat;
+    int32_t           mapSeed;
 
     // other data
     string            embededMapName; ///< Map name extracted from instructions, not mapped with raw number
@@ -209,6 +219,9 @@ protected:
         HEADER_STRM == stream ? _curStream = _header.data() : _curStream = _body.data(); 
         _curPos = _curStream;
     }
+
+    inline size_t  _distance() { return _curPos - _header.data(); }
+    inline size_t  _remainBytes() { return (_header.size() >= _distance()) ? (_header.size() - _distance()) : 0; }
 
     /**
      * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
@@ -366,6 +379,8 @@ protected:
     void                         _gameSettingsAnalyzer();
     void                         _searchInitialPlayersDataPos();
     void                         _startInfoAnalyzer();
+    void                         _triggerInfoAnalyzer();
+    void                         _lobbyAnalyzer();
              
     ifstream                     _f; ///< 录像文件的原始流
     uintmax_t                    _bodySize; ///< body 数据的长度

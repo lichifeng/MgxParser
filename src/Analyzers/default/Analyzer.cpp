@@ -144,6 +144,113 @@ void DefaultAnalyzer::_analyze() {
 
     // Go back to player initial data position and rummage some useful pieces
     _startInfoAnalyzer();
+
+    // Trigger info is normally skipped
+    _triggerInfoAnalyzer();
+
+    // Analyze some misc data
+    _lobbyAnalyzer();
+}
+
+void DefaultAnalyzer::_lobbyAnalyzer() {
+    if (saveVersion >= 13.3399) _skip(5);
+    if (saveVersion >= 20.0599) _skip(9);
+    if (saveVersion >= 26.1599) _skip(5);
+    for (size_t i = 1; i < 9; i++)
+    {
+        if (players[i].resolvedTeamID != 255) {
+            _skip(1);
+        } else {
+            _readBytes(1, &players[i].resolvedTeamID);
+        }
+    }
+    if (saveVersion < 12.2999) _skip(1);
+    _readBytes(4, &revealMap);
+    _skip(4);
+    _readBytes(4, &mapSize);
+    _readBytes(4, &populationLimit);
+    _readBytes(1, &gameType);
+    _readBytes(1, &lockDiplomacy);
+    if (IS_HD(versionCode) || IS_DE(versionCode)) {
+        _readBytes(1, &treatyLength);
+        _skip(4); /// \note cheat codes used, what's this for?
+        if (saveVersion >= 13.1299) _skip(4);
+        if (saveVersion >= 25.2199) _skip(1);
+    }
+
+    // Read lobby(pregame) talks
+    if (!IS_AOK(versionCode)) {
+        string tmpS;
+        uint32_t numChat;
+
+        _readBytes(4, &numChat);
+        while (numChat-- > 0 && _remainBytes() >= 4)
+        {
+            _readPascalString(tmpS, true, true);
+            if (tmpS.length() > 0) {
+                chat.emplace_back(tmpS);
+            } else {
+                ++numChat;
+            }
+        }
+    }
+    
+    if (IS_DE(versionCode) && _remainBytes() >= 4) _readBytes(4, &mapSeed);
+    // Let it go after this.
+}
+
+/**
+ * \brief      This method is not fully tested
+ * 
+ */
+void DefaultAnalyzer::_triggerInfoAnalyzer() {
+    _curPos = _triggerInfoPos;
+
+    int conditionSize = 72;
+    int32_t
+        numTriggers,
+        descriptionLen,
+        nameLen,
+        numEffects,
+        numSelectedObjs,
+        textLen,
+        soundFilenameLen,
+        numConditions;
+    bool isHDPatch4 = saveVersion >= 12.3399;
+    
+    _skip(1);
+
+    if (isHDPatch4) conditionSize += 8;
+
+    _readBytes(4, &numTriggers);
+    for (int i = 0; i < numTriggers; i++)
+    {
+        _skip(18);
+        _readBytes(4, &descriptionLen);
+        _skip(descriptionLen > 0 ? descriptionLen : 0);
+        _readBytes(4, &nameLen);
+        _skip(nameLen > 0 ? nameLen : 0);
+        _readBytes(4, &numEffects);
+        for (int i = 0; i < numEffects; i++)
+        {
+            _skip(24);
+            _readBytes(4, &numSelectedObjs);
+            numSelectedObjs = numSelectedObjs == -1 ? 0 : numSelectedObjs;
+            _skip(isHDPatch4 ? 76 : 72);
+            _readBytes(4, &textLen);
+            _skip(textLen > 0 ? textLen : 0);
+            _readBytes(4, &soundFilenameLen);
+            _skip(soundFilenameLen > 0 ? soundFilenameLen : 0);
+            _skip(numSelectedObjs * 4);
+        }
+        _skip(numEffects * 4);
+        _readBytes(4, &numConditions);
+        _skip(numConditions * conditionSize + numConditions * 4);
+    }
+
+    if (numTriggers > 0) _skip(numTriggers * 4);
+
+    if (IS_DE(versionCode)) _skip(1032);
 }
 
 void DefaultAnalyzer::_startInfoAnalyzer() {
@@ -500,7 +607,7 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
         }
         _curPos = &(*--rFound);
         double signNum = 0.0;
-        for (size_t i = 0; i < triggerStartSearchRange; i++)
+        for (size_t i = 0; i <= triggerStartSearchRange; i++)
         {
             signNum = *(double*)_curPos;
             if (signNum >= 1.5 && signNum <= 10) {
@@ -512,6 +619,9 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
         }
         throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
     }
+
+    /// \todo Maybe I will deploy a brutal search for double float in [1.6, 10]
+    /// if cannot find it easily?
 }
 
 void DefaultAnalyzer::_findStartInfoStart() {
@@ -697,7 +807,7 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     _readBytes(4, &DD_difficultyID);
     _readBytes(4, &DD_selectedMapID);
     _readBytes(4, &DD_resolvedMapID);
-    _readBytes(4, &DD_revealMap);
+    _readBytes(4, &revealMap);
     _readBytes(4, &DD_victoryTypeID);
     _readBytes(4, &DD_startingResourcesID);
     _readBytes(4, &DD_startingAgeID);
@@ -750,7 +860,7 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
         _readBytes(4, &players[i].colorID);
         _readBytes(1, &players[i].DE_selectedColor);
         _readBytes(1, &players[i].DE_selectedTeamID);
-        _readBytes(1, &players[i].DE_resolvedTeamID);
+        _readBytes(1, &players[i].resolvedTeamID);
         players[i].DE_datCrc = hexStr(_curPos, 8, true);
         _readBytes(1, &players[i].DD_MPGameVersion);
         _readBytes(4, &players[i].civID);
@@ -873,7 +983,7 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
     _readBytes(4, &DD_difficultyID);
     _readBytes(4, &DD_selectedMapID);
     _readBytes(4, &DD_resolvedMapID);
-    _readBytes(4, &DD_revealMap);
+    _readBytes(4, &revealMap);
     _readBytes(4, &DD_victoryTypeID);
     _readBytes(4, &DD_startingResourcesID);
     _readBytes(4, &DD_startingAgeID);
@@ -957,7 +1067,8 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
             _skip(2);
             _readBytes(4, &players[i].HD_datCrc);
             _readBytes(1, &players[i].DD_MPGameVersion);
-            _readBytes(4, &players[i].HD_teamIndex);
+            //_readBytes(4, &players[i].HD_teamIndex); // Not correct team index
+            _skip(4);
             _readBytes(4, &players[i].civID);
             _readHDString(players[i].DD_AIType);
             _readBytes(1, &players[i].DD_AICivNameIndex);

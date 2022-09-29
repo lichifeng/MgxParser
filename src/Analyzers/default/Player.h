@@ -24,12 +24,12 @@ public:
     uint32_t            DD_DLCID;
     uint32_t            DD_colorID;
     uint8_t             DE_selectedColor;
-    uint8_t             DE_selectedTeamID;
-    uint8_t             DE_resolvedTeamID;
+    uint8_t             DE_selectedTeamID = 255;
+    uint8_t             resolvedTeamID = 255; ///< Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here
     uint32_t            HD_datCrc;
     string              DE_datCrc;
     uint8_t             DD_MPGameVersion;
-    uint32_t            HD_teamIndex;
+    // uint32_t            HD_teamIndex = 999; ///< This looks not right, use data from lobby
     uint32_t            DD_civID;
     string              DD_AIType; ///< in 26.21: "PromiDE";
     uint8_t             DD_AICivNameIndex;
