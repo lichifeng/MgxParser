@@ -190,7 +190,7 @@ void DefaultAnalyzer::_startInfoAnalyzer() {
 void DefaultAnalyzer::_searchInitialPlayersDataPos() {
     _curPos = _startInfoPos + 2 + numPlayers + 36 + 4 + 1;
 
-    uint32_t easySkip = 35100 + mapCoord[0] * mapCoord[1];
+    uint32_t easySkip = easySkipBase + mapCoord[0] * mapCoord[1];
     auto itStart = _header.cbegin() + (_curPos - _header.data()) + easySkip;
     auto itEnd = _header.cbegin() + (_scenarioHeaderPos - _header.data() - numPlayers * 1817); // Achievement section is 1817 * numPlayers bytes
 
@@ -461,7 +461,7 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
 
     // aok ~ hd: 0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, f9, 3f (double 1.6)
     // de < 13.34: 00 e0 ab 45 + double 2.2
-    // de >= 13.34: 
+    // de >= 13.34:  \note Maybe the cutoff point is not 13.34
     //     13.34: 00 e0 ab 45 + padding(1) + double 2.4
     //     20.06: 00 e0 ab 45 + padding(1) + double 2.4
     //     20.16: 00 e0 ab 45 + padding(11) + double 2.4
@@ -476,66 +476,8 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
     vector<uint8_t>::reverse_iterator rFound;
 
     _curPos = _startInfoPos;
-    if (IS_DE(versionCode)) {
-        rFound = findPosition(
-            _header.rbegin(),
-            _header.rend(), 
-            patterns::gameSettingSign.rbegin(),
-            patterns::gameSettingSign.rend()
-        );
-        if (rFound == _header.rend()) {
-            throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
-        }
-        _curPos = &(*--rFound);
 
-        if (saveVersion < 13.3399) {
-            if (*(double*)_curPos == 2.2) {
-                _triggerInfoPos = _curPos + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }     
-        }
-        if (saveVersion < 25.0599 && saveVersion >= 13.3399) {
-            if (*(double*)(_curPos + 1) == 2.4) {
-                _triggerInfoPos = _curPos + 1 + 8;
-            } else if (*(double*)(_curPos + 11) == 2.4) {
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }
-        }
-        if (saveVersion < 25.2199 && saveVersion >= 25.0599) {
-            if (*(double*)(_curPos + 11) == 2.5) {
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }     
-        }
-        if (saveVersion < 26.1599 && saveVersion >= 25.2199) {
-            if (*(double*)(_curPos + 11) == 2.6) {
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }     
-        }
-        if (saveVersion < 26.2099 && saveVersion >= 26.1599) {
-            if (*(double*)(_curPos + 11) == 3.0) {
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }     
-        }
-        if (saveVersion >= 26.2099) {
-            if (*(double*)(_curPos + 11) == 3.2) {
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else if ((*(double*)(_curPos + 11)) > 3.2 && (*(double*)(_curPos + 11)) < 10) {
-                message.append("[WARN] Found unknown but reasonable sign of gameSetting end");
-                _triggerInfoPos = _curPos + 11 + 8;
-            } else {
-                throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
-            }
-        }
-    } else {
+    if (IS_AOK(versionCode)) {
         rFound = findPosition(
             _header.rbegin(),
             _header.rend(), 
@@ -546,6 +488,29 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
             throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
         }
         _triggerInfoPos = _curPos = &(*--rFound);
+    } else {
+        rFound = findPosition(
+            _header.rbegin(),
+            _header.rend(), 
+            patterns::gameSettingSign.rbegin(),
+            patterns::gameSettingSign.rend()
+        );
+        if (rFound == _header.rend()) {
+            throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
+        }
+        _curPos = &(*--rFound);
+        double signNum = 0.0;
+        for (size_t i = 0; i < triggerStartSearchRange; i++)
+        {
+            signNum = *(double*)_curPos;
+            if (signNum >= 1.5 && signNum <= 10) {
+                _triggerInfoPos = _curPos += 8;
+                return;
+            } else {
+                ++_curPos;
+            }
+        }
+        throw(AnalyzerException("[WARN] Failed to find _triggerInfoPos. \n"));
     }
 }
 

@@ -67,7 +67,7 @@ int main(int argc, char* argv[])
 
     //cout << "\033[31m~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~\033[0m  " << endl;
 
-    a.extract("../header.dat", "../body.dat");
+    //a.extract("../header.dat", "../body.dat");
 
     return 0;
 }

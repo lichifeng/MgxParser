@@ -74,6 +74,8 @@ public:
      * 在设定为1时，花费228MS。
      */
     uint16_t          trailBytes = 5;
+    uint32_t          easySkipBase = 35100;
+    uint32_t          triggerStartSearchRange = 15;
    
     uint32_t          logVersion; ///< body 的前4个字节，与版本有关，可以识别A/C版
     char              versionStr[8]; ///< 代表游戏版本的原始字符串
