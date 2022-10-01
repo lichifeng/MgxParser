@@ -10,14 +10,17 @@ enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
+add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
-add_executable(mgxparser ${SRC_ROOT} ${DEFAULT_ANALYZER})
+add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER})
 
-target_link_libraries(mgxparser z)
-target_link_libraries(mgxparser png)
-target_link_libraries(mgxparser pthread)
+target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
+
+target_link_libraries(${PROJECT_NAME} z)
+target_link_libraries(${PROJECT_NAME} png)
+target_link_libraries(${PROJECT_NAME} pthread)
 
 configure_file(CompileConfig.h.in CompileConfig.h)
 
@@ -45,4 +48,5 @@ if(BUILD_DOCUMENTATION)
     #install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs-html DESTINATION share)
 endif()
 
-target_include_directories(mgxparser PUBLIC "${PROJECT_BINARY_DIR}")
+target_include_directories(${PROJECT_NAME} PUBLIC "${PROJECT_BINARY_DIR}")
+target_include_directories(${PROJECT_NAME} PUBLIC "${CMAKE_CURRENT_SOURCE_DIR}/libs/")

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['parsemode_228',['parseMode',['../classDefaultAnalyzer.html#ae8919b2f12cbf533902e9c29b4f28e81',1,'DefaultAnalyzer']]],
-  ['parsetime_229',['parseTime',['../classDefaultAnalyzer.html#a3646946d0c437c644ab5ca63ad33db9e',1,'DefaultAnalyzer']]],
-  ['path_230',['path',['../classDefaultAnalyzer.html#af6b115f679c40b4f110fc2ef6df4a2ec',1,'DefaultAnalyzer']]],
-  ['playdate_231',['playDate',['../classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300',1,'DefaultAnalyzer']]],
-  ['populationlimit_232',['populationLimit',['../classDefaultAnalyzer.html#a5b74416b48614775e4edb2ad3ab19315',1,'DefaultAnalyzer']]]
+  ['on_5fblack_980',['on_black',['../classspdlog_1_1sinks_1_1ansicolor__sink.html#ad55d943f3ea84ebc77aec8acd2d079c2',1,'spdlog::sinks::ansicolor_sink']]],
+  ['out_981',['out',['../structformat__to__n__result.html#a90597c6c1d23c7301aef16e756c6263b',1,'format_to_n_result']]]
 ];

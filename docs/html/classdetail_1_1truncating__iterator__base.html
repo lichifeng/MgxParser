@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: detail::truncating_iterator_base&lt; OutputIt &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>detail</b></li><li class="navelem"><a class="el" href="classdetail_1_1truncating__iterator__base.html">truncating_iterator_base</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-methods">Protected 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classdetail_1_1truncating__iterator__base-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">detail::truncating_iterator_base&lt; OutputIt &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 detail::truncating_iterator_base&lt; OutputIt &gt; 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classdetail_1_1truncating__iterator__base__inherit__graph.png" border="0" usemap="#detail_1_1truncating__iterator__base_3_01OutputIt_01_4_inherit__map" alt="Inheritance graph"/></div>
+<map name="detail_1_1truncating__iterator__base_3_01OutputIt_01_4_inherit__map" id="detail_1_1truncating__iterator__base_3_01OutputIt_01_4_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,53,204,94"/>
+<area shape="rect" href="classdetail_1_1truncating__iterator_3_01OutputIt_00_01std_1_1false__type_01_4.html" title=" " alt="" coords="252,5,401,61"/>
+<area shape="rect" href="classdetail_1_1truncating__iterator_3_01OutputIt_00_01std_1_1true__type_01_4.html" title=" " alt="" coords="252,85,401,141"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:acbcad1d11812d89bba9e8ca0a3ea548c"><td class="memItemLeft" align="right" valign="top"><a id="acbcad1d11812d89bba9e8ca0a3ea548c"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator_category</b> = std::output_iterator_tag</td></tr>
+<tr class="separator:acbcad1d11812d89bba9e8ca0a3ea548c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af557091783791c41c1d475f04a770793"><td class="memItemLeft" align="right" valign="top"><a id="af557091783791c41c1d475f04a770793"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>value_type</b> = typename std::iterator_traits&lt; OutputIt &gt;::value_type</td></tr>
+<tr class="separator:af557091783791c41c1d475f04a770793"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc2994483ee29204fbdcc0d55e8a4a9f"><td class="memItemLeft" align="right" valign="top"><a id="abc2994483ee29204fbdcc0d55e8a4a9f"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>difference_type</b> = std::ptrdiff_t</td></tr>
+<tr class="separator:abc2994483ee29204fbdcc0d55e8a4a9f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aadb7f1019f339d99b325985354292a81"><td class="memItemLeft" align="right" valign="top"><a id="aadb7f1019f339d99b325985354292a81"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>pointer</b> = void</td></tr>
+<tr class="separator:aadb7f1019f339d99b325985354292a81"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3c38c7ac2672fad4e8ccb12e7eb71ad"><td class="memItemLeft" align="right" valign="top"><a id="ac3c38c7ac2672fad4e8ccb12e7eb71ad"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>reference</b> = void</td></tr>
+<tr class="separator:ac3c38c7ac2672fad4e8ccb12e7eb71ad"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8dbc2aad6cf724387f3c707924734a80"><td class="memItemLeft" align="right" valign="top"><a id="a8dbc2aad6cf724387f3c707924734a80"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>_Unchecked_type</b> = <a class="el" href="classdetail_1_1truncating__iterator__base.html">truncating_iterator_base</a></td></tr>
+<tr class="separator:a8dbc2aad6cf724387f3c707924734a80"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a573bec528d15e9b10bd25a0640623e44"><td class="memItemLeft" align="right" valign="top"><a id="a573bec528d15e9b10bd25a0640623e44"></a>
+OutputIt&#160;</td><td class="memItemRight" valign="bottom"><b>base</b> () const</td></tr>
+<tr class="separator:a573bec528d15e9b10bd25a0640623e44"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1f30cfb932ed15aaf15242a2ebe60b33"><td class="memItemLeft" align="right" valign="top"><a id="a1f30cfb932ed15aaf15242a2ebe60b33"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>count</b> () const</td></tr>
+<tr class="separator:a1f30cfb932ed15aaf15242a2ebe60b33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
+Protected 成员函数</h2></td></tr>
+<tr class="memitem:a3de886223ba3391ca8a4618720a1c0e6"><td class="memItemLeft" align="right" valign="top"><a id="a3de886223ba3391ca8a4618720a1c0e6"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>truncating_iterator_base</b> (OutputIt out, size_t limit)</td></tr>
+<tr class="separator:a3de886223ba3391ca8a4618720a1c0e6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:aabf7031a36137260823898c436bdab3f"><td class="memItemLeft" align="right" valign="top"><a id="aabf7031a36137260823898c436bdab3f"></a>
+OutputIt&#160;</td><td class="memItemRight" valign="bottom"><b>out_</b></td></tr>
+<tr class="separator:aabf7031a36137260823898c436bdab3f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a68f63204e045cd61d118a594108601c5"><td class="memItemLeft" align="right" valign="top"><a id="a68f63204e045cd61d118a594108601c5"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>limit_</b></td></tr>
+<tr class="separator:a68f63204e045cd61d118a594108601c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a1d416994cfe027e1eabf459648542695"><td class="memItemLeft" align="right" valign="top"><a id="a1d416994cfe027e1eabf459648542695"></a>
+size_t&#160;</td><td class="memItemRight" valign="bottom"><b>count_</b> = 0</td></tr>
+<tr class="separator:a1d416994cfe027e1eabf459648542695"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;typename OutputIt&gt;<br />
+class detail::truncating_iterator_base&lt; OutputIt &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="bundled_2compile_8h_source.html">bundled/compile.h</a> 第 <a class="el" href="bundled_2compile_8h_source.html#l00061">61</a> 行定义.</p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="bundled_2compile_8h_source.html">bundled/compile.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

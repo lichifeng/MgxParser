@@ -41,5 +41,5 @@ int DefaultAnalyzer::_setVersionCode() {
     status = "fail";
     message.append("Detected unsupported game version.");
     versionCode = UNSUPPORTED;
-    throw(AnalyzerException(message));
+    throw(ParserException(message));
 }

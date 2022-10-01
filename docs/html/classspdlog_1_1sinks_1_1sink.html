@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: spdlog::sinks::sink类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>spdlog</b></li><li class="navelem"><b>sinks</b></li><li class="navelem"><a class="el" href="classspdlog_1_1sinks_1_1sink.html">sink</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classspdlog_1_1sinks_1_1sink-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">spdlog::sinks::sink类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 spdlog::sinks::sink 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classspdlog_1_1sinks_1_1sink__inherit__graph.png" border="0" usemap="#spdlog_1_1sinks_1_1sink_inherit__map" alt="Inheritance graph"/></div>
+<map name="spdlog_1_1sinks_1_1sink_inherit__map" id="spdlog_1_1sinks_1_1sink_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,903,148,930"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1ansicolor__sink.html" title=" " alt="" coords="215,71,394,112"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1base__sink.html" title=" " alt="" coords="231,627,378,668"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1stdout__sink__base.html" title=" " alt="" coords="196,1132,413,1173"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1wincolor__sink.html" title=" " alt="" coords="215,1263,394,1304"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1ansicolor__stderr__sink.html" title=" " alt="" coords="463,5,687,47"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1ansicolor__stdout__sink.html" title=" " alt="" coords="461,71,688,112"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1basic__file__sink.html" title=" " alt="" coords="497,136,652,177"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1daily__file__sink.html" title=" " alt="" coords="497,201,652,243"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1dist__sink.html" title=" " alt="" coords="505,267,644,308"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1hourly__file__sink.html" title=" " alt="" coords="497,332,653,373"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1mongo__sink.html" title=" " alt="" coords="495,397,655,439"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1null__sink.html" title=" " alt="" coords="505,463,644,504"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1ostream__sink.html" title=" " alt="" coords="490,528,659,569"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1qt__sink.html" title=" " alt="" coords="493,593,656,635"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1ringbuffer__sink.html" title=" " alt="" coords="485,659,664,700"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1rotating__file__sink.html" title=" " alt="" coords="491,724,658,765"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1syslog__sink.html" title=" " alt="" coords="496,789,653,831"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1systemd__sink.html" title=" " alt="" coords="489,855,660,896"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1tcp__sink.html" title=" " alt="" coords="507,920,642,961"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1udp__sink.html" title=" " alt="" coords="505,985,644,1027"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1win__eventlog_1_1win__eventlog__sink.html" title=" " alt="" coords="484,1051,665,1107"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1dup__filter__sink.html" title=" " alt="" coords="736,267,900,308"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1stderr__sink.html" title=" " alt="" coords="485,1132,664,1173"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1stdout__sink.html" title=" " alt="" coords="485,1197,664,1239"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1wincolor__stderr__sink.html" title=" " alt="" coords="463,1263,687,1304"/>
+<area shape="rect" href="classspdlog_1_1sinks_1_1wincolor__stdout__sink.html" title=" " alt="" coords="461,1328,688,1369"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a51d8f34ad79064e0dc13c6013236e427"><td class="memItemLeft" align="right" valign="top"><a id="a51d8f34ad79064e0dc13c6013236e427"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>log</b> (const <a class="el" href="structspdlog_1_1details_1_1log__msg.html">details::log_msg</a> &amp;msg)=0</td></tr>
+<tr class="separator:a51d8f34ad79064e0dc13c6013236e427"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a0674ae3bca8f1617aef820e23a2ccd"><td class="memItemLeft" align="right" valign="top"><a id="a8a0674ae3bca8f1617aef820e23a2ccd"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>flush</b> ()=0</td></tr>
+<tr class="separator:a8a0674ae3bca8f1617aef820e23a2ccd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e5cfd4b683c8bfa8fbd602d7f409632"><td class="memItemLeft" align="right" valign="top"><a id="a7e5cfd4b683c8bfa8fbd602d7f409632"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>set_pattern</b> (const std::string &amp;pattern)=0</td></tr>
+<tr class="separator:a7e5cfd4b683c8bfa8fbd602d7f409632"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac410f2229e583a75337a5fdf45d020be"><td class="memItemLeft" align="right" valign="top"><a id="ac410f2229e583a75337a5fdf45d020be"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>set_formatter</b> (std::unique_ptr&lt; <a class="el" href="classspdlog_1_1formatter.html">spdlog::formatter</a> &gt; sink_formatter)=0</td></tr>
+<tr class="separator:ac410f2229e583a75337a5fdf45d020be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a862aa1ac5ed27de35f1bd3b1aaeb7dc1"><td class="memItemLeft" align="right" valign="top"><a id="a862aa1ac5ed27de35f1bd3b1aaeb7dc1"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>set_level</b> (level::level_enum log_level)</td></tr>
+<tr class="separator:a862aa1ac5ed27de35f1bd3b1aaeb7dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8b9693e7ea883ce02234bed0e3b3348d"><td class="memItemLeft" align="right" valign="top"><a id="a8b9693e7ea883ce02234bed0e3b3348d"></a>
+level::level_enum&#160;</td><td class="memItemRight" valign="bottom"><b>level</b> () const</td></tr>
+<tr class="separator:a8b9693e7ea883ce02234bed0e3b3348d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9e6824420e6352e0f5cbb436a0b5d0a4"><td class="memItemLeft" align="right" valign="top"><a id="a9e6824420e6352e0f5cbb436a0b5d0a4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>should_log</b> (level::level_enum msg_level) const</td></tr>
+<tr class="separator:a9e6824420e6352e0f5cbb436a0b5d0a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a435da07b59e1165b38d53635cdada30a"><td class="memItemLeft" align="right" valign="top"><a id="a435da07b59e1165b38d53635cdada30a"></a>
+level_t&#160;</td><td class="memItemRight" valign="bottom"><b>level_</b> {level::trace}</td></tr>
+<tr class="separator:a435da07b59e1165b38d53635cdada30a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="sink_8h_source.html">sink.h</a> 第 <a class="el" href="sink_8h_source.html#l00012">12</a> 行定义.</p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="sink_8h_source.html">sink.h</a></li>
+<li><a class="el" href="sink-inl_8h_source.html">sink-inl.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

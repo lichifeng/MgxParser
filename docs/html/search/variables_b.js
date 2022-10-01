@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['saveversion_236',['saveVersion',['../classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d',1,'DefaultAnalyzer']]],
-  ['searchpattern_237',['searchPattern',['../classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8',1,'Player']]],
-  ['status_238',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
+  ['recplayer_987',['recPlayer',['../classDefaultAnalyzer.html#a5fadbe423df461a0609b467f206e52f4',1,'DefaultAnalyzer']]],
+  ['resolvedteamid_988',['resolvedTeamID',['../classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597',1,'Player']]],
+  ['revealmap_989',['revealMap',['../classDefaultAnalyzer.html#aec63735cd6d3eeb76f7210ae4b0cd73b',1,'DefaultAnalyzer']]]
 ];

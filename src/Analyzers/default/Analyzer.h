@@ -24,8 +24,8 @@
 #include <iterator>
 
 #include "../../EncodingConverter.h"
+#include "../../ParserException.h"
 #include "../BaseAnalyzer.h"
-#include "../AnalyzerException.h"
 #include "utils.h"
 
 #include "Player.h"
@@ -242,7 +242,7 @@ protected:
         uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
         uint32_t lenInt = lengthLong ? 4 : 2;
 
-        if (lenStr > 1000) throw(AnalyzerException("[WARN] Got an unexpected string length. \n"));
+        if (lenStr > 1000) throw(ParserException("[WARN] Got an unexpected string length. \n"));
 
         _skip(lenInt + lenStr);
         
@@ -253,7 +253,7 @@ protected:
         uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
         uint32_t lenInt = lengthLong ? 4 : 2;
 
-        if (lenStr > 1000) throw(AnalyzerException("[WARN] Got an unexpected string length. \n"));
+        if (lenStr > 1000) throw(ParserException("[WARN] Got an unexpected string length. \n"));
 
         _skip(lenInt);
         s.assign((char*)_curPos, lenStr);
@@ -283,7 +283,7 @@ protected:
         uint16_t l;
         uint8_t p[2] = {0x60, 0x0A};
         if (!_bytecmp(_curPos, p, 2))
-            throw(AnalyzerException("[ALERT] Meet unexpected pattern when reading an DE string. \n"));
+            throw(ParserException("[ALERT] Meet unexpected pattern when reading an DE string. \n"));
         _skip(2);
         _readBytes(2, &l);
         s.assign((char*)_curPos, l);
@@ -296,7 +296,7 @@ protected:
         uint8_t p[2] = {0x60, 0x0A};
         _readBytes(2, &l);
         if (!_bytecmp(_curPos, p, 2))
-            throw(AnalyzerException("[ALERT] Meet unexpected pattern when reading an HD string. \n"));
+            throw(ParserException("[ALERT] Meet unexpected pattern when reading an HD string. \n"));
         _skip(2);
         s.assign((char*)_curPos, l);
         _skip(l);

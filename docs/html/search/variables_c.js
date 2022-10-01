@@ -1,6 +1,7 @@
 var searchData=
 [
-  ['trailbytes_239',['trailBytes',['../classDefaultAnalyzer.html#a2ff42af15c7e150d7453791a7731619c',1,'DefaultAnalyzer']]],
-  ['treatylength_240',['treatyLength',['../classDefaultAnalyzer.html#ab8a9f7895d512465fd61f7fed89cdbb1',1,'DefaultAnalyzer']]],
-  ['type_241',['type',['../classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0',1,'Player']]]
+  ['saveversion_990',['saveVersion',['../classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d',1,'DefaultAnalyzer']]],
+  ['searchpattern_991',['searchPattern',['../classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8',1,'Player']]],
+  ['size_992',['size',['../structformat__to__n__result.html#ab1c815078e1a78716bb07b9ed8c7023b',1,'format_to_n_result']]],
+  ['status_993',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
 ];

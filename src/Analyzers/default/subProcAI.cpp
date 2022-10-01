@@ -77,7 +77,7 @@ void DefaultAnalyzer::_AIAnalyzer() {
             _skip(10);
             _readBytes(2, &numRules);
             if (numRules > 10000) {
-                throw(AnalyzerException("[WARN] numRules in AI data > 1000 (maxRules is normally 10000). \n"));
+                throw(ParserException("[WARN] numRules in AI data > 1000 (maxRules is normally 10000). \n"));
             }
             _skip(4);
             for (int j = 0; j++ < numRules; _skip(ruleSize));

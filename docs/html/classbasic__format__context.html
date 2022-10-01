@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: basic_format_context&lt; OutputIt, Char &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-types">Public 类型</a> &#124;
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classbasic__format__context-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">basic_format_context&lt; OutputIt, Char &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+basic_format_context&lt; OutputIt, Char &gt; 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classbasic__format__context__coll__graph.png" border="0" usemap="#basic__format__context_3_01OutputIt_00_01Char_01_4_coll__map" alt="Collaboration graph"/></div>
+<map name="basic__format__context_3_01OutputIt_00_01Char_01_4_coll__map" id="basic__format__context_3_01OutputIt_00_01Char_01_4_coll__map">
+<area shape="rect" title=" " alt="" coords="32,199,195,240"/>
+<area shape="rect" href="classbasic__format__args.html" title=" " alt="" coords="22,95,205,136"/>
+<area shape="rect" href="classbasic__format__arg.html" title=" " alt="" coords="5,5,221,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-types"></a>
+Public 类型</h2></td></tr>
+<tr class="memitem:a71fea7d34edb618df612644dfd02a896"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbasic__format__context.html#a71fea7d34edb618df612644dfd02a896">char_type</a> = Char</td></tr>
+<tr class="separator:a71fea7d34edb618df612644dfd02a896"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4f1162babbfd61a5c35cb441cdafbb1b"><td class="memItemLeft" align="right" valign="top"><a id="a4f1162babbfd61a5c35cb441cdafbb1b"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>iterator</b> = OutputIt</td></tr>
+<tr class="separator:a4f1162babbfd61a5c35cb441cdafbb1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6453d86fefbd8d297e7c19c88dfc22b3"><td class="memItemLeft" align="right" valign="top"><a id="a6453d86fefbd8d297e7c19c88dfc22b3"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>format_arg</b> = <a class="el" href="classbasic__format__arg.html">basic_format_arg</a>&lt; <a class="el" href="classbasic__format__context.html">basic_format_context</a> &gt;</td></tr>
+<tr class="separator:a6453d86fefbd8d297e7c19c88dfc22b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a846de9105c149fabc7284c37987e0637"><td class="memItemLeft" align="right" valign="top"><a id="a846de9105c149fabc7284c37987e0637"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>parse_context_type</b> = <a class="el" href="classbasic__format__parse__context.html">basic_format_parse_context</a>&lt; Char &gt;</td></tr>
+<tr class="separator:a846de9105c149fabc7284c37987e0637"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0dfd33a4158aff7039f722fb18da1bc1"><td class="memTemplParams" colspan="2"><a id="a0dfd33a4158aff7039f722fb18da1bc1"></a>
+template&lt;typename T &gt; </td></tr>
+<tr class="memitem:a0dfd33a4158aff7039f722fb18da1bc1"><td class="memTemplItemLeft" align="right" valign="top">using&#160;</td><td class="memTemplItemRight" valign="bottom"><b>formatter_type</b> = <a class="el" href="structformatter.html">formatter</a>&lt; T, <a class="el" href="classbasic__format__context.html#a71fea7d34edb618df612644dfd02a896">char_type</a> &gt;</td></tr>
+<tr class="separator:a0dfd33a4158aff7039f722fb18da1bc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:ad3fa21cd51fddf143adbbc24127b197c"><td class="memItemLeft" align="right" valign="top"><a id="ad3fa21cd51fddf143adbbc24127b197c"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>basic_format_context</b> (<a class="el" href="classbasic__format__context.html">basic_format_context</a> &amp;&amp;)=default</td></tr>
+<tr class="separator:ad3fa21cd51fddf143adbbc24127b197c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a164709f82ae7eed798a09f525d5e041f"><td class="memItemLeft" align="right" valign="top"><a id="a164709f82ae7eed798a09f525d5e041f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>basic_format_context</b> (const <a class="el" href="classbasic__format__context.html">basic_format_context</a> &amp;)=delete</td></tr>
+<tr class="separator:a164709f82ae7eed798a09f525d5e041f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afab7218b916beac865dc751679fd03a9"><td class="memItemLeft" align="right" valign="top"><a id="afab7218b916beac865dc751679fd03a9"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classbasic__format__context.html">basic_format_context</a> &amp;)=delete</td></tr>
+<tr class="separator:afab7218b916beac865dc751679fd03a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac67f872e1b934d196fd3771773103339"><td class="memItemLeft" align="right" valign="top">constexpr&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classbasic__format__context.html#ac67f872e1b934d196fd3771773103339">basic_format_context</a> (OutputIt out, <a class="el" href="classbasic__format__args.html">basic_format_args</a>&lt; <a class="el" href="classbasic__format__context.html">basic_format_context</a> &gt; ctx_args, detail::locale_ref loc=detail::locale_ref())</td></tr>
+<tr class="separator:ac67f872e1b934d196fd3771773103339"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9bdd30826ae6073c2cbe9450c5ec8c30"><td class="memItemLeft" align="right" valign="top"><a id="a9bdd30826ae6073c2cbe9450c5ec8c30"></a>
+constexpr auto&#160;</td><td class="memItemRight" valign="bottom"><b>arg</b> (int id) const -&gt; <a class="el" href="classbasic__format__arg.html">format_arg</a></td></tr>
+<tr class="separator:a9bdd30826ae6073c2cbe9450c5ec8c30"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f6ad97f7af8971f9d4c983aca0869e9"><td class="memItemLeft" align="right" valign="top"><a id="a6f6ad97f7af8971f9d4c983aca0869e9"></a>
+FMT_CONSTEXPR auto&#160;</td><td class="memItemRight" valign="bottom"><b>arg</b> (<a class="el" href="classbasic__string__view.html">basic_string_view</a>&lt; <a class="el" href="classbasic__format__context.html#a71fea7d34edb618df612644dfd02a896">char_type</a> &gt; name) -&gt; <a class="el" href="classbasic__format__arg.html">format_arg</a></td></tr>
+<tr class="separator:a6f6ad97f7af8971f9d4c983aca0869e9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7293aa3e949cbcee3b9877c0e3bc5819"><td class="memItemLeft" align="right" valign="top"><a id="a7293aa3e949cbcee3b9877c0e3bc5819"></a>
+FMT_CONSTEXPR auto&#160;</td><td class="memItemRight" valign="bottom"><b>arg_id</b> (<a class="el" href="classbasic__string__view.html">basic_string_view</a>&lt; <a class="el" href="classbasic__format__context.html#a71fea7d34edb618df612644dfd02a896">char_type</a> &gt; name) -&gt; int</td></tr>
+<tr class="separator:a7293aa3e949cbcee3b9877c0e3bc5819"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9f6a9cbb60c5c6ae9206e47ee3d2b9ab"><td class="memItemLeft" align="right" valign="top"><a id="a9f6a9cbb60c5c6ae9206e47ee3d2b9ab"></a>
+auto&#160;</td><td class="memItemRight" valign="bottom"><b>args</b> () const -&gt; const <a class="el" href="classbasic__format__args.html">basic_format_args</a>&lt; <a class="el" href="classbasic__format__context.html">basic_format_context</a> &gt; &amp;</td></tr>
+<tr class="separator:a9f6a9cbb60c5c6ae9206e47ee3d2b9ab"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9b42230f34e32a2ed7e479c0a73ec53b"><td class="memItemLeft" align="right" valign="top"><a id="a9b42230f34e32a2ed7e479c0a73ec53b"></a>
+FMT_CONSTEXPR auto&#160;</td><td class="memItemRight" valign="bottom"><b>error_handler</b> () -&gt; detail::error_handler</td></tr>
+<tr class="separator:a9b42230f34e32a2ed7e479c0a73ec53b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76291cdb1ca503de067d32d93ba3b50e"><td class="memItemLeft" align="right" valign="top"><a id="a76291cdb1ca503de067d32d93ba3b50e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>on_error</b> (const char *message)</td></tr>
+<tr class="separator:a76291cdb1ca503de067d32d93ba3b50e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a67a8e78fa2cd34446f3653c52f251fa9"><td class="memItemLeft" align="right" valign="top"><a id="a67a8e78fa2cd34446f3653c52f251fa9"></a>
+FMT_CONSTEXPR auto&#160;</td><td class="memItemRight" valign="bottom"><b>out</b> () -&gt; iterator</td></tr>
+<tr class="separator:a67a8e78fa2cd34446f3653c52f251fa9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab48a9a22c2625693d9c08d341fbb374c"><td class="memItemLeft" align="right" valign="top"><a id="ab48a9a22c2625693d9c08d341fbb374c"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>advance_to</b> (iterator it)</td></tr>
+<tr class="separator:ab48a9a22c2625693d9c08d341fbb374c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5660b02c82b2a6df868028cef7fc395b"><td class="memItemLeft" align="right" valign="top"><a id="a5660b02c82b2a6df868028cef7fc395b"></a>
+FMT_CONSTEXPR auto&#160;</td><td class="memItemRight" valign="bottom"><b>locale</b> () -&gt; detail::locale_ref</td></tr>
+<tr class="separator:a5660b02c82b2a6df868028cef7fc395b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:a83db8e13aee006e0b2ea6e08d5e89311"><td class="memItemLeft" align="right" valign="top"><a id="a83db8e13aee006e0b2ea6e08d5e89311"></a>
+OutputIt&#160;</td><td class="memItemRight" valign="bottom"><b>out_</b></td></tr>
+<tr class="separator:a83db8e13aee006e0b2ea6e08d5e89311"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afd1fc0e60195bc80950e4b4eb5ed298b"><td class="memItemLeft" align="right" valign="top"><a id="afd1fc0e60195bc80950e4b4eb5ed298b"></a>
+<a class="el" href="classbasic__format__args.html">basic_format_args</a>&lt; <a class="el" href="classbasic__format__context.html">basic_format_context</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>args_</b></td></tr>
+<tr class="separator:afd1fc0e60195bc80950e4b4eb5ed298b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a385c9f6349e8bc3d3337fc9b2b69d38d"><td class="memItemLeft" align="right" valign="top"><a id="a385c9f6349e8bc3d3337fc9b2b69d38d"></a>
+detail::locale_ref&#160;</td><td class="memItemRight" valign="bottom"><b>loc_</b></td></tr>
+<tr class="separator:a385c9f6349e8bc3d3337fc9b2b69d38d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;typename OutputIt, typename Char&gt;<br />
+class basic_format_context&lt; OutputIt, Char &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="core_8h_source.html">core.h</a> 第 <a class="el" href="core_8h_source.html#l01742">1742</a> 行定义.</p>
+</div><h2 class="groupheader">成员类型定义说明</h2>
+<a id="a71fea7d34edb618df612644dfd02a896"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71fea7d34edb618df612644dfd02a896">&#9670;&nbsp;</a></span>char_type</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OutputIt , typename Char &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="classbasic__format__context.html">basic_format_context</a>&lt; OutputIt, Char &gt;::<a class="el" href="classbasic__format__context.html#a71fea7d34edb618df612644dfd02a896">char_type</a> =  Char</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>The character type for the output. </p>
+
+<p class="definition">在文件 <a class="el" href="core_8h_source.html">core.h</a> 第 <a class="el" href="core_8h_source.html#l01745">1745</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">构造及析构函数说明</h2>
+<a id="ac67f872e1b934d196fd3771773103339"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac67f872e1b934d196fd3771773103339">&#9670;&nbsp;</a></span>basic_format_context()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename OutputIt , typename Char &gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">constexpr <a class="el" href="classbasic__format__context.html">basic_format_context</a>&lt; OutputIt, Char &gt;::<a class="el" href="classbasic__format__context.html">basic_format_context</a> </td>
+          <td>(</td>
+          <td class="paramtype">OutputIt&#160;</td>
+          <td class="paramname"><em>out</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype"><a class="el" href="classbasic__format__args.html">basic_format_args</a>&lt; <a class="el" href="classbasic__format__context.html">basic_format_context</a>&lt; OutputIt, Char &gt; &gt;&#160;</td>
+          <td class="paramname"><em>ctx_args</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">detail::locale_ref&#160;</td>
+          <td class="paramname"><em>loc</em> = <code>detail::locale_ref()</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">constexpr</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+<p>Constructs a <code><a class="el" href="classbasic__format__context.html">basic_format_context</a></code> object. References to the arguments are stored in the object so make sure they have appropriate lifetimes. </p>
+
+<p class="definition">在文件 <a class="el" href="core_8h_source.html">core.h</a> 第 <a class="el" href="core_8h_source.html#l01765">1765</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="core_8h_source.html">core.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

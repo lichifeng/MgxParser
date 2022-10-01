@@ -9,11 +9,13 @@
  * 
  */
 
-#include "CompileConfig.h"
-#include <iostream>
-#include "Analyzers/default/Analyzer.h"
-
 #include <exception>
+#include <iostream>
+
+#include "spdlog/spdlog.h"
+
+#include "CompileConfig.h"
+#include "Analyzers/default/Analyzer.h"
 
 using namespace std;
 
@@ -26,7 +28,12 @@ using namespace std;
  */
 int main(int argc, char* argv[])
 {
-    cout << "\033[31m~~~~~~~~~~~~~~~~~~~~ DEBUG HINTS ~~~~~~~~~~~~~~~~~~~~~~\033[0m" << endl;
+    if (DEBUG) {
+        cout << "\033[31m~~~~~~~~~~~~~~~~~~~~ DEBUG HINTS ~~~~~~~~~~~~~~~~~~~~~~\033[0m" << endl;
+    } else {
+        cout << "\033[31m~~~~~~~~~~~~~~~~~~~~ RELEASE HINTS ~~~~~~~~~~~~~~~~~~~~~~\033[0m" << endl;
+    }
+    
     if (argc <= 1)
     {
         cout << "No Record Specified!" << endl;

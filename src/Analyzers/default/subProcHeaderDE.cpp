@@ -147,11 +147,11 @@ void DefaultAnalyzer::_headerDEAnalyzer() {
     if (saveVersion >= 25.2199)
     {
         if (*(uint32_t*)_curPos != 0)
-            throw(AnalyzerException("[ALERT] expecting 00 00 00 00 but disppointed. \n"));
+            throw(ParserException("[ALERT] expecting 00 00 00 00 but disppointed. \n"));
         _skip(4);
     } else {
         if (*(uint32_t*)_curPos != -2)
-            throw(AnalyzerException("[ALERT] expecting FE FF FF FF but disppointed. \n"));
+            throw(ParserException("[ALERT] expecting FE FF FF FF but disppointed. \n"));
         _skip(60 * 4);
     }
     _readBytes(8, &DE_numAIFiles);

@@ -25,7 +25,7 @@ void DefaultAnalyzer::run() {
     {
         status = "fail";
         message.append(path + " does not exists. \n");
-        throw(AnalyzerException(message));
+        throw(ParserException(message));
     }
 
     filename = p.filename();
@@ -38,7 +38,7 @@ void DefaultAnalyzer::run() {
     {
         status = "fail";
         message.append("Failed to open " + path + ". \n");
-        throw(AnalyzerException(message));
+        throw(ParserException(message));
     }
     
     // Try to extract header&body streams
@@ -46,7 +46,7 @@ void DefaultAnalyzer::run() {
     {
         status = "fail";
         message.append("Failed to unzip raw header data. \n");
-        throw(AnalyzerException(message));
+        throw(ParserException(message));
     }
 
     _f.close();
@@ -161,7 +161,7 @@ void DefaultAnalyzer::_expectBytes(
             message.append(good);
         } else {
             message.append(warn);
-            if(throwExpt) throw(AnalyzerException(warn));
+            if(throwExpt) throw(ParserException(warn));
         }
         if(skip) _curPos += pattern.size();
 }

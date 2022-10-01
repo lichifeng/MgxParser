@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: spdlog::details::flag_formatter类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><b>spdlog</b></li><li class="navelem"><b>details</b></li><li class="navelem"><a class="el" href="classspdlog_1_1details_1_1flag__formatter.html">flag_formatter</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pro-attribs">Protected 属性</a> &#124;
+<a href="classspdlog_1_1details_1_1flag__formatter-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">spdlog::details::flag_formatter类 参考<span class="mlabels"><span class="mlabel">abstract</span></span></div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="dynheader">
+类 spdlog::details::flag_formatter 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classspdlog_1_1details_1_1flag__formatter__inherit__graph.png" border="0" usemap="#spdlog_1_1details_1_1flag__formatter_inherit__map" alt="Inheritance graph"/></div>
+<map name="spdlog_1_1details_1_1flag__formatter_inherit__map" id="spdlog_1_1details_1_1flag__formatter_inherit__map">
+<area shape="rect" title=" " alt="" coords="5,1328,155,1369"/>
+<area shape="rect" href="classspdlog_1_1custom__flag__formatter.html" title=" " alt="" coords="269,5,421,47"/>
+<area shape="rect" href="classspdlog_1_1details_1_1a__formatter.html" title=" " alt="" coords="239,71,451,112"/>
+<area shape="rect" href="classspdlog_1_1details_1_1A__formatter.html" title=" " alt="" coords="239,136,451,177"/>
+<area shape="rect" href="classspdlog_1_1details_1_1aggregate__formatter.html" title=" " alt="" coords="249,201,440,243"/>
+<area shape="rect" href="classspdlog_1_1details_1_1B__formatter.html" title=" " alt="" coords="239,267,451,308"/>
+<area shape="rect" href="classspdlog_1_1details_1_1b__formatter.html" title=" " alt="" coords="239,332,451,373"/>
+<area shape="rect" href="classspdlog_1_1details_1_1c__formatter.html" title=" " alt="" coords="239,397,451,439"/>
+<area shape="rect" href="classspdlog_1_1details_1_1C__formatter.html" title=" " alt="" coords="239,463,451,504"/>
+<area shape="rect" href="classspdlog_1_1details_1_1ch__formatter.html" title=" " alt="" coords="275,528,415,569"/>
+<area shape="rect" href="classspdlog_1_1details_1_1color__start__formatter.html" title=" " alt="" coords="266,593,423,635"/>
+<area shape="rect" href="classspdlog_1_1details_1_1color__stop__formatter.html" title=" " alt="" coords="266,659,423,700"/>
+<area shape="rect" href="classspdlog_1_1details_1_1D__formatter.html" title=" " alt="" coords="239,724,451,765"/>
+<area shape="rect" href="classspdlog_1_1details_1_1d__formatter.html" title=" " alt="" coords="239,789,451,831"/>
+<area shape="rect" href="classspdlog_1_1details_1_1e__formatter.html" title=" " alt="" coords="239,855,451,896"/>
+<area shape="rect" href="classspdlog_1_1details_1_1E__formatter.html" title=" " alt="" coords="239,920,451,961"/>
+<area shape="rect" href="classspdlog_1_1details_1_1elapsed__formatter.html" title=" " alt="" coords="244,986,445,1042"/>
+<area shape="rect" href="classspdlog_1_1details_1_1f__formatter.html" title=" " alt="" coords="239,1067,451,1108"/>
+<area shape="rect" href="classspdlog_1_1details_1_1F__formatter.html" title=" " alt="" coords="239,1132,451,1173"/>
+<area shape="rect" href="classspdlog_1_1details_1_1full__formatter.html" title=" " alt="" coords="271,1197,418,1239"/>
+<area shape="rect" href="classspdlog_1_1details_1_1H__formatter.html" title=" " alt="" coords="239,1263,451,1304"/>
+<area shape="rect" href="classspdlog_1_1details_1_1I__formatter.html" title=" " alt="" coords="239,1328,451,1369"/>
+<area shape="rect" href="classspdlog_1_1details_1_1level__formatter.html" title=" " alt="" coords="239,1393,451,1435"/>
+<area shape="rect" href="classspdlog_1_1details_1_1M__formatter.html" title=" " alt="" coords="239,1459,451,1500"/>
+<area shape="rect" href="classspdlog_1_1details_1_1m__formatter.html" title=" " alt="" coords="239,1524,451,1565"/>
+<area shape="rect" href="classspdlog_1_1details_1_1name__formatter.html" title=" " alt="" coords="239,1589,451,1631"/>
+<area shape="rect" href="classspdlog_1_1details_1_1p__formatter.html" title=" " alt="" coords="239,1655,451,1696"/>
+<area shape="rect" href="classspdlog_1_1details_1_1pid__formatter.html" title=" " alt="" coords="239,1720,451,1761"/>
+<area shape="rect" href="classspdlog_1_1details_1_1r__formatter.html" title=" " alt="" coords="239,1785,451,1827"/>
+<area shape="rect" href="classspdlog_1_1details_1_1R__formatter.html" title=" " alt="" coords="239,1851,451,1892"/>
+<area shape="rect" href="classspdlog_1_1details_1_1S__formatter.html" title=" " alt="" coords="239,1916,451,1957"/>
+<area shape="rect" href="classspdlog_1_1details_1_1short__filename__formatter.html" title=" " alt="" coords="207,1981,483,2023"/>
+<area shape="rect" href="classspdlog_1_1details_1_1short__level__formatter.html" title=" " alt="" coords="219,2047,470,2088"/>
+<area shape="rect" href="classspdlog_1_1details_1_1source__filename__formatter.html" title=" " alt="" coords="207,2112,483,2153"/>
+<area shape="rect" href="classspdlog_1_1details_1_1source__funcname__formatter.html" title=" " alt="" coords="203,2177,487,2219"/>
+<area shape="rect" href="classspdlog_1_1details_1_1source__linenum__formatter.html" title=" " alt="" coords="209,2243,481,2284"/>
+<area shape="rect" href="classspdlog_1_1details_1_1source__location__formatter.html" title=" " alt="" coords="209,2308,480,2349"/>
+<area shape="rect" href="classspdlog_1_1details_1_1T__formatter.html" title=" " alt="" coords="239,2373,451,2415"/>
+<area shape="rect" href="classspdlog_1_1details_1_1t__formatter.html" title=" " alt="" coords="239,2439,451,2480"/>
+<area shape="rect" href="classspdlog_1_1details_1_1v__formatter.html" title=" " alt="" coords="239,2504,451,2545"/>
+<area shape="rect" href="classspdlog_1_1details_1_1Y__formatter.html" title=" " alt="" coords="239,2569,451,2611"/>
+<area shape="rect" href="classspdlog_1_1details_1_1z__formatter.html" title=" " alt="" coords="239,2635,451,2676"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<div class="dynheader">
+spdlog::details::flag_formatter 的协作图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classspdlog_1_1details_1_1flag__formatter__coll__graph.png" border="0" usemap="#spdlog_1_1details_1_1flag__formatter_coll__map" alt="Collaboration graph"/></div>
+<map name="spdlog_1_1details_1_1flag__formatter_coll__map" id="spdlog_1_1details_1_1flag__formatter_coll__map">
+<area shape="rect" title=" " alt="" coords="35,95,185,136"/>
+<area shape="rect" href="structspdlog_1_1details_1_1padding__info.html" title=" " alt="" coords="5,5,215,32"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a7f775ab8ad4027546c3490f2f299bf43"><td class="memItemLeft" align="right" valign="top"><a id="a7f775ab8ad4027546c3490f2f299bf43"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>flag_formatter</b> (<a class="el" href="structspdlog_1_1details_1_1padding__info.html">padding_info</a> padinfo)</td></tr>
+<tr class="separator:a7f775ab8ad4027546c3490f2f299bf43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acd51bf0e7c797d7b88807b50bb7786f1"><td class="memItemLeft" align="right" valign="top"><a id="acd51bf0e7c797d7b88807b50bb7786f1"></a>
+virtual void&#160;</td><td class="memItemRight" valign="bottom"><b>format</b> (const <a class="el" href="structspdlog_1_1details_1_1log__msg.html">details::log_msg</a> &amp;msg, const std::tm &amp;tm_time, memory_buf_t &amp;dest)=0</td></tr>
+<tr class="separator:acd51bf0e7c797d7b88807b50bb7786f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
+Protected 属性</h2></td></tr>
+<tr class="memitem:a80f1166212df85f665d87f2826240567"><td class="memItemLeft" align="right" valign="top"><a id="a80f1166212df85f665d87f2826240567"></a>
+<a class="el" href="structspdlog_1_1details_1_1padding__info.html">padding_info</a>&#160;</td><td class="memItemRight" valign="bottom"><b>padinfo_</b></td></tr>
+<tr class="separator:a80f1166212df85f665d87f2826240567"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="pattern__formatter_8h_source.html">pattern_formatter.h</a> 第 <a class="el" href="pattern__formatter_8h_source.html#l00050">50</a> 行定义.</p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="pattern__formatter_8h_source.html">pattern_formatter.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

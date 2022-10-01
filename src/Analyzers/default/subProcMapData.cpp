@@ -15,11 +15,11 @@ void DefaultAnalyzer::_mapDataAnalyzer() {
     _readBytes(8, &mapCoord);
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {
-        throw(AnalyzerException("[WARN] Abnormal map size data. \n"));
+        throw(ParserException("[WARN] Abnormal map size data. \n"));
     } else if (mapCoord[0] == mapCoord[1]) {
         message.append("[INFO] Found desired map coordinates data. \n");
     } else {
-        throw(AnalyzerException("[WARN] Map coordinates is weird, X != Y. \n"));
+        throw(ParserException("[WARN] Map coordinates is weird, X != Y. \n"));
     }
 
     int32_t numMapZones, mapBits, numFloats;

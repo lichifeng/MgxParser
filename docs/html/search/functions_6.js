@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['main_197',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]]
+  ['format_934',['format',['../structspdlog_1_1sinks_1_1win__eventlog_1_1internal_1_1win32__error.html#ac257bfbcd3a8e7d1be75074b7d41ab6d',1,'spdlog::sinks::win_eventlog::internal::win32_error']]]
 ];

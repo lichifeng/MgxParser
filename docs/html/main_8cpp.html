@@ -76,38 +76,66 @@ $(function() {
 
 <p>主程序入口，目前还没有开发完成。  
 <a href="#details">更多...</a></p>
-<div class="textblock"><code>#include &quot;CompileConfig.h&quot;</code><br />
+<div class="textblock"><code>#include &lt;exception&gt;</code><br />
 <code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;spdlog/spdlog.h&gt;</code><br />
+<code>#include &quot;CompileConfig.h&quot;</code><br />
 <code>#include &quot;<a class="el" href="src_2Analyzers_2default_2Analyzer_8h_source.html">Analyzers/default/Analyzer.h</a>&quot;</code><br />
-<code>#include &lt;exception&gt;</code><br />
 </div><div class="textblock"><div class="dynheader">
 main.cpp 的引用(Include)关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="main_8cpp__incl.png" border="0" usemap="#main_8cpp" alt=""/></div>
 <map name="main_8cpp" id="main_8cpp">
-<area shape="rect" title="主程序入口，目前还没有开发完成。" alt="" coords="683,5,765,32"/>
-<area shape="rect" href="CompileConfig_8h_source.html" title=" " alt="" coords="486,80,615,107"/>
-<area shape="rect" title=" " alt="" coords="5,155,85,181"/>
-<area shape="rect" href="src_2Analyzers_2default_2Analyzer_8h.html" title=" " alt="" coords="691,80,899,107"/>
-<area shape="rect" title=" " alt="" coords="1090,229,1177,256"/>
-<area shape="rect" title=" " alt="" coords="1267,155,1341,181"/>
-<area shape="rect" title=" " alt="" coords="1365,155,1435,181"/>
-<area shape="rect" title=" " alt="" coords="166,229,229,256"/>
-<area shape="rect" title=" " alt="" coords="903,155,959,181"/>
-<area shape="rect" title=" " alt="" coords="983,155,1049,181"/>
-<area shape="rect" title=" " alt="" coords="1073,155,1148,181"/>
-<area shape="rect" title=" " alt="" coords="1173,155,1243,181"/>
-<area shape="rect" href="EncodingConverter_8h.html" title=" " alt="" coords="249,155,429,181"/>
-<area shape="rect" href="BaseAnalyzer_8h.html" title="分析器的基类（接口），所有 analyzer 都需要继承这个接口。" alt="" coords="453,155,587,181"/>
-<area shape="rect" href="AnalyzerException_8h.html" title=" " alt="" coords="711,155,878,181"/>
-<area shape="rect" href="utils_8h.html" title="Some utility for minor jobs" alt="" coords="110,155,173,181"/>
-<area shape="rect" href="src_2Analyzers_2default_2Player_8h.html" title="Represents a player" alt="" coords="612,155,687,181"/>
-<area shape="rect" title=" " alt="" coords="363,229,431,256"/>
-<area shape="rect" title=" " alt="" coords="455,229,523,256"/>
-<area shape="rect" title=" " alt="" coords="253,229,339,256"/>
-<area shape="rect" title=" " alt="" coords="548,229,607,256"/>
-<area shape="rect" title=" " alt="" coords="56,229,141,256"/>
-<area shape="rect" title=" " alt="" coords="631,229,697,256"/>
+<area shape="rect" title="主程序入口，目前还没有开发完成。" alt="" coords="1215,5,1297,32"/>
+<area shape="rect" title=" " alt="" coords="1259,609,1346,635"/>
+<area shape="rect" title=" " alt="" coords="1216,519,1296,546"/>
+<area shape="rect" href="spdlog_8h_source.html" title=" " alt="" coords="2339,80,2463,107"/>
+<area shape="rect" href="CompileConfig_8h_source.html" title=" " alt="" coords="2487,80,2617,107"/>
+<area shape="rect" href="src_2Analyzers_2default_2Analyzer_8h.html" title=" " alt="" coords="615,430,823,457"/>
+<area shape="rect" href="common_8h_source.html" title=" " alt="" coords="2004,341,2143,367"/>
+<area shape="rect" title=" " alt="" coords="2964,430,3031,457"/>
+<area shape="rect" title=" " alt="" coords="2717,609,2795,635"/>
+<area shape="rect" title=" " alt="" coords="1123,691,1181,717"/>
+<area shape="rect" title=" " alt="" coords="2509,430,2595,457"/>
+<area shape="rect" href="registry_8h_source.html" title=" " alt="" coords="2538,251,2715,278"/>
+<area shape="rect" href="logger_8h_source.html" title=" " alt="" coords="2066,162,2187,189"/>
+<area shape="rect" href="version_8h.html" title=" " alt="" coords="2661,162,2790,189"/>
+<area shape="rect" href="synchronous__factory_8h_source.html" title=" " alt="" coords="2438,155,2637,196"/>
+<area shape="rect" href="tweakme_8h_source.html" title=" " alt="" coords="1581,430,1723,457"/>
+<area shape="rect" href="null__mutex_8h_source.html" title=" " alt="" coords="2089,423,2231,464"/>
+<area shape="rect" title=" " alt="" coords="2215,519,2281,546"/>
+<area shape="rect" title=" " alt="" coords="1446,430,1557,457"/>
+<area shape="rect" title=" " alt="" coords="2203,691,2295,717"/>
+<area shape="rect" title=" " alt="" coords="1997,691,2059,717"/>
+<area shape="rect" href="fmt_8h_source.html" title=" " alt="" coords="1935,430,2065,457"/>
+<area shape="rect" href="common-inl_8h_source.html" title=" " alt="" coords="1799,430,1911,457"/>
+<area shape="rect" title=" " alt="" coords="2045,609,2105,635"/>
+<area shape="rect" href="core_8h_source.html" title=" " alt="" coords="1625,601,1773,643"/>
+<area shape="rect" href="format_8h_source.html" title=" " alt="" coords="1706,512,1854,553"/>
+<area shape="rect" title=" " alt="" coords="1274,691,1345,717"/>
+<area shape="rect" title=" " alt="" coords="1504,691,1571,717"/>
+<area shape="rect" title=" " alt="" coords="1663,691,1734,717"/>
+<area shape="rect" title=" " alt="" coords="495,609,561,635"/>
+<area shape="rect" title=" " alt="" coords="725,609,811,635"/>
+<area shape="rect" title=" " alt="" coords="1029,609,1115,635"/>
+<area shape="rect" href="periodic__worker_8h_source.html" title=" " alt="" coords="2690,333,2859,375"/>
+<area shape="rect" title=" " alt="" coords="2620,430,2684,457"/>
+<area shape="rect" title=" " alt="" coords="2439,341,2563,367"/>
+<area shape="rect" title=" " alt="" coords="2797,430,2939,457"/>
+<area shape="rect" title=" " alt="" coords="2708,430,2772,457"/>
+<area shape="rect" href="log__msg_8h_source.html" title=" " alt="" coords="1951,244,2089,285"/>
+<area shape="rect" href="backtracer_8h_source.html" title=" " alt="" coords="2167,341,2364,367"/>
+<area shape="rect" title=" " alt="" coords="586,609,649,635"/>
+<area shape="rect" title=" " alt="" coords="561,519,634,546"/>
+<area shape="rect" title=" " alt="" coords="659,519,715,546"/>
+<area shape="rect" title=" " alt="" coords="5,519,80,546"/>
+<area shape="rect" href="EncodingConverter_8h.html" title=" " alt="" coords="254,519,434,546"/>
+<area shape="rect" href="ParserException_8h_source.html" title=" " alt="" coords="1029,519,1192,546"/>
+<area shape="rect" href="BaseAnalyzer_8h.html" title="分析器的基类（接口），所有 analyzer 都需要继承这个接口。" alt="" coords="49,609,183,635"/>
+<area shape="rect" href="utils_8h.html" title="Some utility for minor jobs" alt="" coords="891,519,954,546"/>
+<area shape="rect" href="src_2Analyzers_2default_2Player_8h.html" title="Represents a player" alt="" coords="155,519,229,546"/>
+<area shape="rect" title=" " alt="" coords="310,609,378,635"/>
+<area shape="rect" title=" " alt="" coords="402,609,470,635"/>
 </map>
 </div>
 </div>
@@ -167,7 +195,7 @@ main.cpp 的引用(Include)关系图:</div>
 <dl class="section return"><dt>返回</dt><dd>int <br  />
  </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="main_8cpp_source.html">main.cpp</a> 第 <a class="el" href="main_8cpp_source.html#l00027">27</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="main_8cpp_source.html">main.cpp</a> 第 <a class="el" href="main_8cpp_source.html#l00028">28</a> 行定义.</p>
 
 </div>
 </div>
