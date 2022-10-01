@@ -22,11 +22,13 @@
 #include <iostream>
 #include <iomanip>
 #include <iterator>
-#include "../BaseAnalyzer.h"
-#include "version.h"
-#include "../AnalyzerException.h"
-#include "Player.h"
+
 #include "../../EncodingConverter.h"
+#include "../BaseAnalyzer.h"
+#include "../AnalyzerException.h"
+#include "utils.h"
+
+#include "Player.h"
 
 using namespace std;
 
@@ -77,11 +79,12 @@ public:
     uint16_t          trailBytes = 5;
     uint32_t          easySkipBase = 35100;
     uint32_t          triggerStartSearchRange = 11;
+    uint32_t          ZLIB_CHUNK = 8192;
    
     uint32_t          logVersion; ///< body 的前4个字节，与版本有关，可以识别A/C版
     char              versionStr[8]; ///< 代表游戏版本的原始字符串
     float             saveVersion; ///< \warning 小数点后有许多位，比较的时候注意要合理处理，比如 >11.76 要写成 >11.7599 这种
-    int               versionCode; ///< 这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分
+    VERSIONCODE       versionCode; ///< 这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分
     uint32_t          indcludeAI;
 
     // HD/DE-specific data from header stream
@@ -377,7 +380,7 @@ protected:
     void                         _messagesAnalyzer();
     void                         _victorySettingsAnalyzer();
     void                         _gameSettingsAnalyzer();
-    void                         _searchInitialPlayersDataPos();
+    void                         _findInitialPlayersDataPos();
     void                         _startInfoAnalyzer();
     void                         _triggerInfoAnalyzer();
     void                         _lobbyAnalyzer();

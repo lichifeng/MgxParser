@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: Analyzer.h 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a95fc1cc45391b3270b1ae2680110062.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_e707855903d954fa6d0bc7016550a3a5.html">default</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#nested-classes">类</a> &#124;
+<a href="#define-members">宏定义</a>  </div>
+  <div class="headertitle">
+<div class="title">src/Analyzers/default/Analyzer.h 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><br  />
+  
+<a href="#details">更多...</a></p>
+<div class="textblock"><code>#include &lt;fstream&gt;</code><br />
+<code>#include &lt;cstddef&gt;</code><br />
+<code>#include &lt;vector&gt;</code><br />
+<code>#include &lt;array&gt;</code><br />
+<code>#include &lt;cstring&gt;</code><br />
+<code>#include &lt;iostream&gt;</code><br />
+<code>#include &lt;iomanip&gt;</code><br />
+<code>#include &lt;iterator&gt;</code><br />
+<code>#include &quot;<a class="el" href="EncodingConverter_8h_source.html">../../EncodingConverter.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="BaseAnalyzer_8h_source.html">../BaseAnalyzer.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="AnalyzerException_8h_source.html">../AnalyzerException.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="utils_8h_source.html">utils.h</a>&quot;</code><br />
+<code>#include &quot;<a class="el" href="src_2Analyzers_2default_2Player_8h_source.html">Player.h</a>&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+src/Analyzers/default/Analyzer.h 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="src_2Analyzers_2default_2Analyzer_8h__incl.png" border="0" usemap="#Analyzer_8h" alt=""/></div>
+<map name="Analyzer_8h" id="Analyzer_8h">
+<area shape="rect" title=" " alt="" coords="737,5,827,32"/>
+<area shape="rect" title=" " alt="" coords="5,80,79,107"/>
+<area shape="rect" title=" " alt="" coords="103,80,173,107"/>
+<area shape="rect" title=" " alt="" coords="267,155,329,181"/>
+<area shape="rect" title=" " alt="" coords="989,80,1045,107"/>
+<area shape="rect" title=" " alt="" coords="1069,80,1135,107"/>
+<area shape="rect" title=" " alt="" coords="1159,80,1239,107"/>
+<area shape="rect" title=" " alt="" coords="1263,80,1338,107"/>
+<area shape="rect" title=" " alt="" coords="1363,80,1433,107"/>
+<area shape="rect" href="EncodingConverter_8h.html" title=" " alt="" coords="336,80,516,107"/>
+<area shape="rect" href="BaseAnalyzer_8h.html" title="分析器的基类（接口），所有 analyzer 都需要继承这个接口。" alt="" coords="540,80,675,107"/>
+<area shape="rect" href="AnalyzerException_8h.html" title=" " alt="" coords="699,80,865,107"/>
+<area shape="rect" href="utils_8h.html" title="Some utility for minor jobs" alt="" coords="197,80,260,107"/>
+<area shape="rect" href="src_2Analyzers_2default_2Player_8h.html" title="Represents a player" alt="" coords="890,80,965,107"/>
+<area shape="rect" title=" " alt="" coords="353,155,421,181"/>
+<area shape="rect" title=" " alt="" coords="445,155,513,181"/>
+<area shape="rect" title=" " alt="" coords="537,155,624,181"/>
+<area shape="rect" title=" " alt="" coords="653,155,711,181"/>
+<area shape="rect" title=" " alt="" coords="739,155,825,181"/>
+<area shape="rect" title=" " alt="" coords="157,155,242,181"/>
+<area shape="rect" title=" " alt="" coords="894,155,961,181"/>
+</map>
+</div>
+</div><div class="textblock"><div class="dynheader">
+此图展示该文件直接或间接的被哪些文件引用了:</div>
+<div class="dyncontent">
+<div class="center"><img src="src_2Analyzers_2default_2Analyzer_8h__dep__incl.png" border="0" usemap="#Analyzer_8hdep" alt=""/></div>
+<map name="Analyzer_8hdep" id="Analyzer_8hdep">
+<area shape="rect" title=" " alt="" coords="2519,5,2610,32"/>
+<area shape="rect" href="src_2Analyzers_2default_2Analyzer_8cpp.html" title=" " alt="" coords="5,87,111,114"/>
+<area shape="rect" href="subProcAI_8cpp.html" title=" " alt="" coords="135,87,248,114"/>
+<area shape="rect" href="subProcEncodingHandler_8cpp.html" title=" " alt="" coords="272,87,481,114"/>
+<area shape="rect" href="subProcFileHandler_8cpp_source.html" title=" " alt="" coords="506,87,679,114"/>
+<area shape="rect" href="subProcFindDisablesStart_8cpp.html" title=" " alt="" coords="704,87,919,114"/>
+<area shape="rect" href="subProcFindGameSettingsStart_8cpp.html" title=" " alt="" coords="943,87,1194,114"/>
+<area shape="rect" href="subProcFindInitialPlayerData_8cpp_source.html" title=" " alt="" coords="1218,80,1397,121"/>
+<area shape="rect" href="subProcFindScenarioHeaderStart_8cpp.html" title=" " alt="" coords="1421,80,1623,121"/>
+<area shape="rect" href="subProcFindStartInfoStart_8cpp.html" title=" " alt="" coords="1648,87,1863,114"/>
+<area shape="rect" href="subProcFindTriggerInfoStart_8cpp.html" title=" " alt="" coords="1887,87,2114,114"/>
+<area shape="rect" href="subProcFindVictoryStart_8cpp.html" title=" " alt="" coords="2139,87,2343,114"/>
+<area shape="rect" href="subProcGameSettings_8cpp_source.html" title=" " alt="" coords="2367,87,2559,114"/>
+<area shape="rect" href="subProcHeaderDE_8cpp.html" title=" " alt="" coords="2583,87,2749,114"/>
+<area shape="rect" href="subProcHeaderHD_8cpp.html" title=" " alt="" coords="2773,87,2940,114"/>
+<area shape="rect" href="subProcLobby_8cpp_source.html" title=" " alt="" coords="2964,87,3101,114"/>
+<area shape="rect" href="subProcMapData_8cpp.html" title=" " alt="" coords="3125,87,3284,114"/>
+<area shape="rect" href="subProcMessage_8cpp_source.html" title=" " alt="" coords="3308,87,3467,114"/>
+<area shape="rect" href="subProcReplay_8cpp.html" title=" " alt="" coords="3491,87,3633,114"/>
+<area shape="rect" href="subProcScenarioHeader_8cpp_source.html" title=" " alt="" coords="3658,87,3861,114"/>
+<area shape="rect" href="subProcStartInfo_8cpp_source.html" title=" " alt="" coords="3885,87,4041,114"/>
+<area shape="rect" href="subProcTriggerInfo_8cpp_source.html" title=" " alt="" coords="4065,87,4235,114"/>
+<area shape="rect" href="subProcVersionHandler_8cpp_source.html" title=" " alt="" coords="4259,87,4457,114"/>
+<area shape="rect" href="subProcVictorySettings_8cpp_source.html" title=" " alt="" coords="4481,87,4680,114"/>
+<area shape="rect" href="main_8cpp.html" title="主程序入口，目前还没有开发完成。" alt="" coords="4703,87,4786,114"/>
+</map>
+</div>
+</div>
+<p><a href="src_2Analyzers_2default_2Analyzer_8h_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
+类</h2></td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">class &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html">DefaultAnalyzer</a></td></tr>
+<tr class="memdesc:"><td class="mdescLeft">&#160;</td><td class="mdescRight">默认解析器  <a href="classDefaultAnalyzer.html#details">更多...</a><br /></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a8877da8d136f1bc68d406301777c4e4c"><td class="memItemLeft" align="right" valign="top"><a id="a8877da8d136f1bc68d406301777c4e4c"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEADER_INIT</b>&#160;&#160;&#160;4*1024*1024</td></tr>
+<tr class="separator:a8877da8d136f1bc68d406301777c4e4c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a379812a4c93e99d7cde12907554bc342"><td class="memItemLeft" align="right" valign="top"><a id="a379812a4c93e99d7cde12907554bc342"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>HEADER_STRM</b>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a379812a4c93e99d7cde12907554bc342"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afc8963d6370381b70286ae215b8df0e0"><td class="memItemLeft" align="right" valign="top"><a id="afc8963d6370381b70286ae215b8df0e0"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>BODY_STRM</b>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:afc8963d6370381b70286ae215b8df0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><p><br  />
+ </p>
+<dl class="section author"><dt>作者</dt><dd>PATRICK LI (<a href="#" onclick="location.href='mai'+'lto:'+'lic'+'hi'+'fen'+'g@'+'qq.'+'co'+'m'; return false;">lichi<span style="display: none;">.nosp@m.</span>feng<span style="display: none;">.nosp@m.</span>@qq.c<span style="display: none;">.nosp@m.</span>om</a>) </dd></dl>
+<dl class="section version"><dt>版本</dt><dd>0.1 </dd></dl>
+<dl class="section date"><dt>日期</dt><dd>2022-09-22</dd></dl>
+<dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2020-2022 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="src_2Analyzers_2default_2Analyzer_8h_source.html">src/Analyzers/default/Analyzer.h</a> 中定义.</p>
+</div></div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

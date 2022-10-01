@@ -10,26 +10,80 @@
  */
 #pragma once
 
-#include <string>
-#include <algorithm>
 #include <vector>
-#include <array>
+#include <algorithm>
+
+// Version tools
+#define IS_TRIAL(v) (v==0&&v==1)
+#define IS_AOK(v) (v==5)
+#define IS_AOC(v) (v>=10&&v<20)
+#define IS_AOFE(v) (v==20)
+#define IS_UP(v) (v>=50&&v<100)
+#define IS_MCP(v) (v==100)
+#define IS_HD(v) (v>=110&&v<150)
+#define IS_DE(v) (v==200)
+
+enum VERSIONCODE {
+    // trial: >=0 && <5
+    AOKTRIAL        = 0,
+    AOCTRIAL        = 1,
+    // aok: >=5 && <10
+    AOK             = 5,
+    // aoc/aoc10/aoc10c: >=10 && <20
+    AOC             = 10,
+    AOC10           = 11,
+    AOC10C          = 12,
+    // aofe: >=20 && <50
+    AOFE21          = 20,
+    // up: >=50 && <100
+    USERPATCH12     = 50,
+    USERPATCH13     = 51,
+    USERPATCH14RC1  = 52,
+    USERPATCH14RC2  = 53,
+    USERPATCH14     = 54,
+    USERPATCH15     = 55,
+    // mcp: >=100 && <110
+    MCP             = 100,
+    // hd: >=110 && <150
+    HD              = 110,
+    HD43            = 111,
+    HD46_7          = 112, ///< 4.7, 4.6
+    HD48            = 113, ///< 4.8
+    HD50_6          = 114, ///< 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6
+    HD57            = 115, ///< 5.7
+    HD58            = 116, ///< 5.8
+    // de: >=200 && <250
+    DE              = 200,
+    // unsupported: = 999
+    UNSUPPORTED     = 999
+};
+
+std::string hexStr(unsigned char *&data, int len, bool skip = false);
+
+template <typename T>
+T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)
+{
+  return std::search(
+      haystackBeg, haystackEnd,
+      std::boyer_moore_searcher(
+          needleBeg, needleEnd));
+}
 
 namespace patterns
 {
-  vector<uint8_t> HDseparator = {0xa3, 0x5f, 0x02, 0x00};
-  vector<uint8_t> HDStringSeparator = {0x60, 0x0a};
-  vector<uint8_t> AIdataUnknown = {0x08, 0x00};
-  vector<uint8_t> ZEROs_4096(4096, 0x00);
-  vector<uint8_t> FFs_500(500, 0xff);
-  vector<uint8_t> AIDirtyFix = {0x01, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x00, 0x10, 0x27};
-  vector<uint8_t> gameSettingSign = {0x00, 0xe0, 0xab, 0x45};
-  vector<uint8_t> gameSettingSign1 = {0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, 0xf9, 0x3f};
-  vector<uint8_t> separator = {0x9d, 0xff, 0xff, 0xff};
-  vector<uint8_t> scenarioConstantAOC = {0xf6, 0x28, 0x9c, 0x3f};
-  vector<uint8_t> scenarioConstantHD = {0xae, 0x47, 0xa1, 0x3f};
-  vector<uint8_t> scenarioConstantAOK = {0x9a, 0x99, 0x99, 0x3f};
-  vector<uint8_t> scenarioConstantMGX2 = {0xa4, 0x70, 0x9d, 0x3f};
+  extern std::vector<uint8_t> HDseparator;
+  extern std::vector<uint8_t> HDStringSeparator;
+  extern std::vector<uint8_t> AIdataUnknown;
+  extern std::vector<uint8_t> ZEROs_4096;
+  extern std::vector<uint8_t> FFs_500;
+  extern std::vector<uint8_t> AIDirtyFix;
+  extern std::vector<uint8_t> gameSettingSign;
+  extern std::vector<uint8_t> gameSettingSign1;
+  extern std::vector<uint8_t> separator;
+  extern std::vector<uint8_t> scenarioConstantAOC;
+  extern std::vector<uint8_t> scenarioConstantHD;
+  extern std::vector<uint8_t> scenarioConstantAOK;
+  extern std::vector<uint8_t> scenarioConstantMGX2;
 
   constexpr char zh_pattern[] = {
       static_cast<char>(0xb5),
@@ -41,7 +95,8 @@ namespace patterns
       static_cast<char>(0xb1),
       static_cast<char>(0xf0),
       static_cast<char>(0x3a),
-      static_cast<char>(0x20)}; // '地图类别: '
+      static_cast<char>(0x20)
+      }; // '地图类别: '
   constexpr char zh_utf8_pattern[] = {
       static_cast<char>(0xe5),
       static_cast<char>(0x9c),
@@ -56,7 +111,8 @@ namespace patterns
       static_cast<char>(0x9e),
       static_cast<char>(0x8b),
       static_cast<char>(0x3a),
-      static_cast<char>(0x20)}; // '地图类型: '
+      static_cast<char>(0x20)
+      }; // '地图类型: '
   constexpr char zh_wide_pattern[] = {
       static_cast<char>(0xb5),
       static_cast<char>(0xd8),
@@ -67,7 +123,8 @@ namespace patterns
       static_cast<char>(0xb1),
       static_cast<char>(0xf0),
       static_cast<char>(0xa3),
-      static_cast<char>(0xba)}; // '地图类别：'
+      static_cast<char>(0xba)
+      }; // '地图类别：'
   constexpr char zh_tw_pattern[] = {
       static_cast<char>(0xa6),
       static_cast<char>(0x61),
@@ -78,7 +135,8 @@ namespace patterns
       static_cast<char>(0xa7),
       static_cast<char>(0x4f),
       static_cast<char>(0xa1),
-      static_cast<char>(0x47)}; // '地圖類別：'
+      static_cast<char>(0x47)
+      }; // '地圖類別：'
   constexpr char br_pattern[] = "Tipo de Mapa: ";
   constexpr char de_pattern[] = "Kartentyp: ";
   constexpr char en_pattern[] = "Map Type: ";
@@ -186,34 +244,3 @@ namespace patterns
 
 constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
                            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
-
-/**
- * \brief      Use to convert bytes to hex string, mainly used to generate guid
- * in HD versions.
- *
- * \param      data                TEXT
- * \param      len                 TEXT
- * \param      skip                TEXT
- * \return     std::string         TEXT
- */
-std::string hexStr(unsigned char *&data, int len, bool skip = false)
-{
-  std::string s(len * 2, ' ');
-  for (int i = 0; i < len; ++i)
-  {
-    s[2 * i] = hexmap[(data[i] & 0xF0) >> 4];
-    s[2 * i + 1] = hexmap[data[i] & 0x0F];
-  }
-  if (skip)
-    data += len;
-  return s;
-}
-
-template <typename T>
-T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)
-{
-  return std::search(
-      haystackBeg, haystackEnd,
-      std::boyer_moore_searcher(
-          needleBeg, needleEnd));
-}

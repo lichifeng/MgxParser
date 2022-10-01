@@ -64,6 +64,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
 <a href="#pub-attribs">Public 属性</a> &#124;
 <a href="classPlayer-members.html">所有成员列表</a>  </div>
   <div class="headertitle">
@@ -71,6 +72,15 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a219fa5f363ae8a2f2d0df890c55cb623"><td class="memItemLeft" align="right" valign="top"><a id="a219fa5f363ae8a2f2d0df890c55cb623"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>valid</b> ()</td></tr>
+<tr class="separator:a219fa5f363ae8a2f2d0df890c55cb623"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af7276bb37b64120cf0b786106f1f9dd4"><td class="memItemLeft" align="right" valign="top"><a id="af7276bb37b64120cf0b786106f1f9dd4"></a>
+bool&#160;</td><td class="memItemRight" valign="bottom"><b>initialDataFound</b> ()</td></tr>
+<tr class="separator:af7276bb37b64120cf0b786106f1f9dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public 属性</h2></td></tr>
 <tr class="memitem:ac881a9f9e70f74e2f76a8514639b3fb4"><td class="memItemLeft" align="right" valign="top"><a id="ac881a9f9e70f74e2f76a8514639b3fb4"></a>
@@ -83,11 +93,12 @@ uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_colorID</b></t
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_selectedColor</b></td></tr>
 <tr class="separator:a8cbd895e5489f7c30ee01ffbc3bee7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a34b38add853602a1f6c2b78ca8d938fd"><td class="memItemLeft" align="right" valign="top"><a id="a34b38add853602a1f6c2b78ca8d938fd"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_selectedTeamID</b></td></tr>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_selectedTeamID</b> = 255</td></tr>
 <tr class="separator:a34b38add853602a1f6c2b78ca8d938fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca2bab1fefad3e669a436f5832fa218b"><td class="memItemLeft" align="right" valign="top"><a id="aca2bab1fefad3e669a436f5832fa218b"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_resolvedTeamID</b></td></tr>
-<tr class="separator:aca2bab1fefad3e669a436f5832fa218b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae3cd1b19561298aa73d85a1fef6a6597"><td class="memItemLeft" align="right" valign="top"><a id="ae3cd1b19561298aa73d85a1fef6a6597"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597">resolvedTeamID</a> = 255</td></tr>
+<tr class="memdesc:ae3cd1b19561298aa73d85a1fef6a6597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here <br /></td></tr>
+<tr class="separator:ae3cd1b19561298aa73d85a1fef6a6597"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d8917faf4181ae23a2878c212059701"><td class="memItemLeft" align="right" valign="top"><a id="a4d8917faf4181ae23a2878c212059701"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_datCrc</b></td></tr>
 <tr class="separator:a4d8917faf4181ae23a2878c212059701"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -97,9 +108,6 @@ string&#160;</td><td class="memItemRight" valign="bottom"><b>DE_datCrc</b></td><
 <tr class="memitem:a13448a211a225f8e2fc7ab68f80ad8d0"><td class="memItemLeft" align="right" valign="top"><a id="a13448a211a225f8e2fc7ab68f80ad8d0"></a>
 uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_MPGameVersion</b></td></tr>
 <tr class="separator:a13448a211a225f8e2fc7ab68f80ad8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae989740d8ebc3ee4799c7eaba94af3c8"><td class="memItemLeft" align="right" valign="top"><a id="ae989740d8ebc3ee4799c7eaba94af3c8"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_teamIndex</b></td></tr>
-<tr class="separator:ae989740d8ebc3ee4799c7eaba94af3c8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a30ace63171eb13c634f3a8aea84f0a28"><td class="memItemLeft" align="right" valign="top"><a id="a30ace63171eb13c634f3a8aea84f0a28"></a>
 uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_civID</b></td></tr>
 <tr class="separator:a30ace63171eb13c634f3a8aea84f0a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -113,13 +121,13 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_AICivNameIndex<
 <tr class="memitem:a28b36f6119e6012caa80d4d6b11f59f1"><td class="memItemLeft" align="right" valign="top"><a id="a28b36f6119e6012caa80d4d6b11f59f1"></a>
 string&#160;</td><td class="memItemRight" valign="bottom"><b>DD_AIName</b></td></tr>
 <tr class="separator:a28b36f6119e6012caa80d4d6b11f59f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aca9353e022cce59b9558e8f972f6f74c"><td class="memItemLeft" align="right" valign="top"><a id="aca9353e022cce59b9558e8f972f6f74c"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>DD_name</b></td></tr>
-<tr class="separator:aca9353e022cce59b9558e8f972f6f74c"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aeb20e4b3fdc1fdfc8029712d856b150b"><td class="memItemLeft" align="right" valign="top"><a id="aeb20e4b3fdc1fdfc8029712d856b150b"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aeb20e4b3fdc1fdfc8029712d856b150b">DD_playerType</a></td></tr>
-<tr class="memdesc:aeb20e4b3fdc1fdfc8029712d856b150b"><td class="mdescLeft">&#160;</td><td class="mdescRight">0~6: absent, closed, human, eliminated, computer, cyborg, spectator <br /></td></tr>
-<tr class="separator:aeb20e4b3fdc1fdfc8029712d856b150b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acf0355128a99ee20ad9931b760fb2de1"><td class="memItemLeft" align="right" valign="top"><a id="acf0355128a99ee20ad9931b760fb2de1"></a>
+string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;&quot;</td></tr>
+<tr class="separator:acf0355128a99ee20ad9931b760fb2de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memItemLeft" align="right" valign="top"><a id="abc4dfe6fd9cfcd300467cf85bac1fca0"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">type</a> = 999</td></tr>
+<tr class="memdesc:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">0~6: absent, closed, human, eliminated, computer, cyborg, spectator <br /></td></tr>
+<tr class="separator:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe8d8704e3d40fb0152d633ab918071e"><td class="memItemLeft" align="right" valign="top"><a id="afe8d8704e3d40fb0152d633ab918071e"></a>
 uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_steamID</b></td></tr>
 <tr class="separator:afe8d8704e3d40fb0152d633ab918071e"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -144,16 +152,35 @@ uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_customAI</b></t
 <tr class="memitem:a20e3aa00bd0c876f4477e729f255a4c4"><td class="memItemLeft" align="right" valign="top"><a id="a20e3aa00bd0c876f4477e729f255a4c4"></a>
 char&#160;</td><td class="memItemRight" valign="bottom"><b>DE_handicap</b> [8]</td></tr>
 <tr class="separator:a20e3aa00bd0c876f4477e729f255a4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0f1882f044a1e3fa4bb6554611f42956"><td class="memItemLeft" align="right" valign="top"><a id="a0f1882f044a1e3fa4bb6554611f42956"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a0f1882f044a1e3fa4bb6554611f42956">startingAge</a> = -1</td></tr>
-<tr class="memdesc:a0f1882f044a1e3fa4bb6554611f42956"><td class="mdescLeft">&#160;</td><td class="mdescRight">各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降) <br /></td></tr>
-<tr class="separator:a0f1882f044a1e3fa4bb6554611f42956"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a656c6f42772386521ad8dc83120cc668"><td class="memItemLeft" align="right" valign="top"><a id="a656c6f42772386521ad8dc83120cc668"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>modVersionID</b></td></tr>
+<tr class="separator:a656c6f42772386521ad8dc83120cc668"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2c2fa26e7e9d5b8ec12789fb8d2685aa"><td class="memItemLeft" align="right" valign="top"><a id="a2c2fa26e7e9d5b8ec12789fb8d2685aa"></a>
+float&#160;</td><td class="memItemRight" valign="bottom"><b>initCamera</b> [2] = {-1.0, -1.0}</td></tr>
+<tr class="separator:a2c2fa26e7e9d5b8ec12789fb8d2685aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3326575a46a10ca5f81ba20ee10dd988"><td class="memItemLeft" align="right" valign="top"><a id="a3326575a46a10ca5f81ba20ee10dd988"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>civID</b></td></tr>
+<tr class="separator:a3326575a46a10ca5f81ba20ee10dd988"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5dd27c5459973c469b252cde1b8aea0f"><td class="memItemLeft" align="right" valign="top"><a id="a5dd27c5459973c469b252cde1b8aea0f"></a>
+uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>colorID</b></td></tr>
+<tr class="separator:a5dd27c5459973c469b252cde1b8aea0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a075dd1c22cef25e23e46093ab0265564"><td class="memItemLeft" align="right" valign="top"><a id="a075dd1c22cef25e23e46093ab0265564"></a>
+int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>slot</b> = -1</td></tr>
+<tr class="separator:a075dd1c22cef25e23e46093ab0265564"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="memItemLeft" align="right" valign="top"><a id="a3f7fb7d3066b88b38f4d4ed6d545bbd8"></a>
+vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">searchPattern</a></td></tr>
+<tr class="memdesc:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to locate player data in startinfo section <br /></td></tr>
+<tr class="separator:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memItemLeft" align="right" valign="top"><a id="a28002d3d2977e7aa8c3405b62af0ff0d"></a>
+uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">dataOffset</a> = 0</td></tr>
+<tr class="memdesc:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset from header stream start of player data in startinfo section <br /></td></tr>
+<tr class="separator:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock">
-<p class="definition">在文件 <a class="el" href="Analyzers_2default_2Player_8h_source.html">Analyzers/default/Player.h</a> 第 <a class="el" href="Analyzers_2default_2Player_8h_source.html#l00018">18</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="src_2Analyzers_2default_2Player_8h_source.html">src/Analyzers/default/Player.h</a> 第 <a class="el" href="src_2Analyzers_2default_2Player_8h_source.html#l00018">18</a> 行定义.</p>
 </div><hr/>该类的文档由以下文件生成:<ul>
-<li><a class="el" href="Analyzers_2default_2Player_8h_source.html">Analyzers/default/Player.h</a></li>
+<li><a class="el" href="src_2Analyzers_2default_2Player_8h_source.html">src/Analyzers/default/Player.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->

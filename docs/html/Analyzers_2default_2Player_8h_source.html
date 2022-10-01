@@ -91,36 +91,47 @@ $(function() {
 <div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classPlayer.html">   18</a></span>&#160;<span class="keyword">class </span><a class="code" href="classPlayer.html">Player</a></div>
 <div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
 <div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="keyword">public</span>:</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    uint32_t            DD_DLCID;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    uint32_t            DD_colorID;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    uint8_t             DE_selectedColor;</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    uint8_t             DE_selectedTeamID;</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    uint8_t             DE_resolvedTeamID;</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    uint32_t            HD_datCrc;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordtype">string</span>              DE_datCrc;</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    uint8_t             DD_MPGameVersion;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    uint32_t            HD_teamIndex;</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    uint32_t            DD_civID;</div>
-<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">   31</a></span>&#160;    <span class="keywordtype">string</span>              <a class="code" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">DD_AIType</a>; <span class="comment">///&lt; in 26.21: &quot;PromiDE&quot;;</span></div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;<span class="comment"></span>    uint8_t             DD_AICivNameIndex;</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordtype">string</span>              DD_AIName;</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordtype">string</span>              DD_name;</div>
-<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classPlayer.html#aeb20e4b3fdc1fdfc8029712d856b150b">   35</a></span>&#160;    uint32_t            <a class="code" href="classPlayer.html#aeb20e4b3fdc1fdfc8029712d856b150b">DD_playerType</a>; <span class="comment">///&lt; 0~6: absent, closed, human, eliminated, computer, cyborg, spectator</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span>    uint64_t            HD_steamID;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    uint32_t            DE_profileID;</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    int32_t             DD_playerNumber;</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    uint32_t            DD_RMRating = 0;</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    uint32_t            DD_DMRating = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    uint8_t             DE_preferRandom;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint8_t             DE_customAI;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordtype">char</span>                DE_handicap[8];</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classPlayer.html#a0f1882f044a1e3fa4bb6554611f42956">   45</a></span>&#160;    int32_t             startingAge = -1; <span class="comment">///&lt; 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span>};</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">bool</span>                valid() { <span class="keywordflow">return</span> type &gt;= 2 &amp;&amp; type &lt;= 10; }</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">bool</span>                initialDataFound() { <span class="keywordflow">return</span> dataOffset &gt; 0; }</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    uint32_t            DD_DLCID;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    uint32_t            DD_colorID;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    uint8_t             DE_selectedColor;</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    uint8_t             DE_selectedTeamID = 255;</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597">   28</a></span>&#160;    uint8_t             resolvedTeamID = 255; <span class="comment">///&lt; Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"></span>    uint32_t            HD_datCrc;</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keywordtype">string</span>              DE_datCrc;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    uint8_t             DD_MPGameVersion;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="comment">// uint32_t            HD_teamIndex = 999; ///&lt; This looks not right, use data from lobby</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    uint32_t            DD_civID;</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">   34</a></span>&#160;    <span class="keywordtype">string</span>              <a class="code" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">DD_AIType</a>; <span class="comment">///&lt; in 26.21: &quot;PromiDE&quot;;</span></div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;<span class="comment"></span>    uint8_t             DD_AICivNameIndex;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordtype">string</span>              DD_AIName;</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordtype">string</span>              name = <span class="stringliteral">&quot;&quot;</span>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">   38</a></span>&#160;    uint32_t            type = 999; <span class="comment">///&lt; 0~6: absent, closed, human, eliminated, computer, cyborg, spectator</span></div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment"></span>    uint64_t            HD_steamID;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    uint32_t            DE_profileID;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    int32_t             DD_playerNumber;</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    uint32_t            DD_RMRating = 0;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    uint32_t            DD_DMRating = 0;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    uint8_t             DE_preferRandom;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    uint8_t             DE_customAI;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordtype">char</span>                DE_handicap[8];</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordtype">float</span>               modVersionID;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="keywordtype">float</span>               initCamera[2] = {-1.0, -1.0};</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    uint8_t             civID;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    uint8_t             colorID;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    <span class="comment">// int32_t             startingAge = -1; ///&lt; 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    int32_t             slot = -1;</div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">   55</a></span>&#160;    vector&lt;uint8_t&gt;     <a class="code" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">searchPattern</a>; <span class="comment">///&lt; Used to locate player data in startinfo section</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">   56</a></span>&#160;<span class="comment"></span>    uint32_t            dataOffset = 0; <span class="comment">///&lt; Offset from header stream start of player data in startinfo section</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;<span class="comment"></span>};</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassPlayer_html_aeb20e4b3fdc1fdfc8029712d856b150b"><div class="ttname"><a href="classPlayer.html#aeb20e4b3fdc1fdfc8029712d856b150b">Player::DD_playerType</a></div><div class="ttdeci">uint32_t DD_playerType</div><div class="ttdoc">0~6: absent, closed, human, eliminated, computer, cyborg, spectator</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00035">Analyzers/default/Player.h:35</a></div></div>
+<div class="ttc" id="aclassPlayer_html_a3f7fb7d3066b88b38f4d4ed6d545bbd8"><div class="ttname"><a href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">Player::searchPattern</a></div><div class="ttdeci">vector&lt; uint8_t &gt; searchPattern</div><div class="ttdoc">Used to locate player data in startinfo section</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00055">Analyzers/default/Player.h:55</a></div></div>
 <div class="ttc" id="aclassPlayer_html"><div class="ttname"><a href="classPlayer.html">Player</a></div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00018">Analyzers/default/Player.h:18</a></div></div>
-<div class="ttc" id="aclassPlayer_html_afb2ffb7d44e02b70d5c7dc8bf5847505"><div class="ttname"><a href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">Player::DD_AIType</a></div><div class="ttdeci">string DD_AIType</div><div class="ttdoc">in 26.21: &quot;PromiDE&quot;;</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00031">Analyzers/default/Player.h:31</a></div></div>
+<div class="ttc" id="aclassPlayer_html_afb2ffb7d44e02b70d5c7dc8bf5847505"><div class="ttname"><a href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">Player::DD_AIType</a></div><div class="ttdeci">string DD_AIType</div><div class="ttdoc">in 26.21: &quot;PromiDE&quot;;</div><div class="ttdef"><b>Definition:</b> <a href="Analyzers_2default_2Player_8h_source.html#l00034">Analyzers/default/Player.h:34</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
