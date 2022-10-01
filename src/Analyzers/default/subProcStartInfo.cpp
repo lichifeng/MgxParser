@@ -12,6 +12,8 @@
 #include "Analyzer.h"
 
 void DefaultAnalyzer::_startInfoAnalyzer() {
+    _curPos = _startInfoPos;
+
     uint32_t numHeaderData = *(uint32_t*)(_startInfoPatternTrail + 1);
 
     for (auto p : players) {
@@ -41,7 +43,6 @@ void DefaultAnalyzer::_startInfoAnalyzer() {
                 p.initCamera[0] = p.initCamera[1] = -1.0;
                 continue;
             }
-
 
             if (!IS_AOK(versionCode)) _skip(*(float*)_curPos * 4);
             _skip(4 + 1);

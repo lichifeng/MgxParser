@@ -85,7 +85,40 @@ bool DefaultAnalyzer::_locateStreams() {
 }
 
 void DefaultAnalyzer::_analyze() {
-    // Phase 1:
+//              ┌───────────────┐
+//       ┌──────┤version        │
+//       │      ├───────────────┤   Inflated header data mainly
+//       │      │HD/DE header   │   composed of these parts.
+//       │      ├───────────────┤
+//       │      │AI data        │   Some of them can be accessed
+//       │      ├───────────────┤   by sequent read easily.
+//       │      │Replay         │
+//       │      ├───────────────┤   Some cannot. We need do some
+//       │      │Map            │   search to reach those parts.
+//       │      ├───────────────┤
+//       │      │Start info    ◄│   by lichifeng, 2022/10/1
+//    Inflated  ├───────────────┤
+//    header    │Achievement    │
+//    data      ├───────────────┤
+//    structure │Scenario      ◄│
+//       │      ├───────────────┤
+//       │      │Victory        │
+//       │      ├───────────────┤
+//       │      │Unknown        │
+//       │      ├───────────────┤
+//       │      │Disabled      ◄│
+//       │      ├───────────────│
+//       │      │Game settings ◄│
+//       │      ├───────────────│
+//       │      │Trigger info  ◄│
+//       │      ├───────────────┤
+//       └──────┤Lobby          │
+//              └───────────────┘
+
+    // ************
+    // * Phase 1: *
+    // ************
+    //   Reach sections which can reach easily(no search needed).
     //   1-1: Version
     _switchStream(BODY_STRM);
     _readBytes(4, &logVersion);
@@ -96,58 +129,76 @@ void DefaultAnalyzer::_analyze() {
     _setVersionCode();
 
     //   1-2: HD/DE-specific data
-    if (IS_HD(versionCode) && saveVersion > 12.3401) { /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
-        _headerHDAnalyzer();
-    }
-
     if (IS_DE(versionCode)) {
         _headerDEAnalyzer();
+    } else if (IS_HD(versionCode) && saveVersion > 12.3401) {
+        /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
+        _headerHDAnalyzer();
     }
     
-    // Analyze AI info part in header data
+    //   1-3: AI
     _AIAnalyzer();
 
-    // Analyze replay part in header data
+    //   1-4: Replay
     _replayAnalyzer();
 
-    // Analyze map data in header stream
+    //   1-5: Map
     _mapDataAnalyzer();
 
-    // Analyze start info
+    //   1-6: Find Startinfo
     _findStartInfoStart();
 
-    // Find some key positions first
+    // ************
+    // * Phase 2: *
+    // ************
+    //   Find some key positions
+    //   2-1: Trigger info start position
     _findTriggerInfoStart();
+
+    //   2-2: Game settings start position. Need 2-1
     _findGameSettingsStart();
+
+    //   2-3：Disables start position. Need 2-1
     _findDisablesStart();
-    _findVictoryStart();
-    _findScenarioHeaderStart();
 
-    // Skip scenario header. Nothing valuable here except a filename.
-    // What is really needed is instructions data after this section,
-    // Which is critical data to detect file encoding.
-    _scenarioHeaderAnalyzer();
-
-    // Read messages
-    _messagesAnalyzer();
-
-    // Read victory-related settings
-    _victorySettingsAnalyzer();
-
-    // Analyze game settings part, player names first appears here (before HD/DE versions).
+    //   2-4: Game settings part, player names first appears here (before HD/DE
+    //   versions). Need 2-2
     _gameSettingsAnalyzer();
 
-    // Search initial player data postion
+    //   2-5: Search initial player data postion. Need 2-4
     _findInitialPlayersDataPos();
 
-    // Go back to player initial data position and rummage some useful pieces
-    _startInfoAnalyzer();
+    //   2-6: Skip victory-related data. Need 2-3
+    _findVictoryStart();
 
-    // Trigger info is normally skipped
+    //   2-7: Find&Skip scenario data. Need 2-6
+    //   Nothing valuable here except a filename.
+    //   What is really needed is instructions data after this section,
+    //   Which is critical data to detect file encoding.
+    _findScenarioHeaderStart();
+    _scenarioHeaderAnalyzer();
+
+    //   2-8: Skip trigger info. Need 2-1
+    //   This is useless data, but need to get lobby start.
     _triggerInfoAnalyzer();
 
-    // Analyze some misc data
+    // ************
+    // * Phase 3: *
+    // ************
+    //   Do rest analyze. Following jobs is not necessarily ordered.
+
+    //   3-1: Lobby data, lobby chat & some settings here. Need 2-8
     _lobbyAnalyzer();
+    
+    //   3-2: Victory
+    _victorySettingsAnalyzer();
+    
+    //   3-3: Messages, ie. Instructions
+    _messagesAnalyzer();
+
+    //   3-4: Go back to player initial data position and rummage some useful pieces
+    _startInfoAnalyzer();
+
 }
 
 void DefaultAnalyzer::_expectBytes(

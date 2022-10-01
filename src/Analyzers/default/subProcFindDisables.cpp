@@ -13,6 +13,7 @@
 
 void DefaultAnalyzer::_findDisablesStart() {
     _curPos = _gameSettingsPos;
+    
     if (!IS_DE(versionCode)) {
         if (IS_HD(versionCode) && saveVersion < 12.3399) {
             _disablesStartPos = _curPos - 5396;

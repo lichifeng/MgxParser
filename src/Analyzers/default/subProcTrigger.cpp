@@ -63,4 +63,6 @@ void DefaultAnalyzer::_triggerInfoAnalyzer() {
     if (numTriggers > 0) _skip(numTriggers * 4);
 
     if (IS_DE(versionCode)) _skip(1032);
+
+    _lobbyStartPos = _curPos;
 }

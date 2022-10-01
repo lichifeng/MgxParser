@@ -12,6 +12,8 @@
 #include "Analyzer.h"
 
 void DefaultAnalyzer::_lobbyAnalyzer() {
+    _curPos = _lobbyStartPos;
+
     if (saveVersion >= 13.3399) _skip(5);
     if (saveVersion >= 20.0599) _skip(9);
     if (saveVersion >= 26.1599) _skip(5);

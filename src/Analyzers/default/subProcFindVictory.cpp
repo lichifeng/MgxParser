@@ -13,6 +13,7 @@
 
 void DefaultAnalyzer::_findVictoryStart() {
     _victoryStartPos = _disablesStartPos - 12544 - 44;
+    
     // Check if at correct point
     if (*(int32_t*)_victoryStartPos != -99) {
         throw(ParserException("[WARN] Check bytes not valid, _victoryStartPos seems not good. \n")); // 9d ff ff ff

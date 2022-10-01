@@ -402,6 +402,7 @@ protected:
     uint8_t*                     _victoryStartPos;
     uint8_t*                     _scenarioHeaderPos;
     uint8_t*                     _messagesStartPos;
+    uint8_t*                     _lobbyStartPos;
 
     EncodingConverter*           _encodingConverter = nullptr;
 };
