@@ -81,8 +81,8 @@ int DefaultAnalyzer::_inflateRawHeader()
 }
 
 void DefaultAnalyzer::extract(
-    const string& headerPath  = "header.dat", 
-    const string& bodyPath    = "body.dat"
+    const string headerPath  = "header.dat", 
+    const string bodyPath    = "body.dat"
 ) const
 {
     ofstream headerOut(headerPath, ofstream::binary);

@@ -13,6 +13,7 @@
 #define HEADER_INIT 4*1024*1024
 #define HEADER_STRM 0
 #define BODY_STRM 1
+#define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
 
 #include <fstream>
 #include <cstddef>
@@ -23,6 +24,7 @@
 #include <iomanip>
 #include <iterator>
 
+#include "../../Logger.h"
 #include "../../EncodingConverter.h"
 #include "../../ParserException.h"
 #include "../BaseAnalyzer.h"
@@ -63,8 +65,9 @@ public:
      * \param      headerPath       filename of generated header file
      * \param      body             filename of generated body file
      */
-    void extract(const string&, const string&) const;
+    void extract(const string, const string) const;
 
+    Logger*           logger = nullptr;
     string            path; ///< 录像文件输入路径
     string            filename; ///< 录像文件名（去除路径后）
     string            ext; ///< 录像文件扩展名
@@ -88,7 +91,7 @@ public:
     uint32_t          indcludeAI;
 
     // HD/DE-specific data from header stream
-    uint32_t          DE_build;
+    uint32_t          DE_build = 0; ///< Recent steam version of DE: 66692
     uint32_t          DE_timestamp;
     float             DD_version; ///< hd<=4.7: 1000; hd=5.8: 1006
     uint32_t          DD_internalVersion;
@@ -328,27 +331,17 @@ protected:
         bool throwExpt = true
     );
 
-    inline void        _printHex(int n, bool verbose = true, string tail = "\n", string funcInfo = "(null)") {
-        ios_base::fmtflags f( cout.flags() );
-        if (verbose) {
-            cout << "Function: " << funcInfo << " Position: " << _curPos - _curStream << endl \
-                << "Next " << n << " bytes are: [ ";
-            for (size_t i = 0; i < n; i++)
-            {
-                cout << hex << setfill('0') << uppercase \
-                    << setw(2) << (int)_curPos[i] << " ";
-            }
-            cout << "]" << tail;
-        } else {
-            for (size_t i = 0; i < n; i++)
-            {
-                cout << hex << setfill('0') << uppercase \
-                    << setw(2) << (int)_curPos[i] << " ";
-            }
-            cout << tail;
-        }
-        
-        cout.flags( f );
+    inline void        _printHex(size_t n, string file, size_t line) {
+        if (nullptr == logger) return;
+        if (_remainBytes() <= n) n = _remainBytes();
+
+        logger->logHex(
+            n,
+            _header.begin() + _distance(),
+            _distance(),
+            file,
+            line
+        );
     }
 
     /**

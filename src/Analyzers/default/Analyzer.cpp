@@ -85,9 +85,8 @@ bool DefaultAnalyzer::_locateStreams() {
 }
 
 void DefaultAnalyzer::_analyze() {
-    // Start data analyzing
-    
-    // Get logVersion
+    // Phase 1:
+    //   1-1: Version
     _switchStream(BODY_STRM);
     _readBytes(4, &logVersion);
     _switchStream(HEADER_STRM);
@@ -96,8 +95,8 @@ void DefaultAnalyzer::_analyze() {
     _readBytes(4, &saveVersion);
     _setVersionCode();
 
-    // Analyze HD/DE-specific data in header data
-    if (IS_HD(versionCode) && saveVersion > 12.3401) {
+    //   1-2: HD/DE-specific data
+    if (IS_HD(versionCode) && saveVersion > 12.3401) { /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
         _headerHDAnalyzer();
     }
 

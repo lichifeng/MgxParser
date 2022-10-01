@@ -18,7 +18,7 @@
 void DefaultAnalyzer::_gameSettingsAnalyzer() {
     _curPos = _gameSettingsPos;
     _skip(64 + 4 + 8);
-    if (IS_HD(versionCode)) _skip(16);
+    if (IS_HD(versionCode) && saveVersion > 12.3401) _skip(16);
     if (!IS_AOK(versionCode)) _readBytes(4, &mapID);
     _readBytes(4, &difficultyID);
     _readBytes(4, &lockTeams);
