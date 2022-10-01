@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: arg_converter&lt; T, Context &gt; 模板类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-types">Private 类型</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classarg__converter-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">arg_converter&lt; T, Context &gt; 模板类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a2efa84e846af53bd07ef607cdad09a4f"><td class="memItemLeft" align="right" valign="top"><a id="a2efa84e846af53bd07ef607cdad09a4f"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>arg_converter</b> (<a class="el" href="classbasic__format__arg.html">basic_format_arg</a>&lt; Context &gt; &amp;arg, char_type type)</td></tr>
+<tr class="separator:a2efa84e846af53bd07ef607cdad09a4f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af422cfdaedc8faa5e4eb941766cda90e"><td class="memItemLeft" align="right" valign="top"><a id="af422cfdaedc8faa5e4eb941766cda90e"></a>
+void&#160;</td><td class="memItemRight" valign="bottom"><b>operator()</b> (bool <a class="el" href="classvalue.html">value</a>)</td></tr>
+<tr class="separator:af422cfdaedc8faa5e4eb941766cda90e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae6ffe670fbd3133f4ab869dbad908504"><td class="memTemplParams" colspan="2"><a id="ae6ffe670fbd3133f4ab869dbad908504"></a>
+template&lt;typename U , FMT_ENABLE_IF(std::is_integral&lt; U &gt;::value) &gt; </td></tr>
+<tr class="memitem:ae6ffe670fbd3133f4ab869dbad908504"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (U <a class="el" href="classvalue.html">value</a>)</td></tr>
+<tr class="separator:ae6ffe670fbd3133f4ab869dbad908504"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7e3e90ad1df3d120f6170e7ad6261f74"><td class="memTemplParams" colspan="2"><a id="a7e3e90ad1df3d120f6170e7ad6261f74"></a>
+template&lt;typename U , FMT_ENABLE_IF(!std::is_integral&lt; U &gt;::value) &gt; </td></tr>
+<tr class="memitem:a7e3e90ad1df3d120f6170e7ad6261f74"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><b>operator()</b> (U)</td></tr>
+<tr class="separator:a7e3e90ad1df3d120f6170e7ad6261f74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-types"></a>
+Private 类型</h2></td></tr>
+<tr class="memitem:aee7fece326dbc1f688f7a7bc9be2d4d9"><td class="memItemLeft" align="right" valign="top"><a id="aee7fece326dbc1f688f7a7bc9be2d4d9"></a>
+using&#160;</td><td class="memItemRight" valign="bottom"><b>char_type</b> = typename Context::char_type</td></tr>
+<tr class="separator:aee7fece326dbc1f688f7a7bc9be2d4d9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ac3497020aa84df8c3f90265c6070dd3c"><td class="memItemLeft" align="right" valign="top"><a id="ac3497020aa84df8c3f90265c6070dd3c"></a>
+<a class="el" href="classbasic__format__arg.html">basic_format_arg</a>&lt; Context &gt; &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>arg_</b></td></tr>
+<tr class="separator:ac3497020aa84df8c3f90265c6070dd3c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a196d918adb1e79c24e65001311c39d28"><td class="memItemLeft" align="right" valign="top"><a id="a196d918adb1e79c24e65001311c39d28"></a>
+char_type&#160;</td><td class="memItemRight" valign="bottom"><b>type_</b></td></tr>
+<tr class="separator:a196d918adb1e79c24e65001311c39d28"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock"><h3>template&lt;typename T, typename Context&gt;<br />
+class arg_converter&lt; T, Context &gt;</h3>
+
+
+<p class="definition">在文件 <a class="el" href="printf_8h_source.html">printf.h</a> 第 <a class="el" href="printf_8h_source.html#l00114">114</a> 行定义.</p>
+</div><hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="printf_8h_source.html">printf.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
