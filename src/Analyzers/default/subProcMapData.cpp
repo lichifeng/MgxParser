@@ -1,9 +1,9 @@
 /**
  * \file       subProcMapData.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -11,15 +11,20 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_mapDataAnalyzer() {
+void DefaultAnalyzer::_mapDataAnalyzer()
+{
     _readBytes(8, &mapCoord);
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {
-        throw(ParserException("[WARN] Abnormal map size data. \n"));
-    } else if (mapCoord[0] == mapCoord[1]) {
-        message.append("[INFO] Found desired map coordinates data. \n");
-    } else {
-        throw(ParserException("[WARN] Map coordinates is weird, X != Y. \n"));
+        logger->warn("Abnormal mapsize. \"{}\"", filename);
+        _failedSignal = true;
+        return;
+    }
+    else if (mapCoord[0] != mapCoord[1])
+    {
+        logger->warn("Map coordinates is weird, X != Y. \"{}\"", filename);
+        _failedSignal = true;
+        return;
     }
 
     int32_t numMapZones, mapBits, numFloats;
@@ -34,15 +39,18 @@ void DefaultAnalyzer::_mapDataAnalyzer() {
         _readBytes(4, &numFloats);
         _skip(numFloats * 4 + 4);
     }
-    
+
     _readBytes(1, &allVisible);
-    _readBytes(1, &fogOfWar);
+    _skip(1); //_readBytes(1, &fogOfWar); // Use fogOfWar in lobby
 
     _mapBitmap = _curPos;
-    uint32_t checkVal = *(uint32_t*)(_curPos + 7 * mapBits);
-    if (IS_DE(versionCode)) {
+    uint32_t checkVal = *(uint32_t *)(_curPos + 7 * mapBits);
+    if (IS_DE(versionCode))
+    {
         _mapTileType = (saveVersion >= 13.0299 || checkVal > 1000) ? 9 : 7;
-    } else {
+    }
+    else
+    {
         _mapTileType = (_curPos[0] == 255) ? 4 : 2;
     }
     _skip(_mapTileType * mapBits);
@@ -60,6 +68,7 @@ void DefaultAnalyzer::_mapDataAnalyzer() {
     _skip(visibilityMapSize[0] * visibilityMapSize[1] * 4);
 }
 
-string DefaultAnalyzer::generateMap(const string& path, bool hd) {
+string DefaultAnalyzer::generateMap(const string &path, bool hd)
+{
     return path;
 }

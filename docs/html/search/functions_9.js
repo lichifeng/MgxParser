@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['main_940',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]]
+  ['logger_458',['Logger',['../classLogger.html#abc41bfb031d896170c7675fa96a6b30c',1,'Logger']]],
+  ['loghex_459',['logHex',['../classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47',1,'Logger']]]
 ];

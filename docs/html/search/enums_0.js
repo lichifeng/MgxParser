@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['versioncode_1001',['VERSIONCODE',['../utils_8h.html#a191520b805ffbd407a40b0bcc7c98464',1,'utils.h']]]
+  ['loggerdest_677',['LoggerDest',['../Logger_8h.html#a0318724964d676b87e91b7bd11658127',1,'Logger.h']]]
 ];

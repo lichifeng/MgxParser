@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['parsemode_982',['parseMode',['../classDefaultAnalyzer.html#ae8919b2f12cbf533902e9c29b4f28e81',1,'DefaultAnalyzer']]],
-  ['parsetime_983',['parseTime',['../classDefaultAnalyzer.html#a3646946d0c437c644ab5ca63ad33db9e',1,'DefaultAnalyzer']]],
-  ['path_984',['path',['../classDefaultAnalyzer.html#af6b115f679c40b4f110fc2ef6df4a2ec',1,'DefaultAnalyzer']]],
-  ['playdate_985',['playDate',['../classDefaultAnalyzer.html#abf7c2565bd55dcf196adac1566e5a300',1,'DefaultAnalyzer']]],
-  ['populationlimit_986',['populationLimit',['../classDefaultAnalyzer.html#a5b74416b48614775e4edb2ad3ab19315',1,'DefaultAnalyzer']]]
+  ['jp_5fpattern_611',['jp_pattern',['../namespacepatterns.html#a923c1123fcf0d47de4726438934f4d38',1,'patterns']]],
+  ['jp_5futf8_5fpattern_612',['jp_utf8_pattern',['../namespacepatterns.html#a0a6f06fc2352069713f60c54af26c268',1,'patterns']]]
 ];

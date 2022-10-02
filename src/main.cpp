@@ -24,7 +24,7 @@ int main(int argc, char* argv[])
 
     if (DEBUG) {
         logger.warn("Debug Mode");
-    } 
+    }
     
     if (argc <= 1)
     {
@@ -44,17 +44,22 @@ int main(int argc, char* argv[])
         logger.fatal("Exception: {}", e.what());
     }
 
-    logger.info("Parsing time: {}ms", logger.elapsed());
-    logger.info("Filename: {}", a.filename);
-    logger.info("VersionString: {}", a.versionStr);
-    logger.info("SaveVersion: {}", a.saveVersion);
-    logger.info("DD_Version: {}", a.DD_version);
-    logger.info("Int_Version: {}", a.DD_internalVersion);
-    logger.info("DE_Build: {}", a.DE_build);
-    logger.info("VersionCode: {}", a.versionCode);
-    logger.info("Message: {}", a.message);
+    if (DEBUG) {
+        logger.info("Parsing time: {:.2f}ms", logger.elapsed());
+        logger.info("Filename: {}", a.filename);
+        logger.info("VersionString: {}", a.versionStr);
+        logger.info("SaveVersion: {}", a.saveVersion);
+        logger.info("DD_Version: {}", a.DD_version);
+        logger.info("Int_Version: {}", a.DD_internalVersion);
+        logger.info("DE_Build: {}", a.DE_build);
+        logger.info("VersionCode: {}", a.versionCode);
+        logger.info("Message: {}", a.message);
+    } else {
+        a.message = logger.dumpStr();
+        cout << a.message << endl;
+    }
 
-    a.extract("header.dat", "body.dat");
+    //a.extract("header.dat", "body.dat");
 
     return 0;
 }

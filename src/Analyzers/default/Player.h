@@ -38,7 +38,7 @@ public:
     uint32_t            type = 999; ///< 0~6: absent, closed, human, eliminated, computer, cyborg, spectator
     uint64_t            HD_steamID;
     uint32_t            DE_profileID;
-    int32_t             DD_playerNumber;
+    int32_t             DD_playerNumber = -1;
     uint32_t            DD_RMRating = 0;
     uint32_t            DD_DMRating = 0;
     uint8_t             DE_preferRandom;

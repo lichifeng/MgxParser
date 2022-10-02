@@ -13,16 +13,19 @@
 
 void DefaultAnalyzer::_messagesAnalyzer() {
     _curPos = _messagesStartPos;
+
     _skip(20);
     if (!IS_AOK(versionCode)) _skip(4);
 
     _readPascalString(instructions);
     _guessEncoding();
 
+    /*
     int totalStrs = IS_AOK(versionCode) ? 8 : 9; /// \todo 需要验证 AOK 的情况
     for (size_t i = 0; i < totalStrs; i++)
         _skipPascalString();
     
     /// \note 这一节的数据剩下的就不读了，没什么用。以后再说吧。
+    */
 
 }

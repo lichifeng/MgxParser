@@ -106,10 +106,6 @@ void DefaultAnalyzer::_guessEncoding()
     {
         rawEncoding = "utf-8";
     }
-    else if (rawEncoding.size() == 0)
-    {
-        rawEncoding = "gbk";
-    }
 
     if (_encodingConverter == nullptr)
         _encodingConverter = new EncodingConverter(outEncoding, rawEncoding);

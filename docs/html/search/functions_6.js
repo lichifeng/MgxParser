@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['format_934',['format',['../structspdlog_1_1sinks_1_1win__eventlog_1_1internal_1_1win32__error.html#ac257bfbcd3a8e7d1be75074b7d41ab6d',1,'spdlog::sinks::win_eventlog::internal::win32_error']]]
+  ['generatemap_454',['generateMap',['../classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8',1,'BaseAnalyzer::generateMap()'],['../classDefaultAnalyzer.html#a08ce75f28d1c8e37929bbca33431bd9c',1,'DefaultAnalyzer::generateMap()']]]
 ];

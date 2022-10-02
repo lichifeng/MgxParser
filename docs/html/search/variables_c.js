@@ -1,7 +1,7 @@
 var searchData=
 [
-  ['saveversion_990',['saveVersion',['../classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d',1,'DefaultAnalyzer']]],
-  ['searchpattern_991',['searchPattern',['../classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8',1,'Player']]],
-  ['size_992',['size',['../structformat__to__n__result.html#ab1c815078e1a78716bb07b9ed8c7023b',1,'format_to_n_result']]],
-  ['status_993',['status',['../classDefaultAnalyzer.html#ab206869b37bdabbcaa1200f212ad3480',1,'DefaultAnalyzer']]]
+  ['lockdiplomacy_615',['lockDiplomacy',['../classDefaultAnalyzer.html#a8d4fc98111754645aa4761ab269c163b',1,'DefaultAnalyzer']]],
+  ['lockteams_616',['lockTeams',['../classDefaultAnalyzer.html#a7662528242a27aa6d00160057a525d71',1,'DefaultAnalyzer']]],
+  ['logger_617',['logger',['../classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2',1,'DefaultAnalyzer']]],
+  ['logversion_618',['logVersion',['../classDefaultAnalyzer.html#a9933aa8d27576f192036d8529dfd9090',1,'DefaultAnalyzer']]]
 ];

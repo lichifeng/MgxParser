@@ -27,9 +27,13 @@ void DefaultAnalyzer::_lobbyAnalyzer() {
     }
     if (saveVersion < 12.2999) _skip(1);
     _readBytes(4, &revealMap);
-    _skip(4);
+    _readBytes(4, &fogOfWar);
     _readBytes(4, &mapSize);
-    _readBytes(4, &populationLimit);
+    if (populationLimit == UINT32_INIT) {
+        _readBytes(4, &populationLimit);
+    } else {
+        _skip(4);
+    }
     _readBytes(1, &gameType);
     _readBytes(1, &lockDiplomacy);
     if (IS_HD(versionCode) || IS_DE(versionCode)) {
@@ -56,6 +60,6 @@ void DefaultAnalyzer::_lobbyAnalyzer() {
         }
     }
     
-    if (IS_DE(versionCode) && _remainBytes() >= 4) _readBytes(4, &mapSeed);
+    if (IS_DE(versionCode) && _remainBytes() >= 4) _readBytes(4, &DE_mapSeed);
     // Let it go after this.
 }

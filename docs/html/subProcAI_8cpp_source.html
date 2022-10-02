@@ -73,109 +73,135 @@ $(function() {
 <div class="contents">
 <a href="subProcAI_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcAI.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
 <div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-30</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-03</span></div>
 <div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
 <div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="src_2Analyzers_2default_2Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">DefaultAnalyzer::_AIAnalyzer</a>() {</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;indcludeAI);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> (!indcludeAI) <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    _skip(2);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    uint16_t numAIStrings = *(uint16_t*)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    _skip(6);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; numAIStrings; i++)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        _skip(4 + *(int32_t*)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>);</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    </div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (IS_DE(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) {</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        _skip(5);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        _skip(4); <span class="comment">/// \todo 验证一下各版本的情况</span></div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;<span class="comment"></span>    }</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    _expectBytes(</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        patterns::AIdataUnknown,</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="stringliteral">&quot;[INFO] Found AI info, now before AI_DATA section, everything OK. \n&quot;</span>, </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <span class="stringliteral">&quot;[WARN] Now in AI section, expecting 08 00 but disppointed. \n&quot;</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    );</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="comment">// AI Data</span></div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="keywordflow">if</span> (IS_DE(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) { <span class="comment">/// \todo this takes too long, not acceptable</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"></span>        <span class="keyword">auto</span> curItr = <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.begin() + (<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - <a class="code" href="classDefaultAnalyzer.html#a5fd40b34e8a98805fcb9e6c7c66c83f6">_curStream</a>);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        uint16_t rulesCnt = 0;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// // Tricky skip</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// for (size_t i = 0; i &lt; _DD_AICount; i++)</span></div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// {</span></div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">//     patterns::AIDirtyFix[4] = i;</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">//     curItr = findPosition(</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">//         curItr, _header.end(),</span></div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">//         patterns::AIDirtyFix.begin(), </span></div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="comment">//         patterns::AIDirtyFix.end()</span></div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <span class="comment">//     );</span></div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">//     _curPos = &amp;(*curItr);</span></div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">//     _skip(10);</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">//     _readBytes(2, &amp;rulesCnt);</span></div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">//     curItr += 200 * rulesCnt;</span></div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">//     cout &lt;&lt; &quot;rulesCnt: &quot; &lt;&lt; rulesCnt &lt;&lt; endl;</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">// }</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">// _curPos = &amp;(*curItr);</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        </div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">// Dumb skip</span><span class="comment"></span></div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;<span class="comment">        /// \todo 这里用了非常不确定的方法来跳过，没有充分验证。没有直接查找4096个0X00是出于性能考虑。</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;<span class="comment"></span>        patterns::FFs_500.resize(1000, 0x00);</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        curItr = findPosition(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            curItr, <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.end(),</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            patterns::FFs_500.begin(), </div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            patterns::FFs_500.end()</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        );</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = &amp;(*curItr);</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> += 4096 + 500;</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordtype">int</span> actionSize = 24; <span class="comment">// See recanalyst</span></div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordtype">int</span> ruleSize = 16 + 16 * actionSize; <span class="comment">// See recanalyst</span></div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt; 11.9999) ruleSize += 0x180;</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="keywordflow">for</span> (uint16_t i = 0, numRules; i &lt; 8; i++)</div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            _skip(10);</div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(2, &amp;numRules);</div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            <span class="keywordflow">if</span> (numRules &gt; 10000) {</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                <span class="keywordflow">throw</span>(<a class="code" href="classParserException.html">ParserException</a>(<span class="stringliteral">&quot;[WARN] numRules in AI data &gt; 1000 (maxRules is normally 10000). \n&quot;</span>));</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            }</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            _skip(4);</div>
-<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j++ &lt; numRules; _skip(ruleSize));</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        }</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">DefaultAnalyzer::_AIAnalyzer</a>()</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDefaultAnalyzer.html#a65ab0954175ce07e2ec39517a0789603">indcludeAI</a>);</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a65ab0954175ce07e2ec39517a0789603">indcludeAI</a>)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    _skip(2);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    uint16_t numAIStrings = *(uint16_t *)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    _skip(6);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">for</span> (uint32_t i = 0; i &lt; numAIStrings; i++)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        _skip(4 + *(int32_t *)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>);</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    }</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160; </div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>))</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        _skip(5);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        _skip(4); <span class="comment">/// \todo 验证一下各版本的情况</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span>    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a5af69fcde971308b181bc1ca303af0c2">_expectBytes</a>(<a class="code" href="namespacepatterns.html#acc3e2ed6706b59dd79c8df08a0f47f0a">patterns::AIdataUnknown</a>))</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    {</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            <span class="stringliteral">&quot;{}(): Validation in AI failed, expecting [08 00] @{}.&quot;</span>,</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#ae4b1ed2805b1be6cd6dbc6785448bc69">_failedSignal</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160; </div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// AI Data</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>))</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    { <span class="comment">/// \todo this takes too long, not acceptable</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;<span class="comment"></span>        <span class="keyword">auto</span> curItr = <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.begin() + (<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - <a class="code" href="classDefaultAnalyzer.html#a5fd40b34e8a98805fcb9e6c7c66c83f6">_curStream</a>);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        uint16_t rulesCnt = 0;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="comment">// // Tricky skip</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="comment">// for (size_t i = 0; i &lt; _DD_AICount; i++)</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="comment">// {</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="comment">//     patterns::AIDirtyFix[4] = i;</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="comment">//     curItr = findPosition(</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="comment">//         curItr, _header.end(),</span></div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="comment">//         patterns::AIDirtyFix.begin(),</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <span class="comment">//         patterns::AIDirtyFix.end()</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        <span class="comment">//     );</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="comment">//     _curPos = &amp;(*curItr);</span></div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">//     _skip(10);</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="comment">//     _readBytes(2, &amp;rulesCnt);</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        <span class="comment">//     curItr += 200 * rulesCnt;</span></div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="comment">//     cout &lt;&lt; &quot;rulesCnt: &quot; &lt;&lt; rulesCnt &lt;&lt; endl;</span></div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="comment">// }</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        <span class="comment">// _curPos = &amp;(*curItr);</span></div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="comment">// Dumb skip</span><span class="comment"></span></div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;<span class="comment">        /// \todo 这里用了非常不确定的方法来跳过，没有充分验证。没有直接查找4096个0X00是出于性能考虑。</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;<span class="comment"></span>        <a class="code" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a>.resize(1000, 0x00);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        curItr = <a class="code" href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a>(</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            curItr, <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.end(),</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a>.begin(),</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a>.end());</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = &amp;(*curItr);</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> += 4096 + 500;</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordtype">int</span> actionSize = 24;                 <span class="comment">// See recanalyst</span></div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordtype">int</span> ruleSize = 16 + 16 * actionSize; <span class="comment">// See recanalyst</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt; 11.9999)</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            ruleSize += 0x180;</div>
 <div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        _skip(1448); <span class="comment">// 104 + 320 + 1024 \note 这里我在104个字节后发现了2624个FF，也不知道为什么，应该是1344</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 11.9599) _skip(1280); <span class="comment">/// \todo 针对这个版本号边界要验证一下</span></div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;<span class="comment"></span>        _skip(4096); <span class="comment">// 4096个00</span></div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    }</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;    </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 12.2999 &amp;&amp; IS_HD(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) {</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        _skip(4); <span class="comment">/// \todo 这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。</span></div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;<span class="comment"></span>    }</div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">for</span> (uint16_t i = 0, numRules; i &lt; 8; i++)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            _skip(10);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(2, &amp;numRules);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;            <span class="keywordflow">if</span> (numRules &gt; 10000)</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            {</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(<span class="stringliteral">&quot;{}(): numRules in AI data &gt; 10000 (maxRules is normally 10000) @{}.&quot;</span>, __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#ae4b1ed2805b1be6cd6dbc6785448bc69">_failedSignal</a> = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;                <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            }</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;            _skip(4);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;            <span class="keywordflow">for</span> (<span class="keywordtype">int</span> j = 0; j++ &lt; numRules; _skip(ruleSize))</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;                ;</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160; </div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        _skip(1448); <span class="comment">// 104 + 320 + 1024 \note 这里我在104个字节后发现了2624个FF，也不知道为什么，应该是1344</span></div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 11.9599)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;            _skip(1280); <span class="comment">/// \todo 针对这个版本号边界要验证一下</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="comment"></span>        _skip(4096);     <span class="comment">// 4096个00</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 12.2999 &amp;&amp; <a class="code" href="utils_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>))</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;    {</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        _skip(4); <span class="comment">/// \todo 这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。</span></div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;<span class="comment"></span>    }</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00393">src/Analyzers/default/Analyzer.h:393</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a5138bb584fe9ffcb2ee0cc502eb6e101"><div class="ttname"><a href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">DefaultAnalyzer::_AIAnalyzer</a></div><div class="ttdeci">void _AIAnalyzer()</div><div class="ttdoc">分析 header 中的 AI 部分信息</div><div class="ttdef"><b>Definition:</b> <a href="subProcAI_8cpp_source.html#l00015">subProcAI.cpp:15</a></div></div>
-<div class="ttc" id="asrc_2Analyzers_2default_2Analyzer_8h_html"><div class="ttname"><a href="src_2Analyzers_2default_2Analyzer_8h.html">Analyzer.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_acec5fc3632913190a73b8af2c2f0206d"><div class="ttname"><a href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">DefaultAnalyzer::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00086">src/Analyzers/default/Analyzer.h:86</a></div></div>
-<div class="ttc" id="aclassParserException_html"><div class="ttname"><a href="classParserException.html">ParserException</a></div><div class="ttdoc">Exception thrown from Analyzers.</div><div class="ttdef"><b>Definition:</b> <a href="ParserException_8h_source.html#l00022">ParserException.h:22</a></div></div>
+<div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00477">Analyzer.h:477</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a5af69fcde971308b181bc1ca303af0c2"><div class="ttname"><a href="classDefaultAnalyzer.html#a5af69fcde971308b181bc1ca303af0c2">DefaultAnalyzer::_expectBytes</a></div><div class="ttdeci">void _expectBytes(const vector&lt; uint8_t &gt; &amp;pattern, string good, string warn, bool skip=true, bool throwExpt=true)</div><div class="ttdoc">用于检查当前位置的特征字节是否符合预期</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8cpp_source.html#l00214">Analyzer.cpp:214</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a5138bb584fe9ffcb2ee0cc502eb6e101"><div class="ttname"><a href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">DefaultAnalyzer::_AIAnalyzer</a></div><div class="ttdeci">void _AIAnalyzer()</div><div class="ttdef"><b>Definition:</b> <a href="subProcAI_8cpp_source.html#l00015">subProcAI.cpp:15</a></div></div>
+<div class="ttc" id="anamespacepatterns_html_acc3e2ed6706b59dd79c8df08a0f47f0a"><div class="ttname"><a href="namespacepatterns.html#acc3e2ed6706b59dd79c8df08a0f47f0a">patterns::AIdataUnknown</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; AIdataUnknown</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00010">utils.cpp:10</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00085">Analyzer.h:85</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_ae4b1ed2805b1be6cd6dbc6785448bc69"><div class="ttname"><a href="classDefaultAnalyzer.html#ae4b1ed2805b1be6cd6dbc6785448bc69">DefaultAnalyzer::_failedSignal</a></div><div class="ttdeci">bool _failedSignal</div><div class="ttdoc">Indicate some previous procedure was failed</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00496">Analyzer.h:496</a></div></div>
+<div class="ttc" id="anamespacepatterns_html_a3b640fb2a393e1813231d3e0d69a4a0f"><div class="ttname"><a href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; FFs_500</div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_acec5fc3632913190a73b8af2c2f0206d"><div class="ttname"><a href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">DefaultAnalyzer::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00102">Analyzer.h:102</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a65ab0954175ce07e2ec39517a0789603"><div class="ttname"><a href="classDefaultAnalyzer.html#a65ab0954175ce07e2ec39517a0789603">DefaultAnalyzer::indcludeAI</a></div><div class="ttdeci">uint32_t indcludeAI</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00104">Analyzer.h:104</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Some utility for minor jobs</div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a5fd40b34e8a98805fcb9e6c7c66c83f6"><div class="ttname"><a href="classDefaultAnalyzer.html#a5fd40b34e8a98805fcb9e6c7c66c83f6">DefaultAnalyzer::_curStream</a></div><div class="ttdeci">uint8_t * _curStream</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00394">src/Analyzers/default/Analyzer.h:394</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a3975aa43ef668e44ecb31c613c71def0"><div class="ttname"><a href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">DefaultAnalyzer::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00087">src/Analyzers/default/Analyzer.h:87</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a85b1378c119ffc2a724924d2c3a597de"><div class="ttname"><a href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">DefaultAnalyzer::_header</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _header</div><div class="ttdoc">解压后的 header 数据</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00391">src/Analyzers/default/Analyzer.h:391</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a03ed3a9d1c9f3deed5597320039ff63c"><div class="ttname"><a href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(uintmax_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00235">src/Analyzers/default/Analyzer.h:235</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a5fd40b34e8a98805fcb9e6c7c66c83f6"><div class="ttname"><a href="classDefaultAnalyzer.html#a5fd40b34e8a98805fcb9e6c7c66c83f6">DefaultAnalyzer::_curStream</a></div><div class="ttdeci">uint8_t * _curStream</div><div class="ttdoc">指向当前使用的数据流的底层数组的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00478">Analyzer.h:478</a></div></div>
+<div class="ttc" id="autils_8h_html_aacd6ba1ade7c09c80d51de21660d19db"><div class="ttname"><a href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a></div><div class="ttdeci">T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00064">utils.h:64</a></div></div>
+<div class="ttc" id="autils_8h_html_ab55faf40e7bd229cdeab3b84e974ba52"><div class="ttname"><a href="utils_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a></div><div class="ttdeci">#define IS_HD(v)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00023">utils.h:23</a></div></div>
+<div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00091">Logger.h:91</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a3975aa43ef668e44ecb31c613c71def0"><div class="ttname"><a href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">DefaultAnalyzer::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00103">Analyzer.h:103</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a85b1378c119ffc2a724924d2c3a597de"><div class="ttname"><a href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">DefaultAnalyzer::_header</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _header</div><div class="ttdoc">用于存储解压缩后的header数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00475">Analyzer.h:475</a></div></div>
+<div class="ttc" id="autils_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00024">utils.h:24</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00259">Analyzer.h:259</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

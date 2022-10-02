@@ -71,7 +71,7 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 
-<p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。  
+<p>Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。  
  <a href="classBaseAnalyzer.html#details">更多...</a></p>
 
 <p><code>#include &lt;<a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a>&gt;</code></p>
@@ -81,32 +81,60 @@ $(function() {
 <div class="center"><img src="classBaseAnalyzer__inherit__graph.png" border="0" usemap="#BaseAnalyzer_inherit__map" alt="Inheritance graph"/></div>
 <map name="BaseAnalyzer_inherit__map" id="BaseAnalyzer_inherit__map">
 <area shape="rect" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。" alt="" coords="13,5,124,32"/>
-<area shape="rect" href="classDefaultAnalyzer.html" title="默认解析器" alt="" coords="5,80,132,107"/>
+<area shape="rect" href="classDefaultAnalyzer.html" title="默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。" alt="" coords="5,80,132,107"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
+<tr class="memitem:aec130aead7c4f00f8a9d68646e6bf9bb"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aec130aead7c4f00f8a9d68646e6bf9bb">BaseAnalyzer</a> ()</td></tr>
+<tr class="separator:aec130aead7c4f00f8a9d68646e6bf9bb"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">BaseAnalyzer</a> (const string &amp;path)</td></tr>
 <tr class="memdesc:a1537a2da1cc004214289bfb67fb3aa9e"><td class="mdescLeft">&#160;</td><td class="mdescRight">构造函数，需要接收一个文件路径进行读取和解析。  <a href="classBaseAnalyzer.html#a1537a2da1cc004214289bfb67fb3aa9e">更多...</a><br /></td></tr>
 <tr class="separator:a1537a2da1cc004214289bfb67fb3aa9e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6f042322e88779bc6116a468bab2bec"><td class="memItemLeft" align="right" valign="top"><a id="aa6f042322e88779bc6116a468bab2bec"></a>
-virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec">run</a> ()=0</td></tr>
-<tr class="memdesc:aa6f042322e88779bc6116a468bab2bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">对录像信息进行解析 <br /></td></tr>
+<tr class="memitem:aa6f042322e88779bc6116a468bab2bec"><td class="memItemLeft" align="right" valign="top">virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec">run</a> ()=0</td></tr>
+<tr class="memdesc:aa6f042322e88779bc6116a468bab2bec"><td class="mdescLeft">&#160;</td><td class="mdescRight">对录像信息进行解析  <a href="classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec">更多...</a><br /></td></tr>
 <tr class="separator:aa6f042322e88779bc6116a468bab2bec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a10127890a0233fff7411d244fe9336b8"><td class="memItemLeft" align="right" valign="top">virtual string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">generateMap</a> (const string &amp;path, bool hd)=0</td></tr>
 <tr class="memdesc:a10127890a0233fff7411d244fe9336b8"><td class="mdescLeft">&#160;</td><td class="mdescRight">生成小地图。  <a href="classBaseAnalyzer.html#a10127890a0233fff7411d244fe9336b8">更多...</a><br /></td></tr>
 <tr class="separator:a10127890a0233fff7411d244fe9336b8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
-<div class="textblock"><p><a class="el" href="classAnalyzer.html">Analyzer</a> 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。 </p>
-<p>类的对象会将录像文件交给 <a class="el" href="classAnalyzer.html">Analyzer</a> 进行解析，然后将 <a class="el" href="classAnalyzer.html">Analyzer</a> 中得 到的数据加工成最后的输出结果。例如：把表示民族的数字转换成文字。 （以后可以有 不同的解析器，用不同的方法进行解析）。按照设想，解析器可以有多个，每个解析器 的主要文件都应该放在<code>Analyzers/&lt;analyzer-name&gt;/</code>文件夹中。文件夹中必须包含 <code>Analyzer.h</code>文件并实现一个 <a class="el" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。">BaseAnalyzer</a> 的子类。 <br  />
+<div class="textblock"><p>Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。 </p>
+<p>类的对象会将录像文件交给 Analyzer 进行解析，然后将 Analyzer 中得 到的数据加工成最后的输出结果。例如：把表示民族的数字转换成文字。 （以后可以有 不同的解析器，用不同的方法进行解析）。按照设想，解析器可以有多个，每个解析器 的主要文件都应该放在<code>Analyzers/&lt;analyzer-name&gt;/</code>文件夹中。文件夹中必须包含 <code><a class="el" href="Analyzer_8h.html">Analyzer.h</a></code>文件并实现一个 <a class="el" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。">BaseAnalyzer</a> 的子类。 <br  />
  这个设计的使用场景设想是 这样的：正常情况下用默认解析器进行常规解析，这个过程中一般不会对 body 中的命 令进行详细分析。后续如果需要对 body 中的命令进行深入分析，那就可以再做一个专 门的解析器，跳过 header 部分的解析，只分析 body 部分即可。 </p>
 
 <p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00031">31</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="aec130aead7c4f00f8a9d68646e6bf9bb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aec130aead7c4f00f8a9d68646e6bf9bb">&#9670;&nbsp;</a></span>BaseAnalyzer() <span class="overload">[1/2]</span></h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">BaseAnalyzer::BaseAnalyzer </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
 <a id="a1537a2da1cc004214289bfb67fb3aa9e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a1537a2da1cc004214289bfb67fb3aa9e">&#9670;&nbsp;</a></span>BaseAnalyzer()</h2>
+<h2 class="memtitle"><span class="permalink"><a href="#a1537a2da1cc004214289bfb67fb3aa9e">&#9670;&nbsp;</a></span>BaseAnalyzer() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -142,6 +170,35 @@ virtual void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" hr
 </div>
 </div>
 <h2 class="groupheader">成员函数说明</h2>
+<a id="aa6f042322e88779bc6116a468bab2bec"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa6f042322e88779bc6116a468bab2bec">&#9670;&nbsp;</a></span>run()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">virtual void BaseAnalyzer::run </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">pure virtual</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>对录像信息进行解析 </p>
+
+<p>在 <a class="el" href="classDefaultAnalyzer.html#a60b740e1b46bdf35356aad2b0c01fbae">DefaultAnalyzer</a> 内被实现.</p>
+
+</div>
+</div>
 <a id="a10127890a0233fff7411d244fe9336b8"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#a10127890a0233fff7411d244fe9336b8">&#9670;&nbsp;</a></span>generateMap()</h2>
 

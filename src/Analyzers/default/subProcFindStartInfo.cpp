@@ -34,5 +34,6 @@ void DefaultAnalyzer::_findStartInfoStart() {
     // used in gamesettings section.
     _curPos += 2 + numPlayers + 36 + 4 + 1;
     _skipPascalString();
+    
     _startInfoPatternTrail = _curPos;
 }

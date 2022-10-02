@@ -71,116 +71,617 @@ $(function() {
 <div class="title">Player类 参考</div>  </div>
 </div><!--header-->
 <div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Player_8h_source.html">Player.h</a>&gt;</code></p>
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
 Public 成员函数</h2></td></tr>
-<tr class="memitem:a219fa5f363ae8a2f2d0df890c55cb623"><td class="memItemLeft" align="right" valign="top"><a id="a219fa5f363ae8a2f2d0df890c55cb623"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>valid</b> ()</td></tr>
+<tr class="memitem:a219fa5f363ae8a2f2d0df890c55cb623"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a219fa5f363ae8a2f2d0df890c55cb623">valid</a> ()</td></tr>
 <tr class="separator:a219fa5f363ae8a2f2d0df890c55cb623"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af7276bb37b64120cf0b786106f1f9dd4"><td class="memItemLeft" align="right" valign="top"><a id="af7276bb37b64120cf0b786106f1f9dd4"></a>
-bool&#160;</td><td class="memItemRight" valign="bottom"><b>initialDataFound</b> ()</td></tr>
+<tr class="memitem:af7276bb37b64120cf0b786106f1f9dd4"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#af7276bb37b64120cf0b786106f1f9dd4">initialDataFound</a> ()</td></tr>
 <tr class="separator:af7276bb37b64120cf0b786106f1f9dd4"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:ac881a9f9e70f74e2f76a8514639b3fb4"><td class="memItemLeft" align="right" valign="top"><a id="ac881a9f9e70f74e2f76a8514639b3fb4"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_DLCID</b></td></tr>
+<tr class="memitem:ac881a9f9e70f74e2f76a8514639b3fb4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ac881a9f9e70f74e2f76a8514639b3fb4">DD_DLCID</a></td></tr>
 <tr class="separator:ac881a9f9e70f74e2f76a8514639b3fb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a46252af3f00043a408fa212ebff857f8"><td class="memItemLeft" align="right" valign="top"><a id="a46252af3f00043a408fa212ebff857f8"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_colorID</b></td></tr>
+<tr class="memitem:a46252af3f00043a408fa212ebff857f8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a46252af3f00043a408fa212ebff857f8">DD_colorID</a></td></tr>
 <tr class="separator:a46252af3f00043a408fa212ebff857f8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8cbd895e5489f7c30ee01ffbc3bee7e1"><td class="memItemLeft" align="right" valign="top"><a id="a8cbd895e5489f7c30ee01ffbc3bee7e1"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_selectedColor</b></td></tr>
+<tr class="memitem:a8cbd895e5489f7c30ee01ffbc3bee7e1"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a8cbd895e5489f7c30ee01ffbc3bee7e1">DE_selectedColor</a></td></tr>
 <tr class="separator:a8cbd895e5489f7c30ee01ffbc3bee7e1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a34b38add853602a1f6c2b78ca8d938fd"><td class="memItemLeft" align="right" valign="top"><a id="a34b38add853602a1f6c2b78ca8d938fd"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_selectedTeamID</b> = 255</td></tr>
+<tr class="memitem:a34b38add853602a1f6c2b78ca8d938fd"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a34b38add853602a1f6c2b78ca8d938fd">DE_selectedTeamID</a> = 255</td></tr>
 <tr class="separator:a34b38add853602a1f6c2b78ca8d938fd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae3cd1b19561298aa73d85a1fef6a6597"><td class="memItemLeft" align="right" valign="top"><a id="ae3cd1b19561298aa73d85a1fef6a6597"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597">resolvedTeamID</a> = 255</td></tr>
-<tr class="memdesc:ae3cd1b19561298aa73d85a1fef6a6597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here <br /></td></tr>
+<tr class="memitem:ae3cd1b19561298aa73d85a1fef6a6597"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597">resolvedTeamID</a> = 255</td></tr>
+<tr class="memdesc:ae3cd1b19561298aa73d85a1fef6a6597"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here  <a href="classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597">更多...</a><br /></td></tr>
 <tr class="separator:ae3cd1b19561298aa73d85a1fef6a6597"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4d8917faf4181ae23a2878c212059701"><td class="memItemLeft" align="right" valign="top"><a id="a4d8917faf4181ae23a2878c212059701"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_datCrc</b></td></tr>
+<tr class="memitem:a4d8917faf4181ae23a2878c212059701"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a4d8917faf4181ae23a2878c212059701">HD_datCrc</a></td></tr>
 <tr class="separator:a4d8917faf4181ae23a2878c212059701"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa177f461e072eaa735d043efddf2a1a8"><td class="memItemLeft" align="right" valign="top"><a id="aa177f461e072eaa735d043efddf2a1a8"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>DE_datCrc</b></td></tr>
+<tr class="memitem:aa177f461e072eaa735d043efddf2a1a8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aa177f461e072eaa735d043efddf2a1a8">DE_datCrc</a></td></tr>
 <tr class="separator:aa177f461e072eaa735d043efddf2a1a8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a13448a211a225f8e2fc7ab68f80ad8d0"><td class="memItemLeft" align="right" valign="top"><a id="a13448a211a225f8e2fc7ab68f80ad8d0"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_MPGameVersion</b></td></tr>
+<tr class="memitem:a13448a211a225f8e2fc7ab68f80ad8d0"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a13448a211a225f8e2fc7ab68f80ad8d0">DD_MPGameVersion</a></td></tr>
 <tr class="separator:a13448a211a225f8e2fc7ab68f80ad8d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a30ace63171eb13c634f3a8aea84f0a28"><td class="memItemLeft" align="right" valign="top"><a id="a30ace63171eb13c634f3a8aea84f0a28"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_civID</b></td></tr>
+<tr class="memitem:a30ace63171eb13c634f3a8aea84f0a28"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a30ace63171eb13c634f3a8aea84f0a28">DD_civID</a></td></tr>
 <tr class="separator:a30ace63171eb13c634f3a8aea84f0a28"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afb2ffb7d44e02b70d5c7dc8bf5847505"><td class="memItemLeft" align="right" valign="top"><a id="afb2ffb7d44e02b70d5c7dc8bf5847505"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">DD_AIType</a></td></tr>
-<tr class="memdesc:afb2ffb7d44e02b70d5c7dc8bf5847505"><td class="mdescLeft">&#160;</td><td class="mdescRight">in 26.21: "PromiDE"; <br /></td></tr>
+<tr class="memitem:afb2ffb7d44e02b70d5c7dc8bf5847505"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">DD_AIType</a></td></tr>
+<tr class="memdesc:afb2ffb7d44e02b70d5c7dc8bf5847505"><td class="mdescLeft">&#160;</td><td class="mdescRight">in 26.21: "PromiDE";  <a href="classPlayer.html#afb2ffb7d44e02b70d5c7dc8bf5847505">更多...</a><br /></td></tr>
 <tr class="separator:afb2ffb7d44e02b70d5c7dc8bf5847505"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a943bda0d0e5e2d2e6cc8ec0773a3fe1d"><td class="memItemLeft" align="right" valign="top"><a id="a943bda0d0e5e2d2e6cc8ec0773a3fe1d"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_AICivNameIndex</b></td></tr>
+<tr class="memitem:a943bda0d0e5e2d2e6cc8ec0773a3fe1d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a943bda0d0e5e2d2e6cc8ec0773a3fe1d">DD_AICivNameIndex</a></td></tr>
 <tr class="separator:a943bda0d0e5e2d2e6cc8ec0773a3fe1d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28b36f6119e6012caa80d4d6b11f59f1"><td class="memItemLeft" align="right" valign="top"><a id="a28b36f6119e6012caa80d4d6b11f59f1"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>DD_AIName</b></td></tr>
+<tr class="memitem:a28b36f6119e6012caa80d4d6b11f59f1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a28b36f6119e6012caa80d4d6b11f59f1">DD_AIName</a></td></tr>
 <tr class="separator:a28b36f6119e6012caa80d4d6b11f59f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:acf0355128a99ee20ad9931b760fb2de1"><td class="memItemLeft" align="right" valign="top"><a id="acf0355128a99ee20ad9931b760fb2de1"></a>
-string&#160;</td><td class="memItemRight" valign="bottom"><b>name</b> = &quot;&quot;</td></tr>
+<tr class="memitem:acf0355128a99ee20ad9931b760fb2de1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#acf0355128a99ee20ad9931b760fb2de1">name</a> = &quot;&quot;</td></tr>
 <tr class="separator:acf0355128a99ee20ad9931b760fb2de1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memItemLeft" align="right" valign="top"><a id="abc4dfe6fd9cfcd300467cf85bac1fca0"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">type</a> = 999</td></tr>
-<tr class="memdesc:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">0~6: absent, closed, human, eliminated, computer, cyborg, spectator <br /></td></tr>
+<tr class="memitem:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">type</a> = 999</td></tr>
+<tr class="memdesc:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">0~6: absent, closed, human, eliminated, computer, cyborg, spectator  <a href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">更多...</a><br /></td></tr>
 <tr class="separator:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:afe8d8704e3d40fb0152d633ab918071e"><td class="memItemLeft" align="right" valign="top"><a id="afe8d8704e3d40fb0152d633ab918071e"></a>
-uint64_t&#160;</td><td class="memItemRight" valign="bottom"><b>HD_steamID</b></td></tr>
+<tr class="memitem:afe8d8704e3d40fb0152d633ab918071e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#afe8d8704e3d40fb0152d633ab918071e">HD_steamID</a></td></tr>
 <tr class="separator:afe8d8704e3d40fb0152d633ab918071e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a847ef6d569773ad63cce71dcf8760dc1"><td class="memItemLeft" align="right" valign="top"><a id="a847ef6d569773ad63cce71dcf8760dc1"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_profileID</b></td></tr>
+<tr class="memitem:a847ef6d569773ad63cce71dcf8760dc1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a847ef6d569773ad63cce71dcf8760dc1">DE_profileID</a></td></tr>
 <tr class="separator:a847ef6d569773ad63cce71dcf8760dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a57094b4c146e28691045582a22b68347"><td class="memItemLeft" align="right" valign="top"><a id="a57094b4c146e28691045582a22b68347"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_playerNumber</b></td></tr>
+<tr class="memitem:a57094b4c146e28691045582a22b68347"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a57094b4c146e28691045582a22b68347">DD_playerNumber</a> = -1</td></tr>
 <tr class="separator:a57094b4c146e28691045582a22b68347"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef57dcdf05cbcdf95b2603024c35eae4"><td class="memItemLeft" align="right" valign="top"><a id="aef57dcdf05cbcdf95b2603024c35eae4"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_RMRating</b> = 0</td></tr>
+<tr class="memitem:aef57dcdf05cbcdf95b2603024c35eae4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#aef57dcdf05cbcdf95b2603024c35eae4">DD_RMRating</a> = 0</td></tr>
 <tr class="separator:aef57dcdf05cbcdf95b2603024c35eae4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a9d57111f532e93fedc75e3a62836ee22"><td class="memItemLeft" align="right" valign="top"><a id="a9d57111f532e93fedc75e3a62836ee22"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><b>DD_DMRating</b> = 0</td></tr>
+<tr class="memitem:a9d57111f532e93fedc75e3a62836ee22"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a9d57111f532e93fedc75e3a62836ee22">DD_DMRating</a> = 0</td></tr>
 <tr class="separator:a9d57111f532e93fedc75e3a62836ee22"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a7c04a9f6561a87e524ade1d89a183799"><td class="memItemLeft" align="right" valign="top"><a id="a7c04a9f6561a87e524ade1d89a183799"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_preferRandom</b></td></tr>
+<tr class="memitem:a7c04a9f6561a87e524ade1d89a183799"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a7c04a9f6561a87e524ade1d89a183799">DE_preferRandom</a></td></tr>
 <tr class="separator:a7c04a9f6561a87e524ade1d89a183799"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a134711a33d3810f3f6056f51536147e2"><td class="memItemLeft" align="right" valign="top"><a id="a134711a33d3810f3f6056f51536147e2"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>DE_customAI</b></td></tr>
+<tr class="memitem:a134711a33d3810f3f6056f51536147e2"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a134711a33d3810f3f6056f51536147e2">DE_customAI</a></td></tr>
 <tr class="separator:a134711a33d3810f3f6056f51536147e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a20e3aa00bd0c876f4477e729f255a4c4"><td class="memItemLeft" align="right" valign="top"><a id="a20e3aa00bd0c876f4477e729f255a4c4"></a>
-char&#160;</td><td class="memItemRight" valign="bottom"><b>DE_handicap</b> [8]</td></tr>
+<tr class="memitem:a20e3aa00bd0c876f4477e729f255a4c4"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a20e3aa00bd0c876f4477e729f255a4c4">DE_handicap</a> [8]</td></tr>
 <tr class="separator:a20e3aa00bd0c876f4477e729f255a4c4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a656c6f42772386521ad8dc83120cc668"><td class="memItemLeft" align="right" valign="top"><a id="a656c6f42772386521ad8dc83120cc668"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>modVersionID</b></td></tr>
+<tr class="memitem:a656c6f42772386521ad8dc83120cc668"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a656c6f42772386521ad8dc83120cc668">modVersionID</a></td></tr>
 <tr class="separator:a656c6f42772386521ad8dc83120cc668"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a2c2fa26e7e9d5b8ec12789fb8d2685aa"><td class="memItemLeft" align="right" valign="top"><a id="a2c2fa26e7e9d5b8ec12789fb8d2685aa"></a>
-float&#160;</td><td class="memItemRight" valign="bottom"><b>initCamera</b> [2] = {-1.0, -1.0}</td></tr>
+<tr class="memitem:a2c2fa26e7e9d5b8ec12789fb8d2685aa"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a2c2fa26e7e9d5b8ec12789fb8d2685aa">initCamera</a> [2] = {-1.0, -1.0}</td></tr>
 <tr class="separator:a2c2fa26e7e9d5b8ec12789fb8d2685aa"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3326575a46a10ca5f81ba20ee10dd988"><td class="memItemLeft" align="right" valign="top"><a id="a3326575a46a10ca5f81ba20ee10dd988"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>civID</b></td></tr>
+<tr class="memitem:a3326575a46a10ca5f81ba20ee10dd988"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3326575a46a10ca5f81ba20ee10dd988">civID</a></td></tr>
 <tr class="separator:a3326575a46a10ca5f81ba20ee10dd988"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5dd27c5459973c469b252cde1b8aea0f"><td class="memItemLeft" align="right" valign="top"><a id="a5dd27c5459973c469b252cde1b8aea0f"></a>
-uint8_t&#160;</td><td class="memItemRight" valign="bottom"><b>colorID</b></td></tr>
+<tr class="memitem:a5dd27c5459973c469b252cde1b8aea0f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a5dd27c5459973c469b252cde1b8aea0f">colorID</a></td></tr>
 <tr class="separator:a5dd27c5459973c469b252cde1b8aea0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a075dd1c22cef25e23e46093ab0265564"><td class="memItemLeft" align="right" valign="top"><a id="a075dd1c22cef25e23e46093ab0265564"></a>
-int32_t&#160;</td><td class="memItemRight" valign="bottom"><b>slot</b> = -1</td></tr>
+<tr class="memitem:a075dd1c22cef25e23e46093ab0265564"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a075dd1c22cef25e23e46093ab0265564">slot</a> = -1</td></tr>
 <tr class="separator:a075dd1c22cef25e23e46093ab0265564"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="memItemLeft" align="right" valign="top"><a id="a3f7fb7d3066b88b38f4d4ed6d545bbd8"></a>
-vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">searchPattern</a></td></tr>
-<tr class="memdesc:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to locate player data in startinfo section <br /></td></tr>
+<tr class="memitem:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="memItemLeft" align="right" valign="top">vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">searchPattern</a></td></tr>
+<tr class="memdesc:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">Used to locate player data in startinfo section  <a href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">更多...</a><br /></td></tr>
 <tr class="separator:a3f7fb7d3066b88b38f4d4ed6d545bbd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memItemLeft" align="right" valign="top"><a id="a28002d3d2977e7aa8c3405b62af0ff0d"></a>
-uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">dataOffset</a> = 0</td></tr>
-<tr class="memdesc:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset from header stream start of player data in startinfo section <br /></td></tr>
+<tr class="memitem:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">dataOffset</a> = 0</td></tr>
+<tr class="memdesc:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset from header stream start of player data in startinfo section  <a href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">更多...</a><br /></td></tr>
 <tr class="separator:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock">
-<p class="definition">在文件 <a class="el" href="src_2Analyzers_2default_2Player_8h_source.html">src/Analyzers/default/Player.h</a> 第 <a class="el" href="src_2Analyzers_2default_2Player_8h_source.html#l00018">18</a> 行定义.</p>
-</div><hr/>该类的文档由以下文件生成:<ul>
-<li><a class="el" href="src_2Analyzers_2default_2Player_8h_source.html">src/Analyzers/default/Player.h</a></li>
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00018">18</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a219fa5f363ae8a2f2d0df890c55cb623"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a219fa5f363ae8a2f2d0df890c55cb623">&#9670;&nbsp;</a></span>valid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::valid </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00021">21</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af7276bb37b64120cf0b786106f1f9dd4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af7276bb37b64120cf0b786106f1f9dd4">&#9670;&nbsp;</a></span>initialDataFound()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::initialDataFound </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00022">22</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ac881a9f9e70f74e2f76a8514639b3fb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac881a9f9e70f74e2f76a8514639b3fb4">&#9670;&nbsp;</a></span>DD_DLCID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DD_DLCID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00024">24</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a46252af3f00043a408fa212ebff857f8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a46252af3f00043a408fa212ebff857f8">&#9670;&nbsp;</a></span>DD_colorID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DD_colorID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00025">25</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8cbd895e5489f7c30ee01ffbc3bee7e1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8cbd895e5489f7c30ee01ffbc3bee7e1">&#9670;&nbsp;</a></span>DE_selectedColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DE_selectedColor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00026">26</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a34b38add853602a1f6c2b78ca8d938fd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34b38add853602a1f6c2b78ca8d938fd">&#9670;&nbsp;</a></span>DE_selectedTeamID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DE_selectedTeamID = 255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00027">27</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae3cd1b19561298aa73d85a1fef6a6597"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae3cd1b19561298aa73d85a1fef6a6597">&#9670;&nbsp;</a></span>resolvedTeamID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::resolvedTeamID = 255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here </p>
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00028">28</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4d8917faf4181ae23a2878c212059701"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d8917faf4181ae23a2878c212059701">&#9670;&nbsp;</a></span>HD_datCrc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::HD_datCrc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00029">29</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa177f461e072eaa735d043efddf2a1a8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa177f461e072eaa735d043efddf2a1a8">&#9670;&nbsp;</a></span>DE_datCrc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player::DE_datCrc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00030">30</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a13448a211a225f8e2fc7ab68f80ad8d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a13448a211a225f8e2fc7ab68f80ad8d0">&#9670;&nbsp;</a></span>DD_MPGameVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DD_MPGameVersion</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00031">31</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a30ace63171eb13c634f3a8aea84f0a28"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30ace63171eb13c634f3a8aea84f0a28">&#9670;&nbsp;</a></span>DD_civID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DD_civID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00033">33</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afb2ffb7d44e02b70d5c7dc8bf5847505"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afb2ffb7d44e02b70d5c7dc8bf5847505">&#9670;&nbsp;</a></span>DD_AIType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player::DD_AIType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>in 26.21: "PromiDE"; </p>
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00034">34</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a943bda0d0e5e2d2e6cc8ec0773a3fe1d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a943bda0d0e5e2d2e6cc8ec0773a3fe1d">&#9670;&nbsp;</a></span>DD_AICivNameIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DD_AICivNameIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a28b36f6119e6012caa80d4d6b11f59f1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28b36f6119e6012caa80d4d6b11f59f1">&#9670;&nbsp;</a></span>DD_AIName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player::DD_AIName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="acf0355128a99ee20ad9931b760fb2de1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acf0355128a99ee20ad9931b760fb2de1">&#9670;&nbsp;</a></span>name</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Player::name = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<a id="abc4dfe6fd9cfcd300467cf85bac1fca0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc4dfe6fd9cfcd300467cf85bac1fca0">&#9670;&nbsp;</a></span>type</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::type = 999</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>0~6: absent, closed, human, eliminated, computer, cyborg, spectator </p>
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00038">38</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afe8d8704e3d40fb0152d633ab918071e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afe8d8704e3d40fb0152d633ab918071e">&#9670;&nbsp;</a></span>HD_steamID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t Player::HD_steamID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00039">39</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a847ef6d569773ad63cce71dcf8760dc1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a847ef6d569773ad63cce71dcf8760dc1">&#9670;&nbsp;</a></span>DE_profileID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DE_profileID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00040">40</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a57094b4c146e28691045582a22b68347"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57094b4c146e28691045582a22b68347">&#9670;&nbsp;</a></span>DD_playerNumber</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::DD_playerNumber = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00041">41</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aef57dcdf05cbcdf95b2603024c35eae4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aef57dcdf05cbcdf95b2603024c35eae4">&#9670;&nbsp;</a></span>DD_RMRating</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DD_RMRating = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00042">42</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a9d57111f532e93fedc75e3a62836ee22"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9d57111f532e93fedc75e3a62836ee22">&#9670;&nbsp;</a></span>DD_DMRating</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::DD_DMRating = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00043">43</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a7c04a9f6561a87e524ade1d89a183799"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c04a9f6561a87e524ade1d89a183799">&#9670;&nbsp;</a></span>DE_preferRandom</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DE_preferRandom</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00044">44</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a134711a33d3810f3f6056f51536147e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a134711a33d3810f3f6056f51536147e2">&#9670;&nbsp;</a></span>DE_customAI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::DE_customAI</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00045">45</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a20e3aa00bd0c876f4477e729f255a4c4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a20e3aa00bd0c876f4477e729f255a4c4">&#9670;&nbsp;</a></span>DE_handicap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char Player::DE_handicap[8]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00046">46</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a656c6f42772386521ad8dc83120cc668"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a656c6f42772386521ad8dc83120cc668">&#9670;&nbsp;</a></span>modVersionID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Player::modVersionID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00047">47</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a2c2fa26e7e9d5b8ec12789fb8d2685aa"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2c2fa26e7e9d5b8ec12789fb8d2685aa">&#9670;&nbsp;</a></span>initCamera</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float Player::initCamera[2] = {-1.0, -1.0}</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00048">48</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3326575a46a10ca5f81ba20ee10dd988"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3326575a46a10ca5f81ba20ee10dd988">&#9670;&nbsp;</a></span>civID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::civID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00049">49</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5dd27c5459973c469b252cde1b8aea0f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5dd27c5459973c469b252cde1b8aea0f">&#9670;&nbsp;</a></span>colorID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t Player::colorID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00050">50</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a075dd1c22cef25e23e46093ab0265564"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a075dd1c22cef25e23e46093ab0265564">&#9670;&nbsp;</a></span>slot</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::slot = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00054">54</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a3f7fb7d3066b88b38f4d4ed6d545bbd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3f7fb7d3066b88b38f4d4ed6d545bbd8">&#9670;&nbsp;</a></span>searchPattern</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;uint8_t&gt; Player::searchPattern</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Used to locate player data in startinfo section </p>
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00055">55</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a28002d3d2977e7aa8c3405b62af0ff0d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28002d3d2977e7aa8c3405b62af0ff0d">&#9670;&nbsp;</a></span>dataOffset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t Player::dataOffset = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Offset from header stream start of player data in startinfo section </p>
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00056">56</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="Player_8h_source.html">Player.h</a></li>
 </ul>
 </div><!-- contents -->
 <!-- start footer part -->
