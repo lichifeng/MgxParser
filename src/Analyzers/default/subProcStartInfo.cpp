@@ -57,7 +57,6 @@ void DefaultAnalyzer::_startInfoAnalyzer()
                 _skip(4 * 65);
             _skip(1);
             _readBytes(8, p.initCamera);
-            logger->info("p1 {}: X:{} Y: {} @{}", p.name, p.initCamera[0], p.initCamera[1], _distance());
             
             // Do some check here
             if (

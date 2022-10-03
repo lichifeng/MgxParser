@@ -61,7 +61,15 @@ void DefaultAnalyzer::run()
     _f.close();
 
     // Start data analyzing
-    _analyze();
+    try
+    {
+        _analyze();
+    }
+    catch(const exception& e)
+    {
+        logger->fatal("Exception: {}", e.what());
+        _sendFailedSignal(true);
+    }
 }
 
 bool DefaultAnalyzer::_locateStreams()
