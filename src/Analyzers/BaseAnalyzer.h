@@ -1,13 +1,14 @@
 /**
  * \file       BaseAnalyzer.h
- * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      分析器的基类（接口），所有 analyzer 都需要继承这个接口。
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \brief      分析器的基类（接口），所有 analyzer 都需要继承这个接口
  * \version    0.1
- * \date       2022-09-21
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
  */
+
 #pragma once
 
 #include <string>
@@ -48,8 +49,5 @@ class BaseAnalyzer {
          * \param      hd                  是否生成高清地图
          * \return     string              地图文件的路径，如果生成失败则为空字符串
          */
-        virtual string generateMap(const string& path, bool hd) = 0;
-
-    protected:
-
+        virtual void generateMap(const string path, uint32_t width, uint32_t height, bool hd) = 0;
 };

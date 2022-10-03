@@ -1,15 +1,18 @@
 /**
  * \file       subProcMapData.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-03
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
+#include "../../MapTools/MapTools.h"
+
+using namespace std;
 
 void DefaultAnalyzer::_mapDataAnalyzer()
 {
@@ -43,7 +46,7 @@ void DefaultAnalyzer::_mapDataAnalyzer()
     _readBytes(1, &allVisible);
     _skip(1); //_readBytes(1, &fogOfWar); // Use fogOfWar in lobby
 
-    _mapBitmap = _curPos;
+    mapDataPtr = _curPos;
     uint32_t checkVal = *(uint32_t *)(_curPos + 7 * mapBits);
     if (IS_DE(versionCode))
     {
@@ -68,7 +71,30 @@ void DefaultAnalyzer::_mapDataAnalyzer()
     _skip(visibilityMapSize[0] * visibilityMapSize[1] * 4);
 }
 
-string DefaultAnalyzer::generateMap(const string &path, bool hd)
+void DefaultAnalyzer::generateMap(const string path, uint32_t width, uint32_t height, bool hd)
 {
-    return path;
+    if (7 == _mapTileType)
+    {
+        return getMap<DefaultAnalyzer, DETile1>(path, this, width, height, hd);
+    }
+    else if (9 == _mapTileType)
+    {
+        return getMap<DefaultAnalyzer, DETile2>(path, this, width, height, hd);
+    }
+    else if (4 == _mapTileType)
+    {
+        return getMap<DefaultAnalyzer, Tile1>(path, this, width, height, hd);
+    }
+    else if (2 == _mapTileType)
+    {
+        return getMap<DefaultAnalyzer, TileLegacy>(path, this, width, height, hd);
+    }
+    else
+    {
+        logger->warn(
+            "{}(): Unknown _mapTileType. @{}.",
+            __FUNCTION__, _distance());
+        _sendFailedSignal();
+        return;
+    }
 }

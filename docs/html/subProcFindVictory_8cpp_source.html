@@ -72,35 +72,39 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="subProcFindVictory_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcFindVictoryStart.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcFindVictory.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-30</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-03</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a28d2c03581e13c42a530d7aa648931f4">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a28d2c03581e13c42a530d7aa648931f4">DefaultAnalyzer::_findVictoryStart</a>() {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">_victoryStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> - 12544 - 44;</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="comment">// Check if at correct point</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (*(int32_t*)<a class="code" href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">_victoryStartPos</a> != -99) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;        <span class="keywordflow">throw</span>(<a class="code" href="classParserException.html">ParserException</a>(<span class="stringliteral">&quot;[WARN] Check bytes not valid, _victoryStartPos seems not good. \n&quot;</span>)); <span class="comment">// 9d ff ff ff</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a7b2727f01a52c5ff3b055a813e2e0279">message</a>.append(<span class="stringliteral">&quot;[INFO] Reach _victoryStartPos and passed validation. \n&quot;</span>);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    }</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a28d2c03581e13c42a530d7aa648931f4">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a28d2c03581e13c42a530d7aa648931f4">DefaultAnalyzer::_findVictoryStart</a>()</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">_victoryStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> - 12544 - 44;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="comment">// Check if at correct point</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">_victoryStartPos</a> != -99)</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    {</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <span class="stringliteral">&quot;{}(): _victoryStartPos failed pattern check. @{}.&quot;</span>, <span class="comment">// 9d ff ff ff</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        _sendFailedSignal();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    }</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00086">Analyzer.h:86</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a28d2c03581e13c42a530d7aa648931f4"><div class="ttname"><a href="classDefaultAnalyzer.html#a28d2c03581e13c42a530d7aa648931f4">DefaultAnalyzer::_findVictoryStart</a></div><div class="ttdeci">void _findVictoryStart()</div><div class="ttdef"><b>Definition:</b> <a href="subProcFindVictory_8cpp_source.html#l00014">subProcFindVictory.cpp:14</a></div></div>
-<div class="ttc" id="aclassParserException_html"><div class="ttname"><a href="classParserException.html">ParserException</a></div><div class="ttdoc">Exception thrown from Analyzers.</div><div class="ttdef"><b>Definition:</b> <a href="ParserException_8h_source.html#l00022">ParserException.h:22</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a57712c409b4a648ad70af3770b29a7d1"><div class="ttname"><a href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">DefaultAnalyzer::_victoryStartPos</a></div><div class="ttdeci">uint8_t * _victoryStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00489">Analyzer.h:489</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_ae3f6386341681eae43e26c3c881009c8"><div class="ttname"><a href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">DefaultAnalyzer::_disablesStartPos</a></div><div class="ttdeci">uint8_t * _disablesStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00488">Analyzer.h:488</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a7b2727f01a52c5ff3b055a813e2e0279"><div class="ttname"><a href="classDefaultAnalyzer.html#a7b2727f01a52c5ff3b055a813e2e0279">DefaultAnalyzer::message</a></div><div class="ttdeci">string message</div><div class="ttdoc">对 status 的具体说明</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00225">Analyzer.h:225</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a57712c409b4a648ad70af3770b29a7d1"><div class="ttname"><a href="classDefaultAnalyzer.html#a57712c409b4a648ad70af3770b29a7d1">DefaultAnalyzer::_victoryStartPos</a></div><div class="ttdeci">uint8_t * _victoryStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00501">Analyzer.h:501</a></div></div>
+<div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00091">Logger.h:91</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_ae3f6386341681eae43e26c3c881009c8"><div class="ttname"><a href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">DefaultAnalyzer::_disablesStartPos</a></div><div class="ttdeci">uint8_t * _disablesStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00500">Analyzer.h:500</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

@@ -50,7 +50,7 @@ public:
 
     void run();
 
-    string generateMap(const string &, bool);
+    void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
     ///< Convert a string from record file encoding to specified output
     ///< encoding. Input string not necessarily a member of this class, so its
@@ -181,6 +181,7 @@ public:
 
     // data from map data section
     int32_t mapCoord[2];
+    void *mapDataPtr;
     uint8_t allVisible;
     // uint8_t fogOfWar; ///< \note Use fogOfWar in lobby
 
@@ -458,6 +459,9 @@ protected:
 
     void _sendFailedSignal(bool fatal = false) {
         _failedSignal = true;
+        if (fatal && logger) {
+            message = logger->dumpStr();
+        }
         status = fatal ? "fatal" : "warning";
     } ///< 标记解析失败的FLAG
 
@@ -491,7 +495,6 @@ protected:
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
     uint8_t *_startInfoPatternTrail;
-    void *_mapBitmap;
     uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 
     uint8_t *_startInfoPos = nullptr;

@@ -74,12 +74,12 @@ $(function() {
 <a href="subProcFileHandler_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcFileHandling.cpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-30</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;zlib.h&quot;</span></div>
@@ -106,76 +106,79 @@ $(function() {
 <div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span> ret;</div>
 <div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
 <div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="comment">/* decompress until deflate stream ends or end of file */</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.read((<span class="keywordtype">char</span>*)&amp;in, <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a>);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        strm.avail_in = <a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.gcount();</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.good()) {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            (void)inflateEnd(&amp;strm);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="keywordflow">return</span> Z_ERRNO;</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        }</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="keywordflow">if</span> (strm.avail_in == 0)</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        strm.next_in = in;</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">/* run inflate() on input until output buffer not full */</span></div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">do</span> {</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            strm.avail_out = <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a>;</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            strm.next_out = out;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            ret = inflate(&amp;strm, Z_NO_FLUSH);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="comment">// assert(ret != Z_STREAM_ERROR);  /* state not clobbered */</span></div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <span class="keywordflow">switch</span> (ret) {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <span class="keywordflow">case</span> Z_NEED_DICT:</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                ret = Z_DATA_ERROR;     <span class="comment">/* and fall through */</span></div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">case</span> Z_DATA_ERROR:</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            <span class="keywordflow">case</span> Z_MEM_ERROR:</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                (void)inflateEnd(&amp;strm);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                <span class="keywordflow">return</span> ret;</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            have = <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a> - strm.avail_out;</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.insert(</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.end(),</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                out,</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                out + have</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            );</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.good()) {</div>
-<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                (void)inflateEnd(&amp;strm);</div>
-<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                <span class="keywordflow">return</span> Z_ERRNO;</div>
-<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            }</div>
-<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        } <span class="keywordflow">while</span> (strm.avail_out == 0);</div>
-<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
-<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        <span class="comment">/* done when inflate() says it&#39;s done */</span></div>
-<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    } <span class="keywordflow">while</span> (ret != Z_STREAM_END);</div>
-<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
-<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    <span class="comment">/* clean up and return */</span></div>
-<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;    (void)inflateEnd(&amp;strm);</div>
-<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">return</span> ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;</div>
-<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;}</div>
-<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160; </div>
-<div class="line"><a name="l00083"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">   83</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">DefaultAnalyzer::extract</a>(</div>
-<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> headerPath  = <span class="stringliteral">&quot;header.dat&quot;</span>, </div>
-<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> bodyPath    = <span class="stringliteral">&quot;body.dat&quot;</span></div>
-<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;)<span class="keyword"> const</span></div>
-<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;<span class="keyword"></span>{</div>
-<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    ofstream headerOut(headerPath, ofstream::binary);</div>
-<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    ofstream bodyOut(bodyPath, ofstream::binary);</div>
-<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160; </div>
-<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    headerOut.write((<span class="keywordtype">char</span>*)<a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.data(), <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.size());</div>
-<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    bodyOut.write((<span class="keywordtype">char</span>*)<a class="code" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a>.data(), <a class="code" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a>.size());</div>
-<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;    </div>
-<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    headerOut.close();</div>
-<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    bodyOut.close();</div>
-<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.read((<span class="keywordtype">char</span> *)&amp;in, <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a>);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        strm.avail_in = <a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.gcount();</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.good())</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            (void)inflateEnd(&amp;strm);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="keywordflow">return</span> Z_ERRNO;</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        }</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (strm.avail_in == 0)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        strm.next_in = in;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160; </div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">/* run inflate() on input until output buffer not full */</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        <span class="keywordflow">do</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            strm.avail_out = <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            strm.next_out = out;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            ret = inflate(&amp;strm, Z_NO_FLUSH);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <span class="comment">// assert(ret != Z_STREAM_ERROR);  /* state not clobbered */</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <span class="keywordflow">switch</span> (ret)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">case</span> Z_NEED_DICT:</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;                ret = Z_DATA_ERROR; <span class="comment">/* and fall through */</span></div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">case</span> Z_DATA_ERROR:</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;            <span class="keywordflow">case</span> Z_MEM_ERROR:</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                (void)inflateEnd(&amp;strm);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="keywordflow">return</span> ret;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            have = <a class="code" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a> - strm.avail_out;</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.insert(</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.end(),</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                out,</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                out + have);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a>.good())</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                (void)inflateEnd(&amp;strm);</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="keywordflow">return</span> Z_ERRNO;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            }</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        } <span class="keywordflow">while</span> (strm.avail_out == 0);</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160; </div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="comment">/* done when inflate() says it&#39;s done */</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    } <span class="keywordflow">while</span> (ret != Z_STREAM_END);</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160; </div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    <span class="comment">/* clean up and return */</span></div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    (void)inflateEnd(&amp;strm);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    <span class="keywordflow">return</span> ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;}</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160; </div>
+<div class="line"><a name="l00087"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">   87</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">DefaultAnalyzer::extract</a>(</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> headerPath = <span class="stringliteral">&quot;header.dat&quot;</span>,</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">const</span> <span class="keywordtype">string</span> bodyPath = <span class="stringliteral">&quot;body.dat&quot;</span>)<span class="keyword"> const</span></div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;<span class="keyword"></span>{</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;    ofstream headerOut(headerPath, ofstream::binary);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    ofstream bodyOut(bodyPath, ofstream::binary);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    headerOut.write((<span class="keywordtype">char</span> *)<a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.data(), <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.size());</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;    bodyOut.write((<span class="keywordtype">char</span> *)<a class="code" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a>.data(), <a class="code" href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">_body</a>.size());</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160; </div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    headerOut.close();</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    bodyOut.close();</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><div class="ttname"><a href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">DefaultAnalyzer::_body</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _body</div><div class="ttdoc">用于存储body数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00474">Analyzer.h:474</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a4d6c839cb063edd281b668a7e8cbca07"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">DefaultAnalyzer::_f</a></div><div class="ttdeci">ifstream _f</div><div class="ttdoc">读取后的录像文件数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00472">Analyzer.h:472</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b"><div class="ttname"><a href="classDefaultAnalyzer.html#a6ac9dd40f0a1ed6e2d64fd8eab4d6f8b">DefaultAnalyzer::_body</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _body</div><div class="ttdoc">用于存储body数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00486">Analyzer.h:486</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4d6c839cb063edd281b668a7e8cbca07"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">DefaultAnalyzer::_f</a></div><div class="ttdeci">ifstream _f</div><div class="ttdoc">读取后的录像文件数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00484">Analyzer.h:484</a></div></div>
 <div class="ttc" id="aAnalyzer_8h_html_a8877da8d136f1bc68d406301777c4e4c"><div class="ttname"><a href="Analyzer_8h.html#a8877da8d136f1bc68d406301777c4e4c">HEADER_INIT</a></div><div class="ttdeci">#define HEADER_INIT</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00014">Analyzer.h:14</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a85b1378c119ffc2a724924d2c3a597de"><div class="ttname"><a href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">DefaultAnalyzer::_header</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _header</div><div class="ttdoc">用于存储解压缩后的header数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00475">Analyzer.h:475</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_affc19a00ce128a9adf2f399b626a425a"><div class="ttname"><a href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">DefaultAnalyzer::extract</a></div><div class="ttdeci">void extract(const string, const string) const</div><div class="ttdoc">Extract header&amp;body streams into separate files</div><div class="ttdef"><b>Definition:</b> <a href="subProcFileHandler_8cpp_source.html#l00083">subProcFileHandler.cpp:83</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a85b1378c119ffc2a724924d2c3a597de"><div class="ttname"><a href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">DefaultAnalyzer::_header</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _header</div><div class="ttdoc">用于存储解压缩后的header数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00487">Analyzer.h:487</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_affc19a00ce128a9adf2f399b626a425a"><div class="ttname"><a href="classDefaultAnalyzer.html#affc19a00ce128a9adf2f399b626a425a">DefaultAnalyzer::extract</a></div><div class="ttdeci">void extract(const string, const string) const</div><div class="ttdoc">Extract header&amp;body streams into separate files</div><div class="ttdef"><b>Definition:</b> <a href="subProcFileHandler_8cpp_source.html#l00087">subProcFileHandler.cpp:87</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_ab96150e820a604a024034980d7a9141c"><div class="ttname"><a href="classDefaultAnalyzer.html#ab96150e820a604a024034980d7a9141c">DefaultAnalyzer::_inflateRawHeader</a></div><div class="ttdeci">int _inflateRawHeader()</div><div class="ttdoc">解压 header 数据</div><div class="ttdef"><b>Definition:</b> <a href="subProcFileHandler_8cpp_source.html#l00015">subProcFileHandler.cpp:15</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a9e6b6547f2ee0012ec5292d9d8b63c93"><div class="ttname"><a href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">DefaultAnalyzer::ZLIB_CHUNK</a></div><div class="ttdeci">uint32_t ZLIB_CHUNK</div><div class="ttdoc">ZLIB解压时的参数</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00097">Analyzer.h:97</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a9e6b6547f2ee0012ec5292d9d8b63c93"><div class="ttname"><a href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">DefaultAnalyzer::ZLIB_CHUNK</a></div><div class="ttdeci">uint32_t ZLIB_CHUNK</div><div class="ttdoc">ZLIB解压时的参数</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00098">Analyzer.h:98</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

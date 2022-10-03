@@ -77,7 +77,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
     for (size_t i = 1; i < 9; i++)
     {
         _readBytes(4, &players[i].DD_DLCID);
-        _readBytes(4, &players[i].colorID);
+        _readBytes(4, &players[i].DD_colorID);
         _readBytes(1, &players[i].DE_selectedColor);
         _readBytes(1, &players[i].DE_selectedTeamID);
         _readBytes(1, &players[i].resolvedTeamID);

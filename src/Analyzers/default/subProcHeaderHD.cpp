@@ -114,7 +114,7 @@ void DefaultAnalyzer::_headerHDAnalyzer()
         for (size_t i = 1; i < 9; i++)
         {
             _readBytes(4, &players[i].DD_DLCID);
-            _readBytes(4, &players[i].colorID);
+            _readBytes(4, &players[i].DD_colorID);
             if (DD_version >= 1005.9999)
                 _skip(1);
             _skip(2);

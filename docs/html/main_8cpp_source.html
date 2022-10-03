@@ -126,20 +126,21 @@ $(function() {
 <div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        logger.info(<span class="stringliteral">&quot;Int_Version: {}&quot;</span>, a.DD_internalVersion);</div>
 <div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        logger.info(<span class="stringliteral">&quot;DE_Build: {}&quot;</span>, a.DE_build);</div>
 <div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        logger.info(<span class="stringliteral">&quot;VersionCode: {}&quot;</span>, a.versionCode);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        logger.info(<span class="stringliteral">&quot;Message: {}&quot;</span>, a.message);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        a.message = logger.dumpStr();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        cout &lt;&lt; a.message &lt;&lt; endl;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;    }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;    <span class="comment">//a.extract(&quot;header.dat&quot;, &quot;body.dat&quot;);</span></div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160; </div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    <span class="keywordflow">return</span> 0;</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;}</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        logger.info(<span class="stringliteral">&quot;Status: {}&quot;</span>, a.status);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        logger.info(<span class="stringliteral">&quot;poplimit: {}&quot;</span>, a.populationLimit);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        a.message = logger.dumpStr();</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        cout &lt;&lt; a.message &lt;&lt; endl;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="comment">//a.extract(&quot;header.dat&quot;, &quot;body.dat&quot;);</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">return</span> 0;</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
 <div class="ttc" id="aLogger_8h_html"><div class="ttname"><a href="Logger_8h.html">Logger.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html"><div class="ttname"><a href="classDefaultAnalyzer.html">DefaultAnalyzer</a></div><div class="ttdoc">默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00043">Analyzer.h:43</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html"><div class="ttname"><a href="classDefaultAnalyzer.html">DefaultAnalyzer</a></div><div class="ttdoc">默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00044">Analyzer.h:44</a></div></div>
 <div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00031">Logger.h:31</a></div></div>
 <div class="ttc" id="amain_8cpp_html_a0ddf1224851353fc92bfbff6f499fa97"><div class="ttname"><a href="main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97">main</a></div><div class="ttdeci">int main(int argc, char *argv[])</div><div class="ttdef"><b>Definition:</b> <a href="main_8cpp_source.html#l00021">main.cpp:21</a></div></div>
 <!-- start footer part -->

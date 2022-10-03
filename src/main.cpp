@@ -54,13 +54,13 @@ int main(int argc, char* argv[])
         logger.info("DE_Build: {}", a.DE_build);
         logger.info("VersionCode: {}", a.versionCode);
         logger.info("Status: {}", a.status);
-        logger.info("poplimit: {}", a.populationLimit);
     } else {
         a.message = logger.dumpStr();
         cout << a.message << endl;
     }
-
-    //a.extract("header.dat", "body.dat");
-
+    a.extract("header.dat", "body.dat");
+    a.generateMap("map.png", 360, 180);
+    a.generateMap("HDmap.png", 1200, 600, true);
+    
     return 0;
 }

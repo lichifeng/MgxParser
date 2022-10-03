@@ -24,7 +24,7 @@ void DefaultAnalyzer::_startInfoAnalyzer()
 
     uint32_t numHeaderData = *(uint32_t *)(_startInfoPatternTrail + 1);
 
-    for (auto p : players)
+    for (auto &p : players)
     {
         if (p.initialDataFound() && p.valid())
         {
@@ -59,7 +59,7 @@ void DefaultAnalyzer::_startInfoAnalyzer()
             }
 
             if (!IS_AOK(versionCode))
-                _skip(*(float *)_curPos * 4);
+                _skip(*(int32_t *)_curPos * 8 + 4);
             _skip(4 + 1);
             _readBytes(1, &p.civID);
             _skip(3);

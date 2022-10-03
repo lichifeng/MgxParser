@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['chat_80',['Chat',['../structChat.html',1,'Chat'],['../classDefaultAnalyzer.html#a49d8000dfb61dccaac94288221c702ad',1,'DefaultAnalyzer::chat()']]],
+  ['chat_80',['Chat',['../structChat.html',1,'Chat'],['../classDefaultAnalyzer.html#ae4076eb42577a4d311b24b71bf124033',1,'DefaultAnalyzer::chat()']]],
   ['chat_2eh_81',['Chat.h',['../Chat_8h.html',1,'']]],
   ['cheatsenabled_82',['cheatsEnabled',['../classDefaultAnalyzer.html#a299399497b1833b5c6fdbb5e7709f608',1,'DefaultAnalyzer']]],
   ['check_5fconvert_5ferror_83',['check_convert_error',['../classEncodingConverter.html#ada7ba8bc7d7c78d351ffb2afe16f7bbe',1,'EncodingConverter']]],

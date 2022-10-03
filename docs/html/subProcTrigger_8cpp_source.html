@@ -72,83 +72,87 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <a href="subProcTrigger_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcessTriggerInfo.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcTrigger.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-30</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-03</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="comment"></span> </div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="comment"> * \brief      This method is not fully tested</span></div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="comment"> */</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a30da8e7219a563749bed56e6f013833f">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a30da8e7219a563749bed56e6f013833f">DefaultAnalyzer::_triggerInfoAnalyzer</a>() {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a>;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordtype">int</span> conditionSize = 72;</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    int32_t</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        numTriggers,</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        descriptionLen,</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        nameLen,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        numEffects,</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        numSelectedObjs,</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        textLen,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        soundFilenameLen,</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        numConditions;</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordtype">bool</span> isHDPatch4 = <a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 12.3399;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _skip(1);</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (isHDPatch4) conditionSize += 8;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numTriggers);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numTriggers; i++)</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        _skip(18);</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;descriptionLen);</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        _skip(descriptionLen &gt; 0 ? descriptionLen : 0);</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;nameLen);</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        _skip(nameLen &gt; 0 ? nameLen : 0);</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numEffects);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numEffects; i++)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            _skip(24);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numSelectedObjs);</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            numSelectedObjs = numSelectedObjs == -1 ? 0 : numSelectedObjs;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            _skip(isHDPatch4 ? 76 : 72);</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;textLen);</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            _skip(textLen &gt; 0 ? textLen : 0);</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;soundFilenameLen);</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            _skip(soundFilenameLen &gt; 0 ? soundFilenameLen : 0);</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            _skip(numSelectedObjs * 4);</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        }</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        _skip(numEffects * 4);</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numConditions);</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        _skip(numConditions * conditionSize + numConditions * 4);</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;    }</div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    <span class="keywordflow">if</span> (numTriggers &gt; 0) _skip(numTriggers * 4);</div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a30da8e7219a563749bed56e6f013833f">   18</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a30da8e7219a563749bed56e6f013833f">DefaultAnalyzer::_triggerInfoAnalyzer</a>()</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a>;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordtype">int</span> conditionSize = 72;</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    int32_t</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        numTriggers,</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        descriptionLen,</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        nameLen,</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        numEffects,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        numSelectedObjs,</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        textLen,</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        soundFilenameLen,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        numConditions;</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <span class="keywordtype">bool</span> isHDPatch4 = <a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 12.3399;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    _skip(1);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (isHDPatch4)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        conditionSize += 8;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numTriggers);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numTriggers; i++)</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        _skip(18);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;descriptionLen);</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        _skip(descriptionLen &gt; 0 ? descriptionLen : 0);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;nameLen);</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        _skip(nameLen &gt; 0 ? nameLen : 0);</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numEffects);</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; numEffects; i++)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            _skip(24);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numSelectedObjs);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            numSelectedObjs = numSelectedObjs == -1 ? 0 : numSelectedObjs;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            _skip(isHDPatch4 ? 76 : 72);</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;textLen);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            _skip(textLen &gt; 0 ? textLen : 0);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;soundFilenameLen);</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            _skip(soundFilenameLen &gt; 0 ? soundFilenameLen : 0);</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            _skip(numSelectedObjs * 4);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        }</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        _skip(numEffects * 4);</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numConditions);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        _skip(numConditions * conditionSize + numConditions * 4);</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
 <div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) _skip(1032);</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8c3b378f63eb6234c6a0dc3e54b52ec4">_lobbyStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;}</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    <span class="keywordflow">if</span> (numTriggers &gt; 0)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        _skip(numTriggers * 4);</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160; </div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>))</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        _skip(1032);</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8c3b378f63eb6234c6a0dc3e54b52ec4">_lobbyStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00477">Analyzer.h:477</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_acec5fc3632913190a73b8af2c2f0206d"><div class="ttname"><a href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">DefaultAnalyzer::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00102">Analyzer.h:102</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00489">Analyzer.h:489</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_acec5fc3632913190a73b8af2c2f0206d"><div class="ttname"><a href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">DefaultAnalyzer::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00104">Analyzer.h:104</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a30da8e7219a563749bed56e6f013833f"><div class="ttname"><a href="classDefaultAnalyzer.html#a30da8e7219a563749bed56e6f013833f">DefaultAnalyzer::_triggerInfoAnalyzer</a></div><div class="ttdeci">void _triggerInfoAnalyzer()</div><div class="ttdoc">This method is not fully tested</div><div class="ttdef"><b>Definition:</b> <a href="subProcTrigger_8cpp_source.html#l00018">subProcTrigger.cpp:18</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a3975aa43ef668e44ecb31c613c71def0"><div class="ttname"><a href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">DefaultAnalyzer::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00103">Analyzer.h:103</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a95fd5440dae771b8f81f427571efa6e8"><div class="ttname"><a href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">DefaultAnalyzer::_triggerInfoPos</a></div><div class="ttdeci">uint8_t * _triggerInfoPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00486">Analyzer.h:486</a></div></div>
-<div class="ttc" id="autils_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00024">utils.h:24</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a8c3b378f63eb6234c6a0dc3e54b52ec4"><div class="ttname"><a href="classDefaultAnalyzer.html#a8c3b378f63eb6234c6a0dc3e54b52ec4">DefaultAnalyzer::_lobbyStartPos</a></div><div class="ttdeci">uint8_t * _lobbyStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00492">Analyzer.h:492</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00259">Analyzer.h:259</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a3975aa43ef668e44ecb31c613c71def0"><div class="ttname"><a href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">DefaultAnalyzer::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00105">Analyzer.h:105</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a95fd5440dae771b8f81f427571efa6e8"><div class="ttname"><a href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">DefaultAnalyzer::_triggerInfoPos</a></div><div class="ttdeci">uint8_t * _triggerInfoPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00498">Analyzer.h:498</a></div></div>
+<div class="ttc" id="autils_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="utils_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00025">utils.h:25</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a8c3b378f63eb6234c6a0dc3e54b52ec4"><div class="ttname"><a href="classDefaultAnalyzer.html#a8c3b378f63eb6234c6a0dc3e54b52ec4">DefaultAnalyzer::_lobbyStartPos</a></div><div class="ttdeci">uint8_t * _lobbyStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00504">Analyzer.h:504</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00261">Analyzer.h:261</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

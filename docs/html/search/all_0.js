@@ -12,7 +12,7 @@ var searchData=
   ['_5fdefaultname_9',['_defaultName',['../classLogger.html#ac9f545d628c4bfac9cdf9237bddaf43e',1,'Logger']]],
   ['_5fdisablesstartpos_10',['_disablesStartPos',['../classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8',1,'DefaultAnalyzer']]],
   ['_5fencodingconverter_11',['_encodingConverter',['../classDefaultAnalyzer.html#ab76e19cba74d42223149fd9006c51d51',1,'DefaultAnalyzer']]],
-  ['_5fexpectbytes_12',['_expectBytes',['../classDefaultAnalyzer.html#a5af69fcde971308b181bc1ca303af0c2',1,'DefaultAnalyzer::_expectBytes(const vector&lt; uint8_t &gt; &amp;pattern, string good, string warn, bool skip=true, bool throwExpt=true)'],['../classDefaultAnalyzer.html#a063f9e2227cc958b31ed112ab8b1481a',1,'DefaultAnalyzer::_expectBytes(const vector&lt; uint8_t &gt; &amp;pattern, bool skip=true)']]],
+  ['_5fexpectbytes_12',['_expectBytes',['../classDefaultAnalyzer.html#a063f9e2227cc958b31ed112ab8b1481a',1,'DefaultAnalyzer']]],
   ['_5ff_13',['_f',['../classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07',1,'DefaultAnalyzer']]],
   ['_5ffailedsignal_14',['_failedSignal',['../classDefaultAnalyzer.html#ae4b1ed2805b1be6cd6dbc6785448bc69',1,'DefaultAnalyzer']]],
   ['_5ffinddisablesstart_15',['_findDisablesStart',['../classDefaultAnalyzer.html#a05d7b5e7161fdb5bd7ca7580580e750f',1,'DefaultAnalyzer']]],

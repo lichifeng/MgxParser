@@ -47,7 +47,7 @@ public:
     float               modVersionID;
     float               initCamera[2] = {-1.0, -1.0};
     uint8_t             civID;
-    uint8_t             colorID;
+    uint8_t             colorID = 255;
 
 
     // int32_t             startingAge = -1; ///< 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)

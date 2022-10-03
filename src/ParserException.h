@@ -4,7 +4,7 @@
  * \brief      
  * \version    0.1
  * \date       2022-09-23
- * 
+ * \deprecated
  * \copyright  Copyright (c) 2020-2022
  * 
  */

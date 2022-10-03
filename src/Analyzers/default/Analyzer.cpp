@@ -13,8 +13,8 @@
 #include <sstream>
 
 #include "Analyzer.h"
-#include "TileStructures.h"
 #include "utils.h"
+#include "../../MapTools/TileStructures.h"
 
 #define STOP_ON_FAILURE \
     if (_failedSignal)  \
@@ -31,9 +31,8 @@ void DefaultAnalyzer::run()
 
     if (!filesystem::exists(path))
     {
-        status = "fatal";
+        _sendFailedSignal(true);
         logger->fatal("{}(): {} don't exist.", __FUNCTION__, path);
-        message = logger->dumpStr();
         return;
     }
 
@@ -45,18 +44,16 @@ void DefaultAnalyzer::run()
     _f.open(path, ifstream::in | ifstream::binary);
     if (!_f.is_open())
     {
-        status = "fatal";
+        _sendFailedSignal(true);
         logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path);
-        message = logger->dumpStr();
         return;
     }
 
     // Try to extract header&body streams
     if (!_locateStreams())
     {
-        status = "fatal";
+        _sendFailedSignal(true);
         logger->fatal("{}(): Failed to unzip raw header data of {}. ", __FUNCTION__, path);
-        message = logger->dumpStr();
         return;
     }
 
