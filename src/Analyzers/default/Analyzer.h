@@ -277,7 +277,7 @@ protected:
 
         if (lenStr > 3000)
         {
-            logger->warn("Encountered an unexpected string length. @{} in \"{}\"", _distance(), filename);
+            logger->warn("Encountered an unexpected string length[SKIP]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
             _sendFailedSignal();
             return;
         }
@@ -300,7 +300,7 @@ protected:
 
         if (lenStr > 3000)
         {
-            logger->warn("Encountered an unexpected string length. @{} in \"{}\"", _distance(), filename);
+            logger->warn("Encountered an unexpected string length[READ]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
             _sendFailedSignal();
             return;
         }
@@ -509,4 +509,5 @@ protected:
     EncodingConverter *_encodingConverter = nullptr;
 
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
+    int _debugFlag = 0;
 };

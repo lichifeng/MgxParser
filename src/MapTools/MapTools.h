@@ -35,23 +35,9 @@ void getMap(
     // Init map
     cimg_library::CImg<unsigned char> img(analyzer->mapCoord[0], analyzer->mapCoord[1], 1, 4, 0xff);
 
-    // // prepare raw data
-    // if ((uint8_t)0xff == _mapBitmap[0])
-    // {
-    //     versionOffset = 1;
-    //     versionSpan = 4;
-    // }
-    // else
-    // {
-    //     versionOffset = 0;
-    //     versionSpan = 2;
-    // }
-
     // populate bits
     cimg_forXY(img, x, y)
     {
-        // curPos = (y * analyzer->mapCoord[0] + x) * versionSpan + versionOffset;
-        // rbPos = ((y + 1) * analyzer->mapCoord[0] + x + 1) * versionSpan + versionOffset;
         curPos = y * analyzer->mapCoord[0] + x;
         rbPos = (y + 1) * analyzer->mapCoord[0] + (x + 1);
 
@@ -93,16 +79,18 @@ void getMap(
 
     float factor = analyzer->mapCoord[0] / 220.0;
     float tcX, tcY;
-    
+
     // Zoom the map to 3x original size
-    if (HD) {
+    if (HD)
+    {
         img.resize_tripleXY();
         factor *= 2.5;
-    }    
+    }
 
     for (auto &p : analyzer->players)
     {
-        if (!p.valid()) continue;
+        if (!p.valid())
+            continue;
         tcX = HD ? p.initCamera[0] * 3 : p.initCamera[0];
         tcY = HD ? p.initCamera[1] * 3 : p.initCamera[1];
         img.draw_circle(tcX, tcY, factor * 8, playerColors[p.colorID], 0.3);

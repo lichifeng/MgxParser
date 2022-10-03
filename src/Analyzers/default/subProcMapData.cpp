@@ -71,6 +71,7 @@ void DefaultAnalyzer::_mapDataAnalyzer()
     _skip(visibilityMapSize[0] * visibilityMapSize[1] * 4);
 }
 
+///< \todo 高版本的DE录像好像不能得到正确的初始视角，需要修复
 void DefaultAnalyzer::generateMap(const string path, uint32_t width, uint32_t height, bool hd)
 {
     if (7 == _mapTileType)

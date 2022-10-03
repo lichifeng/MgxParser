@@ -1,12 +1,12 @@
 /**
  * \file       subProcLobby.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-03
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
@@ -40,7 +40,8 @@ void DefaultAnalyzer::_lobbyAnalyzer()
     if (populationLimit == UINT32_INIT)
     {
         _readBytes(4, &populationLimit);
-        if (populationLimit < 40) {
+        if (populationLimit < 40)
+        {
             populationLimit *= 25;
         }
     }
@@ -64,9 +65,17 @@ void DefaultAnalyzer::_lobbyAnalyzer()
     if (!IS_AOK(versionCode))
     {
         Chat tmpChat;
-        uint32_t numChat;
+        int32_t numChat;
 
         _readBytes(4, &numChat);
+        if (numChat > 1000) // numChat is considered <= 50. Incase future versions set a bigger limit, use 1000 here.
+        {
+            logger->warn(
+                "{}(): Pregame chat count is too big. @{}.",
+                __FUNCTION__, _distance());
+            _sendFailedSignal();
+            numChat = 50;
+        }
         while (numChat-- > 0 && _remainBytes() >= 4)
         {
             _readPascalString(tmpChat.msg, true, true);
@@ -76,7 +85,7 @@ void DefaultAnalyzer::_lobbyAnalyzer()
             }
             else
             {
-                ++numChat;
+                if (!IS_DE(versionCode)) ++numChat; /// \todo Verify this.
             }
         }
     }
