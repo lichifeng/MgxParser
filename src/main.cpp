@@ -53,7 +53,8 @@ int main(int argc, char* argv[])
         logger.info("Int_Version: {}", a.DD_internalVersion);
         logger.info("DE_Build: {}", a.DE_build);
         logger.info("VersionCode: {}", a.versionCode);
-        logger.info("Message: {}", a.message);
+        logger.info("Status: {}", a.status);
+        logger.info("poplimit: {}", a.populationLimit);
     } else {
         a.message = logger.dumpStr();
         cout << a.message << endl;

@@ -1,9 +1,9 @@
 /**
- * \file       subProcFindDisablesStart.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \file       subProcFindDisables.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -11,41 +11,59 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_findDisablesStart() {
+void DefaultAnalyzer::_findDisablesStart()
+{
     _curPos = _gameSettingsPos;
-    
-    if (!IS_DE(versionCode)) {
-        if (IS_HD(versionCode) && saveVersion < 12.3399) {
+
+    if (!IS_DE(versionCode))
+    {
+        if (IS_HD(versionCode) && saveVersion < 12.3399)
+        {
             _disablesStartPos = _curPos - 5396;
-        } else {
+        }
+        else
+        {
             _disablesStartPos = _curPos - 5392;
         }
-    } else {
+    }
+    else
+    {
         _disablesStartPos = _curPos - 276;
     }
-    if (IS_HD(versionCode) && saveVersion >= 12.3399) {
+
+    if (IS_HD(versionCode) && saveVersion >= 12.3399)
+    {
         _disablesStartPos -= 644;
     }
-    
+
     // Check if at correct point
-    if (*(int32_t*)_disablesStartPos != -99) {
-        _curPos -= 4; /// 先后退四个字节再开始查找
+    if (*(int32_t *)_disablesStartPos != -99)
+    {
+        _curPos -= 4;                     /// 先后退四个字节再开始查找
         for (size_t i = 0; i < 8000; i++) /// \todo 这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧
         {
-            if (*(int32_t*)_curPos == -99)
+            if (*(int32_t *)_curPos == -99)
             {
                 _disablesStartPos = _curPos;
                 break;
             }
             --_curPos;
         }
-        if (*(int32_t*)_disablesStartPos != -99)
+
+        if (*(int32_t *)_disablesStartPos != -99)
         {
-            throw(ParserException("[WARN] Check bytes not valid, _disablesStartPos seems not good. \n")); // 9d ff ff ff
-        } else {
-            message.append("[INFO] Reach _disablesStartPos by reverse search. \n");
+            logger->warn(
+                "{}(): _disablesStartPos failed pattern check. @{}.",
+                __FUNCTION__, _distance());
+            _sendFailedSignal();
+            return;
         }
-    } else {
-        message.append("[INFO] Reach _disablesStartPos and passed validation. \n");
+        else
+        {
+            logger->warn(
+                "{}(): _disablesStartPos was reached by reverse search, look into this record. @{}.",
+                __FUNCTION__, _distance());
+            return;
+        }
     }
 }

@@ -1,12 +1,12 @@
 /**
  * \file       Analyzer.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-02
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include <filesystem>
@@ -16,7 +16,12 @@
 #include "TileStructures.h"
 #include "utils.h"
 
-#define STOP_ON_FAILURE if(_failedSignal)return
+#define STOP_ON_FAILURE \
+    if (_failedSignal)  \
+        return;
+#define TRY_PHASE2_FALLBACK   \
+    if (_failedSignal) \
+        goto PHASE2_FALLBACK;
 
 using namespace std;
 
@@ -141,23 +146,23 @@ void DefaultAnalyzer::_analyze()
         /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
         _headerHDAnalyzer();
     }
-    STOP_ON_FAILURE;
+    STOP_ON_FAILURE
 
     //   1-3: AI
     _AIAnalyzer();
-    STOP_ON_FAILURE;
+    STOP_ON_FAILURE
 
     //   1-4: Replay
     _replayAnalyzer();
-    STOP_ON_FAILURE;
+    STOP_ON_FAILURE
 
     //   1-5: Map
     _mapDataAnalyzer();
-    STOP_ON_FAILURE;
+    STOP_ON_FAILURE
 
     //   1-6: Find Startinfo
     _findStartInfoStart();
-    STOP_ON_FAILURE;
+    STOP_ON_FAILURE
 
     // ************
     // * Phase 2: *
@@ -165,35 +170,43 @@ void DefaultAnalyzer::_analyze()
     //   Find some key positions
     //   2-1: Trigger info start position
     _findTriggerInfoStart();
+    STOP_ON_FAILURE
 
     //   2-2: Game settings start position. Need 2-1
     _findGameSettingsStart();
+    STOP_ON_FAILURE
 
     //   2-3：Disables start position. Need 2-1
     _findDisablesStart();
+    TRY_PHASE2_FALLBACK
 
     //   2-4: Skip victory-related data. Need 2-3
     _findVictoryStart();
+    TRY_PHASE2_FALLBACK
 
     //   2-5: Find&Skip scenario data. Need 2-4
     //   Nothing valuable here except a filename.
     //   What is really needed is instructions data after this section,
     //   Which is critical data to detect file encoding.
     _findScenarioHeaderStart();
+    TRY_PHASE2_FALLBACK
     _scenarioHeaderAnalyzer();
+    TRY_PHASE2_FALLBACK
 
     //   2-6: Messages, ie. Instructions. Need 2-5
     _messagesAnalyzer();
+    // TRY_PHASE2_FALLBACK
 
-    //   2-7: Game settings part, player names first appears here (before HD/DE
-    //   versions). Need 2-2
-    _gameSettingsAnalyzer();
-
-    //   2-8: Skip trigger info. Need 2-1
+PHASE2_FALLBACK:
+    //   2-7: Skip trigger info. Need 2-1
     //   This is useless data, but need to get lobby start.
     _triggerInfoAnalyzer();
 
-    //   2-9: Search initial player data postion. Need 2-5 & 2-7
+    //   2-8: Game settings part, player names first appears here (before HD/DE
+    //   versions). Need 2-2
+    _gameSettingsAnalyzer();
+
+    //   2-9: Search initial player data postion. Need 2-5 & 2-8
     _findInitialPlayersDataPos();
 
     // ************
@@ -201,7 +214,7 @@ void DefaultAnalyzer::_analyze()
     // ************
     //   Do rest analyze. Following jobs is not necessarily ordered.
 
-    //   3-1: Lobby data, lobby chat & some settings here. Need 2-8
+    //   3-1: Lobby data, lobby chat & some settings here. Need 2-7
     _lobbyAnalyzer();
 
     //   3-2: Victory
@@ -209,26 +222,6 @@ void DefaultAnalyzer::_analyze()
 
     //   3-3: Go back to player initial data position and rummage some useful pieces
     _startInfoAnalyzer();
-}
-
-void DefaultAnalyzer::_expectBytes(
-    const vector<uint8_t> &pattern,
-    string good, string warn,
-    bool skip,
-    bool throwExpt)
-{
-    if (_bytecmp(_curPos, pattern.data(), pattern.size()))
-    {
-        message.append(good);
-    }
-    else
-    {
-        message.append(warn);
-        if (throwExpt)
-            throw(ParserException(warn));
-    }
-    if (skip)
-        _curPos += pattern.size();
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)

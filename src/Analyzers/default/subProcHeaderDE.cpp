@@ -69,7 +69,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
         logger->warn(
             "{}(): Validation in DE-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
-        _failedSignal = true;
+        _sendFailedSignal();
         return;
     }
 
@@ -159,7 +159,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
             logger->warn(
                 "{}(): expecting [00 00 00 00] but disppointed @{}.",
                 __FUNCTION__, _distance());
-            _failedSignal = true;
+            _sendFailedSignal();
             return;
         }
         _skip(4);
@@ -171,7 +171,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
             logger->warn(
                 "{}(): expecting [FE FF FF FF] but disppointed @{}.",
                 __FUNCTION__, _distance());
-            _failedSignal = true;
+            _sendFailedSignal();
             return;
         }
         _skip(60 * 4);

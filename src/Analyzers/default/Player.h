@@ -53,5 +53,5 @@ public:
     // int32_t             startingAge = -1; ///< 各プレイヤーのゲーム開始する時代 (-1=設定なし, 0=暗黒, 1=領主, 2=城主, 3=帝王, 4=帝王の時代以降)
     int32_t             slot = -1;
     vector<uint8_t>     searchPattern; ///< Used to locate player data in startinfo section
-    uint32_t            dataOffset = 0; ///< Offset from header stream start of player data in startinfo section
+    uint32_t            dataOffset = 0; ///< Offset from header stream start of player data in startinfo section. Keep this default 0.
 };

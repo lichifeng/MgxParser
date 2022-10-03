@@ -1,9 +1,9 @@
 /**
- * \file       subProcessScenarioHeader.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \file       subProcScenario.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -11,19 +11,33 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_scenarioHeaderAnalyzer() {
-    uint16_t filenameLen;
+void DefaultAnalyzer::_scenarioHeaderAnalyzer()
+{
     _curPos = _scenarioHeaderPos;
+
+    uint16_t filenameLen;
     _skip(4433);
     _readBytes(2, &filenameLen);
-    if (filenameLen > 224) throw(ParserException("[WARN] scenarioFilename is unsually long. \n"));
-    scenarioFilename.assign((char*)(_curPos+2), filenameLen);
+
+    if (filenameLen > 224)
+    {
+        logger->warn(
+            "{}(): scenarioFilename is unsually long. @{}.",
+            __FUNCTION__, _distance());
+        _sendFailedSignal();
+        return;
+    }
+
+    scenarioFilename.assign((char *)(_curPos + 2), filenameLen);
     _skip(filenameLen);
-    if (IS_DE(versionCode)) {
+    if (IS_DE(versionCode))
+    {
         _skip(64);
-        if (saveVersion >= 13.3399) {
+        if (saveVersion >= 13.3399)
+        {
             _skip(64);
         }
     }
+    
     _messagesStartPos = _curPos;
 }

@@ -39,7 +39,7 @@ void DefaultAnalyzer::_AIAnalyzer()
         logger->warn(
             "{}(): Validation in AI failed, expecting [08 00] @{}.",
             __FUNCTION__, _distance());
-        _failedSignal = true;
+        _sendFailedSignal();
         return;
     }
 
@@ -90,7 +90,7 @@ void DefaultAnalyzer::_AIAnalyzer()
             if (numRules > 10000)
             {
                 logger->warn("{}(): numRules in AI data > 10000 (maxRules is normally 10000) @{}.", __FUNCTION__, _distance());
-                _failedSignal = true;
+                _sendFailedSignal();
                 return;
             }
             _skip(4);

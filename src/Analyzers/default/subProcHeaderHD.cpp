@@ -39,7 +39,7 @@ void DefaultAnalyzer::_headerHDAnalyzer()
         logger->warn(
             "{}(): Validation in HD-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
-        _failedSignal = true;
+        _sendFailedSignal();
         return;
     }
 

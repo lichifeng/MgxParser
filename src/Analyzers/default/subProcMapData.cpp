@@ -17,13 +17,13 @@ void DefaultAnalyzer::_mapDataAnalyzer()
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {
         logger->warn("Abnormal mapsize. \"{}\"", filename);
-        _failedSignal = true;
+        _sendFailedSignal();
         return;
     }
     else if (mapCoord[0] != mapCoord[1])
     {
         logger->warn("Map coordinates is weird, X != Y. \"{}\"", filename);
-        _failedSignal = true;
+        _sendFailedSignal();
         return;
     }
 

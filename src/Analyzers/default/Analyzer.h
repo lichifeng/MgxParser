@@ -32,6 +32,7 @@
 #include "../../ParserException.h"
 #include "../BaseAnalyzer.h"
 #include "Player.h"
+#include "Chat.h"
 #include "utils.h"
 
 using namespace std;
@@ -95,6 +96,7 @@ public:
     uint32_t easySkipBase = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
     uint32_t triggerStartSearchRange = 19; ///< 查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试
     uint32_t ZLIB_CHUNK = 8192;            ///< ZLIB解压时的参数
+    uint32_t scenarioSearchSpan = 8000;    ///< usually 5500~6500
 
     // Version-related members
     uint32_t logVersion;     ///< body 的前4个字节，与版本有关，可以识别A/C版
@@ -121,7 +123,7 @@ public:
     uint32_t DD_endingAgeID;
     uint32_t DD_gameType = UINT32_INIT; ///< Only when DD_version>=1006
     string HD_ver1000MapName;
-    //string HD_ver1000Unknown;
+    // string HD_ver1000Unknown;
     float DD_speed = FLOAT_INIT;
     uint32_t DD_treatyLength;
     // uint32_t DD_populationLimit = UINT32_INIT; ///< Store this value in populationLimit
@@ -211,7 +213,7 @@ public:
     uint8_t gameType;
     uint8_t lockDiplomacy; ///< \note DE/HD数据中还有一个类似的
     uint8_t treatyLength;  ///< \note DE/HD数据中还有一个类似的
-    vector<string> chat;
+    vector<Chat> chat;
     int32_t DE_mapSeed;
 
     // other data
@@ -221,9 +223,9 @@ public:
     string outEncoding = "UTF-8";
     string playDate;  ///< 游戏发生时间，对老录像只能推断 \todo
                       ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
-    string status;    ///< 解析完成类型：good, warning, fatal, etc.
+    string status = "good";    ///< 解析完成类型：good, warning, fatal, etc.
     string message;   ///< 对 \p status 的具体说明
-    string parseMode; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
+    string parseMode = "MgxParser Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
     double parseTime; ///< 解析耗时（毫秒）
 
 protected:
@@ -275,7 +277,7 @@ protected:
         if (lenStr > 3000)
         {
             logger->warn("Encountered an unexpected string length. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             return;
         }
 
@@ -298,7 +300,7 @@ protected:
         if (lenStr > 3000)
         {
             logger->warn("Encountered an unexpected string length. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             return;
         }
 
@@ -322,7 +324,7 @@ protected:
         if (l[0] != 2656) // 0x60 0x0a int16_t
         {
             logger->warn("_skipDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             _curPos -= 4;
             return;
         }
@@ -339,7 +341,7 @@ protected:
         if (*(uint16_t *)_curPos != 2656) // 0x60 0x0a int16_t
         {
             logger->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             _curPos -= 2;
             return;
         }
@@ -358,7 +360,7 @@ protected:
         if (!(*(uint16_t *)_curPos == 2656)) // 0x60 0x0a
         {
             logger->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             return;
         }
 
@@ -376,7 +378,7 @@ protected:
         if (*(uint16_t *)_curPos != 2656) // 0x60 0x0a
         {
             logger->warn("_readHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-            _failedSignal = true;
+            _sendFailedSignal();
             _curPos -= 2;
             return;
         }
@@ -409,11 +411,16 @@ protected:
      * \brief      用于检查当前位置的特征字节是否符合预期
      *
      * \param      pattern             特征字节
-     *
-     * \todo 要把复杂的这个版本替换掉
      */
-    void _expectBytes(const vector<uint8_t> &pattern, string good, string warn,
-                      bool skip = true, bool throwExpt = true);
+
+    /**
+     * \brief      用于检查当前位置的特征字节是否符合预期
+     * 
+     * \param      pattern             特征字节
+     * \param      skip                检查完是否跳过这些字节
+     * \return     true                验证通过
+     * \return     false               验证失败
+     */
     bool _expectBytes(const vector<uint8_t> &pattern, bool skip = true);
 
     /**
@@ -449,6 +456,11 @@ protected:
 
     void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
 
+    void _sendFailedSignal(bool fatal = false) {
+        _failedSignal = true;
+        status = fatal ? "fatal" : "warning";
+    } ///< 标记解析失败的FLAG
+
     void _headerHDAnalyzer();
     void _headerDEAnalyzer();
     void _AIAnalyzer();
@@ -482,14 +494,14 @@ protected:
     void *_mapBitmap;
     uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 
-    uint8_t *_startInfoPos;
-    uint8_t *_triggerInfoPos;
-    uint8_t *_gameSettingsPos;
-    uint8_t *_disablesStartPos;
-    uint8_t *_victoryStartPos;
-    uint8_t *_scenarioHeaderPos;
-    uint8_t *_messagesStartPos;
-    uint8_t *_lobbyStartPos;
+    uint8_t *_startInfoPos = nullptr;
+    uint8_t *_triggerInfoPos = nullptr;
+    uint8_t *_gameSettingsPos = nullptr;
+    uint8_t *_disablesStartPos = nullptr;
+    uint8_t *_victoryStartPos = nullptr;
+    uint8_t *_scenarioHeaderPos = nullptr;
+    uint8_t *_messagesStartPos = nullptr;
+    uint8_t *_lobbyStartPos = nullptr;
 
     EncodingConverter *_encodingConverter = nullptr;
 

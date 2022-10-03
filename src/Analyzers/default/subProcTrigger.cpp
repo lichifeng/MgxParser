@@ -1,21 +1,22 @@
 /**
- * \file       subProcessTriggerInfo.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      
+ * \file       subProcTrigger.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \brief
  * \version    0.1
- * \date       2022-09-30
- * 
+ * \date       2022-10-03
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
 
 /**
  * \brief      This method is not fully tested
- * 
+ *
  */
-void DefaultAnalyzer::_triggerInfoAnalyzer() {
+void DefaultAnalyzer::_triggerInfoAnalyzer()
+{
     _curPos = _triggerInfoPos;
 
     int conditionSize = 72;
@@ -29,10 +30,11 @@ void DefaultAnalyzer::_triggerInfoAnalyzer() {
         soundFilenameLen,
         numConditions;
     bool isHDPatch4 = saveVersion >= 12.3399;
-    
+
     _skip(1);
 
-    if (isHDPatch4) conditionSize += 8;
+    if (isHDPatch4)
+        conditionSize += 8;
 
     _readBytes(4, &numTriggers);
     for (int i = 0; i < numTriggers; i++)
@@ -60,9 +62,11 @@ void DefaultAnalyzer::_triggerInfoAnalyzer() {
         _skip(numConditions * conditionSize + numConditions * 4);
     }
 
-    if (numTriggers > 0) _skip(numTriggers * 4);
+    if (numTriggers > 0)
+        _skip(numTriggers * 4);
 
-    if (IS_DE(versionCode)) _skip(1032);
+    if (IS_DE(versionCode))
+        _skip(1032);
 
     _lobbyStartPos = _curPos;
 }

@@ -1,17 +1,17 @@
 /**
  * \file       subProcEncodingHandler.cpp
  * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-09-30
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
 
-bool DefaultAnalyzer::_findEncodingPattern(const char* pattern, std::string& mapName, size_t patternLen)
+bool DefaultAnalyzer::_findEncodingPattern(const char *pattern, std::string &mapName, size_t patternLen)
 {
     size_t pos, posEnd;
 
@@ -29,7 +29,7 @@ bool DefaultAnalyzer::_findEncodingPattern(const char* pattern, std::string& map
 
 /**
  * \todo aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。
- * 
+ *
  */
 void DefaultAnalyzer::_guessEncoding()
 {

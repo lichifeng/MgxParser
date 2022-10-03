@@ -1,9 +1,9 @@
 /**
- * \file       subProcessLobby.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \file       subProcLobby.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -11,55 +11,77 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_lobbyAnalyzer() {
+void DefaultAnalyzer::_lobbyAnalyzer()
+{
     _curPos = _lobbyStartPos;
 
-    if (saveVersion >= 13.3399) _skip(5);
-    if (saveVersion >= 20.0599) _skip(9);
-    if (saveVersion >= 26.1599) _skip(5);
+    if (saveVersion >= 13.3399)
+        _skip(5);
+    if (saveVersion >= 20.0599)
+        _skip(9);
+    if (saveVersion >= 26.1599)
+        _skip(5);
     for (size_t i = 1; i < 9; i++)
     {
-        if (players[i].resolvedTeamID != 255) {
+        if (players[i].resolvedTeamID != 255)
+        {
             _skip(1);
-        } else {
+        }
+        else
+        {
             _readBytes(1, &players[i].resolvedTeamID);
         }
     }
-    if (saveVersion < 12.2999) _skip(1);
+    if (saveVersion < 12.2999)
+        _skip(1);
     _readBytes(4, &revealMap);
     _readBytes(4, &fogOfWar);
     _readBytes(4, &mapSize);
-    if (populationLimit == UINT32_INIT) {
+    if (populationLimit == UINT32_INIT)
+    {
         _readBytes(4, &populationLimit);
-    } else {
+        if (populationLimit < 40) {
+            populationLimit *= 25;
+        }
+    }
+    else
+    {
         _skip(4);
     }
     _readBytes(1, &gameType);
     _readBytes(1, &lockDiplomacy);
-    if (IS_HD(versionCode) || IS_DE(versionCode)) {
+    if (IS_HD(versionCode) || IS_DE(versionCode))
+    {
         _readBytes(1, &treatyLength);
         _skip(4); /// \note cheat codes used, what's this for?
-        if (saveVersion >= 13.1299) _skip(4);
-        if (saveVersion >= 25.2199) _skip(1);
+        if (saveVersion >= 13.1299)
+            _skip(4);
+        if (saveVersion >= 25.2199)
+            _skip(1);
     }
 
     // Read lobby(pregame) talks
-    if (!IS_AOK(versionCode)) {
-        string tmpS;
+    if (!IS_AOK(versionCode))
+    {
+        Chat tmpChat;
         uint32_t numChat;
 
         _readBytes(4, &numChat);
         while (numChat-- > 0 && _remainBytes() >= 4)
         {
-            _readPascalString(tmpS, true, true);
-            if (tmpS.length() > 0) {
-                chat.emplace_back(tmpS);
-            } else {
+            _readPascalString(tmpChat.msg, true, true);
+            if (tmpChat.msg.length() > 0)
+            {
+                chat.emplace_back(tmpChat);
+            }
+            else
+            {
                 ++numChat;
             }
         }
     }
-    
-    if (IS_DE(versionCode) && _remainBytes() >= 4) _readBytes(4, &DE_mapSeed);
+
+    if (IS_DE(versionCode) && _remainBytes() >= 4)
+        _readBytes(4, &DE_mapSeed);
     // Let it go after this.
 }
