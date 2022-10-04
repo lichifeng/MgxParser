@@ -4,14 +4,15 @@
  * \brief      分析器的基类（接口），所有 analyzer 都需要继承这个接口
  * \version    0.1
  * \date       2022-10-03
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #pragma once
 
 #include <string>
+#include "DataModels/DataModel.h"
 
 using namespace std;
 
@@ -27,27 +28,28 @@ using namespace std;
  * 这样的：正常情况下用默认解析器进行常规解析，这个过程中一般不会对 body 中的命
  * 令进行详细分析。后续如果需要对 body 中的命令进行深入分析，那就可以再做一个专
  * 门的解析器，跳过 header 部分的解析，只分析 body 部分即可。
- * 
+ *
  */
-class BaseAnalyzer {
-    public:
-        BaseAnalyzer() {} // 之前这里没有放函数体，链接时一直提示 undefined reference to BaseAnalyzer::BaseAnalyzer()
+class BaseAnalyzer : public DataModel
+{
+public:
+    BaseAnalyzer() {} // 之前这里没有放函数体，链接时一直提示 undefined reference to BaseAnalyzer::BaseAnalyzer()
 
-        /**
-         * \brief      构造函数，需要接收一个文件路径进行读取和解析。
-         * 
-         * \param      path                录像文件的路径
-         */
-        BaseAnalyzer(const string& path) {}
+    /**
+     * \brief      构造函数，需要接收一个文件路径进行读取和解析。
+     *
+     * \param      path                录像文件的路径
+     */
+    BaseAnalyzer(const string &path) {}
 
-        virtual void run() = 0; ///< 对录像信息进行解析
+    virtual void run() = 0; ///< 对录像信息进行解析
 
-        /**
-         * \brief      生成小地图。
-         * 
-         * \param      path                生成地图的存储路径
-         * \param      hd                  是否生成高清地图
-         * \return     string              地图文件的路径，如果生成失败则为空字符串
-         */
-        virtual void generateMap(const string path, uint32_t width, uint32_t height, bool hd) = 0;
+    /**
+     * \brief      生成小地图。
+     *
+     * \param      path                生成地图的存储路径
+     * \param      hd                  是否生成高清地图
+     * \return     string              地图文件的路径，如果生成失败则为空字符串
+     */
+    virtual void generateMap(const string path, uint32_t width, uint32_t height, bool hd) = 0;
 };

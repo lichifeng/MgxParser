@@ -10,7 +10,7 @@
  */
 
 #include "Analyzer.h"
-#include "../../MapTools/MapTools.h"
+#include "MapTools/MapTools.h"
 
 using namespace std;
 

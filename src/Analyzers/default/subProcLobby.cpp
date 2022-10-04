@@ -79,7 +79,7 @@ void DefaultAnalyzer::_lobbyAnalyzer()
         while (numChat-- > 0 && _remainBytes() >= 4)
         {
             _readPascalString(tmpChat.msg, true, true);
-            if (tmpChat.msg.length() > 0)
+            if (tmpChat.msg.length() > 1) // 有时候有长度为1，内容为空的
             {
                 chat.emplace_back(tmpChat);
             }

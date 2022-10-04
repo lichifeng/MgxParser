@@ -47,7 +47,7 @@ void DefaultAnalyzer::_readGameStart()
         _skip(4);
     /// \note 其实规律是从这里开始读过24个字节后一直要往后走，直到遇到第一个02
     /// 00 00 00
-    _skip(4); //_readBytes(4, &_bodyVar.syncChecksumInterval);
+    _readBytes(4, &syncChecksumInterval);
     _readBytes(4, &isMultiplayer);
     _skip(16); // pov & revealMap & containsSequenceNumbers & numberOfChapters, duplicated
     //_readBytes(4, &_bodyVar.containsSequenceNumbers);

@@ -12,7 +12,6 @@
 #include <string>
 #include "../Analyzer.h"
 
-uint32_t syncChecksumInterval = 500;
 uint32_t syncData[2];
 Chat tmpChat;
 uint32_t cmdLen;
@@ -35,9 +34,17 @@ void DefaultAnalyzer::_handleOpViewlock()
 
 void DefaultAnalyzer::_handleOpChat()
 {
-    _skip(4); // ff ff ff ff
+    if (*(int32_t *)_curPos != -1)
+    {
+        return;
+    }
+    else
+    {
+        _skip(4);
+    }
     _readPascalString(tmpChat.msg, true, true);
     tmpChat.time = duration;
+    chat.emplace_back(tmpChat);
 }
 
 void DefaultAnalyzer::_handleOpCommand()

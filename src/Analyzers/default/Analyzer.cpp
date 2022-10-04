@@ -14,7 +14,7 @@
 
 #include "Analyzer.h"
 #include "utils.h"
-#include "../../MapTools/TileStructures.h"
+#include "MapTools/TileStructures.h"
 
 #define STOP_ON_FAILURE \
     if (_failedSignal)  \
@@ -253,6 +253,8 @@ PHASE2_FALLBACK:
     // ************
     // Analyze the body stream
     _switchStream(BODY_STRM);
+
+    SET_FLAG(19)
     _readBodyCommands();
 }
 
