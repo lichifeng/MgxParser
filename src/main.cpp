@@ -61,12 +61,15 @@ int main(int argc, char *argv[])
     logger.info("Parsing time + extract() + map: {:.2f}ms", logger.elapsed());
     a.generateMap("HDmap.png", 1200, 600, true);
     logger.info("Parsing time + extract() + map + HDmap: {:.2f}ms", logger.elapsed());
+    a.parseTime = logger.elapsed();
 
     if (!DEBUG)
     {
         a.message = logger.dumpStr();
         cout << a.message << endl;
     }
+
+    cout << a.toJson() << endl;
 
     return 0;
 }

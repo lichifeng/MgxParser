@@ -12,15 +12,34 @@
 #pragma once
 
 #include <string>
+#include "nlohmann/json.hpp"
+#include "CompileConfig.h"
 #include "Player.h"
 #include "Helper.h"
 #include "Chat.h"
 
 using namespace std;
+using json = nlohmann::json;
 
 class DataModel
 {
 public:
+    string toJson()
+    {
+        json j;
+        
+        j["filename"] = filename;
+        j["originSize"] = filesize;
+        j["parser"] = PARSER_VERSION;
+        j["parseMode"] = parseMode;
+        j["parseTime"] = parseTime;
+        j["status"] = status;
+        j["message"] = message;
+        j["duration"] = duration;
+        
+        return j.dump();
+    }
+
     // File-related members
     string filename;        ///< 录像的文件名
     string ext;             ///< 录像的扩展名 \todo 要检查扩展名
@@ -167,5 +186,5 @@ public:
     string status = "good";                ///< 解析完成类型：good, warning, fatal, etc.
     string message;                        ///< 对 \p status 的具体说明
     string parseMode = "MgxParser Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
-    double parseTime;                      ///< 解析耗时（毫秒）
+    double parseTime = 0;                      ///< 解析耗时（毫秒）
 };
