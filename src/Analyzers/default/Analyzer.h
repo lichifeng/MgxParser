@@ -34,6 +34,7 @@
 #include "Player.h"
 #include "Chat.h"
 #include "utils.h"
+#include "bodyProcessors/helpers.h"
 
 using namespace std;
 
@@ -109,9 +110,9 @@ public:
     uint32_t DE_build = 0;         ///< In recent(2022-10) steam version of DE: 66692
     uint32_t DE_timestamp;         ///< 游戏时间，只有DE版本中有
     float DD_version = FLOAT_INIT; ///< hd<=4.7: 1000; hd=5.8: 1006
-    uint32_t DD_internalVersion;   ///< DE中是1000
+    uint32_t DD_internalVersion = UINT32_INIT;   ///< DE中是1000
     uint32_t DD_gameOptionsVersion;
-    uint32_t DD_DLCCount;
+    uint32_t DD_DLCCount = 0;
     uint32_t DD_datasetRef; ///< \todo What's this?
     uint32_t DD_difficultyID;
     uint32_t DD_selectedMapID;
@@ -160,7 +161,7 @@ public:
     uint8_t DE_matchMaking;
     uint32_t DE_specDely;
     uint8_t DE_scenarioCiv;
-    string DE_RMSCrc;
+    //string DE_RMSCrc;
     uint32_t HD_customRandomMapFileCrc;
     string HD_customScenarioOrCampaignFile;
     string HD_customRandomMapFile;
@@ -220,6 +221,10 @@ public:
     // other data
     string embededMapName; ///< Map name extracted from instructions, not mapped with raw number
 
+    // data from body
+    uint32_t duration = 0;
+    uint32_t isMultiplayer;
+
     string rawEncoding = "GBK";
     string outEncoding = "UTF-8";
     string playDate;  ///< 游戏发生时间，对老录像只能推断 \todo
@@ -241,16 +246,16 @@ protected:
      */
     inline void _switchStream(uint8_t stream = HEADER_STRM)
     {
-        (HEADER_STRM == stream) ? _curStream = _header.data()
-                                : _curStream = _body.data();
-        _curPos = _curStream;
+        (HEADER_STRM == stream) ? _curStream = &_header
+                                : _curStream = &_body;
+        _curPos = _curStream->data();
     }
 
-    inline size_t _distance() { return _curPos - _header.data(); } ///< 获取当前读取位置（相对于STREAM开头）
+    inline size_t _distance() { return _curPos - _curStream->data(); } ///< 获取当前读取位置（相对于STREAM开头）
 
     inline size_t _remainBytes()
     {
-        return (_header.size() >= _distance()) ? (_header.size() - _distance()) : 0;
+        return (_curStream->size() >= _distance()) ? (_curStream->size() - _distance()) : 0;
     } ///< 获取当前位置之后剩余的字节数
 
     /**
@@ -438,7 +443,7 @@ protected:
         if (_remainBytes() <= n)
             n = _remainBytes();
 
-        logger->logHex(n, _header.begin() + _distance(), _distance(), file, line);
+        logger->logHex(n, _curStream->begin() + _distance(), _distance(), file, line);
     }
 
     /**
@@ -484,6 +489,14 @@ protected:
     void _startInfoAnalyzer();
     void _triggerInfoAnalyzer();
     void _lobbyAnalyzer();
+    void _readBodyCommands();
+    void _readGameStart();
+
+    // methods for parsing body data
+    void _handleOpSync();
+    void _handleOpViewlock();
+    void _handleOpChat();
+    void _handleOpCommand();
 
     ifstream _f;             ///< 读取后的录像文件数据
     uintmax_t _bodySize;     ///< body部分的长度(bytes)
@@ -491,7 +504,7 @@ protected:
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
 
     uint8_t *_curPos;    ///< 当前读取数据的指针
-    uint8_t *_curStream; ///< 指向当前使用的数据流的底层数组的指针
+    vector<uint8_t>* _curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
     uint8_t *_startInfoPatternTrail;

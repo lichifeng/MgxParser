@@ -46,7 +46,7 @@ void DefaultAnalyzer::_AIAnalyzer()
     // AI Data
     if (IS_DE(versionCode))
     { /// \todo this takes too long, not acceptable
-        auto curItr = _header.begin() + (_curPos - _curStream);
+        auto curItr = _header.begin() + _distance();
         uint16_t rulesCnt = 0;
 
         // // Tricky skip

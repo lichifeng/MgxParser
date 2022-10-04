@@ -14,7 +14,8 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
-add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER})
+aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
+add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY})
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
 

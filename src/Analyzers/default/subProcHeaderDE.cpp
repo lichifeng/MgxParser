@@ -112,14 +112,18 @@ void DefaultAnalyzer::_headerDEAnalyzer()
     _readBytes(1, &DD_allowSpecs);
     _readBytes(4, &DD_lobbyVisibility);
     _readBytes(1, &DE_hiddenCivs);
-    _readBytes(1, &DE_matchMaking);
-    _readBytes(4, &DE_specDely);
-    if (saveVersion >= 13.1299)
+    _readBytes(1, &DE_matchMaking);  
+    if (saveVersion >= 13.1299) {
+        _readBytes(4, &DE_specDely);
         _readBytes(1, &DE_scenarioCiv);
-    if (saveVersion >= 13.1299)
-        DE_RMSCrc = hexStr(_curPos, 4, true);
+    }
+    // if (saveVersion >= 13.1299)
+    //     DE_RMSCrc = hexStr(_curPos, 4, true);
 
-    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索乱撞过去了.下面是做的一些研究，找的规律
+    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索乱撞过去了.下面是做
+    /// 的一些研究，找的规律
+    /// \todo aoc-mgz有更新，可以参考
+    /// https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5
     /// \note de-13.03.aoe2record : 2a 00 00 00 fe ff ff ff + 59*(fe ff ff ff)
     /// de-13.06.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
     /// de-13.07.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
@@ -138,7 +142,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
     /// de-26.16.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
     /// de-26.18.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
     /// de-26.21.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    auto curItr = _header.begin() + (_curPos - _curStream);
+    auto curItr = _header.begin() + _distance();
     for (size_t i = 0; i < 23; i++)
     {
         curItr = findPosition(

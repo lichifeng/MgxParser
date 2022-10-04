@@ -65,7 +65,7 @@ void DefaultAnalyzer::run()
     {
         _analyze();
     }
-    catch(const exception& e)
+    catch (const exception &e)
     {
         logger->fatal("Exception: {}", e.what());
         _sendFailedSignal(true);
@@ -247,6 +247,13 @@ PHASE2_FALLBACK:
     //   3-3: Go back to player initial data position and rummage some useful pieces
     SET_FLAG(18)
     _startInfoAnalyzer();
+
+    // ************
+    // * Phase 4: *
+    // ************
+    // Analyze the body stream
+    _switchStream(BODY_STRM);
+    _readBodyCommands();
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)

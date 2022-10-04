@@ -16,5 +16,6 @@ using namespace std;
 
 struct Chat
 {
+    uint32_t time = 0;
     string msg;
 };

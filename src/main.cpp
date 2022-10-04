@@ -4,9 +4,9 @@
  * \brief      主程序入口，目前还没有开发完成。
  * \version    0.1
  * \date       2022-09-21
- * 
+ *
  * \copyright Copyright (c) 2022
- * 
+ *
  */
 
 #include <exception>
@@ -18,14 +18,15 @@
 
 using namespace std;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     auto logger = Logger();
 
-    if (DEBUG) {
+    if (DEBUG)
+    {
         logger.warn("Debug Mode");
     }
-    
+
     if (argc <= 1)
     {
         logger.fatal("No Record Specified!");
@@ -39,28 +40,33 @@ int main(int argc, char* argv[])
     {
         a.run();
     }
-    catch(const exception& e)
+    catch (const exception &e)
     {
         logger.fatal("Exception: {}", e.what());
     }
 
-    if (DEBUG) {
-        logger.info("Parsing time: {:.2f}ms", logger.elapsed());
-        logger.info("Filename: {}", a.filename);
-        logger.info("VersionString: {}", a.versionStr);
-        logger.info("SaveVersion: {}", a.saveVersion);
-        logger.info("DD_Version: {}", a.DD_version);
-        logger.info("Int_Version: {}", a.DD_internalVersion);
-        logger.info("DE_Build: {}", a.DE_build);
-        logger.info("VersionCode: {}", a.versionCode);
-        logger.info("Status: {}", a.status);
-    } else {
+    logger.info("Filename: {}", a.filename);
+    logger.info("VersionString: {}", a.versionStr);
+    logger.info("SaveVersion: {}", a.saveVersion);
+    logger.info("DD_Version: {}", a.DD_version);
+    logger.info("Int_Version: {}", a.DD_internalVersion);
+    logger.info("DE_Build: {}", a.DE_build);
+    logger.info("VersionCode: {}", a.versionCode);
+    logger.info("Status: {}", a.status);
+    logger.info("Duration: {}:{}:{}", a.duration / 1000 / 3600, a.duration / 1000 % 3600 / 60, a.duration / 1000 % 3600 % 60);
+    logger.info("Parsing time: {:.2f}ms", logger.elapsed());
+    a.extract("header.dat", "body.dat");
+    logger.info("Parsing time + extract(): {:.2f}ms", logger.elapsed());
+    a.generateMap("map.png", 360, 180);
+    logger.info("Parsing time + extract() + map: {:.2f}ms", logger.elapsed());
+    a.generateMap("HDmap.png", 1200, 600, true);
+    logger.info("Parsing time + extract() + map + HDmap: {:.2f}ms", logger.elapsed());
+
+    if (!DEBUG)
+    {
         a.message = logger.dumpStr();
         cout << a.message << endl;
     }
-    a.extract("header.dat", "body.dat");
-    a.generateMap("map.png", 360, 180);
-    a.generateMap("HDmap.png", 1200, 600, true);
-    
+
     return 0;
 }
