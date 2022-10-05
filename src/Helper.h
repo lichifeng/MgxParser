@@ -1,15 +1,17 @@
 /**
  * \file       Helper.h
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-04
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #pragma once
+
+#include "nlohmann/json.hpp"
 
 // Version tools
 #define IS_TRIAL(v) (v == 0 && v == 1)
@@ -51,8 +53,33 @@ enum VERSIONCODE
     HD50_6 = 114, ///< 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6
     HD57 = 115,   ///< 5.7
     HD58 = 116,   ///< 5.8
-    // de: >=200 && <250
+                  // de: >=200 && <250
     DE = 200,
     // unsupported: = 999
     UNSUPPORTED = 999
 };
+
+NLOHMANN_JSON_SERIALIZE_ENUM(VERSIONCODE,
+                             {{AOKTRIAL, "AOKTRIAL"},
+                              {AOCTRIAL, "AOCTRIAL"},
+                              {AOK, "AOK"},
+                              {AOC, "AOC"},
+                              {AOC10, "AOC10"},
+                              {AOC10C, "AOC10C"},
+                              {AOFE21, "AOFE21"},
+                              {USERPATCH12, "USERPATCH12"},
+                              {USERPATCH13, "USERPATCH13"},
+                              {USERPATCH14RC1, "USERPATCH14RC1"},
+                              {USERPATCH14RC2, "USERPATCH14RC2"},
+                              {USERPATCH14, "USERPATCH14"},
+                              {USERPATCH15, "USERPATCH15"},
+                              {MCP, "MCP"},
+                              {HD, "HD"},
+                              {HD43, "HD43"},
+                              {HD46_7, "HD46_7"},
+                              {HD48, "HD48"},
+                              {HD50_6, "HD50_6"},
+                              {HD57, "HD57"},
+                              {HD58, "HD58"},
+                              {DE, "DE"},
+                              {UNSUPPORTED, "UNSUPPORTED"}})

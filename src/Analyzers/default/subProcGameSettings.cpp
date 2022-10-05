@@ -47,6 +47,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer()
     uint8_t *namePtr;
     for (size_t i = 0; i < 9; i++)
     {
+        players[i].slot = i;
         namePtr = _curPos + 8;
         // 先获得名字长度，再把 len + lenName + trailBytes 放到 pattern 里，
         // 供以后搜索使用， 然后再跳过或把名字转码保存下来。
@@ -59,7 +60,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer()
         // \todo 这里似乎只有玩家才会在HD/DE专有区块有名字信息，GAIA和AI没有。
         // 注3：startinfo中的字符串有\0结尾，这里没有
 
-        _readBytes(4, &players[i].slot);
+        _readBytes(4, &players[i].index);
         if (players[i].name.length() > 0)
         {
             // Data from HD/DE header has higher priority
@@ -92,5 +93,8 @@ void DefaultAnalyzer::_gameSettingsAnalyzer()
             memcpy(players[i].searchPattern.data() + 2 + nameLen, _startInfoPatternTrail, trailBytes);
             _readPascalString(players[i].name, true, true);
         }
+
+        if ('\0' == players[i].name.back())
+            players[i].name.resize(players[i].name.size() - 1);
     }
 }

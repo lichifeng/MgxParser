@@ -46,22 +46,10 @@ int main(int argc, char *argv[])
     }
 
     logger.info("Filename: {}", a.filename);
-    logger.info("VersionString: {}", a.versionStr);
-    logger.info("SaveVersion: {}", a.saveVersion);
-    logger.info("DD_Version: {}", a.DD_version);
-    logger.info("Int_Version: {}", a.DD_internalVersion);
-    logger.info("DE_Build: {}", a.DE_build);
     logger.info("VersionCode: {}", a.versionCode);
     logger.info("Status: {}", a.status);
     logger.info("Duration: {}:{}:{}", a.duration / 1000 / 3600, a.duration / 1000 % 3600 / 60, a.duration / 1000 % 3600 % 60);
-    logger.info("Parsing time: {:.2f}ms", logger.elapsed());
-    a.extract("header.dat", "body.dat");
-    logger.info("Parsing time + extract(): {:.2f}ms", logger.elapsed());
-    a.generateMap("map.png", 360, 180);
-    logger.info("Parsing time + extract() + map: {:.2f}ms", logger.elapsed());
-    a.generateMap("HDmap.png", 1200, 600, true);
-    logger.info("Parsing time + extract() + map + HDmap: {:.2f}ms", logger.elapsed());
-    a.parseTime = logger.elapsed();
+    logger.info("Parsing time: {:.2f}ms", a.parseTime = logger.elapsed());
 
     if (!DEBUG)
     {
@@ -69,7 +57,15 @@ int main(int argc, char *argv[])
         cout << a.message << endl;
     }
 
+    double t1, t2;
     cout << a.toJson() << endl;
+    logger.info("json serialize time: {:.2f}ms", (t1 = logger.elapsed()) - a.parseTime);
+    a.extract("header.dat", "body.dat");
+    logger.info("extract() time: {:.2f}ms", (t2 = logger.elapsed()) - t1);
+    a.generateMap("map.png", 360, 180);
+    logger.info("map time: {:.2f}ms", (t1 = logger.elapsed()) - t2);
+    a.generateMap("HDmap.png", 1200, 600, true);
+    logger.info("HDmap time: {:.2f}ms", (t2 = logger.elapsed()) - t1);
 
     return 0;
 }

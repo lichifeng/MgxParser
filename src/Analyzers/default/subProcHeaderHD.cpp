@@ -122,7 +122,7 @@ void DefaultAnalyzer::_headerHDAnalyzer()
             _readBytes(1, &players[i].DD_MPGameVersion);
             //_readBytes(4, &players[i].HD_teamIndex); // Not correct team index
             _skip(4);
-            _readBytes(4, &players[i].civID);
+            _readBytes(4, &players[i].DD_civID);
             _readHDString(players[i].DD_AIType);
             _readBytes(1, &players[i].DD_AICivNameIndex);
             if (DD_version >= 1004.9999)

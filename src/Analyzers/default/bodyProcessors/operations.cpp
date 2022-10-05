@@ -43,6 +43,8 @@ void DefaultAnalyzer::_handleOpChat()
         _skip(4);
     }
     _readPascalString(tmpChat.msg, true, true);
+    if ('\0' == tmpChat.msg.back())
+        tmpChat.msg.resize(tmpChat.msg.size() - 1);
     tmpChat.time = duration;
     chat.emplace_back(tmpChat);
 }

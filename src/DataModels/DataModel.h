@@ -11,12 +11,18 @@
 
 #pragma once
 
+#define UINT32_INIT 4294967295
+#define FLOAT_INIT -20000.0
+#define UINT8_INIT 255
+
 #include <string>
+#include <map>
 #include "nlohmann/json.hpp"
 #include "CompileConfig.h"
 #include "Player.h"
 #include "Helper.h"
 #include "Chat.h"
+#include "Lang/zh.h"
 
 using namespace std;
 using json = nlohmann::json;
@@ -24,21 +30,27 @@ using json = nlohmann::json;
 class DataModel
 {
 public:
-    string toJson()
+    /**
+     * \brief      Read corresponding language string from a language file
+     *
+     * \param      l                   Language file
+     * \param      i                   String index
+     * \param      default             Fallback string if not found
+     * \return     string              Translated string
+     */
+    string readLang(const map<uint32_t, string> &l, uint32_t i, string d)
     {
-        json j;
-        
-        j["filename"] = filename;
-        j["originSize"] = filesize;
-        j["parser"] = PARSER_VERSION;
-        j["parseMode"] = parseMode;
-        j["parseTime"] = parseTime;
-        j["status"] = status;
-        j["message"] = message;
-        j["duration"] = duration;
-        
-        return j.dump();
+        if (!(l.find(i) == l.end()))
+        {
+            return l.at(i);
+        }
+        else
+        {
+            return d;
+        }
     }
+
+    string toJson();
 
     // File-related members
     string filename;        ///< 录像的文件名
@@ -57,14 +69,14 @@ public:
     char versionStr[8];      ///< 代表游戏版本的原始字符串
     float saveVersion;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
     VERSIONCODE versionCode; ///< 这是自己定义的一个值，用于简化版本判断
-    uint32_t indcludeAI;
+    uint32_t includeAI;
 
     // HD/DE-specific data from header stream
-    uint32_t DE_build = 0;                     ///< In recent(2022-10) steam version of DE: 66692
-    uint32_t DE_timestamp;                     ///< 游戏时间，只有DE版本中有
+    uint32_t DE_build = UINT32_INIT;           ///< In recent(2022-10) steam version of DE: 66692
+    uint32_t DE_timestamp = 0;                 ///< 游戏时间，只有DE版本中有
     float DD_version = FLOAT_INIT;             ///< hd<=4.7: 1000; hd=5.8: 1006
     uint32_t DD_internalVersion = UINT32_INIT; ///< DE中是1000
-    uint32_t DD_gameOptionsVersion;
+    uint32_t DD_gameOptionsVersion = UINT32_INIT;
     uint32_t DD_DLCCount = 0;
     uint32_t DD_datasetRef; ///< \todo What's this?
     uint32_t DD_difficultyID;
@@ -101,7 +113,7 @@ public:
     uint8_t DD_teamPositions;
     uint32_t DD_subGameMode;
     uint32_t DD_battleRoyaleTime;
-    uint8_t DD_handicap; ///< 让分
+    uint8_t DD_handicap = UINT8_INIT; ///< 让分
 
     array<Player, 9> players;
     // uint8_t DE_fogOfWar;
@@ -143,7 +155,7 @@ public:
     uint32_t restoreTime;
 
     // data from scenario header
-    float scenarioVersion;
+    float scenarioVersion = FLOAT_INIT;
     string scenarioFilename;
     string instructions;
 
@@ -180,11 +192,11 @@ public:
     uint32_t syncChecksumInterval = 500;
 
     string rawEncoding = "GBK";
-    string outEncoding = "UTF-8";
-    string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
-                                           ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
+    string outEncoding = "utf-8";
+    // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
+    ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
     string status = "good";                ///< 解析完成类型：good, warning, fatal, etc.
     string message;                        ///< 对 \p status 的具体说明
     string parseMode = "MgxParser Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
-    double parseTime = 0;                      ///< 解析耗时（毫秒）
+    double parseTime = 0;                  ///< 解析耗时（毫秒）
 };

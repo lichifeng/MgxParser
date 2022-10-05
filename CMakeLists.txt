@@ -13,9 +13,10 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 
 aux_source_directory(./src SRC_ROOT)
+aux_source_directory(./src/DataModels DATAMODELS)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
-add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY})
+add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
 
@@ -49,6 +50,6 @@ if(BUILD_DOCUMENTATION)
     #install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/docs-html DESTINATION share)
 endif()
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_BINARY_DIR}")
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libs/")
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_BINARY_DIR}")

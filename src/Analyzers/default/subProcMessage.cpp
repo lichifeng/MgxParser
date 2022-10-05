@@ -21,6 +21,9 @@ void DefaultAnalyzer::_messagesAnalyzer()
 
     _readPascalString(instructions);
     _guessEncoding();
+    if (outEncoding != rawEncoding) {
+        fixEncoding(instructions);
+    }
 
     /*
     int totalStrs = IS_AOK(versionCode) ? 8 : 9; /// \todo 需要验证 AOK 的情况

@@ -15,8 +15,6 @@
 #define HEADER_STRM 0
 #define BODY_STRM 1
 #define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
-#define UINT32_INIT 4294967295
-#define FLOAT_INIT -20000.0
 
 #include <array>
 #include <cstddef>
@@ -44,7 +42,7 @@ class DefaultAnalyzer : public BaseAnalyzer
 public:
     ~DefaultAnalyzer() { delete _encodingConverter; };
 
-    DefaultAnalyzer(const string &inputFile) : path(inputFile) {};
+    DefaultAnalyzer(const string &inputFile) : path(inputFile){};
 
     void run();
 
@@ -83,7 +81,7 @@ public:
 
     Logger *logger = nullptr;
 
-    string path;            ///< 录像的路径
+    string path; ///< 录像的路径
 
 protected:
     bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
@@ -145,10 +143,10 @@ protected:
      * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
      *
      * \param      s                   用于存储字符串的变量
-     * \param      convertEncodeing    是否对读取的字符串进行转码
+     * \param      convertEncoding    是否对读取的字符串进行转码
      * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
      */
-    void _readPascalString(string &s, bool convertEncodeing = true,
+    void _readPascalString(string &s, bool convertEncoding = true,
                            bool lengthLong = false)
     {
         uint32_t lenStr = lengthLong ? *(uint32_t *)_curPos : *(uint16_t *)_curPos;
@@ -165,9 +163,17 @@ protected:
         s.assign((char *)_curPos, lenStr);
         _skip(lenStr);
 
-        if (convertEncodeing && (_encodingConverter != nullptr))
+        if (convertEncoding)
         {
-            fixEncoding(s);
+            if (_encodingConverter != nullptr)
+            {
+                fixEncoding(s);
+            }
+            // else
+            // {
+            //     logger->warn("Use string reader before encoding is set. [READ]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
+            //     _sendFailedSignal();
+            // }
         }
     }
 
@@ -272,7 +278,7 @@ protected:
 
     /**
      * \brief      用于检查当前位置的特征字节是否符合预期
-     * 
+     *
      * \param      pattern             特征字节
      * \param      skip                检查完是否跳过这些字节
      * \return     true                验证通过
@@ -313,9 +319,11 @@ protected:
 
     void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
 
-    void _sendFailedSignal(bool fatal = false) {
+    void _sendFailedSignal(bool fatal = false)
+    {
         _failedSignal = true;
-        if (fatal && logger) {
+        if (fatal && logger)
+        {
             message = logger->dumpStr();
         }
         status = fatal ? "fatal" : "warning";
@@ -354,8 +362,8 @@ protected:
     vector<uint8_t> _body;   ///< 用于存储body数据
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
 
-    uint8_t *_curPos;    ///< 当前读取数据的指针
-    vector<uint8_t>* _curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
+    uint8_t *_curPos;            ///< 当前读取数据的指针
+    vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
     uint8_t *_startInfoPatternTrail;

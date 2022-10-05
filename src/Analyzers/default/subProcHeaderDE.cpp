@@ -83,7 +83,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
         _readBytes(1, &players[i].resolvedTeamID);
         players[i].DE_datCrc = hexStr(_curPos, 8, true);
         _readBytes(1, &players[i].DD_MPGameVersion);
-        _readBytes(4, &players[i].civID);
+        _readBytes(4, &players[i].DD_civID);
         _readDEString(players[i].DD_AIType);
         _readBytes(1, &players[i].DD_AICivNameIndex);
         _readDEString(players[i].DD_AIName);

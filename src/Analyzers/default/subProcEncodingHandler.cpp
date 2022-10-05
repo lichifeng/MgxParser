@@ -29,7 +29,7 @@ bool DefaultAnalyzer::_findEncodingPattern(const char *pattern, std::string &map
 
 /**
  * \todo aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。
- *
+ * \warning 不要随便更改这里的编码字符串，连大小写也不要改，其它地方的代码可能用于比对。
  */
 void DefaultAnalyzer::_guessEncoding()
 {

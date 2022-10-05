@@ -14,8 +14,8 @@
 
 void DefaultAnalyzer::_AIAnalyzer()
 {
-    _readBytes(4, &indcludeAI);
-    if (!indcludeAI)
+    _readBytes(4, &includeAI);
+    if (!includeAI)
         return;
 
     _skip(2);

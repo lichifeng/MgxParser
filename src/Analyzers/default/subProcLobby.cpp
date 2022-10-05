@@ -81,11 +81,14 @@ void DefaultAnalyzer::_lobbyAnalyzer()
             _readPascalString(tmpChat.msg, true, true);
             if (tmpChat.msg.length() > 1) // 有时候有长度为1，内容为空的
             {
+                if ('\0' == tmpChat.msg.back())
+                    tmpChat.msg.resize(tmpChat.msg.size() - 1);
                 chat.emplace_back(tmpChat);
             }
             else
             {
-                if (!IS_DE(versionCode)) ++numChat; /// \todo Verify this.
+                if (!IS_DE(versionCode))
+                    ++numChat; /// \todo Verify this.
             }
         }
     }
