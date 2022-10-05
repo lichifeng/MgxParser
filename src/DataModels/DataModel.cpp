@@ -86,7 +86,7 @@ string DataModel::toJson()
         pJ["slot"] = p.slot;
         pJ["name"] = p.name;
         pJ["civilization"]["id"] = (UINT32_INIT == p.DD_civID) ? p.civID : p.DD_civID;
-        pJ["civilization"]["name"] = readLang(zh::civNames, pJ["civilization"]["id"], "(Unknown Civ)");
+        pJ["civilization"]["name"] = {readLang(zh::civNames, pJ["civilization"]["id"], "(Unknown Civ)")};
         pJ["initPosition"] = {
             p.initCamera[0] == -1.0 ? 0 : p.initCamera[0],
             p.initCamera[1] == -1.0 ? 0 : p.initCamera[1]};

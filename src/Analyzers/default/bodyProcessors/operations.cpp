@@ -17,6 +17,7 @@ Chat tmpChat;
 uint32_t cmdLen;
 uint8_t *pNext;
 uint8_t cmd;
+int tmpIndex;
 
 void DefaultAnalyzer::_handleOpSync()
 {
@@ -43,8 +44,14 @@ void DefaultAnalyzer::_handleOpChat()
         _skip(4);
     }
     _readPascalString(tmpChat.msg, true, true);
-    if ('\0' == tmpChat.msg.back())
-        tmpChat.msg.resize(tmpChat.msg.size() - 1);
+    if ('\0' == tmpChat.msg.back() && tmpChat.msg.size() > 3)
+    {
+        tmpIndex = tmpChat.msg[2] - '0';
+        if (tmpIndex > 0 && tmpIndex < 9 && 0 != tmpChat.msg.compare(3, players[tmpIndex].name.size(), players[tmpIndex].name) || tmpIndex == 0)
+            return;
+        if (tmpChat.msg.size() > 0)
+            tmpChat.msg.resize(tmpChat.msg.size() - 1);
+    }
     tmpChat.time = duration;
     chat.emplace_back(tmpChat);
 }

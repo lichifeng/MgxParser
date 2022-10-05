@@ -95,6 +95,9 @@ void DefaultAnalyzer::_gameSettingsAnalyzer()
         }
 
         if ('\0' == players[i].name.back())
-            players[i].name.resize(players[i].name.size() - 1);
+        {
+            if (players[i].name.size() > 0)
+                players[i].name.resize(players[i].name.size() - 1);
+        }
     }
 }

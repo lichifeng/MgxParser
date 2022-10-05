@@ -79,10 +79,14 @@ void DefaultAnalyzer::_lobbyAnalyzer()
         while (numChat-- > 0 && _remainBytes() >= 4)
         {
             _readPascalString(tmpChat.msg, true, true);
-            if (tmpChat.msg.length() > 1) // 有时候有长度为1，内容为空的
+            if (tmpChat.msg.length() > 3) // 有时候有长度为1，内容为空的。一般来说因为有“@#2”的存在，至少为3
             {
                 if ('\0' == tmpChat.msg.back())
-                    tmpChat.msg.resize(tmpChat.msg.size() - 1);
+                {
+                    if (tmpChat.msg.size() > 0)
+                        tmpChat.msg.resize(tmpChat.msg.size() - 1);
+                }
+
                 chat.emplace_back(tmpChat);
             }
             else

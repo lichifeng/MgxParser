@@ -67,7 +67,7 @@ void DefaultAnalyzer::run()
     }
     catch (const exception &e)
     {
-        logger->fatal("Exception: {}", e.what());
+        logger->fatal("Exception@{}: {}", _debugFlag, e.what());
         _sendFailedSignal(true);
     }
 }
