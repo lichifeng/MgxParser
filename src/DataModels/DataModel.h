@@ -38,7 +38,7 @@ public:
      * \param      default             Fallback string if not found
      * \return     string              Translated string
      */
-    string readLang(const map<uint32_t, string> &l, uint32_t i, string d)
+    string readLang(const map<uint32_t, string> &l, uint32_t i, string d = "-")
     {
         if (!(l.find(i) == l.end()))
         {
@@ -65,10 +65,10 @@ public:
     uint32_t scenarioSearchSpan = 8000;    ///< usually 5500~6500
 
     // Version-related members
-    uint32_t logVersion;     ///< body 的前4个字节，与版本有关，可以识别A/C版
-    char versionStr[8];      ///< 代表游戏版本的原始字符串
-    float saveVersion;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
-    VERSIONCODE versionCode; ///< 这是自己定义的一个值，用于简化版本判断
+    uint32_t logVersion = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
+    char versionStr[8] = "";      ///< 代表游戏版本的原始字符串
+    float saveVersion = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
+    VERSIONCODE versionCode = UNSUPPORTED; ///< 这是自己定义的一个值，用于简化版本判断
     uint32_t includeAI;
 
     // HD/DE-specific data from header stream
@@ -83,7 +83,7 @@ public:
     uint32_t DD_selectedMapID;
     uint32_t DD_resolvedMapID;
     uint32_t revealMap = UINT32_INIT; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
-    uint32_t DD_victoryTypeID;
+    uint32_t DD_victoryTypeID = UINT32_INIT;
     uint32_t DD_startingResourcesID;
     uint32_t DD_startingAgeID;
     uint32_t DD_endingAgeID;
@@ -95,7 +95,7 @@ public:
     // uint32_t DD_populationLimit = UINT32_INIT; ///< Store this value in populationLimit
     uint32_t DD_numPlayers = UINT32_INIT; ///< \note Gaia not included
     uint32_t DD_unusedPlayerColor;
-    uint32_t DD_victoryAmount;
+    uint32_t DD_victoryAmount = UINT32_INIT;
     uint8_t DD_tradeEnabled;
     uint8_t DD_teamBonusDisabled;
     uint8_t DD_randomPositions;
