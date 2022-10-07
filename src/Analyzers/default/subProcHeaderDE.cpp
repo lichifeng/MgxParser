@@ -1,12 +1,12 @@
 /**
  * \file       subProcHeaderDE.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-03
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
@@ -101,7 +101,10 @@ void DefaultAnalyzer::_headerDEAnalyzer()
         _readBytes(1, &players[i].DE_preferRandom);
         _readBytes(1, &players[i].DE_customAI);
         if (saveVersion >= 25.0599)
-            _readBytes(8, players[i].DE_handicap);
+        {
+            _skip(4);
+            _readBytes(4, &players[i].handicappingLevel);
+        }
     }
     _skip(9);
     _skip(1); //_readBytes(1, &DE_fogOfWar);
@@ -112,8 +115,9 @@ void DefaultAnalyzer::_headerDEAnalyzer()
     _readBytes(1, &DD_allowSpecs);
     _readBytes(4, &DD_lobbyVisibility);
     _readBytes(1, &DE_hiddenCivs);
-    _readBytes(1, &DE_matchMaking);  
-    if (saveVersion >= 13.1299) {
+    _readBytes(1, &DE_matchMaking);
+    if (saveVersion >= 13.1299)
+    {
         _readBytes(4, &DE_specDely);
         _readBytes(1, &DE_scenarioCiv);
     }
@@ -158,15 +162,7 @@ void DefaultAnalyzer::_headerDEAnalyzer()
     _skip(4); /// \note 2a/c/d/e/f 00 00 00
     if (saveVersion >= 25.2199)
     {
-        if (*(uint32_t *)_curPos != 0)
-        {
-            logger->warn(
-                "{}(): expecting [00 00 00 00] but disppointed @{}.",
-                __FUNCTION__, _distance());
-            _sendFailedSignal();
-            return;
-        }
-        _skip(4);
+        _skip(4 + *(uint32_t *)_curPos * 4);
     }
     else
     {

@@ -104,7 +104,7 @@ public:
     uint8_t DD_lockTeams;
     uint8_t DD_lockSpeed;
     uint8_t DD_multiplayer;
-    uint8_t DD_cheats;
+    uint8_t DD_cheats = 255;
     uint8_t DD_recordGame;
     uint8_t DD_animalsEnabled;
     uint8_t DD_predatorsEnabled;
@@ -142,7 +142,7 @@ public:
     uint16_t recPlayer; ///< \todo index or number of pov?? verify this.
     uint8_t numPlayers; ///< \todo gaia included, DD_numPlayers first??
     uint8_t instantBuild;
-    uint8_t cheatsEnabled; ///< \todo DD_cheats??
+    uint8_t cheatsEnabled = 255;
     // uint16_t gameMode;     ///< \note Unknown.
 
     // data from map data section

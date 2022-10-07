@@ -97,16 +97,21 @@ namespace zh
 
     const map<uint32_t, string> difficulty = {
         {0, "极难"},
-        {1, "难"},
+        {1, "难"}, // \todo DE中怎么选难是5？
         {2, "中等"},
         {3, "标准"},
-        {4, "最易"}}; // \todo aoc-mgz 里有一个extreme
+        {4, "最易"},
+        {5, "极限"},
+    }; // \todo aoc-mgz 里有一个extreme
 
     const map<uint32_t, string> resources = {
         {0, "标准"},
         {1, "低"},
         {2, "中"},
-        {3, "高"}};
+        {3, "高"},
+        {4, "超高"},
+        {5, "无限"},
+        {6, "随机"}};
 
     const map<uint32_t, string> speed = {
         {100, "慢"},
@@ -116,4 +121,19 @@ namespace zh
         {1500, "随意"},
         {1690, "正常"},
         {2000, "快"}};
+
+    const map<uint32_t, string> revealMap = {
+        {0, "正常"},
+        {1, "已探索"},
+        {2, "全部可视"},
+        {3, "无战雾"}};
+
+    const map<uint32_t, string> mapSize = {
+        {0, "微型 (2 个玩家)"},
+        {1, "小型 (3 个玩家)"},
+        {2, "中型 (4 个玩家)"},
+        {3, "正常 (6 个玩家)"},
+        {4, "大型 (8 个玩家)"},
+        {5, "巨型"},
+        {6, "超大"}};
 }

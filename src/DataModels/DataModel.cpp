@@ -69,8 +69,8 @@ string DataModel::toJson()
         j["victory"]["type"] = readLang(zh::victoryTypes, victoryMode); // \todo 低版本的要核实下，好像不怎么对
     }
 
-    j["difficultyLevel"] = readLang(zh::difficulty, UINT32_INIT == DD_difficultyID ? difficultyID : DD_difficultyID);
-    j["resources"] = readLang(zh::resources, DD_startingResourcesID);
+    j["difficultyLevel"] = readLang(zh::difficulty, UINT32_INIT == DD_difficultyID ? difficultyID : DD_difficultyID); // \todo 有问题，要核对
+    j["resources"] = readLang(zh::resources, DD_startingResourcesID);                                                 // \todo 有问题，要核对
     j["gameSpeed"] = readLang(zh::speed, FLOAT_INIT == DD_speed ? gameSpeed : (uint32_t)(DD_speed * 1000));
     j["handicap"] = (bool)DD_handicap;
     j["rankType"] = (int)DD_isRanked;
@@ -78,7 +78,20 @@ string DataModel::toJson()
     if (DE_timestamp)
         j["playTime"] = DE_timestamp;
     else
-        j["playTime"] = nullptr;
+        j["playTime"] = nullptr; // \todo 可以从文件名推测一下
+
+    j["map"]["reveal"] = readLang(zh::revealMap, revealMap);
+    j["map"]["size"] = readLang(zh::mapSize, mapSize);
+    j["map"]["id"] = mapID; // \todo translate it into map name
+    j["map"]["selectedID"] = DD_selectedMapID;
+    j["map"]["resolvedID"] = DD_resolvedMapID;
+    if (!embededMapName.empty())
+        j["map"]["embededName"] = embededMapName;
+    else
+        j["map"]["embededName"] = nullptr;
+    j["fogOfWar"] = (bool)fogOfWar;
+    j["population"] = populationLimit;
+    j["allowCheats"] = 255 == DD_cheats ? (bool)cheatsEnabled : (bool)DD_cheats;
 
     j["includeAI"] = (bool)includeAI;
     j["duration"] = duration;
@@ -97,13 +110,18 @@ string DataModel::toJson()
 
         pJ["index"] = p.index;
         pJ["slot"] = p.slot;
-        pJ["name"] = p.name;
+        pJ["name"] = p.DD_AIType.empty() ? p.name : p.DD_AIName;
         pJ["civilization"]["id"] = (UINT32_INIT == p.DD_civID) ? p.civID : p.DD_civID;
         pJ["civilization"]["name"] = readLang(zh::civNames, pJ["civilization"]["id"]);
         pJ["initPosition"] = {
             p.initCamera[0] == -1.0 ? 0 : p.initCamera[0],
             p.initCamera[1] == -1.0 ? 0 : p.initCamera[1]};
-        pJ["type"] = readLang(zh::playerTypes, p.type);
+
+        if (4 == p.type && !p.DD_AIType.empty())
+            pJ["type"] = readLang(zh::playerTypes, p.type) + "(" + p.DD_AIType + ")";
+        else
+            pJ["type"] = readLang(zh::playerTypes, p.type);
+
         if (0 != p.DE_profileID)
         {
             pJ["DEProfileID"] = p.DE_profileID;
@@ -122,6 +140,10 @@ string DataModel::toJson()
         }
         pJ["mainOp"] = p.initialDataFound() ? true : false; // \todo 要验证下。可以用这种方法确定是不是Co-Op。
         pJ["POV"] = p.slot == recPlayer;
+        if (UINT32_INIT == p.handicappingLevel)
+            pJ["handicappingLevel"] = nullptr;
+        else
+            pJ["handicappingLevel"] = p.handicappingLevel;
 
         j["players"].emplace_back(pJ);
     }

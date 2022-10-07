@@ -25,8 +25,8 @@ void DefaultAnalyzer::_findGameSettingsStart()
     if (rFound == _header.rend())
     {
         logger->warn(
-            "{}(): Failed to find _gameSettingsPos. @{}.",
-            __FUNCTION__, _distance());
+            "{}(): Failed to find _gameSettingsPos by regular separator. @{}, Flag:{}.",
+            __FUNCTION__, _distance(), _debugFlag);
         _sendFailedSignal();
         return;
     }
@@ -38,13 +38,10 @@ void DefaultAnalyzer::_findGameSettingsStart()
     if ((*(int32_t *)(_curPos + 68) != -1) || (*(int32_t *)(_curPos + 72) != -1))
     {
         logger->warn(
-            "{}(): Failed to find _gameSettingsPos. @{}.",
-            __FUNCTION__, _distance());
-        _sendFailedSignal();
-        return;
+            "{}(): Find weired _gameSettingsPos. @{}, Flag:{}.",
+            __FUNCTION__, _distance(), _debugFlag);
+        //_sendFailedSignal();
     }
-    else
-    {
-        _gameSettingsPos = _curPos;
-    }
+    
+    _gameSettingsPos = _curPos;
 }

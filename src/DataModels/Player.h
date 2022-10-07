@@ -44,7 +44,7 @@ public:
     uint32_t DD_DMRating = 0;
     uint8_t DE_preferRandom;
     uint8_t DE_customAI;
-    char DE_handicap[8];
+    uint32_t handicappingLevel = UINT32_INIT;
     float modVersionID;
     float initCamera[2] = {-1.0, -1.0};
     uint8_t civID = UINT8_INIT;

@@ -1,12 +1,12 @@
 /**
  * \file       main.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      主程序入口，目前还没有开发完成。
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \brief      
  * \version    0.1
- * \date       2022-09-21
- *
- * \copyright Copyright (c) 2022
- *
+ * \date       2022-10-07
+ * 
+ * \copyright  Copyright (c) 2020-2022
+ * 
  */
 
 #include <exception>
@@ -66,6 +66,14 @@ int main(int argc, char *argv[])
     logger.info("map time: {:.2f}ms", (t1 = logger.elapsed()) - t2);
     a.generateMap("HDmap.png", 1200, 600, true);
     logger.info("HDmap time: {:.2f}ms", (t2 = logger.elapsed()) - t1);
+
+    logger.info("dif: {}", a.difficultyID);
+    logger.info("DDdif: {}", a.DD_difficultyID);
+    logger.info("resources: {}", a.DD_startingResourcesID);
+    logger.info("pop: {}", a.populationLimit);
+    logger.info("ddcheats: {}, cheat:{}", a.DD_cheats, a.cheatsEnabled);
+    logger.info("treatylen: {}", a.treatyLength);
+    logger.info("mapid, selected, resolved: {}, {}, {}", a.mapID, a.DD_selectedMapID, a.DD_resolvedMapID);
 
     return 0;
 }
