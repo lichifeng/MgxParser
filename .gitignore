@@ -8,7 +8,6 @@ map.png
 .vscode/
 body.dat
 header.dat
-libs/boost/
 
 ### C ###
 # Prerequisites

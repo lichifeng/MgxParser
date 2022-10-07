@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(@PROJECT_VERSION@) was compiled on @COMPILEDATE@*
+*This version(0.1.0) was compiled on 20221007*
 
 ## INTRODUCTION
 MgxParser is a Age of Empires II game record parser written in C++.

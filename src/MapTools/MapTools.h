@@ -10,10 +10,11 @@
  */
 
 #define cimg_use_png
+// https://cimg.eu/reference/structcimg__library_1_1CImgDisplay.html
 #define cimg_display 0
 
 #include <string>
-#include "CImg.h"
+#include "CImg/CImg.h"
 #include "MapColors.h"
 #include "TileStructures.h"
 

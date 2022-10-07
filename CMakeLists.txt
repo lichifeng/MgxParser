@@ -6,11 +6,14 @@ project(
     HOMEPAGE_URL "aocrec.com"
 )
 
+string(TIMESTAMP COMPILEDATE "%Y%m%d")
+
 enable_testing()
 
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
+set(CMAKE_EXE_LINKER_FLAGS "-static")
 
 aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/DataModels DATAMODELS)
@@ -20,11 +23,15 @@ add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZE
 
 target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
 
-target_link_libraries(${PROJECT_NAME} z)
-target_link_libraries(${PROJECT_NAME} png)
+# Import dependencies
+# WARNING: png depends on libz, so put it before z
 target_link_libraries(${PROJECT_NAME} pthread)
+target_link_libraries(${PROJECT_NAME} png)
+target_link_libraries(${PROJECT_NAME} z)
+
 
 configure_file(CompileConfig.h.in CompileConfig.h)
+configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/README.md ${CMAKE_CURRENT_SOURCE_DIR})
 
 # Update doxygen configuration file and generate output HTML
 find_package(Doxygen)
