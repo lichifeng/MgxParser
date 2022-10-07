@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: zh.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_8c0cb69ef2063fa3564da4462eb195d1.html">Lang</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">zh.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="zh_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       zh.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-05</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespacezh.html">   17</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespacezh.html">zh</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="namespacezh.html#a4e0fc2c646551f9397357ca4fcb5ad65">   19</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a4e0fc2c646551f9397357ca4fcb5ad65">civNames</a> = {</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        {0, <span class="stringliteral">&quot;随机&quot;</span>},</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {1, <span class="stringliteral">&quot;不列颠&quot;</span>},</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        {2, <span class="stringliteral">&quot;法兰克&quot;</span>},</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {3, <span class="stringliteral">&quot;哥特&quot;</span>},</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        {4, <span class="stringliteral">&quot;条顿&quot;</span>},</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {5, <span class="stringliteral">&quot;日本&quot;</span>},</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        {6, <span class="stringliteral">&quot;中国&quot;</span>},</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {7, <span class="stringliteral">&quot;拜占庭&quot;</span>},</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        {8, <span class="stringliteral">&quot;波斯&quot;</span>},</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {9, <span class="stringliteral">&quot;萨拉森&quot;</span>},</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        {10, <span class="stringliteral">&quot;土耳其&quot;</span>},</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        {11, <span class="stringliteral">&quot;维京&quot;</span>},</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        {12, <span class="stringliteral">&quot;蒙古&quot;</span>},</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {13, <span class="stringliteral">&quot;凯尔特&quot;</span>},</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {14, <span class="stringliteral">&quot;西班牙&quot;</span>},</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        {15, <span class="stringliteral">&quot;阿兹特克&quot;</span>},</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        {16, <span class="stringliteral">&quot;玛雅&quot;</span>},</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {17, <span class="stringliteral">&quot;匈奴&quot;</span>},</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        {18, <span class="stringliteral">&quot;高丽&quot;</span>},</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {19, <span class="stringliteral">&quot;意大利&quot;</span>},</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        {20, <span class="stringliteral">&quot;印度斯坦人&quot;</span>},</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        {21, <span class="stringliteral">&quot;印加&quot;</span>},</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        {22, <span class="stringliteral">&quot;马扎尔&quot;</span>},</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        {23, <span class="stringliteral">&quot;斯拉夫&quot;</span>},</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        {24, <span class="stringliteral">&quot;葡萄牙&quot;</span>},</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        {25, <span class="stringliteral">&quot;埃塞俄比亚&quot;</span>},</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {26, <span class="stringliteral">&quot;马里&quot;</span>},</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {27, <span class="stringliteral">&quot;柏柏尔&quot;</span>},</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        {28, <span class="stringliteral">&quot;高棉&quot;</span>},</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {29, <span class="stringliteral">&quot;马来&quot;</span>},</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        {30, <span class="stringliteral">&quot;缅甸&quot;</span>},</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        {31, <span class="stringliteral">&quot;越南&quot;</span>},</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        {32, <span class="stringliteral">&quot;保加利亚&quot;</span>},</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {33, <span class="stringliteral">&quot;鞑靼&quot;</span>},</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {34, <span class="stringliteral">&quot;库曼&quot;</span>},</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        {35, <span class="stringliteral">&quot;立陶宛&quot;</span>},</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {36, <span class="stringliteral">&quot;勃艮第&quot;</span>},</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {37, <span class="stringliteral">&quot;西西里&quot;</span>},</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {38, <span class="stringliteral">&quot;波兰人&quot;</span>},</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        {39, <span class="stringliteral">&quot;波希米亚人&quot;</span>},</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        {40, <span class="stringliteral">&quot;达罗毗荼人&quot;</span>},</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        {41, <span class="stringliteral">&quot;孟加拉人&quot;</span>},</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {42, <span class="stringliteral">&quot;瞿折罗人&quot;</span>},</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        {43, <span class="stringliteral">&quot;ReservedCivL&quot;</span>},</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {44, <span class="stringliteral">&quot;ReservedCivM&quot;</span>},</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        {45, <span class="stringliteral">&quot;ReservedCivN&quot;</span>},</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {46, <span class="stringliteral">&quot;ReservedCivO&quot;</span>},</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        {47, <span class="stringliteral">&quot;ReservedCivP&quot;</span>},</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        {48, <span class="stringliteral">&quot;ReservedCivQ&quot;</span>}};</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160; </div>
+<div class="line"><a name="l00070"></a><span class="lineno"><a class="line" href="namespacezh.html#a7f86ca235fb28c25ca63e23e8d91db73">   70</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a7f86ca235fb28c25ca63e23e8d91db73">playerTypes</a> = {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        {0, <span class="stringliteral">&quot;空缺&quot;</span>},</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        {1, <span class="stringliteral">&quot;关闭&quot;</span>},</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        {2, <span class="stringliteral">&quot;人类&quot;</span>},</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {3, <span class="stringliteral">&quot;已被消灭&quot;</span>},</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;        {4, <span class="stringliteral">&quot;AI&quot;</span>},</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;        {5, <span class="stringliteral">&quot;旁观者&quot;</span>}};</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160; </div>
+<div class="line"><a name="l00078"></a><span class="lineno"><a class="line" href="namespacezh.html#a6e61bc1e31dd4f8ca471656d3c99bba7">   78</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a6e61bc1e31dd4f8ca471656d3c99bba7">victoryTypes</a> = {</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        {0, <span class="stringliteral">&quot;默认&quot;</span>},</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {1, <span class="stringliteral">&quot;征服&quot;</span>},</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {2, <span class="stringliteral">&quot;探索&quot;</span>},</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {4, <span class="stringliteral">&quot;圣物&quot;</span>},</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        {7, <span class="stringliteral">&quot;时限&quot;</span>},</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;        {8, <span class="stringliteral">&quot;得分&quot;</span>},</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;        {9, <span class="stringliteral">&quot;标准&quot;</span>},</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        {10, <span class="stringliteral">&quot;弑君模式&quot;</span>},</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;        {11, <span class="stringliteral">&quot;最后的存活者&quot;</span>}};</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno"><a class="line" href="namespacezh.html#adb63c55194888f143ada64c4f3068140">   89</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#adb63c55194888f143ada64c4f3068140">victoryAmount</a> = {</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        {15000, <span class="stringliteral">&quot;1500 年 (2 小时)&quot;</span>},</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        {13000, <span class="stringliteral">&quot;1300 年 (105 分钟)&quot;</span>},</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        {11000, <span class="stringliteral">&quot;1100 年 (1.5 小时)&quot;</span>},</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        {9000, <span class="stringliteral">&quot;900 年 (75 分钟)&quot;</span>},</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        {7000, <span class="stringliteral">&quot;700 年 (60 分钟)&quot;</span>},</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;        {5000, <span class="stringliteral">&quot;500 年 (40 分钟)&quot;</span>},</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        {3000, <span class="stringliteral">&quot;300 年 (25 分钟)&quot;</span>}};</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">   98</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">difficulty</a> = {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {0, <span class="stringliteral">&quot;极难&quot;</span>},</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {1, <span class="stringliteral">&quot;难&quot;</span>},</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {2, <span class="stringliteral">&quot;中等&quot;</span>},</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {3, <span class="stringliteral">&quot;标准&quot;</span>},</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {4, <span class="stringliteral">&quot;最易&quot;</span>}}; <span class="comment">// \todo aoc-mgz 里有一个extreme</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
+<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">  105</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">resources</a> = {</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {0, <span class="stringliteral">&quot;标准&quot;</span>},</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {1, <span class="stringliteral">&quot;低&quot;</span>},</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {2, <span class="stringliteral">&quot;中&quot;</span>},</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {3, <span class="stringliteral">&quot;高&quot;</span>}};</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
+<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">  111</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">speed</a> = {</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {100, <span class="stringliteral">&quot;慢&quot;</span>},</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {150, <span class="stringliteral">&quot;正常&quot;</span>},</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {200, <span class="stringliteral">&quot;快&quot;</span>},</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {1000, <span class="stringliteral">&quot;慢&quot;</span>},</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {1500, <span class="stringliteral">&quot;随意&quot;</span>},</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {1690, <span class="stringliteral">&quot;正常&quot;</span>},</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {2000, <span class="stringliteral">&quot;快&quot;</span>}};</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespacezh_html_a7f86ca235fb28c25ca63e23e8d91db73"><div class="ttname"><a href="namespacezh.html#a7f86ca235fb28c25ca63e23e8d91db73">zh::playerTypes</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; playerTypes</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00070">zh.h:70</a></div></div>
+<div class="ttc" id="anamespacezh_html_a8718a734904706fc2038e8b4fe3d09ea"><div class="ttname"><a href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">zh::difficulty</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; difficulty</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00098">zh.h:98</a></div></div>
+<div class="ttc" id="anamespacezh_html_a6e61bc1e31dd4f8ca471656d3c99bba7"><div class="ttname"><a href="namespacezh.html#a6e61bc1e31dd4f8ca471656d3c99bba7">zh::victoryTypes</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; victoryTypes</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00078">zh.h:78</a></div></div>
+<div class="ttc" id="anamespacezh_html"><div class="ttname"><a href="namespacezh.html">zh</a></div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00017">zh.h:17</a></div></div>
+<div class="ttc" id="anamespacezh_html_adb63c55194888f143ada64c4f3068140"><div class="ttname"><a href="namespacezh.html#adb63c55194888f143ada64c4f3068140">zh::victoryAmount</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; victoryAmount</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00089">zh.h:89</a></div></div>
+<div class="ttc" id="anamespacezh_html_aa13c0e65dce1d67671f3aedd7aafbbd7"><div class="ttname"><a href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">zh::speed</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; speed</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00111">zh.h:111</a></div></div>
+<div class="ttc" id="anamespacezh_html_a4e0fc2c646551f9397357ca4fcb5ad65"><div class="ttname"><a href="namespacezh.html#a4e0fc2c646551f9397357ca4fcb5ad65">zh::civNames</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; civNames</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00019">zh.h:19</a></div></div>
+<div class="ttc" id="anamespacezh_html_ac432e7ceb9b74e344a87a85b0be17326"><div class="ttname"><a href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">zh::resources</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; resources</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00105">zh.h:105</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

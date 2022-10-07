@@ -1,0 +1,2507 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: DataModel类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pub-attribs">Public 属性</a> &#124;
+<a href="classDataModel-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">DataModel类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="DataModel_8h_source.html">DataModel.h</a>&gt;</code></p>
+<div class="dynheader">
+类 DataModel 继承关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="classDataModel__inherit__graph.png" border="0" usemap="#DataModel_inherit__map" alt="Inheritance graph"/></div>
+<map name="DataModel_inherit__map" id="DataModel_inherit__map">
+<area shape="rect" title=" " alt="" coords="22,5,115,32"/>
+<area shape="rect" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。" alt="" coords="13,80,124,107"/>
+<area shape="rect" href="classDefaultAnalyzer.html" title="默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。" alt="" coords="5,155,132,181"/>
+</map>
+<center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:a49a0e30270599ed90a7e746d21161019"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a49a0e30270599ed90a7e746d21161019">readLang</a> (const map&lt; uint32_t, string &gt; &amp;l, uint32_t i, string d=&quot;-&quot;)</td></tr>
+<tr class="memdesc:a49a0e30270599ed90a7e746d21161019"><td class="mdescLeft">&#160;</td><td class="mdescRight">Read corresponding language string from a language file  <a href="classDataModel.html#a49a0e30270599ed90a7e746d21161019">更多...</a><br /></td></tr>
+<tr class="separator:a49a0e30270599ed90a7e746d21161019"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af0d0182adce22ea068293ccea981b2d3"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#af0d0182adce22ea068293ccea981b2d3">toJson</a> ()</td></tr>
+<tr class="separator:af0d0182adce22ea068293ccea981b2d3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
+Public 属性</h2></td></tr>
+<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a></td></tr>
+<tr class="memdesc:a79b4014a8e32500aa24c26346d6f08dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的文件名  <a href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">更多...</a><br /></td></tr>
+<tr class="separator:a79b4014a8e32500aa24c26346d6f08dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">ext</a></td></tr>
+<tr class="memdesc:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的扩展名  <a href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">更多...</a><br /></td></tr>
+<tr class="separator:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62c4424c49d2ee46e954d014595787c2"><td class="memItemLeft" align="right" valign="top">uintmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a62c4424c49d2ee46e954d014595787c2">filesize</a> = 0</td></tr>
+<tr class="memdesc:a62c4424c49d2ee46e954d014595787c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#a62c4424c49d2ee46e954d014595787c2">更多...</a><br /></td></tr>
+<tr class="separator:a62c4424c49d2ee46e954d014595787c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">trailBytes</a> = 5</td></tr>
+<tr class="memdesc:a948f462af5ea46c7d4b5639d1455d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度  <a href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">更多...</a><br /></td></tr>
+<tr class="separator:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae0a5edda3585a390287b67d24d38edd8"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ae0a5edda3585a390287b67d24d38edd8">easySkipBase</a> = 35100</td></tr>
+<tr class="memdesc:ae0a5edda3585a390287b67d24d38edd8"><td class="mdescLeft">&#160;</td><td class="mdescRight">在startinfo中搜索时可以放心跳过的字节长度  <a href="classDataModel.html#ae0a5edda3585a390287b67d24d38edd8">更多...</a><br /></td></tr>
+<tr class="separator:ae0a5edda3585a390287b67d24d38edd8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a890560786fb9198fd1028b952a9d07cd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">triggerStartSearchRange</a> = 19</td></tr>
+<tr class="memdesc:a890560786fb9198fd1028b952a9d07cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试  <a href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">更多...</a><br /></td></tr>
+<tr class="separator:a890560786fb9198fd1028b952a9d07cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a09856167b58ebce5ef4d8685441be636"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 8192</td></tr>
+<tr class="memdesc:a09856167b58ebce5ef4d8685441be636"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
+<tr class="separator:a09856167b58ebce5ef4d8685441be636"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34d70df5293178b43baf41d2734232b6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a34d70df5293178b43baf41d2734232b6">scenarioSearchSpan</a> = 8000</td></tr>
+<tr class="memdesc:a34d70df5293178b43baf41d2734232b6"><td class="mdescLeft">&#160;</td><td class="mdescRight">usually 5500~6500  <a href="classDataModel.html#a34d70df5293178b43baf41d2734232b6">更多...</a><br /></td></tr>
+<tr class="separator:a34d70df5293178b43baf41d2734232b6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">logVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="memdesc:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版  <a href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">更多...</a><br /></td></tr>
+<tr class="separator:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a51e5fe53253a984bc2f662450db0307d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = &quot;&quot;</td></tr>
+<tr class="memdesc:a51e5fe53253a984bc2f662450db0307d"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表游戏版本的原始字符串  <a href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">更多...</a><br /></td></tr>
+<tr class="separator:a51e5fe53253a984bc2f662450db0307d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a49dbf533a0985e4bc078ba5bce940d21"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
+<tr class="separator:a49dbf533a0985e4bc078ba5bce940d21"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5665c3f15b372bfcf507fd00a081c3f9"><td class="memItemLeft" align="right" valign="top"><a class="el" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a> = <a class="el" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">UNSUPPORTED</a></td></tr>
+<tr class="memdesc:a5665c3f15b372bfcf507fd00a081c3f9"><td class="mdescLeft">&#160;</td><td class="mdescRight">这是自己定义的一个值，用于简化版本判断  <a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">更多...</a><br /></td></tr>
+<tr class="separator:a5665c3f15b372bfcf507fd00a081c3f9"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa78fc2735b87142c4d6fcab2da679cfc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aa78fc2735b87142c4d6fcab2da679cfc">includeAI</a></td></tr>
+<tr class="separator:aa78fc2735b87142c4d6fcab2da679cfc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab493b7dc5b4c47fd05a3787c6eb169a4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab493b7dc5b4c47fd05a3787c6eb169a4">DE_build</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="memdesc:ab493b7dc5b4c47fd05a3787c6eb169a4"><td class="mdescLeft">&#160;</td><td class="mdescRight">In recent(2022-10) steam version of DE: 66692  <a href="classDataModel.html#ab493b7dc5b4c47fd05a3787c6eb169a4">更多...</a><br /></td></tr>
+<tr class="separator:ab493b7dc5b4c47fd05a3787c6eb169a4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0c1a267cd041970e26c134d22bb45ab2"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a0c1a267cd041970e26c134d22bb45ab2">DE_timestamp</a> = 0</td></tr>
+<tr class="memdesc:a0c1a267cd041970e26c134d22bb45ab2"><td class="mdescLeft">&#160;</td><td class="mdescRight">游戏时间，只有DE版本中有  <a href="classDataModel.html#a0c1a267cd041970e26c134d22bb45ab2">更多...</a><br /></td></tr>
+<tr class="separator:a0c1a267cd041970e26c134d22bb45ab2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5e94c12241091cc575f0fa104befb0e0"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a5e94c12241091cc575f0fa104befb0e0">DD_version</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
+<tr class="memdesc:a5e94c12241091cc575f0fa104befb0e0"><td class="mdescLeft">&#160;</td><td class="mdescRight">hd&lt;=4.7: 1000; hd=5.8: 1006  <a href="classDataModel.html#a5e94c12241091cc575f0fa104befb0e0">更多...</a><br /></td></tr>
+<tr class="separator:a5e94c12241091cc575f0fa104befb0e0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a992b774caaaf29d16baac889b97c560b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a992b774caaaf29d16baac889b97c560b">DD_internalVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="memdesc:a992b774caaaf29d16baac889b97c560b"><td class="mdescLeft">&#160;</td><td class="mdescRight">DE中是1000  <a href="classDataModel.html#a992b774caaaf29d16baac889b97c560b">更多...</a><br /></td></tr>
+<tr class="separator:a992b774caaaf29d16baac889b97c560b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7a003f83e48e466b711e91e47f055dc"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab7a003f83e48e466b711e91e47f055dc">DD_gameOptionsVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:ab7a003f83e48e466b711e91e47f055dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7c1e58e56ec706617de783a63719d4cd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a7c1e58e56ec706617de783a63719d4cd">DD_DLCCount</a> = 0</td></tr>
+<tr class="separator:a7c1e58e56ec706617de783a63719d4cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d4987e10b940b563006d9f9bc7e125"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a64d4987e10b940b563006d9f9bc7e125">DD_datasetRef</a></td></tr>
+<tr class="separator:a64d4987e10b940b563006d9f9bc7e125"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a34e1da9dbf4c34ada74b2e06b1a860b5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a34e1da9dbf4c34ada74b2e06b1a860b5">DD_difficultyID</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:a34e1da9dbf4c34ada74b2e06b1a860b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:abb10ea562ddd0ec31cbc6154b6f58799"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#abb10ea562ddd0ec31cbc6154b6f58799">DD_selectedMapID</a></td></tr>
+<tr class="separator:abb10ea562ddd0ec31cbc6154b6f58799"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a59d33bfb69298d91bc50b1a83bb34952"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a59d33bfb69298d91bc50b1a83bb34952">DD_resolvedMapID</a></td></tr>
+<tr class="separator:a59d33bfb69298d91bc50b1a83bb34952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7f1042f74c1a65c0a0a264aa6e01b0c6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a7f1042f74c1a65c0a0a264aa6e01b0c6">revealMap</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="memdesc:a7f1042f74c1a65c0a0a264aa6e01b0c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog  <a href="classDataModel.html#a7f1042f74c1a65c0a0a264aa6e01b0c6">更多...</a><br /></td></tr>
+<tr class="separator:a7f1042f74c1a65c0a0a264aa6e01b0c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac8b417001d14b1d7461fdbe633a5d788"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac8b417001d14b1d7461fdbe633a5d788">DD_victoryTypeID</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:ac8b417001d14b1d7461fdbe633a5d788"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a006f8f606ac3ed0530ecdec5df66b607"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a006f8f606ac3ed0530ecdec5df66b607">DD_startingResourcesID</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:a006f8f606ac3ed0530ecdec5df66b607"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab6f1f0e2ed16576a0ae9db2a65112086"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab6f1f0e2ed16576a0ae9db2a65112086">DD_startingAgeID</a></td></tr>
+<tr class="separator:ab6f1f0e2ed16576a0ae9db2a65112086"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a99e8bcf3cc4de59d281c666bf09c5190"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a99e8bcf3cc4de59d281c666bf09c5190">DD_endingAgeID</a></td></tr>
+<tr class="separator:a99e8bcf3cc4de59d281c666bf09c5190"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81ab440fc51409e18d9915032fd22307"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a81ab440fc51409e18d9915032fd22307">DD_gameType</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="memdesc:a81ab440fc51409e18d9915032fd22307"><td class="mdescLeft">&#160;</td><td class="mdescRight">Only when DD_version&gt;=1006  <a href="classDataModel.html#a81ab440fc51409e18d9915032fd22307">更多...</a><br /></td></tr>
+<tr class="separator:a81ab440fc51409e18d9915032fd22307"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8a3c029a82dee4e93cdde56b70ca98bc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a8a3c029a82dee4e93cdde56b70ca98bc">HD_ver1000MapName</a></td></tr>
+<tr class="separator:a8a3c029a82dee4e93cdde56b70ca98bc"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6f0eb9f2cfef7aa2dd417e2e0b2b7f69"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a6f0eb9f2cfef7aa2dd417e2e0b2b7f69">DD_speed</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
+<tr class="separator:a6f0eb9f2cfef7aa2dd417e2e0b2b7f69"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab43c0b52277d17bd546eaaac01ebfd8c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab43c0b52277d17bd546eaaac01ebfd8c">DD_treatyLength</a></td></tr>
+<tr class="separator:ab43c0b52277d17bd546eaaac01ebfd8c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5fcd006a2bb37df509cff52e05965676"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a5fcd006a2bb37df509cff52e05965676">DD_numPlayers</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:a5fcd006a2bb37df509cff52e05965676"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04d9852d6ff0040395a4909a06d0281e"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a04d9852d6ff0040395a4909a06d0281e">DD_unusedPlayerColor</a></td></tr>
+<tr class="separator:a04d9852d6ff0040395a4909a06d0281e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a64d9fe1b070d40191d64f29bce8a2fc3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a64d9fe1b070d40191d64f29bce8a2fc3">DD_victoryAmount</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:a64d9fe1b070d40191d64f29bce8a2fc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad7355f2a050d69219facaef4ec508c8e"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad7355f2a050d69219facaef4ec508c8e">DD_tradeEnabled</a></td></tr>
+<tr class="separator:ad7355f2a050d69219facaef4ec508c8e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a120e6fbe92d03684b8b02969bf828d9b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a120e6fbe92d03684b8b02969bf828d9b">DD_teamBonusDisabled</a></td></tr>
+<tr class="separator:a120e6fbe92d03684b8b02969bf828d9b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:accdc18e7b93ef0e25f9ce027be4a17f6"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#accdc18e7b93ef0e25f9ce027be4a17f6">DD_randomPositions</a></td></tr>
+<tr class="separator:accdc18e7b93ef0e25f9ce027be4a17f6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a25574f98835586682fb8cc86ed8346a5"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a25574f98835586682fb8cc86ed8346a5">DD_allTechs</a></td></tr>
+<tr class="separator:a25574f98835586682fb8cc86ed8346a5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa31a332d40b2c6ea3c0155c9ba6c184b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aa31a332d40b2c6ea3c0155c9ba6c184b">DD_numStartingUnits</a></td></tr>
+<tr class="separator:aa31a332d40b2c6ea3c0155c9ba6c184b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a884ee32725f6da454463700ef52252be"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a884ee32725f6da454463700ef52252be">DD_lockTeams</a></td></tr>
+<tr class="separator:a884ee32725f6da454463700ef52252be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af94a3f271a80acc57857f3c233ec0bb4"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#af94a3f271a80acc57857f3c233ec0bb4">DD_lockSpeed</a></td></tr>
+<tr class="separator:af94a3f271a80acc57857f3c233ec0bb4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74037c45457ee99e67fd8d588e583638"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a74037c45457ee99e67fd8d588e583638">DD_multiplayer</a></td></tr>
+<tr class="separator:a74037c45457ee99e67fd8d588e583638"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a88fc3195d20652a87f92ca2477d30414"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a88fc3195d20652a87f92ca2477d30414">DD_cheats</a></td></tr>
+<tr class="separator:a88fc3195d20652a87f92ca2477d30414"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90b758fd44cfbef1ad465c15b6f9e9a7"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a90b758fd44cfbef1ad465c15b6f9e9a7">DD_recordGame</a></td></tr>
+<tr class="separator:a90b758fd44cfbef1ad465c15b6f9e9a7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81c3203589d9668850fcf6c8ca453609"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a81c3203589d9668850fcf6c8ca453609">DD_animalsEnabled</a></td></tr>
+<tr class="separator:a81c3203589d9668850fcf6c8ca453609"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af4395c22056ebefe6800f05718d8557d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#af4395c22056ebefe6800f05718d8557d">DD_predatorsEnabled</a></td></tr>
+<tr class="separator:af4395c22056ebefe6800f05718d8557d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a548eba5a14f6af69a6128be2e991a1ca"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a548eba5a14f6af69a6128be2e991a1ca">DD_turboEnabled</a></td></tr>
+<tr class="separator:a548eba5a14f6af69a6128be2e991a1ca"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3b7af19e47d32787a594702b58db2a34"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a3b7af19e47d32787a594702b58db2a34">DD_sharedExploration</a></td></tr>
+<tr class="separator:a3b7af19e47d32787a594702b58db2a34"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af691bc43c09886aa46c1390e1caf0ff3"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#af691bc43c09886aa46c1390e1caf0ff3">DD_teamPositions</a></td></tr>
+<tr class="separator:af691bc43c09886aa46c1390e1caf0ff3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a327014161226ef5a2ee08786439e7ad7"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a327014161226ef5a2ee08786439e7ad7">DD_subGameMode</a></td></tr>
+<tr class="separator:a327014161226ef5a2ee08786439e7ad7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff868d6962ef794a85d54feebf27510b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aff868d6962ef794a85d54feebf27510b">DD_battleRoyaleTime</a></td></tr>
+<tr class="separator:aff868d6962ef794a85d54feebf27510b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a50c776595b5ba1e2f5e8df5ef26d0952"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a50c776595b5ba1e2f5e8df5ef26d0952">DD_handicap</a> = <a class="el" href="DataModel_8h.html#a8f306f67570ceacaa6bc8a1227aff236">UINT8_INIT</a></td></tr>
+<tr class="memdesc:a50c776595b5ba1e2f5e8df5ef26d0952"><td class="mdescLeft">&#160;</td><td class="mdescRight">让分  <a href="classDataModel.html#a50c776595b5ba1e2f5e8df5ef26d0952">更多...</a><br /></td></tr>
+<tr class="separator:a50c776595b5ba1e2f5e8df5ef26d0952"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a499a1c8ac80eb064ded2baa2d253da01"><td class="memItemLeft" align="right" valign="top">array&lt; <a class="el" href="classPlayer.html">Player</a>, 9 &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a></td></tr>
+<tr class="separator:a499a1c8ac80eb064ded2baa2d253da01"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a80edd7f252f5347a2521513ddcfbf986"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a80edd7f252f5347a2521513ddcfbf986">DD_cheatNotifications</a></td></tr>
+<tr class="separator:a80edd7f252f5347a2521513ddcfbf986"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a211dde345c89da001e0024ee10f1f555"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a211dde345c89da001e0024ee10f1f555">DD_coloredChat</a></td></tr>
+<tr class="separator:a211dde345c89da001e0024ee10f1f555"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a81f53f2dc9edd330ac728c7b1760b326"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a81f53f2dc9edd330ac728c7b1760b326">DD_isRanked</a> = 255</td></tr>
+<tr class="separator:a81f53f2dc9edd330ac728c7b1760b326"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a57f4f9f5299f8f5dc6ec1b66912ec53d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57f4f9f5299f8f5dc6ec1b66912ec53d">DD_allowSpecs</a></td></tr>
+<tr class="separator:a57f4f9f5299f8f5dc6ec1b66912ec53d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4764c0747b5c5b81c33811bbcfaff345"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4764c0747b5c5b81c33811bbcfaff345">DD_lobbyVisibility</a></td></tr>
+<tr class="separator:a4764c0747b5c5b81c33811bbcfaff345"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0103fa379e095f1a232492da0329ae15"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a0103fa379e095f1a232492da0329ae15">DE_hiddenCivs</a></td></tr>
+<tr class="separator:a0103fa379e095f1a232492da0329ae15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4fd9c8d80ae20c870872b3e564733d82"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4fd9c8d80ae20c870872b3e564733d82">DE_matchMaking</a></td></tr>
+<tr class="separator:a4fd9c8d80ae20c870872b3e564733d82"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a121f0ca7a3093759734163a8b36d5191"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a121f0ca7a3093759734163a8b36d5191">DE_specDely</a></td></tr>
+<tr class="separator:a121f0ca7a3093759734163a8b36d5191"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a71bcd4ef6d9ef9d3c7a55923c4d3fa65"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a71bcd4ef6d9ef9d3c7a55923c4d3fa65">DE_scenarioCiv</a></td></tr>
+<tr class="separator:a71bcd4ef6d9ef9d3c7a55923c4d3fa65"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a464dd00cf1be0a3489af68159723f01c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a464dd00cf1be0a3489af68159723f01c">HD_customRandomMapFileCrc</a></td></tr>
+<tr class="separator:a464dd00cf1be0a3489af68159723f01c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a384a7fcdbf62b15e29d13934119097fb"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a384a7fcdbf62b15e29d13934119097fb">HD_customScenarioOrCampaignFile</a></td></tr>
+<tr class="separator:a384a7fcdbf62b15e29d13934119097fb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aba50ccdb6440831919c6b046c0e89c15"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aba50ccdb6440831919c6b046c0e89c15">HD_customRandomMapFile</a></td></tr>
+<tr class="separator:aba50ccdb6440831919c6b046c0e89c15"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c208a5d6459f910d3cf4e48b7a88097"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a6c208a5d6459f910d3cf4e48b7a88097">HD_customRandomMapScenarionFile</a></td></tr>
+<tr class="separator:a6c208a5d6459f910d3cf4e48b7a88097"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a027db7a3a37b013eea167f61fb6c666c"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a027db7a3a37b013eea167f61fb6c666c">DD_guid</a></td></tr>
+<tr class="separator:a027db7a3a37b013eea167f61fb6c666c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04b05d3b46bc2a5005c852510b0f861a"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a04b05d3b46bc2a5005c852510b0f861a">DD_lobbyName</a></td></tr>
+<tr class="separator:a04b05d3b46bc2a5005c852510b0f861a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aca86078394fac41aa8b5913ad39c17ac"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aca86078394fac41aa8b5913ad39c17ac">DD_moddedDataset</a></td></tr>
+<tr class="separator:aca86078394fac41aa8b5913ad39c17ac"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a43283cdeecdf4630b842f989d8e99411"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a43283cdeecdf4630b842f989d8e99411">HD_moddedDatasetWorkshopID</a></td></tr>
+<tr class="separator:a43283cdeecdf4630b842f989d8e99411"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8abd27a4fa2645c068c277aff3d5032a"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a8abd27a4fa2645c068c277aff3d5032a">DE_numAIFiles</a></td></tr>
+<tr class="separator:a8abd27a4fa2645c068c277aff3d5032a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad5306d59021be786496420728e366004"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad5306d59021be786496420728e366004">gameSpeed</a></td></tr>
+<tr class="separator:ad5306d59021be786496420728e366004"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a10206e205b0e3b011f24a120ede764d0"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a10206e205b0e3b011f24a120ede764d0">recPlayer</a></td></tr>
+<tr class="separator:a10206e205b0e3b011f24a120ede764d0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a75761276a2c5e6d1e1d92b688509ae47"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a75761276a2c5e6d1e1d92b688509ae47">numPlayers</a></td></tr>
+<tr class="separator:a75761276a2c5e6d1e1d92b688509ae47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5d94df821546ff7f6772876ea4af4b9d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a5d94df821546ff7f6772876ea4af4b9d">instantBuild</a></td></tr>
+<tr class="separator:a5d94df821546ff7f6772876ea4af4b9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a91821e8a98a742dfd9b94ef43f68ac84"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a91821e8a98a742dfd9b94ef43f68ac84">cheatsEnabled</a></td></tr>
+<tr class="separator:a91821e8a98a742dfd9b94ef43f68ac84"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8ba0c5f26ef88b880058ad8f7a547ba3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a8ba0c5f26ef88b880058ad8f7a547ba3">mapCoord</a> [2]</td></tr>
+<tr class="separator:a8ba0c5f26ef88b880058ad8f7a547ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3d05ac809e07f2e1bb4dac0f5c71b49"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac3d05ac809e07f2e1bb4dac0f5c71b49">mapDataPtr</a></td></tr>
+<tr class="separator:ac3d05ac809e07f2e1bb4dac0f5c71b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad76652ac9f4e1e0fb89d8bf5f579a8df"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad76652ac9f4e1e0fb89d8bf5f579a8df">allVisible</a></td></tr>
+<tr class="separator:ad76652ac9f4e1e0fb89d8bf5f579a8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a438440678c4535f932ea0380ea6c92db"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a438440678c4535f932ea0380ea6c92db">restoreTime</a></td></tr>
+<tr class="separator:a438440678c4535f932ea0380ea6c92db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ada16948042d0385a49544ec4bf75a285"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ada16948042d0385a49544ec4bf75a285">scenarioVersion</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
+<tr class="separator:ada16948042d0385a49544ec4bf75a285"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a83708a858f2c8721b10fafb1bdfd5376"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a83708a858f2c8721b10fafb1bdfd5376">scenarioFilename</a></td></tr>
+<tr class="separator:a83708a858f2c8721b10fafb1bdfd5376"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a60cea693f2982159e45b98cf43508166"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a60cea693f2982159e45b98cf43508166">instructions</a></td></tr>
+<tr class="separator:a60cea693f2982159e45b98cf43508166"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6b2091d441617c215639165270349a1c"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a6b2091d441617c215639165270349a1c">victoryIsConquest</a></td></tr>
+<tr class="separator:a6b2091d441617c215639165270349a1c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a15da63fb959d8c6dd0cb54ceb066a8eb"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a15da63fb959d8c6dd0cb54ceb066a8eb">victoryRelics</a></td></tr>
+<tr class="separator:a15da63fb959d8c6dd0cb54ceb066a8eb"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ade5cffb64f3194dccd00d113870529c5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ade5cffb64f3194dccd00d113870529c5">victoryExplored</a></td></tr>
+<tr class="separator:ade5cffb64f3194dccd00d113870529c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad1759ab2c17e4aa1e7cb73f52b512227"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad1759ab2c17e4aa1e7cb73f52b512227">victoryAnyOrAll</a></td></tr>
+<tr class="separator:ad1759ab2c17e4aa1e7cb73f52b512227"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a></td></tr>
+<tr class="separator:a4c283f7d0f426a9d6175c5feca6175bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed6d42f69764c532180d64abfc73c406"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aed6d42f69764c532180d64abfc73c406">victoryScore</a></td></tr>
+<tr class="separator:aed6d42f69764c532180d64abfc73c406"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af085312c162adaa3ed88d1a743e9807b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#af085312c162adaa3ed88d1a743e9807b">victoryTime</a></td></tr>
+<tr class="separator:af085312c162adaa3ed88d1a743e9807b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a257903c52af9031e63175f3ce2a07f1b"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a257903c52af9031e63175f3ce2a07f1b">mapID</a></td></tr>
+<tr class="separator:a257903c52af9031e63175f3ce2a07f1b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac6acee120fe55e9d9d37f8862fc7fe4d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac6acee120fe55e9d9d37f8862fc7fe4d">difficultyID</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:ac6acee120fe55e9d9d37f8862fc7fe4d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aed322dd82e7b4d0a6b0ea46aaecf7d6f"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aed322dd82e7b4d0a6b0ea46aaecf7d6f">lockTeams</a></td></tr>
+<tr class="separator:aed322dd82e7b4d0a6b0ea46aaecf7d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a63ef98daf7a67c5bc785e130e1a5b1b4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">fogOfWar</a></td></tr>
+<tr class="separator:a63ef98daf7a67c5bc785e130e1a5b1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a738a428169226d54ad2c0e211768569d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a></td></tr>
+<tr class="separator:a738a428169226d54ad2c0e211768569d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a752b8a336c226a692394b391f17ec8c0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
+<tr class="separator:a752b8a336c226a692394b391f17ec8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a696f78bdd9e25b7f1c7e8ddaee0ebb7f"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a696f78bdd9e25b7f1c7e8ddaee0ebb7f">gameType</a></td></tr>
+<tr class="separator:a696f78bdd9e25b7f1c7e8ddaee0ebb7f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2870facf39336fda3196cf54c428621d"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a2870facf39336fda3196cf54c428621d">lockDiplomacy</a></td></tr>
+<tr class="separator:a2870facf39336fda3196cf54c428621d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0ffc1b2eee31798c636b1f18c4c1873b"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a0ffc1b2eee31798c636b1f18c4c1873b">treatyLength</a></td></tr>
+<tr class="separator:a0ffc1b2eee31798c636b1f18c4c1873b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac7d1593db8cfe5cf0fcc1900880afc24"><td class="memItemLeft" align="right" valign="top">vector&lt; <a class="el" href="structChat.html">Chat</a> &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac7d1593db8cfe5cf0fcc1900880afc24">chat</a></td></tr>
+<tr class="separator:ac7d1593db8cfe5cf0fcc1900880afc24"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afaaa5ba0298b1ea64dc3548c2d5b77f7"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afaaa5ba0298b1ea64dc3548c2d5b77f7">DE_mapSeed</a></td></tr>
+<tr class="separator:afaaa5ba0298b1ea64dc3548c2d5b77f7"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adab4cc190723f98e1ad70fffa9340e09"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#adab4cc190723f98e1ad70fffa9340e09">embededMapName</a></td></tr>
+<tr class="memdesc:adab4cc190723f98e1ad70fffa9340e09"><td class="mdescLeft">&#160;</td><td class="mdescRight">Map name extracted from instructions, not mapped with raw number  <a href="classDataModel.html#adab4cc190723f98e1ad70fffa9340e09">更多...</a><br /></td></tr>
+<tr class="separator:adab4cc190723f98e1ad70fffa9340e09"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acabb67f9e24bcf9fd3835ffa4b25fc45"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a> = 0</td></tr>
+<tr class="separator:acabb67f9e24bcf9fd3835ffa4b25fc45"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a626b7ab3b0c5c20bdbcbe41041011fe6"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a626b7ab3b0c5c20bdbcbe41041011fe6">isMultiplayer</a></td></tr>
+<tr class="separator:a626b7ab3b0c5c20bdbcbe41041011fe6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aab101c83dada904826e0360810cc1dc3"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aab101c83dada904826e0360810cc1dc3">syncChecksumInterval</a> = 500</td></tr>
+<tr class="separator:aab101c83dada904826e0360810cc1dc3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a9dbedd907d1ffd08f0bd513dedefc330"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a9dbedd907d1ffd08f0bd513dedefc330">rawEncoding</a> = &quot;GB18030&quot;</td></tr>
+<tr class="separator:a9dbedd907d1ffd08f0bd513dedefc330"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac28d9d810220d44c692a23c579309d33"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac28d9d810220d44c692a23c579309d33">outEncoding</a> = &quot;utf-8&quot;</td></tr>
+<tr class="separator:ac28d9d810220d44c692a23c579309d33"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6bcd66186cac2df530345e0876ac03e2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a6bcd66186cac2df530345e0876ac03e2">status</a> = &quot;good&quot;</td></tr>
+<tr class="memdesc:a6bcd66186cac2df530345e0876ac03e2"><td class="mdescLeft">&#160;</td><td class="mdescRight">&lt; 有时需要从上传时间来推断，是否放在更外层的类里面？  <a href="classDataModel.html#a6bcd66186cac2df530345e0876ac03e2">更多...</a><br /></td></tr>
+<tr class="separator:a6bcd66186cac2df530345e0876ac03e2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a28dc6eb404ae1b153024f3522cad2685"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">message</a></td></tr>
+<tr class="memdesc:a28dc6eb404ae1b153024f3522cad2685"><td class="mdescLeft">&#160;</td><td class="mdescRight">对 <code>status</code> 的具体说明  <a href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">更多...</a><br /></td></tr>
+<tr class="separator:a28dc6eb404ae1b153024f3522cad2685"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser Normal&quot;</td></tr>
+<tr class="memdesc:a24a9352d2d47c168d70835eefedb1dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析模式：normal, verbose, etc. 可以在命令行中指定  <a href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">更多...</a><br /></td></tr>
+<tr class="separator:a24a9352d2d47c168d70835eefedb1dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adeda1ea7a358bfba3a2139a09fa6f290"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">parseTime</a> = 0</td></tr>
+<tr class="memdesc:adeda1ea7a358bfba3a2139a09fa6f290"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒）  <a href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">更多...</a><br /></td></tr>
+<tr class="separator:adeda1ea7a358bfba3a2139a09fa6f290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00030">30</a> 行定义.</p>
+</div><h2 class="groupheader">成员函数说明</h2>
+<a id="a49a0e30270599ed90a7e746d21161019"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49a0e30270599ed90a7e746d21161019">&#9670;&nbsp;</a></span>readLang()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::readLang </td>
+          <td>(</td>
+          <td class="paramtype">const map&lt; uint32_t, string &gt; &amp;&#160;</td>
+          <td class="paramname"><em>l</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">uint32_t&#160;</td>
+          <td class="paramname"><em>i</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>d</em> = <code>&quot;-&quot;</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Read corresponding language string from a language file </p>
+<dl class="params"><dt>参数</dt><dd>
+  <table class="params">
+    <tr><td class="paramname">l</td><td>Language file </td></tr>
+    <tr><td class="paramname">i</td><td>String index </td></tr>
+    <tr><td class="paramname">default</td><td>Fallback string if not found </td></tr>
+  </table>
+  </dd>
+</dl>
+<dl class="section return"><dt>返回</dt><dd>string Translated string </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00041">41</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="af0d0182adce22ea068293ccea981b2d3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af0d0182adce22ea068293ccea981b2d3">&#9670;&nbsp;</a></span>toJson()</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::toJson </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8cpp_source.html">DataModel.cpp</a> 第 <a class="el" href="DataModel_8cpp_source.html#l00014">14</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="DataModel_8h_source.html#l00183">chat</a>, <a class="el" href="zh_8h_source.html#l00019">zh::civNames</a>, <a class="el" href="DataModel_8h_source.html#l00082">DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00116">DD_handicap</a>, <a class="el" href="DataModel_8h_source.html#l00078">DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00122">DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00093">DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00087">DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00077">DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00098">DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00086">DD_victoryTypeID</a>, <a class="el" href="DataModel_8h_source.html#l00075">DE_build</a>, <a class="el" href="DataModel_8h_source.html#l00076">DE_timestamp</a>, <a class="el" href="zh_8h_source.html#l00098">zh::difficulty</a>, <a class="el" href="DataModel_8h_source.html#l00173">difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00190">duration</a>, <a class="el" href="DataModel_8h_source.html#l00056">filename</a>, <a class="el" href="DataModel_8h_source.html#l00058">filesize</a>, <a class="el" href="DataModel_8h_source.html#l00015">FLOAT_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00141">gameSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00072">includeAI</a>, <a class="el" href="DataModel_8h_source.html#l00160">instructions</a>, <a class="el" href="DataModel_8h_source.html#l00068">logVersion</a>, <a class="el" href="DataModel_8h_source.html#l00199">message</a>, <a class="el" href="DataModel_8h_source.html#l00195">outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00200">parseMode</a>, <a class="el" href="DataModel_8h_source.html#l00201">parseTime</a>, <a class="el" href="DataModel_8h_source.html#l00118">players</a>, <a class="el" href="zh_8h_source.html#l00070">zh::playerTypes</a>, <a class="el" href="DataModel_8h_source.html#l00194">rawEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00041">readLang()</a>, <a class="el" href="DataModel_8h_source.html#l00142">recPlayer</a>, <a class="el" href="zh_8h_source.html#l00105">zh::resources</a>, <a class="el" href="DataModel_8h_source.html#l00070">saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00159">scenarioFilename</a>, <a class="el" href="DataModel_8h_source.html#l00158">scenarioVersion</a>, <a class="el" href="zh_8h_source.html#l00111">zh::speed</a>, <a class="el" href="DataModel_8h_source.html#l00198">status</a>, <a class="el" href="DataModel_8h_source.html#l00014">UINT32_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00071">versionCode</a>, <a class="el" href="DataModel_8h_source.html#l00069">versionStr</a>, <a class="el" href="zh_8h_source.html#l00089">zh::victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00167">victoryMode</a> , 以及 <a class="el" href="zh_8h_source.html#l00078">zh::victoryTypes</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="a79b4014a8e32500aa24c26346d6f08dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a79b4014a8e32500aa24c26346d6f08dc">&#9670;&nbsp;</a></span>filename</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::filename</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>录像的文件名 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00056">56</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="afa60c729bb12fc4da61a1e03a7a4d8a1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afa60c729bb12fc4da61a1e03a7a4d8a1">&#9670;&nbsp;</a></span>ext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::ext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>录像的扩展名 </p>
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000022">待办事项:</a></b></dt><dd>要检查扩展名 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00057">57</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a62c4424c49d2ee46e954d014595787c2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a62c4424c49d2ee46e954d014595787c2">&#9670;&nbsp;</a></span>filesize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uintmax_t DataModel::filesize = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>录像文件大小，单位是 bytes </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00058">58</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a948f462af5ea46c7d4b5639d1455d9f4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a948f462af5ea46c7d4b5639d1455d9f4">&#9670;&nbsp;</a></span>trailBytes</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DataModel::trailBytes = 5</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00061">61</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ae0a5edda3585a390287b67d24d38edd8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae0a5edda3585a390287b67d24d38edd8">&#9670;&nbsp;</a></span>easySkipBase</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::easySkipBase = 35100</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>在startinfo中搜索时可以放心跳过的字节长度 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00062">62</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>.</p>
+
+</div>
+</div>
+<a id="a890560786fb9198fd1028b952a9d07cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a890560786fb9198fd1028b952a9d07cd">&#9670;&nbsp;</a></span>triggerStartSearchRange</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::triggerStartSearchRange = 19</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00063">63</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>.</p>
+
+</div>
+</div>
+<a id="a09856167b58ebce5ef4d8685441be636"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a09856167b58ebce5ef4d8685441be636">&#9670;&nbsp;</a></span>ZLIB_CHUNK</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::ZLIB_CHUNK = 8192</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>ZLIB解压时的参数 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00064">64</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">DefaultAnalyzer::_inflateRawHeader()</a>.</p>
+
+</div>
+</div>
+<a id="a34d70df5293178b43baf41d2734232b6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34d70df5293178b43baf41d2734232b6">&#9670;&nbsp;</a></span>scenarioSearchSpan</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::scenarioSearchSpan = 8000</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>usually 5500~6500 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00065">65</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>.</p>
+
+</div>
+</div>
+<a id="a57124cb8db8ea4ed0f89b5a9e6333b25"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57124cb8db8ea4ed0f89b5a9e6333b25">&#9670;&nbsp;</a></span>logVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::logVersion = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>body 的前4个字节，与版本有关，可以识别A/C版 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00068">68</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a51e5fe53253a984bc2f662450db0307d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a51e5fe53253a984bc2f662450db0307d">&#9670;&nbsp;</a></span>versionStr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">char DataModel::versionStr[8] = &quot;&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>代表游戏版本的原始字符串 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00069">69</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a49dbf533a0985e4bc078ba5bce940d21"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a49dbf533a0985e4bc078ba5bce940d21">&#9670;&nbsp;</a></span>saveVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DataModel::saveVersion = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section warning"><dt>警告</dt><dd>float有精度，进行比较的时候注意要合理处理，比如&gt;11.76要写成&gt;11.7599这种 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00070">70</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a5665c3f15b372bfcf507fd00a081c3f9"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5665c3f15b372bfcf507fd00a081c3f9">&#9670;&nbsp;</a></span>versionCode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a> DataModel::versionCode = <a class="el" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">UNSUPPORTED</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>这是自己定义的一个值，用于简化版本判断 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00071">71</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="aa78fc2735b87142c4d6fcab2da679cfc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa78fc2735b87142c4d6fcab2da679cfc">&#9670;&nbsp;</a></span>includeAI</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::includeAI</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00072">72</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ab493b7dc5b4c47fd05a3787c6eb169a4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab493b7dc5b4c47fd05a3787c6eb169a4">&#9670;&nbsp;</a></span>DE_build</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DE_build = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>In recent(2022-10) steam version of DE: 66692 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00075">75</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a0c1a267cd041970e26c134d22bb45ab2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0c1a267cd041970e26c134d22bb45ab2">&#9670;&nbsp;</a></span>DE_timestamp</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DE_timestamp = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>游戏时间，只有DE版本中有 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00076">76</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a5e94c12241091cc575f0fa104befb0e0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5e94c12241091cc575f0fa104befb0e0">&#9670;&nbsp;</a></span>DD_version</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DataModel::DD_version = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>hd&lt;=4.7: 1000; hd=5.8: 1006 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00077">77</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a992b774caaaf29d16baac889b97c560b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a992b774caaaf29d16baac889b97c560b">&#9670;&nbsp;</a></span>DD_internalVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_internalVersion = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>DE中是1000 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00078">78</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ab7a003f83e48e466b711e91e47f055dc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7a003f83e48e466b711e91e47f055dc">&#9670;&nbsp;</a></span>DD_gameOptionsVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_gameOptionsVersion = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00079">79</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a7c1e58e56ec706617de783a63719d4cd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7c1e58e56ec706617de783a63719d4cd">&#9670;&nbsp;</a></span>DD_DLCCount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_DLCCount = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00080">80</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a64d4987e10b940b563006d9f9bc7e125"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d4987e10b940b563006d9f9bc7e125">&#9670;&nbsp;</a></span>DD_datasetRef</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_datasetRef</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000023">待办事项:</a></b></dt><dd>What's this? </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00081">81</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a34e1da9dbf4c34ada74b2e06b1a860b5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a34e1da9dbf4c34ada74b2e06b1a860b5">&#9670;&nbsp;</a></span>DD_difficultyID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_difficultyID = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00082">82</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="abb10ea562ddd0ec31cbc6154b6f58799"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abb10ea562ddd0ec31cbc6154b6f58799">&#9670;&nbsp;</a></span>DD_selectedMapID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_selectedMapID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00083">83</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a59d33bfb69298d91bc50b1a83bb34952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a59d33bfb69298d91bc50b1a83bb34952">&#9670;&nbsp;</a></span>DD_resolvedMapID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_resolvedMapID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00084">84</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a7f1042f74c1a65c0a0a264aa6e01b0c6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7f1042f74c1a65c0a0a264aa6e01b0c6">&#9670;&nbsp;</a></span>revealMap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::revealMap = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00085">85</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ac8b417001d14b1d7461fdbe633a5d788"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac8b417001d14b1d7461fdbe633a5d788">&#9670;&nbsp;</a></span>DD_victoryTypeID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_victoryTypeID = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00086">86</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a006f8f606ac3ed0530ecdec5df66b607"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a006f8f606ac3ed0530ecdec5df66b607">&#9670;&nbsp;</a></span>DD_startingResourcesID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_startingResourcesID = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00087">87</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ab6f1f0e2ed16576a0ae9db2a65112086"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab6f1f0e2ed16576a0ae9db2a65112086">&#9670;&nbsp;</a></span>DD_startingAgeID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_startingAgeID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00088">88</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a99e8bcf3cc4de59d281c666bf09c5190"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a99e8bcf3cc4de59d281c666bf09c5190">&#9670;&nbsp;</a></span>DD_endingAgeID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_endingAgeID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00089">89</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a81ab440fc51409e18d9915032fd22307"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81ab440fc51409e18d9915032fd22307">&#9670;&nbsp;</a></span>DD_gameType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_gameType = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Only when DD_version&gt;=1006 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00090">90</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a8a3c029a82dee4e93cdde56b70ca98bc"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8a3c029a82dee4e93cdde56b70ca98bc">&#9670;&nbsp;</a></span>HD_ver1000MapName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::HD_ver1000MapName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00091">91</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a6f0eb9f2cfef7aa2dd417e2e0b2b7f69"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6f0eb9f2cfef7aa2dd417e2e0b2b7f69">&#9670;&nbsp;</a></span>DD_speed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DataModel::DD_speed = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00093">93</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ab43c0b52277d17bd546eaaac01ebfd8c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab43c0b52277d17bd546eaaac01ebfd8c">&#9670;&nbsp;</a></span>DD_treatyLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_treatyLength</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00094">94</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a5fcd006a2bb37df509cff52e05965676"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5fcd006a2bb37df509cff52e05965676">&#9670;&nbsp;</a></span>DD_numPlayers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_numPlayers = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>Gaia not included </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00096">96</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a04d9852d6ff0040395a4909a06d0281e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04d9852d6ff0040395a4909a06d0281e">&#9670;&nbsp;</a></span>DD_unusedPlayerColor</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_unusedPlayerColor</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00097">97</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a64d9fe1b070d40191d64f29bce8a2fc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a64d9fe1b070d40191d64f29bce8a2fc3">&#9670;&nbsp;</a></span>DD_victoryAmount</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_victoryAmount = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00098">98</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ad7355f2a050d69219facaef4ec508c8e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad7355f2a050d69219facaef4ec508c8e">&#9670;&nbsp;</a></span>DD_tradeEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_tradeEnabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00099">99</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a120e6fbe92d03684b8b02969bf828d9b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a120e6fbe92d03684b8b02969bf828d9b">&#9670;&nbsp;</a></span>DD_teamBonusDisabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_teamBonusDisabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00100">100</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="accdc18e7b93ef0e25f9ce027be4a17f6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#accdc18e7b93ef0e25f9ce027be4a17f6">&#9670;&nbsp;</a></span>DD_randomPositions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_randomPositions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00101">101</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a25574f98835586682fb8cc86ed8346a5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a25574f98835586682fb8cc86ed8346a5">&#9670;&nbsp;</a></span>DD_allTechs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_allTechs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00102">102</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aa31a332d40b2c6ea3c0155c9ba6c184b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa31a332d40b2c6ea3c0155c9ba6c184b">&#9670;&nbsp;</a></span>DD_numStartingUnits</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_numStartingUnits</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00103">103</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a884ee32725f6da454463700ef52252be"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a884ee32725f6da454463700ef52252be">&#9670;&nbsp;</a></span>DD_lockTeams</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_lockTeams</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00104">104</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="af94a3f271a80acc57857f3c233ec0bb4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af94a3f271a80acc57857f3c233ec0bb4">&#9670;&nbsp;</a></span>DD_lockSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_lockSpeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00105">105</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a74037c45457ee99e67fd8d588e583638"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74037c45457ee99e67fd8d588e583638">&#9670;&nbsp;</a></span>DD_multiplayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_multiplayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00106">106</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a88fc3195d20652a87f92ca2477d30414"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a88fc3195d20652a87f92ca2477d30414">&#9670;&nbsp;</a></span>DD_cheats</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_cheats</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00107">107</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a90b758fd44cfbef1ad465c15b6f9e9a7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90b758fd44cfbef1ad465c15b6f9e9a7">&#9670;&nbsp;</a></span>DD_recordGame</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_recordGame</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00108">108</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a81c3203589d9668850fcf6c8ca453609"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81c3203589d9668850fcf6c8ca453609">&#9670;&nbsp;</a></span>DD_animalsEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_animalsEnabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00109">109</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="af4395c22056ebefe6800f05718d8557d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af4395c22056ebefe6800f05718d8557d">&#9670;&nbsp;</a></span>DD_predatorsEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_predatorsEnabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00110">110</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a548eba5a14f6af69a6128be2e991a1ca"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a548eba5a14f6af69a6128be2e991a1ca">&#9670;&nbsp;</a></span>DD_turboEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_turboEnabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00111">111</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a3b7af19e47d32787a594702b58db2a34"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3b7af19e47d32787a594702b58db2a34">&#9670;&nbsp;</a></span>DD_sharedExploration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_sharedExploration</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00112">112</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="af691bc43c09886aa46c1390e1caf0ff3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af691bc43c09886aa46c1390e1caf0ff3">&#9670;&nbsp;</a></span>DD_teamPositions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_teamPositions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00113">113</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a327014161226ef5a2ee08786439e7ad7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a327014161226ef5a2ee08786439e7ad7">&#9670;&nbsp;</a></span>DD_subGameMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_subGameMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00114">114</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aff868d6962ef794a85d54feebf27510b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aff868d6962ef794a85d54feebf27510b">&#9670;&nbsp;</a></span>DD_battleRoyaleTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_battleRoyaleTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00115">115</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a50c776595b5ba1e2f5e8df5ef26d0952"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a50c776595b5ba1e2f5e8df5ef26d0952">&#9670;&nbsp;</a></span>DD_handicap</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_handicap = <a class="el" href="DataModel_8h.html#a8f306f67570ceacaa6bc8a1227aff236">UINT8_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>让分 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00116">116</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a499a1c8ac80eb064ded2baa2d253da01"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a499a1c8ac80eb064ded2baa2d253da01">&#9670;&nbsp;</a></span>players</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">array&lt;<a class="el" href="classPlayer.html">Player</a>, 9&gt; DataModel::players</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00118">118</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="operations_8cpp_source.html#l00036">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a80edd7f252f5347a2521513ddcfbf986"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a80edd7f252f5347a2521513ddcfbf986">&#9670;&nbsp;</a></span>DD_cheatNotifications</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_cheatNotifications</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00120">120</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a211dde345c89da001e0024ee10f1f555"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a211dde345c89da001e0024ee10f1f555">&#9670;&nbsp;</a></span>DD_coloredChat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_coloredChat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00121">121</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a81f53f2dc9edd330ac728c7b1760b326"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a81f53f2dc9edd330ac728c7b1760b326">&#9670;&nbsp;</a></span>DD_isRanked</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_isRanked = 255</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00122">122</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a57f4f9f5299f8f5dc6ec1b66912ec53d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a57f4f9f5299f8f5dc6ec1b66912ec53d">&#9670;&nbsp;</a></span>DD_allowSpecs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DD_allowSpecs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00123">123</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a4764c0747b5c5b81c33811bbcfaff345"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4764c0747b5c5b81c33811bbcfaff345">&#9670;&nbsp;</a></span>DD_lobbyVisibility</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DD_lobbyVisibility</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00124">124</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a0103fa379e095f1a232492da0329ae15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0103fa379e095f1a232492da0329ae15">&#9670;&nbsp;</a></span>DE_hiddenCivs</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DE_hiddenCivs</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00125">125</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a4fd9c8d80ae20c870872b3e564733d82"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4fd9c8d80ae20c870872b3e564733d82">&#9670;&nbsp;</a></span>DE_matchMaking</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DE_matchMaking</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00126">126</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a121f0ca7a3093759734163a8b36d5191"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a121f0ca7a3093759734163a8b36d5191">&#9670;&nbsp;</a></span>DE_specDely</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::DE_specDely</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00127">127</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a71bcd4ef6d9ef9d3c7a55923c4d3fa65"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a71bcd4ef6d9ef9d3c7a55923c4d3fa65">&#9670;&nbsp;</a></span>DE_scenarioCiv</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::DE_scenarioCiv</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00128">128</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a464dd00cf1be0a3489af68159723f01c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a464dd00cf1be0a3489af68159723f01c">&#9670;&nbsp;</a></span>HD_customRandomMapFileCrc</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::HD_customRandomMapFileCrc</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00130">130</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a384a7fcdbf62b15e29d13934119097fb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a384a7fcdbf62b15e29d13934119097fb">&#9670;&nbsp;</a></span>HD_customScenarioOrCampaignFile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::HD_customScenarioOrCampaignFile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00131">131</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aba50ccdb6440831919c6b046c0e89c15"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aba50ccdb6440831919c6b046c0e89c15">&#9670;&nbsp;</a></span>HD_customRandomMapFile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::HD_customRandomMapFile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00132">132</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a6c208a5d6459f910d3cf4e48b7a88097"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c208a5d6459f910d3cf4e48b7a88097">&#9670;&nbsp;</a></span>HD_customRandomMapScenarionFile</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::HD_customRandomMapScenarionFile</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00133">133</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a027db7a3a37b013eea167f61fb6c666c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a027db7a3a37b013eea167f61fb6c666c">&#9670;&nbsp;</a></span>DD_guid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::DD_guid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00134">134</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a04b05d3b46bc2a5005c852510b0f861a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04b05d3b46bc2a5005c852510b0f861a">&#9670;&nbsp;</a></span>DD_lobbyName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::DD_lobbyName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00135">135</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aca86078394fac41aa8b5913ad39c17ac"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aca86078394fac41aa8b5913ad39c17ac">&#9670;&nbsp;</a></span>DD_moddedDataset</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::DD_moddedDataset</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00136">136</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a43283cdeecdf4630b842f989d8e99411"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a43283cdeecdf4630b842f989d8e99411">&#9670;&nbsp;</a></span>HD_moddedDatasetWorkshopID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::HD_moddedDatasetWorkshopID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00137">137</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a8abd27a4fa2645c068c277aff3d5032a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8abd27a4fa2645c068c277aff3d5032a">&#9670;&nbsp;</a></span>DE_numAIFiles</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint64_t DataModel::DE_numAIFiles</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00138">138</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ad5306d59021be786496420728e366004"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad5306d59021be786496420728e366004">&#9670;&nbsp;</a></span>gameSpeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::gameSpeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000024">待办事项:</a></b></dt><dd>If de/hd, use data from de/hd-specific data </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00141">141</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a10206e205b0e3b011f24a120ede764d0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a10206e205b0e3b011f24a120ede764d0">&#9670;&nbsp;</a></span>recPlayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint16_t DataModel::recPlayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">待办事项:</a></b></dt><dd>index or number of pov?? verify this. </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00142">142</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a75761276a2c5e6d1e1d92b688509ae47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a75761276a2c5e6d1e1d92b688509ae47">&#9670;&nbsp;</a></span>numPlayers</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::numPlayers</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">待办事项:</a></b></dt><dd>gaia included, DD_numPlayers first?? </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00143">143</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a5d94df821546ff7f6772876ea4af4b9d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5d94df821546ff7f6772876ea4af4b9d">&#9670;&nbsp;</a></span>instantBuild</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::instantBuild</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00144">144</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a91821e8a98a742dfd9b94ef43f68ac84"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a91821e8a98a742dfd9b94ef43f68ac84">&#9670;&nbsp;</a></span>cheatsEnabled</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::cheatsEnabled</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">待办事项:</a></b></dt><dd>DD_cheats?? </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00145">145</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a8ba0c5f26ef88b880058ad8f7a547ba3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8ba0c5f26ef88b880058ad8f7a547ba3">&#9670;&nbsp;</a></span>mapCoord</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t DataModel::mapCoord[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00149">149</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ac3d05ac809e07f2e1bb4dac0f5c71b49"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3d05ac809e07f2e1bb4dac0f5c71b49">&#9670;&nbsp;</a></span>mapDataPtr</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void* DataModel::mapDataPtr</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00150">150</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ad76652ac9f4e1e0fb89d8bf5f579a8df"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad76652ac9f4e1e0fb89d8bf5f579a8df">&#9670;&nbsp;</a></span>allVisible</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::allVisible</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00151">151</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a438440678c4535f932ea0380ea6c92db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a438440678c4535f932ea0380ea6c92db">&#9670;&nbsp;</a></span>restoreTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::restoreTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00155">155</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>.</p>
+
+</div>
+</div>
+<a id="ada16948042d0385a49544ec4bf75a285"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ada16948042d0385a49544ec4bf75a285">&#9670;&nbsp;</a></span>scenarioVersion</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">float DataModel::scenarioVersion = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00158">158</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a83708a858f2c8721b10fafb1bdfd5376"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a83708a858f2c8721b10fafb1bdfd5376">&#9670;&nbsp;</a></span>scenarioFilename</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::scenarioFilename</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00159">159</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a60cea693f2982159e45b98cf43508166"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a60cea693f2982159e45b98cf43508166">&#9670;&nbsp;</a></span>instructions</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::instructions</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00160">160</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">DefaultAnalyzer::_findEncodingPattern()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a6b2091d441617c215639165270349a1c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6b2091d441617c215639165270349a1c">&#9670;&nbsp;</a></span>victoryIsConquest</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryIsConquest</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00163">163</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a15da63fb959d8c6dd0cb54ceb066a8eb"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a15da63fb959d8c6dd0cb54ceb066a8eb">&#9670;&nbsp;</a></span>victoryRelics</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryRelics</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00164">164</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ade5cffb64f3194dccd00d113870529c5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ade5cffb64f3194dccd00d113870529c5">&#9670;&nbsp;</a></span>victoryExplored</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryExplored</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00165">165</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ad1759ab2c17e4aa1e7cb73f52b512227"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ad1759ab2c17e4aa1e7cb73f52b512227">&#9670;&nbsp;</a></span>victoryAnyOrAll</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryAnyOrAll</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00166">166</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a4c283f7d0f426a9d6175c5feca6175bf"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4c283f7d0f426a9d6175c5feca6175bf">&#9670;&nbsp;</a></span>victoryMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00167">167</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="aed6d42f69764c532180d64abfc73c406"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed6d42f69764c532180d64abfc73c406">&#9670;&nbsp;</a></span>victoryScore</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryScore</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00168">168</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="af085312c162adaa3ed88d1a743e9807b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af085312c162adaa3ed88d1a743e9807b">&#9670;&nbsp;</a></span>victoryTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::victoryTime</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00169">169</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a257903c52af9031e63175f3ce2a07f1b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a257903c52af9031e63175f3ce2a07f1b">&#9670;&nbsp;</a></span>mapID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::mapID</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00172">172</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ac6acee120fe55e9d9d37f8862fc7fe4d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac6acee120fe55e9d9d37f8862fc7fe4d">&#9670;&nbsp;</a></span>difficultyID</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::difficultyID = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00173">173</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="aed322dd82e7b4d0a6b0ea46aaecf7d6f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aed322dd82e7b4d0a6b0ea46aaecf7d6f">&#9670;&nbsp;</a></span>lockTeams</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::lockTeams</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00174">174</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a63ef98daf7a67c5bc785e130e1a5b1b4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a63ef98daf7a67c5bc785e130e1a5b1b4">&#9670;&nbsp;</a></span>fogOfWar</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::fogOfWar</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00177">177</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a738a428169226d54ad2c0e211768569d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a738a428169226d54ad2c0e211768569d">&#9670;&nbsp;</a></span>mapSize</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::mapSize</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00178">178</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a752b8a336c226a692394b391f17ec8c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a752b8a336c226a692394b391f17ec8c0">&#9670;&nbsp;</a></span>populationLimit</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::populationLimit = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00179">179</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a696f78bdd9e25b7f1c7e8ddaee0ebb7f"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a696f78bdd9e25b7f1c7e8ddaee0ebb7f">&#9670;&nbsp;</a></span>gameType</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::gameType</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00180">180</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a2870facf39336fda3196cf54c428621d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a2870facf39336fda3196cf54c428621d">&#9670;&nbsp;</a></span>lockDiplomacy</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::lockDiplomacy</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>DE/HD数据中还有一个类似的 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00181">181</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a0ffc1b2eee31798c636b1f18c4c1873b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0ffc1b2eee31798c636b1f18c4c1873b">&#9670;&nbsp;</a></span>treatyLength</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t DataModel::treatyLength</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<dl class="section note"><dt>注解</dt><dd>DE/HD数据中还有一个类似的 </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00182">182</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="ac7d1593db8cfe5cf0fcc1900880afc24"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac7d1593db8cfe5cf0fcc1900880afc24">&#9670;&nbsp;</a></span>chat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">vector&lt;<a class="el" href="structChat.html">Chat</a>&gt; DataModel::chat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00183">183</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00036">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="afaaa5ba0298b1ea64dc3548c2d5b77f7"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afaaa5ba0298b1ea64dc3548c2d5b77f7">&#9670;&nbsp;</a></span>DE_mapSeed</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t DataModel::DE_mapSeed</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00184">184</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="adab4cc190723f98e1ad70fffa9340e09"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adab4cc190723f98e1ad70fffa9340e09">&#9670;&nbsp;</a></span>embededMapName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::embededMapName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Map name extracted from instructions, not mapped with raw number </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00187">187</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">DefaultAnalyzer::_findEncodingPattern()</a> , 以及 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>.</p>
+
+</div>
+</div>
+<a id="acabb67f9e24bcf9fd3835ffa4b25fc45"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acabb67f9e24bcf9fd3835ffa4b25fc45">&#9670;&nbsp;</a></span>duration</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::duration = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00190">190</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00036">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00022">DefaultAnalyzer::_handleOpSync()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a626b7ab3b0c5c20bdbcbe41041011fe6"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a626b7ab3b0c5c20bdbcbe41041011fe6">&#9670;&nbsp;</a></span>isMultiplayer</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::isMultiplayer</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00191">191</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00044">DefaultAnalyzer::_readGameStart()</a>.</p>
+
+</div>
+</div>
+<a id="aab101c83dada904826e0360810cc1dc3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aab101c83dada904826e0360810cc1dc3">&#9670;&nbsp;</a></span>syncChecksumInterval</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DataModel::syncChecksumInterval = 500</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00192">192</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00044">DefaultAnalyzer::_readGameStart()</a>.</p>
+
+</div>
+</div>
+<a id="a9dbedd907d1ffd08f0bd513dedefc330"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9dbedd907d1ffd08f0bd513dedefc330">&#9670;&nbsp;</a></span>rawEncoding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::rawEncoding = &quot;GB18030&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00194">194</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ac28d9d810220d44c692a23c579309d33"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac28d9d810220d44c692a23c579309d33">&#9670;&nbsp;</a></span>outEncoding</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::outEncoding = &quot;utf-8&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00195">195</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a6bcd66186cac2df530345e0876ac03e2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6bcd66186cac2df530345e0876ac03e2">&#9670;&nbsp;</a></span>status</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::status = &quot;good&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>&lt; 有时需要从上传时间来推断，是否放在更外层的类里面？ </p>
+<p>解析完成类型：good, warning, fatal, etc. </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00198">198</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a28dc6eb404ae1b153024f3522cad2685"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a28dc6eb404ae1b153024f3522cad2685">&#9670;&nbsp;</a></span>message</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::message</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>对 <code>status</code> 的具体说明 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00199">199</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="a24a9352d2d47c168d70835eefedb1dc8"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a24a9352d2d47c168d70835eefedb1dc8">&#9670;&nbsp;</a></span>parseMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::parseMode = &quot;MgxParser Normal&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解析模式：normal, verbose, etc. 可以在命令行中指定 </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00200">200</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="adeda1ea7a358bfba3a2139a09fa6f290"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#adeda1ea7a358bfba3a2139a09fa6f290">&#9670;&nbsp;</a></span>parseTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double DataModel::parseTime = 0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>解析耗时（毫秒） </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00201">201</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="DataModel_8h_source.html">DataModel.h</a></li>
+<li><a class="el" href="DataModel_8cpp_source.html">DataModel.cpp</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

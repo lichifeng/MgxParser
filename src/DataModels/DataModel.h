@@ -79,12 +79,12 @@ public:
     uint32_t DD_gameOptionsVersion = UINT32_INIT;
     uint32_t DD_DLCCount = 0;
     uint32_t DD_datasetRef; ///< \todo What's this?
-    uint32_t DD_difficultyID;
+    uint32_t DD_difficultyID = UINT32_INIT;
     uint32_t DD_selectedMapID;
     uint32_t DD_resolvedMapID;
     uint32_t revealMap = UINT32_INIT; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
     uint32_t DD_victoryTypeID = UINT32_INIT;
-    uint32_t DD_startingResourcesID;
+    uint32_t DD_startingResourcesID = UINT32_INIT;
     uint32_t DD_startingAgeID;
     uint32_t DD_endingAgeID;
     uint32_t DD_gameType = UINT32_INIT; ///< Only when DD_version>=1006
@@ -119,7 +119,7 @@ public:
     // uint8_t DE_fogOfWar;
     uint8_t DD_cheatNotifications;
     uint8_t DD_coloredChat;
-    uint8_t DD_isRanked;
+    uint8_t DD_isRanked = 255;
     uint8_t DD_allowSpecs;
     uint32_t DD_lobbyVisibility;
     uint8_t DE_hiddenCivs;
@@ -170,7 +170,7 @@ public:
 
     // game settings
     uint32_t mapID;
-    uint32_t difficultyID;
+    uint32_t difficultyID = UINT32_INIT;
     uint32_t lockTeams;
 
     // lobby settings
@@ -191,7 +191,7 @@ public:
     uint32_t isMultiplayer;
     uint32_t syncChecksumInterval = 500;
 
-    string rawEncoding = "GBK";
+    string rawEncoding = "GB18030"; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
     string outEncoding = "utf-8";
     // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？

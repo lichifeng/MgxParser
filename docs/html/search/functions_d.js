@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setpattern_465',['setPattern',['../classLogger.html#afcba3af79e7db671cbcd7f913adb1184',1,'Logger']]]
+  ['tojson_525',['toJson',['../classDataModel.html#af0d0182adce22ea068293ccea981b2d3',1,'DataModel']]]
 ];

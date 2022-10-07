@@ -1,6 +1,6 @@
 var searchData=
 [
-  ['aidataunknown_497',['AIdataUnknown',['../namespacepatterns.html#acc3e2ed6706b59dd79c8df08a0f47f0a',1,'patterns']]],
-  ['aidirtyfix_498',['AIDirtyFix',['../namespacepatterns.html#a61905a384309acb49cecb62997e1f5d2',1,'patterns']]],
-  ['allvisible_499',['allVisible',['../classDefaultAnalyzer.html#a0e09b8d18a828e117f5b52004699d654',1,'DefaultAnalyzer']]]
+  ['aidataunknown_555',['AIdataUnknown',['../namespacepatterns.html#acc3e2ed6706b59dd79c8df08a0f47f0a',1,'patterns']]],
+  ['aidirtyfix_556',['AIDirtyFix',['../namespacepatterns.html#a61905a384309acb49cecb62997e1f5d2',1,'patterns']]],
+  ['allvisible_557',['allVisible',['../classDataModel.html#ad76652ac9f4e1e0fb89d8bf5f579a8df',1,'DataModel']]]
 ];

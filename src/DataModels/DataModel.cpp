@@ -63,9 +63,17 @@ string DataModel::toJson()
         {
             j["victory"]["amount"] = DD_victoryAmount;
         }
-    } else {
+    }
+    else
+    {
         j["victory"]["type"] = readLang(zh::victoryTypes, victoryMode); // \todo 低版本的要核实下，好像不怎么对
     }
+
+    j["difficultyLevel"] = readLang(zh::difficulty, UINT32_INIT == DD_difficultyID ? difficultyID : DD_difficultyID);
+    j["resources"] = readLang(zh::resources, DD_startingResourcesID);
+    j["gameSpeed"] = readLang(zh::speed, FLOAT_INIT == DD_speed ? gameSpeed : (uint32_t)(DD_speed * 1000));
+    j["handicap"] = (bool)DD_handicap;
+    j["rankType"] = (int)DD_isRanked;
 
     if (DE_timestamp)
         j["playTime"] = DE_timestamp;
@@ -91,7 +99,7 @@ string DataModel::toJson()
         pJ["slot"] = p.slot;
         pJ["name"] = p.name;
         pJ["civilization"]["id"] = (UINT32_INIT == p.DD_civID) ? p.civID : p.DD_civID;
-        pJ["civilization"]["name"] = {readLang(zh::civNames, pJ["civilization"]["id"])};
+        pJ["civilization"]["name"] = readLang(zh::civNames, pJ["civilization"]["id"]);
         pJ["initPosition"] = {
             p.initCamera[0] == -1.0 ? 0 : p.initCamera[0],
             p.initCamera[1] == -1.0 ? 0 : p.initCamera[1]};
@@ -113,6 +121,7 @@ string DataModel::toJson()
             pJ["HDSteamID"] = nullptr;
         }
         pJ["mainOp"] = p.initialDataFound() ? true : false; // \todo 要验证下。可以用这种方法确定是不是Co-Op。
+        pJ["POV"] = p.slot == recPlayer;
 
         j["players"].emplace_back(pJ);
     }
@@ -124,5 +133,5 @@ string DataModel::toJson()
             {"msg", c.msg}});
     }
 
-    return j.dump();
+    return j.dump(-1, ' ', false, json::error_handler_t::ignore);
 }

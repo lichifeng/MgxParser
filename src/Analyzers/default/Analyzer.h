@@ -67,7 +67,20 @@ public:
                 _distance());
             return s;
         }
-        _encodingConverter->convert(s, s);
+
+        if (0 == rawEncoding.compare(outEncoding))
+            return s;
+
+        try
+        {
+            _encodingConverter->convert(s, s);
+        }
+        catch (const exception &e)
+        {
+            logger->warn("Encoding Exception@{}: {}", _debugFlag, e.what());
+            _sendFailedSignal(true);
+        }
+
         return s;
     }
 
