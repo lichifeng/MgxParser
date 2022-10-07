@@ -62,7 +62,7 @@ public:
     uint32_t easySkipBase = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
     uint32_t triggerStartSearchRange = 19; ///< 查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试
     uint32_t ZLIB_CHUNK = 8192;            ///< ZLIB解压时的参数
-    uint32_t scenarioSearchSpan = 8000;    ///< usually 5500~6500
+    //uint32_t scenarioSearchSpan = 10000;    ///< usually 5500~6500
 
     // Version-related members
     uint32_t logVersion = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版

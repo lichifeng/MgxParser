@@ -18,17 +18,20 @@ void DefaultAnalyzer::_findScenarioHeaderStart()
     // among minor game versions and relative stable in previous versions.)
     if (IS_DE(versionCode))
     {
-        auto startPoint = _victoryStartPos - scenarioSearchSpan;
-        _curPos = startPoint;
-        for (size_t i = 0; i < scenarioSearchSpan; i++)
+        //auto startPoint = _victoryStartPos - scenarioSearchSpan;
+        //_curPos = startPoint;
+        //\warning AI file is very very large. This scenarioSearchSpan is a
+        //stupid idea here. Just search to the top.
+        //for (size_t i = 0; i < scenarioSearchSpan; i++)
+        _curPos = _victoryStartPos - 4;
+        while (--_curPos != _curStream->data())
         {
-            scenarioVersion = *(float *)startPoint;
+            scenarioVersion = *(float *)_curPos;
             if (scenarioVersion > 1.35 && scenarioVersion < 1.55)
             {
-                _scenarioHeaderPos = _curPos = startPoint - 4; // 4 bytes are 00 00 00 00 before scenario version
+                _scenarioHeaderPos = _curPos - 4; // 4 bytes are 00 00 00 00 before scenario version
                 return;
             }
-            ++startPoint;
         }
         logger->warn(
             "{}(): Cannot find _scenarioHeaderPos in this DE version. @{}.",
