@@ -2,8 +2,9 @@ cmake_minimum_required(VERSION 3.0.0)
 project(
     MgxParser
     VERSION 0.1.0 
+    LANGUAGES CXX 
+    HOMEPAGE_URL "aocrec.com" 
     DESCRIPTION "A C++ program used to extract useful information from Age of Empires II game records."
-    HOMEPAGE_URL "aocrec.com"
 )
 
 string(TIMESTAMP COMPILEDATE "%Y%m%d")
@@ -28,7 +29,7 @@ target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
 target_link_libraries(${PROJECT_NAME} pthread)
 target_link_libraries(${PROJECT_NAME} png)
 target_link_libraries(${PROJECT_NAME} z)
-
+target_link_libraries(${PROJECT_NAME} "stdc++fs")
 
 configure_file(CompileConfig.h.in CompileConfig.h)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/README.md ${CMAKE_CURRENT_SOURCE_DIR})

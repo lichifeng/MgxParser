@@ -11,7 +11,7 @@
 
 #pragma once
 
-#include "nlohmann/json.hpp"
+#include "nlohmann_json_3/json.hpp"
 
 // Version tools
 #define IS_TRIAL(v) (v == 0 && v == 1)

@@ -17,7 +17,7 @@
 
 #include <string>
 #include <map>
-#include "nlohmann/json.hpp"
+#include "nlohmann_json_3/json.hpp"
 #include "CompileConfig.h"
 #include "Player.h"
 #include "Helper.h"
