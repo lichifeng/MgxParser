@@ -68,55 +68,57 @@ $(function() {
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><dl class="reflist">
-<dt>成员 <a class="el" href="classDataModel.html#a91821e8a98a742dfd9b94ef43f68ac84">DataModel::cheatsEnabled</a>  </dt>
-<dd><a class="anchor" id="_todo000027"></a>DD_cheats??  </dd>
 <dt>成员 <a class="el" href="classDataModel.html#a64d4987e10b940b563006d9f9bc7e125">DataModel::DD_datasetRef</a>  </dt>
-<dd><a class="anchor" id="_todo000023"></a>What's this?  </dd>
+<dd><a class="anchor" id="_todo000025"></a>What's this?  </dd>
 <dt>成员 <a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">DataModel::ext</a>  </dt>
-<dd><a class="anchor" id="_todo000022"></a>要检查扩展名  </dd>
+<dd><a class="anchor" id="_todo000024"></a>要检查扩展名  </dd>
 <dt>成员 <a class="el" href="classDataModel.html#ad5306d59021be786496420728e366004">DataModel::gameSpeed</a>  </dt>
-<dd><a class="anchor" id="_todo000024"></a>If de/hd, use data from de/hd-specific data  </dd>
+<dd><a class="anchor" id="_todo000026"></a>If de/hd, use data from de/hd-specific data  </dd>
 <dt>成员 <a class="el" href="classDataModel.html#a75761276a2c5e6d1e1d92b688509ae47">DataModel::numPlayers</a>  </dt>
-<dd><a class="anchor" id="_todo000026"></a>gaia included, DD_numPlayers first??  </dd>
+<dd><a class="anchor" id="_todo000028"></a>gaia included, DD_numPlayers first??  </dd>
 <dt>成员 <a class="el" href="classDataModel.html#a10206e205b0e3b011f24a120ede764d0">DataModel::recPlayer</a>  </dt>
-<dd><a class="anchor" id="_todo000025"></a>index or number of pov?? verify this.  </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a5138bb584fe9ffcb2ee0cc502eb6e101">DefaultAnalyzer::_AIAnalyzer</a>  ()</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000003"></a>验证一下各版本的情况 </p>
-<p class="interdd"><a class="anchor" id="_todo000004"></a>this takes too long, not acceptable </p>
-<p class="interdd"><a class="anchor" id="_todo000005"></a>这里用了非常不确定的方法来跳过，没有充分验证。没有直接查找4096个0X00是出于性能考虑。 </p>
-<p class="interdd"><a class="anchor" id="_todo000006"></a>针对这个版本号边界要验证一下 </p>
-<p class="enddd"><a class="anchor" id="_todo000007"></a>这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。  </p>
+<dd><a class="anchor" id="_todo000027"></a>index or number of pov?? verify this.  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#acd27a49f4afa1b509173f9e5f4bfb41b">DefaultAnalyzer::_AIAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000004"></a>验证一下各版本的情况 </p>
+<p class="interdd"><a class="anchor" id="_todo000005"></a>this takes too long, not acceptable </p>
+<p class="interdd"><a class="anchor" id="_todo000006"></a>这里用了非常不确定的方法来跳过，没有充分验证。没有直接查找4096个0X00是出于性能考虑。 </p>
+<p class="interdd"><a class="anchor" id="_todo000007"></a>针对这个版本号边界要验证一下 </p>
+<p class="enddd"><a class="anchor" id="_todo000008"></a>这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。  </p>
 </dd>
 <dt>成员 <a class="el" href="classDefaultAnalyzer.html#aebac5c4f96e2bf11ddde97844cf95a15">DefaultAnalyzer::_analyze</a>  ()</dt>
-<dd><a class="anchor" id="_todo000001"></a>is this right cutoff point?? .mgx2 related?? see <a class="el" href="classDefaultAnalyzer.html#a3f71ab90fd20d2f0965ad3208877d416" title="This method also builds some search patterns used to traverse in startinfo section">_gameSettingsAnalyzer()</a>  </dd>
+<dd><a class="anchor" id="_todo000001"></a>is this right cutoff point?? .mgx2 related?? see <a class="el" href="classDefaultAnalyzer.html#af68e3ef3f251facadd73f8aca604ed1e" title="This method also builds some search patterns used to traverse in startinfo section">_gameSettingsAnalyzer()</a>  </dd>
 <dt>成员 <a class="el" href="classDefaultAnalyzer.html#ae9741bd0e67577a26423707e731f597f">DefaultAnalyzer::_curStream</a>  </dt>
-<dd><a class="anchor" id="_todo000002"></a>要把代码中所有的_header.data()替换成这个。  </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a05d7b5e7161fdb5bd7ca7580580e750f">DefaultAnalyzer::_findDisablesStart</a>  ()</dt>
-<dd><a class="anchor" id="_todo000009"></a>这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧  </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a12cff2c3e96b30d8c58ca97033468e78">DefaultAnalyzer::_findScenarioHeaderStart</a>  ()</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000010"></a>这里应该是13.3399还是13.3599? </p>
-<p class="enddd"><a class="anchor" id="_todo000011"></a>aoc-mgz says aok scenario version can appear in UP  </p>
+<dd><a class="anchor" id="_todo000003"></a>要把代码中所有的_header.data()替换成这个。  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#acf18c119afa9a37ee3261ff81b3c5116">DefaultAnalyzer::_findDisablesStart</a>  (int debugFlag=0)</dt>
+<dd><a class="anchor" id="_todo000010"></a>这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a6958dd8312319642fdc35d551651a978">DefaultAnalyzer::_findScenarioHeaderStart</a>  (int debugFlag=0)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000011"></a>这里应该是13.3399还是13.3599? </p>
+<p class="enddd"><a class="anchor" id="_todo000012"></a>aoc-mgz says aok scenario version can appear in UP  </p>
 </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#aed58a21a63a3ff87e382b9d9a8dcb1ae">DefaultAnalyzer::_findTriggerInfoStart</a>  ()</dt>
-<dd><a class="anchor" id="_todo000012"></a>Maybe I will deploy a brutal search for double float in [1.6, 10] if cannot find it easily?  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a8cbddac4d92d6ad86f9a60a0f517a9e1">DefaultAnalyzer::_findTriggerInfoStart</a>  (int debugFlag=0)</dt>
+<dd><a class="anchor" id="_todo000013"></a>Maybe I will deploy a brutal search for double float in [1.6, 10] if cannot find it easily?  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#af68e3ef3f251facadd73f8aca604ed1e">DefaultAnalyzer::_gameSettingsAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><a class="anchor" id="_todo000014"></a>Game setting section is different in DE version, better look into it.  </dd>
 <dt>成员 <a class="el" href="classDefaultAnalyzer.html#a47ea3c2b9b39c66397f71775c0a5b288">DefaultAnalyzer::_guessEncoding</a>  ()</dt>
-<dd><a class="anchor" id="_todo000008"></a>aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。  </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a517eb8ad75e03708b32b115548a60434">DefaultAnalyzer::_headerDEAnalyzer</a>  ()</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000013"></a>aoc-mgz有更新，可以参考 <a href="https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5">https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5</a> </p>
-<p class="enddd"><a class="anchor" id="_todo000014"></a>AI FILENAMES deserve to be recorded.  </p>
+<dd><a class="anchor" id="_todo000009"></a>aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a3bf96eaa71b889cc8984648700d1ee27">DefaultAnalyzer::_headerDEAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000015"></a>aoc-mgz有更新，可以参考 <a href="https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5">https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5</a> </p>
+<p class="enddd"><a class="anchor" id="_todo000016"></a>AI FILENAMES deserve to be recorded.  </p>
 </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#af8fd896a2f50e3c9cb3155c9da22df03">DefaultAnalyzer::_headerHDAnalyzer</a>  ()</dt>
-<dd><p class="startdd"><a class="anchor" id="_todo000015"></a>Next 4 bytes should be: a3 5f 02 00, but aoc-mgz indicates they are following data </p>
-<p class="enddd"><a class="anchor" id="_todo000016"></a>should this map to gamehash or filehash?  </p>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#ae98b2946d97916d06c09aa2b417ace1b">DefaultAnalyzer::_headerHDAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><p class="startdd"><a class="anchor" id="_todo000017"></a>Next 4 bytes should be: a3 5f 02 00, but aoc-mgz indicates they are following data </p>
+<p class="enddd"><a class="anchor" id="_todo000018"></a>should this map to gamehash or filehash?  </p>
 </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a362d6fb139a07f78db71599ad51d6ba4">DefaultAnalyzer::_lobbyAnalyzer</a>  ()</dt>
-<dd><a class="anchor" id="_todo000017"></a>Verify this.  </dd>
-<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a8d7086fdef5960a2715d8928b6e4bd93">DefaultAnalyzer::_replayAnalyzer</a>  ()</dt>
-<dd><a class="anchor" id="_todo000020"></a>AOK condition not tested  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#afa1ede330ae2ed410bd5fac4bbafa201">DefaultAnalyzer::_lobbyAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><a class="anchor" id="_todo000019"></a>Verify this.  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a5adcb2c6607dd8fcc8e7aab1adad308b">DefaultAnalyzer::_replayAnalyzer</a>  (int debugFlag=0)</dt>
+<dd><a class="anchor" id="_todo000022"></a>AOK condition not tested  </dd>
 <dt>成员 <a class="el" href="classDefaultAnalyzer.html#a58ee6d759fdaa74a7fbaafcf62f08789">DefaultAnalyzer::_setVersionCode</a>  ()</dt>
-<dd><a class="anchor" id="_todo000021"></a>Every condition needs to be tested!  </dd>
+<dd><a class="anchor" id="_todo000023"></a>Every condition needs to be tested!  </dd>
+<dt>成员 <a class="el" href="classDefaultAnalyzer.html#a9112d9e8218df842e65dbe1c847aabe7">DefaultAnalyzer::fixEncoding</a>  (string &amp;s)</dt>
+<dd><a class="anchor" id="_todo000002"></a>正在考虑是否将编码转换的功能全部移到JSON输出前去，改用boost.locale库，Analyzer里只读原始编码的字符串？  </dd>
 <dt>成员 <a class="el" href="classPlayer.html#a57094b4c146e28691045582a22b68347">Player::DD_playerNumber</a>  </dt>
-<dd><a class="anchor" id="_todo000028"></a>这个和index/slot怎么区别呢？ </dd>
+<dd><a class="anchor" id="_todo000029"></a>这个和index/slot怎么区别呢？ </dd>
 </dl>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->

@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_findTriggerInfoStart()
+void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     // aok ~ hd: 0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, f9, 3f (double 1.6)
     // de < 13.34: 00 e0 ab 45 + double 2.2
     // de >= 13.34:  \note Maybe the cutoff point is not 13.34

@@ -1,5 +1,4 @@
 var searchData=
 [
-  ['uint32_5finit_807',['UINT32_INIT',['../DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b',1,'DataModel.h']]],
-  ['uint8_5finit_808',['UINT8_INIT',['../DataModel_8h.html#a8f306f67570ceacaa6bc8a1227aff236',1,'DataModel.h']]]
+  ['try_5fphase2_5ffallback_803',['TRY_PHASE2_FALLBACK',['../Analyzer_8cpp.html#a12b0788db6dafbc32960eccde0c866e7',1,'Analyzer.cpp']]]
 ];

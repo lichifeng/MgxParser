@@ -12,11 +12,13 @@
 #include "Analyzer.h"
 #include "bodyProcessors/helpers.h"
 
-void DefaultAnalyzer::_readBodyCommands()
+void DefaultAnalyzer::_readBodyCommands(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     int32_t opType;
 
-    _readGameStart();
+    _readGameStart(21);
 
     while (_remainBytes() >= 4)
     {
@@ -41,8 +43,10 @@ void DefaultAnalyzer::_readBodyCommands()
     }
 }
 
-void DefaultAnalyzer::_readGameStart()
+void DefaultAnalyzer::_readGameStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     if (*(uint32_t *)_curPos != 500)
         _skip(4);
     /// \note 其实规律是从这里开始读过24个字节后一直要往后走，直到遇到第一个02

@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_startInfoAnalyzer()
+void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     if (_startInfoPos)
     {
         _curPos = _startInfoPos;

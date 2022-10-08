@@ -85,46 +85,45 @@ $(function() {
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="utils_8h.html">utils.h</a>&quot;</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a68b1435f072d7ff1a078877363332ea7">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a68b1435f072d7ff1a078877363332ea7">DefaultAnalyzer::_findGameSettingsStart</a>()</div>
+<div class="line"><a name="l00015"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#ad125bf6c2967a929698a191434865999">   15</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#ad125bf6c2967a929698a191434865999">DefaultAnalyzer::_findGameSettingsStart</a>(<span class="keywordtype">int</span> debugFlag)</div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;{</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a>;</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    vector&lt;uint8_t&gt;::reverse_iterator rFound;</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    rFound = <a class="code" href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a>(</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        make_reverse_iterator(<a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.begin() + (<a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a> - <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.data())),</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.rend(),</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        <a class="code" href="namespacepatterns.html#ac7ed6ca5b7475361cefdecad0f1c062e">patterns::separator</a>.rbegin(),</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="namespacepatterns.html#ac7ed6ca5b7475361cefdecad0f1c062e">patterns::separator</a>.rend());</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">if</span> (rFound == <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.rend())</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <span class="stringliteral">&quot;{}(): Failed to find _gameSettingsPos. @{}.&quot;</span>,</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;            __FUNCTION__, _distance());</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        _sendFailedSignal();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = &amp;(*--rFound) - 68;</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160; </div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <span class="keywordflow">if</span> ((*(int32_t *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 68) != -1) || (*(int32_t *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 72) != -1))</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    {</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;            <span class="stringliteral">&quot;{}(): Failed to find _gameSettingsPos. @{}.&quot;</span>,</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;            __FUNCTION__, _distance());</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        _sendFailedSignal();</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">_gameSettingsPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;}</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a> = debugFlag;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    </div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a>;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    vector&lt;uint8_t&gt;::reverse_iterator rFound;</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    rFound = <a class="code" href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a>(</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        make_reverse_iterator(<a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.begin() + (<a class="code" href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">_triggerInfoPos</a> - <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.data())),</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.rend(),</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        <a class="code" href="namespacepatterns.html#ac7ed6ca5b7475361cefdecad0f1c062e">patterns::separator</a>.rbegin(),</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="namespacepatterns.html#ac7ed6ca5b7475361cefdecad0f1c062e">patterns::separator</a>.rend());</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <span class="keywordflow">if</span> (rFound == <a class="code" href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">_header</a>.rend())</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    {</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            <span class="stringliteral">&quot;{}(): Failed to find _gameSettingsPos by regular separator. @{}, Flag:{}.&quot;</span>,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;            __FUNCTION__, _distance(), <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a>);</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        _sendFailedSignal();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = &amp;(*--rFound) - 68;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> ((*(int32_t *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 68) != -1) || (*(int32_t *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 72) != -1))</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;            <span class="stringliteral">&quot;{}(): Find weired _gameSettingsPos. @{}, Flag:{}.&quot;</span>,</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;            __FUNCTION__, _distance(), <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">//_sendFailedSignal();</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    }</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;    </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">_gameSettingsPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00378">Analyzer.h:378</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a68b1435f072d7ff1a078877363332ea7"><div class="ttname"><a href="classDefaultAnalyzer.html#a68b1435f072d7ff1a078877363332ea7">DefaultAnalyzer::_findGameSettingsStart</a></div><div class="ttdeci">void _findGameSettingsStart()</div><div class="ttdef"><b>Definition:</b> <a href="subProcFindGameSettings_8cpp_source.html#l00015">subProcFindGameSettings.cpp:15</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_ad125bf6c2967a929698a191434865999"><div class="ttname"><a href="classDefaultAnalyzer.html#ad125bf6c2967a929698a191434865999">DefaultAnalyzer::_findGameSettingsStart</a></div><div class="ttdeci">void _findGameSettingsStart(int debugFlag=0)</div><div class="ttdef"><b>Definition:</b> <a href="subProcFindGameSettings_8cpp_source.html#l00015">subProcFindGameSettings.cpp:15</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00095">Analyzer.h:95</a></div></div>
 <div class="ttc" id="autils_8h_html"><div class="ttname"><a href="utils_8h.html">utils.h</a></div><div class="ttdoc">Some utility for minor jobs</div></div>
 <div class="ttc" id="autils_8h_html_aacd6ba1ade7c09c80d51de21660d19db"><div class="ttname"><a href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a></div><div class="ttdeci">T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</div><div class="ttdef"><b>Definition:</b> <a href="utils_8h_source.html#l00022">utils.h:22</a></div></div>
@@ -132,6 +131,7 @@ $(function() {
 <div class="ttc" id="aclassDefaultAnalyzer_html_af7d68d7a88dcfaf8be324f25f78fe1d5"><div class="ttname"><a href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">DefaultAnalyzer::_gameSettingsPos</a></div><div class="ttdeci">uint8_t * _gameSettingsPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00387">Analyzer.h:387</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a85b1378c119ffc2a724924d2c3a597de"><div class="ttname"><a href="classDefaultAnalyzer.html#a85b1378c119ffc2a724924d2c3a597de">DefaultAnalyzer::_header</a></div><div class="ttdeci">vector&lt; uint8_t &gt; _header</div><div class="ttdoc">用于存储解压缩后的header数据</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00376">Analyzer.h:376</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a95fd5440dae771b8f81f427571efa6e8"><div class="ttname"><a href="classDefaultAnalyzer.html#a95fd5440dae771b8f81f427571efa6e8">DefaultAnalyzer::_triggerInfoPos</a></div><div class="ttdeci">uint8_t * _triggerInfoPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00386">Analyzer.h:386</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a15a2ff17db72361910bc048e3bf07020"><div class="ttname"><a href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">DefaultAnalyzer::_debugFlag</a></div><div class="ttdeci">int _debugFlag</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00397">Analyzer.h:397</a></div></div>
 <div class="ttc" id="anamespacepatterns_html_ac7ed6ca5b7475361cefdecad0f1c062e"><div class="ttname"><a href="namespacepatterns.html#ac7ed6ca5b7475361cefdecad0f1c062e">patterns::separator</a></div><div class="ttdeci">std::vector&lt; uint8_t &gt; separator</div><div class="ttdef"><b>Definition:</b> <a href="utils_8cpp_source.html#l00027">utils.cpp:27</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

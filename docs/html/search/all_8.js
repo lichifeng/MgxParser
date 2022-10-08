@@ -1,5 +1,6 @@
 var searchData=
 [
+  ['handicappinglevel_205',['handicappingLevel',['../classPlayer.html#a19508ccfa737eb1a18baf23da2bbf2c6',1,'Player']]],
   ['hd_206',['HD',['../Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd',1,'Helper.h']]],
   ['hd43_207',['HD43',['../Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c',1,'Helper.h']]],
   ['hd46_5f7_208',['HD46_7',['../Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83',1,'Helper.h']]],

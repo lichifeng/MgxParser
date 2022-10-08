@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_headerHDAnalyzer()
+void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     uint8_t *tmpPos;
     _readBytes(4, &DD_version);
     if (DD_version - 1006 < 0.0001)

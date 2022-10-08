@@ -21,7 +21,7 @@ string DataModel::toJson()
     j["parser"] = PARSER_VERSION;
     j["parseMode"] = parseMode;
     j["parseTime"] = parseTime;
-    j["rawEncoding"] = rawEncoding;
+    j["rawEncoding"] = rawEncoding == RAW_ENCODING ? "-" : rawEncoding;
     j["outEncoding"] = outEncoding;
     j["status"] = status; // \todo 是否要放到执行完再改成GOOD？？
     j["message"] = message;

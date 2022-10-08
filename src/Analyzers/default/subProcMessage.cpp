@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_messagesAnalyzer()
+void DefaultAnalyzer::_messagesAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _messagesStartPos;
 
     _skip(20);

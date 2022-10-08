@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_AIAnalyzer()
+void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _readBytes(4, &includeAI);
     if (!includeAI)
         return;

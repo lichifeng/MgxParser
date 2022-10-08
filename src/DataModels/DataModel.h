@@ -14,6 +14,7 @@
 #define UINT32_INIT 4294967295
 #define FLOAT_INIT -20000.0
 #define UINT8_INIT 255
+#define RAW_ENCODING "GB18030"
 
 #include <string>
 #include <map>
@@ -191,7 +192,7 @@ public:
     uint32_t isMultiplayer;
     uint32_t syncChecksumInterval = 500;
 
-    string rawEncoding = "GB18030"; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
+    string rawEncoding = RAW_ENCODING; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
     string outEncoding = "utf-8";
     // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？

@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_headerDEAnalyzer()
+void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     if (saveVersion >= 25.2199)
         _readBytes(4, &DE_build);
     if (saveVersion >= 26.1599)

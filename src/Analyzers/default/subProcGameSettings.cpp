@@ -13,10 +13,12 @@
 
 /**
  * \brief      This method also builds some search patterns used to traverse in startinfo section
- *
+ * \todo       Game setting section is different in DE version, better look into it.
  */
-void DefaultAnalyzer::_gameSettingsAnalyzer()
+void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _gameSettingsPos;
 
     _skip(64 + 4 + 8);

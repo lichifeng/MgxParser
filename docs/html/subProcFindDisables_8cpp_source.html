@@ -84,74 +84,77 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a05d7b5e7161fdb5bd7ca7580580e750f">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a05d7b5e7161fdb5bd7ca7580580e750f">DefaultAnalyzer::_findDisablesStart</a>()</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#acf18c119afa9a37ee3261ff81b3c5116">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#acf18c119afa9a37ee3261ff81b3c5116">DefaultAnalyzer::_findDisablesStart</a>(<span class="keywordtype">int</span> debugFlag)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">_gameSettingsPos</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) &amp;&amp; <a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &lt; 12.3399)</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        {</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 5396;</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        }</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        {</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 5392;</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        }</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    {</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 276;</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    }</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) &amp;&amp; <a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 12.3399)</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    {</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> -= 644;</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    }</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// Check if at correct point</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> != -99)</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> -= 4;                     <span class="comment">/// 先后退四个字节再开始查找</span></div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"></span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 8000; i++) <span class="comment">/// \todo 这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧</span></div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="comment"></span>        {</div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;            <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> == -99)</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            {</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;                <span class="keywordflow">break</span>;</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            }</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            --<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160; </div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> != -99)</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        {</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;                <span class="stringliteral">&quot;{}(): _disablesStartPos failed pattern check. @{}.&quot;</span>,</div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;                __FUNCTION__, _distance());</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            _sendFailedSignal();</div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
-<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">else</span></div>
-<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
-<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
-<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                <span class="stringliteral">&quot;{}(): _disablesStartPos was reached by reverse search, look into this record. @{}.&quot;</span>,</div>
-<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                __FUNCTION__, _distance());</div>
-<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;            <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;        }</div>
-<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    }</div>
-<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a> = debugFlag;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">_gameSettingsPos</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) &amp;&amp; <a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &lt; 12.3399)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 5396;</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 5392;</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    }</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    {</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> - 276;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    }</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160; </div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) &amp;&amp; <a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 12.3399)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    {</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> -= 644;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    }</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160; </div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="comment">// Check if at correct point</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> != -99)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> -= 4;                     <span class="comment">/// 先后退四个字节再开始查找</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;<span class="comment"></span>        <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 0; i &lt; 8000; i++) <span class="comment">/// \todo 这个数随便定的，.mgx2文件里好像差几个字节，不管了，反正特殊情况就查找吧</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;<span class="comment"></span>        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> == -99)</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            {</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;                <a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;            --<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160; </div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <span class="keywordflow">if</span> (*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">_disablesStartPos</a> != -99)</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;                <span class="stringliteral">&quot;{}(): _disablesStartPos failed pattern check. @{}.&quot;</span>,</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;                __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;            _sendFailedSignal();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        }</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                <span class="stringliteral">&quot;{}(): _disablesStartPos was reached by reverse search, look into this record. @{}.&quot;</span>,</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;            <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        }</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    }</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00378">Analyzer.h:378</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a05d7b5e7161fdb5bd7ca7580580e750f"><div class="ttname"><a href="classDefaultAnalyzer.html#a05d7b5e7161fdb5bd7ca7580580e750f">DefaultAnalyzer::_findDisablesStart</a></div><div class="ttdeci">void _findDisablesStart()</div><div class="ttdef"><b>Definition:</b> <a href="subProcFindDisables_8cpp_source.html#l00014">subProcFindDisables.cpp:14</a></div></div>
-<div class="ttc" id="aclassDataModel_html_a5665c3f15b372bfcf507fd00a081c3f9"><div class="ttname"><a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">DataModel::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00071">DataModel.h:71</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a5665c3f15b372bfcf507fd00a081c3f9"><div class="ttname"><a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">DataModel::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00072">DataModel.h:72</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00095">Analyzer.h:95</a></div></div>
 <div class="ttc" id="aHelper_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00024">Helper.h:24</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_acf18c119afa9a37ee3261ff81b3c5116"><div class="ttname"><a href="classDefaultAnalyzer.html#acf18c119afa9a37ee3261ff81b3c5116">DefaultAnalyzer::_findDisablesStart</a></div><div class="ttdeci">void _findDisablesStart(int debugFlag=0)</div><div class="ttdef"><b>Definition:</b> <a href="subProcFindDisables_8cpp_source.html#l00014">subProcFindDisables.cpp:14</a></div></div>
 <div class="ttc" id="aHelper_8h_html_ab55faf40e7bd229cdeab3b84e974ba52"><div class="ttname"><a href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a></div><div class="ttdeci">#define IS_HD(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00023">Helper.h:23</a></div></div>
 <div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00091">Logger.h:91</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_af7d68d7a88dcfaf8be324f25f78fe1d5"><div class="ttname"><a href="classDefaultAnalyzer.html#af7d68d7a88dcfaf8be324f25f78fe1d5">DefaultAnalyzer::_gameSettingsPos</a></div><div class="ttdeci">uint8_t * _gameSettingsPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00387">Analyzer.h:387</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_ae3f6386341681eae43e26c3c881009c8"><div class="ttname"><a href="classDefaultAnalyzer.html#ae3f6386341681eae43e26c3c881009c8">DefaultAnalyzer::_disablesStartPos</a></div><div class="ttdeci">uint8_t * _disablesStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00388">Analyzer.h:388</a></div></div>
-<div class="ttc" id="aclassDataModel_html_a49dbf533a0985e4bc078ba5bce940d21"><div class="ttname"><a href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">DataModel::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00070">DataModel.h:70</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a15a2ff17db72361910bc048e3bf07020"><div class="ttname"><a href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">DefaultAnalyzer::_debugFlag</a></div><div class="ttdeci">int _debugFlag</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00397">Analyzer.h:397</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a49dbf533a0985e4bc078ba5bce940d21"><div class="ttname"><a href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">DataModel::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00071">DataModel.h:71</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

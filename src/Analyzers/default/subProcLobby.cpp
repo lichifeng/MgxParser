@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_lobbyAnalyzer()
+void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _lobbyStartPos;
 
     if (saveVersion >= 13.3399)

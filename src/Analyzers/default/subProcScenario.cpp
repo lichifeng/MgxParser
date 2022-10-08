@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_scenarioHeaderAnalyzer()
+void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _scenarioHeaderPos;
 
     uint16_t filenameLen;

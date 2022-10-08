@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_findVictoryStart()
+void DefaultAnalyzer::_findVictoryStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _victoryStartPos = _disablesStartPos - 12544 - 44;
 
     // Check if at correct point

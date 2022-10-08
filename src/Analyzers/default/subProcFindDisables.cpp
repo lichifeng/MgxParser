@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_findDisablesStart()
+void DefaultAnalyzer::_findDisablesStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _gameSettingsPos;
 
     if (!IS_DE(versionCode))

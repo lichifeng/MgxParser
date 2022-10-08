@@ -84,48 +84,51 @@ $(function() {
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#ace859edd243f1e5d3a9d65fd6c235da0">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#ace859edd243f1e5d3a9d65fd6c235da0">DefaultAnalyzer::_scenarioHeaderAnalyzer</a>()</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a54b70d92f4f63835fe2768f8f0db8c17">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a54b70d92f4f63835fe2768f8f0db8c17">DefaultAnalyzer::_scenarioHeaderAnalyzer</a>(<span class="keywordtype">int</span> debugFlag)</div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#af9005e6d2a9e04c489e9054ad4a1c5b6">_scenarioHeaderPos</a>;</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    uint16_t filenameLen;</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    _skip(4433);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(2, &amp;filenameLen);</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (filenameLen &gt; 224)</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;            <span class="stringliteral">&quot;{}(): scenarioFilename is unsually long. @{}.&quot;</span>,</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;            __FUNCTION__, _distance());</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        _sendFailedSignal();</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">return</span>;</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classDataModel.html#a83708a858f2c8721b10fafb1bdfd5376">scenarioFilename</a>.assign((<span class="keywordtype">char</span> *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 2), filenameLen);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    _skip(filenameLen);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    {</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        _skip(64);</div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 13.3399)</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        {</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;            _skip(64);</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        }</div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    }</div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    </div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#aa4969ccb0164ebda7ffee24ecb85ed96">_messagesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;}</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a> = debugFlag;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#af9005e6d2a9e04c489e9054ad4a1c5b6">_scenarioHeaderPos</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    uint16_t filenameLen;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    _skip(4433);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(2, &amp;filenameLen);</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> (filenameLen &gt; 224)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;            <span class="stringliteral">&quot;{}(): scenarioFilename is unsually long. @{}.&quot;</span>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;            __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        _sendFailedSignal();</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="keywordflow">return</span>;</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <a class="code" href="classDataModel.html#a83708a858f2c8721b10fafb1bdfd5376">scenarioFilename</a>.assign((<span class="keywordtype">char</span> *)(<a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a> + 2), filenameLen);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    _skip(filenameLen);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    {</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        _skip(64);</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 13.3399)</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;            _skip(64);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        }</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    }</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#aa4969ccb0164ebda7ffee24ecb85ed96">_messagesStartPos</a> = <a class="code" href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">_curPos</a>;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="aclassDataModel_html_a83708a858f2c8721b10fafb1bdfd5376"><div class="ttname"><a href="classDataModel.html#a83708a858f2c8721b10fafb1bdfd5376">DataModel::scenarioFilename</a></div><div class="ttdeci">string scenarioFilename</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00159">DataModel.h:159</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a83708a858f2c8721b10fafb1bdfd5376"><div class="ttname"><a href="classDataModel.html#a83708a858f2c8721b10fafb1bdfd5376">DataModel::scenarioFilename</a></div><div class="ttdeci">string scenarioFilename</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00160">DataModel.h:160</a></div></div>
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_af9005e6d2a9e04c489e9054ad4a1c5b6"><div class="ttname"><a href="classDefaultAnalyzer.html#af9005e6d2a9e04c489e9054ad4a1c5b6">DefaultAnalyzer::_scenarioHeaderPos</a></div><div class="ttdeci">uint8_t * _scenarioHeaderPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00390">Analyzer.h:390</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a8e580fd9d1dac81fcd5673054a989476"><div class="ttname"><a href="classDefaultAnalyzer.html#a8e580fd9d1dac81fcd5673054a989476">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00378">Analyzer.h:378</a></div></div>
-<div class="ttc" id="aclassDataModel_html_a5665c3f15b372bfcf507fd00a081c3f9"><div class="ttname"><a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">DataModel::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00071">DataModel.h:71</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a5665c3f15b372bfcf507fd00a081c3f9"><div class="ttname"><a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">DataModel::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00072">DataModel.h:72</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00095">Analyzer.h:95</a></div></div>
 <div class="ttc" id="aHelper_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00024">Helper.h:24</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_ace859edd243f1e5d3a9d65fd6c235da0"><div class="ttname"><a href="classDefaultAnalyzer.html#ace859edd243f1e5d3a9d65fd6c235da0">DefaultAnalyzer::_scenarioHeaderAnalyzer</a></div><div class="ttdeci">void _scenarioHeaderAnalyzer()</div><div class="ttdef"><b>Definition:</b> <a href="subProcScenario_8cpp_source.html#l00014">subProcScenario.cpp:14</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a54b70d92f4f63835fe2768f8f0db8c17"><div class="ttname"><a href="classDefaultAnalyzer.html#a54b70d92f4f63835fe2768f8f0db8c17">DefaultAnalyzer::_scenarioHeaderAnalyzer</a></div><div class="ttdeci">void _scenarioHeaderAnalyzer(int debugFlag=0)</div><div class="ttdef"><b>Definition:</b> <a href="subProcScenario_8cpp_source.html#l00014">subProcScenario.cpp:14</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_aa4969ccb0164ebda7ffee24ecb85ed96"><div class="ttname"><a href="classDefaultAnalyzer.html#aa4969ccb0164ebda7ffee24ecb85ed96">DefaultAnalyzer::_messagesStartPos</a></div><div class="ttdeci">uint8_t * _messagesStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00391">Analyzer.h:391</a></div></div>
 <div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00091">Logger.h:91</a></div></div>
-<div class="ttc" id="aclassDataModel_html_a49dbf533a0985e4bc078ba5bce940d21"><div class="ttname"><a href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">DataModel::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00070">DataModel.h:70</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a15a2ff17db72361910bc048e3bf07020"><div class="ttname"><a href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">DefaultAnalyzer::_debugFlag</a></div><div class="ttdeci">int _debugFlag</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00397">Analyzer.h:397</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a49dbf533a0985e4bc078ba5bce940d21"><div class="ttname"><a href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">DataModel::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00071">DataModel.h:71</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00129">Analyzer.h:129</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>

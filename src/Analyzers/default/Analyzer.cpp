@@ -22,7 +22,6 @@
 #define TRY_PHASE2_FALLBACK \
     if (_failedSignal)      \
         goto PHASE2_FALLBACK;
-#define SET_FLAG(X) _debugFlag = X;
 
 using namespace std;
 
@@ -143,36 +142,31 @@ void DefaultAnalyzer::_analyze()
     _setVersionCode();
 
     //   1-2: HD/DE-specific data
-    SET_FLAG(1)
     if (IS_DE(versionCode))
     {
-        _headerDEAnalyzer();
+        _headerDEAnalyzer(1);
     }
     else if (IS_HD(versionCode) && saveVersion > 12.3401)
     {
         /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
-        _headerHDAnalyzer();
+        _headerHDAnalyzer(2);
     }
     STOP_ON_FAILURE
 
     //   1-3: AI
-    SET_FLAG(2)
-    _AIAnalyzer();
+    _AIAnalyzer(3);
     STOP_ON_FAILURE
 
     //   1-4: Replay
-    SET_FLAG(3)
-    _replayAnalyzer();
+    _replayAnalyzer(4);
     STOP_ON_FAILURE
 
     //   1-5: Map
-    SET_FLAG(4)
-    _mapDataAnalyzer();
+    _mapDataAnalyzer(5);
     STOP_ON_FAILURE
 
     //   1-6: Find Startinfo
-    SET_FLAG(5)
-    _findStartInfoStart();
+    _findStartInfoStart(6);
     STOP_ON_FAILURE
 
     // ************
@@ -180,56 +174,46 @@ void DefaultAnalyzer::_analyze()
     // ************
     //   Find some key positions
     //   2-1: Trigger info start position
-    SET_FLAG(6)
-    _findTriggerInfoStart();
+    _findTriggerInfoStart(7);
     STOP_ON_FAILURE
 
     //   2-2: Game settings start position. Need 2-1
-    SET_FLAG(7)
-    _findGameSettingsStart();
+    _findGameSettingsStart(8);
     STOP_ON_FAILURE
 
     //   2-3：Disables start position. Need 2-1
-    SET_FLAG(8)
-    _findDisablesStart();
+    _findDisablesStart(9);
     TRY_PHASE2_FALLBACK
 
     //   2-4: Skip victory-related data. Need 2-3
-    SET_FLAG(9)
-    _findVictoryStart();
+    _findVictoryStart(10);
     TRY_PHASE2_FALLBACK
 
     //   2-5: Find&Skip scenario data. Need 2-4
     //   Nothing valuable here except a filename.
     //   What is really needed is instructions data after this section,
     //   Which is critical data to detect file encoding.
-    SET_FLAG(10)
-    _findScenarioHeaderStart();
+    _findScenarioHeaderStart(11);
     TRY_PHASE2_FALLBACK
 
-    SET_FLAG(11)
-    _scenarioHeaderAnalyzer();
+    _scenarioHeaderAnalyzer(12);
     TRY_PHASE2_FALLBACK
 
     //   2-6: Messages, ie. Instructions. Need 2-5
-    SET_FLAG(12)
-    _messagesAnalyzer();
+    _messagesAnalyzer(13);
     // TRY_PHASE2_FALLBACK
 
 PHASE2_FALLBACK:
     //   2-7: Skip trigger info. Need 2-1
     //   This is useless data, but need to get lobby start.
-    SET_FLAG(13)
-    _triggerInfoAnalyzer();
+    _triggerInfoAnalyzer(14);
 
     //   2-8: Game settings part, player names first appears here (before HD/DE
     //   versions). Need 2-2
-    SET_FLAG(14)
-    _gameSettingsAnalyzer();
+    _gameSettingsAnalyzer(15);
 
     //   2-9: Search initial player data postion. Need 2-5 & 2-8
-    SET_FLAG(15)
-    _findInitialPlayersDataPos();
+    _findInitialPlayersDataPos(16);
 
     // ************
     // * Phase 3: *
@@ -237,16 +221,13 @@ PHASE2_FALLBACK:
     //   Do rest analyze. Following jobs is not necessarily ordered.
 
     //   3-1: Lobby data, lobby chat & some settings here. Need 2-7
-    SET_FLAG(16)
-    _lobbyAnalyzer();
+    _lobbyAnalyzer(17);
 
     //   3-2: Victory
-    SET_FLAG(17)
-    _victorySettingsAnalyzer();
+    _victorySettingsAnalyzer(18);
 
     //   3-3: Go back to player initial data position and rummage some useful pieces
-    SET_FLAG(18)
-    _startInfoAnalyzer();
+    _startInfoAnalyzer(19);
 
     // ************
     // * Phase 4: *
@@ -254,8 +235,7 @@ PHASE2_FALLBACK:
     // Analyze the body stream
     _switchStream(BODY_STRM);
 
-    SET_FLAG(19)
-    _readBodyCommands();
+    _readBodyCommands(20);
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)

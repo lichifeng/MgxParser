@@ -170,35 +170,57 @@ $(function() {
 <div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
 <div class="line"><a name="l00098"></a><span class="lineno"><a class="line" href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">   98</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">difficulty</a> = {</div>
 <div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        {0, <span class="stringliteral">&quot;极难&quot;</span>},</div>
-<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {1, <span class="stringliteral">&quot;难&quot;</span>},</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        {1, <span class="stringliteral">&quot;难&quot;</span>}, <span class="comment">// \todo DE中怎么选难是5？</span></div>
 <div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        {2, <span class="stringliteral">&quot;中等&quot;</span>},</div>
 <div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;        {3, <span class="stringliteral">&quot;标准&quot;</span>},</div>
-<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {4, <span class="stringliteral">&quot;最易&quot;</span>}}; <span class="comment">// \todo aoc-mgz 里有一个extreme</span></div>
-<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160; </div>
-<div class="line"><a name="l00105"></a><span class="lineno"><a class="line" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">  105</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">resources</a> = {</div>
-<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;        {0, <span class="stringliteral">&quot;标准&quot;</span>},</div>
-<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;        {1, <span class="stringliteral">&quot;低&quot;</span>},</div>
-<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {2, <span class="stringliteral">&quot;中&quot;</span>},</div>
-<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {3, <span class="stringliteral">&quot;高&quot;</span>}};</div>
-<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160; </div>
-<div class="line"><a name="l00111"></a><span class="lineno"><a class="line" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">  111</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">speed</a> = {</div>
-<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {100, <span class="stringliteral">&quot;慢&quot;</span>},</div>
-<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {150, <span class="stringliteral">&quot;正常&quot;</span>},</div>
-<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {200, <span class="stringliteral">&quot;快&quot;</span>},</div>
-<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        {1000, <span class="stringliteral">&quot;慢&quot;</span>},</div>
-<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        {1500, <span class="stringliteral">&quot;随意&quot;</span>},</div>
-<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {1690, <span class="stringliteral">&quot;正常&quot;</span>},</div>
-<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {2000, <span class="stringliteral">&quot;快&quot;</span>}};</div>
-<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;}</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        {4, <span class="stringliteral">&quot;最易&quot;</span>},</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        {5, <span class="stringliteral">&quot;极限&quot;</span>},</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;    }; <span class="comment">// \todo aoc-mgz 里有一个extreme</span></div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160; </div>
+<div class="line"><a name="l00107"></a><span class="lineno"><a class="line" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">  107</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">resources</a> = {</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;        {0, <span class="stringliteral">&quot;标准&quot;</span>},</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;        {1, <span class="stringliteral">&quot;低&quot;</span>},</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;        {2, <span class="stringliteral">&quot;中&quot;</span>},</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        {3, <span class="stringliteral">&quot;高&quot;</span>},</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;        {4, <span class="stringliteral">&quot;超高&quot;</span>},</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        {5, <span class="stringliteral">&quot;无限&quot;</span>},</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        {6, <span class="stringliteral">&quot;随机&quot;</span>}};</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160; </div>
+<div class="line"><a name="l00116"></a><span class="lineno"><a class="line" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">  116</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">speed</a> = {</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {100, <span class="stringliteral">&quot;慢&quot;</span>},</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;        {150, <span class="stringliteral">&quot;正常&quot;</span>},</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;        {200, <span class="stringliteral">&quot;快&quot;</span>},</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;        {1000, <span class="stringliteral">&quot;慢&quot;</span>},</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;        {1500, <span class="stringliteral">&quot;随意&quot;</span>},</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;        {1690, <span class="stringliteral">&quot;正常&quot;</span>},</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;        {2000, <span class="stringliteral">&quot;快&quot;</span>}};</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160; </div>
+<div class="line"><a name="l00125"></a><span class="lineno"><a class="line" href="namespacezh.html#ad69ae11eba1b706cdcf8dc3e1ed334e5">  125</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#ad69ae11eba1b706cdcf8dc3e1ed334e5">revealMap</a> = {</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        {0, <span class="stringliteral">&quot;正常&quot;</span>},</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {1, <span class="stringliteral">&quot;已探索&quot;</span>},</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;        {2, <span class="stringliteral">&quot;全部可视&quot;</span>},</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        {3, <span class="stringliteral">&quot;无战雾&quot;</span>}};</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160; </div>
+<div class="line"><a name="l00131"></a><span class="lineno"><a class="line" href="namespacezh.html#a439cfd3b8a53bf588dc49832f1968db9">  131</a></span>&#160;    <span class="keyword">const</span> map&lt;uint32_t, string&gt; <a class="code" href="namespacezh.html#a439cfd3b8a53bf588dc49832f1968db9">mapSize</a> = {</div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;        {0, <span class="stringliteral">&quot;微型 (2 个玩家)&quot;</span>},</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;        {1, <span class="stringliteral">&quot;小型 (3 个玩家)&quot;</span>},</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        {2, <span class="stringliteral">&quot;中型 (4 个玩家)&quot;</span>},</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        {3, <span class="stringliteral">&quot;正常 (6 个玩家)&quot;</span>},</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;        {4, <span class="stringliteral">&quot;大型 (8 个玩家)&quot;</span>},</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160;        {5, <span class="stringliteral">&quot;巨型&quot;</span>},</div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;        {6, <span class="stringliteral">&quot;超大&quot;</span>}};</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="anamespacezh_html_a7f86ca235fb28c25ca63e23e8d91db73"><div class="ttname"><a href="namespacezh.html#a7f86ca235fb28c25ca63e23e8d91db73">zh::playerTypes</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; playerTypes</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00070">zh.h:70</a></div></div>
 <div class="ttc" id="anamespacezh_html_a8718a734904706fc2038e8b4fe3d09ea"><div class="ttname"><a href="namespacezh.html#a8718a734904706fc2038e8b4fe3d09ea">zh::difficulty</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; difficulty</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00098">zh.h:98</a></div></div>
 <div class="ttc" id="anamespacezh_html_a6e61bc1e31dd4f8ca471656d3c99bba7"><div class="ttname"><a href="namespacezh.html#a6e61bc1e31dd4f8ca471656d3c99bba7">zh::victoryTypes</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; victoryTypes</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00078">zh.h:78</a></div></div>
 <div class="ttc" id="anamespacezh_html"><div class="ttname"><a href="namespacezh.html">zh</a></div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00017">zh.h:17</a></div></div>
+<div class="ttc" id="anamespacezh_html_ad69ae11eba1b706cdcf8dc3e1ed334e5"><div class="ttname"><a href="namespacezh.html#ad69ae11eba1b706cdcf8dc3e1ed334e5">zh::revealMap</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; revealMap</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00125">zh.h:125</a></div></div>
 <div class="ttc" id="anamespacezh_html_adb63c55194888f143ada64c4f3068140"><div class="ttname"><a href="namespacezh.html#adb63c55194888f143ada64c4f3068140">zh::victoryAmount</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; victoryAmount</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00089">zh.h:89</a></div></div>
-<div class="ttc" id="anamespacezh_html_aa13c0e65dce1d67671f3aedd7aafbbd7"><div class="ttname"><a href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">zh::speed</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; speed</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00111">zh.h:111</a></div></div>
+<div class="ttc" id="anamespacezh_html_aa13c0e65dce1d67671f3aedd7aafbbd7"><div class="ttname"><a href="namespacezh.html#aa13c0e65dce1d67671f3aedd7aafbbd7">zh::speed</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; speed</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00116">zh.h:116</a></div></div>
 <div class="ttc" id="anamespacezh_html_a4e0fc2c646551f9397357ca4fcb5ad65"><div class="ttname"><a href="namespacezh.html#a4e0fc2c646551f9397357ca4fcb5ad65">zh::civNames</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; civNames</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00019">zh.h:19</a></div></div>
-<div class="ttc" id="anamespacezh_html_ac432e7ceb9b74e344a87a85b0be17326"><div class="ttname"><a href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">zh::resources</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; resources</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00105">zh.h:105</a></div></div>
+<div class="ttc" id="anamespacezh_html_ac432e7ceb9b74e344a87a85b0be17326"><div class="ttname"><a href="namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326">zh::resources</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; resources</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00107">zh.h:107</a></div></div>
+<div class="ttc" id="anamespacezh_html_a439cfd3b8a53bf588dc49832f1968db9"><div class="ttname"><a href="namespacezh.html#a439cfd3b8a53bf588dc49832f1968db9">zh::mapSize</a></div><div class="ttdeci">const map&lt; uint32_t, string &gt; mapSize</div><div class="ttdef"><b>Definition:</b> <a href="zh_8h_source.html#l00131">zh.h:131</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

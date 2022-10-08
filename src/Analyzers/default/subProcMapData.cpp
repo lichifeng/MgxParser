@@ -14,8 +14,10 @@
 
 using namespace std;
 
-void DefaultAnalyzer::_mapDataAnalyzer()
+void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _readBytes(8, &mapCoord);
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {

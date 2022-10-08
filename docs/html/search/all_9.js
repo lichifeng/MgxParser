@@ -19,6 +19,5 @@ var searchData=
   ['is_5ftrial_245',['IS_TRIAL',['../Helper_8h.html#a2c008e982911acda9265db5cb59ae5c7',1,'Helper.h']]],
   ['is_5fup_246',['IS_UP',['../Helper_8h.html#a5156207516344046fc60e8519faeed94',1,'Helper.h']]],
   ['ismultiplayer_247',['isMultiplayer',['../classDataModel.html#a626b7ab3b0c5c20bdbcbe41041011fe6',1,'DataModel']]],
-  ['it_5fpattern_248',['it_pattern',['../namespacepatterns.html#aa97348ce67be89d972cedb461c6dcbe4',1,'patterns']]],
-  ['introduction_249',['INTRODUCTION',['../md__Workspace_mgxParserCPP-master_src_README.html',1,'']]]
+  ['it_5fpattern_248',['it_pattern',['../namespacepatterns.html#aa97348ce67be89d972cedb461c6dcbe4',1,'patterns']]]
 ];

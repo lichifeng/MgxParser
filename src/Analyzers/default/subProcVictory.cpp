@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_victorySettingsAnalyzer()
+void DefaultAnalyzer::_victorySettingsAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _victoryStartPos;
     _skip(4);
     _readBytes(4, &victoryIsConquest);

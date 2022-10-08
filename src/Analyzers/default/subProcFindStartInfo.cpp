@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_findStartInfoStart()
+void DefaultAnalyzer::_findStartInfoStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _readBytes(4, &restoreTime);
 
     uint32_t numParticles;

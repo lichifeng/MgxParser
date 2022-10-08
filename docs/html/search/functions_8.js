@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['info_517',['info',['../classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba',1,'Logger']]],
-  ['initialdatafound_518',['initialDataFound',['../classPlayer.html#af7276bb37b64120cf0b786106f1f9dd4',1,'Player']]]
+  ['info_515',['info',['../classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba',1,'Logger']]],
+  ['initialdatafound_516',['initialDataFound',['../classPlayer.html#af7276bb37b64120cf0b786106f1f9dd4',1,'Player']]]
 ];

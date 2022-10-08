@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_findInitialPlayersDataPos()
+void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     if (_startInfoPos)
     {
         _curPos = _startInfoPos + 2 + numPlayers + 36 + 4 + 1;

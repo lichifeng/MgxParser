@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_findGameSettingsStart()
+void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _triggerInfoPos;
 
     vector<uint8_t>::reverse_iterator rFound;

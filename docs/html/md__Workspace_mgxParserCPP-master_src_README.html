@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: INTRODUCTION</title>
+<title>MgxParser: &lt;strong&gt;MgxParser&lt;/strong&gt;</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -64,10 +64,47 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title">INTRODUCTION </div>  </div>
+<div class="title"><b>MgxParser</b> </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><p><b>A .MGX file parser written in C++.</b> MgxParser is firstly developed at 2020 to support running of aocrec.com as a replacement of recanalyst. </p>
+<div class="textblock"><p>*This version(@PROJECT_VERSION@) was compiled on @COMPILEDATE@*</p>
+<h1><a class="anchor" id="autotoc_md1"></a>
+Introduction</h1>
+<p>MgxParser is a Age of Empires II game record parser written in C++.</p>
+<p>It is firstly developed at 2020 to support running of aocrec.com as a replacement of a prior php parser( which was a modified version of recanalyst).</p>
+<h1><a class="anchor" id="autotoc_md2"></a>
+Basic usage</h1>
+<p>MgxParser takes a record file path as input and returns a JSON string contains important information about this record.</p>
+<p>No error was expected even if something unexpected happend in parsing process. Users should check parsing result by the value of key <code>status</code> and <code>message</code> in JSON response.</p>
+<p>Mini maps can be generated two forms.</p>
+<p>With <code>-m mapname.png</code>, a typical map was generated, and</p>
+<p>with <code>-M HDmapname.png</code>, a prettier HD map was generated.</p>
+<h1><a class="anchor" id="autotoc_md3"></a>
+Requirements</h1>
+<p>These libraries are required to build MgxParser:</p><ul>
+<li><b>CImg</b>: Used to generate mini maps. This library is bundled into <code>libs/CImg</code> and compiled with MgxParser.</li>
+<li><b>libpng</b>: Required by CImg. <div class="fragment"><div class="line">sudo apt-get install libpng-dev</div>
+</div><!-- fragment --></li>
+<li><b>libz</b>: Required by <b>libpng</b> and header data decompressing.</li>
+<li><b>nlohmann/json</b>: Required to generate JSON output. A single-header version of <code>nlohmann/json</code> is bundled into <code>libs/nlohmann_json_3</code> and compiled with MgxParser.</li>
+<li><b>doxygen</b>: Required to generate documents from source code. <b>Not necessary</b>.</li>
+<li><b>Graphviz</b>: Required by <b>doxygen</b>. <div class="fragment"><div class="line">sudo apt-get install doxygen graphviz</div>
+</div><!-- fragment --></li>
+</ul>
+<p>All dependencies of MgxParser are bundled into the executive file after compilation.</p>
+<h1><a class="anchor" id="autotoc_md4"></a>
+How to compile</h1>
+<p>To compile this project, latest version of CMake is recommended. See <a href="https://apt.kitware.com/">https://apt.kitware.com/</a> for details on this. I use CMake <code>3.24.1</code> and never tested other versions. On Ubuntu18 and newer versions, fresh version of cmake can be installed by: </p><div class="fragment"><div class="line">sudo snap install cmake --classic</div>
+</div><!-- fragment --><p>A C++17 compiler is also needed. <code>G++-9</code>, <code>Clang++-10</code> or newer compilers are recommended. Other compilers may work, but I never tested, too. </p><div class="fragment"><div class="line">sudo apt-get install g++-8</div>
+<div class="line">#AND</div>
+<div class="line">sudo apt-get install clang++-10</div>
+<div class="line">#Then, build the source file</div>
+<div class="line">cmake . -DCMAKE_CXX_COMPILER=/usr/bin/clang++-10 -DCMAKE_BUILD_TYPE=Release --fresh</div>
+<div class="line">#Last, compile it!</div>
+<div class="line">make</div>
+</div><!-- fragment --><h1><a class="anchor" id="autotoc_md5"></a>
+Caution</h1>
+<p>This project is still under development. <b>No warrenty for anything!</b> </p>
 </div></div><!-- contents -->
 </div><!-- PageDoc -->
 <!-- start footer part -->

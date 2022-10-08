@@ -15,8 +15,10 @@
  * \brief      This method is not fully tested
  *
  */
-void DefaultAnalyzer::_triggerInfoAnalyzer()
+void DefaultAnalyzer::_triggerInfoAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _curPos = _triggerInfoPos;
 
     int conditionSize = 72;

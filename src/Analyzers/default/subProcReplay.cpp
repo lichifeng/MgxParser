@@ -11,8 +11,10 @@
 
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_replayAnalyzer()
+void DefaultAnalyzer::_replayAnalyzer(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     _skip(12);
     _readBytes(4, &gameSpeed);
     _skip(29);

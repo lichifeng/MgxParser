@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_findScenarioHeaderStart()
+void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag)
 {
+    _debugFlag = debugFlag;
+    
     // Try to locate scenario version data in DE (this float in DE varies
     // among minor game versions and relative stable in previous versions.)
     if (IS_DE(versionCode))

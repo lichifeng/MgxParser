@@ -54,7 +54,7 @@ public:
 
     /**
      * \brief      将输入的字符串转换成设定的编码（一般是UTF-8）
-     *
+     * \todo       正在考虑是否将编码转换的功能全部移到JSON输出前去，改用boost.locale库，Analyzer里只读原始编码的字符串？
      * \param      s                   要转换的字符串
      * \return     string&             转换后的字符串（是输入字符串的一个引用）
      */
@@ -342,27 +342,27 @@ protected:
         status = fatal ? "fatal" : "warning";
     } ///< 标记解析失败的FLAG
 
-    void _headerHDAnalyzer();
-    void _headerDEAnalyzer();
-    void _AIAnalyzer();
-    void _replayAnalyzer();
-    void _mapDataAnalyzer();
-    void _findStartInfoStart();
-    void _findTriggerInfoStart();
-    void _findDisablesStart();
-    void _findGameSettingsStart();
-    void _findVictoryStart();
-    void _findScenarioHeaderStart();
-    void _scenarioHeaderAnalyzer();
-    void _messagesAnalyzer();
-    void _victorySettingsAnalyzer();
-    void _gameSettingsAnalyzer();
-    void _findInitialPlayersDataPos();
-    void _startInfoAnalyzer();
-    void _triggerInfoAnalyzer();
-    void _lobbyAnalyzer();
-    void _readBodyCommands();
-    void _readGameStart();
+    void _headerHDAnalyzer(int debugFlag = 0);
+    void _headerDEAnalyzer(int debugFlag = 0);
+    void _AIAnalyzer(int debugFlag = 0);
+    void _replayAnalyzer(int debugFlag = 0);
+    void _mapDataAnalyzer(int debugFlag = 0);
+    void _findStartInfoStart(int debugFlag = 0);
+    void _findTriggerInfoStart(int debugFlag = 0);
+    void _findDisablesStart(int debugFlag = 0);
+    void _findGameSettingsStart(int debugFlag = 0);
+    void _findVictoryStart(int debugFlag = 0);
+    void _findScenarioHeaderStart(int debugFlag = 0);
+    void _scenarioHeaderAnalyzer(int debugFlag = 0);
+    void _messagesAnalyzer(int debugFlag = 0);
+    void _victorySettingsAnalyzer(int debugFlag = 0);
+    void _gameSettingsAnalyzer(int debugFlag = 0);
+    void _findInitialPlayersDataPos(int debugFlag = 0);
+    void _startInfoAnalyzer(int debugFlag = 0);
+    void _triggerInfoAnalyzer(int debugFlag = 0);
+    void _lobbyAnalyzer(int debugFlag = 0);
+    void _readBodyCommands(int debugFlag = 0);
+    void _readGameStart(int debugFlag = 0);
 
     // methods for parsing body data
     void _handleOpSync();
