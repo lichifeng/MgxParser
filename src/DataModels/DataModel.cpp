@@ -18,7 +18,7 @@ string DataModel::toJson()
     // \todo 要对所有字符串的默认值进行一个处理，不然会遇到[json.exception.type_error.316] invalid UTF-8 byte at index 0: 0x90
     j["filename"] = filename;
     j["originSize"] = filesize;
-    j["parser"] = PARSER_VERSION;
+    j["parser"] = PARSER_VERSION_VERBOSE;
     j["parseMode"] = parseMode;
     j["parseTime"] = parseTime;
     j["rawEncoding"] = rawEncoding == RAW_ENCODING ? "-" : rawEncoding;

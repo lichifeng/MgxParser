@@ -42,7 +42,7 @@ class DefaultAnalyzer : public BaseAnalyzer
 public:
     ~DefaultAnalyzer() { delete _encodingConverter; };
 
-    DefaultAnalyzer(const string &inputFile) : path(inputFile){};
+    DefaultAnalyzer(const string &inputFile) : path(inputFile) { createLogger(); };
 
     void run();
 
@@ -91,6 +91,12 @@ public:
      * \param      body             filename of generated body file
      */
     void extract(const string, const string) const;
+
+    void createLogger()
+    {
+        if (!logger)
+            logger = new Logger();
+    }
 
     Logger *logger = nullptr;
 

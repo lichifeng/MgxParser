@@ -48,6 +48,7 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
             players[i].searchPattern.cend());
         if (found == itEnd)
         {
+            // \todo 如果只是当前这个没有找到，那是不是应该退回查找起始位置呢？多控的情况下只有一个玩家会有这里的信息，他们的顺序难道是固定的？
             logger->warn(
                 "{}(): Cannot find player[{}]'s data in startinfo. @{}.",
                 __FUNCTION__, i, _distance());

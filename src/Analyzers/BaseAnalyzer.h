@@ -13,6 +13,7 @@
 
 #include <string>
 #include "DataModels/DataModel.h"
+#include "CompileConfig.h"
 
 using namespace std;
 

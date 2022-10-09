@@ -12,5 +12,6 @@ var searchData=
   ['cmdlen_94',['cmdLen',['../operations_8cpp.html#a90ec1efde94674d48530caf8af08a1d5',1,'operations.cpp']]],
   ['colorid_95',['colorID',['../classPlayer.html#a5dd27c5459973c469b252cde1b8aea0f',1,'Player']]],
   ['console_96',['CONSOLE',['../Logger_8h.html#a0318724964d676b87e91b7bd11658127a1f7a5574b76195a27b04152509632efc',1,'Logger.h']]],
-  ['convert_97',['convert',['../classEncodingConverter.html#a475c814d94ef40bdb0fc2b75f78af8ce',1,'EncodingConverter']]]
+  ['convert_97',['convert',['../classEncodingConverter.html#a475c814d94ef40bdb0fc2b75f78af8ce',1,'EncodingConverter']]],
+  ['createlogger_98',['createLogger',['../classDefaultAnalyzer.html#a4f020775be19d67b42f17fd8cf7b0ba7',1,'DefaultAnalyzer']]]
 ];

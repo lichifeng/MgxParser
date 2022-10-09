@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['patterns_410',['patterns',['../namespacepatterns.html',1,'']]]
+  ['patterns_411',['patterns',['../namespacepatterns.html',1,'']]]
 ];

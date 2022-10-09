@@ -368,7 +368,7 @@ Public 成员函数</h2></td></tr>
 <p>类的对象会将录像文件交给 Analyzer 进行解析，然后将 Analyzer 中得 到的数据加工成最后的输出结果。例如：把表示民族的数字转换成文字。 （以后可以有 不同的解析器，用不同的方法进行解析）。按照设想，解析器可以有多个，每个解析器 的主要文件都应该放在<code>Analyzers/&lt;analyzer-name&gt;/</code>文件夹中。文件夹中必须包含 <code><a class="el" href="Analyzer_8h.html">Analyzer.h</a></code>文件并实现一个 <a class="el" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。">BaseAnalyzer</a> 的子类。 <br  />
  这个设计的使用场景设想是 这样的：正常情况下用默认解析器进行常规解析，这个过程中一般不会对 body 中的命 令进行详细分析。后续如果需要对 body 中的命令进行深入分析，那就可以再做一个专 门的解析器，跳过 header 部分的解析，只分析 body 部分即可。 </p>
 
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00033">33</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00034">34</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="aec130aead7c4f00f8a9d68646e6bf9bb"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#aec130aead7c4f00f8a9d68646e6bf9bb">&#9670;&nbsp;</a></span>BaseAnalyzer() <span class="overload">[1/2]</span></h2>
@@ -393,7 +393,7 @@ Public 成员函数</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00036">36</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00037">37</a> 行定义.</p>
 
 </div>
 </div>
@@ -429,7 +429,7 @@ Public 成员函数</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00043">43</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="BaseAnalyzer_8h_source.html">BaseAnalyzer.h</a> 第 <a class="el" href="BaseAnalyzer_8h_source.html#l00044">44</a> 行定义.</p>
 
 </div>
 </div>

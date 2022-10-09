@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.1.0) was compiled on 20221008*
+*This version(0.1.0) was compiled on 20221009*
 
 ## Introduction
 MgxParser is a Age of Empires II game record parser written in C++.
@@ -21,9 +21,28 @@ With `-m mapname.png`, a typical map was generated, and
 
 with `-M HDmapname.png`, a prettier HD map was generated.
 
+## Performance
+I did't do elegent profiling for it, simply measured its performance by `\time -v
+MgxParser recordfile.mgx`
+
+Pure json output without map generation is very cheap with it. Normally cost
+<50ms and <10m peak memory( on my synology DS1621+ NAS docker container).
+
+> Command being timed: "/Workspace/mgxParserCPP-master/build/MgxParser
+> test/sampleRecords/AOC10_4v4_5_5e3b2a7e.mgx"  
+> User time (seconds): 0.01  
+> System time (seconds): 0.00  
+> Percent of CPU this job got: 100%  
+> Elapsed (wall clock) time (h:mm:ss or m:ss): 0:00.01  
+> ... ...   
+> **Maximum resident set size (kbytes): 9124**  
+> Average resident set size (kbytes): 0  
+> ... ...   
+> Exit status: 0  
+
 ## Requirements
 These libraries are required to build MgxParser:
-- **CImg**: Used to generate mini maps. This library is bundled into `libs/CImg`
+- **CImg(bundled)**: Used to generate mini maps. This library is bundled into `libs/CImg`
   and compiled with MgxParser.
 - **libpng**: Required by CImg. 
   ```sh

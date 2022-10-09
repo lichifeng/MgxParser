@@ -27,6 +27,8 @@ using namespace std;
 
 void DefaultAnalyzer::run()
 {
+    createLogger();
+
     auto p = filesystem::path(path);
 
     if (!filesystem::exists(path))
