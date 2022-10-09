@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['patterns_411',['patterns',['../namespacepatterns.html',1,'']]]
+  ['mgxparser_413',['MgxParser',['../namespaceMgxParser.html',1,'']]]
 ];

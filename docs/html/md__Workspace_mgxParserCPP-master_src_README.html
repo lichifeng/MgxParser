@@ -64,24 +64,24 @@ $(function() {
 </div><!-- top -->
 <div class="PageDoc"><div class="header">
   <div class="headertitle">
-<div class="title"><b>MgxParser</b> </div>  </div>
+<div class="title"><b><a class="el" href="namespaceMgxParser.html">MgxParser</a></b> </div>  </div>
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><p>*This version(@PROJECT_VERSION@) was compiled on @COMPILEDATE@*</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p>MgxParser is a Age of Empires II game record parser written in C++.</p>
+<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> is a Age of Empires II game record parser written in C++.</p>
 <p>It is firstly developed at 2020 to support running of aocrec.com as a replacement of a prior php parser( which was a modified version of recanalyst).</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Basic usage</h1>
-<p>MgxParser takes a record file path as input and returns a JSON string contains important information about this record.</p>
+<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> takes a record file path as input and returns a JSON string contains important information about this record.</p>
 <p>No error was expected even if something unexpected happend in parsing process. Users should check parsing result by the value of key <code>status</code> and <code>message</code> in JSON response.</p>
 <p>Mini maps can be generated two forms.</p>
 <p>With <code>-m mapname.png</code>, a typical map was generated, and</p>
 <p>with <code>-M HDmapname.png</code>, a prettier HD map was generated.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
 Performance</h1>
-<p>I did't do elegent profiling for it, simply measured its performance by <code>\time -v MgxParser recordfile.mgx</code></p>
+<p>I did't do elegent profiling for it, simply measured its performance by <code>\time -v <a class="el" href="namespaceMgxParser.html">MgxParser</a> recordfile.mgx</code></p>
 <p>Pure json output without map generation is very cheap with it. Normally cost &lt;50ms and &lt;10m peak memory( on my synology DS1621+ NAS docker container).</p>
 <blockquote class="doxtable">
 <p>Command being timed: "/Workspace/mgxParserCPP-master/build/MgxParser
@@ -99,17 +99,17 @@ test/sampleRecords/AOC10_4v4_5_5e3b2a7e.mgx" <br  />
 </blockquote>
 <h1><a class="anchor" id="autotoc_md4"></a>
 Requirements</h1>
-<p>These libraries are required to build MgxParser:</p><ul>
-<li><b>CImg(bundled)</b>: Used to generate mini maps. This library is bundled into <code>libs/CImg</code> and compiled with MgxParser.</li>
+<p>These libraries are required to build <a class="el" href="namespaceMgxParser.html">MgxParser</a>:</p><ul>
+<li><b>CImg(bundled)</b>: Used to generate mini maps. This library is bundled into <code>libs/CImg</code> and compiled with <a class="el" href="namespaceMgxParser.html">MgxParser</a>.</li>
 <li><b>libpng</b>: Required by CImg. <div class="fragment"><div class="line">sudo apt-get install libpng-dev</div>
 </div><!-- fragment --></li>
 <li><b>libz</b>: Required by <b>libpng</b> and header data decompressing.</li>
-<li><b>nlohmann/json</b>: Required to generate JSON output. A single-header version of <code>nlohmann/json</code> is bundled into <code>libs/nlohmann_json_3</code> and compiled with MgxParser.</li>
+<li><b>nlohmann/json</b>: Required to generate JSON output. A single-header version of <code>nlohmann/json</code> is bundled into <code>libs/nlohmann_json_3</code> and compiled with <a class="el" href="namespaceMgxParser.html">MgxParser</a>.</li>
 <li><b>doxygen</b>: Required to generate documents from source code. <b>Not necessary</b>.</li>
 <li><b>Graphviz</b>: Required by <b>doxygen</b>. <div class="fragment"><div class="line">sudo apt-get install doxygen graphviz</div>
 </div><!-- fragment --></li>
 </ul>
-<p>All dependencies of MgxParser are bundled into the executive file after compilation.</p>
+<p>All dependencies of <a class="el" href="namespaceMgxParser.html">MgxParser</a> are bundled into the executive file after compilation.</p>
 <h1><a class="anchor" id="autotoc_md5"></a>
 How to compile</h1>
 <p>To compile this project, latest version of CMake is recommended. See <a href="https://apt.kitware.com/">https://apt.kitware.com/</a> for details on this. I use CMake <code>3.24.1</code> and never tested other versions. On Ubuntu18 and newer versions, fresh version of cmake can be installed by: </p><div class="fragment"><div class="line">sudo snap install cmake --classic</div>

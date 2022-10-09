@@ -15,7 +15,9 @@ string DataModel::toJson()
 {
     json j;
 
-    // \todo 要对所有字符串的默认值进行一个处理，不然会遇到[json.exception.type_error.316] invalid UTF-8 byte at index 0: 0x90
+    // \todo 要对所有字符串的默认值进行一个处理，不然会遇到
+    // [json.exception.type_error.316] invalid UTF-8 byte at index 0: 0x90
+    // \todo 如果没有文件输入的情况，JSON格式是怎么样的？
     j["filename"] = filename;
     j["originSize"] = filesize;
     j["parser"] = PARSER_VERSION_VERBOSE;

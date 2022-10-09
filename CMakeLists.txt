@@ -19,7 +19,8 @@ aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/DataModels DATAMODELS)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
-add_executable(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+
+add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
@@ -30,6 +31,7 @@ target_link_libraries(${PROJECT_NAME} "stdc++fs")
 
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libs/")
 target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
+target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/include/")
 target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_BINARY_DIR}")
 
 # Import some environment variables and generate docs, etc.

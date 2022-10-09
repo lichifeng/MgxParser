@@ -36,8 +36,12 @@ private:
     spdlog::stopwatch                           _sw;
     ostringstream                               _oss;
 
-    void _consoleLogger() {
-        _logger = spdlog::stdout_color_mt(_defaultName);
+    void _debugLoggers() {
+        vector<spdlog::sink_ptr> sinks;
+        sinks.push_back(make_shared<spdlog::sinks::ostream_sink_mt>(_oss));
+        sinks.push_back(make_shared<spdlog::sinks::stdout_color_sink_mt>());
+        
+        _logger = make_shared<spdlog::logger>(_defaultName, begin(sinks), end(sinks));
     }
 
     void _stringLogger() {
@@ -48,7 +52,7 @@ private:
 public:
     Logger() {
         if (DEBUG) {
-            _consoleLogger();
+            _debugLoggers();
         } else {
             _stringLogger();
         }
