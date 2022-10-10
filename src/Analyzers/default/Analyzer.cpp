@@ -34,7 +34,7 @@ void DefaultAnalyzer::run()
     if (!filesystem::exists(path))
     {
         _sendFailedSignal(true);
-        logger->fatal("{}(): {} don't exist.", __FUNCTION__, path);
+        logger->fatal("{}(): File [{}] don't exist.", __FUNCTION__, path);
         return;
     }
 

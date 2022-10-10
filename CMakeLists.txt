@@ -6,13 +6,22 @@ project(
     VERSION 0.1.0 
     LANGUAGES CXX 
     HOMEPAGE_URL "aocrec.com" 
-    DESCRIPTION "A C++ program used to extract useful information from Age of Empires II game records."
+    DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
 )
 
 # Some basic configurations
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(CMAKE_EXE_LINKER_FLAGS "-static")
+
+# This lib was intended to be used by add_subdirectories() in a node.js module.
+# Set NODE_ADDON to 1 in parent CMakeLists.txt and compile source files as
+# object with `OBJECT` directive in add_library().
+if (NODE_ADDON)
+    set(CMAKE_BUILD_TYPE "Release")
+    set(CMAKE_POSITION_INDEPENDENT_CODE true)
+else()
+    set(CMAKE_EXE_LINKER_FLAGS "-static")
+endif()
 
 # List source files to be compiled
 aux_source_directory(./src SRC_ROOT)
@@ -20,7 +29,11 @@ aux_source_directory(./src/DataModels DATAMODELS)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
 
-add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+if (NODE_ADDON)
+    add_library(${PROJECT_NAME} OBJECT ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+else()
+    add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+endif()
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
@@ -43,7 +56,7 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 # Update doxygen configuration file and generate output HTML
 find_package(Doxygen)
 option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
-if(BUILD_DOCUMENTATION)
+if(BUILD_DOCUMENTATION AND NOT NODE_ADDON)
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()

@@ -2,14 +2,14 @@
 *This version(@PROJECT_VERSION@) was compiled on @COMPILEDATE@*
 
 ## Introduction
-MgxParser is a Age of Empires II game record parser written in C++.
+MgxParser is a C++ lib used to parse Age of Empires II game records.
 
 It is firstly developed at 2020 to support running of aocrec.com as a
 replacement of a prior php parser( which was a modified version of recanalyst).
 
 ## Basic usage
-MgxParser takes a record file path as input and returns a JSON string contains
-important information about this record.
+MgxParser exports `parse()` function which takes a record file path as input and
+returns a JSON string contains important information about this record.
 
 No error was expected even if something unexpected happend in parsing process.
 Users should check parsing result by the value of key `status` and `message` in
@@ -81,6 +81,17 @@ cmake . -DCMAKE_CXX_COMPILER=/usr/bin/clang++-10 -DCMAKE_BUILD_TYPE=Release --fr
 #Last, compile it!
 make
 ```
+
+## Compile with cmake-js
+- Use `add_subdirectories()` funtion of CMake to integrate MgxParser into a
+Node.js addon. 
+- `set(NODE_ADDON 1)` in root `CMakeLists.txt`, MgxParser should adjust the proper
+  CMake settings automatically.
+- Put `$<TARGET_OBJECTS:MgxParser>` as an `<item>` of `add_library()` directive
+  of root `CMakeLists.txt`.
+- Include `src/include/MgxParse.h`.
+
+Then `MgxParser::parse()` should be available.
 
 ## Caution
 This project is still under development. **No warrenty for anything!**
