@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['raw_5fencoding_809',['RAW_ENCODING',['../DataModel_8h.html#ae26669e663cf86446f88fba6e5e87da2',1,'DataModel.h']]]
+  ['printhex_824',['PrintHEX',['../Analyzer_8h.html#a033a3fca41b02d7c31c3d554c105e5a1',1,'Analyzer.h']]]
 ];

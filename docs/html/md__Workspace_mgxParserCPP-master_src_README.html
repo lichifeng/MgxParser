@@ -74,9 +74,10 @@ Introduction</h1>
 <p>It is firstly developed at 2020 to support running of aocrec.com as a replacement of a prior php parser( which was a modified version of recanalyst).</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Basic usage</h1>
-<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> exports <code><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">parse()</a></code> function which takes a record file path as input and returns a JSON string contains important information about this record.</p>
+<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> exports two forms of <code><a class="el" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse()</a></code> function: One takes a record file path as input and returns a JSON string contains important information about this record. <br  />
+ The other accepts a byte(uint8_t) array and parses the data.</p>
 <p>No error was expected even if something unexpected happend in parsing process. Users should check parsing result by the value of key <code>status</code> and <code>message</code> in JSON response.</p>
-<p>Mini maps can be generated two forms.</p>
+<p>Mini maps can be generated two forms, too.</p>
 <p>With <code>-m mapname.png</code>, a typical map was generated, and</p>
 <p>with <code>-M HDmapname.png</code>, a prettier HD map was generated.</p>
 <h1><a class="anchor" id="autotoc_md3"></a>
@@ -128,8 +129,13 @@ Compile with cmake-js</h1>
 <li>Put <code>$&lt;TARGET_OBJECTS:<a class="el" href="namespaceMgxParser.html">MgxParser</a>&gt;</code> as an <code>&lt;item&gt;</code> of <code>add_library()</code> directive of root <code>CMakeLists.txt</code>.</li>
 <li>Include <code>src/include/MgxParse.h</code>.</li>
 </ul>
-<p>Then <code><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse()</a></code> should be available.</p>
+<p>Then <code><a class="el" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">MgxParser::parse()</a></code> should be available.</p>
 <h1><a class="anchor" id="autotoc_md7"></a>
+Version log</h1>
+<ul>
+<li><b>0.1.0</b>: Now <a class="el" href="namespaceMgxParser.html">MgxParser</a> can work with Node.js(Fastify) and parse a uploaded record. All operations are done in memory without file storage.</li>
+</ul>
+<h1><a class="anchor" id="autotoc_md8"></a>
 Caution</h1>
 <p>This project is still under development. <b>No warrenty for anything!</b> </p>
 </div></div><!-- contents -->

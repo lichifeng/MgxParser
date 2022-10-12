@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['try_5fphase2_5ffallback_811',['TRY_PHASE2_FALLBACK',['../Analyzer_8cpp.html#a12b0788db6dafbc32960eccde0c866e7',1,'Analyzer.cpp']]]
+  ['stop_5fon_5ffailure_826',['STOP_ON_FAILURE',['../Analyzer_8cpp.html#a0aec61efbd681fd9328f282c59189625',1,'Analyzer.cpp']]]
 ];

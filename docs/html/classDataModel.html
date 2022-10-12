@@ -100,9 +100,9 @@ Public 属性</h2></td></tr>
 <tr class="memitem:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">ext</a></td></tr>
 <tr class="memdesc:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的扩展名  <a href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">更多...</a><br /></td></tr>
 <tr class="separator:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a62c4424c49d2ee46e954d014595787c2"><td class="memItemLeft" align="right" valign="top">uintmax_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a62c4424c49d2ee46e954d014595787c2">filesize</a> = 0</td></tr>
-<tr class="memdesc:a62c4424c49d2ee46e954d014595787c2"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#a62c4424c49d2ee46e954d014595787c2">更多...</a><br /></td></tr>
-<tr class="separator:a62c4424c49d2ee46e954d014595787c2"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:acb0c9464084a42459991d17840370859"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#acb0c9464084a42459991d17840370859">filesize</a> = 0</td></tr>
+<tr class="memdesc:acb0c9464084a42459991d17840370859"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#acb0c9464084a42459991d17840370859">更多...</a><br /></td></tr>
+<tr class="separator:acb0c9464084a42459991d17840370859"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">trailBytes</a> = 5</td></tr>
 <tr class="memdesc:a948f462af5ea46c7d4b5639d1455d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度  <a href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">更多...</a><br /></td></tr>
 <tr class="separator:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,8 +112,8 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a890560786fb9198fd1028b952a9d07cd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">triggerStartSearchRange</a> = 19</td></tr>
 <tr class="memdesc:a890560786fb9198fd1028b952a9d07cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试  <a href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">更多...</a><br /></td></tr>
 <tr class="separator:a890560786fb9198fd1028b952a9d07cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09856167b58ebce5ef4d8685441be636"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 8192</td></tr>
-<tr class="memdesc:a09856167b58ebce5ef4d8685441be636"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
+<tr class="memitem:a09856167b58ebce5ef4d8685441be636"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 512 * 1024</td></tr>
+<tr class="memdesc:a09856167b58ebce5ef4d8685441be636"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
 <tr class="separator:a09856167b58ebce5ef4d8685441be636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">logVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="memdesc:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版  <a href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">更多...</a><br /></td></tr>
@@ -265,8 +265,8 @@ Public 属性</h2></td></tr>
 <tr class="separator:a91821e8a98a742dfd9b94ef43f68ac84"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a8ba0c5f26ef88b880058ad8f7a547ba3"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a8ba0c5f26ef88b880058ad8f7a547ba3">mapCoord</a> [2]</td></tr>
 <tr class="separator:a8ba0c5f26ef88b880058ad8f7a547ba3"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac3d05ac809e07f2e1bb4dac0f5c71b49"><td class="memItemLeft" align="right" valign="top">void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac3d05ac809e07f2e1bb4dac0f5c71b49">mapDataPtr</a></td></tr>
-<tr class="separator:ac3d05ac809e07f2e1bb4dac0f5c71b49"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7fb7fd2c9c47b0c61a6bc17e3044748a"><td class="memItemLeft" align="right" valign="top">const void *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a7fb7fd2c9c47b0c61a6bc17e3044748a">mapDataPtr</a></td></tr>
+<tr class="separator:a7fb7fd2c9c47b0c61a6bc17e3044748a"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad76652ac9f4e1e0fb89d8bf5f579a8df"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad76652ac9f4e1e0fb89d8bf5f579a8df">allVisible</a></td></tr>
 <tr class="separator:ad76652ac9f4e1e0fb89d8bf5f579a8df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a438440678c4535f932ea0380ea6c92db"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a438440678c4535f932ea0380ea6c92db">restoreTime</a></td></tr>
@@ -438,7 +438,7 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00057">57</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -459,16 +459,18 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00058">58</a> 行定义.</p>
 
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a>.</p>
+
 </div>
 </div>
-<a id="a62c4424c49d2ee46e954d014595787c2"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a62c4424c49d2ee46e954d014595787c2">&#9670;&nbsp;</a></span>filesize</h2>
+<a id="acb0c9464084a42459991d17840370859"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#acb0c9464084a42459991d17840370859">&#9670;&nbsp;</a></span>filesize</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uintmax_t DataModel::filesize = 0</td>
+          <td class="memname">size_t DataModel::filesize = 0</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -477,7 +479,7 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00059">59</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">DefaultAnalyzer::_inflateRawHeader()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -548,16 +550,16 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t DataModel::ZLIB_CHUNK = 8192</td>
+          <td class="memname">uint32_t DataModel::ZLIB_CHUNK = 512 * 1024</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p>ZLIB解压时的参数 </p>
+<p>ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used. </p>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00065">65</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">DefaultAnalyzer::_inflateRawHeader()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">DefaultAnalyzer::_inflateRawHeader()</a>.</p>
 
 </div>
 </div>
@@ -1847,14 +1849,14 @@ Public 属性</h2></td></tr>
 
 </div>
 </div>
-<a id="ac3d05ac809e07f2e1bb4dac0f5c71b49"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac3d05ac809e07f2e1bb4dac0f5c71b49">&#9670;&nbsp;</a></span>mapDataPtr</h2>
+<a id="a7fb7fd2c9c47b0c61a6bc17e3044748a"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7fb7fd2c9c47b0c61a6bc17e3044748a">&#9670;&nbsp;</a></span>mapDataPtr</h2>
 
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void* DataModel::mapDataPtr</td>
+          <td class="memname">const void* DataModel::mapDataPtr</td>
         </tr>
       </table>
 </div><div class="memdoc">

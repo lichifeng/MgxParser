@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['stop_5fon_5ffailure_810',['STOP_ON_FAILURE',['../Analyzer_8cpp.html#a0aec61efbd681fd9328f282c59189625',1,'Analyzer.cpp']]]
+  ['raw_5fencoding_825',['RAW_ENCODING',['../DataModel_8h.html#ae26669e663cf86446f88fba6e5e87da2',1,'DataModel.h']]]
 ];

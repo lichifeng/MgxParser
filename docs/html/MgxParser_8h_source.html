@@ -74,12 +74,12 @@ $(function() {
 <a href="MgxParser_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       MgxParser.h</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-09</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef __MGXPARSER__</span></div>
@@ -87,16 +87,18 @@ $(function() {
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceMgxParser.html">   17</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceMgxParser.html">MgxParser</a> {</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    std::string <a class="code" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">parse</a>(<span class="keyword">const</span> std::string&amp;);</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">pyparse</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>*);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;}</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="preprocessor">#endif</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceMgxParser.html">   17</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceMgxParser.html">MgxParser</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string <a class="code" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse</a>(<span class="keyword">const</span> uint8_t *, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::string <a class="code" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse</a>(<span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">pyparse</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceMgxParser_html_ab0b60e833df62fe969c18a734e711722"><div class="ttname"><a href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">MgxParser::parse</a></div><div class="ttdeci">std::string parse(const uint8_t *, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00037">MgxParser.cpp:37</a></div></div>
 <div class="ttc" id="anamespaceMgxParser_html"><div class="ttname"><a href="namespaceMgxParser.html">MgxParser</a></div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8h_source.html#l00017">MgxParser.h:17</a></div></div>
-<div class="ttc" id="anamespaceMgxParser_html_a0352edc1e5c8a71bc17cc671641fff57"><div class="ttname"><a href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a></div><div class="ttdeci">const char * pyparse(const char *)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00039">MgxParser.cpp:39</a></div></div>
-<div class="ttc" id="anamespaceMgxParser_html_a08c518fad4fd81be66769ea95e2279d6"><div class="ttname"><a href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a></div><div class="ttdeci">std::string parse(const std::string &amp;)</div></div>
+<div class="ttc" id="anamespaceMgxParser_html_a0352edc1e5c8a71bc17cc671641fff57"><div class="ttname"><a href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a></div><div class="ttdeci">const char * pyparse(const char *)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00058">MgxParser.cpp:58</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
