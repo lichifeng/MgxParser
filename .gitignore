@@ -6,6 +6,8 @@ build/
 HDmap.png
 map.png
 .vscode/
+./body.dat
+./header.dat
 
 ### C ###
 # Prerequisites

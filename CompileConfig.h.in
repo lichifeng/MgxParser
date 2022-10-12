@@ -1,3 +1,8 @@
 // the configured options and settings for MGXPARSER
-#define MGXPARSER_VERSION_MAJOR @Tutorial_VERSION_MAJOR@
-#define MGXPARSER_VERSION_MINOR @Tutorial_VERSION_MINOR@
+// Auto generated, do not modified!
+#define MGXPARSER_VERSION_MAJOR @MgxParser_VERSION_MAJOR@
+#define MGXPARSER_VERSION_MINOR @MgxParser_VERSION_MINOR@
+
+#ifndef DEBUG
+    #define DEBUG 0
+#endif

@@ -1,0 +1,294 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: hourly_file_sink.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_cc39f62ff30daa2aa1f1a66f8d26f225.html">spdlog</a></li><li class="navelem"><a class="el" href="dir_c21e6ae93304fa9173a9cb5040b22ff0.html">sinks</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">hourly_file_sink.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">// Copyright(c) 2015-present, Gabi Melman &amp; spdlog contributors.</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment">// Distributed under the MIT License (http://opensource.org/licenses/MIT)</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160; </div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160; </div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="preprocessor">#include &lt;spdlog/common.h&gt;</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#include &lt;spdlog/details/file_helper.h&gt;</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="preprocessor">#include &lt;spdlog/details/null_mutex.h&gt;</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#include &lt;spdlog/fmt/fmt.h&gt;</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="preprocessor">#include &lt;spdlog/sinks/base_sink.h&gt;</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;spdlog/details/os.h&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;spdlog/details/circular_q.h&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;spdlog/details/synchronous_factory.h&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;chrono&gt;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &lt;cstdio&gt;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &lt;ctime&gt;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &lt;mutex&gt;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="keyword">namespace </span>spdlog {</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;<span class="keyword">namespace </span>sinks {</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"> * Generator of Hourly log file names in format basename.YYYY-MM-DD-HH.ext</span></div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="structspdlog_1_1sinks_1_1hourly__filename__calculator.html">   27</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structspdlog_1_1sinks_1_1hourly__filename__calculator.html">hourly_filename_calculator</a></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;{</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <span class="comment">// Create filename for the form basename.YYYY-MM-DD-H</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <span class="keyword">static</span> filename_t calc_filename(<span class="keyword">const</span> filename_t &amp;filename, <span class="keyword">const</span> tm &amp;now_tm)</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    {</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        filename_t basename, ext;</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        std::tie(basename, ext) = details::file_helper::split_by_extension(filename);</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <span class="keywordflow">return</span> fmt_lib::format(SPDLOG_FILENAME_T(<span class="stringliteral">&quot;{}_{:04d}-{:02d}-{:02d}_{:02d}{}&quot;</span>), basename, now_tm.tm_year + 1900, now_tm.tm_mon + 1,</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            now_tm.tm_mday, now_tm.tm_hour, ext);</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;<span class="comment">/*</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;<span class="comment"> * Rotating file sink based on time.</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;<span class="comment"> * If truncate != false , the created file will be truncated.</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;<span class="comment"> * If max_files &gt; 0, retain only the last max_files and delete previous.</span></div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Mutex, <span class="keyword">typename</span> FileNameCalc = hourly_filename_calculator&gt;</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">   45</a></span>&#160;<span class="keyword">class </span><a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink</a> final : <span class="keyword">public</span> <a class="code" href="classspdlog_1_1sinks_1_1base__sink.html">base_sink</a>&lt;Mutex&gt;</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;{</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// create hourly file sink which rotates on given time</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    <a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink</a>(</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        filename_t base_filename, <span class="keywordtype">bool</span> truncate = <span class="keyword">false</span>, uint16_t max_files = 0, <span class="keyword">const</span> <a class="code" href="structspdlog_1_1file__event__handlers.html">file_event_handlers</a> &amp;event_handlers = {})</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        : base_filename_(std::move(base_filename))</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        , file_helper_{event_handlers}</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        , truncate_(truncate)</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        , max_files_(max_files)</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        , filenames_q_()</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keyword">auto</span> now = log_clock::now();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <span class="keyword">auto</span> filename = FileNameCalc::calc_filename(base_filename_, now_tm(now));</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        file_helper_.open(filename, truncate_);</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        remove_init_file_ = file_helper_.size() == 0;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        rotation_tp_ = next_rotation_tp_();</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160; </div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (max_files_ &gt; 0)</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        {</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;            init_filenames_q_();</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        }</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;    filename_t filename()</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;    {</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        std::lock_guard&lt;Mutex&gt; lock(<a class="code" href="classspdlog_1_1sinks_1_1base__sink.html">base_sink&lt;Mutex&gt;::mutex_</a>);</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">return</span> file_helper_.filename();</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;    }</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160; </div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;<span class="keyword">protected</span>:</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;    <span class="keywordtype">void</span> sink_it_(<span class="keyword">const</span> <a class="code" href="structspdlog_1_1details_1_1log__msg.html">details::log_msg</a> &amp;msg)<span class="keyword"> override</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keyword">auto</span> time = msg.time;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordtype">bool</span> should_rotate = time &gt;= rotation_tp_;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        <span class="keywordflow">if</span> (should_rotate)</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            <span class="keywordflow">if</span> (remove_init_file_)</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            {</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                file_helper_.close();</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                details::os::remove(file_helper_.filename());</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;            }</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;            <span class="keyword">auto</span> filename = FileNameCalc::calc_filename(base_filename_, now_tm(time));</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;            file_helper_.open(filename, truncate_);</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            rotation_tp_ = next_rotation_tp_();</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        remove_init_file_ = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;        memory_buf_t formatted;</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        <a class="code" href="classspdlog_1_1sinks_1_1base__sink.html">base_sink&lt;Mutex&gt;::formatter_</a>-&gt;format(msg, formatted);</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        file_helper_.write(formatted);</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160; </div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="comment">// Do the cleaning only at the end because it might throw on failure.</span></div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;        <span class="keywordflow">if</span> (should_rotate &amp;&amp; max_files_ &gt; 0)</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;        {</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;            delete_old_();</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;    }</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;    <span class="keywordtype">void</span> flush_()<span class="keyword"> override</span></div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;<span class="keyword">    </span>{</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        file_helper_.flush();</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160; </div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;    <span class="keywordtype">void</span> init_filenames_q_()</div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;    {</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        <span class="keyword">using</span> details::os::path_exists;</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160; </div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;        filenames_q_ = <a class="code" href="classspdlog_1_1details_1_1circular__q.html">details::circular_q&lt;filename_t&gt;</a>(<span class="keyword">static_cast&lt;</span><span class="keywordtype">size_t</span><span class="keyword">&gt;</span>(max_files_));</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160;        std::vector&lt;filename_t&gt; filenames;</div>
+<div class="line"><a name="l00115"></a><span class="lineno">  115</span>&#160;        <span class="keyword">auto</span> now = log_clock::now();</div>
+<div class="line"><a name="l00116"></a><span class="lineno">  116</span>&#160;        <span class="keywordflow">while</span> (filenames.size() &lt; max_files_)</div>
+<div class="line"><a name="l00117"></a><span class="lineno">  117</span>&#160;        {</div>
+<div class="line"><a name="l00118"></a><span class="lineno">  118</span>&#160;            <span class="keyword">auto</span> filename = FileNameCalc::calc_filename(base_filename_, now_tm(now));</div>
+<div class="line"><a name="l00119"></a><span class="lineno">  119</span>&#160;            <span class="keywordflow">if</span> (!path_exists(filename))</div>
+<div class="line"><a name="l00120"></a><span class="lineno">  120</span>&#160;            {</div>
+<div class="line"><a name="l00121"></a><span class="lineno">  121</span>&#160;                <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00122"></a><span class="lineno">  122</span>&#160;            }</div>
+<div class="line"><a name="l00123"></a><span class="lineno">  123</span>&#160;            filenames.emplace_back(filename);</div>
+<div class="line"><a name="l00124"></a><span class="lineno">  124</span>&#160;            now -= std::chrono::hours(1);</div>
+<div class="line"><a name="l00125"></a><span class="lineno">  125</span>&#160;        }</div>
+<div class="line"><a name="l00126"></a><span class="lineno">  126</span>&#160;        <span class="keywordflow">for</span> (<span class="keyword">auto</span> iter = filenames.rbegin(); iter != filenames.rend(); ++iter)</div>
+<div class="line"><a name="l00127"></a><span class="lineno">  127</span>&#160;        {</div>
+<div class="line"><a name="l00128"></a><span class="lineno">  128</span>&#160;            filenames_q_.push_back(std::move(*iter));</div>
+<div class="line"><a name="l00129"></a><span class="lineno">  129</span>&#160;        }</div>
+<div class="line"><a name="l00130"></a><span class="lineno">  130</span>&#160;    }</div>
+<div class="line"><a name="l00131"></a><span class="lineno">  131</span>&#160; </div>
+<div class="line"><a name="l00132"></a><span class="lineno">  132</span>&#160;    tm now_tm(log_clock::time_point tp)</div>
+<div class="line"><a name="l00133"></a><span class="lineno">  133</span>&#160;    {</div>
+<div class="line"><a name="l00134"></a><span class="lineno">  134</span>&#160;        time_t tnow = log_clock::to_time_t(tp);</div>
+<div class="line"><a name="l00135"></a><span class="lineno">  135</span>&#160;        <span class="keywordflow">return</span> spdlog::details::os::localtime(tnow);</div>
+<div class="line"><a name="l00136"></a><span class="lineno">  136</span>&#160;    }</div>
+<div class="line"><a name="l00137"></a><span class="lineno">  137</span>&#160; </div>
+<div class="line"><a name="l00138"></a><span class="lineno">  138</span>&#160;    log_clock::time_point next_rotation_tp_()</div>
+<div class="line"><a name="l00139"></a><span class="lineno">  139</span>&#160;    {</div>
+<div class="line"><a name="l00140"></a><span class="lineno">  140</span>&#160;        <span class="keyword">auto</span> now = log_clock::now();</div>
+<div class="line"><a name="l00141"></a><span class="lineno">  141</span>&#160;        tm date = now_tm(now);</div>
+<div class="line"><a name="l00142"></a><span class="lineno">  142</span>&#160;        date.tm_min = 0;</div>
+<div class="line"><a name="l00143"></a><span class="lineno">  143</span>&#160;        date.tm_sec = 0;</div>
+<div class="line"><a name="l00144"></a><span class="lineno">  144</span>&#160;        <span class="keyword">auto</span> rotation_time = log_clock::from_time_t(std::mktime(&amp;date));</div>
+<div class="line"><a name="l00145"></a><span class="lineno">  145</span>&#160;        <span class="keywordflow">if</span> (rotation_time &gt; now)</div>
+<div class="line"><a name="l00146"></a><span class="lineno">  146</span>&#160;        {</div>
+<div class="line"><a name="l00147"></a><span class="lineno">  147</span>&#160;            <span class="keywordflow">return</span> rotation_time;</div>
+<div class="line"><a name="l00148"></a><span class="lineno">  148</span>&#160;        }</div>
+<div class="line"><a name="l00149"></a><span class="lineno">  149</span>&#160;        <span class="keywordflow">return</span> {rotation_time + std::chrono::hours(1)};</div>
+<div class="line"><a name="l00150"></a><span class="lineno">  150</span>&#160;    }</div>
+<div class="line"><a name="l00151"></a><span class="lineno">  151</span>&#160; </div>
+<div class="line"><a name="l00152"></a><span class="lineno">  152</span>&#160;    <span class="comment">// Delete the file N rotations ago.</span></div>
+<div class="line"><a name="l00153"></a><span class="lineno">  153</span>&#160;    <span class="comment">// Throw spdlog_ex on failure to delete the old file.</span></div>
+<div class="line"><a name="l00154"></a><span class="lineno">  154</span>&#160;    <span class="keywordtype">void</span> delete_old_()</div>
+<div class="line"><a name="l00155"></a><span class="lineno">  155</span>&#160;    {</div>
+<div class="line"><a name="l00156"></a><span class="lineno">  156</span>&#160;        <span class="keyword">using</span> details::os::filename_to_str;</div>
+<div class="line"><a name="l00157"></a><span class="lineno">  157</span>&#160;        <span class="keyword">using</span> details::os::remove_if_exists;</div>
+<div class="line"><a name="l00158"></a><span class="lineno">  158</span>&#160; </div>
+<div class="line"><a name="l00159"></a><span class="lineno">  159</span>&#160;        filename_t current_file = file_helper_.filename();</div>
+<div class="line"><a name="l00160"></a><span class="lineno">  160</span>&#160;        <span class="keywordflow">if</span> (filenames_q_.full())</div>
+<div class="line"><a name="l00161"></a><span class="lineno">  161</span>&#160;        {</div>
+<div class="line"><a name="l00162"></a><span class="lineno">  162</span>&#160;            <span class="keyword">auto</span> old_filename = std::move(filenames_q_.front());</div>
+<div class="line"><a name="l00163"></a><span class="lineno">  163</span>&#160;            filenames_q_.pop_front();</div>
+<div class="line"><a name="l00164"></a><span class="lineno">  164</span>&#160;            <span class="keywordtype">bool</span> ok = remove_if_exists(old_filename) == 0;</div>
+<div class="line"><a name="l00165"></a><span class="lineno">  165</span>&#160;            <span class="keywordflow">if</span> (!ok)</div>
+<div class="line"><a name="l00166"></a><span class="lineno">  166</span>&#160;            {</div>
+<div class="line"><a name="l00167"></a><span class="lineno">  167</span>&#160;                filenames_q_.push_back(std::move(current_file));</div>
+<div class="line"><a name="l00168"></a><span class="lineno">  168</span>&#160;                SPDLOG_THROW(<a class="code" href="classspdlog_1_1spdlog__ex.html">spdlog_ex</a>(<span class="stringliteral">&quot;Failed removing hourly file &quot;</span> + filename_to_str(old_filename), errno));</div>
+<div class="line"><a name="l00169"></a><span class="lineno">  169</span>&#160;            }</div>
+<div class="line"><a name="l00170"></a><span class="lineno">  170</span>&#160;        }</div>
+<div class="line"><a name="l00171"></a><span class="lineno">  171</span>&#160;        filenames_q_.push_back(std::move(current_file));</div>
+<div class="line"><a name="l00172"></a><span class="lineno">  172</span>&#160;    }</div>
+<div class="line"><a name="l00173"></a><span class="lineno">  173</span>&#160; </div>
+<div class="line"><a name="l00174"></a><span class="lineno">  174</span>&#160;    filename_t base_filename_;</div>
+<div class="line"><a name="l00175"></a><span class="lineno">  175</span>&#160;    log_clock::time_point rotation_tp_;</div>
+<div class="line"><a name="l00176"></a><span class="lineno">  176</span>&#160;    <a class="code" href="classspdlog_1_1details_1_1file__helper.html">details::file_helper</a> file_helper_;</div>
+<div class="line"><a name="l00177"></a><span class="lineno">  177</span>&#160;    <span class="keywordtype">bool</span> truncate_;</div>
+<div class="line"><a name="l00178"></a><span class="lineno">  178</span>&#160;    uint16_t max_files_;</div>
+<div class="line"><a name="l00179"></a><span class="lineno">  179</span>&#160;    <a class="code" href="classspdlog_1_1details_1_1circular__q.html">details::circular_q&lt;filename_t&gt;</a> filenames_q_;</div>
+<div class="line"><a name="l00180"></a><span class="lineno">  180</span>&#160;    <span class="keywordtype">bool</span> remove_init_file_;</div>
+<div class="line"><a name="l00181"></a><span class="lineno">  181</span>&#160;};</div>
+<div class="line"><a name="l00182"></a><span class="lineno">  182</span>&#160; </div>
+<div class="line"><a name="l00183"></a><span class="lineno">  183</span>&#160;<span class="keyword">using</span> <a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink_mt</a> = <a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink&lt;std::mutex&gt;</a>;</div>
+<div class="line"><a name="l00184"></a><span class="lineno">  184</span>&#160;<span class="keyword">using</span> <a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink_st</a> = <a class="code" href="classspdlog_1_1sinks_1_1hourly__file__sink.html">hourly_file_sink&lt;details::null_mutex&gt;</a>;</div>
+<div class="line"><a name="l00185"></a><span class="lineno">  185</span>&#160; </div>
+<div class="line"><a name="l00186"></a><span class="lineno">  186</span>&#160;} <span class="comment">// namespace sinks</span></div>
+<div class="line"><a name="l00187"></a><span class="lineno">  187</span>&#160; </div>
+<div class="line"><a name="l00188"></a><span class="lineno">  188</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00189"></a><span class="lineno">  189</span>&#160;<span class="comment">// factory functions</span></div>
+<div class="line"><a name="l00190"></a><span class="lineno">  190</span>&#160;<span class="comment">//</span></div>
+<div class="line"><a name="l00191"></a><span class="lineno">  191</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Factory = spdlog::synchronous_factory&gt;</div>
+<div class="line"><a name="l00192"></a><span class="lineno">  192</span>&#160;<span class="keyword">inline</span> std::shared_ptr&lt;logger&gt; hourly_logger_mt(<span class="keyword">const</span> std::string &amp;logger_name, <span class="keyword">const</span> filename_t &amp;filename, <span class="keywordtype">bool</span> truncate = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00193"></a><span class="lineno">  193</span>&#160;    uint16_t max_files = 0, <span class="keyword">const</span> <a class="code" href="structspdlog_1_1file__event__handlers.html">file_event_handlers</a> &amp;event_handlers = {})</div>
+<div class="line"><a name="l00194"></a><span class="lineno">  194</span>&#160;{</div>
+<div class="line"><a name="l00195"></a><span class="lineno">  195</span>&#160;    <span class="keywordflow">return</span> Factory::template create&lt;sinks::hourly_file_sink_mt&gt;(logger_name, filename, truncate, max_files, event_handlers);</div>
+<div class="line"><a name="l00196"></a><span class="lineno">  196</span>&#160;}</div>
+<div class="line"><a name="l00197"></a><span class="lineno">  197</span>&#160; </div>
+<div class="line"><a name="l00198"></a><span class="lineno">  198</span>&#160;<span class="keyword">template</span>&lt;<span class="keyword">typename</span> Factory = spdlog::synchronous_factory&gt;</div>
+<div class="line"><a name="l00199"></a><span class="lineno">  199</span>&#160;<span class="keyword">inline</span> std::shared_ptr&lt;logger&gt; hourly_logger_st(<span class="keyword">const</span> std::string &amp;logger_name, <span class="keyword">const</span> filename_t &amp;filename, <span class="keywordtype">bool</span> truncate = <span class="keyword">false</span>,</div>
+<div class="line"><a name="l00200"></a><span class="lineno">  200</span>&#160;    uint16_t max_files = 0, <span class="keyword">const</span> file_event_handlers &amp;event_handlers = {})</div>
+<div class="line"><a name="l00201"></a><span class="lineno">  201</span>&#160;{</div>
+<div class="line"><a name="l00202"></a><span class="lineno">  202</span>&#160;    <span class="keywordflow">return</span> Factory::template create&lt;sinks::hourly_file_sink_st&gt;(logger_name, filename, truncate, max_files, event_handlers);</div>
+<div class="line"><a name="l00203"></a><span class="lineno">  203</span>&#160;}</div>
+<div class="line"><a name="l00204"></a><span class="lineno">  204</span>&#160;} <span class="comment">// namespace spdlog</span></div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="astructspdlog_1_1file__event__handlers_html"><div class="ttname"><a href="structspdlog_1_1file__event__handlers.html">spdlog::file_event_handlers</a></div><div class="ttdef"><b>Definition:</b> <a href="common_8h_source.html#l00309">common.h:309</a></div></div>
+<div class="ttc" id="aclassspdlog_1_1details_1_1file__helper_html"><div class="ttname"><a href="classspdlog_1_1details_1_1file__helper.html">spdlog::details::file_helper</a></div><div class="ttdef"><b>Definition:</b> <a href="file__helper_8h_source.html#l00016">file_helper.h:16</a></div></div>
+<div class="ttc" id="astructspdlog_1_1sinks_1_1hourly__filename__calculator_html"><div class="ttname"><a href="structspdlog_1_1sinks_1_1hourly__filename__calculator.html">spdlog::sinks::hourly_filename_calculator</a></div><div class="ttdef"><b>Definition:</b> <a href="hourly__file__sink_8h_source.html#l00027">hourly_file_sink.h:27</a></div></div>
+<div class="ttc" id="aclassspdlog_1_1sinks_1_1base__sink_html"><div class="ttname"><a href="classspdlog_1_1sinks_1_1base__sink.html">spdlog::sinks::base_sink</a></div><div class="ttdef"><b>Definition:</b> <a href="base__sink_8h_source.html#l00019">base_sink.h:19</a></div></div>
+<div class="ttc" id="aclassspdlog_1_1spdlog__ex_html"><div class="ttname"><a href="classspdlog_1_1spdlog__ex.html">spdlog::spdlog_ex</a></div><div class="ttdef"><b>Definition:</b> <a href="common_8h_source.html#l00277">common.h:277</a></div></div>
+<div class="ttc" id="astructspdlog_1_1details_1_1log__msg_html"><div class="ttname"><a href="structspdlog_1_1details_1_1log__msg.html">spdlog::details::log_msg</a></div><div class="ttdef"><b>Definition:</b> <a href="log__msg_8h_source.html#l00011">log_msg.h:11</a></div></div>
+<div class="ttc" id="aclassspdlog_1_1details_1_1circular__q_html"><div class="ttname"><a href="classspdlog_1_1details_1_1circular__q.html">spdlog::details::circular_q&lt; filename_t &gt;</a></div></div>
+<div class="ttc" id="aclassspdlog_1_1sinks_1_1hourly__file__sink_html"><div class="ttname"><a href="classspdlog_1_1sinks_1_1hourly__file__sink.html">spdlog::sinks::hourly_file_sink</a></div><div class="ttdef"><b>Definition:</b> <a href="hourly__file__sink_8h_source.html#l00045">hourly_file_sink.h:45</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>
