@@ -476,3 +476,4 @@ MigrationBackup/
 !/zlib32/*
 /HDmap.png
 /map.png
+tmp.txt
