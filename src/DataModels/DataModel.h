@@ -56,13 +56,13 @@ public:
     // File-related members
     string filename;        ///< 录像的文件名
     string ext;             ///< 录像的扩展名 \todo 要检查扩展名
-    uintmax_t filesize = 0; ///< 录像文件大小，单位是 bytes
+    size_t filesize = 0; ///< 录像文件大小，单位是 bytes
 
     // Some config parameters
     uint16_t trailBytes = 5;               ///< 设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度
     uint32_t easySkipBase = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
     uint32_t triggerStartSearchRange = 19; ///< 查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试
-    uint32_t ZLIB_CHUNK = 8192;            ///< ZLIB解压时的参数
+    uint32_t ZLIB_CHUNK = 512 * 1024;            ///< ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.
     //uint32_t scenarioSearchSpan = 10000;    ///< usually 5500~6500
 
     // Version-related members
@@ -148,7 +148,7 @@ public:
 
     // data from map data section
     int32_t mapCoord[2];
-    void *mapDataPtr;
+    const void *mapDataPtr;
     uint8_t allVisible;
     // uint8_t fogOfWar; ///< \note Use fogOfWar in lobby
 

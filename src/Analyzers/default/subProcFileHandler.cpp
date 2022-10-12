@@ -12,6 +12,35 @@
 #include "zlib.h"
 #include "Analyzer.h"
 
+void DefaultAnalyzer::_loadBuffer()
+{
+}
+
+void DefaultAnalyzer::_loadFile()
+{
+    auto p = filesystem::path(path);
+
+    if (!filesystem::exists(path))
+    {
+        _sendFailedSignal(true);
+        logger->fatal("{}(): File [{}] don't exist.", __FUNCTION__, path);
+        return;
+    }
+
+    filename = p.filename();
+    ext = p.extension();
+    filesize = filesystem::file_size(p);
+
+    // Try open record file
+    _f.open(path, ifstream::in | ifstream::binary);
+    if (!_f.is_open())
+    {
+        _sendFailedSignal(true);
+        logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path);
+        return;
+    }
+}
+
 int DefaultAnalyzer::_inflateRawHeader()
 {
     int ret;
@@ -35,13 +64,23 @@ int DefaultAnalyzer::_inflateRawHeader()
     /* decompress until deflate stream ends or end of file */
     do
     {
-        _f.read((char *)&in, ZLIB_CHUNK);
-        strm.avail_in = _f.gcount();
-        if (!_f.good())
+        if (FILE_INPUT == _inputType)
         {
-            (void)inflateEnd(&strm);
-            return Z_ERRNO;
+            _f.read((char *)&in, ZLIB_CHUNK);
+            strm.avail_in = _f.gcount();
+            if (!_f.good())
+            {
+                (void)inflateEnd(&strm);
+                return Z_ERRNO;
+            }
         }
+        else
+        {
+            strm.avail_in = filesize - (_curPos - _b) >= ZLIB_CHUNK ? ZLIB_CHUNK : filesize - (_curPos - _b);
+            memcpy(&in, _curPos, strm.avail_in);
+            _curPos += strm.avail_in;
+        }
+
         if (strm.avail_in == 0)
             break;
         strm.next_in = in;
@@ -69,7 +108,7 @@ int DefaultAnalyzer::_inflateRawHeader()
                 _header.end(),
                 out,
                 out + have);
-            if (!_f.good())
+            if (!_f.good() && (FILE_INPUT == _inputType))
             {
                 (void)inflateEnd(&strm);
                 return Z_ERRNO;

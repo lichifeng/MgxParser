@@ -25,7 +25,26 @@ string MgxParser::parse(const string &recfile)
     }
     catch (const exception &e)
     {
-        a.logger->fatal("Exception: {}", e.what());
+        a.logger->fatal("Exception@_debugFlag#{}: {}", a.getDebugFlag(), e.what());
+    }
+
+    a.parseTime = a.logger->elapsed();
+    a.message = a.logger->dumpStr();
+
+    return a.toJson();
+}
+
+string MgxParser::parse(const uint8_t *buf, size_t n)
+{
+    auto a = DefaultAnalyzer(buf, n);
+
+    try
+    {
+        a.run();
+    }
+    catch (const exception &e)
+    {
+        a.logger->fatal("Exception@_debugFlag#{}: {}", a.getDebugFlag(), e.what());
     }
 
     a.parseTime = a.logger->elapsed();

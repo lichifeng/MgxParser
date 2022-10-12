@@ -8,14 +8,16 @@ It is firstly developed at 2020 to support running of aocrec.com as a
 replacement of a prior php parser( which was a modified version of recanalyst).
 
 ## Basic usage
-MgxParser exports `parse()` function which takes a record file path as input and
-returns a JSON string contains important information about this record.
+MgxParser exports two forms of `parse()` function:
+One takes a record file path as input and returns a JSON string contains
+important information about this record.  
+The other accepts a byte(uint8_t) array and parses the data.
 
 No error was expected even if something unexpected happend in parsing process.
 Users should check parsing result by the value of key `status` and `message` in
 JSON response.
 
-Mini maps can be generated two forms.
+Mini maps can be generated two forms, too.
 
 With `-m mapname.png`, a typical map was generated, and
 
@@ -92,6 +94,10 @@ Node.js addon.
 - Include `src/include/MgxParse.h`.
 
 Then `MgxParser::parse()` should be available.
+
+## Version log
+- **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded
+  record. All operations are done in memory without file storage.
 
 ## Caution
 This project is still under development. **No warrenty for anything!**

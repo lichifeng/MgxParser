@@ -12,9 +12,12 @@
 #pragma once
 
 #define HEADER_INIT 4 * 1024 * 1024
+#define BODY_MAX 10 * 1024 * 1024
 #define HEADER_STRM 0
 #define BODY_STRM 1
 #define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
+#define FILE_INPUT 1
+#define MEM_INPUT 2
 
 #include <array>
 #include <cstddef>
@@ -40,11 +43,18 @@ using namespace std;
 class DefaultAnalyzer : public BaseAnalyzer
 {
 public:
-    ~DefaultAnalyzer() { delete _encodingConverter; };
+    ~DefaultAnalyzer() { delete _encodingConverter; }
 
-    DefaultAnalyzer(const string &inputFile) : path(inputFile) { createLogger(); };
+    DefaultAnalyzer(const string &inputFile) : path(inputFile) { createLogger(); }
+
+    DefaultAnalyzer(const uint8_t *buff, size_t buffLen) : _inputType(MEM_INPUT), _b(buff)
+    {
+        filesize = buffLen;
+    }
 
     void run();
+
+    inline int getDebugFlag() { return _debugFlag; }
 
     void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
@@ -103,6 +113,10 @@ public:
     string path; ///< 录像的路径
 
 protected:
+    void _loadFile(); ///< 从文件中加载数据流
+
+    void _loadBuffer(); ///< 从Buffer(包含数据的数组)中加载数据
+
     bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
 
     int _inflateRawHeader(); ///< 解压 header 数据
@@ -377,28 +391,30 @@ protected:
     void _handleOpCommand();
 
     ifstream _f;             ///< 读取后的录像文件数据
-    uintmax_t _bodySize;     ///< body部分的长度(bytes)
+    const uint8_t *_b;       ///< 以字节数组输入时的原始数组
+    size_t _bodySize;        ///< body部分的长度(bytes)
     vector<uint8_t> _body;   ///< 用于存储body数据
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
 
-    uint8_t *_curPos;            ///< 当前读取数据的指针
+    const uint8_t *_curPos;            ///< 当前读取数据的指针
     vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
-    uint8_t *_startInfoPatternTrail;
+    const uint8_t *_startInfoPatternTrail;
     uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 
-    uint8_t *_startInfoPos = nullptr;
-    uint8_t *_triggerInfoPos = nullptr;
-    uint8_t *_gameSettingsPos = nullptr;
-    uint8_t *_disablesStartPos = nullptr;
-    uint8_t *_victoryStartPos = nullptr;
-    uint8_t *_scenarioHeaderPos = nullptr;
-    uint8_t *_messagesStartPos = nullptr;
-    uint8_t *_lobbyStartPos = nullptr;
+    const uint8_t *_startInfoPos = nullptr;
+    const uint8_t *_triggerInfoPos = nullptr;
+    const uint8_t *_gameSettingsPos = nullptr;
+    const uint8_t *_disablesStartPos = nullptr;
+    const uint8_t *_victoryStartPos = nullptr;
+    const uint8_t *_scenarioHeaderPos = nullptr;
+    const uint8_t *_messagesStartPos = nullptr;
+    const uint8_t *_lobbyStartPos = nullptr;
 
     EncodingConverter *_encodingConverter = nullptr;
 
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
+    int _inputType = FILE_INPUT;
 };

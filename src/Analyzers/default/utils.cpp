@@ -40,7 +40,7 @@ namespace patterns
  * \param      skip                TEXT
  * \return     std::string         TEXT
  */
-std::string hexStr(unsigned char *&data, int len, bool skip)
+std::string hexStr(const unsigned char *&data, int len, bool skip)
 {
   std::string s(len * 2, ' ');
   for (int i = 0; i < len; ++i)

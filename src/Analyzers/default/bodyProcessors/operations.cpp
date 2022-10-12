@@ -18,7 +18,7 @@ using json = nlohmann::json;
 uint32_t syncData[2];
 Chat tmpChat;
 uint32_t cmdLen;
-uint8_t *pNext;
+const uint8_t *pNext;
 uint8_t cmd;
 int tmpIndex;
 
