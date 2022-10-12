@@ -1,0 +1,191 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: Helper.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Helper.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Helper_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       Helper.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-04</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &quot;nlohmann_json_3/json.hpp&quot;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="comment">// Version tools</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="Helper_8h.html#a2c008e982911acda9265db5cb59ae5c7">   17</a></span>&#160;<span class="preprocessor">#define IS_TRIAL(v) (v == 0 &amp;&amp; v == 1)</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno"><a class="line" href="Helper_8h.html#a598c72a94145cb31a6175f256130036e">   18</a></span>&#160;<span class="preprocessor">#define IS_AOK(v) (v == 5)</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="Helper_8h.html#a28adc9836ee35a17da545290f9a3b31d">   19</a></span>&#160;<span class="preprocessor">#define IS_AOC(v) (v &gt;= 10 &amp;&amp; v &lt; 20)</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno"><a class="line" href="Helper_8h.html#a44b0f1c6f2cd096d735a7c5bdf84b964">   20</a></span>&#160;<span class="preprocessor">#define IS_AOFE(v) (v == 20)</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="Helper_8h.html#a5156207516344046fc60e8519faeed94">   21</a></span>&#160;<span class="preprocessor">#define IS_UP(v) (v &gt;= 50 &amp;&amp; v &lt; 100)</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="Helper_8h.html#ae72caf44ea90a6cdf5538357fdd902a9">   22</a></span>&#160;<span class="preprocessor">#define IS_MCP(v) (v == 100)</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">   23</a></span>&#160;<span class="preprocessor">#define IS_HD(v) (v &gt;= 110 &amp;&amp; v &lt; 150)</span></div>
+<div class="line"><a name="l00024"></a><span class="lineno"><a class="line" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">   24</a></span>&#160;<span class="preprocessor">#define IS_DE(v) (v == 200)</span></div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160; </div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">   26</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;{</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    <span class="comment">// trial: &gt;=0 &amp;&amp; &lt;5</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af41867fdf12071f1e7709e138cc6d6d2">   29</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af41867fdf12071f1e7709e138cc6d6d2">AOKTRIAL</a> = 0,</div>
+<div class="line"><a name="l00030"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a12ec96eb822f243fbf6f179071eee95e">   30</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a12ec96eb822f243fbf6f179071eee95e">AOCTRIAL</a> = 1,</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <span class="comment">// aok: &gt;=5 &amp;&amp; &lt;10</span></div>
+<div class="line"><a name="l00032"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a63d9ec4e9a59359c979c2a108d0e5341">   32</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a63d9ec4e9a59359c979c2a108d0e5341">AOK</a> = 5,</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="comment">// aoc/aoc10/aoc10c: &gt;=10 &amp;&amp; &lt;20</span></div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a597501d1df49422c514721a11b470e7c">   34</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a597501d1df49422c514721a11b470e7c">AOC</a> = 10,</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ab176a1e08a9c148d2350b92664dbe9e3">   35</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ab176a1e08a9c148d2350b92664dbe9e3">AOC10</a> = 11,</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae5032a37293ff91dc385a69c5966f17b">   36</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae5032a37293ff91dc385a69c5966f17b">AOC10C</a> = 12,</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="comment">// aofe: &gt;=20 &amp;&amp; &lt;50</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae0100bbe876e68e57baff383ebc8cb21">   38</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae0100bbe876e68e57baff383ebc8cb21">AOFE21</a> = 20,</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <span class="comment">// up: &gt;=50 &amp;&amp; &lt;100</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a1274709e9ca9eeced94ce1e5347c2286">   40</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a1274709e9ca9eeced94ce1e5347c2286">USERPATCH12</a> = 50,</div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9b7ea4042a8225b2acb2f5772792e2d6">   41</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9b7ea4042a8225b2acb2f5772792e2d6">USERPATCH13</a> = 51,</div>
+<div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ad339436ffa1b43b151c98990ad69a20d">   42</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ad339436ffa1b43b151c98990ad69a20d">USERPATCH14RC1</a> = 52,</div>
+<div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a506d8ae7b0dff8ebd06658a5b054e132">   43</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a506d8ae7b0dff8ebd06658a5b054e132">USERPATCH14RC2</a> = 53,</div>
+<div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a29b799801f9d77fee4b004fe12b10e28">   44</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a29b799801f9d77fee4b004fe12b10e28">USERPATCH14</a> = 54,</div>
+<div class="line"><a name="l00045"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9da3816584416e18eb6f499900e03e52">   45</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9da3816584416e18eb6f499900e03e52">USERPATCH15</a> = 55,</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;    <span class="comment">// mcp: &gt;=100 &amp;&amp; &lt;110</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a48f07acee45cc2d55cc42959915b273b">   47</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a48f07acee45cc2d55cc42959915b273b">MCP</a> = 100,</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;    <span class="comment">// hd: &gt;=110 &amp;&amp; &lt;150</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd">   49</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd">HD</a> = 110,</div>
+<div class="line"><a name="l00050"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c">   50</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c">HD43</a> = 111,</div>
+<div class="line"><a name="l00051"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83">   51</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a> = 112, <span class="comment">///&lt; 4.7, 4.6</span></div>
+<div class="line"><a name="l00052"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e">   52</a></span>&#160;<span class="comment"></span>    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e">HD48</a> = 113,   <span class="comment">///&lt; 4.8</span></div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb">   53</a></span>&#160;<span class="comment"></span>    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a> = 114, <span class="comment">///&lt; 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6</span></div>
+<div class="line"><a name="l00054"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6">   54</a></span>&#160;<span class="comment"></span>    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6">HD57</a> = 115,   <span class="comment">///&lt; 5.7</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70">   55</a></span>&#160;<span class="comment"></span>    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70">HD58</a> = 116,   <span class="comment">///&lt; 5.8</span></div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;<span class="comment"></span>                  <span class="comment">// de: &gt;=200 &amp;&amp; &lt;250</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a95346391f68dd216f57f41ac75f0e15d">   57</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a95346391f68dd216f57f41ac75f0e15d">DE</a> = 200,</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// unsupported: = 999</span></div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">   59</a></span>&#160;    <a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">UNSUPPORTED</a> = 999</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;};</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;NLOHMANN_JSON_SERIALIZE_ENUM(<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a>,</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;                             {{<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af41867fdf12071f1e7709e138cc6d6d2">AOKTRIAL</a>, <span class="stringliteral">&quot;AOKTRIAL&quot;</span>},</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a12ec96eb822f243fbf6f179071eee95e">AOCTRIAL</a>, <span class="stringliteral">&quot;AOCTRIAL&quot;</span>},</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a63d9ec4e9a59359c979c2a108d0e5341">AOK</a>, <span class="stringliteral">&quot;AOK&quot;</span>},</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a597501d1df49422c514721a11b470e7c">AOC</a>, <span class="stringliteral">&quot;AOC&quot;</span>},</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ab176a1e08a9c148d2350b92664dbe9e3">AOC10</a>, <span class="stringliteral">&quot;AOC10&quot;</span>},</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae5032a37293ff91dc385a69c5966f17b">AOC10C</a>, <span class="stringliteral">&quot;AOC10C&quot;</span>},</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae0100bbe876e68e57baff383ebc8cb21">AOFE21</a>, <span class="stringliteral">&quot;AOFE21&quot;</span>},</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a1274709e9ca9eeced94ce1e5347c2286">USERPATCH12</a>, <span class="stringliteral">&quot;USERPATCH12&quot;</span>},</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9b7ea4042a8225b2acb2f5772792e2d6">USERPATCH13</a>, <span class="stringliteral">&quot;USERPATCH13&quot;</span>},</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ad339436ffa1b43b151c98990ad69a20d">USERPATCH14RC1</a>, <span class="stringliteral">&quot;USERPATCH14RC1&quot;</span>},</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a506d8ae7b0dff8ebd06658a5b054e132">USERPATCH14RC2</a>, <span class="stringliteral">&quot;USERPATCH14RC2&quot;</span>},</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a29b799801f9d77fee4b004fe12b10e28">USERPATCH14</a>, <span class="stringliteral">&quot;USERPATCH14&quot;</span>},</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9da3816584416e18eb6f499900e03e52">USERPATCH15</a>, <span class="stringliteral">&quot;USERPATCH15&quot;</span>},</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a48f07acee45cc2d55cc42959915b273b">MCP</a>, <span class="stringliteral">&quot;MCP&quot;</span>},</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd">HD</a>, <span class="stringliteral">&quot;HD&quot;</span>},</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c">HD43</a>, <span class="stringliteral">&quot;HD43&quot;</span>},</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a>, <span class="stringliteral">&quot;HD46_7&quot;</span>},</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e">HD48</a>, <span class="stringliteral">&quot;HD48&quot;</span>},</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a>, <span class="stringliteral">&quot;HD50_6&quot;</span>},</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6">HD57</a>, <span class="stringliteral">&quot;HD57&quot;</span>},</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70">HD58</a>, <span class="stringliteral">&quot;HD58&quot;</span>},</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a95346391f68dd216f57f41ac75f0e15d">DE</a>, <span class="stringliteral">&quot;DE&quot;</span>},</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;                              {<a class="code" href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">UNSUPPORTED</a>, <span class="stringliteral">&quot;UNSUPPORTED&quot;</span>}})</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a></div><div class="ttdeci">@ HD50_6</div><div class="ttdoc">5.0, 5.1, 5.1a, 5.3, 5.5, 5.6</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00053">Helper.h:53</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464ae5032a37293ff91dc385a69c5966f17b"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae5032a37293ff91dc385a69c5966f17b">AOC10C</a></div><div class="ttdeci">@ AOC10C</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00036">Helper.h:36</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e">HD48</a></div><div class="ttdeci">@ HD48</div><div class="ttdoc">4.8</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00052">Helper.h:52</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70">HD58</a></div><div class="ttdeci">@ HD58</div><div class="ttdoc">5.8</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00055">Helper.h:55</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a12ec96eb822f243fbf6f179071eee95e"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a12ec96eb822f243fbf6f179071eee95e">AOCTRIAL</a></div><div class="ttdeci">@ AOCTRIAL</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00030">Helper.h:30</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464ab176a1e08a9c148d2350b92664dbe9e3"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ab176a1e08a9c148d2350b92664dbe9e3">AOC10</a></div><div class="ttdeci">@ AOC10</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00035">Helper.h:35</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a48f07acee45cc2d55cc42959915b273b"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a48f07acee45cc2d55cc42959915b273b">MCP</a></div><div class="ttdeci">@ MCP</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00047">Helper.h:47</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a597501d1df49422c514721a11b470e7c"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a597501d1df49422c514721a11b470e7c">AOC</a></div><div class="ttdeci">@ AOC</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00034">Helper.h:34</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a63d9ec4e9a59359c979c2a108d0e5341"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a63d9ec4e9a59359c979c2a108d0e5341">AOK</a></div><div class="ttdeci">@ AOK</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00032">Helper.h:32</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae1ee0000510bf50cd7cba97915d0d20c">HD43</a></div><div class="ttdeci">@ HD43</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00050">Helper.h:50</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a9da3816584416e18eb6f499900e03e52"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9da3816584416e18eb6f499900e03e52">USERPATCH15</a></div><div class="ttdeci">@ USERPATCH15</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00045">Helper.h:45</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a29b799801f9d77fee4b004fe12b10e28"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a29b799801f9d77fee4b004fe12b10e28">USERPATCH14</a></div><div class="ttdeci">@ USERPATCH14</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00044">Helper.h:44</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a></div><div class="ttdeci">VERSIONCODE</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00026">Helper.h:26</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6">HD57</a></div><div class="ttdeci">@ HD57</div><div class="ttdoc">5.7</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00054">Helper.h:54</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464ae0100bbe876e68e57baff383ebc8cb21"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ae0100bbe876e68e57baff383ebc8cb21">AOFE21</a></div><div class="ttdeci">@ AOFE21</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00038">Helper.h:38</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464adb29f51e8818eebf58eaf92ba47467c9">UNSUPPORTED</a></div><div class="ttdeci">@ UNSUPPORTED</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00059">Helper.h:59</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a95346391f68dd216f57f41ac75f0e15d"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a95346391f68dd216f57f41ac75f0e15d">DE</a></div><div class="ttdeci">@ DE</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00057">Helper.h:57</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af9ae172080623b3d812b055f428d6cbd">HD</a></div><div class="ttdeci">@ HD</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00049">Helper.h:49</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a1274709e9ca9eeced94ce1e5347c2286"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a1274709e9ca9eeced94ce1e5347c2286">USERPATCH12</a></div><div class="ttdeci">@ USERPATCH12</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00040">Helper.h:40</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a506d8ae7b0dff8ebd06658a5b054e132"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a506d8ae7b0dff8ebd06658a5b054e132">USERPATCH14RC2</a></div><div class="ttdeci">@ USERPATCH14RC2</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00043">Helper.h:43</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a></div><div class="ttdeci">@ HD46_7</div><div class="ttdoc">4.7, 4.6</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00051">Helper.h:51</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464ad339436ffa1b43b151c98990ad69a20d"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464ad339436ffa1b43b151c98990ad69a20d">USERPATCH14RC1</a></div><div class="ttdeci">@ USERPATCH14RC1</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00042">Helper.h:42</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464a9b7ea4042a8225b2acb2f5772792e2d6"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464a9b7ea4042a8225b2acb2f5772792e2d6">USERPATCH13</a></div><div class="ttdeci">@ USERPATCH13</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00041">Helper.h:41</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a191520b805ffbd407a40b0bcc7c98464af41867fdf12071f1e7709e138cc6d6d2"><div class="ttname"><a href="Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464af41867fdf12071f1e7709e138cc6d6d2">AOKTRIAL</a></div><div class="ttdeci">@ AOKTRIAL</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00029">Helper.h:29</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

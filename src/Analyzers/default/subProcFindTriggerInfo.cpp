@@ -1,9 +1,9 @@
 /**
- * \file       subProcFindTriggerInfoStart.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \file       subProcFindTriggerInfo.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -12,8 +12,10 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_findTriggerInfoStart() {
-
+void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
+{
+    _debugFlag = debugFlag;
+    
     // aok ~ hd: 0x9a, 0x99, 0x99, 0x99, 0x99, 0x99, f9, 3f (double 1.6)
     // de < 13.34: 00 e0 ab 45 + double 2.2
     // de >= 13.34:  \note Maybe the cutoff point is not 13.34
@@ -30,42 +32,59 @@ void DefaultAnalyzer::_findTriggerInfoStart() {
 
     vector<uint8_t>::reverse_iterator rFound;
 
-    _curPos = _startInfoPos;
-
-    if (IS_AOK(versionCode)) {
+    if (IS_AOK(versionCode))
+    {
         rFound = findPosition(
             _header.rbegin(),
-            _header.rend(), 
+            _header.rend(),
             patterns::gameSettingSign1.rbegin(),
-            patterns::gameSettingSign1.rend()
-        );
-        if (rFound == _header.rend()) {
-            throw(ParserException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
+            patterns::gameSettingSign1.rend());
+        if (rFound == _header.rend())
+        {
+            logger->warn(
+                "{}(): Failed to find _triggerInfoPos(AOK). @{}.",
+                __FUNCTION__, _distance());
+            _sendFailedSignal();
+            return;
         }
         _triggerInfoPos = _curPos = &(*--rFound);
-    } else {
+    }
+    else
+    {
         rFound = findPosition(
             _header.rbegin(),
-            _header.rend(), 
+            _header.rend(),
             patterns::gameSettingSign.rbegin(),
-            patterns::gameSettingSign.rend()
-        );
-        if (rFound == _header.rend()) {
-            throw(ParserException("[WARN] Failed to find _triggerInfoPos (No sign found). \n"));
+            patterns::gameSettingSign.rend());
+        if (rFound == _header.rend())
+        {
+            logger->warn(
+                "{}(): Failed to find _triggerInfoPos. @{}.",
+                __FUNCTION__, _distance());
+            _sendFailedSignal();
+            return;
         }
         _curPos = &(*--rFound);
+
         double signNum = 0.0;
         for (size_t i = 0; i <= triggerStartSearchRange; i++)
         {
-            signNum = *(double*)_curPos;
-            if (signNum >= 1.5 && signNum <= 10) {
+            signNum = *(double *)_curPos;
+            if (signNum >= 1.5 && signNum <= 10)
+            {
                 _triggerInfoPos = _curPos += 8;
                 return;
-            } else {
+            }
+            else
+            {
                 ++_curPos;
             }
         }
-        throw(ParserException("[WARN] Failed to find _triggerInfoPos. \n"));
+        logger->warn(
+            "{}(): Failed to find signNum for _triggerInfoPos. @{}.",
+            __FUNCTION__, _distance());
+        _sendFailedSignal();
+        return;
     }
 
     /// \todo Maybe I will deploy a brutal search for double float in [1.6, 10]

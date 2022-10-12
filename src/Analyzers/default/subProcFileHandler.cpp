@@ -1,16 +1,45 @@
 /**
  * \file       subProcFileHandling.cpp
  * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-09-30
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "zlib.h"
 #include "Analyzer.h"
+
+void DefaultAnalyzer::_loadBuffer()
+{
+}
+
+void DefaultAnalyzer::_loadFile()
+{
+    auto p = filesystem::path(path);
+
+    if (!filesystem::exists(path))
+    {
+        _sendFailedSignal(true);
+        logger->fatal("{}(): File [{}] don't exist.", __FUNCTION__, path);
+        return;
+    }
+
+    filename = p.filename();
+    ext = p.extension();
+    filesize = filesystem::file_size(p);
+
+    // Try open record file
+    _f.open(path, ifstream::in | ifstream::binary);
+    if (!_f.is_open())
+    {
+        _sendFailedSignal(true);
+        logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path);
+        return;
+    }
+}
 
 int DefaultAnalyzer::_inflateRawHeader()
 {
@@ -33,27 +62,41 @@ int DefaultAnalyzer::_inflateRawHeader()
         return ret;
 
     /* decompress until deflate stream ends or end of file */
-    do {
-        _f.read((char*)&in, ZLIB_CHUNK);
-        strm.avail_in = _f.gcount();
-        if (!_f.good()) {
-            (void)inflateEnd(&strm);
-            return Z_ERRNO;
+    do
+    {
+        if (FILE_INPUT == _inputType)
+        {
+            _f.read((char *)&in, ZLIB_CHUNK);
+            strm.avail_in = _f.gcount();
+            if (!_f.good())
+            {
+                (void)inflateEnd(&strm);
+                return Z_ERRNO;
+            }
         }
+        else
+        {
+            strm.avail_in = filesize - (_curPos - _b) >= ZLIB_CHUNK ? ZLIB_CHUNK : filesize - (_curPos - _b);
+            memcpy(&in, _curPos, strm.avail_in);
+            _curPos += strm.avail_in;
+        }
+
         if (strm.avail_in == 0)
             break;
         strm.next_in = in;
 
         /* run inflate() on input until output buffer not full */
-        do {
+        do
+        {
             strm.avail_out = ZLIB_CHUNK;
             strm.next_out = out;
 
             ret = inflate(&strm, Z_NO_FLUSH);
             // assert(ret != Z_STREAM_ERROR);  /* state not clobbered */
-            switch (ret) {
+            switch (ret)
+            {
             case Z_NEED_DICT:
-                ret = Z_DATA_ERROR;     /* and fall through */
+                ret = Z_DATA_ERROR; /* and fall through */
             case Z_DATA_ERROR:
             case Z_MEM_ERROR:
                 (void)inflateEnd(&strm);
@@ -64,9 +107,9 @@ int DefaultAnalyzer::_inflateRawHeader()
             _header.insert(
                 _header.end(),
                 out,
-                out + have
-            );
-            if (!_f.good()) {
+                out + have);
+            if (!_f.good() && (FILE_INPUT == _inputType))
+            {
                 (void)inflateEnd(&strm);
                 return Z_ERRNO;
             }
@@ -81,16 +124,15 @@ int DefaultAnalyzer::_inflateRawHeader()
 }
 
 void DefaultAnalyzer::extract(
-    const string headerPath  = "header.dat", 
-    const string bodyPath    = "body.dat"
-) const
+    const string headerPath,
+    const string bodyPath) const
 {
     ofstream headerOut(headerPath, ofstream::binary);
     ofstream bodyOut(bodyPath, ofstream::binary);
 
-    headerOut.write((char*)_header.data(), _header.size());
-    bodyOut.write((char*)_body.data(), _body.size());
-    
+    headerOut.write((char *)_header.data(), _header.size());
+    bodyOut.write((char *)_body.data(), _body.size());
+
     headerOut.close();
     bodyOut.close();
 }

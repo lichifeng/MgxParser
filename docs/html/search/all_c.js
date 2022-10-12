@@ -1,17 +1,12 @@
 var searchData=
 [
-  ['m_5fformatter_325',['m_formatter',['../classspdlog_1_1details_1_1m__formatter.html',1,'spdlog::details::m_formatter&lt; ScopedPadder &gt;'],['../classspdlog_1_1details_1_1M__formatter.html',1,'spdlog::details::M_formatter&lt; ScopedPadder &gt;']]],
-  ['main_326',['main',['../main_8cpp.html#a0ddf1224851353fc92bfbff6f499fa97',1,'main.cpp']]],
-  ['main_2ecpp_327',['main.cpp',['../main_8cpp.html',1,'']]],
-  ['make_5finteger_5fsequence_328',['make_integer_sequence',['../structdetail_1_1make__integer__sequence.html',1,'detail']]],
-  ['make_5finteger_5fsequence_3c_20t_2c_200_2c_20ns_2e_2e_2e_20_3e_329',['make_integer_sequence&lt; T, 0, Ns... &gt;',['../structdetail_1_1make__integer__sequence_3_01T_00_010_00_01Ns_8_8_8_01_4.html',1,'detail']]],
-  ['make_5funsigned_5for_5fbool_330',['make_unsigned_or_bool',['../structmake__unsigned__or__bool.html',1,'']]],
-  ['make_5funsigned_5for_5fbool_3c_20bool_20_3e_331',['make_unsigned_or_bool&lt; bool &gt;',['../structmake__unsigned__or__bool_3_01bool_01_4.html',1,'']]],
-  ['make_5funsigned_5for_5funchanged_332',['make_unsigned_or_unchanged',['../structmake__unsigned__or__unchanged.html',1,'']]],
-  ['make_5funsigned_5for_5funchanged_3c_20t_2c_20true_20_3e_333',['make_unsigned_or_unchanged&lt; T, true &gt;',['../structmake__unsigned__or__unchanged_3_01T_00_01true_01_4.html',1,'']]],
-  ['message_334',['message',['../classDefaultAnalyzer.html#a7b2727f01a52c5ff3b055a813e2e0279',1,'DefaultAnalyzer']]],
-  ['mongo_5fsink_335',['mongo_sink',['../classspdlog_1_1sinks_1_1mongo__sink.html',1,'spdlog::sinks']]],
-  ['monostate_336',['monostate',['../structmonostate.html',1,'']]],
-  ['mpmc_5fblocking_5fqueue_337',['mpmc_blocking_queue',['../classspdlog_1_1details_1_1mpmc__blocking__queue.html',1,'spdlog::details']]],
-  ['mpmc_5fblocking_5fqueue_3c_20item_5ftype_20_3e_338',['mpmc_blocking_queue&lt; item_type &gt;',['../classspdlog_1_1details_1_1mpmc__blocking__queue.html',1,'spdlog::details']]]
+  ['localfile_262',['LOCALFILE',['../Logger_8h.html#a0318724964d676b87e91b7bd11658127ab247590fcecf66f9a58d7c3beebd22c8',1,'Logger.h']]],
+  ['lockdiplomacy_263',['lockDiplomacy',['../classDataModel.html#a2870facf39336fda3196cf54c428621d',1,'DataModel']]],
+  ['lockteams_264',['lockTeams',['../classDataModel.html#aed322dd82e7b4d0a6b0ea46aaecf7d6f',1,'DataModel']]],
+  ['logger_265',['Logger',['../classLogger.html',1,'Logger'],['../classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2',1,'DefaultAnalyzer::logger()'],['../classLogger.html#abc41bfb031d896170c7675fa96a6b30c',1,'Logger::Logger()']]],
+  ['logger_2eh_266',['Logger.h',['../Logger_8h.html',1,'']]],
+  ['loggerdest_267',['LoggerDest',['../Logger_8h.html#a0318724964d676b87e91b7bd11658127',1,'Logger.h']]],
+  ['loghex_268',['logHex',['../classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47',1,'Logger']]],
+  ['logstring_269',['LOGSTRING',['../Logger_8h.html#a0318724964d676b87e91b7bd11658127aff43da3012edf722388c87f3b8df99ee',1,'Logger.h']]],
+  ['logversion_270',['logVersion',['../classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25',1,'DataModel']]]
 ];

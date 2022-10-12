@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: operations.cpp 文件参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a95fc1cc45391b3270b1ae2680110062.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_e707855903d954fa6d0bc7016550a3a5.html">default</a></li><li class="navelem"><a class="el" href="dir_830617d170608dc8961bb05ee63e89d9.html">bodyProcessors</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#typedef-members">类型定义</a> &#124;
+<a href="#var-members">变量</a>  </div>
+  <div class="headertitle">
+<div class="title">operations.cpp 文件参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+<div class="textblock"><code>#include &lt;string&gt;</code><br />
+<code>#include &quot;<a class="el" href="Analyzer_8h_source.html">../Analyzer.h</a>&quot;</code><br />
+<code>#include &quot;nlohmann_json_3/json.hpp&quot;</code><br />
+</div><div class="textblock"><div class="dynheader">
+operations.cpp 的引用(Include)关系图:</div>
+<div class="dyncontent">
+<div class="center"><img src="operations_8cpp__incl.png" border="0" usemap="#operations_8cpp" alt=""/></div>
+<map name="operations_8cpp" id="operations_8cpp">
+<area shape="rect" title=" " alt="" coords="623,5,742,32"/>
+<area shape="rect" title=" " alt="" coords="759,393,817,420"/>
+<area shape="rect" href="Analyzer_8h.html" title=" " alt="" coords="631,80,734,107"/>
+<area shape="rect" title=" " alt="" coords="36,393,231,420"/>
+<area shape="rect" title=" " alt="" coords="1416,155,1472,181"/>
+<area shape="rect" title=" " alt="" coords="130,155,201,181"/>
+<area shape="rect" title=" " alt="" coords="276,155,343,181"/>
+<area shape="rect" title=" " alt="" coords="547,155,621,181"/>
+<area shape="rect" title=" " alt="" coords="645,155,720,181"/>
+<area shape="rect" title=" " alt="" coords="744,155,824,181"/>
+<area shape="rect" title=" " alt="" coords="1007,155,1078,181"/>
+<area shape="rect" title=" " alt="" coords="207,237,270,263"/>
+<area shape="rect" href="EncodingConverter_8h.html" title=" " alt="" coords="367,155,523,181"/>
+<area shape="rect" href="Logger_8h.html" title=" " alt="" coords="1315,155,1392,181"/>
+<area shape="rect" href="BaseAnalyzer_8h.html" title="分析器的基类（接口），所有 analyzer 都需要继承这个接口" alt="" coords="849,155,983,181"/>
+<area shape="rect" href="utils_8h.html" title="Some utility for minor jobs" alt="" coords="43,155,106,181"/>
+<area shape="rect" href="helpers_8h.html" title=" " alt="" coords="1102,155,1290,181"/>
+<area shape="rect" title=" " alt="" coords="294,237,362,263"/>
+<area shape="rect" title=" " alt="" coords="386,237,454,263"/>
+<area shape="rect" title=" " alt="" coords="478,237,565,263"/>
+<area shape="rect" title=" " alt="" coords="902,319,1031,345"/>
+<area shape="rect" title=" " alt="" coords="1189,237,1313,263"/>
+<area shape="rect" title=" " alt="" coords="1337,229,1485,271"/>
+<area shape="rect" title=" " alt="" coords="1509,237,1657,263"/>
+<area shape="rect" title=" " alt="" coords="1732,237,1911,263"/>
+<area shape="rect" title=" " alt="" coords="1935,237,2065,263"/>
+<area shape="rect" title=" " alt="" coords="1003,229,1165,271"/>
+<area shape="rect" href="DataModel_8h.html" title=" " alt="" coords="589,237,776,263"/>
+<area shape="rect" title=" " alt="" coords="431,393,481,420"/>
+<area shape="rect" href="Player_8h.html" title="Represents a player" alt="" coords="563,319,637,345"/>
+<area shape="rect" href="Helper_8h.html" title=" " alt="" coords="95,319,171,345"/>
+<area shape="rect" href="Chat_8h.html" title=" " alt="" coords="661,319,725,345"/>
+<area shape="rect" href="zh_8h.html" title=" " alt="" coords="454,319,538,345"/>
+<area shape="rect" title=" " alt="" coords="567,393,633,420"/>
+<area shape="rect" title=" " alt="" coords="97,237,183,263"/>
+</map>
+</div>
+</div>
+<p><a href="operations_8cpp_source.html">浏览源代码.</a></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
+类型定义</h2></td></tr>
+<tr class="memitem:ab701e3ac61a85b337ec5c1abaad6742d"><td class="memItemLeft" align="right" valign="top">using&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> = nlohmann::json</td></tr>
+<tr class="separator:ab701e3ac61a85b337ec5c1abaad6742d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
+变量</h2></td></tr>
+<tr class="memitem:a8981fb0cc84559cf3364ced85cc9d827"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a8981fb0cc84559cf3364ced85cc9d827">syncData</a> [2]</td></tr>
+<tr class="separator:a8981fb0cc84559cf3364ced85cc9d827"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a7a394a51a8219b750fa83fb72dd06337"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structChat.html">Chat</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a></td></tr>
+<tr class="separator:a7a394a51a8219b750fa83fb72dd06337"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a90ec1efde94674d48530caf8af08a1d5"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a90ec1efde94674d48530caf8af08a1d5">cmdLen</a></td></tr>
+<tr class="separator:a90ec1efde94674d48530caf8af08a1d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6a73f8a2f320189a3f37e92f027323ce"><td class="memItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a6a73f8a2f320189a3f37e92f027323ce">pNext</a></td></tr>
+<tr class="separator:a6a73f8a2f320189a3f37e92f027323ce"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4d43e8212bdc9dbee866506f04effcea"><td class="memItemLeft" align="right" valign="top">uint8_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a4d43e8212bdc9dbee866506f04effcea">cmd</a></td></tr>
+<tr class="separator:a4d43e8212bdc9dbee866506f04effcea"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3ee86b3165232c553186ffc92f63807b"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="operations_8cpp.html#a3ee86b3165232c553186ffc92f63807b">tmpIndex</a></td></tr>
+<tr class="separator:a3ee86b3165232c553186ffc92f63807b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<h2 class="groupheader">类型定义说明</h2>
+<a id="ab701e3ac61a85b337ec5c1abaad6742d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab701e3ac61a85b337ec5c1abaad6742d">&#9670;&nbsp;</a></span>json</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">using <a class="el" href="operations_8cpp.html#ab701e3ac61a85b337ec5c1abaad6742d">json</a> =  nlohmann::json</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00016">16</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">变量说明</h2>
+<a id="a8981fb0cc84559cf3364ced85cc9d827"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8981fb0cc84559cf3364ced85cc9d827">&#9670;&nbsp;</a></span>syncData</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t syncData[2]</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00018">18</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00025">DefaultAnalyzer::_handleOpSync()</a>.</p>
+
+</div>
+</div>
+<a id="a7a394a51a8219b750fa83fb72dd06337"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a7a394a51a8219b750fa83fb72dd06337">&#9670;&nbsp;</a></span>tmpChat</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structChat.html">Chat</a> tmpChat</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00019">19</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a> , 以及 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="a90ec1efde94674d48530caf8af08a1d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a90ec1efde94674d48530caf8af08a1d5">&#9670;&nbsp;</a></span>cmdLen</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t cmdLen</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00020">20</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00080">DefaultAnalyzer::_handleOpCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a6a73f8a2f320189a3f37e92f027323ce"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6a73f8a2f320189a3f37e92f027323ce">&#9670;&nbsp;</a></span>pNext</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t* pNext</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00021">21</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00080">DefaultAnalyzer::_handleOpCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a4d43e8212bdc9dbee866506f04effcea"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4d43e8212bdc9dbee866506f04effcea">&#9670;&nbsp;</a></span>cmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint8_t cmd</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00022">22</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00080">DefaultAnalyzer::_handleOpCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a3ee86b3165232c553186ffc92f63807b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3ee86b3165232c553186ffc92f63807b">&#9670;&nbsp;</a></span>tmpIndex</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int tmpIndex</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00023">23</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>.</p>
+
+</div>
+</div>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

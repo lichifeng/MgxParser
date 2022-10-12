@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['hexstr_939',['hexStr',['../utils_8h.html#a3276d7967d96cb127158af5b6c07b30d',1,'utils.cpp']]]
+  ['info_533',['info',['../classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba',1,'Logger']]],
+  ['initialdatafound_534',['initialDataFound',['../classPlayer.html#af7276bb37b64120cf0b786106f1f9dd4',1,'Player']]]
 ];

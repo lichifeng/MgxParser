@@ -1,13 +1,13 @@
 /**
  * @file      EncodingConverter.h
  * @author    PATRICK LI (lichifeng@qq.com)
- * @brief    
+ * @brief
  * @version   0.1
  * @date      2022-09-21
- * 
+ *
  * @copyright This file is derived from https://github.com/unnonouno/iconvpp
  *            See copyright statement in EncodingConverter.h .
- * 
+ *
  */
 
 /*
@@ -44,110 +44,109 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <vector>
 
 /**
- * @brief      用于编码转换的的工具，本质上是对 iconv 的一个封装。\n 
+ * @brief      用于编码转换的的工具，本质上是对 iconv 的一个封装。\n
  *             使用前需要创建一个 EncodingConverter 类的实体，指定源编码和转换后的编码。
- * 
+ *
  */
 class EncodingConverter
 {
 public:
-  EncodingConverter();
+    EncodingConverter();
 
-  /**
-   * @brief      Construct a new Encoding Converter object
-   * 
-   * @param      out_encode        转换后字符串的编码
-   * @param      in_encode         转换前字符串的编码（通常会从录像文件中推断出来）
-   * @param      ignore_error      忽略错误
-   * @param      buf_size          缓冲区容量
-   */
-  EncodingConverter(const std::string &out_encode,
-            const std::string &in_encode,
-            bool ignore_error = false,
-            size_t buf_size = 1024)
-      : ignore_error_(ignore_error),
-        buf_size_(buf_size)
-  {
-    if (buf_size == 0)
+    /**
+     * @brief      Construct a new Encoding Converter object
+     *
+     * @param      out_encode        转换后字符串的编码
+     * @param      in_encode         转换前字符串的编码（通常会从录像文件中推断出来）
+     * @param      ignore_error      忽略错误
+     * @param      buf_size          缓冲区容量
+     */
+    EncodingConverter(const std::string &out_encode,
+                      const std::string &in_encode,
+                      bool ignore_error = false,
+                      size_t buf_size = 1024)
+        : ignore_error_(ignore_error),
+          buf_size_(buf_size)
     {
-      throw std::runtime_error("buffer size must be greater than zero");
+        if (buf_size == 0)
+        {
+            throw std::runtime_error("buffer size must be greater than zero");
+        }
+
+        iconv_t conv = ::iconv_open(out_encode.c_str(), in_encode.c_str());
+        if (conv == (iconv_t)-1)
+        {
+            if (errno == EINVAL)
+                throw std::runtime_error(
+                    "not supported from " + in_encode + " to " + out_encode);
+            else
+                throw std::runtime_error("unknown error");
+        }
+        iconv_ = conv;
     }
 
-    iconv_t conv = ::iconv_open(out_encode.c_str(), in_encode.c_str());
-    if (conv == (iconv_t)-1)
+    ~EncodingConverter()
     {
-      if (errno == EINVAL)
-        throw std::runtime_error(
-            "not supported from " + in_encode + " to " + out_encode);
-      else
-        throw std::runtime_error("unknown error");
+        iconv_close(iconv_);
     }
-    iconv_ = conv;
-  }
 
-  ~EncodingConverter()
-  {
-    iconv_close(iconv_);
-  }
-
-  /**
-   * @brief      主要方法，用来用行字符编码的转换
-   * 
-   * @param      input             源字符串（引用）
-   * @param      output            转换后输出的字符串（引用）
-   */
-  void convert(const std::string &input, std::string &output) const
-  {
-    // copy the string to a buffer as iconv function requires a non-const char
-    // pointer.
-    std::vector<char> in_buf(input.begin(), input.end());
-    char *src_ptr = &in_buf[0];
-    size_t src_size = input.size();
-
-    std::vector<char> buf(buf_size_);
-    std::string dst;
-    while (0 < src_size)
+    /**
+     * @brief      主要方法，用来用行字符编码的转换
+     *
+     * @param      input             源字符串（引用）
+     * @param      output            转换后输出的字符串（引用）
+     */
+    void convert(const std::string &input, std::string &output) const
     {
-      char *dst_ptr = &buf[0];
-      size_t dst_size = buf.size();
-      size_t res = ::iconv(iconv_, &src_ptr, &src_size, &dst_ptr, &dst_size);
-      if (res == (size_t)-1)
-      {
-        if (errno == E2BIG)
+        // copy the string to a buffer as iconv function requires a non-const char
+        // pointer.
+        std::vector<char> in_buf(input.begin(), input.end());
+        char *src_ptr = &in_buf[0];
+        size_t src_size = input.size();
+
+        std::vector<char> buf(buf_size_);
+        std::string dst;
+        while (0 < src_size)
         {
-          // ignore this error
+            char *dst_ptr = &buf[0];
+            size_t dst_size = buf.size();
+            size_t res = ::iconv(iconv_, &src_ptr, &src_size, &dst_ptr, &dst_size);
+            if (res == (size_t)-1)
+            {
+                if (errno == E2BIG)
+                {
+                    // ignore this error
+                }
+                else if (ignore_error_)
+                {
+                    // skip character
+                    ++src_ptr;
+                    --src_size;
+                }
+                else
+                {
+                    check_convert_error();
+                }
+            }
+            dst.append(&buf[0], buf.size() - dst_size);
         }
-        else if (ignore_error_)
-        {
-          // skip character
-          ++src_ptr;
-          --src_size;
-        }
-        else
-        {
-          check_convert_error();
-        }
-      }
-      dst.append(&buf[0], buf.size() - dst_size);
+        dst.swap(output);
     }
-    dst.swap(output);
-  }
 
 private:
-  void check_convert_error() const
-  {
-    switch (errno)
+    void check_convert_error() const
     {
-    case EILSEQ:
-    case EINVAL:
-      throw std::runtime_error("invalid multibyte chars");
-    default:
-      throw std::runtime_error("unknown error");
+        switch (errno)
+        {
+        case EILSEQ:
+        case EINVAL:
+            throw std::runtime_error("invalid multibyte chars");
+        default:
+            throw std::runtime_error("unknown error");
+        }
     }
-  }
 
-  iconv_t iconv_;
-  bool ignore_error_;
-  const size_t buf_size_;
+    iconv_t iconv_;
+    bool ignore_error_;
+    const size_t buf_size_;
 };
-

@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['yellow_5fbold_999',['yellow_bold',['../classspdlog_1_1sinks_1_1ansicolor__sink.html#a91f7c688fda652cb33231a471a9aa5d4',1,'spdlog::sinks::ansicolor_sink']]]
+  ['outencoding_715',['outEncoding',['../classDataModel.html#ac28d9d810220d44c692a23c579309d33',1,'DataModel']]]
 ];

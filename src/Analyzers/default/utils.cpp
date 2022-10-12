@@ -1,3 +1,14 @@
+/**
+ * \file       utils.cpp
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \brief      
+ * \version    0.1
+ * \date       2022-10-03
+ * 
+ * \copyright  Copyright (c) 2020-2022
+ * 
+ */
+
 #include <string>
 #include <vector>
 
@@ -29,7 +40,7 @@ namespace patterns
  * \param      skip                TEXT
  * \return     std::string         TEXT
  */
-std::string hexStr(unsigned char *&data, int len, bool skip)
+std::string hexStr(const unsigned char *&data, int len, bool skip)
 {
   std::string s(len * 2, ' ');
   for (int i = 0; i < len; ++i)

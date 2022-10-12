@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: Logger.h 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">Logger.h</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="Logger_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       Logger.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-01</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#pragma once</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;CompileConfig.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;vector&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="preprocessor">#include &quot;spdlog/spdlog.h&quot;</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#include &quot;spdlog/sinks/stdout_color_sinks.h&quot;</span></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="preprocessor">#include &quot;spdlog/stopwatch.h&quot;</span></div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#include &quot;spdlog/fmt/bin_to_hex.h&quot;</span></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;<span class="preprocessor">#include &quot;spdlog/fmt/fmt.h&quot;</span></div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#include &quot;spdlog/sinks/ostream_sink.h&quot;</span></div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160; </div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160; </div>
+<div class="line"><a name="l00025"></a><span class="lineno"><a class="line" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127">   25</a></span>&#160;<span class="keyword">enum</span> <a class="code" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127">LoggerDest</a> {</div>
+<div class="line"><a name="l00026"></a><span class="lineno"><a class="line" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127a1f7a5574b76195a27b04152509632efc">   26</a></span>&#160;    <a class="code" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127a1f7a5574b76195a27b04152509632efc">CONSOLE</a>,</div>
+<div class="line"><a name="l00027"></a><span class="lineno"><a class="line" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127aff43da3012edf722388c87f3b8df99ee">   27</a></span>&#160;    <a class="code" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127aff43da3012edf722388c87f3b8df99ee">LOGSTRING</a>,</div>
+<div class="line"><a name="l00028"></a><span class="lineno"><a class="line" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127ab247590fcecf66f9a58d7c3beebd22c8">   28</a></span>&#160;    <a class="code" href="Logger_8h.html#a0318724964d676b87e91b7bd11658127ab247590fcecf66f9a58d7c3beebd22c8">LOCALFILE</a></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;};</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classLogger.html">   31</a></span>&#160;<span class="keyword">class </span><a class="code" href="classLogger.html">Logger</a></div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;<span class="keyword">private</span>:</div>
+<div class="line"><a name="l00034"></a><span class="lineno"><a class="line" href="classLogger.html#ae5ceb6f5b816565873b2da8e13fa7a43">   34</a></span>&#160;    shared_ptr&lt;spdlog::logger&gt;                  _logger = <span class="keyword">nullptr</span>;</div>
+<div class="line"><a name="l00035"></a><span class="lineno"><a class="line" href="classLogger.html#ac9f545d628c4bfac9cdf9237bddaf43e">   35</a></span>&#160;    <span class="keywordtype">string</span>                                      _defaultName = <span class="stringliteral">&quot;DefaultLogger&quot;</span>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno"><a class="line" href="classLogger.html#a8c342ea55e87533c412f8db548bc87db">   36</a></span>&#160;    spdlog::stopwatch                           <a class="code" href="classLogger.html#a8c342ea55e87533c412f8db548bc87db">_sw</a>;</div>
+<div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classLogger.html#a61aea322b8d18466fd7d1f5f26155a6b">   37</a></span>&#160;    ostringstream                               <a class="code" href="classLogger.html#a61aea322b8d18466fd7d1f5f26155a6b">_oss</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160; </div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classLogger.html#a07521b615b5b6c2e67103a09591a4f42">   39</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLogger.html#a07521b615b5b6c2e67103a09591a4f42">_debugLoggers</a>() {</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        vector&lt;spdlog::sink_ptr&gt; sinks;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        sinks.push_back(make_shared&lt;spdlog::sinks::ostream_sink_mt&gt;(_oss));</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        sinks.push_back(make_shared&lt;spdlog::sinks::stdout_color_sink_mt&gt;());</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        </div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        _logger = make_shared&lt;spdlog::logger&gt;(_defaultName, begin(sinks), end(sinks));</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160; </div>
+<div class="line"><a name="l00047"></a><span class="lineno"><a class="line" href="classLogger.html#a4b896a3afede020466ff2f1aca386717">   47</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLogger.html#a4b896a3afede020466ff2f1aca386717">_stringLogger</a>() {</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keyword">auto</span> oss_sink = std::make_shared&lt;spdlog::sinks::ostream_sink_mt&gt;(_oss);</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        _logger = make_shared&lt;spdlog::logger&gt;(_defaultName, oss_sink);</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    }</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160; </div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;<span class="keyword">public</span>:</div>
+<div class="line"><a name="l00053"></a><span class="lineno"><a class="line" href="classLogger.html#abc41bfb031d896170c7675fa96a6b30c">   53</a></span>&#160;    <a class="code" href="classLogger.html#abc41bfb031d896170c7675fa96a6b30c">Logger</a>() {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        <span class="keywordflow">if</span> (DEBUG) {</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;            _debugLoggers();</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;            _stringLogger();</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        }</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160; </div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        setPattern();</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="comment">// ...</span></div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;    }</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160; </div>
+<div class="line"><a name="l00065"></a><span class="lineno"><a class="line" href="classLogger.html#aa17caa78a5bfba637279d07ea26230de">   65</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classLogger.html#aa17caa78a5bfba637279d07ea26230de">dumpStr</a>() {</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        <span class="keywordflow">return</span> _oss.str();</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    }</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160; </div>
+<div class="line"><a name="l00069"></a><span class="lineno"><a class="line" href="classLogger.html#afcba3af79e7db671cbcd7f913adb1184">   69</a></span>&#160;    <span class="keywordtype">void</span> <a class="code" href="classLogger.html#afcba3af79e7db671cbcd7f913adb1184">setPattern</a>(<span class="keywordtype">string</span> pattern = <span class="stringliteral">&quot;&quot;</span>) {</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        <span class="comment">// _logger-&gt;set_formatter(std::unique_ptr&lt;spdlog::formatter&gt;(new spdlog::pattern_formatter(&quot;[%Y-%m-%d %T][%^%8l%$] %v&quot;)));</span></div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;        <span class="keywordflow">if</span> (pattern.length() &gt; 0) {</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;            _logger-&gt;set_pattern(pattern);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        } <span class="keywordflow">else</span> {</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            _logger-&gt;set_pattern(</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;                <span class="stringliteral">&quot;[%Y-%m-%d %T][%^%8l%$] %v&quot;</span></div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            );</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;    }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00081"></a><span class="lineno"><a class="line" href="classLogger.html#a951d7077dbd01ce698d609a892bae621">   81</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">string</span> <a class="code" href="classLogger.html#a951d7077dbd01ce698d609a892bae621">fmt</a>(Args... args) {</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        <span class="keywordflow">return</span> fmt::format(args...);</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;    }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160; </div>
+<div class="line"><a name="l00085"></a><span class="lineno"><a class="line" href="classLogger.html#a76b339c96fee328a9d3bbd22ebad32b0">   85</a></span>&#160;    <span class="keywordtype">double</span> <a class="code" href="classLogger.html#a76b339c96fee328a9d3bbd22ebad32b0">elapsed</a>() {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;        <span class="keywordflow">return</span> _sw.elapsed().count() * 1000;</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    }</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160; </div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00090"></a><span class="lineno"><a class="line" href="classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba">   90</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba">info</a>(Args... args) {</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;        <span class="keywordflow">return</span> _logger-&gt;info(args...);</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;    }</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160; </div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00095"></a><span class="lineno"><a class="line" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">   95</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(Args... args) {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;        <span class="keywordflow">return</span> _logger-&gt;warn(args...);</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;    }</div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160; </div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    <span class="keyword">template</span>&lt;<span class="keyword">typename</span>... Args&gt;</div>
+<div class="line"><a name="l00100"></a><span class="lineno"><a class="line" href="classLogger.html#aafb9d338dd1c693a7d4522fbd941bd7b">  100</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classLogger.html#aafb9d338dd1c693a7d4522fbd941bd7b">fatal</a>(Args... args) {</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;        <span class="keywordflow">return</span> _logger-&gt;critical(args...);</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    }</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160; </div>
+<div class="line"><a name="l00104"></a><span class="lineno"><a class="line" href="classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47">  104</a></span>&#160;    <span class="keyword">inline</span> <span class="keywordtype">void</span> <a class="code" href="classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47">logHex</a>(<span class="keywordtype">size_t</span> n, vector&lt;uint8_t&gt;::iterator it, <span class="keywordtype">size_t</span> offset, <span class="keywordtype">string</span> file, <span class="keywordtype">size_t</span> line) {</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;        <span class="keywordflow">return</span> info(</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;            <span class="stringliteral">&quot;[{:X:p:n} ] @Offset: {}, {}:{} &quot;</span>, </div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;            spdlog::to_hex(it, it + n),</div>
+<div class="line"><a name="l00108"></a><span class="lineno">  108</span>&#160;            offset,</div>
+<div class="line"><a name="l00109"></a><span class="lineno">  109</span>&#160;            file, </div>
+<div class="line"><a name="l00110"></a><span class="lineno">  110</span>&#160;            line</div>
+<div class="line"><a name="l00111"></a><span class="lineno">  111</span>&#160;        );</div>
+<div class="line"><a name="l00112"></a><span class="lineno">  112</span>&#160;    }</div>
+<div class="line"><a name="l00113"></a><span class="lineno">  113</span>&#160;};</div>
+<div class="line"><a name="l00114"></a><span class="lineno">  114</span>&#160; </div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassLogger_html_a61aea322b8d18466fd7d1f5f26155a6b"><div class="ttname"><a href="classLogger.html#a61aea322b8d18466fd7d1f5f26155a6b">Logger::_oss</a></div><div class="ttdeci">ostringstream _oss</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00037">Logger.h:37</a></div></div>
+<div class="ttc" id="aclassLogger_html_aa17caa78a5bfba637279d07ea26230de"><div class="ttname"><a href="classLogger.html#aa17caa78a5bfba637279d07ea26230de">Logger::dumpStr</a></div><div class="ttdeci">string dumpStr()</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00065">Logger.h:65</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a0318724964d676b87e91b7bd11658127aff43da3012edf722388c87f3b8df99ee"><div class="ttname"><a href="Logger_8h.html#a0318724964d676b87e91b7bd11658127aff43da3012edf722388c87f3b8df99ee">LOGSTRING</a></div><div class="ttdeci">@ LOGSTRING</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00027">Logger.h:27</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a0318724964d676b87e91b7bd11658127ab247590fcecf66f9a58d7c3beebd22c8"><div class="ttname"><a href="Logger_8h.html#a0318724964d676b87e91b7bd11658127ab247590fcecf66f9a58d7c3beebd22c8">LOCALFILE</a></div><div class="ttdeci">@ LOCALFILE</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00028">Logger.h:28</a></div></div>
+<div class="ttc" id="aclassLogger_html_a4b896a3afede020466ff2f1aca386717"><div class="ttname"><a href="classLogger.html#a4b896a3afede020466ff2f1aca386717">Logger::_stringLogger</a></div><div class="ttdeci">void _stringLogger()</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00047">Logger.h:47</a></div></div>
+<div class="ttc" id="aclassLogger_html_aafb9d338dd1c693a7d4522fbd941bd7b"><div class="ttname"><a href="classLogger.html#aafb9d338dd1c693a7d4522fbd941bd7b">Logger::fatal</a></div><div class="ttdeci">void fatal(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00100">Logger.h:100</a></div></div>
+<div class="ttc" id="aclassLogger_html_a951d7077dbd01ce698d609a892bae621"><div class="ttname"><a href="classLogger.html#a951d7077dbd01ce698d609a892bae621">Logger::fmt</a></div><div class="ttdeci">string fmt(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00081">Logger.h:81</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a0318724964d676b87e91b7bd11658127"><div class="ttname"><a href="Logger_8h.html#a0318724964d676b87e91b7bd11658127">LoggerDest</a></div><div class="ttdeci">LoggerDest</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00025">Logger.h:25</a></div></div>
+<div class="ttc" id="aclassLogger_html_a07521b615b5b6c2e67103a09591a4f42"><div class="ttname"><a href="classLogger.html#a07521b615b5b6c2e67103a09591a4f42">Logger::_debugLoggers</a></div><div class="ttdeci">void _debugLoggers()</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00039">Logger.h:39</a></div></div>
+<div class="ttc" id="aclassLogger_html_afcba3af79e7db671cbcd7f913adb1184"><div class="ttname"><a href="classLogger.html#afcba3af79e7db671cbcd7f913adb1184">Logger::setPattern</a></div><div class="ttdeci">void setPattern(string pattern=&quot;&quot;)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00069">Logger.h:69</a></div></div>
+<div class="ttc" id="aclassLogger_html_a3257c0b3faed0899ea5b0adbe4a08d47"><div class="ttname"><a href="classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47">Logger::logHex</a></div><div class="ttdeci">void logHex(size_t n, vector&lt; uint8_t &gt;::iterator it, size_t offset, string file, size_t line)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00104">Logger.h:104</a></div></div>
+<div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00095">Logger.h:95</a></div></div>
+<div class="ttc" id="aclassLogger_html_a76b339c96fee328a9d3bbd22ebad32b0"><div class="ttname"><a href="classLogger.html#a76b339c96fee328a9d3bbd22ebad32b0">Logger::elapsed</a></div><div class="ttdeci">double elapsed()</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00085">Logger.h:85</a></div></div>
+<div class="ttc" id="aclassLogger_html_abc41bfb031d896170c7675fa96a6b30c"><div class="ttname"><a href="classLogger.html#abc41bfb031d896170c7675fa96a6b30c">Logger::Logger</a></div><div class="ttdeci">Logger()</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00053">Logger.h:53</a></div></div>
+<div class="ttc" id="aclassLogger_html"><div class="ttname"><a href="classLogger.html">Logger</a></div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00031">Logger.h:31</a></div></div>
+<div class="ttc" id="aclassLogger_html_a8c342ea55e87533c412f8db548bc87db"><div class="ttname"><a href="classLogger.html#a8c342ea55e87533c412f8db548bc87db">Logger::_sw</a></div><div class="ttdeci">spdlog::stopwatch _sw</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00036">Logger.h:36</a></div></div>
+<div class="ttc" id="aclassLogger_html_ae9df3e7e7230fad9284f17d2e72679ba"><div class="ttname"><a href="classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba">Logger::info</a></div><div class="ttdeci">void info(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00090">Logger.h:90</a></div></div>
+<div class="ttc" id="aLogger_8h_html_a0318724964d676b87e91b7bd11658127a1f7a5574b76195a27b04152509632efc"><div class="ttname"><a href="Logger_8h.html#a0318724964d676b87e91b7bd11658127a1f7a5574b76195a27b04152509632efc">CONSOLE</a></div><div class="ttdeci">@ CONSOLE</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00026">Logger.h:26</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

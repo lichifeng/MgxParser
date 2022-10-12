@@ -24,7 +24,7 @@
    <div id="projectname">MgxParser
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
   </td>
  </tr>
  </tbody>
@@ -68,8 +68,7 @@ $(function() {
 </div><!-- top -->
 <div class="header">
   <div class="summary">
-<a href="#define-members">宏定义</a> &#124;
-<a href="#enum-members">枚举</a> &#124;
+<a href="#namespaces">命名空间</a> &#124;
 <a href="#func-members">函数</a> &#124;
 <a href="#var-members">变量</a>  </div>
   <div class="headertitle">
@@ -81,14 +80,17 @@ $(function() {
 <a href="#details">更多...</a></p>
 <div class="textblock"><code>#include &lt;vector&gt;</code><br />
 <code>#include &lt;algorithm&gt;</code><br />
+<code>#include &quot;<a class="el" href="Helper_8h_source.html">Helper.h</a>&quot;</code><br />
 </div><div class="textblock"><div class="dynheader">
 utils.h 的引用(Include)关系图:</div>
 <div class="dyncontent">
 <div class="center"><img src="utils_8h__incl.png" border="0" usemap="#utils_8h" alt=""/></div>
 <map name="utils_8h" id="utils_8h">
-<area shape="rect" title="Some utility for minor jobs" alt="" coords="55,5,117,32"/>
+<area shape="rect" title="Some utility for minor jobs" alt="" coords="104,5,167,32"/>
 <area shape="rect" title=" " alt="" coords="5,80,68,107"/>
 <area shape="rect" title=" " alt="" coords="93,80,178,107"/>
+<area shape="rect" href="Helper_8h.html" title=" " alt="" coords="203,80,279,107"/>
+<area shape="rect" title=" " alt="" coords="143,155,338,181"/>
 </map>
 </div>
 </div><div class="textblock"><div class="dynheader">
@@ -97,159 +99,94 @@ utils.h 的引用(Include)关系图:</div>
 <div class="center"><img src="utils_8h__dep__incl.png" border="0" usemap="#utils_8hdep" alt=""/></div>
 <map name="utils_8hdep" id="utils_8hdep">
 <area shape="rect" title="Some utility for minor jobs" alt="" coords="957,5,1020,32"/>
-<area shape="rect" href="src_2Analyzers_2default_2Analyzer_8h.html" title=" " alt="" coords="2033,80,2123,107"/>
-<area shape="rect" href="src_2Analyzers_2default_2Analyzer_8cpp.html" title=" " alt="" coords="5,155,111,181"/>
+<area shape="rect" href="Analyzer_8h.html" title=" " alt="" coords="2251,80,2342,107"/>
+<area shape="rect" href="Analyzer_8cpp.html" title=" " alt="" coords="5,155,111,181"/>
 <area shape="rect" href="subProcAI_8cpp.html" title=" " alt="" coords="135,155,248,181"/>
-<area shape="rect" href="subProcFindGameSettings_8cpp_source.html" title=" " alt="" coords="273,155,491,181"/>
-<area shape="rect" href="subProcFindInitialPos_8cpp_source.html" title=" " alt="" coords="515,155,702,181"/>
-<area shape="rect" href="subProcFindScenarioHeader_8cpp_source.html" title=" " alt="" coords="726,155,955,181"/>
-<area shape="rect" href="subProcFindTriggerInfo_8cpp_source.html" title=" " alt="" coords="980,155,1176,181"/>
-<area shape="rect" href="subProcHeaderDE_8cpp.html" title=" " alt="" coords="4177,155,4342,181"/>
-<area shape="rect" href="subProcHeaderHD_8cpp.html" title=" " alt="" coords="4367,155,4533,181"/>
-<area shape="rect" href="utils_8cpp_source.html" title=" " alt="" coords="2249,80,2326,107"/>
-<area shape="rect" href="subProcEncodingHandler_8cpp.html" title=" " alt="" coords="2575,155,2784,181"/>
-<area shape="rect" href="subProcFileHandler_8cpp_source.html" title=" " alt="" coords="2809,155,2982,181"/>
-<area shape="rect" href="subProcFindDisables_8cpp_source.html" title=" " alt="" coords="3007,155,3189,181"/>
-<area shape="rect" href="subProcFindStartInfo_8cpp_source.html" title=" " alt="" coords="3213,155,3396,181"/>
-<area shape="rect" href="subProcFindVictory_8cpp_source.html" title=" " alt="" coords="3421,155,3591,181"/>
-<area shape="rect" href="subProcGameSettings_8cpp_source.html" title=" " alt="" coords="3615,155,3807,181"/>
-<area shape="rect" href="subProcLobby_8cpp_source.html" title=" " alt="" coords="3832,155,3969,181"/>
-<area shape="rect" href="subProcMapData_8cpp.html" title=" " alt="" coords="3993,155,4152,181"/>
-<area shape="rect" href="subProcMessage_8cpp_source.html" title=" " alt="" coords="1200,155,1359,181"/>
-<area shape="rect" href="subProcReplay_8cpp.html" title=" " alt="" coords="1383,155,1525,181"/>
-<area shape="rect" href="subProcScenario_8cpp_source.html" title=" " alt="" coords="1549,155,1705,181"/>
-<area shape="rect" href="subProcStartInfo_8cpp_source.html" title=" " alt="" coords="1729,155,1885,181"/>
-<area shape="rect" href="subProcTrigger_8cpp_source.html" title=" " alt="" coords="1909,155,2052,181"/>
-<area shape="rect" href="subProcVersionHandler_8cpp_source.html" title=" " alt="" coords="2076,155,2275,181"/>
-<area shape="rect" href="subProcVictory_8cpp_source.html" title=" " alt="" coords="2299,155,2443,181"/>
-<area shape="rect" href="main_8cpp.html" title="主程序入口，目前还没有开发完成。" alt="" coords="2467,155,2550,181"/>
+<area shape="rect" href="subProcFindGameSettings_8cpp.html" title=" " alt="" coords="273,155,491,181"/>
+<area shape="rect" href="subProcFindInitialPos_8cpp.html" title=" " alt="" coords="515,155,702,181"/>
+<area shape="rect" href="subProcFindScenarioHeader_8cpp.html" title=" " alt="" coords="726,155,955,181"/>
+<area shape="rect" href="subProcFindTriggerInfo_8cpp.html" title=" " alt="" coords="980,155,1176,181"/>
+<area shape="rect" href="subProcHeaderDE_8cpp.html" title=" " alt="" coords="4507,155,4673,181"/>
+<area shape="rect" href="subProcHeaderHD_8cpp.html" title=" " alt="" coords="4697,155,4864,181"/>
+<area shape="rect" href="utils_8cpp.html" title=" " alt="" coords="2467,80,2545,107"/>
+<area shape="rect" href="operations_8cpp.html" title=" " alt="" coords="3364,155,3483,181"/>
+<area shape="rect" href="subProcBody_8cpp.html" title=" " alt="" coords="3506,155,3637,181"/>
+<area shape="rect" href="subProcEncodingHandler_8cpp.html" title=" " alt="" coords="3661,155,3871,181"/>
+<area shape="rect" href="subProcFileHandler_8cpp.html" title=" " alt="" coords="3895,155,4069,181"/>
+<area shape="rect" href="subProcFindDisables_8cpp.html" title=" " alt="" coords="4093,155,4276,181"/>
+<area shape="rect" href="subProcFindStartInfo_8cpp.html" title=" " alt="" coords="4300,155,4483,181"/>
+<area shape="rect" href="subProcFindVictory_8cpp.html" title=" " alt="" coords="1201,155,1371,181"/>
+<area shape="rect" href="subProcGameSettings_8cpp.html" title=" " alt="" coords="1395,155,1587,181"/>
+<area shape="rect" href="subProcLobby_8cpp.html" title=" " alt="" coords="1612,155,1749,181"/>
+<area shape="rect" href="subProcMapData_8cpp.html" title=" " alt="" coords="1773,155,1932,181"/>
+<area shape="rect" href="subProcMessage_8cpp.html" title=" " alt="" coords="1956,155,2115,181"/>
+<area shape="rect" href="subProcReplay_8cpp.html" title=" " alt="" coords="2139,155,2281,181"/>
+<area shape="rect" href="subProcScenario_8cpp.html" title=" " alt="" coords="2305,155,2461,181"/>
+<area shape="rect" href="subProcStartInfo_8cpp.html" title=" " alt="" coords="2485,155,2641,181"/>
+<area shape="rect" href="subProcTrigger_8cpp.html" title=" " alt="" coords="2665,155,2808,181"/>
+<area shape="rect" href="subProcVersionHandler_8cpp.html" title=" " alt="" coords="2832,155,3031,181"/>
+<area shape="rect" href="subProcVictory_8cpp.html" title=" " alt="" coords="3055,155,3199,181"/>
+<area shape="rect" href="MgxParser_8cpp.html" title=" " alt="" coords="3224,155,3340,181"/>
 </map>
 </div>
 </div>
 <p><a href="utils_8h_source.html">浏览源代码.</a></p>
 <table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
-宏定义</h2></td></tr>
-<tr class="memitem:a2c008e982911acda9265db5cb59ae5c7"><td class="memItemLeft" align="right" valign="top"><a id="a2c008e982911acda9265db5cb59ae5c7"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_TRIAL</b>(v)&#160;&#160;&#160;(v==0&amp;&amp;v==1)</td></tr>
-<tr class="separator:a2c008e982911acda9265db5cb59ae5c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a598c72a94145cb31a6175f256130036e"><td class="memItemLeft" align="right" valign="top"><a id="a598c72a94145cb31a6175f256130036e"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_AOK</b>(v)&#160;&#160;&#160;(v==5)</td></tr>
-<tr class="separator:a598c72a94145cb31a6175f256130036e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28adc9836ee35a17da545290f9a3b31d"><td class="memItemLeft" align="right" valign="top"><a id="a28adc9836ee35a17da545290f9a3b31d"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_AOC</b>(v)&#160;&#160;&#160;(v&gt;=10&amp;&amp;v&lt;20)</td></tr>
-<tr class="separator:a28adc9836ee35a17da545290f9a3b31d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a44b0f1c6f2cd096d735a7c5bdf84b964"><td class="memItemLeft" align="right" valign="top"><a id="a44b0f1c6f2cd096d735a7c5bdf84b964"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_AOFE</b>(v)&#160;&#160;&#160;(v==20)</td></tr>
-<tr class="separator:a44b0f1c6f2cd096d735a7c5bdf84b964"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5156207516344046fc60e8519faeed94"><td class="memItemLeft" align="right" valign="top"><a id="a5156207516344046fc60e8519faeed94"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_UP</b>(v)&#160;&#160;&#160;(v&gt;=50&amp;&amp;v&lt;100)</td></tr>
-<tr class="separator:a5156207516344046fc60e8519faeed94"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae72caf44ea90a6cdf5538357fdd902a9"><td class="memItemLeft" align="right" valign="top"><a id="ae72caf44ea90a6cdf5538357fdd902a9"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_MCP</b>(v)&#160;&#160;&#160;(v==100)</td></tr>
-<tr class="separator:ae72caf44ea90a6cdf5538357fdd902a9"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab55faf40e7bd229cdeab3b84e974ba52"><td class="memItemLeft" align="right" valign="top"><a id="ab55faf40e7bd229cdeab3b84e974ba52"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_HD</b>(v)&#160;&#160;&#160;(v&gt;=110&amp;&amp;v&lt;150)</td></tr>
-<tr class="separator:ab55faf40e7bd229cdeab3b84e974ba52"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aef60e9bcc22a670c1b3549ce6d1da688"><td class="memItemLeft" align="right" valign="top"><a id="aef60e9bcc22a670c1b3549ce6d1da688"></a>
-#define&#160;</td><td class="memItemRight" valign="bottom"><b>IS_DE</b>(v)&#160;&#160;&#160;(v==200)</td></tr>
-<tr class="separator:aef60e9bcc22a670c1b3549ce6d1da688"><td class="memSeparator" colspan="2">&#160;</td></tr>
-</table><table class="memberdecls">
-<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="enum-members"></a>
-枚举</h2></td></tr>
-<tr class="memitem:a191520b805ffbd407a40b0bcc7c98464"><td class="memItemLeft" align="right" valign="top">enum &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a> { <br />
-&#160;&#160;<b>AOKTRIAL</b> = 0, 
-<b>AOCTRIAL</b> = 1, 
-<b>AOK</b> = 5, 
-<b>AOC</b> = 10, 
-<br />
-&#160;&#160;<b>AOC10</b> = 11, 
-<b>AOC10C</b> = 12, 
-<b>AOFE21</b> = 20, 
-<b>USERPATCH12</b> = 50, 
-<br />
-&#160;&#160;<b>USERPATCH13</b> = 51, 
-<b>USERPATCH14RC1</b> = 52, 
-<b>USERPATCH14RC2</b> = 53, 
-<b>USERPATCH14</b> = 54, 
-<br />
-&#160;&#160;<b>USERPATCH15</b> = 55, 
-<b>MCP</b> = 100, 
-<b>HD</b> = 110, 
-<b>HD43</b> = 111, 
-<br />
-&#160;&#160;<a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83">HD46_7</a> = 112, 
-<a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e">HD48</a> = 113, 
-<a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb">HD50_6</a> = 114, 
-<a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6">HD57</a> = 115, 
-<br />
-&#160;&#160;<a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70">HD58</a> = 116, 
-<b>DE</b> = 200, 
-<b>UNSUPPORTED</b> = 999
-<br />
- }</td></tr>
-<tr class="separator:a191520b805ffbd407a40b0bcc7c98464"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="namespaces"></a>
+命名空间</h2></td></tr>
+<tr class="memitem:namespacepatterns"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html">patterns</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:a3276d7967d96cb127158af5b6c07b30d"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">hexStr</a> (unsigned char *&amp;data, int len, bool skip=false)</td></tr>
-<tr class="memdesc:a3276d7967d96cb127158af5b6c07b30d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to convert bytes to hex string, mainly used to generate guid in HD versions.  <a href="utils_8h.html#a3276d7967d96cb127158af5b6c07b30d">更多...</a><br /></td></tr>
-<tr class="separator:a3276d7967d96cb127158af5b6c07b30d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplParams" colspan="2"><a id="aacd6ba1ade7c09c80d51de21660d19db"></a>
-template&lt;typename T &gt; </td></tr>
-<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><b>findPosition</b> (T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</td></tr>
+<tr class="memitem:aa30eab9cc53e7c410d9c8164b29b95d5"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#aa30eab9cc53e7c410d9c8164b29b95d5">hexStr</a> (const unsigned char *&amp;data, int len, bool skip=false)</td></tr>
+<tr class="memdesc:aa30eab9cc53e7c410d9c8164b29b95d5"><td class="mdescLeft">&#160;</td><td class="mdescRight">Use to convert bytes to hex string, mainly used to generate guid in HD versions.  <a href="utils_8h.html#aa30eab9cc53e7c410d9c8164b29b95d5">更多...</a><br /></td></tr>
+<tr class="separator:aa30eab9cc53e7c410d9c8164b29b95d5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplParams" colspan="2">template&lt;typename T &gt; </td></tr>
+<tr class="memitem:aacd6ba1ade7c09c80d51de21660d19db"><td class="memTemplItemLeft" align="right" valign="top">T&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="utils_8h.html#aacd6ba1ade7c09c80d51de21660d19db">findPosition</a> (T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)</td></tr>
 <tr class="separator:aacd6ba1ade7c09c80d51de21660d19db"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="var-members"></a>
 变量</h2></td></tr>
-<tr class="memitem:aad363f1d0867c225520933776ac9014e"><td class="memItemLeft" align="right" valign="top"><a id="aad363f1d0867c225520933776ac9014e"></a>
-std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ZEROs_4096</b></td></tr>
+<tr class="memitem:aad363f1d0867c225520933776ac9014e"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aad363f1d0867c225520933776ac9014e">patterns::ZEROs_4096</a></td></tr>
 <tr class="separator:aad363f1d0867c225520933776ac9014e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a3b640fb2a393e1813231d3e0d69a4a0f"><td class="memItemLeft" align="right" valign="top"><a id="a3b640fb2a393e1813231d3e0d69a4a0f"></a>
-std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::FFs_500</b></td></tr>
+<tr class="memitem:a3b640fb2a393e1813231d3e0d69a4a0f"><td class="memItemLeft" align="right" valign="top">std::vector&lt; uint8_t &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a></td></tr>
 <tr class="separator:a3b640fb2a393e1813231d3e0d69a4a0f"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a06436e052e2437a0ecd4123d453725c5"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::zh_pattern</b> []</td></tr>
+<tr class="memitem:a06436e052e2437a0ecd4123d453725c5"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a06436e052e2437a0ecd4123d453725c5">patterns::zh_pattern</a> []</td></tr>
 <tr class="separator:a06436e052e2437a0ecd4123d453725c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ae8e12c17730dea41e0c2530f3f1ad02e"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::zh_utf8_pattern</b> []</td></tr>
+<tr class="memitem:ae8e12c17730dea41e0c2530f3f1ad02e"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#ae8e12c17730dea41e0c2530f3f1ad02e">patterns::zh_utf8_pattern</a> []</td></tr>
 <tr class="separator:ae8e12c17730dea41e0c2530f3f1ad02e"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:af5ee60deeb0cee6315d0dbb5fe4df519"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::zh_wide_pattern</b> []</td></tr>
+<tr class="memitem:af5ee60deeb0cee6315d0dbb5fe4df519"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#af5ee60deeb0cee6315d0dbb5fe4df519">patterns::zh_wide_pattern</a> []</td></tr>
 <tr class="separator:af5ee60deeb0cee6315d0dbb5fe4df519"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a11277b31876fcb6de97d21c15c845778"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::zh_tw_pattern</b> []</td></tr>
+<tr class="memitem:a11277b31876fcb6de97d21c15c845778"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a11277b31876fcb6de97d21c15c845778">patterns::zh_tw_pattern</a> []</td></tr>
 <tr class="separator:a11277b31876fcb6de97d21c15c845778"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a860d97769fc3fb4c2d58714b31bbb2a1"><td class="memItemLeft" align="right" valign="top"><a id="a860d97769fc3fb4c2d58714b31bbb2a1"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::br_pattern</b> [] = &quot;Tipo de Mapa: &quot;</td></tr>
+<tr class="memitem:a860d97769fc3fb4c2d58714b31bbb2a1"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a860d97769fc3fb4c2d58714b31bbb2a1">patterns::br_pattern</a> [] = &quot;Tipo de Mapa: &quot;</td></tr>
 <tr class="separator:a860d97769fc3fb4c2d58714b31bbb2a1"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa6168794bbcf77fd264324dc5ab2e61a"><td class="memItemLeft" align="right" valign="top"><a id="aa6168794bbcf77fd264324dc5ab2e61a"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::de_pattern</b> [] = &quot;Kartentyp: &quot;</td></tr>
+<tr class="memitem:aa6168794bbcf77fd264324dc5ab2e61a"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aa6168794bbcf77fd264324dc5ab2e61a">patterns::de_pattern</a> [] = &quot;Kartentyp: &quot;</td></tr>
 <tr class="separator:aa6168794bbcf77fd264324dc5ab2e61a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ab18620cb2161d8748778fa20164c475d"><td class="memItemLeft" align="right" valign="top"><a id="ab18620cb2161d8748778fa20164c475d"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::en_pattern</b> [] = &quot;Map Type: &quot;</td></tr>
+<tr class="memitem:ab18620cb2161d8748778fa20164c475d"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#ab18620cb2161d8748778fa20164c475d">patterns::en_pattern</a> [] = &quot;Map Type: &quot;</td></tr>
 <tr class="separator:ab18620cb2161d8748778fa20164c475d"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a28449b617ddaa518422a04368d4169f2"><td class="memItemLeft" align="right" valign="top"><a id="a28449b617ddaa518422a04368d4169f2"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::es_pattern</b> [] = &quot;Tipo de mapa: &quot;</td></tr>
+<tr class="memitem:a28449b617ddaa518422a04368d4169f2"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a28449b617ddaa518422a04368d4169f2">patterns::es_pattern</a> [] = &quot;Tipo de mapa: &quot;</td></tr>
 <tr class="separator:a28449b617ddaa518422a04368d4169f2"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a8f89817d0cc26cd4476a3eb37cae9e11"><td class="memItemLeft" align="right" valign="top"><a id="a8f89817d0cc26cd4476a3eb37cae9e11"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::fr_pattern</b> [] = &quot;Type de carte : &quot;</td></tr>
+<tr class="memitem:a8f89817d0cc26cd4476a3eb37cae9e11"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a8f89817d0cc26cd4476a3eb37cae9e11">patterns::fr_pattern</a> [] = &quot;Type de carte : &quot;</td></tr>
 <tr class="separator:a8f89817d0cc26cd4476a3eb37cae9e11"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa97348ce67be89d972cedb461c6dcbe4"><td class="memItemLeft" align="right" valign="top"><a id="aa97348ce67be89d972cedb461c6dcbe4"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::it_pattern</b> [] = &quot;Tipo di mappa: &quot;</td></tr>
+<tr class="memitem:aa97348ce67be89d972cedb461c6dcbe4"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aa97348ce67be89d972cedb461c6dcbe4">patterns::it_pattern</a> [] = &quot;Tipo di mappa: &quot;</td></tr>
 <tr class="separator:aa97348ce67be89d972cedb461c6dcbe4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a923c1123fcf0d47de4726438934f4d38"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::jp_pattern</b> []</td></tr>
+<tr class="memitem:a923c1123fcf0d47de4726438934f4d38"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a923c1123fcf0d47de4726438934f4d38">patterns::jp_pattern</a> []</td></tr>
 <tr class="separator:a923c1123fcf0d47de4726438934f4d38"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a0a6f06fc2352069713f60c54af26c268"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::jp_utf8_pattern</b> []</td></tr>
+<tr class="memitem:a0a6f06fc2352069713f60c54af26c268"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a0a6f06fc2352069713f60c54af26c268">patterns::jp_utf8_pattern</a> []</td></tr>
 <tr class="separator:a0a6f06fc2352069713f60c54af26c268"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:ac0bbc1152cb72f88244ac8a8ed6fa268"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ko_pattern</b> []</td></tr>
+<tr class="memitem:ac0bbc1152cb72f88244ac8a8ed6fa268"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#ac0bbc1152cb72f88244ac8a8ed6fa268">patterns::ko_pattern</a> []</td></tr>
 <tr class="separator:ac0bbc1152cb72f88244ac8a8ed6fa268"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aa9ad39439ea3b5ed170c680e1a1e39d6"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ko_utf8_pattern</b> []</td></tr>
+<tr class="memitem:aa9ad39439ea3b5ed170c680e1a1e39d6"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aa9ad39439ea3b5ed170c680e1a1e39d6">patterns::ko_utf8_pattern</a> []</td></tr>
 <tr class="separator:aa9ad39439ea3b5ed170c680e1a1e39d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aadf529c657c39438a22bfd0527b041b4"><td class="memItemLeft" align="right" valign="top"><a id="aadf529c657c39438a22bfd0527b041b4"></a>
-constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::nl_pattern</b> [] = &quot;Kaarttype: &quot;</td></tr>
+<tr class="memitem:aadf529c657c39438a22bfd0527b041b4"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aadf529c657c39438a22bfd0527b041b4">patterns::nl_pattern</a> [] = &quot;Kaarttype: &quot;</td></tr>
 <tr class="separator:aadf529c657c39438a22bfd0527b041b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:aabc4a68753addab6bf047ce36b1cd42a"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ru_pattern</b> []</td></tr>
+<tr class="memitem:aabc4a68753addab6bf047ce36b1cd42a"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#aabc4a68753addab6bf047ce36b1cd42a">patterns::ru_pattern</a> []</td></tr>
 <tr class="separator:aabc4a68753addab6bf047ce36b1cd42a"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a5849a8f930ab801e14f96145c5f7e933"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::ru_utf8_pattern</b> []</td></tr>
+<tr class="memitem:a5849a8f930ab801e14f96145c5f7e933"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespacepatterns.html#a5849a8f930ab801e14f96145c5f7e933">patterns::ru_utf8_pattern</a> []</td></tr>
 <tr class="separator:a5849a8f930ab801e14f96145c5f7e933"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08cfbd4924069817d1fa4939901aa0df"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>hexmap</b> []</td></tr>
+<tr class="memitem:a08cfbd4924069817d1fa4939901aa0df"><td class="memItemLeft" align="right" valign="top">constexpr char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="utils_8h.html#a08cfbd4924069817d1fa4939901aa0df">hexmap</a> []</td></tr>
 <tr class="separator:a08cfbd4924069817d1fa4939901aa0df"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
@@ -260,38 +197,9 @@ constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::n
 <dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2020-2022 </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 中定义.</p>
-</div><h2 class="groupheader">枚举类型说明</h2>
-<a id="a191520b805ffbd407a40b0bcc7c98464"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a191520b805ffbd407a40b0bcc7c98464">&#9670;&nbsp;</a></span>VERSIONCODE</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">enum <a class="el" href="utils_8h.html#a191520b805ffbd407a40b0bcc7c98464">VERSIONCODE</a></td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-<table class="fieldtable">
-<tr><th colspan="2">枚举值</th></tr><tr><td class="fieldname"><a id="a191520b805ffbd407a40b0bcc7c98464a8c5b3b21fc3efbc407ccd8249b915d83"></a>HD46_7&#160;</td><td class="fielddoc"><p>4.7, 4.6 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a191520b805ffbd407a40b0bcc7c98464a5fed40ec6a9650472132fc2bdf7b566e"></a>HD48&#160;</td><td class="fielddoc"><p>4.8 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a191520b805ffbd407a40b0bcc7c98464aae588eb1c8f1090f5c67fc7a15079fbb"></a>HD50_6&#160;</td><td class="fielddoc"><p>5.0, 5.1, 5.1a, 5.3, 5.5, 5.6 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a191520b805ffbd407a40b0bcc7c98464a03c7d6f33c63b280feec7eddeb131bd6"></a>HD57&#160;</td><td class="fielddoc"><p>5.7 </p>
-</td></tr>
-<tr><td class="fieldname"><a id="a191520b805ffbd407a40b0bcc7c98464aab5907f07a40d94510f8339c0b42bb70"></a>HD58&#160;</td><td class="fielddoc"><p>5.8 </p>
-</td></tr>
-</table>
-
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00026">26</a> 行定义.</p>
-
-</div>
-</div>
-<h2 class="groupheader">函数说明</h2>
-<a id="a3276d7967d96cb127158af5b6c07b30d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a3276d7967d96cb127158af5b6c07b30d">&#9670;&nbsp;</a></span>hexStr()</h2>
+</div><h2 class="groupheader">函数说明</h2>
+<a id="aa30eab9cc53e7c410d9c8164b29b95d5"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa30eab9cc53e7c410d9c8164b29b95d5">&#9670;&nbsp;</a></span>hexStr()</h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -299,7 +207,7 @@ constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::n
         <tr>
           <td class="memname">std::string hexStr </td>
           <td>(</td>
-          <td class="paramtype">unsigned char *&amp;&#160;</td>
+          <td class="paramtype">const unsigned char *&amp;&#160;</td>
           <td class="paramname"><em>data</em>, </td>
         </tr>
         <tr>
@@ -333,9 +241,57 @@ constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::n
 </dl>
 <dl class="section return"><dt>返回</dt><dd>std::string TEXT </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="utils_8cpp_source.html">utils.cpp</a> 第 <a class="el" href="utils_8cpp_source.html#l00032">32</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="utils_8cpp_source.html">utils.cpp</a> 第 <a class="el" href="utils_8cpp_source.html#l00043">43</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
+<p class="reference">引用了 <a class="el" href="utils_8h_source.html#l00199">hexmap</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aacd6ba1ade7c09c80d51de21660d19db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aacd6ba1ade7c09c80d51de21660d19db">&#9670;&nbsp;</a></span>findPosition()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename T &gt; </div>
+      <table class="memname">
+        <tr>
+          <td class="memname">T findPosition </td>
+          <td>(</td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>haystackBeg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>haystackEnd</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>needleBeg</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">T&#160;</td>
+          <td class="paramname"><em>needleEnd</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00022">22</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">DefaultAnalyzer::_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a> , 以及 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -362,395 +318,9 @@ constexpr char&#160;</td><td class="memItemRight" valign="bottom"><b>patterns::n
 <b>初始值:</b><div class="fragment"><div class="line">= {<span class="charliteral">&#39;0&#39;</span>, <span class="charliteral">&#39;1&#39;</span>, <span class="charliteral">&#39;2&#39;</span>, <span class="charliteral">&#39;3&#39;</span>, <span class="charliteral">&#39;4&#39;</span>, <span class="charliteral">&#39;5&#39;</span>, <span class="charliteral">&#39;6&#39;</span>, <span class="charliteral">&#39;7&#39;</span>,</div>
 <div class="line">                           <span class="charliteral">&#39;8&#39;</span>, <span class="charliteral">&#39;9&#39;</span>, <span class="charliteral">&#39;a&#39;</span>, <span class="charliteral">&#39;b&#39;</span>, <span class="charliteral">&#39;c&#39;</span>, <span class="charliteral">&#39;d&#39;</span>, <span class="charliteral">&#39;e&#39;</span>, <span class="charliteral">&#39;f&#39;</span>}</div>
 </div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00245">245</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00199">199</a> 行定义.</p>
 
-</div>
-</div>
-<a id="a923c1123fcf0d47de4726438934f4d38"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a923c1123fcf0d47de4726438934f4d38">&#9670;&nbsp;</a></span>jp_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::jp_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x7d),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x62),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x76),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x82),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xcc),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x8e),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xed),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x97),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xde),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00146">146</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a0a6f06fc2352069713f60c54af26c268"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a0a6f06fc2352069713f60c54af26c268">&#9670;&nbsp;</a></span>jp_utf8_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::jp_utf8_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x9e),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x83),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x97),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x81),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xae),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe7),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa8),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xae),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe9),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x9e),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00161">161</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ac0bbc1152cb72f88244ac8a8ed6fa268"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ac0bbc1152cb72f88244ac8a8ed6fa268">&#9670;&nbsp;</a></span>ko_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::ko_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xc1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf6),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xc1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbe),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb7),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf9),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00182">182</a> 行定义.</p>
-
-</div>
-</div>
-<a id="aa9ad39439ea3b5ed170c680e1a1e39d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aa9ad39439ea3b5ed170c680e1a1e39d6">&#9670;&nbsp;</a></span>ko_utf8_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::ko_utf8_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xec),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa7),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x80),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xeb),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x8f),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x84),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xec),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa2),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x85),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xeb),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x98),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00194">194</a> 行定义.</p>
-
-</div>
-</div>
-<a id="aabc4a68753addab6bf047ce36b1cd42a"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#aabc4a68753addab6bf047ce36b1cd42a">&#9670;&nbsp;</a></span>ru_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::ru_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd2),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe8),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xef),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xea),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf2),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xfb),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00211">211</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a5849a8f930ab801e14f96145c5f7e933"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a5849a8f930ab801e14f96145c5f7e933">&#9670;&nbsp;</a></span>ru_utf8_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::ru_utf8_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa2),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb8),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbf),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xba),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x80),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x82),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x8b),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)}</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00223">223</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a06436e052e2437a0ecd4123d453725c5"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a06436e052e2437a0ecd4123d453725c5">&#9670;&nbsp;</a></span>zh_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::zh_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd8),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xcd),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbc),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xc0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)</div>
-<div class="line">      }</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00088">88</a> 行定义.</p>
-
-</div>
-</div>
-<a id="a11277b31876fcb6de97d21c15c845778"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a11277b31876fcb6de97d21c15c845778">&#9670;&nbsp;</a></span>zh_tw_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::zh_tw_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa6),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x61),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb9),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xcf),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xc3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xfe),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa7),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x4f),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x47)</div>
-<div class="line">      }</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00128">128</a> 行定义.</p>
-
-</div>
-</div>
-<a id="ae8e12c17730dea41e0c2530f3f1ad02e"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ae8e12c17730dea41e0c2530f3f1ad02e">&#9670;&nbsp;</a></span>zh_utf8_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::zh_utf8_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x9c),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x9b),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbe),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe7),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbb),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x9e),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x8b),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x3a),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0x20)</div>
-<div class="line">      }</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00100">100</a> 行定义.</p>
-
-</div>
-</div>
-<a id="af5ee60deeb0cee6315d0dbb5fe4df519"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#af5ee60deeb0cee6315d0dbb5fe4df519">&#9670;&nbsp;</a></span>zh_wide_pattern</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">constexpr char patterns::zh_wide_pattern[]</td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">constexpr</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-<b>初始值:</b><div class="fragment"><div class="line">= {</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb5),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xd8),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xcd),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xbc),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xc0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xe0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xb1),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xf0),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xa3),</div>
-<div class="line">      <span class="keyword">static_cast&lt;</span><span class="keywordtype">char</span><span class="keyword">&gt;</span>(0xba)</div>
-<div class="line">      }</div>
-</div><!-- fragment -->
-<p class="definition">在文件 <a class="el" href="utils_8h_source.html">utils.h</a> 第 <a class="el" href="utils_8h_source.html#l00116">116</a> 行定义.</p>
+<p class="reference">被这些函数引用 <a class="el" href="utils_8cpp_source.html#l00043">hexStr()</a>.</p>
 
 </div>
 </div>

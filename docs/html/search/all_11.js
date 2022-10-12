@@ -1,16 +1,15 @@
 var searchData=
 [
-  ['r_5fformatter_387',['r_formatter',['../classspdlog_1_1details_1_1r__formatter.html',1,'spdlog::details::r_formatter&lt; ScopedPadder &gt;'],['../classspdlog_1_1details_1_1R__formatter.html',1,'spdlog::details::R_formatter&lt; ScopedPadder &gt;']]],
-  ['realm_388',['Realm',['../classRealm.html',1,'']]],
-  ['record_389',['Record',['../classRecord.html',1,'Record'],['../classRecord.html#a8ca039da988ea2bd608b4dcff6d8c756',1,'Record::Record()']]],
-  ['recplayer_390',['recPlayer',['../classDefaultAnalyzer.html#a5fadbe423df461a0609b467f206e52f4',1,'DefaultAnalyzer']]],
-  ['registry_391',['registry',['../classspdlog_1_1details_1_1registry.html',1,'spdlog::details']]],
-  ['reserve_392',['reserve',['../classdynamic__format__arg__store.html#a9c6983c46b69775b5066f6ad748be584',1,'dynamic_format_arg_store::reserve()'],['../classbasic__memory__buffer.html#a27f096451ed4e6738d3a33161fda3e90',1,'basic_memory_buffer::reserve()']]],
-  ['resize_393',['resize',['../classbasic__memory__buffer.html#a153c47788d6d1a76ec97780748755ea1',1,'basic_memory_buffer']]],
-  ['resolvedteamid_394',['resolvedTeamID',['../classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597',1,'Player']]],
-  ['revealmap_395',['revealMap',['../classDefaultAnalyzer.html#aec63735cd6d3eeb76f7210ae4b0cd73b',1,'DefaultAnalyzer']]],
-  ['rgb_396',['rgb',['../structrgb.html',1,'']]],
-  ['ringbuffer_5fsink_397',['ringbuffer_sink',['../classspdlog_1_1sinks_1_1ringbuffer__sink.html',1,'spdlog::sinks']]],
-  ['rotating_5ffile_5fsink_398',['rotating_file_sink',['../classspdlog_1_1sinks_1_1rotating__file__sink.html',1,'spdlog::sinks']]],
-  ['run_399',['run',['../classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec',1,'BaseAnalyzer::run()'],['../classDefaultAnalyzer.html#a60b740e1b46bdf35356aad2b0c01fbae',1,'DefaultAnalyzer::run()']]]
+  ['raw_5fencoding_309',['RAW_ENCODING',['../DataModel_8h.html#ae26669e663cf86446f88fba6e5e87da2',1,'DataModel.h']]],
+  ['rawencoding_310',['rawEncoding',['../classDataModel.html#a9dbedd907d1ffd08f0bd513dedefc330',1,'DataModel']]],
+  ['readlang_311',['readLang',['../classDataModel.html#a49a0e30270599ed90a7e746d21161019',1,'DataModel']]],
+  ['readme_2emd_312',['README.md',['../README_8md.html',1,'']]],
+  ['recplayer_313',['recPlayer',['../classDataModel.html#a10206e205b0e3b011f24a120ede764d0',1,'DataModel']]],
+  ['resolvedteamid_314',['resolvedTeamID',['../classPlayer.html#ae3cd1b19561298aa73d85a1fef6a6597',1,'Player']]],
+  ['resources_315',['resources',['../namespacezh.html#ac432e7ceb9b74e344a87a85b0be17326',1,'zh']]],
+  ['restoretime_316',['restoreTime',['../classDataModel.html#a438440678c4535f932ea0380ea6c92db',1,'DataModel']]],
+  ['revealmap_317',['revealMap',['../classDataModel.html#a7f1042f74c1a65c0a0a264aa6e01b0c6',1,'DataModel::revealMap()'],['../namespacezh.html#ad69ae11eba1b706cdcf8dc3e1ed334e5',1,'zh::revealMap()']]],
+  ['ru_5fpattern_318',['ru_pattern',['../namespacepatterns.html#aabc4a68753addab6bf047ce36b1cd42a',1,'patterns']]],
+  ['ru_5futf8_5fpattern_319',['ru_utf8_pattern',['../namespacepatterns.html#a5849a8f930ab801e14f96145c5f7e933',1,'patterns']]],
+  ['run_320',['run',['../classBaseAnalyzer.html#aa6f042322e88779bc6116a468bab2bec',1,'BaseAnalyzer::run()'],['../classDefaultAnalyzer.html#a60b740e1b46bdf35356aad2b0c01fbae',1,'DefaultAnalyzer::run()']]]
 ];

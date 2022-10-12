@@ -1,11 +1,15 @@
 var searchData=
 [
-  ['v_5fformatter_478',['v_formatter',['../classspdlog_1_1details_1_1v__formatter.html',1,'spdlog::details']]],
-  ['value_479',['value',['../classvalue.html',1,'value&lt; Context &gt;'],['../unionarg__ref_1_1value.html',1,'arg_ref&lt; Char &gt;::value']]],
-  ['value_5ftype_480',['value_type',['../structdetail_1_1counting__iterator_1_1value__type.html',1,'detail::counting_iterator']]],
-  ['version_2eh_481',['version.h',['../version_8h.html',1,'']]],
-  ['versioncode_482',['versionCode',['../classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0',1,'DefaultAnalyzer::versionCode()'],['../utils_8h.html#a191520b805ffbd407a40b0bcc7c98464',1,'VERSIONCODE():&#160;utils.h']]],
-  ['versionstr_483',['versionStr',['../classDefaultAnalyzer.html#a7e7fa529e8797e3dc1e5ddc399e0c195',1,'DefaultAnalyzer']]],
-  ['victorysettings_484',['VictorySettings',['../structVictorySettings.html',1,'']]],
-  ['view_485',['view',['../structview.html',1,'']]]
+  ['valid_387',['valid',['../classPlayer.html#a219fa5f363ae8a2f2d0df890c55cb623',1,'Player']]],
+  ['versioncode_388',['versionCode',['../classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9',1,'DataModel::versionCode()'],['../Helper_8h.html#a191520b805ffbd407a40b0bcc7c98464',1,'VERSIONCODE():&#160;Helper.h']]],
+  ['versionstr_389',['versionStr',['../classDataModel.html#a51e5fe53253a984bc2f662450db0307d',1,'DataModel']]],
+  ['victoryamount_390',['victoryAmount',['../namespacezh.html#adb63c55194888f143ada64c4f3068140',1,'zh']]],
+  ['victoryanyorall_391',['victoryAnyOrAll',['../classDataModel.html#ad1759ab2c17e4aa1e7cb73f52b512227',1,'DataModel']]],
+  ['victoryexplored_392',['victoryExplored',['../classDataModel.html#ade5cffb64f3194dccd00d113870529c5',1,'DataModel']]],
+  ['victoryisconquest_393',['victoryIsConquest',['../classDataModel.html#a6b2091d441617c215639165270349a1c',1,'DataModel']]],
+  ['victorymode_394',['victoryMode',['../classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf',1,'DataModel']]],
+  ['victoryrelics_395',['victoryRelics',['../classDataModel.html#a15da63fb959d8c6dd0cb54ceb066a8eb',1,'DataModel']]],
+  ['victoryscore_396',['victoryScore',['../classDataModel.html#aed6d42f69764c532180d64abfc73c406',1,'DataModel']]],
+  ['victorytime_397',['victoryTime',['../classDataModel.html#af085312c162adaa3ed88d1a743e9807b',1,'DataModel']]],
+  ['victorytypes_398',['victoryTypes',['../namespacezh.html#a6e61bc1e31dd4f8ca471656d3c99bba7',1,'zh']]]
 ];

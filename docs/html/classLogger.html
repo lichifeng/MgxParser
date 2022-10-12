@@ -1,0 +1,579 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>MgxParser: Logger类 参考</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">MgxParser
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+</div><!-- top -->
+<div class="header">
+  <div class="summary">
+<a href="#pub-methods">Public 成员函数</a> &#124;
+<a href="#pri-methods">Private 成员函数</a> &#124;
+<a href="#pri-attribs">Private 属性</a> &#124;
+<a href="classLogger-members.html">所有成员列表</a>  </div>
+  <div class="headertitle">
+<div class="title">Logger类 参考</div>  </div>
+</div><!--header-->
+<div class="contents">
+
+<p><code>#include &lt;<a class="el" href="Logger_8h_source.html">Logger.h</a>&gt;</code></p>
+<table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-methods"></a>
+Public 成员函数</h2></td></tr>
+<tr class="memitem:abc41bfb031d896170c7675fa96a6b30c"><td class="memItemLeft" align="right" valign="top">&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#abc41bfb031d896170c7675fa96a6b30c">Logger</a> ()</td></tr>
+<tr class="separator:abc41bfb031d896170c7675fa96a6b30c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa17caa78a5bfba637279d07ea26230de"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#aa17caa78a5bfba637279d07ea26230de">dumpStr</a> ()</td></tr>
+<tr class="separator:aa17caa78a5bfba637279d07ea26230de"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:afcba3af79e7db671cbcd7f913adb1184"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#afcba3af79e7db671cbcd7f913adb1184">setPattern</a> (string pattern=&quot;&quot;)</td></tr>
+<tr class="separator:afcba3af79e7db671cbcd7f913adb1184"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a951d7077dbd01ce698d609a892bae621"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a951d7077dbd01ce698d609a892bae621"><td class="memTemplItemLeft" align="right" valign="top">string&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogger.html#a951d7077dbd01ce698d609a892bae621">fmt</a> (Args... args)</td></tr>
+<tr class="separator:a951d7077dbd01ce698d609a892bae621"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a76b339c96fee328a9d3bbd22ebad32b0"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a76b339c96fee328a9d3bbd22ebad32b0">elapsed</a> ()</td></tr>
+<tr class="separator:a76b339c96fee328a9d3bbd22ebad32b0"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae9df3e7e7230fad9284f17d2e72679ba"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:ae9df3e7e7230fad9284f17d2e72679ba"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogger.html#ae9df3e7e7230fad9284f17d2e72679ba">info</a> (Args... args)</td></tr>
+<tr class="separator:ae9df3e7e7230fad9284f17d2e72679ba"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74683ce245e682f75e7f7d7a0bf78605"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:a74683ce245e682f75e7f7d7a0bf78605"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a> (Args... args)</td></tr>
+<tr class="separator:a74683ce245e682f75e7f7d7a0bf78605"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aafb9d338dd1c693a7d4522fbd941bd7b"><td class="memTemplParams" colspan="2">template&lt;typename... Args&gt; </td></tr>
+<tr class="memitem:aafb9d338dd1c693a7d4522fbd941bd7b"><td class="memTemplItemLeft" align="right" valign="top">void&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classLogger.html#aafb9d338dd1c693a7d4522fbd941bd7b">fatal</a> (Args... args)</td></tr>
+<tr class="separator:aafb9d338dd1c693a7d4522fbd941bd7b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a3257c0b3faed0899ea5b0adbe4a08d47"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a3257c0b3faed0899ea5b0adbe4a08d47">logHex</a> (size_t n, vector&lt; uint8_t &gt;::iterator it, size_t offset, string file, size_t line)</td></tr>
+<tr class="separator:a3257c0b3faed0899ea5b0adbe4a08d47"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-methods"></a>
+Private 成员函数</h2></td></tr>
+<tr class="memitem:a07521b615b5b6c2e67103a09591a4f42"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a07521b615b5b6c2e67103a09591a4f42">_debugLoggers</a> ()</td></tr>
+<tr class="separator:a07521b615b5b6c2e67103a09591a4f42"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4b896a3afede020466ff2f1aca386717"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a4b896a3afede020466ff2f1aca386717">_stringLogger</a> ()</td></tr>
+<tr class="separator:a4b896a3afede020466ff2f1aca386717"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pri-attribs"></a>
+Private 属性</h2></td></tr>
+<tr class="memitem:ae5ceb6f5b816565873b2da8e13fa7a43"><td class="memItemLeft" align="right" valign="top">shared_ptr&lt; spdlog::logger &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#ae5ceb6f5b816565873b2da8e13fa7a43">_logger</a> = nullptr</td></tr>
+<tr class="separator:ae5ceb6f5b816565873b2da8e13fa7a43"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac9f545d628c4bfac9cdf9237bddaf43e"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#ac9f545d628c4bfac9cdf9237bddaf43e">_defaultName</a> = &quot;DefaultLogger&quot;</td></tr>
+<tr class="separator:ac9f545d628c4bfac9cdf9237bddaf43e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a8c342ea55e87533c412f8db548bc87db"><td class="memItemLeft" align="right" valign="top">spdlog::stopwatch&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a8c342ea55e87533c412f8db548bc87db">_sw</a></td></tr>
+<tr class="separator:a8c342ea55e87533c412f8db548bc87db"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a61aea322b8d18466fd7d1f5f26155a6b"><td class="memItemLeft" align="right" valign="top">ostringstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classLogger.html#a61aea322b8d18466fd7d1f5f26155a6b">_oss</a></td></tr>
+<tr class="separator:a61aea322b8d18466fd7d1f5f26155a6b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table>
+<a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
+<div class="textblock">
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00031">31</a> 行定义.</p>
+</div><h2 class="groupheader">构造及析构函数说明</h2>
+<a id="abc41bfb031d896170c7675fa96a6b30c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#abc41bfb031d896170c7675fa96a6b30c">&#9670;&nbsp;</a></span>Logger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">Logger::Logger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00053">53</a> 行定义.</p>
+
+</div>
+</div>
+<h2 class="groupheader">成员函数说明</h2>
+<a id="a07521b615b5b6c2e67103a09591a4f42"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a07521b615b5b6c2e67103a09591a4f42">&#9670;&nbsp;</a></span>_debugLoggers()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::_debugLoggers </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00039">39</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a4b896a3afede020466ff2f1aca386717"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4b896a3afede020466ff2f1aca386717">&#9670;&nbsp;</a></span>_stringLogger()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::_stringLogger </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00047">47</a> 行定义.</p>
+
+</div>
+</div>
+<a id="aa17caa78a5bfba637279d07ea26230de"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa17caa78a5bfba637279d07ea26230de">&#9670;&nbsp;</a></span>dumpStr()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Logger::dumpStr </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00065">65</a> 行定义.</p>
+
+</div>
+</div>
+<a id="afcba3af79e7db671cbcd7f913adb1184"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#afcba3af79e7db671cbcd7f913adb1184">&#9670;&nbsp;</a></span>setPattern()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::setPattern </td>
+          <td>(</td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>pattern</em> = <code>&quot;&quot;</code></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00069">69</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a951d7077dbd01ce698d609a892bae621"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a951d7077dbd01ce698d609a892bae621">&#9670;&nbsp;</a></span>fmt()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Logger::fmt </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00081">81</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a76b339c96fee328a9d3bbd22ebad32b0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a76b339c96fee328a9d3bbd22ebad32b0">&#9670;&nbsp;</a></span>elapsed()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">double Logger::elapsed </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00085">85</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ae9df3e7e7230fad9284f17d2e72679ba"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae9df3e7e7230fad9284f17d2e72679ba">&#9670;&nbsp;</a></span>info()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::info </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00090">90</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a74683ce245e682f75e7f7d7a0bf78605"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a74683ce245e682f75e7f7d7a0bf78605">&#9670;&nbsp;</a></span>warn()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::warn </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00095">95</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">DefaultAnalyzer::_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">DefaultAnalyzer::_findVictoryStart()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="Analyzer_8h_source.html#l00252">DefaultAnalyzer::_readDEString()</a>, <a class="el" href="Analyzer_8h_source.html#l00269">DefaultAnalyzer::_readHDString()</a>, <a class="el" href="Analyzer_8h_source.html#l00182">DefaultAnalyzer::_readPascalString()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="Analyzer_8h_source.html#l00216">DefaultAnalyzer::_skipDEString()</a>, <a class="el" href="Analyzer_8h_source.html#l00233">DefaultAnalyzer::_skipHDString()</a>, <a class="el" href="Analyzer_8h_source.html#l00160">DefaultAnalyzer::_skipPascalString()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
+
+</div>
+</div>
+<a id="aafb9d338dd1c693a7d4522fbd941bd7b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aafb9d338dd1c693a7d4522fbd941bd7b">&#9670;&nbsp;</a></span>fatal()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<div class="memtemplate">
+template&lt;typename... Args&gt; </div>
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::fatal </td>
+          <td>(</td>
+          <td class="paramtype">Args...&#160;</td>
+          <td class="paramname"><em>args</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00100">100</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a> , 以及 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a>.</p>
+
+</div>
+</div>
+<a id="a3257c0b3faed0899ea5b0adbe4a08d47"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3257c0b3faed0899ea5b0adbe4a08d47">&#9670;&nbsp;</a></span>logHex()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void Logger::logHex </td>
+          <td>(</td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">vector&lt; uint8_t &gt;::iterator&#160;</td>
+          <td class="paramname"><em>it</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>offset</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">string&#160;</td>
+          <td class="paramname"><em>file</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">size_t&#160;</td>
+          <td class="paramname"><em>line</em>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">inline</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00104">104</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="Analyzer_8h_source.html#l00329">DefaultAnalyzer::_printHex()</a>.</p>
+
+</div>
+</div>
+<h2 class="groupheader">类成员变量说明</h2>
+<a id="ae5ceb6f5b816565873b2da8e13fa7a43"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae5ceb6f5b816565873b2da8e13fa7a43">&#9670;&nbsp;</a></span>_logger</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">shared_ptr&lt;spdlog::logger&gt; Logger::_logger = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00034">34</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac9f545d628c4bfac9cdf9237bddaf43e"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac9f545d628c4bfac9cdf9237bddaf43e">&#9670;&nbsp;</a></span>_defaultName</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">string Logger::_defaultName = &quot;DefaultLogger&quot;</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00035">35</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a8c342ea55e87533c412f8db548bc87db"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a8c342ea55e87533c412f8db548bc87db">&#9670;&nbsp;</a></span>_sw</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">spdlog::stopwatch Logger::_sw</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00036">36</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a61aea322b8d18466fd7d1f5f26155a6b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a61aea322b8d18466fd7d1f5f26155a6b">&#9670;&nbsp;</a></span>_oss</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">ostringstream Logger::_oss</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">private</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Logger_8h_source.html">Logger.h</a> 第 <a class="el" href="Logger_8h_source.html#l00037">37</a> 行定义.</p>
+
+</div>
+</div>
+<hr/>该类的文档由以下文件生成:<ul>
+<li><a class="el" href="Logger_8h_source.html">Logger.h</a></li>
+</ul>
+</div><!-- contents -->
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

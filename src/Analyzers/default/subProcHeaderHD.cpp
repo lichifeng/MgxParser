@@ -1,9 +1,9 @@
 /**
  * \file       subProcHeaderHD.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
+ * \author     PATRICK LI (admin@aocrec.com)
  * \brief      
  * \version    0.1
- * \date       2022-09-30
+ * \date       2022-10-03
  * 
  * \copyright  Copyright (c) 2020-2022
  * 
@@ -12,11 +12,14 @@
 #include "Analyzer.h"
 #include "utils.h"
 
-void DefaultAnalyzer::_headerHDAnalyzer() {
-    int16_t  tmpInt16;
-    uint8_t* tmpPos;
+void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
+{
+    _debugFlag = debugFlag;
+    
+    const uint8_t *tmpPos;
     _readBytes(4, &DD_version);
-    if (DD_version - 1006 < 0.0001) versionCode = HD57;
+    if (DD_version - 1006 < 0.0001)
+        versionCode = HD57;
     _readBytes(4, &DD_internalVersion);
     _readBytes(4, &DD_gameOptionsVersion);
     _readBytes(4, &DD_DLCCount);
@@ -30,25 +33,28 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
     _readBytes(4, &DD_startingResourcesID);
     _readBytes(4, &DD_startingAgeID);
     _readBytes(4, &DD_endingAgeID);
-    if (DD_version >= 1005.9999) _readBytes(4, &DD_gameType);
-    _expectBytes(
-        patterns::HDseparator,
-        "[INFO] Analyzing HD-specific data section in header stream. \n", 
-        "[WARN] Unexpected validating pattern HD-specific data section in header stream. \n"
-    );
-    if (DD_version == 1000) {
-        _readBytes(2, &tmpInt16);
-        // Next 2 bytes should be: [ 60 0A ]
-        _skip(2);
-        _readBytes(tmpInt16, HD_ver1000MapName.data());
+    if (DD_version >= 1005.9999)
+        _readBytes(4, &DD_gameType);
 
+    if (!_expectBytes(patterns::HDseparator))
+    {
+        logger->warn(
+            "{}(): Validation in HD-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
+            __FUNCTION__, _distance());
+        _sendFailedSignal();
+        return;
+    }
+
+    if (DD_version == 1000)
+    {
+        _readHDString(HD_ver1000MapName);
         _skipHDString();
     }
     // Next 4 bytes should be: a3 5f 02 00
     _skip(4);
     _readBytes(4, &DD_speed);
     _readBytes(4, &DD_treatyLength);
-    _readBytes(4, &DD_populationLimit);
+    _readBytes(4, &populationLimit);
     _readBytes(4, &DD_numPlayers);
     _readBytes(4, &DD_unusedPlayerColor);
     _readBytes(4, &DD_victoryAmount);
@@ -72,9 +78,10 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
     // _readBytes(1, &HD_teamPositions);
     // _skip(1); // Unknown byte
     _skip(4);
-    if (DD_version == 1000) {
+    if (DD_version == 1000)
+    {
         _skip(120); // 40 * 3
-        _skip(4); // a3 5f 02 00
+        _skip(4);   // a3 5f 02 00
         _skip(40);
         for (size_t i = 0; i < 8; i++)
         {
@@ -83,52 +90,57 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
         _skip(16);
         _skip(4); // a3 5f 02 00
         _skip(10);
-    } else {
+    }
+    else
+    {
         // Check if HD version is between [5.0, 5.7]
         int32_t check, test;
         tmpPos = _curPos;
         _readBytes(4, &check);
         _skip(4);
-        if (DD_version >= 1005.9999) _skip(1);
+        if (DD_version >= 1005.9999)
+            _skip(1);
         _skip(15);
         _skipHDString();
         _skip(1);
-        if (DD_version >= 1004.9999) _skipHDString();
+        if (DD_version >= 1004.9999)
+            _skipHDString();
         _skipHDString();
         _skip(16);
         _readBytes(4, &test);
-        if (check != test) versionCode = HD58;
+        if (check != test)
+            versionCode = HD58;
         _curPos = tmpPos;
 
         // Read player data
         for (size_t i = 1; i < 9; i++)
         {
             _readBytes(4, &players[i].DD_DLCID);
-            _readBytes(4, &players[i].colorID);
-            if (DD_version >= 1005.9999) _skip(1);
+            _readBytes(4, &players[i].DD_colorID);
+            if (DD_version >= 1005.9999)
+                _skip(1);
             _skip(2);
             _readBytes(4, &players[i].HD_datCrc);
             _readBytes(1, &players[i].DD_MPGameVersion);
             //_readBytes(4, &players[i].HD_teamIndex); // Not correct team index
             _skip(4);
-            _readBytes(4, &players[i].civID);
+            _readBytes(4, &players[i].DD_civID);
             _readHDString(players[i].DD_AIType);
             _readBytes(1, &players[i].DD_AICivNameIndex);
-            if (DD_version >=1004.9999) _readHDString(players[i].DD_AIName);
+            if (DD_version >= 1004.9999)
+                _readHDString(players[i].DD_AIName);
             _readHDString(players[i].name);
             _readBytes(4, &players[i].type);
             _readBytes(8, &players[i].HD_steamID);
             _readBytes(4, &players[i].DD_playerNumber);
-            if (DD_version >= 1005.9999 
-                && versionCode != HD50_6 
-                && versionCode != HD57)
+            if (DD_version >= 1005.9999 && versionCode != HD50_6 && versionCode != HD57)
             {
                 _readBytes(4, &players[i].DD_RMRating);
                 _readBytes(4, &players[i].DD_DMRating);
             }
         }
-        
-        _readBytes(1, &DD_fogOfWar);
+
+        _skip(1); // _readBytes(1, &DE_fogOfWar);
         _readBytes(1, &DD_cheatNotifications);
         _readBytes(1, &DD_coloredChat);
         _skip(13); /// 9 bytes + a3 5f 02 00
@@ -152,6 +164,5 @@ void DefaultAnalyzer::_headerHDAnalyzer() {
             _skipHDString();
             _skip(4);
         }
-        
     }
 }

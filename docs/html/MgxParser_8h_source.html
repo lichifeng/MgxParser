@@ -24,7 +24,7 @@
    <div id="projectname">MgxParser
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
   </td>
  </tr>
  </tbody>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_8120d3f1f260a76221b2d525d3d2cd75.html">legacy</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -71,28 +71,34 @@ $(function() {
 <div class="title">MgxParser.h</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="preprocessor">#pragma once</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160; </div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="preprocessor">#include &quot;Record.h&quot;</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160; </div>
-<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="preprocessor">#define AOCRecord Record</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160; </div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="preprocessor">#define for_realms(rec,r) for(auto&amp; r : rec.playerData.realms)if(r.valid())</span></div>
-<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160; </div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="preprocessor">#define for_players_in_realm(r,p) for(auto p : r.players)</span></div>
-<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160; </div>
-<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#define for_players(rec,p) for(auto&amp; p : rec.playerData.players)if(p.valid())</span></div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160; </div>
-<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define for_teams(rec,t) for(auto&amp; t : rec.playerData.teams)if(t.valid())</span></div>
+<a href="MgxParser_8h.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       MgxParser.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-09</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#ifndef __MGXPARSER__</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#define __MGXPARSER__</span></div>
 <div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160; </div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#define for_players_in_team(t,p) for(auto p : t.players)</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="preprocessor">#define for_realms_in_team(t,r) int ____i = 0;for(Realm* r;____i &lt; t.players.size() &amp;&amp; (r = t.players[____i]-&gt;isFirstOfRealm);++____i)</span></div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;<span class="preprocessor">#define for_pregame_messages(r,m) for(auto&amp; m : rec.pregameMsg)</span></div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160; </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;<span class="preprocessor">#define for_ingame_messages(r,m) for(auto&amp; m : rec.ingameMsg)</span></div>
+<div class="line"><a name="l00017"></a><span class="lineno"><a class="line" href="namespaceMgxParser.html">   17</a></span>&#160;<span class="keyword">namespace </span><a class="code" href="namespaceMgxParser.html">MgxParser</a></div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;{</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    std::string <a class="code" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse</a>(<span class="keyword">const</span> uint8_t *, <span class="keywordtype">size_t</span>);</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    std::string <a class="code" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse</a>(<span class="keyword">const</span> std::string &amp;);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span> <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">pyparse</a>(<span class="keyword">const</span> <span class="keywordtype">char</span>*);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;}</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;<span class="preprocessor">#endif</span></div>
 </div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="anamespaceMgxParser_html_ab0b60e833df62fe969c18a734e711722"><div class="ttname"><a href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">MgxParser::parse</a></div><div class="ttdeci">std::string parse(const uint8_t *, size_t)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00037">MgxParser.cpp:37</a></div></div>
+<div class="ttc" id="anamespaceMgxParser_html"><div class="ttname"><a href="namespaceMgxParser.html">MgxParser</a></div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8h_source.html#l00017">MgxParser.h:17</a></div></div>
+<div class="ttc" id="anamespaceMgxParser_html_a0352edc1e5c8a71bc17cc671641fff57"><div class="ttname"><a href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a></div><div class="ttdeci">const char * pyparse(const char *)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00058">MgxParser.cpp:58</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

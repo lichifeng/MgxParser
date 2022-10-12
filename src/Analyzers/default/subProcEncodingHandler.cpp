@@ -1,17 +1,17 @@
 /**
  * \file       subProcEncodingHandler.cpp
  * \author     PATRICK LI (lichifeng@qq.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-09-30
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
 
-bool DefaultAnalyzer::_findEncodingPattern(const char* pattern, std::string& mapName, size_t patternLen)
+bool DefaultAnalyzer::_findEncodingPattern(const char *pattern, std::string &mapName, size_t patternLen)
 {
     size_t pos, posEnd;
 
@@ -29,7 +29,7 @@ bool DefaultAnalyzer::_findEncodingPattern(const char* pattern, std::string& map
 
 /**
  * \todo aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。
- * 
+ * \warning 不要随便更改这里的编码字符串，连大小写也不要改，其它地方的代码可能用于比对。
  */
 void DefaultAnalyzer::_guessEncoding()
 {
@@ -60,7 +60,7 @@ void DefaultAnalyzer::_guessEncoding()
     }
     else if (_findEncodingPattern(patterns::en_pattern, embededMapName, size(patterns::en_pattern)))
     {
-        rawEncoding = "windows-1252";
+        rawEncoding = "cp936"; // \note 兼容性更好，时候中文玩家用英文版
     }
     else if (_findEncodingPattern(patterns::es_pattern, embededMapName, size(patterns::es_pattern)))
     {
@@ -105,10 +105,6 @@ void DefaultAnalyzer::_guessEncoding()
     else if (IS_HD(versionCode) || IS_DE(versionCode))
     {
         rawEncoding = "utf-8";
-    }
-    else if (rawEncoding.size() == 0)
-    {
-        rawEncoding = "gbk";
     }
 
     if (_encodingConverter == nullptr)

@@ -1,4 +1,5 @@
 var searchData=
 [
-  ['z_5fformatter_498',['z_formatter',['../classspdlog_1_1details_1_1z__formatter.html',1,'spdlog::details']]]
+  ['_7edefaultanalyzer_408',['~DefaultAnalyzer',['../classDefaultAnalyzer.html#af1ccd631ae5f60c5aad3950d4ddb07b9',1,'DefaultAnalyzer']]],
+  ['_7eencodingconverter_409',['~EncodingConverter',['../classEncodingConverter.html#ad3438fea4838b64f24d4420a8a9bebee',1,'EncodingConverter']]]
 ];

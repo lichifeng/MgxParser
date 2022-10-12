@@ -24,7 +24,7 @@
    <div id="projectname">MgxParser
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
   </td>
  </tr>
  </tbody>
@@ -71,76 +71,140 @@ $(function() {
 <div class="title">subProcLobby.cpp</div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
-<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcessLobby.cpp</span></div>
-<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (lichifeng@qq.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<a href="subProcLobby_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       subProcLobby.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
-<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-09-30</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-03</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
-<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="src_2Analyzers_2default_2Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
 <div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
-<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a362d6fb139a07f78db71599ad51d6ba4">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a362d6fb139a07f78db71599ad51d6ba4">DefaultAnalyzer::_lobbyAnalyzer</a>() {</div>
-<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 13.3399) _skip(5);</div>
-<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 20.0599) _skip(9);</div>
-<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 26.1599) _skip(5);</div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; 9; i++)</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    {</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;        <span class="keywordflow">if</span> (players[i].resolvedTeamID != 255) {</div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;            _skip(1);</div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;        } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(1, &amp;players[i].resolvedTeamID);</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &lt; 12.2999) _skip(1);</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;<a class="code" href="classDefaultAnalyzer.html#aec63735cd6d3eeb76f7210ae4b0cd73b">revealMap</a>);</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    _skip(4);</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;mapSize);</div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;<a class="code" href="classDefaultAnalyzer.html#a5b74416b48614775e4edb2ad3ab19315">populationLimit</a>);</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(1, &amp;<a class="code" href="classDefaultAnalyzer.html#af877aa8da1a79e2cf9a9f6419084db26">gameType</a>);</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(1, &amp;<a class="code" href="classDefaultAnalyzer.html#a8d4fc98111754645aa4761ab269c163b">lockDiplomacy</a>);</div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">if</span> (IS_HD(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>) || IS_DE(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) {</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(1, &amp;<a class="code" href="classDefaultAnalyzer.html#ab8a9f7895d512465fd61f7fed89cdbb1">treatyLength</a>);</div>
-<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        _skip(4); <span class="comment">/// \note cheat codes used, what&#39;s this for?</span></div>
-<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;<span class="comment"></span>        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 13.1299) _skip(4);</div>
-<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">saveVersion</a> &gt;= 25.2199) _skip(1);</div>
-<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    }</div>
-<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160; </div>
-<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <span class="comment">// Read lobby(pregame) talks</span></div>
-<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordflow">if</span> (!IS_AOK(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>)) {</div>
-<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">string</span> tmpS;</div>
-<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        uint32_t numChat;</div>
-<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160; </div>
-<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;numChat);</div>
-<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="keywordflow">while</span> (numChat-- &gt; 0 &amp;&amp; _remainBytes() &gt;= 4)</div>
-<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        {</div>
-<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;            _readPascalString(tmpS, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
-<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;            <span class="keywordflow">if</span> (tmpS.length() &gt; 0) {</div>
-<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;                chat.emplace_back(tmpS);</div>
-<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;            } <span class="keywordflow">else</span> {</div>
-<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;                ++numChat;</div>
-<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            }</div>
-<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        }</div>
-<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    }</div>
-<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    </div>
-<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    <span class="keywordflow">if</span> (IS_DE(<a class="code" href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">versionCode</a>) &amp;&amp; _remainBytes() &gt;= 4) <a class="code" href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">_readBytes</a>(4, &amp;mapSeed);</div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;    <span class="comment">// Let it go after this.</span></div>
-<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;}</div>
+<div class="line"><a name="l00014"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#afa1ede330ae2ed410bd5fac4bbafa201">   14</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#afa1ede330ae2ed410bd5fac4bbafa201">DefaultAnalyzer::_lobbyAnalyzer</a>(<span class="keywordtype">int</span> debugFlag)</div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;{</div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">_debugFlag</a> = debugFlag;</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;    </div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">_curPos</a> = <a class="code" href="classDefaultAnalyzer.html#afcd08956548faee08c3c17a8d737eaac">_lobbyStartPos</a>;</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160; </div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 13.3399)</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;        _skip(5);</div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 20.0599)</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        _skip(9);</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 26.1599)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;        _skip(5);</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">size_t</span> i = 1; i &lt; 9; i++)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[i].resolvedTeamID != 255)</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        {</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;            _skip(1);</div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;        }</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        {</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(1, &amp;<a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[i].resolvedTeamID);</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;        }</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    }</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &lt; 12.2999)</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        _skip(1);</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDataModel.html#a7f1042f74c1a65c0a0a264aa6e01b0c6">revealMap</a>);</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">fogOfWar</a>);</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a>);</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> == <a class="code" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a>)</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    {</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a>);</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> &lt; 40)</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        {</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;            <a class="code" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> *= 25;</div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        }</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;    }</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;    <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;    {</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        _skip(4);</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;    }</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(1, &amp;<a class="code" href="classDataModel.html#a696f78bdd9e25b7f1c7e8ddaee0ebb7f">gameType</a>);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;    <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(1, &amp;<a class="code" href="classDataModel.html#a2870facf39336fda3196cf54c428621d">lockDiplomacy</a>);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) || <a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;    {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(1, &amp;<a class="code" href="classDataModel.html#a0ffc1b2eee31798c636b1f18c4c1873b">treatyLength</a>);</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;        _skip(4); <span class="comment">/// \note cheat codes used, what&#39;s this for?</span></div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;<span class="comment"></span>        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 13.1299)</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;            _skip(4);</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> &gt;= 25.2199)</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            _skip(1);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;    }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;    <span class="comment">// Read lobby(pregame) talks</span></div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">if</span> (!<a class="code" href="Helper_8h.html#a598c72a94145cb31a6175f256130036e">IS_AOK</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <a class="code" href="structChat.html">Chat</a> <a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;        int32_t numChat;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;numChat);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (numChat &gt; 1000) <span class="comment">// numChat is considered &lt;= 50. Incase future versions set a bigger limit, use 1000 here.</span></div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">logger</a>-&gt;<a class="code" href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">warn</a>(</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;                <span class="stringliteral">&quot;{}(): Pregame chat count is too big. @{}.&quot;</span>,</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;                __FUNCTION__, _distance());</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;            _sendFailedSignal();</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;            numChat = 50;</div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        }</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">while</span> (numChat-- &gt; 0 &amp;&amp; _remainBytes() &gt;= 4)</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;        {</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a734cb7189658e5e3ac349e655b09bfed">_readPascalString</a>(<a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>, <span class="keyword">true</span>, <span class="keyword">true</span>);</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;            <span class="keywordflow">if</span> (<a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>.length() &gt; 3) <span class="comment">// 有时候有长度为1，内容为空的。一般来说因为有“@#2”的存在，至少为3</span></div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160;            {</div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;                <span class="keywordflow">if</span> (<span class="charliteral">&#39;\0&#39;</span> == <a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>.back())</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;                {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;                    <span class="keywordflow">if</span> (<a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>.size() &gt; 0)</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;                        <a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>.resize(<a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>.<a class="code" href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">msg</a>.size() - 1);</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;                }</div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160; </div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160;                <a class="code" href="classDataModel.html#ac7d1593db8cfe5cf0fcc1900880afc24">chat</a>.emplace_back(<a class="code" href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a>);</div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;            }</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;            <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            {</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;                <span class="keywordflow">if</span> (!<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>))</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160;                    ++numChat; <span class="comment">/// \todo Verify this.</span></div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;<span class="comment"></span>            }</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;        }</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;    }</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160; </div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160;    <span class="keywordflow">if</span> (<a class="code" href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a>(<a class="code" href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">versionCode</a>) &amp;&amp; _remainBytes() &gt;= 4)</div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(4, &amp;<a class="code" href="classDataModel.html#afaaa5ba0298b1ea64dc3548c2d5b77f7">DE_mapSeed</a>);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;    <span class="comment">// Let it go after this.</span></div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
-<div class="ttc" id="asrc_2Analyzers_2default_2Analyzer_8h_html"><div class="ttname"><a href="src_2Analyzers_2default_2Analyzer_8h.html">Analyzer.h</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a362d6fb139a07f78db71599ad51d6ba4"><div class="ttname"><a href="classDefaultAnalyzer.html#a362d6fb139a07f78db71599ad51d6ba4">DefaultAnalyzer::_lobbyAnalyzer</a></div><div class="ttdeci">void _lobbyAnalyzer()</div><div class="ttdef"><b>Definition:</b> <a href="subProcLobby_8cpp_source.html#l00014">subProcLobby.cpp:14</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a8d4fc98111754645aa4761ab269c163b"><div class="ttname"><a href="classDefaultAnalyzer.html#a8d4fc98111754645aa4761ab269c163b">DefaultAnalyzer::lockDiplomacy</a></div><div class="ttdeci">uint8_t lockDiplomacy</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00195">src/Analyzers/default/Analyzer.h:195</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_acec5fc3632913190a73b8af2c2f0206d"><div class="ttname"><a href="classDefaultAnalyzer.html#acec5fc3632913190a73b8af2c2f0206d">DefaultAnalyzer::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00086">src/Analyzers/default/Analyzer.h:86</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_aec63735cd6d3eeb76f7210ae4b0cd73b"><div class="ttname"><a href="classDefaultAnalyzer.html#aec63735cd6d3eeb76f7210ae4b0cd73b">DefaultAnalyzer::revealMap</a></div><div class="ttdeci">uint32_t revealMap</div><div class="ttdoc">0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00101">src/Analyzers/default/Analyzer.h:101</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a5b74416b48614775e4edb2ad3ab19315"><div class="ttname"><a href="classDefaultAnalyzer.html#a5b74416b48614775e4edb2ad3ab19315">DefaultAnalyzer::populationLimit</a></div><div class="ttdeci">uint32_t populationLimit</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00193">src/Analyzers/default/Analyzer.h:193</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a3975aa43ef668e44ecb31c613c71def0"><div class="ttname"><a href="classDefaultAnalyzer.html#a3975aa43ef668e44ecb31c613c71def0">DefaultAnalyzer::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，所以类型定义的时候用 int 不用 int32_t，以示区分</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00087">src/Analyzers/default/Analyzer.h:87</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_ab8a9f7895d512465fd61f7fed89cdbb1"><div class="ttname"><a href="classDefaultAnalyzer.html#ab8a9f7895d512465fd61f7fed89cdbb1">DefaultAnalyzer::treatyLength</a></div><div class="ttdeci">uint8_t treatyLength</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00196">src/Analyzers/default/Analyzer.h:196</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_a03ed3a9d1c9f3deed5597320039ff63c"><div class="ttname"><a href="classDefaultAnalyzer.html#a03ed3a9d1c9f3deed5597320039ff63c">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(uintmax_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00235">src/Analyzers/default/Analyzer.h:235</a></div></div>
-<div class="ttc" id="aclassDefaultAnalyzer_html_af877aa8da1a79e2cf9a9f6419084db26"><div class="ttname"><a href="classDefaultAnalyzer.html#af877aa8da1a79e2cf9a9f6419084db26">DefaultAnalyzer::gameType</a></div><div class="ttdeci">uint8_t gameType</div><div class="ttdef"><b>Definition:</b> <a href="src_2Analyzers_2default_2Analyzer_8h_source.html#l00194">src/Analyzers/default/Analyzer.h:194</a></div></div>
+<div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a40da6c86e39c22a4c2e6f20ae319ecd1"><div class="ttname"><a href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">const uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00399">Analyzer.h:399</a></div></div>
+<div class="ttc" id="astructChat_html_a7a6cef2c1130fe848d261bdebb539bb2"><div class="ttname"><a href="structChat.html#a7a6cef2c1130fe848d261bdebb539bb2">Chat::msg</a></div><div class="ttdeci">string msg</div><div class="ttdef"><b>Definition:</b> <a href="Chat_8h_source.html#l00020">Chat.h:20</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a5665c3f15b372bfcf507fd00a081c3f9"><div class="ttname"><a href="classDataModel.html#a5665c3f15b372bfcf507fd00a081c3f9">DataModel::versionCode</a></div><div class="ttdeci">VERSIONCODE versionCode</div><div class="ttdoc">这是自己定义的一个值，用于简化版本判断</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00072">DataModel.h:72</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a63ef98daf7a67c5bc785e130e1a5b1b4"><div class="ttname"><a href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">DataModel::fogOfWar</a></div><div class="ttdeci">uint32_t fogOfWar</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00178">DataModel.h:178</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_aca741ab0b6ff91752723243f6e9f40b2"><div class="ttname"><a href="classDefaultAnalyzer.html#aca741ab0b6ff91752723243f6e9f40b2">DefaultAnalyzer::logger</a></div><div class="ttdeci">Logger * logger</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00111">Analyzer.h:111</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a2870facf39336fda3196cf54c428621d"><div class="ttname"><a href="classDataModel.html#a2870facf39336fda3196cf54c428621d">DataModel::lockDiplomacy</a></div><div class="ttdeci">uint8_t lockDiplomacy</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00182">DataModel.h:182</a></div></div>
+<div class="ttc" id="aHelper_8h_html_aef60e9bcc22a670c1b3549ce6d1da688"><div class="ttname"><a href="Helper_8h.html#aef60e9bcc22a670c1b3549ce6d1da688">IS_DE</a></div><div class="ttdeci">#define IS_DE(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00024">Helper.h:24</a></div></div>
+<div class="ttc" id="astructChat_html"><div class="ttname"><a href="structChat.html">Chat</a></div><div class="ttdef"><b>Definition:</b> <a href="Chat_8h_source.html#l00017">Chat.h:17</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a752b8a336c226a692394b391f17ec8c0"><div class="ttname"><a href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">DataModel::populationLimit</a></div><div class="ttdeci">uint32_t populationLimit</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00180">DataModel.h:180</a></div></div>
+<div class="ttc" id="aclassDataModel_html_ac7d1593db8cfe5cf0fcc1900880afc24"><div class="ttname"><a href="classDataModel.html#ac7d1593db8cfe5cf0fcc1900880afc24">DataModel::chat</a></div><div class="ttdeci">vector&lt; Chat &gt; chat</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00184">DataModel.h:184</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a738a428169226d54ad2c0e211768569d"><div class="ttname"><a href="classDataModel.html#a738a428169226d54ad2c0e211768569d">DataModel::mapSize</a></div><div class="ttdeci">uint32_t mapSize</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00179">DataModel.h:179</a></div></div>
+<div class="ttc" id="aclassDataModel_html_afaaa5ba0298b1ea64dc3548c2d5b77f7"><div class="ttname"><a href="classDataModel.html#afaaa5ba0298b1ea64dc3548c2d5b77f7">DataModel::DE_mapSeed</a></div><div class="ttdeci">int32_t DE_mapSeed</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00185">DataModel.h:185</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_afa1ede330ae2ed410bd5fac4bbafa201"><div class="ttname"><a href="classDefaultAnalyzer.html#afa1ede330ae2ed410bd5fac4bbafa201">DefaultAnalyzer::_lobbyAnalyzer</a></div><div class="ttdeci">void _lobbyAnalyzer(int debugFlag=0)</div><div class="ttdef"><b>Definition:</b> <a href="subProcLobby_8cpp_source.html#l00014">subProcLobby.cpp:14</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a499a1c8ac80eb064ded2baa2d253da01"><div class="ttname"><a href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">DataModel::players</a></div><div class="ttdeci">array&lt; Player, 9 &gt; players</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00119">DataModel.h:119</a></div></div>
+<div class="ttc" id="aoperations_8cpp_html_a7a394a51a8219b750fa83fb72dd06337"><div class="ttname"><a href="operations_8cpp.html#a7a394a51a8219b750fa83fb72dd06337">tmpChat</a></div><div class="ttdeci">Chat tmpChat</div><div class="ttdef"><b>Definition:</b> <a href="operations_8cpp_source.html#l00019">operations.cpp:19</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_afcd08956548faee08c3c17a8d737eaac"><div class="ttname"><a href="classDefaultAnalyzer.html#afcd08956548faee08c3c17a8d737eaac">DefaultAnalyzer::_lobbyStartPos</a></div><div class="ttdeci">const uint8_t * _lobbyStartPos</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00413">Analyzer.h:413</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a696f78bdd9e25b7f1c7e8ddaee0ebb7f"><div class="ttname"><a href="classDataModel.html#a696f78bdd9e25b7f1c7e8ddaee0ebb7f">DataModel::gameType</a></div><div class="ttdeci">uint8_t gameType</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00181">DataModel.h:181</a></div></div>
+<div class="ttc" id="aHelper_8h_html_ab55faf40e7bd229cdeab3b84e974ba52"><div class="ttname"><a href="Helper_8h.html#ab55faf40e7bd229cdeab3b84e974ba52">IS_HD</a></div><div class="ttdeci">#define IS_HD(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00023">Helper.h:23</a></div></div>
+<div class="ttc" id="aclassLogger_html_a74683ce245e682f75e7f7d7a0bf78605"><div class="ttname"><a href="classLogger.html#a74683ce245e682f75e7f7d7a0bf78605">Logger::warn</a></div><div class="ttdeci">void warn(Args... args)</div><div class="ttdef"><b>Definition:</b> <a href="Logger_8h_source.html#l00095">Logger.h:95</a></div></div>
+<div class="ttc" id="aHelper_8h_html_a598c72a94145cb31a6175f256130036e"><div class="ttname"><a href="Helper_8h.html#a598c72a94145cb31a6175f256130036e">IS_AOK</a></div><div class="ttdeci">#define IS_AOK(v)</div><div class="ttdef"><b>Definition:</b> <a href="Helper_8h_source.html#l00018">Helper.h:18</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a734cb7189658e5e3ac349e655b09bfed"><div class="ttname"><a href="classDefaultAnalyzer.html#a734cb7189658e5e3ac349e655b09bfed">DefaultAnalyzer::_readPascalString</a></div><div class="ttdeci">void _readPascalString(string &amp;s, bool convertEncoding=true, bool lengthLong=false)</div><div class="ttdoc">跳过“长度（2字节/4字节）+字符串内容”格式的字符串</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00182">Analyzer.h:182</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a0ffc1b2eee31798c636b1f18c4c1873b"><div class="ttname"><a href="classDataModel.html#a0ffc1b2eee31798c636b1f18c4c1873b">DataModel::treatyLength</a></div><div class="ttdeci">uint8_t treatyLength</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00183">DataModel.h:183</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a15a2ff17db72361910bc048e3bf07020"><div class="ttname"><a href="classDefaultAnalyzer.html#a15a2ff17db72361910bc048e3bf07020">DefaultAnalyzer::_debugFlag</a></div><div class="ttdeci">int _debugFlag</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00418">Analyzer.h:418</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a49dbf533a0985e4bc078ba5bce940d21"><div class="ttname"><a href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">DataModel::saveVersion</a></div><div class="ttdeci">float saveVersion</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00071">DataModel.h:71</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00149">Analyzer.h:149</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a7f1042f74c1a65c0a0a264aa6e01b0c6"><div class="ttname"><a href="classDataModel.html#a7f1042f74c1a65c0a0a264aa6e01b0c6">DataModel::revealMap</a></div><div class="ttdeci">uint32_t revealMap</div><div class="ttdoc">0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00086">DataModel.h:86</a></div></div>
+<div class="ttc" id="aDataModel_8h_html_a9051214a759b9ab7e73c70ec6fea815b"><div class="ttname"><a href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></div><div class="ttdeci">#define UINT32_INIT</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00014">DataModel.h:14</a></div></div>
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">
