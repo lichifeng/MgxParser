@@ -46,7 +46,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
     }
 
     uint16_t nameLen;
-    uint8_t *namePtr;
+    const uint8_t *namePtr;
     for (size_t i = 0; i < 9; i++)
     {
         players[i].slot = i;

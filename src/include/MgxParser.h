@@ -1,12 +1,12 @@
 /**
  * \file       MgxParser.h
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-09
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #ifndef __MGXPARSER__
@@ -14,8 +14,10 @@
 
 #include <string>
 
-namespace MgxParser {
-    std::string parse(const std::string&);
+namespace MgxParser
+{
+    std::string parse(const uint8_t *, size_t);
+    std::string parse(const std::string &);
 }
 
 #endif

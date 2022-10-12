@@ -16,7 +16,7 @@
 
 #include "Helper.h"
 
-std::string hexStr(unsigned char *&data, int len, bool skip = false);
+std::string hexStr(const unsigned char *&data, int len, bool skip = false);
 
 template <typename T>
 T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)
