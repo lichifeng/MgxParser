@@ -1,12 +1,12 @@
 /**
  * \file       MgxParser.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-09
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include <string>
@@ -15,9 +15,10 @@
 
 using namespace std;
 
-string MgxParser::parse(const string& recfile) {
+string MgxParser::parse(const string &recfile)
+{
     auto a = DefaultAnalyzer(recfile);
-    
+
     try
     {
         a.run();
@@ -31,4 +32,15 @@ string MgxParser::parse(const string& recfile) {
     a.message = a.logger->dumpStr();
 
     return a.toJson();
+}
+
+extern "C"
+{
+    const char *MgxParser::pyparse(const char *recfile)
+    {
+        string j = MgxParser::parse(recfile).c_str();
+        char* retStr = (char*)malloc(j.size() + 1);
+        strcpy(retStr, j.c_str());
+        return retStr;
+    }
 }

@@ -24,7 +24,7 @@
    <div id="projectname">MgxParser
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
   </td>
  </tr>
  </tbody>
@@ -70,11 +70,11 @@ $(function() {
 <div class="textblock"><p>*This version(@PROJECT_VERSION@) was compiled on @COMPILEDATE@*</p>
 <h1><a class="anchor" id="autotoc_md1"></a>
 Introduction</h1>
-<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> is a Age of Empires II game record parser written in C++.</p>
+<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> is a C++ lib used to parse Age of Empires II game records.</p>
 <p>It is firstly developed at 2020 to support running of aocrec.com as a replacement of a prior php parser( which was a modified version of recanalyst).</p>
 <h1><a class="anchor" id="autotoc_md2"></a>
 Basic usage</h1>
-<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> takes a record file path as input and returns a JSON string contains important information about this record.</p>
+<p><a class="el" href="namespaceMgxParser.html">MgxParser</a> exports <code><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">parse()</a></code> function which takes a record file path as input and returns a JSON string contains important information about this record.</p>
 <p>No error was expected even if something unexpected happend in parsing process. Users should check parsing result by the value of key <code>status</code> and <code>message</code> in JSON response.</p>
 <p>Mini maps can be generated two forms.</p>
 <p>With <code>-m mapname.png</code>, a typical map was generated, and</p>
@@ -121,6 +121,15 @@ How to compile</h1>
 <div class="line">#Last, compile it!</div>
 <div class="line">make</div>
 </div><!-- fragment --><h1><a class="anchor" id="autotoc_md6"></a>
+Compile with cmake-js</h1>
+<ul>
+<li>Use <code>add_subdirectories()</code> funtion of CMake to integrate <a class="el" href="namespaceMgxParser.html">MgxParser</a> into a Node.js addon.</li>
+<li><code>set(NODE_ADDON 1)</code> in root <code>CMakeLists.txt</code>, <a class="el" href="namespaceMgxParser.html">MgxParser</a> should adjust the proper CMake settings automatically.</li>
+<li>Put <code>$&lt;TARGET_OBJECTS:<a class="el" href="namespaceMgxParser.html">MgxParser</a>&gt;</code> as an <code>&lt;item&gt;</code> of <code>add_library()</code> directive of root <code>CMakeLists.txt</code>.</li>
+<li>Include <code>src/include/MgxParse.h</code>.</li>
+</ul>
+<p>Then <code><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse()</a></code> should be available.</p>
+<h1><a class="anchor" id="autotoc_md7"></a>
 Caution</h1>
 <p>This project is still under development. <b>No warrenty for anything!</b> </p>
 </div></div><!-- contents -->

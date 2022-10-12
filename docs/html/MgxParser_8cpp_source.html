@@ -24,7 +24,7 @@
    <div id="projectname">MgxParser
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
-   <div id="projectbrief">A C++ program used to extract useful information from Age of Empires II game records.</div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
   </td>
  </tr>
  </tbody>
@@ -74,12 +74,12 @@ $(function() {
 <a href="MgxParser_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
 <div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       MgxParser.cpp</span></div>
 <div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
-<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief      </span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
 <div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
 <div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-09</span></div>
-<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
-<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> * </span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
 <div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
 <div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
 <div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
@@ -88,25 +88,38 @@ $(function() {
 <div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
 <div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160;<span class="keyword">using namespace </span>std;</div>
 <div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160; </div>
-<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">string</span> <a class="code" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a>(<span class="keyword">const</span> <span class="keywordtype">string</span>&amp; recfile) {</div>
-<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    <span class="keyword">auto</span> a = <a class="code" href="classDefaultAnalyzer.html">DefaultAnalyzer</a>(recfile);</div>
-<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    </div>
-<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160;    <span class="keywordflow">try</span></div>
-<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    {</div>
-<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;        a.run();</div>
-<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    }</div>
-<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    <span class="keywordflow">catch</span> (<span class="keyword">const</span> exception &amp;e)</div>
-<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    {</div>
-<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        a.logger-&gt;fatal(<span class="stringliteral">&quot;Exception: {}&quot;</span>, e.what());</div>
-<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;    }</div>
-<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160; </div>
-<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;    a.parseTime = a.logger-&gt;elapsed();</div>
-<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    a.message = a.logger-&gt;dumpStr();</div>
-<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160; </div>
-<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    <span class="keywordflow">return</span> a.toJson();</div>
-<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;}</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;<span class="keywordtype">string</span> <a class="code" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a>(<span class="keyword">const</span> <span class="keywordtype">string</span> &amp;recfile)</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;{</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    <span class="keyword">auto</span> a = <a class="code" href="classDefaultAnalyzer.html">DefaultAnalyzer</a>(recfile);</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    <span class="keywordflow">try</span></div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160;    {</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;        a.run();</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    }</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">catch</span> (<span class="keyword">const</span> exception &amp;e)</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;    {</div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        a.logger-&gt;fatal(<span class="stringliteral">&quot;Exception: {}&quot;</span>, e.what());</div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;    }</div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160; </div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160;    a.parseTime = a.logger-&gt;elapsed();</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;    a.message = a.logger-&gt;dumpStr();</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160; </div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;    <span class="keywordflow">return</span> a.toJson();</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;}</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160; </div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;<span class="keyword">extern</span> <span class="stringliteral">&quot;C&quot;</span></div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;{</div>
+<div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">   39</a></span>&#160;    <span class="keyword">const</span> <span class="keywordtype">char</span> *<a class="code" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *recfile)</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    {</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;        <span class="keywordtype">string</span> j = <a class="code" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a>(recfile).c_str();</div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;        <span class="keywordtype">char</span>* retStr = (<span class="keywordtype">char</span>*)malloc(j.size() + 1);</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        strcpy(retStr, j.c_str());</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="keywordflow">return</span> retStr;</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;    }</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;}</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
+<div class="ttc" id="anamespaceMgxParser_html_a0352edc1e5c8a71bc17cc671641fff57"><div class="ttname"><a href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a></div><div class="ttdeci">const char * pyparse(const char *)</div><div class="ttdef"><b>Definition:</b> <a href="MgxParser_8cpp_source.html#l00039">MgxParser.cpp:39</a></div></div>
 <div class="ttc" id="aclassDefaultAnalyzer_html"><div class="ttname"><a href="classDefaultAnalyzer.html">DefaultAnalyzer</a></div><div class="ttdoc">默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00040">Analyzer.h:40</a></div></div>
 <div class="ttc" id="anamespaceMgxParser_html_a08c518fad4fd81be66769ea95e2279d6"><div class="ttname"><a href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a></div><div class="ttdeci">std::string parse(const std::string &amp;)</div></div>
 <div class="ttc" id="aMgxParser_8h_html"><div class="ttname"><a href="MgxParser_8h.html">MgxParser.h</a></div></div>

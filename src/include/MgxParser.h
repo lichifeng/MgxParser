@@ -16,6 +16,7 @@
 
 namespace MgxParser {
     std::string parse(const std::string&);
+    extern "C" const char* pyparse(const char*);
 }
 
 #endif
