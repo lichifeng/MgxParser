@@ -54,6 +54,12 @@ string DataModel::toJson()
     // Report
     j["duration"] = duration;
     j["message"] = message;
+    if (!DD_guid.empty()) {
+        j["guidRaw"] = DD_guid;
+    } else {
+        j["guidRaw"] = retroGuid;
+    }
+    j["parser"] = PARSER_VERSION_VERBOSE;
 
     // Players
     for (auto &p : players)

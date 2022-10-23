@@ -60,13 +60,19 @@ void DefaultAnalyzer::_handleAction()
         }
         else if (RESEARCH_CASTLE == (int)techID)
         {
-            players[playerSlot].castleTime = duration + 0.5 \
-            + (8 == players[playerSlot].civID ? 160000 : 160000 / 1.10);
+            players[playerSlot].castleTime = duration + 0.5 + (8 == players[playerSlot].civID ? 160000 : 160000 / 1.10);
         }
         else if (RESEARCH_IMPERIAL == (int)techID)
         {
-            players[playerSlot].imperialTime = duration + 0.5 \
-            + (8 == players[playerSlot].civID ? 190000 : 190000 / 1.10);
+            players[playerSlot].imperialTime = duration + 0.5 + (8 == players[playerSlot].civID ? 190000 : 190000 / 1.10);
+        }
+        break;
+
+    case COMMAND_MOVE:
+        if (nullptr == _firstMoveCmd) {
+            _firstMoveCmd = _curPos;
+            _firstMoveTime = duration;
+            //logger->info(hexStr(_curPos, 20, true));
         }
         break;
 

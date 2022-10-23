@@ -29,13 +29,14 @@ aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/DataModels DATAMODELS)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
+aux_source_directory(./libs/md5 MD5)
 
 if (NODE_ADDON)
-    add_library(${PROJECT_NAME} OBJECT ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+    add_library(${PROJECT_NAME} OBJECT ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
 elseif(PYTHON_MODULE)
-    add_library(${PROJECT_NAME} SHARED ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+    add_library(${PROJECT_NAME} SHARED ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
 else()
-    add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS})
+    add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
 endif()
 
 # Import dependencies

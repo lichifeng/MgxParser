@@ -46,6 +46,8 @@ Pure json output without map generation is very cheap with it. Normally cost
 These libraries are required to build MgxParser:
 - **CImg(bundled)**: Used to generate mini maps. This library is bundled into `libs/CImg`
   and compiled with MgxParser.
+- **movfuscator**: md5 function in this project was used to generate retroGuid
+  of record. [Project page](https://github.com/xoreaxeaxeax/movfuscator/blob/ea37dae93fbcd93f642c71a53878da588bd7ddb4/validation/crypto-algorithms/md5_test.c)
 - **libpng**: Required by CImg. 
   ```sh
   sudo apt-get install libpng-dev
@@ -98,6 +100,10 @@ Then `MgxParser::parse()` should be available.
 ## Version log
 - **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded
   record. All operations are done in memory without file storage.
+
+## Resources
+Find records for test: https://www.ageofempires.com/stats/ageiide
+Github: https://github.com/topics/age-of-empires
 
 ## Caution
 This project is still under development. **No warrenty for anything!**

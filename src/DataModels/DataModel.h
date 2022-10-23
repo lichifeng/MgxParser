@@ -200,4 +200,6 @@ public:
     string message;                        ///< 对 \p status 的具体说明
     string parseMode = "MgxParser as Node Addon"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
     double parseTime = 0;                  ///< 解析耗时（毫秒）
+
+    string retroGuid;
 };

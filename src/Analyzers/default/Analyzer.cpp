@@ -251,7 +251,12 @@ PHASE2_FALLBACK:
 
     _readBodyCommands(23);
 
+    // ************
+    // *  Addons  *
+    // ************
+    // Do some additional jobs
     _guessWinner(24);
+    //_genRetroGuid(25);
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)

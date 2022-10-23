@@ -18,8 +18,6 @@
 #include "MapColors.h"
 #include "TileStructures.h"
 
-//#include "../Analyzers/default/Analyzer.h"
-
 using namespace std;
 
 template <typename T, typename M>

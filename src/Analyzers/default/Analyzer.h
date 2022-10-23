@@ -215,7 +215,7 @@ protected:
     {
         int16_t l[2];
         _readBytes(4, l);
-        if (l[0] != 2656) // 0x60 0x0a int16_t
+        if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
         {
             logger->warn("_skipDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
             _sendFailedSignal();
@@ -232,7 +232,7 @@ protected:
     {
         int16_t l;
         _readBytes(2, &l);
-        if (*(uint16_t *)_curPos != 2656) // 0x60 0x0a int16_t
+        if (*(uint16_t *)_curPos != 2656 || l > _remainBytes()) // 0x60 0x0a int16_t
         {
             logger->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
             _sendFailedSignal();
@@ -390,8 +390,10 @@ protected:
 
     void _handleAction();
 
-    // guess winner
+    // Some additional jobs
     void _guessWinner(int);
+    void _genRetroGuid(int);
+
 
     ifstream _f;             ///< 读取后的录像文件数据
     const uint8_t *_b;       ///< 以字节数组输入时的原始数组
@@ -420,4 +422,7 @@ protected:
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
     int _inputType = FILE_INPUT;
+
+    const uint8_t *_firstMoveCmd = nullptr; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
+    uint32_t _firstMoveTime = 0;
 };

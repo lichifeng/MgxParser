@@ -23,6 +23,8 @@
 #define COMMAND_BUILD           0x66
 #define COMMAND_TRIBUTE         0x6c
 #define COMMAND_POSTGAME        0xff
+#define COMMAND_MOVE            0x03
+
 #define RESEARCH_FEUDAL         101
 #define RESEARCH_CASTLE         102
 #define RESEARCH_IMPERIAL       103

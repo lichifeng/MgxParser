@@ -37,7 +37,7 @@ public:
     string DD_AIName;
     string name = "";
     uint32_t type = 999; ///< 0~6: absent, closed, human, eliminated, computer, cyborg, spectator
-    uint64_t HD_steamID = 0;
+    uint64_t HD_steamID = 0; ///< https://developer.valvesoftware.com/wiki/Steam_Web_API
     uint32_t DE_profileID = 0;
     int32_t DD_playerNumber = -1; ///< \todo 这个和index/slot怎么区别呢？
     uint32_t DD_RMRating = 0;
