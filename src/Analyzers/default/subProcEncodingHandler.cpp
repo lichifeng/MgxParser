@@ -60,7 +60,7 @@ void DefaultAnalyzer::_guessEncoding()
     }
     else if (_findEncodingPattern(patterns::en_pattern, embededMapName, size(patterns::en_pattern)))
     {
-        rawEncoding = "cp936"; // \note 兼容性更好，时候中文玩家用英文版
+        rawEncoding = "cp936"; // \note 兼容性更好，有时候中文玩家会用英文版
     }
     else if (_findEncodingPattern(patterns::es_pattern, embededMapName, size(patterns::es_pattern)))
     {

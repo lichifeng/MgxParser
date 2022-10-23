@@ -55,4 +55,13 @@ public:
     int32_t slot = -1;             ///< This number is not originally stored in a record. A slot means a seat in a game. Slots can operate a same index.
     vector<uint8_t> searchPattern; ///< Used to locate player data in startinfo section
     uint32_t dataOffset = 0;       ///< Offset from header stream start of player data in startinfo section. Keep this default 0.
+
+    int32_t resigned = -1;
+    bool disconnected = false;
+
+    int32_t feudalTime = -1;
+    int32_t castleTime = -1;
+    int32_t imperialTime = -1;
+
+    bool isWinner = false;
 };

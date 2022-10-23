@@ -82,9 +82,9 @@ void DefaultAnalyzer::_handleOpCommand()
     _readBytes(4, &cmdLen);
 
     pNext = _remainBytes() < cmdLen ? _curStream->data() + _curStream->size() : _curPos + cmdLen;
-    _readBytes(1, &cmd);
+    //_readBytes(1, &cmd);
 
-    // handleCmd(cmd);
+    _handleAction();
 
     _curPos = pNext;
 }

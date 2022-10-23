@@ -198,6 +198,6 @@ public:
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
     string status = "good";                ///< 解析完成类型：good, warning, fatal, etc.
     string message;                        ///< 对 \p status 的具体说明
-    string parseMode = "MgxParser Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
+    string parseMode = "MgxParser as Node Addon"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
     double parseTime = 0;                  ///< 解析耗时（毫秒）
 };

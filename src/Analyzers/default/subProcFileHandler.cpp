@@ -12,10 +12,6 @@
 #include "zlib.h"
 #include "Analyzer.h"
 
-void DefaultAnalyzer::_loadBuffer()
-{
-}
-
 void DefaultAnalyzer::_loadFile()
 {
     auto p = filesystem::path(path);

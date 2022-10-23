@@ -115,8 +115,6 @@ public:
 protected:
     void _loadFile(); ///< 从文件中加载数据流
 
-    void _loadBuffer(); ///< 从Buffer(包含数据的数组)中加载数据
-
     bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
 
     int _inflateRawHeader(); ///< 解压 header 数据
@@ -389,6 +387,11 @@ protected:
     void _handleOpViewlock();
     void _handleOpChat();
     void _handleOpCommand();
+
+    void _handleAction();
+
+    // guess winner
+    void _guessWinner(int);
 
     ifstream _f;             ///< 读取后的录像文件数据
     const uint8_t *_b;       ///< 以字节数组输入时的原始数组

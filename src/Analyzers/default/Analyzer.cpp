@@ -37,7 +37,6 @@ void DefaultAnalyzer::run()
     else
     {
         _debugFlag = 2;
-        _loadBuffer();
     }
 
     // Try to extract header&body streams
@@ -251,6 +250,8 @@ PHASE2_FALLBACK:
     _switchStream(BODY_STRM);
 
     _readBodyCommands(23);
+
+    _guessWinner(24);
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)
