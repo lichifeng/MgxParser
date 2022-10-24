@@ -15,7 +15,7 @@
 void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
 {
     _debugFlag = debugFlag;
-    
+
     if (saveVersion >= 25.2199)
         _readBytes(4, &DE_build);
     if (saveVersion >= 26.1599)
@@ -181,6 +181,13 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     _readBytes(8, &DE_numAIFiles);
     for (size_t i = 0; i < DE_numAIFiles; i++)
     {
+        if (DE_numAIFiles > 1000) {
+            logger->warn(
+                "Unusually DE_numAIFiles({}) in DE header, Debugflag:{}, Location:{}",
+                DE_numAIFiles, _debugFlag, _distance());
+            _sendFailedSignal();
+            return; // \todo 有必要检查所有使用了SKIP的循环，防止越界。或者在SKIP中加上边界检查。
+        }
         _skip(4);
         _skipDEString(); /// \todo AI FILENAMES deserve to be recorded.
         _skip(4);

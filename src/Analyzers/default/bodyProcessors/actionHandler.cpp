@@ -69,9 +69,10 @@ void DefaultAnalyzer::_handleAction()
         break;
 
     case COMMAND_MOVE:
-        if (nullptr == _firstMoveCmd) {
-            _firstMoveCmd = _curPos;
-            _firstMoveTime = duration;
+        if (_earlyMoveCnt < EARLYMOVE_USED) {
+            _earlyMoveCmd[_earlyMoveCnt] = _curPos;
+            _earlyMoveTime[_earlyMoveCnt] = duration;
+            ++_earlyMoveCnt;
             //logger->info(hexStr(_curPos, 20, true));
         }
         break;

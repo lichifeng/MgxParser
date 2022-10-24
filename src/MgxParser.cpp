@@ -15,7 +15,7 @@
 
 using namespace std;
 
-string MgxParser::parse(const string &recfile)
+string MgxParser::parse(const string &recfile, int mapType)
 {
     auto a = DefaultAnalyzer(recfile);
 
@@ -31,10 +31,14 @@ string MgxParser::parse(const string &recfile)
     a.parseTime = a.logger->elapsed();
     a.message = a.logger->dumpStr();
 
+    if (mapType != NO_MAP) {
+        a.generateMap("testmap.png", 300, 150, mapType == HD_MAP);
+    }
+
     return a.toJson();
 }
 
-string MgxParser::parse(const uint8_t *buf, size_t n)
+string MgxParser::parse(const uint8_t *buf, size_t n, int mapType)
 {
     auto a = DefaultAnalyzer(buf, n);
 
@@ -49,6 +53,10 @@ string MgxParser::parse(const uint8_t *buf, size_t n)
 
     a.parseTime = a.logger->elapsed();
     a.message = a.logger->dumpStr();
+
+    if (mapType != NO_MAP) {
+        a.generateMap("testmap.png", 300, 150, mapType == HD_MAP);
+    }
 
     return a.toJson();
 }

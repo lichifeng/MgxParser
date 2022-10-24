@@ -11,6 +11,7 @@
 
 #include <map>
 #include <array>
+#include <string>
 #include "Analyzer.h"
 
 using namespace std;
@@ -31,7 +32,7 @@ void DefaultAnalyzer::_guessWinner(int debugFlag)
 {
     _debugFlag = debugFlag;
 
-    map<uint8_t, TeamCredit> winnerCredits;
+    multimap<uint8_t, TeamCredit> winnerCredits;
     uint32_t indexMax[9] = {0};
     uint8_t indexTeam[9] = {0};
     TeamCredit tc;
@@ -84,6 +85,11 @@ void DefaultAnalyzer::_guessWinner(int debugFlag)
 
     for (auto &t : winnerCredits)
     {
+        if (teamMode.empty())
+            teamMode.append(to_string(t.second.count));
+        else
+            teamMode.append("v").append(to_string(t.second.count));
+
         t.second.avg = t.second.credits / t.second.count;
         if (t.second.avg > creditMax)
             creditMax = t.second.avg;

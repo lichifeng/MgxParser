@@ -18,6 +18,7 @@
 #define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
 #define FILE_INPUT 1
 #define MEM_INPUT 2
+#define EARLYMOVE_USED 5 
 
 #include <array>
 #include <cstddef>
@@ -217,7 +218,7 @@ protected:
         _readBytes(4, l);
         if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
         {
-            logger->warn("_skipDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
+            logger->warn("_skipDEString Exception! Length:{}, [0x60 0x0a]: {} . @{} in \"{}\"", l[1], l[0], _distance(), filename);
             _sendFailedSignal();
             _curPos -= 4;
             return;
@@ -254,6 +255,7 @@ protected:
         if (!(*(uint16_t *)_curPos == 2656)) // 0x60 0x0a
         {
             logger->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
+            PrintHEX(4);
             _sendFailedSignal();
             return;
         }
@@ -395,6 +397,7 @@ protected:
     void _genRetroGuid(int);
 
 
+    uint32_t ZLIB_CHUNK = 512 * 1024;  ///< ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.
     ifstream _f;             ///< 读取后的录像文件数据
     const uint8_t *_b;       ///< 以字节数组输入时的原始数组
     size_t _bodySize;        ///< body部分的长度(bytes)
@@ -423,6 +426,7 @@ protected:
     int _debugFlag = 0;
     int _inputType = FILE_INPUT;
 
-    const uint8_t *_firstMoveCmd = nullptr; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
-    uint32_t _firstMoveTime = 0;
+    const uint8_t *_earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
+    uint32_t _earlyMoveTime[EARLYMOVE_USED];
+    int _earlyMoveCnt;
 };

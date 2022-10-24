@@ -256,7 +256,7 @@ PHASE2_FALLBACK:
     // ************
     // Do some additional jobs
     _guessWinner(24);
-    //_genRetroGuid(25);
+    _genRetroGuid(25);
 }
 
 bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)

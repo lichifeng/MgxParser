@@ -47,6 +47,7 @@ string DataModel::toJson()
     else
         j["victory"]["type"] = readLang(zh::victoryTypes, victoryMode); // \todo 低版本的要核实下，好像不怎么对
     j["population"] = populationLimit;
+    j["teamMode"] = teamMode;
 
     // Map
     j["map"]["size"] = readLang(zh::mapSize, mapSize);

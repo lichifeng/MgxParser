@@ -40,38 +40,42 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
 
     vector<uint8_t> input;
     uint8_t outputBuf[16];
-    MD5_CTX ctx;
+    const uint8_t *bufRef = outputBuf;
+    MGXPARSER_MD5::MD5_CTX ctx;
 
-    md5_init(&ctx);
-    md5_update(&ctx, (BYTE *)versionStr, 8);
-    md5_update(&ctx, (BYTE *)&saveVersion, 4);
-    md5_update(&ctx, (BYTE *)&logVersion, 4);
-    md5_update(&ctx, (BYTE *)&scenarioVersion, 4);
-    md5_update(&ctx, (BYTE *)&mapSize, 4);
-    md5_update(&ctx, (BYTE *)&populationLimit, 4);
-    md5_update(&ctx, (BYTE *)&gameSpeed, 4);
+    MGXPARSER_MD5::md5_init(&ctx);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)versionStr, 8);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&saveVersion, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&logVersion, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&scenarioVersion, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapSize, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&populationLimit, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&gameSpeed, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapID, 4);
+    for (size_t i = 0; i < EARLYMOVE_USED; i++)
+    {
+        MGXPARSER_MD5::md5_update(&ctx, _earlyMoveCmd[i], 20);
+        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&_earlyMoveTime[i], 4);
+    }
     for (auto &p : players)
     {
         if (!p.valid())
             continue;
-        md5_update(&ctx, (BYTE *)p.name.data(), p.name.size());
-        md5_update(&ctx, &p.civID, 1);
-        md5_update(&ctx, (BYTE *)&p.index, 4);
-        md5_update(&ctx, (BYTE *)&p.slot, 4);
-        md5_update(&ctx, &p.colorID, 1);
-        md5_update(&ctx, &p.resolvedTeamID, 1);
-        md5_update(&ctx, _firstMoveCmd, 20);
-        md5_update(&ctx, (BYTE *)&_firstMoveTime, 4);
+        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)p.name.data(), p.name.size());
+        MGXPARSER_MD5::md5_update(&ctx, &p.civID, 1);
+        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&p.index, 4);
+        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&p.slot, 4);
+        MGXPARSER_MD5::md5_update(&ctx, &p.colorID, 1);
+        MGXPARSER_MD5::md5_update(&ctx, &p.resolvedTeamID, 1);
     }
-    md5_update(&ctx, (BYTE *)mapDataPtr, mapCoord[0] * mapCoord[1] * _mapTileType);
-    md5_final(&ctx, outputBuf);
-
-    // Raw map data seems have some slite difference, but generated map file have md5 digest.
+    // \note Raw map data seems have some slite difference, but generated map file have md5 digest.
+    //MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)mapDataPtr, mapCoord[0] *
+    //mapCoord[1] * _mapTileType);
     // ofstream mapout("test.dat", ofstream::binary);
     // mapout.write((char *)mapDataPtr, mapCoord[0] * mapCoord[1] * _mapTileType);
     // mapout.close();
 
-    //generateMap("map.jpg", mapCoord[0], mapCoord[1]);
+    MGXPARSER_MD5::md5_final(&ctx, outputBuf);
 
-    retroGuid = hexStr(outputBuf, 16);
+    retroGuid = hexStr(bufRef, 16);
 }

@@ -11,7 +11,7 @@
 
 #pragma once
 #pragma pack(push) // 保存对齐状态
-#pragma pack(1)    // 设定为4字节对齐
+#pragma pack(1)    // 设定为1字节对齐
 
 #include <cstdint>
 

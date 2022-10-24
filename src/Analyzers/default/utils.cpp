@@ -35,12 +35,13 @@ namespace patterns
  * \brief      Use to convert bytes to hex string, mainly used to generate guid
  * in HD versions.
  *
- * \param      data                Normally _curPos(pointer to current reading position)
+ * \param      data                Normally a reference to _curPos(pointer to
+ * current reading position). !! Must be a reference, otherwise skip will not work.
  * \param      len                 Bytes to convert
  * \param      skip                Skip read bytes (len bytes)
  * \return     std::string         Generated string representitive of bytes
  */
-std::string hexStr(const unsigned char *data, int len, bool skip)
+std::string hexStr(const unsigned char *&data, int len, bool skip)
 {
   std::string s(len * 2, ' ');
   for (int i = 0; i < len; ++i)

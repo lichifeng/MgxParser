@@ -20,6 +20,7 @@ void DefaultAnalyzer::_readBodyCommands(int debugFlag)
 
     _readGameStart(21);
 
+    _earlyMoveCnt = 0; // Reset earlymove recorder
     while (_remainBytes() >= 4)
     {
         _readBytes(4, &opType);

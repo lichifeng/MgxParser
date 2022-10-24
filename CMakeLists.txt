@@ -12,13 +12,13 @@ project(
 # Some basic configurations
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-set(PYTHON_MODULE 1)
+#set(PYTHON_MODULE 1)
 
 # This lib was intended to be used by add_subdirectories() in a node.js module.
 # Set NODE_ADDON to 1 in parent CMakeLists.txt and compile source files as
 # object with `OBJECT` directive in add_library().
 if (NODE_ADDON OR PYTHON_MODULE)
-    set(CMAKE_BUILD_TYPE "Release")
+    #set(CMAKE_BUILD_TYPE "Release")
     set(CMAKE_POSITION_INDEPENDENT_CODE true)
 else()
     set(CMAKE_EXE_LINKER_FLAGS "-static")
