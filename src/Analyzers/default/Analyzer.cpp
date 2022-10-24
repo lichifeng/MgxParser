@@ -27,23 +27,26 @@ using namespace std;
 
 void DefaultAnalyzer::run()
 {
+    _debugFlag = 1;
     createLogger();
 
     if (FILE_INPUT == _inputType)
     {
-        _debugFlag = 1;
-        _loadFile();
-    }
-    else
-    {
         _debugFlag = 2;
+        _loadFile();
+        if (!_f.is_open())
+        {
+            _sendFailedSignal(true);
+            logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path.empty() ? filename : path);
+            return;
+        }
     }
 
     // Try to extract header&body streams
     if (!_locateStreams())
     {
         _sendFailedSignal(true);
-        logger->fatal("{}(): Failed to unzip raw header data of {}. ", __FUNCTION__, path);
+        logger->fatal("{}(): Failed to unzip raw header data of {}. ", __FUNCTION__, path.empty() ? filename : path);
         return;
     }
 
@@ -75,13 +78,13 @@ bool DefaultAnalyzer::_locateStreams()
         memcpy(headerMeta, _b, 8);
 
     // Construct body stream
-    _bodySize = filesize - headerMeta[0];
-    if (_bodySize > BODY_MAX)
+    if (headerMeta[0] < 0)
     {
         _sendFailedSignal(true);
-        logger->fatal("DebugFlag#{}: BodySize is unusually large!. ", _debugFlag);
+        logger->fatal("DebugFlag#{}: Headerlen is negtive!. ", _debugFlag);
         return false;
     }
+    _bodySize = filesize - headerMeta[0];
     _body.resize(_bodySize); /// \note vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。
     if (FILE_INPUT == _inputType)
     {
@@ -94,7 +97,7 @@ bool DefaultAnalyzer::_locateStreams()
     }
 
     size_t rawHeaderPos = headerMeta[1] < filesize ? 8 : 4;
-    
+
     if (FILE_INPUT == _inputType)
         _f.seekg(rawHeaderPos);
     else

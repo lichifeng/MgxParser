@@ -66,7 +66,7 @@ public:
 
     // Version-related members
     uint32_t logVersion = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
-    char versionStr[8] = "";      ///< 代表游戏版本的原始字符串
+    char versionStr[8] = {'\0'};      ///< 代表游戏版本的原始字符串
     float saveVersion = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
     VERSIONCODE versionCode = UNSUPPORTED; ///< 这是自己定义的一个值，用于简化版本判断
     uint32_t includeAI;
@@ -164,7 +164,7 @@ public:
     uint32_t victoryRelics;
     uint32_t victoryExplored;
     uint32_t victoryAnyOrAll;
-    uint32_t victoryMode;
+    uint32_t victoryMode = UINT32_INIT;
     uint32_t victoryScore;
     uint32_t victoryTime;
 
@@ -175,7 +175,7 @@ public:
 
     // lobby settings
     uint32_t fogOfWar;
-    uint32_t mapSize;
+    uint32_t mapSize = UINT32_INIT;
     uint32_t populationLimit = UINT32_INIT;
     uint8_t gameType;
     uint8_t lockDiplomacy; ///< \note DE/HD数据中还有一个类似的

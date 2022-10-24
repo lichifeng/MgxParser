@@ -29,12 +29,6 @@ void DefaultAnalyzer::_loadFile()
 
     // Try open record file
     _f.open(path, ifstream::in | ifstream::binary);
-    if (!_f.is_open())
-    {
-        _sendFailedSignal(true);
-        logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path);
-        return;
-    }
 }
 
 int DefaultAnalyzer::_inflateRawHeader()

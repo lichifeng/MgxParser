@@ -19,11 +19,17 @@ string DataModel::toJson()
     j["isRecfile"] = UINT32_INIT != logVersion;
 
     // Version info
-    j["version"] = {
-        {"code", versionCode},
-        {"rawStr", versionStr},
-        {"logVer", logVersion},
-        {"saveVer", saveVersion}};
+    j["version"]["code"] = versionCode;
+
+    if (FLOAT_INIT != logVersion)
+        j["version"]["logVer"] = logVersion;
+
+    if ('\0' != versionStr[0])
+        j["version"]["rawStr"] = versionStr;
+
+    if (FLOAT_INIT != saveVersion)
+        j["version"]["saveVer"] = saveVersion;
+
     if (FLOAT_INIT != scenarioVersion)
         j["version"]["scenarioVersion"] = scenarioVersion;
 
@@ -37,27 +43,37 @@ string DataModel::toJson()
         j["version"]["build"] = DE_build;
 
     // Instruction
-    j["instruction"] = instructions;
+    if (!instructions.empty())
+        j["instruction"] = instructions;
 
     // Settings
     j["rawEncoding"] = rawEncoding;
     j["speed"] = readLang(zh::speed, FLOAT_INIT == DD_speed ? gameSpeed : (uint32_t)(DD_speed * 1000));
     if (UINT32_INIT != DD_victoryTypeID)
         j["victory"]["type"] = readLang(zh::victoryTypes, DD_victoryTypeID);
-    else
+    else if (UINT32_INIT != victoryMode)
         j["victory"]["type"] = readLang(zh::victoryTypes, victoryMode); // \todo 低版本的要核实下，好像不怎么对
-    j["population"] = populationLimit;
-    j["teamMode"] = teamMode;
+
+    if (UINT32_INIT != populationLimit)
+        j["population"] = populationLimit;
+
+    if (!teamMode.empty())
+        j["teamMode"] = teamMode;
 
     // Map
-    j["map"]["size"] = readLang(zh::mapSize, mapSize);
+    if (UINT32_INIT != mapSize)
+        j["map"]["size"] = readLang(zh::mapSize, mapSize);
 
     // Report
+    j["status"] = status;
     j["duration"] = duration;
     j["message"] = message;
-    if (!DD_guid.empty()) {
+    if (!DD_guid.empty())
+    {
         j["guidRaw"] = DD_guid;
-    } else {
+    }
+    else if (!retroGuid.empty())
+    {
         j["guidRaw"] = retroGuid;
     }
     j["parser"] = PARSER_VERSION_VERBOSE;

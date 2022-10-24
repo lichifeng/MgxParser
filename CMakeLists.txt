@@ -12,17 +12,7 @@ project(
 # Some basic configurations
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
-#set(PYTHON_MODULE 1)
-
-# This lib was intended to be used by add_subdirectories() in a node.js module.
-# Set NODE_ADDON to 1 in parent CMakeLists.txt and compile source files as
-# object with `OBJECT` directive in add_library().
-if (NODE_ADDON OR PYTHON_MODULE)
-    #set(CMAKE_BUILD_TYPE "Release")
-    set(CMAKE_POSITION_INDEPENDENT_CODE true)
-else()
-    set(CMAKE_EXE_LINKER_FLAGS "-static")
-endif()
+set(CMAKE_POSITION_INDEPENDENT_CODE true)
 
 # List source files to be compiled
 aux_source_directory(./src SRC_ROOT)
@@ -30,30 +20,37 @@ aux_source_directory(./src/DataModels DATAMODELS)
 aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
 aux_source_directory(./libs/md5 MD5)
+set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
 
-if (NODE_ADDON)
-    add_library(${PROJECT_NAME} OBJECT ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
-elseif(PYTHON_MODULE)
-    add_library(${PROJECT_NAME} SHARED ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
-else()
-    add_library(${PROJECT_NAME} ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
-endif()
+add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
+add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
+add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
+add_executable("${PROJECT_NAME}_EXE" ./test/maindemo.cpp)
+target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
-target_link_libraries(${PROJECT_NAME} pthread)
-target_link_libraries(${PROJECT_NAME} png)
-target_link_libraries(${PROJECT_NAME} z)
-target_link_libraries(${PROJECT_NAME} "stdc++fs")
+set(MGXPARSER_LINK_TARGETS pthread png z "stdc++fs")
+target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_LINK_TARGETS})
+target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+target_link_libraries("${PROJECT_NAME}_EXE" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
 
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/libs/")
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/")
-target_include_directories(${PROJECT_NAME} PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/src/include/")
-target_include_directories(${PROJECT_NAME} PRIVATE "${PROJECT_BINARY_DIR}")
+set(
+    MGXPARSER_INCLUDE
+    PUBLIC 
+    "${CMAKE_CURRENT_SOURCE_DIR}/libs/" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/include/" 
+    "${PROJECT_BINARY_DIR}"
+    )
+target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
+target_include_directories("${PROJECT_NAME}_SHARED" PRIVATE ${MGXPARSER_INCLUDE})
+target_include_directories("${PROJECT_NAME}_STATIC" PRIVATE ${MGXPARSER_INCLUDE})
+target_include_directories("${PROJECT_NAME}_EXE" PRIVATE ${MGXPARSER_INCLUDE})
 
 # Import some environment variables and generate docs, etc.
 string(TIMESTAMP COMPILEDATE "%Y%m%d")
-target_compile_definitions(${PROJECT_NAME} PRIVATE "DEBUG=$<CONFIG:Debug>")
+target_compile_definitions("${PROJECT_NAME}_OBJECT" PRIVATE "DEBUG=$<CONFIG:Debug>")
 configure_file(CompileConfig.h.in CompileConfig.h)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/README.md ${CMAKE_CURRENT_SOURCE_DIR})
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)

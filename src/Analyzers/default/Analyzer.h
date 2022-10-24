@@ -11,8 +11,7 @@
 
 #pragma once
 
-#define HEADER_INIT 4 * 1024 * 1024
-#define BODY_MAX 10 * 1024 * 1024
+#define HEADER_INIT 5 * 1024 * 1024
 #define HEADER_STRM 0
 #define BODY_STRM 1
 #define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
