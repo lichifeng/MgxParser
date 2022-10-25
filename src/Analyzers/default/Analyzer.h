@@ -58,6 +58,7 @@ public:
     DefaultAnalyzer(const uint8_t *buff, size_t buffLen) : _inputType(MEM_INPUT), _b(buff)
     {
         filesize = buffLen;
+        createLogger();
     }
 
     void run();
@@ -121,11 +122,9 @@ public:
     string path; ///< 录像的路径
 
 protected:
-    void _loadFile(); ///< 从文件中加载数据流
+    bool _loadFile(); ///< 从文件中加载数据流
 
     bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
-
-    int _inflateRawHeader(); ///< 解压 header 数据
 
     /**
      * \brief      切换当前工作的数据流（header 或者 body）
@@ -403,7 +402,6 @@ protected:
     void _guessWinner(int);
     void _genRetroGuid(int);
 
-    uint32_t ZLIB_CHUNK = 512 * 1024; ///< ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.
     ZipInfo *_zipinfo = nullptr;
     ifstream _f;             ///< 读取后的录像文件数据
     const uint8_t *_b;       ///< 以字节数组输入时的原始数组

@@ -38,7 +38,7 @@ int main(int argc, char* argv[])
     a.parseTime = a.logger->elapsed();
     a.message = a.logger->dumpStr();
 
-    a.generateMap("testmap.exe.png", 900, 450, true);
+    //a.generateMap("testmap.exe.png", 900, 450, true);
 
     cout << a.toJson() << endl;
 

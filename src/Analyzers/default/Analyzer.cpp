@@ -28,13 +28,10 @@ using namespace std;
 void DefaultAnalyzer::run()
 {
     _debugFlag = 1;
-    createLogger();
-
     if (FILE_INPUT == _inputType)
     {
         _debugFlag = 2;
-        _loadFile();
-        if (!_f.is_open())
+        if (!_loadFile())
         {
             _sendFailedSignal(true);
             logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path.empty() ? filename : path);
@@ -45,10 +42,8 @@ void DefaultAnalyzer::run()
     // Try to extract header&body streams
     if (!_locateStreams())
     {
-        // \todo 这里的逻辑要梳理下，防止bad streams的情况下进入后面的环节，造成
-        // segment fault。
         _sendFailedSignal(true);
-        logger->fatal("Debugflag{}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path);
+        logger->fatal("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path);
         return;
     }
 

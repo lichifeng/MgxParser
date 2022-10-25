@@ -19,7 +19,7 @@ using namespace std;
 class Player
 {
 public:
-    bool valid() { return type >= 2 && type <= 10; }
+    bool valid() { return type >= 2 && type <= 5; } ///< \todo how about spectator?? Find a test record with spectators.
     bool initialDataFound() { return dataOffset > 0; }
 
     uint32_t DD_DLCID;

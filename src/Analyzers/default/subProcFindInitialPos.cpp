@@ -15,7 +15,7 @@
 void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
 {
     _debugFlag = debugFlag;
-    
+
     if (_startInfoPos)
     {
         _curPos = _startInfoPos + 2 + numPlayers + 36 + 4 + 1;
@@ -40,8 +40,12 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
     players[0].dataOffset = _curPos - _header.data();
 
     auto found = itStart;
-    for (size_t i = 1; i < numPlayers; i++)
+    bool indexFound[9] = {false};
+    for (size_t i = 1; i < 9; i++)
     {
+        if (!players[i].valid() || players[i].index < 0 || players[i].index > 8 || indexFound[players[i].index])
+            continue;
+
         found = findPosition(
             itStart, itEnd,
             players[i].searchPattern.cbegin(),
@@ -50,11 +54,12 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
         {
             // \todo 如果只是当前这个没有找到，那是不是应该退回查找起始位置呢？多控的情况下只有一个玩家会有这里的信息，他们的顺序难道是固定的？
             logger->warn(
-                "{}(): Cannot find player[{}]'s data in startinfo. @{}.",
-                __FUNCTION__, i, _distance());
+                "{}(): Cannot find player[{}]({})'s data in startinfo. @{}.",
+                __FUNCTION__, i, players[i].name, _distance());
             _sendFailedSignal();
-            return;
+            continue;
         }
+        indexFound[players[i].index] = true;
         players[i].dataOffset = found - _header.cbegin() - (2 + numPlayers + 36 + 4 + 1);
         itStart = found + easySkip;
     }

@@ -52,7 +52,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&populationLimit, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&gameSpeed, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapID, 4);
-    for (size_t i = 0; i < EARLYMOVE_USED; i++)
+    for (size_t i = 0; i < _earlyMoveCnt; i++)
     {
         MGXPARSER_MD5::md5_update(&ctx, _earlyMoveCmd[i], 20);
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&_earlyMoveTime[i], 4);
