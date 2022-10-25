@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: Player类 参考</title>
+<title>mgxnode: Player类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -115,6 +115,7 @@ Public 属性</h2></td></tr>
 <tr class="memdesc:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="mdescLeft">&#160;</td><td class="mdescRight">0~6: absent, closed, human, eliminated, computer, cyborg, spectator  <a href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">更多...</a><br /></td></tr>
 <tr class="separator:abc4dfe6fd9cfcd300467cf85bac1fca0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afe8d8704e3d40fb0152d633ab918071e"><td class="memItemLeft" align="right" valign="top">uint64_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#afe8d8704e3d40fb0152d633ab918071e">HD_steamID</a> = 0</td></tr>
+<tr class="memdesc:afe8d8704e3d40fb0152d633ab918071e"><td class="mdescLeft">&#160;</td><td class="mdescRight"><a href="https://developer.valvesoftware.com/wiki/Steam_Web_API">https://developer.valvesoftware.com/wiki/Steam_Web_API</a>  <a href="classPlayer.html#afe8d8704e3d40fb0152d633ab918071e">更多...</a><br /></td></tr>
 <tr class="separator:afe8d8704e3d40fb0152d633ab918071e"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a847ef6d569773ad63cce71dcf8760dc1"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a847ef6d569773ad63cce71dcf8760dc1">DE_profileID</a> = 0</td></tr>
 <tr class="separator:a847ef6d569773ad63cce71dcf8760dc1"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -149,6 +150,18 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">dataOffset</a> = 0</td></tr>
 <tr class="memdesc:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="mdescLeft">&#160;</td><td class="mdescRight">Offset from header stream start of player data in startinfo section. Keep this default 0.  <a href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">更多...</a><br /></td></tr>
 <tr class="separator:a28002d3d2977e7aa8c3405b62af0ff0d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a5489d4dc9b15777e3147ac13802c9400"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a5489d4dc9b15777e3147ac13802c9400">resigned</a> = -1</td></tr>
+<tr class="separator:a5489d4dc9b15777e3147ac13802c9400"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a055491be56f51a64252bcd9adbdd2c93"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a055491be56f51a64252bcd9adbdd2c93">disconnected</a> = false</td></tr>
+<tr class="separator:a055491be56f51a64252bcd9adbdd2c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a27e18ff9a17fe9d04979ca6f1166e58b"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a27e18ff9a17fe9d04979ca6f1166e58b">feudalTime</a> = -1</td></tr>
+<tr class="separator:a27e18ff9a17fe9d04979ca6f1166e58b"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:af8dce83eeca9f8052baa07a58a7ebd74"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#af8dce83eeca9f8052baa07a58a7ebd74">castleTime</a> = -1</td></tr>
+<tr class="separator:af8dce83eeca9f8052baa07a58a7ebd74"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a627020a1cec796c063ef2eb7f84138d4"><td class="memItemLeft" align="right" valign="top">int32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a627020a1cec796c063ef2eb7f84138d4">imperialTime</a> = -1</td></tr>
+<tr class="separator:a627020a1cec796c063ef2eb7f84138d4"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a30c399ae460c56762b7f663e2dae9abd"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classPlayer.html#a30c399ae460c56762b7f663e2dae9abd">isWinner</a> = false</td></tr>
+<tr class="separator:a30c399ae460c56762b7f663e2dae9abd"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock">
@@ -451,6 +464,8 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
+<p><a href="https://developer.valvesoftware.com/wiki/Steam_Web_API">https://developer.valvesoftware.com/wiki/Steam_Web_API</a> </p>
+
 <p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00040">40</a> 行定义.</p>
 
 </div>
@@ -699,6 +714,102 @@ Public 属性</h2></td></tr>
 <p>Offset from header stream start of player data in startinfo section. Keep this default 0. </p>
 
 <p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00057">57</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a5489d4dc9b15777e3147ac13802c9400"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a5489d4dc9b15777e3147ac13802c9400">&#9670;&nbsp;</a></span>resigned</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::resigned = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00059">59</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a055491be56f51a64252bcd9adbdd2c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a055491be56f51a64252bcd9adbdd2c93">&#9670;&nbsp;</a></span>disconnected</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::disconnected = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00060">60</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a27e18ff9a17fe9d04979ca6f1166e58b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a27e18ff9a17fe9d04979ca6f1166e58b">&#9670;&nbsp;</a></span>feudalTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::feudalTime = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00062">62</a> 行定义.</p>
+
+</div>
+</div>
+<a id="af8dce83eeca9f8052baa07a58a7ebd74"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#af8dce83eeca9f8052baa07a58a7ebd74">&#9670;&nbsp;</a></span>castleTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::castleTime = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00063">63</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a627020a1cec796c063ef2eb7f84138d4"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a627020a1cec796c063ef2eb7f84138d4">&#9670;&nbsp;</a></span>imperialTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">int32_t Player::imperialTime = -1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00064">64</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a30c399ae460c56762b7f663e2dae9abd"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a30c399ae460c56762b7f663e2dae9abd">&#9670;&nbsp;</a></span>isWinner</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool Player::isWinner = false</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Player_8h_source.html">Player.h</a> 第 <a class="el" href="Player_8h_source.html#l00066">66</a> 行定义.</p>
 
 </div>
 </div>

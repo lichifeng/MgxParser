@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['setpattern_541',['setPattern',['../classLogger.html#afcba3af79e7db671cbcd7f913adb1184',1,'Logger']]]
+  ['setpattern_611',['setPattern',['../classLogger.html#afcba3af79e7db671cbcd7f913adb1184',1,'Logger']]]
 ];

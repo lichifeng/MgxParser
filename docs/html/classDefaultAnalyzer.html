@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: DefaultAnalyzer类 参考</title>
+<title>mgxnode: DefaultAnalyzer类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -93,11 +93,12 @@ DefaultAnalyzer 的协作图:</div>
 <div class="dyncontent">
 <div class="center"><img src="classDefaultAnalyzer__coll__graph.png" border="0" usemap="#DefaultAnalyzer_coll__map" alt="Collaboration graph"/></div>
 <map name="DefaultAnalyzer_coll__map" id="DefaultAnalyzer_coll__map">
-<area shape="rect" title="默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。" alt="" coords="111,171,237,197"/>
+<area shape="rect" title="默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。" alt="" coords="156,171,283,197"/>
 <area shape="rect" href="classBaseAnalyzer.html" title="Analyzer 是 MgxParser 的核心组件之一，用于对录像文件进行实际的解 析。" alt="" coords="5,81,116,108"/>
 <area shape="rect" href="classDataModel.html" title=" " alt="" coords="14,5,107,32"/>
 <area shape="rect" href="classLogger.html" title=" " alt="" coords="141,81,207,108"/>
-<area shape="rect" href="classEncodingConverter.html" title="用于编码转换的的工具，本质上是对 iconv 的一个封装。 &#160;使用前需要创建一个 EncodingConverter 类的实体，指定源编码和转换后的编码。" alt="" coords="232,81,377,108"/>
+<area shape="rect" href="structZipInfo.html" title=" " alt="" coords="232,81,300,108"/>
+<area shape="rect" href="classEncodingConverter.html" title="用于编码转换的的工具，本质上是对 iconv 的一个封装。 &#160;使用前需要创建一个 EncodingConverter 类的实体，指定源编码和转换后的编码。" alt="" coords="324,81,469,108"/>
 </map>
 <center><span class="legend">[<a href="graph_legend.html">图例</a>]</span></center></div>
 <table class="memberdecls">
@@ -145,7 +146,7 @@ Public 属性</h2></td></tr>
 <tr class="memdesc:af6b115f679c40b4f110fc2ef6df4a2ec"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的路径  <a href="classDefaultAnalyzer.html#af6b115f679c40b4f110fc2ef6df4a2ec">更多...</a><br /></td></tr>
 <tr class="separator:af6b115f679c40b4f110fc2ef6df4a2ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="inherit_header pub_attribs_classDataModel"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classDataModel')"><img src="closed.png" alt="-"/>&#160;Public 属性 继承自 <a class="el" href="classDataModel.html">DataModel</a></td></tr>
-<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a></td></tr>
+<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a> = &quot;&lt;memory buffer&gt;&quot;</td></tr>
 <tr class="memdesc:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的文件名  <a href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">更多...</a><br /></td></tr>
 <tr class="separator:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa60c729bb12fc4da61a1e03a7a4d8a1 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">ext</a></td></tr>
@@ -154,6 +155,11 @@ Public 属性</h2></td></tr>
 <tr class="memitem:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#acb0c9464084a42459991d17840370859">filesize</a> = 0</td></tr>
 <tr class="memdesc:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#acb0c9464084a42459991d17840370859">更多...</a><br /></td></tr>
 <tr class="separator:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">filetype</a> = &quot;record&quot;</td></tr>
+<tr class="memdesc:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Or zip/rar/7z  <a href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">更多...</a><br /></td></tr>
+<tr class="separator:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae593242fc33c8e855a4d968e104178c0 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ae593242fc33c8e855a4d968e104178c0">extractedName</a></td></tr>
+<tr class="separator:ae593242fc33c8e855a4d968e104178c0 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">trailBytes</a> = 5</td></tr>
 <tr class="memdesc:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度  <a href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">更多...</a><br /></td></tr>
 <tr class="separator:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -163,13 +169,10 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">triggerStartSearchRange</a> = 19</td></tr>
 <tr class="memdesc:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试  <a href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">更多...</a><br /></td></tr>
 <tr class="separator:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 512 * 1024</td></tr>
-<tr class="memdesc:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
-<tr class="separator:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">logVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="memdesc:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版  <a href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">更多...</a><br /></td></tr>
 <tr class="separator:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = &quot;&quot;</td></tr>
+<tr class="memitem:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = {'\0'}</td></tr>
 <tr class="memdesc:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表游戏版本的原始字符串  <a href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">更多...</a><br /></td></tr>
 <tr class="separator:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49dbf533a0985e4bc078ba5bce940d21 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
@@ -336,7 +339,7 @@ Public 属性</h2></td></tr>
 <tr class="separator:ade5cffb64f3194dccd00d113870529c5 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1759ab2c17e4aa1e7cb73f52b512227 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad1759ab2c17e4aa1e7cb73f52b512227">victoryAnyOrAll</a></td></tr>
 <tr class="separator:ad1759ab2c17e4aa1e7cb73f52b512227 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a></td></tr>
+<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed6d42f69764c532180d64abfc73c406 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aed6d42f69764c532180d64abfc73c406">victoryScore</a></td></tr>
 <tr class="separator:aed6d42f69764c532180d64abfc73c406 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -350,7 +353,7 @@ Public 属性</h2></td></tr>
 <tr class="separator:aed322dd82e7b4d0a6b0ea46aaecf7d6f inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ef98daf7a67c5bc785e130e1a5b1b4 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">fogOfWar</a></td></tr>
 <tr class="separator:a63ef98daf7a67c5bc785e130e1a5b1b4 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a></td></tr>
+<tr class="memitem:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752b8a336c226a692394b391f17ec8c0 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a752b8a336c226a692394b391f17ec8c0 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -383,21 +386,22 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">message</a></td></tr>
 <tr class="memdesc:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">对 <code>status</code> 的具体说明  <a href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">更多...</a><br /></td></tr>
 <tr class="separator:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser Normal&quot;</td></tr>
+<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser as Node Addon&quot;</td></tr>
 <tr class="memdesc:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析模式：normal, verbose, etc. 可以在命令行中指定  <a href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">更多...</a><br /></td></tr>
 <tr class="separator:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">parseTime</a> = 0</td></tr>
 <tr class="memdesc:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒）  <a href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">更多...</a><br /></td></tr>
 <tr class="separator:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f8c78bddce81510c6a2b5a7a30b348 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac3f8c78bddce81510c6a2b5a7a30b348">teamMode</a></td></tr>
+<tr class="separator:ac3f8c78bddce81510c6a2b5a7a30b348 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c1662074ccd43061e35aa8e0a21ca2 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac1c1662074ccd43061e35aa8e0a21ca2">retroGuid</a></td></tr>
+<tr class="separator:ac1c1662074ccd43061e35aa8e0a21ca2 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-methods"></a>
 Protected 成员函数</h2></td></tr>
 <tr class="memitem:af244df2866be0f3ae0f2fb710c91c6ed"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#af244df2866be0f3ae0f2fb710c91c6ed">_loadFile</a> ()</td></tr>
 <tr class="memdesc:af244df2866be0f3ae0f2fb710c91c6ed"><td class="mdescLeft">&#160;</td><td class="mdescRight">从文件中加载数据流  <a href="classDefaultAnalyzer.html#af244df2866be0f3ae0f2fb710c91c6ed">更多...</a><br /></td></tr>
 <tr class="separator:af244df2866be0f3ae0f2fb710c91c6ed"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a6015dd1b2be7182df1bab5b2b1f45c9d"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a6015dd1b2be7182df1bab5b2b1f45c9d">_loadBuffer</a> ()</td></tr>
-<tr class="memdesc:a6015dd1b2be7182df1bab5b2b1f45c9d"><td class="mdescLeft">&#160;</td><td class="mdescRight">从Buffer(包含数据的数组)中加载数据  <a href="classDefaultAnalyzer.html#a6015dd1b2be7182df1bab5b2b1f45c9d">更多...</a><br /></td></tr>
-<tr class="separator:a6015dd1b2be7182df1bab5b2b1f45c9d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a5964f94a25af1d5beb493cb65e4c334a"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a5964f94a25af1d5beb493cb65e4c334a">_locateStreams</a> ()</td></tr>
 <tr class="memdesc:a5964f94a25af1d5beb493cb65e4c334a"><td class="mdescLeft">&#160;</td><td class="mdescRight">对文件流进行处理，定位 header &amp; body 的起始位置  <a href="classDefaultAnalyzer.html#a5964f94a25af1d5beb493cb65e4c334a">更多...</a><br /></td></tr>
 <tr class="separator:a5964f94a25af1d5beb493cb65e4c334a"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -500,9 +504,22 @@ Protected 成员函数</h2></td></tr>
 <tr class="separator:a0d1876c993d30d91b1e9968c340516d8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a3fdbf948805ea77a08b364c6b2d59384"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a3fdbf948805ea77a08b364c6b2d59384">_handleOpCommand</a> ()</td></tr>
 <tr class="separator:a3fdbf948805ea77a08b364c6b2d59384"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a019dd42d18282225952c69c7292f34a3"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a019dd42d18282225952c69c7292f34a3">_handleAction</a> ()</td></tr>
+<tr class="separator:a019dd42d18282225952c69c7292f34a3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04c048e5225057be769e05285d37ee6c"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a04c048e5225057be769e05285d37ee6c">_guessWinner</a> (int)</td></tr>
+<tr class="memdesc:a04c048e5225057be769e05285d37ee6c"><td class="mdescLeft">&#160;</td><td class="mdescRight">谁赢谁输只能靠猜。逻辑是：哪一组的人均存活时间最长，哪一组就算赢。  <a href="classDefaultAnalyzer.html#a04c048e5225057be769e05285d37ee6c">更多...</a><br /></td></tr>
+<tr class="separator:a04c048e5225057be769e05285d37ee6c"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e35142c343352ad8636484fbb83513b"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a0e35142c343352ad8636484fbb83513b">_genRetroGuid</a> (int)</td></tr>
+<tr class="memdesc:a0e35142c343352ad8636484fbb83513b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Guid is presented in HD/DE records, but not in older versions. Guid can be used to identify different views of same game.  <a href="classDefaultAnalyzer.html#a0e35142c343352ad8636484fbb83513b">更多...</a><br /></td></tr>
+<tr class="separator:a0e35142c343352ad8636484fbb83513b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected 属性</h2></td></tr>
+<tr class="memitem:a9e6b6547f2ee0012ec5292d9d8b63c93"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">ZLIB_CHUNK</a> = 512 * 1024</td></tr>
+<tr class="memdesc:a9e6b6547f2ee0012ec5292d9d8b63c93"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.  <a href="classDefaultAnalyzer.html#a9e6b6547f2ee0012ec5292d9d8b63c93">更多...</a><br /></td></tr>
+<tr class="separator:a9e6b6547f2ee0012ec5292d9d8b63c93"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aa47f32ecbadc92f1697260d1bf51c3fe"><td class="memItemLeft" align="right" valign="top"><a class="el" href="structZipInfo.html">ZipInfo</a> *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#aa47f32ecbadc92f1697260d1bf51c3fe">_zipinfo</a> = nullptr</td></tr>
+<tr class="separator:aa47f32ecbadc92f1697260d1bf51c3fe"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4d6c839cb063edd281b668a7e8cbca07"><td class="memItemLeft" align="right" valign="top">ifstream&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">_f</a></td></tr>
 <tr class="memdesc:a4d6c839cb063edd281b668a7e8cbca07"><td class="mdescLeft">&#160;</td><td class="mdescRight">读取后的录像文件数据  <a href="classDefaultAnalyzer.html#a4d6c839cb063edd281b668a7e8cbca07">更多...</a><br /></td></tr>
 <tr class="separator:a4d6c839cb063edd281b668a7e8cbca07"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -555,11 +572,18 @@ Protected 属性</h2></td></tr>
 <tr class="separator:a15a2ff17db72361910bc048e3bf07020"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aaa10b6a2d39d2cc775bfd2209ef72dae"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#aaa10b6a2d39d2cc775bfd2209ef72dae">_inputType</a> = <a class="el" href="Analyzer_8h.html#aba3144f5c00cdb4b8c29d9288db8e52c">FILE_INPUT</a></td></tr>
 <tr class="separator:aaa10b6a2d39d2cc775bfd2209ef72dae"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a4022c5230f974adb1a2727cd9bf9f583"><td class="memItemLeft" align="right" valign="top">const uint8_t *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a4022c5230f974adb1a2727cd9bf9f583">_earlyMoveCmd</a> [<a class="el" href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a>]</td></tr>
+<tr class="memdesc:a4022c5230f974adb1a2727cd9bf9f583"><td class="mdescLeft">&#160;</td><td class="mdescRight">有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。  <a href="classDefaultAnalyzer.html#a4022c5230f974adb1a2727cd9bf9f583">更多...</a><br /></td></tr>
+<tr class="separator:a4022c5230f974adb1a2727cd9bf9f583"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6208d3c71f1e7636e9233f962ac1fc46"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a6208d3c71f1e7636e9233f962ac1fc46">_earlyMoveTime</a> [<a class="el" href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a>]</td></tr>
+<tr class="separator:a6208d3c71f1e7636e9233f962ac1fc46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a04805e863124686dff31f501a9261161"><td class="memItemLeft" align="right" valign="top">int&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">_earlyMoveCnt</a></td></tr>
+<tr class="separator:a04805e863124686dff31f501a9261161"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00043">43</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00046">46</a> 行定义.</p>
 </div><h2 class="groupheader">构造及析构函数说明</h2>
 <a id="af1ccd631ae5f60c5aad3950d4ddb07b9"></a>
 <h2 class="memtitle"><span class="permalink"><a href="#af1ccd631ae5f60c5aad3950d4ddb07b9">&#9670;&nbsp;</a></span>~DefaultAnalyzer()</h2>
@@ -584,7 +608,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00046">46</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00049">49</a> 行定义.</p>
 
 </div>
 </div>
@@ -612,7 +636,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00048">48</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00056">56</a> 行定义.</p>
 
 </div>
 </div>
@@ -650,7 +674,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00050">50</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00058">58</a> 行定义.</p>
 
 </div>
 </div>
@@ -711,7 +735,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00057">57</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00065">65</a> 行定义.</p>
 
 </div>
 </div>
@@ -802,7 +826,7 @@ Protected 属性</h2></td></tr>
 </dl>
 <dl class="section return"><dt>返回</dt><dd>string&amp; 转换后的字符串（是输入字符串的一个引用） </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00071">71</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00079">79</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>.</p>
 
@@ -843,9 +867,9 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00126">126</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00116">116</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00396">_body</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00411">_body</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>.</p>
 
 </div>
 </div>
@@ -872,7 +896,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00105">105</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00113">113</a> 行定义.</p>
 
 </div>
 </div>
@@ -901,38 +925,9 @@ Protected 属性</h2></td></tr>
 
 <p>从文件中加载数据流 </p>
 
-<p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">19</a> 行定义.</p>
-
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00393">_f</a>, <a class="el" href="DataModel_8h_source.html#l00058">DataModel::ext</a>, <a class="el" href="Logger_8h_source.html#l00100">Logger::fatal()</a>, <a class="el" href="DataModel_8h_source.html#l00057">DataModel::filename</a>, <a class="el" href="DataModel_8h_source.html#l00059">DataModel::filesize</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00113">path</a>.</p>
-
-</div>
-</div>
-<a id="a6015dd1b2be7182df1bab5b2b1f45c9d"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a6015dd1b2be7182df1bab5b2b1f45c9d">&#9670;&nbsp;</a></span>_loadBuffer()</h2>
-
-<div class="memitem">
-<div class="memproto">
-<table class="mlabels">
-  <tr>
-  <td class="mlabels-left">
-      <table class="memname">
-        <tr>
-          <td class="memname">void DefaultAnalyzer::_loadBuffer </td>
-          <td>(</td>
-          <td class="paramname"></td><td>)</td>
-          <td></td>
-        </tr>
-      </table>
-  </td>
-  <td class="mlabels-right">
-<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
-  </tr>
-</table>
-</div><div class="memdoc">
-
-<p>从Buffer(包含数据的数组)中加载数据 </p>
-
 <p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">15</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00408">_f</a>, <a class="el" href="DataModel_8h_source.html#l00058">DataModel::ext</a>, <a class="el" href="Logger_8h_source.html#l00100">Logger::fatal()</a>, <a class="el" href="DataModel_8h_source.html#l00057">DataModel::filename</a>, <a class="el" href="DataModel_8h_source.html#l00059">DataModel::filesize</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00121">path</a>.</p>
 
 </div>
 </div>
@@ -962,9 +957,9 @@ Protected 属性</h2></td></tr>
 <p>对文件流进行处理，定位 header &amp; body 的起始位置 </p>
 <dl class="section note"><dt>注解</dt><dd>vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。</dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a> 第 <a class="el" href="Analyzer_8cpp_source.html#l00066">66</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="subProcLocateStreams_8cpp_source.html">subProcLocateStreams.cpp</a> 第 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Helper_8h_source.html#l00032">AOK</a>, <a class="el" href="Analyzer_8h_source.html#l00015">BODY_MAX</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00019">FILE_INPUT</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00409">_b</a>, <a class="el" href="Analyzer_8h_source.html#l00411">_body</a>, <a class="el" href="Analyzer_8h_source.html#l00410">_bodySize</a>, <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_f</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a>, <a class="el" href="Analyzer_8h_source.html#l00434">_inputType</a>, <a class="el" href="Analyzer_8h_source.html#l00407">_zipinfo</a>, <a class="el" href="Helper_8h_source.html#l00031">AOK</a>, <a class="el" href="DataModel_8h_source.html#l00061">DataModel::extractedName</a>, <a class="el" href="Logger_8h_source.html#l00100">Logger::fatal()</a>, <a class="el" href="Zipdecompress_8cpp_source.html#l00044">fetchFromZip()</a>, <a class="el" href="Analyzer_8h_source.html#l00019">FILE_INPUT</a>, <a class="el" href="Zipdecompress_8h_source.html#l00024">ZipInfo::filename</a>, <a class="el" href="DataModel_8h_source.html#l00057">DataModel::filename</a>, <a class="el" href="DataModel_8h_source.html#l00059">DataModel::filesize</a>, <a class="el" href="DataModel_8h_source.html#l00060">DataModel::filetype</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="Analyzer_8h_source.html#l00020">MEM_INPUT</a>, <a class="el" href="Zipdecompress_8h_source.html#l00025">ZipInfo::outBuffer</a>, <a class="el" href="Analyzer_8h_source.html#l00121">path</a>, <a class="el" href="Zipdecompress_8h_source.html#l00026">ZipInfo::rawSize</a>, <a class="el" href="Zipdecompress_8h_source.html#l00023">ZipInfo::status</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00021">ZIP_INPUT</a>.</p>
 
 </div>
 </div>
@@ -993,9 +988,11 @@ Protected 属性</h2></td></tr>
 
 <p>解压 header 数据 </p>
 
-<p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">44</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="subProcFileHandler_8cpp_source.html">subProcFileHandler.cpp</a> 第 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">34</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00394">_b</a>, <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00393">_f</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00419">_inputType</a>, <a class="el" href="Analyzer_8h_source.html#l00019">FILE_INPUT</a>, <a class="el" href="DataModel_8h_source.html#l00059">DataModel::filesize</a>, <a class="el" href="Analyzer_8h_source.html#l00014">HEADER_INIT</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00065">DataModel::ZLIB_CHUNK</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00409">_b</a>, <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_f</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00434">_inputType</a>, <a class="el" href="Analyzer_8h_source.html#l00019">FILE_INPUT</a>, <a class="el" href="DataModel_8h_source.html#l00059">DataModel::filesize</a>, <a class="el" href="Analyzer_8h_source.html#l00014">HEADER_INIT</a> , 以及 <a class="el" href="Analyzer_8h_source.html#l00406">ZLIB_CHUNK</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -1031,7 +1028,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00129">129</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00135">135</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00016">HEADER_STRM</a>.</p>
 
@@ -1080,9 +1077,9 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00149">149</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00155">155</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="operations_8cpp_source.html#l00025">_handleOpSync()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00046">_readGameStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="operations_8cpp_source.html#l00025">_handleOpSync()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00047">_readGameStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1118,7 +1115,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00160">160</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00166">166</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
@@ -1176,7 +1173,7 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00182">182</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00188">188</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
@@ -1209,7 +1206,7 @@ Protected 属性</h2></td></tr>
 
 <p>_skipPascalString的一个特殊版本 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00216">216</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00222">222</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
@@ -1242,7 +1239,7 @@ Protected 属性</h2></td></tr>
 
 <p>_skipPascalString的一个特殊版本 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00233">233</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00239">239</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
@@ -1282,9 +1279,9 @@ Protected 属性</h2></td></tr>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00252">252</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00258">258</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00018">PrintHEX</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>.</p>
 
@@ -1314,7 +1311,7 @@ Protected 属性</h2></td></tr>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00269">269</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00276">276</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
@@ -1348,9 +1345,9 @@ Protected 属性</h2></td></tr>
 <p>录像解析的主进程 </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000001">待办事项:</a></b></dt><dd>is this right cutoff point?? .mgx2 related?? see <a class="el" href="classDefaultAnalyzer.html#af68e3ef3f251facadd73f8aca604ed1e" title="This method also builds some search patterns used to traverse in startinfo section">_gameSettingsAnalyzer()</a> </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a> 第 <a class="el" href="Analyzer_8cpp_source.html#l00114">114</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a> 第 <a class="el" href="Analyzer_8cpp_source.html#l00070">70</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00017">BODY_STRM</a>, <a class="el" href="Analyzer_8h_source.html#l00016">HEADER_STRM</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="Analyzer_8cpp_source.html#l00019">STOP_ON_FAILURE</a> , 以及 <a class="el" href="Analyzer_8cpp_source.html#l00022">TRY_PHASE2_FALLBACK</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00017">BODY_STRM</a>, <a class="el" href="Analyzer_8h_source.html#l00016">HEADER_STRM</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="Analyzer_8cpp_source.html#l00019">STOP_ON_FAILURE</a> , 以及 <a class="el" href="Analyzer_8cpp_source.html#l00022">TRY_PHASE2_FALLBACK</a>.</p>
 
 </div>
 </div>
@@ -1382,7 +1379,7 @@ Protected 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="subProcVersionHandler_8cpp_source.html">subProcVersionHandler.cpp</a> 第 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00301">_bytecmp()</a>, <a class="el" href="Helper_8h_source.html#l00034">AOC</a>, <a class="el" href="Helper_8h_source.html#l00035">AOC10</a>, <a class="el" href="Helper_8h_source.html#l00036">AOC10C</a>, <a class="el" href="Helper_8h_source.html#l00030">AOCTRIAL</a>, <a class="el" href="Helper_8h_source.html#l00038">AOFE21</a>, <a class="el" href="Helper_8h_source.html#l00032">AOK</a>, <a class="el" href="Helper_8h_source.html#l00029">AOKTRIAL</a>, <a class="el" href="Helper_8h_source.html#l00057">DE</a>, <a class="el" href="Helper_8h_source.html#l00049">HD</a>, <a class="el" href="Helper_8h_source.html#l00050">HD43</a>, <a class="el" href="Helper_8h_source.html#l00051">HD46_7</a>, <a class="el" href="Helper_8h_source.html#l00052">HD48</a>, <a class="el" href="Helper_8h_source.html#l00053">HD50_6</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00069">DataModel::logVersion</a>, <a class="el" href="Helper_8h_source.html#l00047">MCP</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="Helper_8h_source.html#l00059">UNSUPPORTED</a>, <a class="el" href="Helper_8h_source.html#l00040">USERPATCH12</a>, <a class="el" href="Helper_8h_source.html#l00041">USERPATCH13</a>, <a class="el" href="Helper_8h_source.html#l00044">USERPATCH14</a>, <a class="el" href="Helper_8h_source.html#l00042">USERPATCH14RC1</a>, <a class="el" href="Helper_8h_source.html#l00043">USERPATCH14RC2</a>, <a class="el" href="Helper_8h_source.html#l00045">USERPATCH15</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>, <a class="el" href="DataModel_8h_source.html#l00070">DataModel::versionStr</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00308">_bytecmp()</a>, <a class="el" href="Helper_8h_source.html#l00033">AOC</a>, <a class="el" href="Helper_8h_source.html#l00034">AOC10</a>, <a class="el" href="Helper_8h_source.html#l00035">AOC10C</a>, <a class="el" href="Helper_8h_source.html#l00029">AOCTRIAL</a>, <a class="el" href="Helper_8h_source.html#l00037">AOFE21</a>, <a class="el" href="Helper_8h_source.html#l00031">AOK</a>, <a class="el" href="Helper_8h_source.html#l00028">AOKTRIAL</a>, <a class="el" href="Helper_8h_source.html#l00056">DE</a>, <a class="el" href="Helper_8h_source.html#l00048">HD</a>, <a class="el" href="Helper_8h_source.html#l00049">HD43</a>, <a class="el" href="Helper_8h_source.html#l00050">HD46_7</a>, <a class="el" href="Helper_8h_source.html#l00051">HD48</a>, <a class="el" href="Helper_8h_source.html#l00052">HD50_6</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00070">DataModel::logVersion</a>, <a class="el" href="Helper_8h_source.html#l00046">MCP</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="Helper_8h_source.html#l00058">UNSUPPORTED</a>, <a class="el" href="Helper_8h_source.html#l00039">USERPATCH12</a>, <a class="el" href="Helper_8h_source.html#l00040">USERPATCH13</a>, <a class="el" href="Helper_8h_source.html#l00043">USERPATCH14</a>, <a class="el" href="Helper_8h_source.html#l00041">USERPATCH14RC1</a>, <a class="el" href="Helper_8h_source.html#l00042">USERPATCH14RC2</a>, <a class="el" href="Helper_8h_source.html#l00044">USERPATCH15</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::versionStr</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1438,7 +1435,7 @@ Protected 属性</h2></td></tr>
 <dd>
 false string1 != string2 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00301">301</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00308">308</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">_setVersionCode()</a>.</p>
 
@@ -1497,7 +1494,7 @@ false string1 != string2 </dd></dl>
 <dd>
 false 验证失败 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a> 第 <a class="el" href="Analyzer_8cpp_source.html#l00256">256</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a> 第 <a class="el" href="Analyzer_8cpp_source.html#l00219">219</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>.</p>
 
@@ -1553,7 +1550,7 @@ false 验证失败 </dd></dl>
   </dd>
 </dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00329">329</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00336">336</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="Logger_8h_source.html#l00104">Logger::logHex()</a>.</p>
 
@@ -1614,7 +1611,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcEncodingHandler_8cpp_source.html">subProcEncodingHandler.cpp</a> 第 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="DataModel_8h_source.html#l00188">DataModel::embededMapName</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00161">DataModel::instructions</a>.</p>
+<p class="reference">引用了 <a class="el" href="DataModel_8h_source.html#l00189">DataModel::embededMapName</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00162">DataModel::instructions</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">_guessEncoding()</a>.</p>
 
@@ -1649,7 +1646,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcEncodingHandler_8cpp_source.html">subProcEncodingHandler.cpp</a> 第 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">34</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00415">_encodingConverter</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">_findEncodingPattern()</a>, <a class="el" href="utils_8h_source.html#l00094">patterns::br_pattern</a>, <a class="el" href="utils_8h_source.html#l00095">patterns::de_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00188">DataModel::embededMapName</a>, <a class="el" href="utils_8h_source.html#l00096">patterns::en_pattern</a>, <a class="el" href="utils_8h_source.html#l00097">patterns::es_pattern</a>, <a class="el" href="utils_8h_source.html#l00098">patterns::fr_pattern</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="utils_8h_source.html#l00099">patterns::it_pattern</a>, <a class="el" href="utils_8h_source.html#l00100">patterns::jp_pattern</a>, <a class="el" href="utils_8h_source.html#l00115">patterns::jp_utf8_pattern</a>, <a class="el" href="utils_8h_source.html#l00136">patterns::ko_pattern</a>, <a class="el" href="utils_8h_source.html#l00148">patterns::ko_utf8_pattern</a>, <a class="el" href="utils_8h_source.html#l00164">patterns::nl_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00196">DataModel::outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00195">DataModel::rawEncoding</a>, <a class="el" href="utils_8h_source.html#l00165">patterns::ru_pattern</a>, <a class="el" href="utils_8h_source.html#l00177">patterns::ru_utf8_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>, <a class="el" href="utils_8h_source.html#l00046">patterns::zh_pattern</a>, <a class="el" href="utils_8h_source.html#l00083">patterns::zh_tw_pattern</a>, <a class="el" href="utils_8h_source.html#l00057">patterns::zh_utf8_pattern</a> , 以及 <a class="el" href="utils_8h_source.html#l00072">patterns::zh_wide_pattern</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00430">_encodingConverter</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">_findEncodingPattern()</a>, <a class="el" href="utils_8h_source.html#l00094">patterns::br_pattern</a>, <a class="el" href="utils_8h_source.html#l00095">patterns::de_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00189">DataModel::embededMapName</a>, <a class="el" href="utils_8h_source.html#l00096">patterns::en_pattern</a>, <a class="el" href="utils_8h_source.html#l00097">patterns::es_pattern</a>, <a class="el" href="utils_8h_source.html#l00098">patterns::fr_pattern</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="utils_8h_source.html#l00099">patterns::it_pattern</a>, <a class="el" href="utils_8h_source.html#l00100">patterns::jp_pattern</a>, <a class="el" href="utils_8h_source.html#l00115">patterns::jp_utf8_pattern</a>, <a class="el" href="utils_8h_source.html#l00136">patterns::ko_pattern</a>, <a class="el" href="utils_8h_source.html#l00148">patterns::ko_utf8_pattern</a>, <a class="el" href="utils_8h_source.html#l00164">patterns::nl_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00197">DataModel::outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00196">DataModel::rawEncoding</a>, <a class="el" href="utils_8h_source.html#l00165">patterns::ru_pattern</a>, <a class="el" href="utils_8h_source.html#l00177">patterns::ru_utf8_pattern</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>, <a class="el" href="utils_8h_source.html#l00046">patterns::zh_pattern</a>, <a class="el" href="utils_8h_source.html#l00083">patterns::zh_tw_pattern</a>, <a class="el" href="utils_8h_source.html#l00057">patterns::zh_utf8_pattern</a> , 以及 <a class="el" href="utils_8h_source.html#l00072">patterns::zh_wide_pattern</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>.</p>
 
@@ -1684,7 +1681,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcHeaderHD_8cpp_source.html">subProcHeaderHD.cpp</a> 第 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00256">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00269">_readHDString()</a>, <a class="el" href="Analyzer_8h_source.html#l00233">_skipHDString()</a>, <a class="el" href="DataModel_8h_source.html#l00124">DataModel::DD_allowSpecs</a>, <a class="el" href="DataModel_8h_source.html#l00103">DataModel::DD_allTechs</a>, <a class="el" href="DataModel_8h_source.html#l00110">DataModel::DD_animalsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00121">DataModel::DD_cheatNotifications</a>, <a class="el" href="DataModel_8h_source.html#l00108">DataModel::DD_cheats</a>, <a class="el" href="DataModel_8h_source.html#l00122">DataModel::DD_coloredChat</a>, <a class="el" href="DataModel_8h_source.html#l00082">DataModel::DD_datasetRef</a>, <a class="el" href="DataModel_8h_source.html#l00083">DataModel::DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00081">DataModel::DD_DLCCount</a>, <a class="el" href="DataModel_8h_source.html#l00090">DataModel::DD_endingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00080">DataModel::DD_gameOptionsVersion</a>, <a class="el" href="DataModel_8h_source.html#l00091">DataModel::DD_gameType</a>, <a class="el" href="DataModel_8h_source.html#l00135">DataModel::DD_guid</a>, <a class="el" href="DataModel_8h_source.html#l00079">DataModel::DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00123">DataModel::DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00136">DataModel::DD_lobbyName</a>, <a class="el" href="DataModel_8h_source.html#l00125">DataModel::DD_lobbyVisibility</a>, <a class="el" href="DataModel_8h_source.html#l00106">DataModel::DD_lockSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00105">DataModel::DD_lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00137">DataModel::DD_moddedDataset</a>, <a class="el" href="DataModel_8h_source.html#l00107">DataModel::DD_multiplayer</a>, <a class="el" href="DataModel_8h_source.html#l00097">DataModel::DD_numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00104">DataModel::DD_numStartingUnits</a>, <a class="el" href="DataModel_8h_source.html#l00111">DataModel::DD_predatorsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00102">DataModel::DD_randomPositions</a>, <a class="el" href="DataModel_8h_source.html#l00109">DataModel::DD_recordGame</a>, <a class="el" href="DataModel_8h_source.html#l00085">DataModel::DD_resolvedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00084">DataModel::DD_selectedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00094">DataModel::DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00089">DataModel::DD_startingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00088">DataModel::DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00101">DataModel::DD_teamBonusDisabled</a>, <a class="el" href="DataModel_8h_source.html#l00100">DataModel::DD_tradeEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00095">DataModel::DD_treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00098">DataModel::DD_unusedPlayerColor</a>, <a class="el" href="DataModel_8h_source.html#l00078">DataModel::DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00099">DataModel::DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00087">DataModel::DD_victoryTypeID</a>, <a class="el" href="Helper_8h_source.html#l00053">HD50_6</a>, <a class="el" href="Helper_8h_source.html#l00054">HD57</a>, <a class="el" href="Helper_8h_source.html#l00055">HD58</a>, <a class="el" href="DataModel_8h_source.html#l00133">DataModel::HD_customRandomMapFile</a>, <a class="el" href="DataModel_8h_source.html#l00131">DataModel::HD_customRandomMapFileCrc</a>, <a class="el" href="DataModel_8h_source.html#l00134">DataModel::HD_customRandomMapScenarionFile</a>, <a class="el" href="DataModel_8h_source.html#l00132">DataModel::HD_customScenarioOrCampaignFile</a>, <a class="el" href="DataModel_8h_source.html#l00138">DataModel::HD_moddedDatasetWorkshopID</a>, <a class="el" href="DataModel_8h_source.html#l00092">DataModel::HD_ver1000MapName</a>, <a class="el" href="utils_8cpp_source.html#l00019">patterns::HDseparator</a>, <a class="el" href="utils_8cpp_source.html#l00043">hexStr()</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00180">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00086">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00219">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00276">_readHDString()</a>, <a class="el" href="Analyzer_8h_source.html#l00239">_skipHDString()</a>, <a class="el" href="DataModel_8h_source.html#l00125">DataModel::DD_allowSpecs</a>, <a class="el" href="DataModel_8h_source.html#l00104">DataModel::DD_allTechs</a>, <a class="el" href="DataModel_8h_source.html#l00111">DataModel::DD_animalsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00122">DataModel::DD_cheatNotifications</a>, <a class="el" href="DataModel_8h_source.html#l00109">DataModel::DD_cheats</a>, <a class="el" href="DataModel_8h_source.html#l00123">DataModel::DD_coloredChat</a>, <a class="el" href="DataModel_8h_source.html#l00083">DataModel::DD_datasetRef</a>, <a class="el" href="DataModel_8h_source.html#l00084">DataModel::DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00082">DataModel::DD_DLCCount</a>, <a class="el" href="DataModel_8h_source.html#l00091">DataModel::DD_endingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00081">DataModel::DD_gameOptionsVersion</a>, <a class="el" href="DataModel_8h_source.html#l00092">DataModel::DD_gameType</a>, <a class="el" href="DataModel_8h_source.html#l00136">DataModel::DD_guid</a>, <a class="el" href="DataModel_8h_source.html#l00080">DataModel::DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00124">DataModel::DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00137">DataModel::DD_lobbyName</a>, <a class="el" href="DataModel_8h_source.html#l00126">DataModel::DD_lobbyVisibility</a>, <a class="el" href="DataModel_8h_source.html#l00107">DataModel::DD_lockSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00106">DataModel::DD_lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00138">DataModel::DD_moddedDataset</a>, <a class="el" href="DataModel_8h_source.html#l00108">DataModel::DD_multiplayer</a>, <a class="el" href="DataModel_8h_source.html#l00098">DataModel::DD_numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00105">DataModel::DD_numStartingUnits</a>, <a class="el" href="DataModel_8h_source.html#l00112">DataModel::DD_predatorsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00103">DataModel::DD_randomPositions</a>, <a class="el" href="DataModel_8h_source.html#l00110">DataModel::DD_recordGame</a>, <a class="el" href="DataModel_8h_source.html#l00086">DataModel::DD_resolvedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00085">DataModel::DD_selectedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00095">DataModel::DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00090">DataModel::DD_startingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00089">DataModel::DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00102">DataModel::DD_teamBonusDisabled</a>, <a class="el" href="DataModel_8h_source.html#l00101">DataModel::DD_tradeEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00096">DataModel::DD_treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00099">DataModel::DD_unusedPlayerColor</a>, <a class="el" href="DataModel_8h_source.html#l00079">DataModel::DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00100">DataModel::DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00088">DataModel::DD_victoryTypeID</a>, <a class="el" href="Helper_8h_source.html#l00052">HD50_6</a>, <a class="el" href="Helper_8h_source.html#l00053">HD57</a>, <a class="el" href="Helper_8h_source.html#l00054">HD58</a>, <a class="el" href="DataModel_8h_source.html#l00134">DataModel::HD_customRandomMapFile</a>, <a class="el" href="DataModel_8h_source.html#l00132">DataModel::HD_customRandomMapFileCrc</a>, <a class="el" href="DataModel_8h_source.html#l00135">DataModel::HD_customRandomMapScenarionFile</a>, <a class="el" href="DataModel_8h_source.html#l00133">DataModel::HD_customScenarioOrCampaignFile</a>, <a class="el" href="DataModel_8h_source.html#l00139">DataModel::HD_moddedDatasetWorkshopID</a>, <a class="el" href="DataModel_8h_source.html#l00093">DataModel::HD_ver1000MapName</a>, <a class="el" href="utils_8cpp_source.html#l00019">patterns::HDseparator</a>, <a class="el" href="utils_8cpp_source.html#l00044">hexStr()</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00181">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00087">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1722,7 +1719,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcHeaderDE_8cpp_source.html">subProcHeaderDE.cpp</a> 第 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00402">_DD_AICount</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00256">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00252">_readDEString()</a>, <a class="el" href="Analyzer_8h_source.html#l00216">_skipDEString()</a>, <a class="el" href="DataModel_8h_source.html#l00124">DataModel::DD_allowSpecs</a>, <a class="el" href="DataModel_8h_source.html#l00103">DataModel::DD_allTechs</a>, <a class="el" href="DataModel_8h_source.html#l00110">DataModel::DD_animalsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00116">DataModel::DD_battleRoyaleTime</a>, <a class="el" href="DataModel_8h_source.html#l00121">DataModel::DD_cheatNotifications</a>, <a class="el" href="DataModel_8h_source.html#l00108">DataModel::DD_cheats</a>, <a class="el" href="DataModel_8h_source.html#l00122">DataModel::DD_coloredChat</a>, <a class="el" href="DataModel_8h_source.html#l00082">DataModel::DD_datasetRef</a>, <a class="el" href="DataModel_8h_source.html#l00083">DataModel::DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00081">DataModel::DD_DLCCount</a>, <a class="el" href="DataModel_8h_source.html#l00090">DataModel::DD_endingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00080">DataModel::DD_gameOptionsVersion</a>, <a class="el" href="DataModel_8h_source.html#l00091">DataModel::DD_gameType</a>, <a class="el" href="DataModel_8h_source.html#l00135">DataModel::DD_guid</a>, <a class="el" href="DataModel_8h_source.html#l00117">DataModel::DD_handicap</a>, <a class="el" href="DataModel_8h_source.html#l00079">DataModel::DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00123">DataModel::DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00136">DataModel::DD_lobbyName</a>, <a class="el" href="DataModel_8h_source.html#l00125">DataModel::DD_lobbyVisibility</a>, <a class="el" href="DataModel_8h_source.html#l00106">DataModel::DD_lockSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00105">DataModel::DD_lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00137">DataModel::DD_moddedDataset</a>, <a class="el" href="DataModel_8h_source.html#l00107">DataModel::DD_multiplayer</a>, <a class="el" href="DataModel_8h_source.html#l00097">DataModel::DD_numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00104">DataModel::DD_numStartingUnits</a>, <a class="el" href="DataModel_8h_source.html#l00111">DataModel::DD_predatorsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00102">DataModel::DD_randomPositions</a>, <a class="el" href="DataModel_8h_source.html#l00109">DataModel::DD_recordGame</a>, <a class="el" href="DataModel_8h_source.html#l00085">DataModel::DD_resolvedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00084">DataModel::DD_selectedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00113">DataModel::DD_sharedExploration</a>, <a class="el" href="DataModel_8h_source.html#l00094">DataModel::DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00089">DataModel::DD_startingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00088">DataModel::DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00115">DataModel::DD_subGameMode</a>, <a class="el" href="DataModel_8h_source.html#l00101">DataModel::DD_teamBonusDisabled</a>, <a class="el" href="DataModel_8h_source.html#l00114">DataModel::DD_teamPositions</a>, <a class="el" href="DataModel_8h_source.html#l00100">DataModel::DD_tradeEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00095">DataModel::DD_treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00112">DataModel::DD_turboEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00098">DataModel::DD_unusedPlayerColor</a>, <a class="el" href="DataModel_8h_source.html#l00078">DataModel::DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00099">DataModel::DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00087">DataModel::DD_victoryTypeID</a>, <a class="el" href="DataModel_8h_source.html#l00076">DataModel::DE_build</a>, <a class="el" href="DataModel_8h_source.html#l00126">DataModel::DE_hiddenCivs</a>, <a class="el" href="DataModel_8h_source.html#l00127">DataModel::DE_matchMaking</a>, <a class="el" href="DataModel_8h_source.html#l00139">DataModel::DE_numAIFiles</a>, <a class="el" href="DataModel_8h_source.html#l00129">DataModel::DE_scenarioCiv</a>, <a class="el" href="DataModel_8h_source.html#l00128">DataModel::DE_specDely</a>, <a class="el" href="DataModel_8h_source.html#l00077">DataModel::DE_timestamp</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="utils_8cpp_source.html#l00019">patterns::HDseparator</a>, <a class="el" href="utils_8cpp_source.html#l00020">patterns::HDStringSeparator</a>, <a class="el" href="utils_8cpp_source.html#l00043">hexStr()</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00180">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00086">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00417">_DD_AICount</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00219">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00258">_readDEString()</a>, <a class="el" href="Analyzer_8h_source.html#l00222">_skipDEString()</a>, <a class="el" href="DataModel_8h_source.html#l00125">DataModel::DD_allowSpecs</a>, <a class="el" href="DataModel_8h_source.html#l00104">DataModel::DD_allTechs</a>, <a class="el" href="DataModel_8h_source.html#l00111">DataModel::DD_animalsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00117">DataModel::DD_battleRoyaleTime</a>, <a class="el" href="DataModel_8h_source.html#l00122">DataModel::DD_cheatNotifications</a>, <a class="el" href="DataModel_8h_source.html#l00109">DataModel::DD_cheats</a>, <a class="el" href="DataModel_8h_source.html#l00123">DataModel::DD_coloredChat</a>, <a class="el" href="DataModel_8h_source.html#l00083">DataModel::DD_datasetRef</a>, <a class="el" href="DataModel_8h_source.html#l00084">DataModel::DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00082">DataModel::DD_DLCCount</a>, <a class="el" href="DataModel_8h_source.html#l00091">DataModel::DD_endingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00081">DataModel::DD_gameOptionsVersion</a>, <a class="el" href="DataModel_8h_source.html#l00092">DataModel::DD_gameType</a>, <a class="el" href="DataModel_8h_source.html#l00136">DataModel::DD_guid</a>, <a class="el" href="DataModel_8h_source.html#l00118">DataModel::DD_handicap</a>, <a class="el" href="DataModel_8h_source.html#l00080">DataModel::DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00124">DataModel::DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00137">DataModel::DD_lobbyName</a>, <a class="el" href="DataModel_8h_source.html#l00126">DataModel::DD_lobbyVisibility</a>, <a class="el" href="DataModel_8h_source.html#l00107">DataModel::DD_lockSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00106">DataModel::DD_lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00138">DataModel::DD_moddedDataset</a>, <a class="el" href="DataModel_8h_source.html#l00108">DataModel::DD_multiplayer</a>, <a class="el" href="DataModel_8h_source.html#l00098">DataModel::DD_numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00105">DataModel::DD_numStartingUnits</a>, <a class="el" href="DataModel_8h_source.html#l00112">DataModel::DD_predatorsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00103">DataModel::DD_randomPositions</a>, <a class="el" href="DataModel_8h_source.html#l00110">DataModel::DD_recordGame</a>, <a class="el" href="DataModel_8h_source.html#l00086">DataModel::DD_resolvedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00085">DataModel::DD_selectedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00114">DataModel::DD_sharedExploration</a>, <a class="el" href="DataModel_8h_source.html#l00095">DataModel::DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00090">DataModel::DD_startingAgeID</a>, <a class="el" href="DataModel_8h_source.html#l00089">DataModel::DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00116">DataModel::DD_subGameMode</a>, <a class="el" href="DataModel_8h_source.html#l00102">DataModel::DD_teamBonusDisabled</a>, <a class="el" href="DataModel_8h_source.html#l00115">DataModel::DD_teamPositions</a>, <a class="el" href="DataModel_8h_source.html#l00101">DataModel::DD_tradeEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00096">DataModel::DD_treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00113">DataModel::DD_turboEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00099">DataModel::DD_unusedPlayerColor</a>, <a class="el" href="DataModel_8h_source.html#l00079">DataModel::DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00100">DataModel::DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00088">DataModel::DD_victoryTypeID</a>, <a class="el" href="DataModel_8h_source.html#l00077">DataModel::DE_build</a>, <a class="el" href="DataModel_8h_source.html#l00127">DataModel::DE_hiddenCivs</a>, <a class="el" href="DataModel_8h_source.html#l00128">DataModel::DE_matchMaking</a>, <a class="el" href="DataModel_8h_source.html#l00140">DataModel::DE_numAIFiles</a>, <a class="el" href="DataModel_8h_source.html#l00130">DataModel::DE_scenarioCiv</a>, <a class="el" href="DataModel_8h_source.html#l00129">DataModel::DE_specDely</a>, <a class="el" href="DataModel_8h_source.html#l00078">DataModel::DE_timestamp</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="utils_8cpp_source.html#l00019">patterns::HDseparator</a>, <a class="el" href="utils_8cpp_source.html#l00020">patterns::HDStringSeparator</a>, <a class="el" href="utils_8cpp_source.html#l00044">hexStr()</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00181">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00087">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1757,7 +1754,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcAI_8cpp_source.html">subProcAI.cpp</a> 第 <a class="el" href="subProcAI_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00256">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="utils_8cpp_source.html#l00021">patterns::AIdataUnknown</a>, <a class="el" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::includeAI</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8cpp_source.html#l00219">_expectBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="utils_8cpp_source.html#l00021">patterns::AIdataUnknown</a>, <a class="el" href="namespacepatterns.html#a3b640fb2a393e1813231d3e0d69a4a0f">patterns::FFs_500</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="DataModel_8h_source.html#l00074">DataModel::includeAI</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1789,7 +1786,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcReplay_8cpp_source.html">subProcReplay.cpp</a> 第 <a class="el" href="subProcReplay_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00146">DataModel::cheatsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00142">DataModel::gameSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00145">DataModel::instantBuild</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="DataModel_8h_source.html#l00144">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00143">DataModel::recPlayer</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00147">DataModel::cheatsEnabled</a>, <a class="el" href="DataModel_8h_source.html#l00143">DataModel::gameSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00146">DataModel::instantBuild</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="DataModel_8h_source.html#l00145">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00144">DataModel::recPlayer</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>.</p>
 
 </div>
 </div>
@@ -1845,7 +1842,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindStartInfo_8cpp_source.html">subProcFindStartInfo.cpp</a> 第 <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00160">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00403">_startInfoPatternTrail</a>, <a class="el" href="Analyzer_8h_source.html#l00406">_startInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00144">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00156">DataModel::restoreTime</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00166">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_startInfoPatternTrail</a>, <a class="el" href="Analyzer_8h_source.html#l00421">_startInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00145">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00157">DataModel::restoreTime</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1876,7 +1873,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindTriggerInfo_8cpp_source.html">subProcFindTriggerInfo.cpp</a> 第 <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00407">_triggerInfoPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="utils_8cpp_source.html#l00025">patterns::gameSettingSign</a>, <a class="el" href="utils_8cpp_source.html#l00026">patterns::gameSettingSign1</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00064">DataModel::triggerStartSearchRange</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00422">_triggerInfoPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="utils_8cpp_source.html#l00025">patterns::gameSettingSign</a>, <a class="el" href="utils_8cpp_source.html#l00026">patterns::gameSettingSign1</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00066">DataModel::triggerStartSearchRange</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1908,7 +1905,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindDisables_8cpp_source.html">subProcFindDisables.cpp</a> 第 <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00409">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_gameSettingsPos</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00424">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00423">_gameSettingsPos</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1938,7 +1935,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindGameSettings_8cpp_source.html">subProcFindGameSettings.cpp</a> 第 <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00407">_triggerInfoPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="utils_8cpp_source.html#l00027">patterns::separator</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00423">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00422">_triggerInfoPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="utils_8cpp_source.html#l00027">patterns::separator</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -1968,7 +1965,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindVictory_8cpp_source.html">subProcFindVictory.cpp</a> 第 <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00409">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00410">_victoryStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00424">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00425">_victoryStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2000,7 +1997,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html">subProcFindScenarioHeader.cpp</a> 第 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00400">_curStream</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00411">_scenarioHeaderPos</a>, <a class="el" href="Analyzer_8h_source.html#l00410">_victoryStartPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="utils_8cpp_source.html#l00028">patterns::scenarioConstantAOC</a>, <a class="el" href="utils_8cpp_source.html#l00030">patterns::scenarioConstantAOK</a>, <a class="el" href="utils_8cpp_source.html#l00029">patterns::scenarioConstantHD</a>, <a class="el" href="utils_8cpp_source.html#l00031">patterns::scenarioConstantMGX2</a>, <a class="el" href="DataModel_8h_source.html#l00159">DataModel::scenarioVersion</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00415">_curStream</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00426">_scenarioHeaderPos</a>, <a class="el" href="Analyzer_8h_source.html#l00425">_victoryStartPos</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="utils_8cpp_source.html#l00028">patterns::scenarioConstantAOC</a>, <a class="el" href="utils_8cpp_source.html#l00030">patterns::scenarioConstantAOK</a>, <a class="el" href="utils_8cpp_source.html#l00029">patterns::scenarioConstantHD</a>, <a class="el" href="utils_8cpp_source.html#l00031">patterns::scenarioConstantMGX2</a>, <a class="el" href="DataModel_8h_source.html#l00160">DataModel::scenarioVersion</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2030,7 +2027,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcScenario_8cpp_source.html">subProcScenario.cpp</a> 第 <a class="el" href="subProcScenario_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_messagesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00411">_scenarioHeaderPos</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00160">DataModel::scenarioFilename</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00427">_messagesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00426">_scenarioHeaderPos</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00161">DataModel::scenarioFilename</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2060,7 +2057,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcMessage_8cpp_source.html">subProcMessage.cpp</a> 第 <a class="el" href="subProcMessage_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">_guessEncoding()</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_messagesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00182">_readPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00071">fixEncoding()</a>, <a class="el" href="DataModel_8h_source.html#l00161">DataModel::instructions</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="DataModel_8h_source.html#l00196">DataModel::outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00195">DataModel::rawEncoding</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">_guessEncoding()</a>, <a class="el" href="Analyzer_8h_source.html#l00427">_messagesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00188">_readPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00079">fixEncoding()</a>, <a class="el" href="DataModel_8h_source.html#l00162">DataModel::instructions</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="DataModel_8h_source.html#l00197">DataModel::outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00196">DataModel::rawEncoding</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>.</p>
 
 </div>
 </div>
@@ -2090,7 +2087,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcVictory_8cpp_source.html">subProcVictory.cpp</a> 第 <a class="el" href="subProcVictory_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00410">_victoryStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00167">DataModel::victoryAnyOrAll</a>, <a class="el" href="DataModel_8h_source.html#l00166">DataModel::victoryExplored</a>, <a class="el" href="DataModel_8h_source.html#l00164">DataModel::victoryIsConquest</a>, <a class="el" href="DataModel_8h_source.html#l00168">DataModel::victoryMode</a>, <a class="el" href="DataModel_8h_source.html#l00165">DataModel::victoryRelics</a>, <a class="el" href="DataModel_8h_source.html#l00169">DataModel::victoryScore</a>, <a class="el" href="DataModel_8h_source.html#l00170">DataModel::victoryTime</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00425">_victoryStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00168">DataModel::victoryAnyOrAll</a>, <a class="el" href="DataModel_8h_source.html#l00167">DataModel::victoryExplored</a>, <a class="el" href="DataModel_8h_source.html#l00165">DataModel::victoryIsConquest</a>, <a class="el" href="DataModel_8h_source.html#l00169">DataModel::victoryMode</a>, <a class="el" href="DataModel_8h_source.html#l00166">DataModel::victoryRelics</a>, <a class="el" href="DataModel_8h_source.html#l00170">DataModel::victoryScore</a>, <a class="el" href="DataModel_8h_source.html#l00171">DataModel::victoryTime</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2123,7 +2120,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcGameSettings_8cpp_source.html">subProcGameSettings.cpp</a> 第 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">18</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00182">_readPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00160">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00403">_startInfoPatternTrail</a>, <a class="el" href="DataModel_8h_source.html#l00174">DataModel::difficultyID</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="DataModel_8h_source.html#l00175">DataModel::lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00173">DataModel::mapID</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00062">DataModel::trailBytes</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00423">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00188">_readPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00166">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_startInfoPatternTrail</a>, <a class="el" href="DataModel_8h_source.html#l00175">DataModel::difficultyID</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="DataModel_8h_source.html#l00176">DataModel::lockTeams</a>, <a class="el" href="DataModel_8h_source.html#l00174">DataModel::mapID</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00064">DataModel::trailBytes</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>.</p>
 
 </div>
 </div>
@@ -2153,7 +2150,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcFindInitialPos_8cpp_source.html">subProcFindInitialPos.cpp</a> 第 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00409">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00408">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00411">_scenarioHeaderPos</a>, <a class="el" href="Analyzer_8h_source.html#l00406">_startInfoPos</a>, <a class="el" href="Analyzer_8h_source.html#l00410">_victoryStartPos</a>, <a class="el" href="DataModel_8h_source.html#l00063">DataModel::easySkipBase</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00150">DataModel::mapCoord</a>, <a class="el" href="DataModel_8h_source.html#l00144">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00424">_disablesStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00423">_gameSettingsPos</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00426">_scenarioHeaderPos</a>, <a class="el" href="Analyzer_8h_source.html#l00421">_startInfoPos</a>, <a class="el" href="Analyzer_8h_source.html#l00425">_victoryStartPos</a>, <a class="el" href="DataModel_8h_source.html#l00065">DataModel::easySkipBase</a>, <a class="el" href="utils_8h_source.html#l00022">findPosition()</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00151">DataModel::mapCoord</a>, <a class="el" href="DataModel_8h_source.html#l00145">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2183,7 +2180,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcStartInfo_8cpp_source.html">subProcStartInfo.cpp</a> 第 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00397">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00160">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00403">_startInfoPatternTrail</a>, <a class="el" href="Analyzer_8h_source.html#l00406">_startInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00150">DataModel::mapCoord</a>, <a class="el" href="Helper_8h_source.html#l00047">MCP</a>, <a class="el" href="DataModel_8h_source.html#l00144">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="Helper_8h_source.html#l00045">USERPATCH15</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00412">_header</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00166">_skipPascalString()</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_startInfoPatternTrail</a>, <a class="el" href="Analyzer_8h_source.html#l00421">_startInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00151">DataModel::mapCoord</a>, <a class="el" href="Helper_8h_source.html#l00046">MCP</a>, <a class="el" href="DataModel_8h_source.html#l00145">DataModel::numPlayers</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="Helper_8h_source.html#l00044">USERPATCH15</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2215,7 +2212,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcTrigger_8cpp_source.html">subProcTrigger.cpp</a> 第 <a class="el" href="subProcTrigger_8cpp_source.html#l00018">18</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00413">_lobbyStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00407">_triggerInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00428">_lobbyStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00422">_triggerInfoPos</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a>.</p>
 
 </div>
 </div>
@@ -2247,7 +2244,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcLobby_8cpp_source.html">subProcLobby.cpp</a> 第 <a class="el" href="subProcLobby_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00413">_lobbyStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00182">_readPascalString()</a>, <a class="el" href="DataModel_8h_source.html#l00184">DataModel::chat</a>, <a class="el" href="DataModel_8h_source.html#l00185">DataModel::DE_mapSeed</a>, <a class="el" href="DataModel_8h_source.html#l00178">DataModel::fogOfWar</a>, <a class="el" href="DataModel_8h_source.html#l00181">DataModel::gameType</a>, <a class="el" href="Helper_8h_source.html#l00018">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00024">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_HD</a>, <a class="el" href="DataModel_8h_source.html#l00182">DataModel::lockDiplomacy</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="DataModel_8h_source.html#l00179">DataModel::mapSize</a>, <a class="el" href="Chat_8h_source.html#l00020">Chat::msg</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00180">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00086">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00071">DataModel::saveVersion</a>, <a class="el" href="operations_8cpp_source.html#l00019">tmpChat</a>, <a class="el" href="DataModel_8h_source.html#l00183">DataModel::treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00014">UINT32_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00428">_lobbyStartPos</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="Analyzer_8h_source.html#l00188">_readPascalString()</a>, <a class="el" href="DataModel_8h_source.html#l00185">DataModel::chat</a>, <a class="el" href="DataModel_8h_source.html#l00186">DataModel::DE_mapSeed</a>, <a class="el" href="DataModel_8h_source.html#l00179">DataModel::fogOfWar</a>, <a class="el" href="DataModel_8h_source.html#l00182">DataModel::gameType</a>, <a class="el" href="Helper_8h_source.html#l00017">IS_AOK</a>, <a class="el" href="Helper_8h_source.html#l00023">IS_DE</a>, <a class="el" href="Helper_8h_source.html#l00022">IS_HD</a>, <a class="el" href="DataModel_8h_source.html#l00183">DataModel::lockDiplomacy</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="DataModel_8h_source.html#l00180">DataModel::mapSize</a>, <a class="el" href="Chat_8h_source.html#l00020">Chat::msg</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00181">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00087">DataModel::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="operations_8cpp_source.html#l00019">tmpChat</a>, <a class="el" href="DataModel_8h_source.html#l00184">DataModel::treatyLength</a>, <a class="el" href="DataModel_8h_source.html#l00014">UINT32_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00073">DataModel::versionCode</a> , 以及 <a class="el" href="Logger_8h_source.html#l00095">Logger::warn()</a>.</p>
 
 </div>
 </div>
@@ -2277,7 +2274,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="subProcBody_8cpp_source.html">subProcBody.cpp</a> 第 <a class="el" href="subProcBody_8cpp_source.html#l00015">15</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="operations_8cpp_source.html#l00025">_handleOpSync()</a>, <a class="el" href="operations_8cpp_source.html#l00034">_handleOpViewlock()</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00046">_readGameStart()</a>, <a class="el" href="helpers_8h_source.html#l00014">OP_COMMAND</a>, <a class="el" href="helpers_8h_source.html#l00015">OP_SYNC</a> , 以及 <a class="el" href="helpers_8h_source.html#l00016">OP_VIEWLOCK</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00438">_earlyMoveCnt</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="operations_8cpp_source.html#l00025">_handleOpSync()</a>, <a class="el" href="operations_8cpp_source.html#l00034">_handleOpViewlock()</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00047">_readGameStart()</a>, <a class="el" href="helpers_8h_source.html#l00017">OP_CHAT</a>, <a class="el" href="helpers_8h_source.html#l00014">OP_COMMAND</a>, <a class="el" href="helpers_8h_source.html#l00015">OP_SYNC</a> , 以及 <a class="el" href="helpers_8h_source.html#l00016">OP_VIEWLOCK</a>.</p>
 
 </div>
 </div>
@@ -2306,9 +2303,9 @@ false </dd></dl>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>其实规律是从这里开始读过24个字节后一直要往后走，直到遇到第一个02 00 00 00</dd></dl>
 
-<p class="definition">在文件 <a class="el" href="subProcBody_8cpp_source.html">subProcBody.cpp</a> 第 <a class="el" href="subProcBody_8cpp_source.html#l00046">46</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="subProcBody_8cpp_source.html">subProcBody.cpp</a> 第 <a class="el" href="subProcBody_8cpp_source.html#l00047">47</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00192">DataModel::isMultiplayer</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00193">DataModel::syncChecksumInterval</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00193">DataModel::isMultiplayer</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00194">DataModel::syncChecksumInterval</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>.</p>
 
@@ -2339,7 +2336,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00025">25</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00191">DataModel::duration</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00018">syncData</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="DataModel_8h_source.html#l00192">DataModel::duration</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00018">syncData</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>.</p>
 
@@ -2399,7 +2396,7 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00039">39</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00418">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00182">_readPascalString()</a>, <a class="el" href="DataModel_8h_source.html#l00184">DataModel::chat</a>, <a class="el" href="DataModel_8h_source.html#l00191">DataModel::duration</a>, <a class="el" href="Logger_8h_source.html#l00100">Logger::fatal()</a>, <a class="el" href="Analyzer_8h_source.html#l00111">logger</a>, <a class="el" href="Chat_8h_source.html#l00020">Chat::msg</a>, <a class="el" href="MgxParser_8cpp_source.html#l00037">MgxParser::parse()</a>, <a class="el" href="DataModel_8h_source.html#l00119">DataModel::players</a>, <a class="el" href="Chat_8h_source.html#l00019">Chat::time</a>, <a class="el" href="operations_8cpp_source.html#l00019">tmpChat</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00023">tmpIndex</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00188">_readPascalString()</a>, <a class="el" href="DataModel_8h_source.html#l00185">DataModel::chat</a>, <a class="el" href="DataModel_8h_source.html#l00192">DataModel::duration</a>, <a class="el" href="Logger_8h_source.html#l00100">Logger::fatal()</a>, <a class="el" href="Analyzer_8h_source.html#l00119">logger</a>, <a class="el" href="Chat_8h_source.html#l00020">Chat::msg</a>, <a class="el" href="MgxParser_8cpp_source.html#l00041">MgxParser::parse()</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="Chat_8h_source.html#l00019">Chat::time</a>, <a class="el" href="operations_8cpp_source.html#l00019">tmpChat</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00023">tmpIndex</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>.</p>
 
@@ -2430,9 +2427,107 @@ false </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="operations_8cpp_source.html">operations.cpp</a> 第 <a class="el" href="operations_8cpp_source.html#l00080">80</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00399">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00400">_curStream</a>, <a class="el" href="Analyzer_8h_source.html#l00149">_readBytes()</a>, <a class="el" href="operations_8cpp_source.html#l00022">cmd</a>, <a class="el" href="operations_8cpp_source.html#l00020">cmdLen</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00021">pNext</a>.</p>
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00415">_curStream</a>, <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="operations_8cpp_source.html#l00020">cmdLen</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00021">pNext</a>.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>.</p>
+
+</div>
+</div>
+<a id="a019dd42d18282225952c69c7292f34a3"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a019dd42d18282225952c69c7292f34a3">&#9670;&nbsp;</a></span>_handleAction()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_handleAction </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="actionHandler_8cpp_source.html">actionHandler.cpp</a> 第 <a class="el" href="actionHandler_8cpp_source.html#l00016">16</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00414">_curPos</a>, <a class="el" href="Analyzer_8h_source.html#l00436">_earlyMoveCmd</a>, <a class="el" href="Analyzer_8h_source.html#l00438">_earlyMoveCnt</a>, <a class="el" href="Analyzer_8h_source.html#l00437">_earlyMoveTime</a>, <a class="el" href="Analyzer_8h_source.html#l00155">_readBytes()</a>, <a class="el" href="operations_8cpp_source.html#l00022">cmd</a>, <a class="el" href="helpers_8h_source.html#l00026">COMMAND_MOVE</a>, <a class="el" href="helpers_8h_source.html#l00020">COMMAND_RESEARCH</a>, <a class="el" href="helpers_8h_source.html#l00019">COMMAND_RESIGN</a>, <a class="el" href="DataModel_8h_source.html#l00192">DataModel::duration</a>, <a class="el" href="Analyzer_8h_source.html#l00022">EARLYMOVE_USED</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="helpers_8h_source.html#l00029">RESEARCH_CASTLE</a> , 以及 <a class="el" href="helpers_8h_source.html#l00028">RESEARCH_FEUDAL</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>.</p>
+
+</div>
+</div>
+<a id="a04c048e5225057be769e05285d37ee6c"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04c048e5225057be769e05285d37ee6c">&#9670;&nbsp;</a></span>_guessWinner()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_guessWinner </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>debugFlag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>谁赢谁输只能靠猜。逻辑是：哪一组的人均存活时间最长，哪一组就算赢。 </p>
+<p>如果resigned == -1，那存活时间就算成duration, 如果resigned &gt;=0，那存活时间就是resigned，需要考虑的是双控的情况。 </p>
+
+<p class="definition">在文件 <a class="el" href="addonGuessWinner_8cpp_source.html">addonGuessWinner.cpp</a> 第 <a class="el" href="addonGuessWinner_8cpp_source.html#l00031">31</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="addonGuessWinner_8cpp_source.html#l00022">TeamCredit::count</a> , 以及 <a class="el" href="addonGuessWinner_8cpp_source.html#l00021">TeamCredit::credits</a>.</p>
+
+</div>
+</div>
+<a id="a0e35142c343352ad8636484fbb83513b"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a0e35142c343352ad8636484fbb83513b">&#9670;&nbsp;</a></span>_genRetroGuid()</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">void DefaultAnalyzer::_genRetroGuid </td>
+          <td>(</td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>debugFlag</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>Guid is presented in HD/DE records, but not in older versions. Guid can be used to identify different views of same game. </p>
+<p>This function will combine some stable info among different views of same game and do a md5 hashing to get a uniform code for them. It is used mainly in records of older versions which have no native guid embeded in record file. <a class="el" href="namespaceMgxParser.html">MgxParser</a> uses following data to generate guid of a game (* means optional): | versionStr | saveVersion | logVersion | scenarioVersion | mapDataPtr | mapSize | popLimit | gameSpeed | PlayerName + civID + index + slot + colorID + teamID by slot sequence | First 20 bytes of first MOVE action data in body | Happen time of first MOVE action Note: Duration is normally different among records of same game, 'cuz player quit at different time. That's why duration cannot be a factor of this and only the very early action data can be used.</p>
+<dl class="section return"><dt>返回</dt><dd>string Guid of this record </dd></dl>
+
+<p class="definition">在文件 <a class="el" href="addonGuid_8cpp_source.html">addonGuid.cpp</a> 第 <a class="el" href="addonGuid_8cpp_source.html#l00037">37</a> 行定义.</p>
+
+<p class="reference">引用了 <a class="el" href="Analyzer_8h_source.html#l00433">_debugFlag</a>, <a class="el" href="Analyzer_8h_source.html#l00436">_earlyMoveCmd</a>, <a class="el" href="Analyzer_8h_source.html#l00437">_earlyMoveTime</a>, <a class="el" href="Analyzer_8h_source.html#l00022">EARLYMOVE_USED</a>, <a class="el" href="DataModel_8h_source.html#l00143">DataModel::gameSpeed</a>, <a class="el" href="utils_8cpp_source.html#l00044">hexStr()</a>, <a class="el" href="DataModel_8h_source.html#l00070">DataModel::logVersion</a>, <a class="el" href="DataModel_8h_source.html#l00174">DataModel::mapID</a>, <a class="el" href="DataModel_8h_source.html#l00180">DataModel::mapSize</a>, <a class="el" href="DataModel_8h_source.html#l00120">DataModel::players</a>, <a class="el" href="DataModel_8h_source.html#l00181">DataModel::populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00206">DataModel::retroGuid</a>, <a class="el" href="DataModel_8h_source.html#l00072">DataModel::saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00160">DataModel::scenarioVersion</a> , 以及 <a class="el" href="DataModel_8h_source.html#l00071">DataModel::versionStr</a>.</p>
 
 </div>
 </div>
@@ -2449,9 +2544,9 @@ false </dd></dl>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00111">111</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00119">119</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">_loadFile()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">_loadFile()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2469,9 +2564,63 @@ false </dd></dl>
 
 <p>录像的路径 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00113">113</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00121">121</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">_loadFile()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">_loadFile()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
+
+</div>
+</div>
+<a id="a9e6b6547f2ee0012ec5292d9d8b63c93"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a9e6b6547f2ee0012ec5292d9d8b63c93">&#9670;&nbsp;</a></span>ZLIB_CHUNK</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DefaultAnalyzer::ZLIB_CHUNK = 512 * 1024</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used. </p>
+
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00406">406</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a>.</p>
+
+</div>
+</div>
+<a id="aa47f32ecbadc92f1697260d1bf51c3fe"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aa47f32ecbadc92f1697260d1bf51c3fe">&#9670;&nbsp;</a></span>_zipinfo</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="structZipInfo.html">ZipInfo</a>* DefaultAnalyzer::_zipinfo = nullptr</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00407">407</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -2497,9 +2646,9 @@ false </dd></dl>
 
 <p>读取后的录像文件数据 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00393">393</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00408">408</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">_inflateRawHeader()</a> , 以及 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">_loadFile()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">_loadFile()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -2525,9 +2674,9 @@ false </dd></dl>
 
 <p>以字节数组输入时的原始数组 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00394">394</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00409">409</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">_inflateRawHeader()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -2553,7 +2702,9 @@ false </dd></dl>
 
 <p>body部分的长度(bytes) </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00395">395</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00410">410</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -2579,9 +2730,9 @@ false </dd></dl>
 
 <p>用于存储body数据 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00396">396</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00411">411</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00126">extract()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a> , 以及 <a class="el" href="subProcFileHandler_8cpp_source.html#l00116">extract()</a>.</p>
 
 </div>
 </div>
@@ -2607,9 +2758,9 @@ false </dd></dl>
 
 <p>用于存储解压缩后的header数据 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00397">397</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00412">412</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">_inflateRawHeader()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a> , 以及 <a class="el" href="subProcFileHandler_8cpp_source.html#l00126">extract()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a> , 以及 <a class="el" href="subProcFileHandler_8cpp_source.html#l00116">extract()</a>.</p>
 
 </div>
 </div>
@@ -2635,9 +2786,9 @@ false </dd></dl>
 
 <p>当前读取数据的指针 </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00399">399</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00414">414</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">_inflateRawHeader()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00046">_readGameStart()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00047">_readGameStart()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2664,7 +2815,7 @@ false </dd></dl>
 <p>指向当前使用的数据流的底层数组的指针。 </p>
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000003">待办事项:</a></b></dt><dd>要把代码中所有的_header.data()替换成这个。 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00400">400</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00415">415</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a> , 以及 <a class="el" href="operations_8cpp_source.html#l00080">_handleOpCommand()</a>.</p>
 
@@ -2691,7 +2842,7 @@ false </dd></dl>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>used to skip AI section </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00402">402</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00417">417</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>.</p>
 
@@ -2717,7 +2868,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00403">403</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00418">418</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>.</p>
 
@@ -2744,7 +2895,7 @@ false </dd></dl>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>7: <a class="el" href="structDETile1.html">DETile1</a>; 9: <a class="el" href="structDETile2.html">DETile2</a>; 4: <a class="el" href="structTile1.html">Tile1</a>; 2: <a class="el" href="structTileLegacy.html">TileLegacy</a>. This value is size of structure. </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00404">404</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00419">419</a> 行定义.</p>
 
 </div>
 </div>
@@ -2768,7 +2919,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00406">406</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00421">421</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>.</p>
 
@@ -2794,7 +2945,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00407">407</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00422">422</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a> , 以及 <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a>.</p>
 
@@ -2820,7 +2971,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00408">408</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00423">423</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a> , 以及 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>.</p>
 
@@ -2846,7 +2997,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00409">409</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00424">424</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a> , 以及 <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a>.</p>
 
@@ -2872,7 +3023,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00410">410</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00425">425</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
 
@@ -2898,7 +3049,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00411">411</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00426">426</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a> , 以及 <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>.</p>
 
@@ -2924,7 +3075,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00412">412</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00427">427</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a> , 以及 <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>.</p>
 
@@ -2950,7 +3101,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00413">413</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00428">428</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a> , 以及 <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a>.</p>
 
@@ -2976,7 +3127,7 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00415">415</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00430">430</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">_guessEncoding()</a>.</p>
 
@@ -3004,7 +3155,7 @@ false </dd></dl>
 
 <p>Indicate some previous procedure was failed </p>
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00417">417</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00432">432</a> 行定义.</p>
 
 </div>
 </div>
@@ -3028,9 +3179,9 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00418">418</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00433">433</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00046">_readGameStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">_findDisablesStart()</a>, <a class="el" href="subProcFindGameSettings_8cpp_source.html#l00015">_findGameSettingsStart()</a>, <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">_findTriggerInfoStart()</a>, <a class="el" href="subProcFindVictory_8cpp_source.html#l00014">_findVictoryStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">_gameSettingsAnalyzer()</a>, <a class="el" href="addonGuid_8cpp_source.html#l00037">_genRetroGuid()</a>, <a class="el" href="operations_8cpp_source.html#l00039">_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">_lobbyAnalyzer()</a>, <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">_messagesAnalyzer()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>, <a class="el" href="subProcBody_8cpp_source.html#l00047">_readGameStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="subProcVictory_8cpp_source.html#l00014">_victorySettingsAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -3054,15 +3205,98 @@ false </dd></dl>
 </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00419">419</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00434">434</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">_inflateRawHeader()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">_inflateRawHeader()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">_locateStreams()</a>.</p>
+
+</div>
+</div>
+<a id="a4022c5230f974adb1a2727cd9bf9f583"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a4022c5230f974adb1a2727cd9bf9f583">&#9670;&nbsp;</a></span>_earlyMoveCmd</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">const uint8_t* DefaultAnalyzer::_earlyMoveCmd[<a class="el" href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p>有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。 </p>
+
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00436">436</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">_genRetroGuid()</a> , 以及 <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a>.</p>
+
+</div>
+</div>
+<a id="a6208d3c71f1e7636e9233f962ac1fc46"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6208d3c71f1e7636e9233f962ac1fc46">&#9670;&nbsp;</a></span>_earlyMoveTime</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">uint32_t DefaultAnalyzer::_earlyMoveTime[<a class="el" href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a>]</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00437">437</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">_genRetroGuid()</a> , 以及 <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a>.</p>
+
+</div>
+</div>
+<a id="a04805e863124686dff31f501a9261161"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a04805e863124686dff31f501a9261161">&#9670;&nbsp;</a></span>_earlyMoveCnt</h2>
+
+<div class="memitem">
+<div class="memproto">
+<table class="mlabels">
+  <tr>
+  <td class="mlabels-left">
+      <table class="memname">
+        <tr>
+          <td class="memname">int DefaultAnalyzer::_earlyMoveCnt</td>
+        </tr>
+      </table>
+  </td>
+  <td class="mlabels-right">
+<span class="mlabels"><span class="mlabel">protected</span></span>  </td>
+  </tr>
+</table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="Analyzer_8h_source.html">Analyzer.h</a> 第 <a class="el" href="Analyzer_8h_source.html#l00438">438</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="actionHandler_8cpp_source.html#l00016">_handleAction()</a> , 以及 <a class="el" href="subProcBody_8cpp_source.html#l00015">_readBodyCommands()</a>.</p>
 
 </div>
 </div>
 <hr/>该类的文档由以下文件生成:<ul>
 <li><a class="el" href="Analyzer_8h_source.html">Analyzer.h</a></li>
+<li><a class="el" href="addonGuessWinner_8cpp_source.html">addonGuessWinner.cpp</a></li>
+<li><a class="el" href="addonGuid_8cpp_source.html">addonGuid.cpp</a></li>
 <li><a class="el" href="Analyzer_8cpp_source.html">Analyzer.cpp</a></li>
+<li><a class="el" href="actionHandler_8cpp_source.html">actionHandler.cpp</a></li>
 <li><a class="el" href="operations_8cpp_source.html">operations.cpp</a></li>
 <li><a class="el" href="subProcAI_8cpp_source.html">subProcAI.cpp</a></li>
 <li><a class="el" href="subProcBody_8cpp_source.html">subProcBody.cpp</a></li>
@@ -3079,6 +3313,7 @@ false </dd></dl>
 <li><a class="el" href="subProcHeaderDE_8cpp_source.html">subProcHeaderDE.cpp</a></li>
 <li><a class="el" href="subProcHeaderHD_8cpp_source.html">subProcHeaderHD.cpp</a></li>
 <li><a class="el" href="subProcLobby_8cpp_source.html">subProcLobby.cpp</a></li>
+<li><a class="el" href="subProcLocateStreams_8cpp_source.html">subProcLocateStreams.cpp</a></li>
 <li><a class="el" href="subProcMapData_8cpp_source.html">subProcMapData.cpp</a></li>
 <li><a class="el" href="subProcMessage_8cpp_source.html">subProcMessage.cpp</a></li>
 <li><a class="el" href="subProcReplay_8cpp_source.html">subProcReplay.cpp</a></li>

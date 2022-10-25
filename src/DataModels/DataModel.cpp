@@ -21,7 +21,7 @@ string DataModel::toJson()
     // Version info
     j["version"]["code"] = versionCode;
 
-    if (FLOAT_INIT != logVersion)
+    if (UINT32_INIT != logVersion)
         j["version"]["logVer"] = logVersion;
 
     if ('\0' != versionStr[0])
@@ -47,6 +47,9 @@ string DataModel::toJson()
         j["instruction"] = instructions;
 
     // Settings
+    j["fileType"] = filetype;
+    if (!extractedName.empty())
+        j["extractedName"] = extractedName;
     j["rawEncoding"] = rawEncoding;
     j["speed"] = readLang(zh::speed, FLOAT_INIT == DD_speed ? gameSpeed : (uint32_t)(DD_speed * 1000));
     if (UINT32_INIT != DD_victoryTypeID)

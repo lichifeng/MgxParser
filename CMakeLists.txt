@@ -30,7 +30,7 @@ target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
-set(MGXPARSER_LINK_TARGETS pthread png z "stdc++fs")
+set(MGXPARSER_LINK_TARGETS pthread png z stdc++fs)
 target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_LINK_TARGETS})
 target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
 target_link_libraries("${PROJECT_NAME}_EXE" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})

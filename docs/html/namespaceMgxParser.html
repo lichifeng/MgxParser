@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: MgxParser 命名空间参考</title>
+<title>mgxnode: MgxParser 命名空间参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -72,16 +72,16 @@ $(function() {
 <table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:ab0b60e833df62fe969c18a734e711722"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">parse</a> (const uint8_t *, size_t)</td></tr>
-<tr class="separator:ab0b60e833df62fe969c18a734e711722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08c518fad4fd81be66769ea95e2279d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">parse</a> (const std::string &amp;)</td></tr>
-<tr class="separator:a08c518fad4fd81be66769ea95e2279d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc1b4bd2bcc65bf0cd382c620ea1ce1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#aabc1b4bd2bcc65bf0cd382c620ea1ce1">parse</a> (const uint8_t *, size_t, int=0)</td></tr>
+<tr class="separator:aabc1b4bd2bcc65bf0cd382c620ea1ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e91b8f69d996213a1ad379229d3985"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a95e91b8f69d996213a1ad379229d3985">parse</a> (const std::string &amp;, int=0)</td></tr>
+<tr class="separator:a95e91b8f69d996213a1ad379229d3985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0352edc1e5c8a71bc17cc671641fff57"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">pyparse</a> (const char *)</td></tr>
 <tr class="separator:a0352edc1e5c8a71bc17cc671641fff57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <h2 class="groupheader">函数说明</h2>
-<a id="ab0b60e833df62fe969c18a734e711722"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#ab0b60e833df62fe969c18a734e711722">&#9670;&nbsp;</a></span>parse() <span class="overload">[1/2]</span></h2>
+<a id="aabc1b4bd2bcc65bf0cd382c620ea1ce1"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#aabc1b4bd2bcc65bf0cd382c620ea1ce1">&#9670;&nbsp;</a></span>parse() <span class="overload">[1/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -96,7 +96,13 @@ $(function() {
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">size_t&#160;</td>
-          <td class="paramname"><em>n</em>&#160;</td>
+          <td class="paramname"><em>n</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"><em>mapType</em> = <code>0</code>&#160;</td>
         </tr>
         <tr>
           <td></td>
@@ -106,14 +112,16 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="MgxParser_8cpp_source.html">MgxParser.cpp</a> 第 <a class="el" href="MgxParser_8cpp_source.html#l00037">37</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="MgxParser_8cpp_source.html">MgxParser.cpp</a> 第 <a class="el" href="MgxParser_8cpp_source.html#l00041">41</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a> , 以及 <a class="el" href="MgxParser_8cpp_source.html#l00058">pyparse()</a>.</p>
+<p class="reference">引用了 <a class="el" href="MgxParser_8h_source.html#l00017">HD_MAP</a> , 以及 <a class="el" href="MgxParser_8h_source.html#l00015">NO_MAP</a>.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a> , 以及 <a class="el" href="MgxParser_8cpp_source.html#l00066">pyparse()</a>.</p>
 
 </div>
 </div>
-<a id="a08c518fad4fd81be66769ea95e2279d6"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a08c518fad4fd81be66769ea95e2279d6">&#9670;&nbsp;</a></span>parse() <span class="overload">[2/2]</span></h2>
+<a id="a95e91b8f69d996213a1ad379229d3985"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a95e91b8f69d996213a1ad379229d3985">&#9670;&nbsp;</a></span>parse() <span class="overload">[2/2]</span></h2>
 
 <div class="memitem">
 <div class="memproto">
@@ -122,8 +130,18 @@ $(function() {
           <td class="memname">std::string MgxParser::parse </td>
           <td>(</td>
           <td class="paramtype">const std::string &amp;&#160;</td>
-          <td class="paramname"></td><td>)</td>
+          <td class="paramname">, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">int&#160;</td>
+          <td class="paramname"> = <code>0</code>&#160;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -146,9 +164,9 @@ $(function() {
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="MgxParser_8cpp_source.html">MgxParser.cpp</a> 第 <a class="el" href="MgxParser_8cpp_source.html#l00058">58</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="MgxParser_8cpp_source.html">MgxParser.cpp</a> 第 <a class="el" href="MgxParser_8cpp_source.html#l00066">66</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="MgxParser_8cpp_source.html#l00037">parse()</a>.</p>
+<p class="reference">引用了 <a class="el" href="MgxParser_8cpp_source.html#l00041">parse()</a>.</p>
 
 </div>
 </div>

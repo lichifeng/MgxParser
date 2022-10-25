@@ -98,7 +98,7 @@ int DefaultAnalyzer::_inflateRawHeader()
                 _header.end(),
                 out,
                 out + have);
-            if (!_f.good() && (FILE_INPUT == _inputType))
+            if ((FILE_INPUT == _inputType) && !_f.good())
             {
                 (void)inflateEnd(&strm);
                 return Z_ERRNO;

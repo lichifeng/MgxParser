@@ -12,12 +12,14 @@
 #pragma once
 
 #define HEADER_INIT 5 * 1024 * 1024
+#define BODY_MAX 100 * 1024 * 1024
 #define HEADER_STRM 0
 #define BODY_STRM 1
 #define PrintHEX(n) _printHex(n, __FILE__, __LINE__)
 #define FILE_INPUT 1
 #define MEM_INPUT 2
-#define EARLYMOVE_USED 5 
+#define ZIP_INPUT 3
+#define EARLYMOVE_USED 5
 
 #include <array>
 #include <cstddef>
@@ -33,6 +35,7 @@
 #include "../BaseAnalyzer.h"
 #include "utils.h"
 #include "bodyProcessors/helpers.h"
+#include "Zipdecompress.h"
 
 using namespace std;
 
@@ -43,7 +46,12 @@ using namespace std;
 class DefaultAnalyzer : public BaseAnalyzer
 {
 public:
-    ~DefaultAnalyzer() { delete _encodingConverter; }
+    ~DefaultAnalyzer()
+    {
+        if (nullptr != _zipinfo)
+            delete _zipinfo;
+        delete _encodingConverter;
+    }
 
     DefaultAnalyzer(const string &inputFile) : path(inputFile) { createLogger(); }
 
@@ -395,15 +403,15 @@ protected:
     void _guessWinner(int);
     void _genRetroGuid(int);
 
-
-    uint32_t ZLIB_CHUNK = 512 * 1024;  ///< ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.
+    uint32_t ZLIB_CHUNK = 512 * 1024; ///< ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.
+    ZipInfo *_zipinfo = nullptr;
     ifstream _f;             ///< 读取后的录像文件数据
     const uint8_t *_b;       ///< 以字节数组输入时的原始数组
     size_t _bodySize;        ///< body部分的长度(bytes)
     vector<uint8_t> _body;   ///< 用于存储body数据
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
 
-    const uint8_t *_curPos;            ///< 当前读取数据的指针
+    const uint8_t *_curPos;      ///< 当前读取数据的指针
     vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section

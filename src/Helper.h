@@ -8,7 +8,6 @@
  * \copyright  Copyright (c) 2020-2022
  *
  */
-
 #pragma once
 
 #include "nlohmann_json_3/json.hpp"

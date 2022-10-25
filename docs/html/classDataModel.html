@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: DataModel类 参考</title>
+<title>mgxnode: DataModel类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -94,7 +94,7 @@ Public 成员函数</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-attribs"></a>
 Public 属性</h2></td></tr>
-<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a></td></tr>
+<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a> = &quot;&lt;memory buffer&gt;&quot;</td></tr>
 <tr class="memdesc:a79b4014a8e32500aa24c26346d6f08dc"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的文件名  <a href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">更多...</a><br /></td></tr>
 <tr class="separator:a79b4014a8e32500aa24c26346d6f08dc"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa60c729bb12fc4da61a1e03a7a4d8a1"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">ext</a></td></tr>
@@ -103,6 +103,11 @@ Public 属性</h2></td></tr>
 <tr class="memitem:acb0c9464084a42459991d17840370859"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#acb0c9464084a42459991d17840370859">filesize</a> = 0</td></tr>
 <tr class="memdesc:acb0c9464084a42459991d17840370859"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#acb0c9464084a42459991d17840370859">更多...</a><br /></td></tr>
 <tr class="separator:acb0c9464084a42459991d17840370859"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b0fe4bb7e11f0cfe4f68253246ab40"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">filetype</a> = &quot;record&quot;</td></tr>
+<tr class="memdesc:ab7b0fe4bb7e11f0cfe4f68253246ab40"><td class="mdescLeft">&#160;</td><td class="mdescRight">Or zip/rar/7z  <a href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">更多...</a><br /></td></tr>
+<tr class="separator:ab7b0fe4bb7e11f0cfe4f68253246ab40"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae593242fc33c8e855a4d968e104178c0"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ae593242fc33c8e855a4d968e104178c0">extractedName</a></td></tr>
+<tr class="separator:ae593242fc33c8e855a4d968e104178c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">trailBytes</a> = 5</td></tr>
 <tr class="memdesc:a948f462af5ea46c7d4b5639d1455d9f4"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度  <a href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">更多...</a><br /></td></tr>
 <tr class="separator:a948f462af5ea46c7d4b5639d1455d9f4"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -112,13 +117,10 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a890560786fb9198fd1028b952a9d07cd"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">triggerStartSearchRange</a> = 19</td></tr>
 <tr class="memdesc:a890560786fb9198fd1028b952a9d07cd"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试  <a href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">更多...</a><br /></td></tr>
 <tr class="separator:a890560786fb9198fd1028b952a9d07cd"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09856167b58ebce5ef4d8685441be636"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 512 * 1024</td></tr>
-<tr class="memdesc:a09856167b58ebce5ef4d8685441be636"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
-<tr class="separator:a09856167b58ebce5ef4d8685441be636"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">logVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="memdesc:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版  <a href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">更多...</a><br /></td></tr>
 <tr class="separator:a57124cb8db8ea4ed0f89b5a9e6333b25"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51e5fe53253a984bc2f662450db0307d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = &quot;&quot;</td></tr>
+<tr class="memitem:a51e5fe53253a984bc2f662450db0307d"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = {'\0'}</td></tr>
 <tr class="memdesc:a51e5fe53253a984bc2f662450db0307d"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表游戏版本的原始字符串  <a href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">更多...</a><br /></td></tr>
 <tr class="separator:a51e5fe53253a984bc2f662450db0307d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49dbf533a0985e4bc078ba5bce940d21"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
@@ -285,7 +287,7 @@ Public 属性</h2></td></tr>
 <tr class="separator:ade5cffb64f3194dccd00d113870529c5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1759ab2c17e4aa1e7cb73f52b512227"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad1759ab2c17e4aa1e7cb73f52b512227">victoryAnyOrAll</a></td></tr>
 <tr class="separator:ad1759ab2c17e4aa1e7cb73f52b512227"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a></td></tr>
+<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a4c283f7d0f426a9d6175c5feca6175bf"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed6d42f69764c532180d64abfc73c406"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aed6d42f69764c532180d64abfc73c406">victoryScore</a></td></tr>
 <tr class="separator:aed6d42f69764c532180d64abfc73c406"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -299,7 +301,7 @@ Public 属性</h2></td></tr>
 <tr class="separator:aed322dd82e7b4d0a6b0ea46aaecf7d6f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ef98daf7a67c5bc785e130e1a5b1b4"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">fogOfWar</a></td></tr>
 <tr class="separator:a63ef98daf7a67c5bc785e130e1a5b1b4"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a738a428169226d54ad2c0e211768569d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a></td></tr>
+<tr class="memitem:a738a428169226d54ad2c0e211768569d"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a738a428169226d54ad2c0e211768569d"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752b8a336c226a692394b391f17ec8c0"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a752b8a336c226a692394b391f17ec8c0"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -332,12 +334,16 @@ Public 属性</h2></td></tr>
 <tr class="memitem:a28dc6eb404ae1b153024f3522cad2685"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">message</a></td></tr>
 <tr class="memdesc:a28dc6eb404ae1b153024f3522cad2685"><td class="mdescLeft">&#160;</td><td class="mdescRight">对 <code>status</code> 的具体说明  <a href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">更多...</a><br /></td></tr>
 <tr class="separator:a28dc6eb404ae1b153024f3522cad2685"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser Normal&quot;</td></tr>
+<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser as Node Addon&quot;</td></tr>
 <tr class="memdesc:a24a9352d2d47c168d70835eefedb1dc8"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析模式：normal, verbose, etc. 可以在命令行中指定  <a href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">更多...</a><br /></td></tr>
 <tr class="separator:a24a9352d2d47c168d70835eefedb1dc8"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeda1ea7a358bfba3a2139a09fa6f290"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">parseTime</a> = 0</td></tr>
 <tr class="memdesc:adeda1ea7a358bfba3a2139a09fa6f290"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒）  <a href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">更多...</a><br /></td></tr>
 <tr class="separator:adeda1ea7a358bfba3a2139a09fa6f290"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f8c78bddce81510c6a2b5a7a30b348"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac3f8c78bddce81510c6a2b5a7a30b348">teamMode</a></td></tr>
+<tr class="separator:ac3f8c78bddce81510c6a2b5a7a30b348"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c1662074ccd43061e35aa8e0a21ca2"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac1c1662074ccd43061e35aa8e0a21ca2">retroGuid</a></td></tr>
+<tr class="separator:ac1c1662074ccd43061e35aa8e0a21ca2"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock">
@@ -417,7 +423,7 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8cpp_source.html">DataModel.cpp</a> 第 <a class="el" href="DataModel_8cpp_source.html#l00014">14</a> 行定义.</p>
 
-<p class="reference">引用了 <a class="el" href="DataModel_8h_source.html#l00184">chat</a>, <a class="el" href="DataModel_8h_source.html#l00146">cheatsEnabled</a>, <a class="el" href="zh_8h_source.html#l00019">zh::civNames</a>, <a class="el" href="DataModel_8h_source.html#l00108">DD_cheats</a>, <a class="el" href="DataModel_8h_source.html#l00083">DD_difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00117">DD_handicap</a>, <a class="el" href="DataModel_8h_source.html#l00079">DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00123">DD_isRanked</a>, <a class="el" href="DataModel_8h_source.html#l00085">DD_resolvedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00084">DD_selectedMapID</a>, <a class="el" href="DataModel_8h_source.html#l00094">DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00088">DD_startingResourcesID</a>, <a class="el" href="DataModel_8h_source.html#l00078">DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00099">DD_victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00087">DD_victoryTypeID</a>, <a class="el" href="DataModel_8h_source.html#l00076">DE_build</a>, <a class="el" href="DataModel_8h_source.html#l00077">DE_timestamp</a>, <a class="el" href="zh_8h_source.html#l00098">zh::difficulty</a>, <a class="el" href="DataModel_8h_source.html#l00174">difficultyID</a>, <a class="el" href="DataModel_8h_source.html#l00191">duration</a>, <a class="el" href="DataModel_8h_source.html#l00188">embededMapName</a>, <a class="el" href="DataModel_8h_source.html#l00057">filename</a>, <a class="el" href="DataModel_8h_source.html#l00059">filesize</a>, <a class="el" href="DataModel_8h_source.html#l00015">FLOAT_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00178">fogOfWar</a>, <a class="el" href="DataModel_8h_source.html#l00142">gameSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00073">includeAI</a>, <a class="el" href="DataModel_8h_source.html#l00161">instructions</a>, <a class="el" href="DataModel_8h_source.html#l00069">logVersion</a>, <a class="el" href="DataModel_8h_source.html#l00173">mapID</a>, <a class="el" href="zh_8h_source.html#l00131">zh::mapSize</a>, <a class="el" href="DataModel_8h_source.html#l00179">mapSize</a>, <a class="el" href="DataModel_8h_source.html#l00200">message</a>, <a class="el" href="DataModel_8h_source.html#l00196">outEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00201">parseMode</a>, <a class="el" href="DataModel_8h_source.html#l00202">parseTime</a>, <a class="el" href="DataModel_8h_source.html#l00119">players</a>, <a class="el" href="zh_8h_source.html#l00070">zh::playerTypes</a>, <a class="el" href="DataModel_8h_source.html#l00180">populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00017">RAW_ENCODING</a>, <a class="el" href="DataModel_8h_source.html#l00195">rawEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00042">readLang()</a>, <a class="el" href="DataModel_8h_source.html#l00143">recPlayer</a>, <a class="el" href="zh_8h_source.html#l00107">zh::resources</a>, <a class="el" href="DataModel_8h_source.html#l00086">revealMap</a>, <a class="el" href="zh_8h_source.html#l00125">zh::revealMap</a>, <a class="el" href="DataModel_8h_source.html#l00071">saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00160">scenarioFilename</a>, <a class="el" href="DataModel_8h_source.html#l00159">scenarioVersion</a>, <a class="el" href="zh_8h_source.html#l00116">zh::speed</a>, <a class="el" href="DataModel_8h_source.html#l00199">status</a>, <a class="el" href="DataModel_8h_source.html#l00014">UINT32_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00072">versionCode</a>, <a class="el" href="DataModel_8h_source.html#l00070">versionStr</a>, <a class="el" href="zh_8h_source.html#l00089">zh::victoryAmount</a>, <a class="el" href="DataModel_8h_source.html#l00168">victoryMode</a> , 以及 <a class="el" href="zh_8h_source.html#l00078">zh::victoryTypes</a>.</p>
+<p class="reference">引用了 <a class="el" href="zh_8h_source.html#l00019">zh::civNames</a>, <a class="el" href="DataModel_8h_source.html#l00136">DD_guid</a>, <a class="el" href="DataModel_8h_source.html#l00080">DD_internalVersion</a>, <a class="el" href="DataModel_8h_source.html#l00095">DD_speed</a>, <a class="el" href="DataModel_8h_source.html#l00079">DD_version</a>, <a class="el" href="DataModel_8h_source.html#l00088">DD_victoryTypeID</a>, <a class="el" href="DataModel_8h_source.html#l00077">DE_build</a>, <a class="el" href="DataModel_8h_source.html#l00192">duration</a>, <a class="el" href="DataModel_8h_source.html#l00061">extractedName</a>, <a class="el" href="DataModel_8h_source.html#l00060">filetype</a>, <a class="el" href="DataModel_8h_source.html#l00015">FLOAT_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00143">gameSpeed</a>, <a class="el" href="DataModel_8h_source.html#l00162">instructions</a>, <a class="el" href="DataModel_8h_source.html#l00070">logVersion</a>, <a class="el" href="zh_8h_source.html#l00131">zh::mapSize</a>, <a class="el" href="DataModel_8h_source.html#l00180">mapSize</a>, <a class="el" href="DataModel_8h_source.html#l00201">message</a>, <a class="el" href="DataModel_8h_source.html#l00120">players</a>, <a class="el" href="zh_8h_source.html#l00070">zh::playerTypes</a>, <a class="el" href="DataModel_8h_source.html#l00181">populationLimit</a>, <a class="el" href="DataModel_8h_source.html#l00196">rawEncoding</a>, <a class="el" href="DataModel_8h_source.html#l00042">readLang()</a>, <a class="el" href="DataModel_8h_source.html#l00144">recPlayer</a>, <a class="el" href="DataModel_8h_source.html#l00206">retroGuid</a>, <a class="el" href="DataModel_8h_source.html#l00072">saveVersion</a>, <a class="el" href="DataModel_8h_source.html#l00160">scenarioVersion</a>, <a class="el" href="zh_8h_source.html#l00116">zh::speed</a>, <a class="el" href="DataModel_8h_source.html#l00200">status</a>, <a class="el" href="DataModel_8h_source.html#l00205">teamMode</a>, <a class="el" href="DataModel_8h_source.html#l00014">UINT32_INIT</a>, <a class="el" href="DataModel_8h_source.html#l00073">versionCode</a>, <a class="el" href="DataModel_8h_source.html#l00071">versionStr</a>, <a class="el" href="DataModel_8h_source.html#l00169">victoryMode</a> , 以及 <a class="el" href="zh_8h_source.html#l00078">zh::victoryTypes</a>.</p>
 
 </div>
 </div>
@@ -429,7 +435,7 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string DataModel::filename</td>
+          <td class="memname">string DataModel::filename = &quot;&lt;memory buffer&gt;&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
@@ -438,7 +444,7 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00057">57</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">DefaultAnalyzer::_locateStreams()</a>.</p>
 
 </div>
 </div>
@@ -459,7 +465,7 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00058">58</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">DefaultAnalyzer::_loadFile()</a>.</p>
 
 </div>
 </div>
@@ -479,7 +485,45 @@ Public 属性</h2></td></tr>
 
 <p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00059">59</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">DefaultAnalyzer::_inflateRawHeader()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00019">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00034">DefaultAnalyzer::_inflateRawHeader()</a>, <a class="el" href="subProcFileHandler_8cpp_source.html#l00015">DefaultAnalyzer::_loadFile()</a> , 以及 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">DefaultAnalyzer::_locateStreams()</a>.</p>
+
+</div>
+</div>
+<a id="ab7b0fe4bb7e11f0cfe4f68253246ab40"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ab7b0fe4bb7e11f0cfe4f68253246ab40">&#9670;&nbsp;</a></span>filetype</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::filetype = &quot;record&quot;</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p>Or zip/rar/7z </p>
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00060">60</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">DefaultAnalyzer::_locateStreams()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ae593242fc33c8e855a4d968e104178c0"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ae593242fc33c8e855a4d968e104178c0">&#9670;&nbsp;</a></span>extractedName</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::extractedName</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00061">61</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">DefaultAnalyzer::_locateStreams()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -497,7 +541,7 @@ Public 属性</h2></td></tr>
 
 <p>设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00062">62</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00064">64</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
 
@@ -517,7 +561,7 @@ Public 属性</h2></td></tr>
 
 <p>在startinfo中搜索时可以放心跳过的字节长度 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00063">63</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00065">65</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>.</p>
 
@@ -537,29 +581,9 @@ Public 属性</h2></td></tr>
 
 <p>查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00064">64</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00066">66</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>.</p>
-
-</div>
-</div>
-<a id="a09856167b58ebce5ef4d8685441be636"></a>
-<h2 class="memtitle"><span class="permalink"><a href="#a09856167b58ebce5ef4d8685441be636">&#9670;&nbsp;</a></span>ZLIB_CHUNK</h2>
-
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">uint32_t DataModel::ZLIB_CHUNK = 512 * 1024</td>
-        </tr>
-      </table>
-</div><div class="memdoc">
-
-<p>ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used. </p>
-
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00065">65</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="subProcFileHandler_8cpp_source.html#l00044">DefaultAnalyzer::_inflateRawHeader()</a>.</p>
 
 </div>
 </div>
@@ -577,9 +601,9 @@ Public 属性</h2></td></tr>
 
 <p>body 的前4个字节，与版本有关，可以识别A/C版 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00069">69</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00070">70</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -590,16 +614,16 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">char DataModel::versionStr[8] = &quot;&quot;</td>
+          <td class="memname">char DataModel::versionStr[8] = {'\0'}</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>代表游戏版本的原始字符串 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00070">70</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00071">71</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -616,9 +640,9 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section warning"><dt>警告</dt><dd>float有精度，进行比较的时候注意要合理处理，比如&gt;11.76要写成&gt;11.7599这种 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00071">71</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00072">72</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -636,9 +660,9 @@ Public 属性</h2></td></tr>
 
 <p>这是自己定义的一个值，用于简化版本判断 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00072">72</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00073">73</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>, <a class="el" href="subProcFindDisables_8cpp_source.html#l00014">DefaultAnalyzer::_findDisablesStart()</a>, <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcFindTriggerInfo_8cpp_source.html#l00015">DefaultAnalyzer::_findTriggerInfoStart()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcLocateStreams_8cpp_source.html#l00014">DefaultAnalyzer::_locateStreams()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>, <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>, <a class="el" href="subProcVersionHandler_8cpp_source.html#l00014">DefaultAnalyzer::_setVersionCode()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>, <a class="el" href="subProcTrigger_8cpp_source.html#l00018">DefaultAnalyzer::_triggerInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -654,9 +678,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00073">73</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00074">74</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcAI_8cpp_source.html#l00015">DefaultAnalyzer::_AIAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -674,7 +698,7 @@ Public 属性</h2></td></tr>
 
 <p>In recent(2022-10) steam version of DE: 66692 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00076">76</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00077">77</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -694,9 +718,9 @@ Public 属性</h2></td></tr>
 
 <p>游戏时间，只有DE版本中有 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00077">77</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00078">78</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -714,7 +738,7 @@ Public 属性</h2></td></tr>
 
 <p>hd&lt;=4.7: 1000; hd=5.8: 1006 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00078">78</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00079">79</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -734,7 +758,7 @@ Public 属性</h2></td></tr>
 
 <p>DE中是1000 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00079">79</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00080">80</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -752,7 +776,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00080">80</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00081">81</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -770,7 +794,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00081">81</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00082">82</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -789,7 +813,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000025">待办事项:</a></b></dt><dd>What's this? </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00082">82</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00083">83</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -807,9 +831,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00083">83</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00084">84</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -825,9 +849,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00084">84</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00085">85</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -843,9 +867,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00085">85</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00086">86</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -863,9 +887,9 @@ Public 属性</h2></td></tr>
 
 <p>0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00086">86</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00087">87</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -881,7 +905,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00087">87</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00088">88</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -899,9 +923,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00088">88</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00089">89</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -917,7 +941,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00089">89</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00090">90</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -935,7 +959,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00090">90</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00091">91</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -955,7 +979,7 @@ Public 属性</h2></td></tr>
 
 <p>Only when DD_version&gt;=1006 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00091">91</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00092">92</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -973,7 +997,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00092">92</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00093">93</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -991,7 +1015,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00094">94</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00095">95</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -1009,7 +1033,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00095">95</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00096">96</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1028,7 +1052,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>Gaia not included </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00097">97</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00098">98</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1046,7 +1070,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00098">98</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00099">99</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1064,9 +1088,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00099">99</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00100">100</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1082,7 +1106,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00100">100</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00101">101</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1100,7 +1124,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00101">101</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00102">102</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1118,7 +1142,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00102">102</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00103">103</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1136,7 +1160,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00103">103</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00104">104</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1154,7 +1178,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00104">104</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00105">105</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1172,7 +1196,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00105">105</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00106">106</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1190,7 +1214,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00106">106</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00107">107</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1208,7 +1232,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00107">107</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00108">108</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1226,9 +1250,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00108">108</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00109">109</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1244,7 +1268,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00109">109</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00110">110</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1262,7 +1286,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00110">110</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00111">111</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1280,7 +1304,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00111">111</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00112">112</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1298,7 +1322,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00112">112</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00113">113</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1316,7 +1340,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00113">113</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00114">114</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1334,7 +1358,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00114">114</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00115">115</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1352,7 +1376,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00115">115</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00116">116</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1370,7 +1394,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00116">116</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00117">117</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1390,9 +1414,9 @@ Public 属性</h2></td></tr>
 
 <p>让分 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00117">117</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00118">118</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1408,9 +1432,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00119">119</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00120">120</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>, <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="actionHandler_8cpp_source.html#l00016">DefaultAnalyzer::_handleAction()</a>, <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>, <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -1426,7 +1450,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00121">121</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00122">122</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1444,7 +1468,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00122">122</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00123">123</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1462,9 +1486,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00123">123</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00124">124</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1480,7 +1504,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00124">124</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00125">125</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1498,7 +1522,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00125">125</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00126">126</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1516,7 +1540,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00126">126</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00127">127</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1534,7 +1558,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00127">127</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00128">128</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1552,7 +1576,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00128">128</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00129">129</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1570,7 +1594,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00129">129</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00130">130</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1588,7 +1612,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00131">131</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00132">132</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1606,7 +1630,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00132">132</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00133">133</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1624,7 +1648,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00133">133</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00134">134</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1642,7 +1666,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00134">134</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00135">135</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1660,9 +1684,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00135">135</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00136">136</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -1678,7 +1702,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00136">136</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00137">137</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1696,7 +1720,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00137">137</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00138">138</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1714,7 +1738,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00138">138</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00139">139</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
@@ -1732,7 +1756,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00139">139</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00140">140</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>.</p>
 
@@ -1751,9 +1775,9 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000026">待办事项:</a></b></dt><dd>If de/hd, use data from de/hd-specific data </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00142">142</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00143">143</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -1770,7 +1794,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000027">待办事项:</a></b></dt><dd>index or number of pov?? verify this. </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00143">143</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00144">144</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -1789,7 +1813,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="todo"><dt><b><a class="el" href="todo.html#_todo000028">待办事项:</a></b></dt><dd>gaia included, DD_numPlayers first?? </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00144">144</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00145">145</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a>, <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>, <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>.</p>
 
@@ -1807,7 +1831,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00145">145</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00146">146</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>.</p>
 
@@ -1825,9 +1849,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00146">146</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00147">147</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcReplay_8cpp_source.html#l00014">DefaultAnalyzer::_replayAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1843,7 +1867,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00150">150</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00151">151</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindInitialPos_8cpp_source.html#l00015">DefaultAnalyzer::_findInitialPlayersDataPos()</a> , 以及 <a class="el" href="subProcStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_startInfoAnalyzer()</a>.</p>
 
@@ -1861,7 +1885,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00151">151</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00152">152</a> 行定义.</p>
 
 </div>
 </div>
@@ -1877,7 +1901,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00152">152</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00153">153</a> 行定义.</p>
 
 </div>
 </div>
@@ -1893,7 +1917,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00156">156</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00157">157</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcFindStartInfo_8cpp_source.html#l00014">DefaultAnalyzer::_findStartInfoStart()</a>.</p>
 
@@ -1911,9 +1935,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00159">159</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00160">160</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcFindScenarioHeader_8cpp_source.html#l00015">DefaultAnalyzer::_findScenarioHeaderStart()</a>, <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -1929,9 +1953,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00160">160</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00161">161</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcScenario_8cpp_source.html#l00014">DefaultAnalyzer::_scenarioHeaderAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -1947,7 +1971,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00161">161</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00162">162</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">DefaultAnalyzer::_findEncodingPattern()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -1965,7 +1989,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00164">164</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00165">165</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -1983,7 +2007,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00165">165</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00166">166</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -2001,7 +2025,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00166">166</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00167">167</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -2019,7 +2043,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00167">167</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00168">168</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -2032,12 +2056,12 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t DataModel::victoryMode</td>
+          <td class="memname">uint32_t DataModel::victoryMode = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00168">168</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00169">169</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -2055,7 +2079,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00169">169</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00170">170</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -2073,7 +2097,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00170">170</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00171">171</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcVictory_8cpp_source.html#l00014">DefaultAnalyzer::_victorySettingsAnalyzer()</a>.</p>
 
@@ -2091,9 +2115,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00173">173</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00174">174</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a> , 以及 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>.</p>
 
 </div>
 </div>
@@ -2109,9 +2133,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00174">174</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00175">175</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2127,7 +2151,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00175">175</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00176">176</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcGameSettings_8cpp_source.html#l00018">DefaultAnalyzer::_gameSettingsAnalyzer()</a>.</p>
 
@@ -2145,9 +2169,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00178">178</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00179">179</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2158,14 +2182,14 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">uint32_t DataModel::mapSize</td>
+          <td class="memname">uint32_t DataModel::mapSize = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td>
         </tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00179">179</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00180">180</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -2181,9 +2205,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00180">180</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00181">181</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a>, <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -2199,7 +2223,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00181">181</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00182">182</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
@@ -2218,7 +2242,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>DE/HD数据中还有一个类似的 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00182">182</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00183">183</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
@@ -2237,7 +2261,7 @@ Public 属性</h2></td></tr>
 </div><div class="memdoc">
 <dl class="section note"><dt>注解</dt><dd>DE/HD数据中还有一个类似的 </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00183">183</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00184">184</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
@@ -2255,9 +2279,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00184">184</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00185">185</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a> , 以及 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2273,7 +2297,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00185">185</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00186">186</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcLobby_8cpp_source.html#l00014">DefaultAnalyzer::_lobbyAnalyzer()</a>.</p>
 
@@ -2293,9 +2317,9 @@ Public 属性</h2></td></tr>
 
 <p>Map name extracted from instructions, not mapped with raw number </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00188">188</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00189">189</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">DefaultAnalyzer::_findEncodingPattern()</a>, <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00014">DefaultAnalyzer::_findEncodingPattern()</a> , 以及 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>.</p>
 
 </div>
 </div>
@@ -2311,9 +2335,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00191">191</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00192">192</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00025">DefaultAnalyzer::_handleOpSync()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="actionHandler_8cpp_source.html#l00016">DefaultAnalyzer::_handleAction()</a>, <a class="el" href="operations_8cpp_source.html#l00039">DefaultAnalyzer::_handleOpChat()</a>, <a class="el" href="operations_8cpp_source.html#l00025">DefaultAnalyzer::_handleOpSync()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>
@@ -2329,9 +2353,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00192">192</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00193">193</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00046">DefaultAnalyzer::_readGameStart()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00047">DefaultAnalyzer::_readGameStart()</a>.</p>
 
 </div>
 </div>
@@ -2347,9 +2371,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00193">193</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00194">194</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00046">DefaultAnalyzer::_readGameStart()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcBody_8cpp_source.html#l00047">DefaultAnalyzer::_readGameStart()</a>.</p>
 
 </div>
 </div>
@@ -2365,7 +2389,7 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00195">195</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00196">196</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -2383,9 +2407,9 @@ Public 属性</h2></td></tr>
       </table>
 </div><div class="memdoc">
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00196">196</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00197">197</a> 行定义.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a>, <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="subProcEncodingHandler_8cpp_source.html#l00034">DefaultAnalyzer::_guessEncoding()</a> , 以及 <a class="el" href="subProcMessage_8cpp_source.html#l00014">DefaultAnalyzer::_messagesAnalyzer()</a>.</p>
 
 </div>
 </div>
@@ -2404,7 +2428,7 @@ Public 属性</h2></td></tr>
 <p>&lt; 有时需要从上传时间来推断，是否放在更外层的类里面？ </p>
 <p>解析完成类型：good, warning, fatal, etc. </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00199">199</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00200">200</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -2424,7 +2448,7 @@ Public 属性</h2></td></tr>
 
 <p>对 <code>status</code> 的具体说明 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00200">200</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00201">201</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
@@ -2437,16 +2461,14 @@ Public 属性</h2></td></tr>
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">string DataModel::parseMode = &quot;MgxParser Normal&quot;</td>
+          <td class="memname">string DataModel::parseMode = &quot;MgxParser as Node Addon&quot;</td>
         </tr>
       </table>
 </div><div class="memdoc">
 
 <p>解析模式：normal, verbose, etc. 可以在命令行中指定 </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00201">201</a> 行定义.</p>
-
-<p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00202">202</a> 行定义.</p>
 
 </div>
 </div>
@@ -2464,9 +2486,43 @@ Public 属性</h2></td></tr>
 
 <p>解析耗时（毫秒） </p>
 
-<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00202">202</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00203">203</a> 行定义.</p>
+
+</div>
+</div>
+<a id="ac3f8c78bddce81510c6a2b5a7a30b348"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac3f8c78bddce81510c6a2b5a7a30b348">&#9670;&nbsp;</a></span>teamMode</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::teamMode</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00205">205</a> 行定义.</p>
 
 <p class="reference">被这些函数引用 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
+
+</div>
+</div>
+<a id="ac1c1662074ccd43061e35aa8e0a21ca2"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#ac1c1662074ccd43061e35aa8e0a21ca2">&#9670;&nbsp;</a></span>retroGuid</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">string DataModel::retroGuid</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="DataModel_8h_source.html">DataModel.h</a> 第 <a class="el" href="DataModel_8h_source.html#l00206">206</a> 行定义.</p>
+
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a> , 以及 <a class="el" href="DataModel_8cpp_source.html#l00014">toJson()</a>.</p>
 
 </div>
 </div>

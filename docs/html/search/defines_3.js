@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['header_5finit_810',['HEADER_INIT',['../Analyzer_8h.html#a8877da8d136f1bc68d406301777c4e4c',1,'Analyzer.h']]],
-  ['header_5fstrm_811',['HEADER_STRM',['../Analyzer_8h.html#a379812a4c93e99d7cde12907554bc342',1,'Analyzer.h']]]
+  ['file_5finput_917',['FILE_INPUT',['../Analyzer_8h.html#aba3144f5c00cdb4b8c29d9288db8e52c',1,'Analyzer.h']]],
+  ['float_5finit_918',['FLOAT_INIT',['../DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1',1,'DataModel.h']]]
 ];

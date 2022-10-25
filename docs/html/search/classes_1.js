@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['chat_412',['Chat',['../structChat.html',1,'']]]
+  ['chat_470',['Chat',['../structChat.html',1,'']]]
 ];

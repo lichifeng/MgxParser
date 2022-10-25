@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: MgxParser.h 文件参考</title>
+<title>mgxnode: MgxParser.h 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -63,12 +63,13 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_b0856f6b0d80ccb263b2f415c91f9e17.html">include</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_87f6ca8875bf3551042b87b011df194d.html">MgxParser</a></li><li class="navelem"><a class="el" href="dir_d0f2bc951f92a124cc11b920ac8017b7.html">src</a></li><li class="navelem"><a class="el" href="dir_9fa90e18d0e465523428887e8c43b202.html">include</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
   <div class="summary">
 <a href="#namespaces">命名空间</a> &#124;
+<a href="#define-members">宏定义</a> &#124;
 <a href="#func-members">函数</a>  </div>
   <div class="headertitle">
 <div class="title">MgxParser.h 文件参考</div>  </div>
@@ -101,12 +102,21 @@ MgxParser.h 的引用(Include)关系图:</div>
 <tr class="memitem:namespaceMgxParser"><td class="memItemLeft" align="right" valign="top"> &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html">MgxParser</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
+<tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="define-members"></a>
+宏定义</h2></td></tr>
+<tr class="memitem:a3710da75e403e5a3da4e2deade0d50af"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MgxParser_8h.html#a3710da75e403e5a3da4e2deade0d50af">NO_MAP</a>&#160;&#160;&#160;0</td></tr>
+<tr class="separator:a3710da75e403e5a3da4e2deade0d50af"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a94ba84975680c94ef7d1f8105b632547"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MgxParser_8h.html#a94ba84975680c94ef7d1f8105b632547">NORMAL_MAP</a>&#160;&#160;&#160;1</td></tr>
+<tr class="separator:a94ba84975680c94ef7d1f8105b632547"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a6c7274c86b2b92597a0fd8f92aeb998d"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="MgxParser_8h.html#a6c7274c86b2b92597a0fd8f92aeb998d">HD_MAP</a>&#160;&#160;&#160;2</td></tr>
+<tr class="separator:a6c7274c86b2b92597a0fd8f92aeb998d"><td class="memSeparator" colspan="2">&#160;</td></tr>
+</table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 函数</h2></td></tr>
-<tr class="memitem:ab0b60e833df62fe969c18a734e711722"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722">MgxParser::parse</a> (const uint8_t *, size_t)</td></tr>
-<tr class="separator:ab0b60e833df62fe969c18a734e711722"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a08c518fad4fd81be66769ea95e2279d6"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6">MgxParser::parse</a> (const std::string &amp;)</td></tr>
-<tr class="separator:a08c518fad4fd81be66769ea95e2279d6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aabc1b4bd2bcc65bf0cd382c620ea1ce1"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#aabc1b4bd2bcc65bf0cd382c620ea1ce1">MgxParser::parse</a> (const uint8_t *, size_t, int=0)</td></tr>
+<tr class="separator:aabc1b4bd2bcc65bf0cd382c620ea1ce1"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a95e91b8f69d996213a1ad379229d3985"><td class="memItemLeft" align="right" valign="top">std::string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a95e91b8f69d996213a1ad379229d3985">MgxParser::parse</a> (const std::string &amp;, int=0)</td></tr>
+<tr class="separator:a95e91b8f69d996213a1ad379229d3985"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0352edc1e5c8a71bc17cc671641fff57"><td class="memItemLeft" align="right" valign="top">const char *&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57">MgxParser::pyparse</a> (const char *)</td></tr>
 <tr class="separator:a0352edc1e5c8a71bc17cc671641fff57"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
@@ -117,7 +127,56 @@ MgxParser.h 的引用(Include)关系图:</div>
 <dl class="section copyright"><dt>版权所有</dt><dd>Copyright (c) 2020-2022 </dd></dl>
 
 <p class="definition">在文件 <a class="el" href="MgxParser_8h_source.html">MgxParser.h</a> 中定义.</p>
-</div></div><!-- contents -->
+</div><h2 class="groupheader">宏定义说明</h2>
+<a id="a3710da75e403e5a3da4e2deade0d50af"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a3710da75e403e5a3da4e2deade0d50af">&#9670;&nbsp;</a></span>NO_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NO_MAP&#160;&#160;&#160;0</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MgxParser_8h_source.html">MgxParser.h</a> 第 <a class="el" href="MgxParser_8h_source.html#l00015">15</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a94ba84975680c94ef7d1f8105b632547"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a94ba84975680c94ef7d1f8105b632547">&#9670;&nbsp;</a></span>NORMAL_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define NORMAL_MAP&#160;&#160;&#160;1</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MgxParser_8h_source.html">MgxParser.h</a> 第 <a class="el" href="MgxParser_8h_source.html#l00016">16</a> 行定义.</p>
+
+</div>
+</div>
+<a id="a6c7274c86b2b92597a0fd8f92aeb998d"></a>
+<h2 class="memtitle"><span class="permalink"><a href="#a6c7274c86b2b92597a0fd8f92aeb998d">&#9670;&nbsp;</a></span>HD_MAP</h2>
+
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">#define HD_MAP&#160;&#160;&#160;2</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+
+<p class="definition">在文件 <a class="el" href="MgxParser_8h_source.html">MgxParser.h</a> 第 <a class="el" href="MgxParser_8h_source.html#l00017">17</a> 行定义.</p>
+
+</div>
+</div>
+</div><!-- contents -->
 <!-- start footer part -->
 <hr class="footer"/><address class="footer"><small>
 制作者 &#160;<a href="http://www.doxygen.org/index.html">

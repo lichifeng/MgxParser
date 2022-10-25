@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: BaseAnalyzer类 参考</title>
+<title>mgxnode: BaseAnalyzer类 参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -118,7 +118,7 @@ Public 成员函数</h2></td></tr>
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="inherited"></a>
 额外继承的成员函数</h2></td></tr>
 <tr class="inherit_header pub_attribs_classDataModel"><td colspan="2" onclick="javascript:toggleInherit('pub_attribs_classDataModel')"><img src="closed.png" alt="-"/>&#160;Public 属性 继承自 <a class="el" href="classDataModel.html">DataModel</a></td></tr>
-<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a></td></tr>
+<tr class="memitem:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">filename</a> = &quot;&lt;memory buffer&gt;&quot;</td></tr>
 <tr class="memdesc:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像的文件名  <a href="classDataModel.html#a79b4014a8e32500aa24c26346d6f08dc">更多...</a><br /></td></tr>
 <tr class="separator:a79b4014a8e32500aa24c26346d6f08dc inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:afa60c729bb12fc4da61a1e03a7a4d8a1 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#afa60c729bb12fc4da61a1e03a7a4d8a1">ext</a></td></tr>
@@ -127,6 +127,11 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#acb0c9464084a42459991d17840370859">filesize</a> = 0</td></tr>
 <tr class="memdesc:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">录像文件大小，单位是 bytes  <a href="classDataModel.html#acb0c9464084a42459991d17840370859">更多...</a><br /></td></tr>
 <tr class="separator:acb0c9464084a42459991d17840370859 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">filetype</a> = &quot;record&quot;</td></tr>
+<tr class="memdesc:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">Or zip/rar/7z  <a href="classDataModel.html#ab7b0fe4bb7e11f0cfe4f68253246ab40">更多...</a><br /></td></tr>
+<tr class="separator:ab7b0fe4bb7e11f0cfe4f68253246ab40 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae593242fc33c8e855a4d968e104178c0 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ae593242fc33c8e855a4d968e104178c0">extractedName</a></td></tr>
+<tr class="separator:ae593242fc33c8e855a4d968e104178c0 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint16_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">trailBytes</a> = 5</td></tr>
 <tr class="memdesc:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度  <a href="classDataModel.html#a948f462af5ea46c7d4b5639d1455d9f4">更多...</a><br /></td></tr>
 <tr class="separator:a948f462af5ea46c7d4b5639d1455d9f4 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -136,13 +141,10 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">triggerStartSearchRange</a> = 19</td></tr>
 <tr class="memdesc:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试  <a href="classDataModel.html#a890560786fb9198fd1028b952a9d07cd">更多...</a><br /></td></tr>
 <tr class="separator:a890560786fb9198fd1028b952a9d07cd inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">ZLIB_CHUNK</a> = 512 * 1024</td></tr>
-<tr class="memdesc:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">ZLIB解压时的参数。CHUNK is simply the buffer size for feeding data to and pulling data from the zlib routines. Larger buffer sizes would be more efficient, especially for inflate(). If the memory is available, buffers sizes on the order of 128K or 256K bytes should be used.  <a href="classDataModel.html#a09856167b58ebce5ef4d8685441be636">更多...</a><br /></td></tr>
-<tr class="separator:a09856167b58ebce5ef4d8685441be636 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">logVersion</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="memdesc:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">body 的前4个字节，与版本有关，可以识别A/C版  <a href="classDataModel.html#a57124cb8db8ea4ed0f89b5a9e6333b25">更多...</a><br /></td></tr>
 <tr class="separator:a57124cb8db8ea4ed0f89b5a9e6333b25 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = &quot;&quot;</td></tr>
+<tr class="memitem:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">char&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">versionStr</a> [8] = {'\0'}</td></tr>
 <tr class="memdesc:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">代表游戏版本的原始字符串  <a href="classDataModel.html#a51e5fe53253a984bc2f662450db0307d">更多...</a><br /></td></tr>
 <tr class="separator:a51e5fe53253a984bc2f662450db0307d inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a49dbf533a0985e4bc078ba5bce940d21 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">float&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a49dbf533a0985e4bc078ba5bce940d21">saveVersion</a> = <a class="el" href="DataModel_8h.html#a5fe83b0614f2f1f2c4afaec05efcf2b1">FLOAT_INIT</a></td></tr>
@@ -309,7 +311,7 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:ade5cffb64f3194dccd00d113870529c5 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ad1759ab2c17e4aa1e7cb73f52b512227 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ad1759ab2c17e4aa1e7cb73f52b512227">victoryAnyOrAll</a></td></tr>
 <tr class="separator:ad1759ab2c17e4aa1e7cb73f52b512227 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a></td></tr>
+<tr class="memitem:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a4c283f7d0f426a9d6175c5feca6175bf">victoryMode</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a4c283f7d0f426a9d6175c5feca6175bf inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aed6d42f69764c532180d64abfc73c406 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#aed6d42f69764c532180d64abfc73c406">victoryScore</a></td></tr>
 <tr class="separator:aed6d42f69764c532180d64abfc73c406 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -323,7 +325,7 @@ Public 成员函数</h2></td></tr>
 <tr class="separator:aed322dd82e7b4d0a6b0ea46aaecf7d6f inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a63ef98daf7a67c5bc785e130e1a5b1b4 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a63ef98daf7a67c5bc785e130e1a5b1b4">fogOfWar</a></td></tr>
 <tr class="separator:a63ef98daf7a67c5bc785e130e1a5b1b4 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a></td></tr>
+<tr class="memitem:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a738a428169226d54ad2c0e211768569d">mapSize</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a738a428169226d54ad2c0e211768569d inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a752b8a336c226a692394b391f17ec8c0 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">uint32_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a752b8a336c226a692394b391f17ec8c0">populationLimit</a> = <a class="el" href="DataModel_8h.html#a9051214a759b9ab7e73c70ec6fea815b">UINT32_INIT</a></td></tr>
 <tr class="separator:a752b8a336c226a692394b391f17ec8c0 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
@@ -356,12 +358,16 @@ Public 成员函数</h2></td></tr>
 <tr class="memitem:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">message</a></td></tr>
 <tr class="memdesc:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">对 <code>status</code> 的具体说明  <a href="classDataModel.html#a28dc6eb404ae1b153024f3522cad2685">更多...</a><br /></td></tr>
 <tr class="separator:a28dc6eb404ae1b153024f3522cad2685 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
-<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser Normal&quot;</td></tr>
+<tr class="memitem:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">parseMode</a> = &quot;MgxParser as Node Addon&quot;</td></tr>
 <tr class="memdesc:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析模式：normal, verbose, etc. 可以在命令行中指定  <a href="classDataModel.html#a24a9352d2d47c168d70835eefedb1dc8">更多...</a><br /></td></tr>
 <tr class="separator:a24a9352d2d47c168d70835eefedb1dc8 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">double&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">parseTime</a> = 0</td></tr>
 <tr class="memdesc:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="mdescLeft">&#160;</td><td class="mdescRight">解析耗时（毫秒）  <a href="classDataModel.html#adeda1ea7a358bfba3a2139a09fa6f290">更多...</a><br /></td></tr>
 <tr class="separator:adeda1ea7a358bfba3a2139a09fa6f290 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac3f8c78bddce81510c6a2b5a7a30b348 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac3f8c78bddce81510c6a2b5a7a30b348">teamMode</a></td></tr>
+<tr class="separator:ac3f8c78bddce81510c6a2b5a7a30b348 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ac1c1662074ccd43061e35aa8e0a21ca2 inherit pub_attribs_classDataModel"><td class="memItemLeft" align="right" valign="top">string&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classDataModel.html#ac1c1662074ccd43061e35aa8e0a21ca2">retroGuid</a></td></tr>
+<tr class="separator:ac1c1662074ccd43061e35aa8e0a21ca2 inherit pub_attribs_classDataModel"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table>
 <a name="details" id="details"></a><h2 class="groupheader">详细描述</h2>
 <div class="textblock"><p>Analyzer 是 <a class="el" href="namespaceMgxParser.html">MgxParser</a> 的核心组件之一，用于对录像文件进行实际的解 析。 </p>

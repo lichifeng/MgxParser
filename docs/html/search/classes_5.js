@@ -1,4 +1,4 @@
 var searchData=
 [
-  ['player_419',['Player',['../classPlayer.html',1,'']]]
+  ['magicassist_477',['MagicAssist',['../structMagicAssist.html',1,'']]]
 ];

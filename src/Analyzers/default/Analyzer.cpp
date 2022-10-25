@@ -45,8 +45,10 @@ void DefaultAnalyzer::run()
     // Try to extract header&body streams
     if (!_locateStreams())
     {
+        // \todo 这里的逻辑要梳理下，防止bad streams的情况下进入后面的环节，造成
+        // segment fault。
         _sendFailedSignal(true);
-        logger->fatal("{}(): Failed to unzip raw header data of {}. ", __FUNCTION__, path.empty() ? filename : path);
+        logger->fatal("Debugflag{}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path);
         return;
     }
 
@@ -63,54 +65,6 @@ void DefaultAnalyzer::run()
         logger->fatal("Exception@{}: {}", _debugFlag, e.what());
         _sendFailedSignal(true);
     }
-}
-
-bool DefaultAnalyzer::_locateStreams()
-{
-    _debugFlag = 3;
-
-    // headerMeta[0]: header_len + next_pos + header_data (Data length)
-    // headerMeta[1]: nextPos
-    int32_t headerMeta[2];
-    if (FILE_INPUT == _inputType)
-        _f.read((char *)headerMeta, 8);
-    else
-        memcpy(headerMeta, _b, 8);
-
-    // Construct body stream
-    if (headerMeta[0] < 0)
-    {
-        _sendFailedSignal(true);
-        logger->fatal("DebugFlag#{}: Headerlen is negtive!. ", _debugFlag);
-        return false;
-    }
-    _bodySize = filesize - headerMeta[0];
-    _body.resize(_bodySize); /// \note vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。
-    if (FILE_INPUT == _inputType)
-    {
-        _f.seekg(headerMeta[0]);
-        _f.read((char *)_body.data(), _bodySize);
-    }
-    else
-    {
-        memcpy(_body.data(), _b + headerMeta[0], _bodySize);
-    }
-
-    size_t rawHeaderPos = headerMeta[1] < filesize ? 8 : 4;
-
-    if (FILE_INPUT == _inputType)
-        _f.seekg(rawHeaderPos);
-    else
-        _curPos = _b + rawHeaderPos;
-
-    if (rawHeaderPos == 4)
-        versionCode = AOK;
-
-    // Try to unzip header data
-    if (_inflateRawHeader() != 0)
-        return false;
-
-    return true;
 }
 
 void DefaultAnalyzer::_analyze()

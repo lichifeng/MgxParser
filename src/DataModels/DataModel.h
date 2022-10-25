@@ -57,6 +57,8 @@ public:
     string filename = "<memory buffer>";        ///< 录像的文件名
     string ext;             ///< 录像的扩展名 \todo 要检查扩展名
     size_t filesize = 0; ///< 录像文件大小，单位是 bytes
+    string filetype = "record"; ///< Or zip/rar/7z
+    string extractedName;
 
     // Some config parameters
     uint16_t trailBytes = 5;               ///< 设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度

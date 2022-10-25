@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>mgxnode: actionHandler.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">mgxnode
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_87f6ca8875bf3551042b87b011df194d.html">MgxParser</a></li><li class="navelem"><a class="el" href="dir_d0f2bc951f92a124cc11b920ac8017b7.html">src</a></li><li class="navelem"><a class="el" href="dir_b149cfae3ff679dddd629d3d2e6cf8f7.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_12593e86d7e3ec72ef9766a669d73f1a.html">default</a></li><li class="navelem"><a class="el" href="dir_48dfd7583cd9307fb281d87d145f4d8f.html">bodyProcessors</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">actionHandler.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="actionHandler_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       cmdHandler.h</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-22</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160;<span class="preprocessor">#include &lt;cstdint&gt;</span></div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &quot;../Analyzer.h&quot;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160; </div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;iostream&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160; </div>
+<div class="line"><a name="l00016"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a019dd42d18282225952c69c7292f34a3">   16</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a019dd42d18282225952c69c7292f34a3">DefaultAnalyzer::_handleAction</a>()</div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;{</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160;    uint8_t rD[3];</div>
+<div class="line"><a name="l00019"></a><span class="lineno">   19</span>&#160;    int8_t playerSlot;</div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;    int16_t techID;</div>
+<div class="line"><a name="l00021"></a><span class="lineno">   21</span>&#160; </div>
+<div class="line"><a name="l00022"></a><span class="lineno">   22</span>&#160;    uint8_t <a class="code" href="operations_8cpp.html#a4d43e8212bdc9dbee866506f04effcea">cmd</a> = <a class="code" href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">_curPos</a>[0];</div>
+<div class="line"><a name="l00023"></a><span class="lineno">   23</span>&#160; </div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;    <span class="keywordflow">switch</span> (<a class="code" href="operations_8cpp.html#a4d43e8212bdc9dbee866506f04effcea">cmd</a>)</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;    {</div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="helpers_8h.html#a694891b66b3ad6e52ac95ce3f68df287">COMMAND_RESIGN</a>:</div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;        <span class="comment">// int8 :action_identifier</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;        <span class="comment">// int8 :player_number</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;        <span class="comment">// int8 :player_id</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;        <span class="comment">// int32 :disconnect</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno">   31</span>&#160; </div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(3, rD);</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[rD[1]].valid())</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160;        {</div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;            <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[rD[1]].resigned = <a class="code" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a>;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;            <span class="keywordflow">if</span> (!<a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[rD[1]].disconnected)</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;                <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[rD[1]].disconnected = (bool)*(int32_t *)<a class="code" href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">_curPos</a>;</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;        }</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;        <span class="comment">// logger-&gt;info(&quot;Resigned number:{}, index:{}&quot;, rD[1], rD[2]);</span></div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160; </div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="helpers_8h.html#a17b33ca59fdc7287ba1a711f6af58b08">COMMAND_RESEARCH</a>:</div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;        <span class="comment">// int8 :action_identifier</span></div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;        <span class="comment">// int24 :zero</span></div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="comment">// int32 :building_id</span></div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;        <span class="comment">// int8 :player_number</span></div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160;        <span class="comment">// int8 :zero2</span></div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="comment">// int16 :technology_id</span></div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        <span class="comment">// int32 :const</span></div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;        _skip(8);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(1, &amp;playerSlot);</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (playerSlot &lt; 0 || playerSlot &gt; 8 || !<a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].valid())</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;            <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;        _skip(1);</div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        <a class="code" href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">_readBytes</a>(2, &amp;techID);</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160; </div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="helpers_8h.html#a864f695b420ac3a99f4b13cd919926f3">RESEARCH_FEUDAL</a> == (<span class="keywordtype">int</span>)techID)</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;        {</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].feudalTime = <a class="code" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a> + 0.5 + 130000;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (<a class="code" href="helpers_8h.html#a3c542fad67944ac59e8756b6107cc646">RESEARCH_CASTLE</a> == (<span class="keywordtype">int</span>)techID)</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        {</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;            <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].castleTime = <a class="code" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a> + 0.5 + (8 == <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].civID ? 160000 : 160000 / 1.10);</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;        }</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;        <span class="keywordflow">else</span> <span class="keywordflow">if</span> (RESEARCH_IMPERIAL == (<span class="keywordtype">int</span>)techID)</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160;        {</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;            <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].imperialTime = <a class="code" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a> + 0.5 + (8 == <a class="code" href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">players</a>[playerSlot].civID ? 190000 : 190000 / 1.10);</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;        }</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160; </div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160;    <span class="keywordflow">case</span> <a class="code" href="helpers_8h.html#a1bc4e1b4e7d2414f1a111f767956fd2e">COMMAND_MOVE</a>:</div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        <span class="keywordflow">if</span> (<a class="code" href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">_earlyMoveCnt</a> &lt; <a class="code" href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a>) {</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a4022c5230f974adb1a2727cd9bf9f583">_earlyMoveCmd</a>[<a class="code" href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">_earlyMoveCnt</a>] = <a class="code" href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">_curPos</a>;</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;            <a class="code" href="classDefaultAnalyzer.html#a6208d3c71f1e7636e9233f962ac1fc46">_earlyMoveTime</a>[<a class="code" href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">_earlyMoveCnt</a>] = <a class="code" href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">duration</a>;</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            ++<a class="code" href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">_earlyMoveCnt</a>;</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            <span class="comment">//logger-&gt;info(hexStr(_curPos, 20, true));</span></div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;        }</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160; </div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;    <span class="keywordflow">default</span>:</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;        <span class="keywordflow">break</span>;</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;    }</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aclassDefaultAnalyzer_html_a40da6c86e39c22a4c2e6f20ae319ecd1"><div class="ttname"><a href="classDefaultAnalyzer.html#a40da6c86e39c22a4c2e6f20ae319ecd1">DefaultAnalyzer::_curPos</a></div><div class="ttdeci">const uint8_t * _curPos</div><div class="ttdoc">当前读取数据的指针</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00414">Analyzer.h:414</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a019dd42d18282225952c69c7292f34a3"><div class="ttname"><a href="classDefaultAnalyzer.html#a019dd42d18282225952c69c7292f34a3">DefaultAnalyzer::_handleAction</a></div><div class="ttdeci">void _handleAction()</div><div class="ttdef"><b>Definition:</b> <a href="actionHandler_8cpp_source.html#l00016">actionHandler.cpp:16</a></div></div>
+<div class="ttc" id="ahelpers_8h_html_a1bc4e1b4e7d2414f1a111f767956fd2e"><div class="ttname"><a href="helpers_8h.html#a1bc4e1b4e7d2414f1a111f767956fd2e">COMMAND_MOVE</a></div><div class="ttdeci">#define COMMAND_MOVE</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8h_source.html#l00026">helpers.h:26</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a6208d3c71f1e7636e9233f962ac1fc46"><div class="ttname"><a href="classDefaultAnalyzer.html#a6208d3c71f1e7636e9233f962ac1fc46">DefaultAnalyzer::_earlyMoveTime</a></div><div class="ttdeci">uint32_t _earlyMoveTime[EARLYMOVE_USED]</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00437">Analyzer.h:437</a></div></div>
+<div class="ttc" id="aAnalyzer_8h_html_a7786cbaac5c8d1eb0df5bd021e9a97d3"><div class="ttname"><a href="Analyzer_8h.html#a7786cbaac5c8d1eb0df5bd021e9a97d3">EARLYMOVE_USED</a></div><div class="ttdeci">#define EARLYMOVE_USED</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00022">Analyzer.h:22</a></div></div>
+<div class="ttc" id="aoperations_8cpp_html_a4d43e8212bdc9dbee866506f04effcea"><div class="ttname"><a href="operations_8cpp.html#a4d43e8212bdc9dbee866506f04effcea">cmd</a></div><div class="ttdeci">uint8_t cmd</div><div class="ttdef"><b>Definition:</b> <a href="operations_8cpp_source.html#l00022">operations.cpp:22</a></div></div>
+<div class="ttc" id="aclassDataModel_html_a499a1c8ac80eb064ded2baa2d253da01"><div class="ttname"><a href="classDataModel.html#a499a1c8ac80eb064ded2baa2d253da01">DataModel::players</a></div><div class="ttdeci">array&lt; Player, 9 &gt; players</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00120">DataModel.h:120</a></div></div>
+<div class="ttc" id="ahelpers_8h_html_a17b33ca59fdc7287ba1a711f6af58b08"><div class="ttname"><a href="helpers_8h.html#a17b33ca59fdc7287ba1a711f6af58b08">COMMAND_RESEARCH</a></div><div class="ttdeci">#define COMMAND_RESEARCH</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8h_source.html#l00020">helpers.h:20</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4022c5230f974adb1a2727cd9bf9f583"><div class="ttname"><a href="classDefaultAnalyzer.html#a4022c5230f974adb1a2727cd9bf9f583">DefaultAnalyzer::_earlyMoveCmd</a></div><div class="ttdeci">const uint8_t * _earlyMoveCmd[EARLYMOVE_USED]</div><div class="ttdoc">有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录...</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00436">Analyzer.h:436</a></div></div>
+<div class="ttc" id="ahelpers_8h_html_a3c542fad67944ac59e8756b6107cc646"><div class="ttname"><a href="helpers_8h.html#a3c542fad67944ac59e8756b6107cc646">RESEARCH_CASTLE</a></div><div class="ttdeci">#define RESEARCH_CASTLE</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8h_source.html#l00029">helpers.h:29</a></div></div>
+<div class="ttc" id="ahelpers_8h_html_a864f695b420ac3a99f4b13cd919926f3"><div class="ttname"><a href="helpers_8h.html#a864f695b420ac3a99f4b13cd919926f3">RESEARCH_FEUDAL</a></div><div class="ttdeci">#define RESEARCH_FEUDAL</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8h_source.html#l00028">helpers.h:28</a></div></div>
+<div class="ttc" id="ahelpers_8h_html_a694891b66b3ad6e52ac95ce3f68df287"><div class="ttname"><a href="helpers_8h.html#a694891b66b3ad6e52ac95ce3f68df287">COMMAND_RESIGN</a></div><div class="ttdeci">#define COMMAND_RESIGN</div><div class="ttdef"><b>Definition:</b> <a href="helpers_8h_source.html#l00019">helpers.h:19</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a04805e863124686dff31f501a9261161"><div class="ttname"><a href="classDefaultAnalyzer.html#a04805e863124686dff31f501a9261161">DefaultAnalyzer::_earlyMoveCnt</a></div><div class="ttdeci">int _earlyMoveCnt</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00438">Analyzer.h:438</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a4d91846c2a5bce392b1f32b0877e187b"><div class="ttname"><a href="classDefaultAnalyzer.html#a4d91846c2a5bce392b1f32b0877e187b">DefaultAnalyzer::_readBytes</a></div><div class="ttdeci">void _readBytes(size_t n, void *dest)</div><div class="ttdoc">将当前位置往后 n 个字节的数据存储到一个变量上</div><div class="ttdef"><b>Definition:</b> <a href="Analyzer_8h_source.html#l00155">Analyzer.h:155</a></div></div>
+<div class="ttc" id="aclassDataModel_html_acabb67f9e24bcf9fd3835ffa4b25fc45"><div class="ttname"><a href="classDataModel.html#acabb67f9e24bcf9fd3835ffa4b25fc45">DataModel::duration</a></div><div class="ttdeci">uint32_t duration</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00192">DataModel.h:192</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

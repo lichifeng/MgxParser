@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "https://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/xhtml;charset=UTF-8"/>
+<meta http-equiv="X-UA-Compatible" content="IE=9"/>
+<meta name="generator" content="Doxygen 1.8.17"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>mgxnode: addonGuessWinner.cpp 源文件</title>
+<link href="tabs.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="jquery.js"></script>
+<script type="text/javascript" src="dynsections.js"></script>
+<link href="search/search.css" rel="stylesheet" type="text/css"/>
+<script type="text/javascript" src="search/searchdata.js"></script>
+<script type="text/javascript" src="search/search.js"></script>
+<link href="doxygen.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id="top"><!-- do not remove this div, it is closed by doxygen! -->
+<div id="titlearea">
+<table cellspacing="0" cellpadding="0">
+ <tbody>
+ <tr style="height: 56px;">
+  <td id="projectalign" style="padding-left: 0.5em;">
+   <div id="projectname">mgxnode
+   &#160;<span id="projectnumber">0.1.0</span>
+   </div>
+   <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
+  </td>
+ </tr>
+ </tbody>
+</table>
+</div>
+<!-- end header part -->
+<!-- 制作者 Doxygen 1.8.17 -->
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+var searchBox = new SearchBox("searchBox", "search",false,'搜索');
+/* @license-end */
+</script>
+<script type="text/javascript" src="menudata.js"></script>
+<script type="text/javascript" src="menu.js"></script>
+<script type="text/javascript">
+/* @license magnet:?xt=urn:btih:cf05388f2679ee054f2beb29a391d25f4e673ac3&amp;dn=gpl-2.0.txt GPL-v2 */
+$(function() {
+  initMenu('',true,false,'search.php','搜索');
+  $(document).ready(function() { init_search(); });
+});
+/* @license-end */</script>
+<div id="main-nav"></div>
+<!-- window showing the filter options -->
+<div id="MSearchSelectWindow"
+     onmouseover="return searchBox.OnSearchSelectShow()"
+     onmouseout="return searchBox.OnSearchSelectHide()"
+     onkeydown="return searchBox.OnSearchSelectKey(event)">
+</div>
+
+<!-- iframe showing the search results (closed by default) -->
+<div id="MSearchResultsWindow">
+<iframe src="javascript:void(0)" frameborder="0" 
+        name="MSearchResults" id="MSearchResults">
+</iframe>
+</div>
+
+<div id="nav-path" class="navpath">
+  <ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_87f6ca8875bf3551042b87b011df194d.html">MgxParser</a></li><li class="navelem"><a class="el" href="dir_d0f2bc951f92a124cc11b920ac8017b7.html">src</a></li><li class="navelem"><a class="el" href="dir_b149cfae3ff679dddd629d3d2e6cf8f7.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_12593e86d7e3ec72ef9766a669d73f1a.html">default</a></li>  </ul>
+</div>
+</div><!-- top -->
+<div class="header">
+  <div class="headertitle">
+<div class="title">addonGuessWinner.cpp</div>  </div>
+</div><!--header-->
+<div class="contents">
+<a href="addonGuessWinner_8cpp.html">浏览该文件的文档.</a><div class="fragment"><div class="line"><a name="l00001"></a><span class="lineno">    1</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00002"></a><span class="lineno">    2</span>&#160;<span class="comment"> * \file       addonGuessWinner.cpp</span></div>
+<div class="line"><a name="l00003"></a><span class="lineno">    3</span>&#160;<span class="comment"> * \author     PATRICK LI (admin@aocrec.com)</span></div>
+<div class="line"><a name="l00004"></a><span class="lineno">    4</span>&#160;<span class="comment"> * \brief</span></div>
+<div class="line"><a name="l00005"></a><span class="lineno">    5</span>&#160;<span class="comment"> * \version    0.1</span></div>
+<div class="line"><a name="l00006"></a><span class="lineno">    6</span>&#160;<span class="comment"> * \date       2022-10-22</span></div>
+<div class="line"><a name="l00007"></a><span class="lineno">    7</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00008"></a><span class="lineno">    8</span>&#160;<span class="comment"> * \copyright  Copyright (c) 2020-2022</span></div>
+<div class="line"><a name="l00009"></a><span class="lineno">    9</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00010"></a><span class="lineno">   10</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00011"></a><span class="lineno">   11</span>&#160; </div>
+<div class="line"><a name="l00012"></a><span class="lineno">   12</span>&#160;<span class="preprocessor">#include &lt;map&gt;</span></div>
+<div class="line"><a name="l00013"></a><span class="lineno">   13</span>&#160;<span class="preprocessor">#include &lt;array&gt;</span></div>
+<div class="line"><a name="l00014"></a><span class="lineno">   14</span>&#160;<span class="preprocessor">#include &lt;string&gt;</span></div>
+<div class="line"><a name="l00015"></a><span class="lineno">   15</span>&#160;<span class="preprocessor">#include &quot;<a class="code" href="Analyzer_8h.html">Analyzer.h</a>&quot;</span></div>
+<div class="line"><a name="l00016"></a><span class="lineno">   16</span>&#160; </div>
+<div class="line"><a name="l00017"></a><span class="lineno">   17</span>&#160;<span class="keyword">using namespace </span>std;</div>
+<div class="line"><a name="l00018"></a><span class="lineno">   18</span>&#160; </div>
+<div class="line"><a name="l00019"></a><span class="lineno"><a class="line" href="structTeamCredit.html">   19</a></span>&#160;<span class="keyword">struct </span><a class="code" href="structTeamCredit.html">TeamCredit</a></div>
+<div class="line"><a name="l00020"></a><span class="lineno">   20</span>&#160;{</div>
+<div class="line"><a name="l00021"></a><span class="lineno"><a class="line" href="structTeamCredit.html#af549d00827cff7cc8296684282afa380">   21</a></span>&#160;    uint32_t <a class="code" href="structTeamCredit.html#af549d00827cff7cc8296684282afa380">credits</a>;</div>
+<div class="line"><a name="l00022"></a><span class="lineno"><a class="line" href="structTeamCredit.html#ad49579e99e6d8dc1a4a13b455346b3a1">   22</a></span>&#160;    uint32_t <a class="code" href="structTeamCredit.html#ad49579e99e6d8dc1a4a13b455346b3a1">count</a>;</div>
+<div class="line"><a name="l00023"></a><span class="lineno"><a class="line" href="structTeamCredit.html#ac5cfa86cf320d1b4b9d526bbc967a348">   23</a></span>&#160;    uint32_t <a class="code" href="structTeamCredit.html#ac5cfa86cf320d1b4b9d526bbc967a348">avg</a>;</div>
+<div class="line"><a name="l00024"></a><span class="lineno">   24</span>&#160;};</div>
+<div class="line"><a name="l00025"></a><span class="lineno">   25</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00026"></a><span class="lineno">   26</span>&#160;<span class="comment">/**</span></div>
+<div class="line"><a name="l00027"></a><span class="lineno">   27</span>&#160;<span class="comment"> * \brief      谁赢谁输只能靠猜。逻辑是：哪一组的人均存活时间最长，哪一组就算赢。</span></div>
+<div class="line"><a name="l00028"></a><span class="lineno">   28</span>&#160;<span class="comment"> * \details    如果resigned == -1，那存活时间就算成duration, 如果resigned &gt;=0，那存活时间就是resigned，需要考虑的是双控的情况。</span></div>
+<div class="line"><a name="l00029"></a><span class="lineno">   29</span>&#160;<span class="comment"> *</span></div>
+<div class="line"><a name="l00030"></a><span class="lineno">   30</span>&#160;<span class="comment"> */</span></div>
+<div class="line"><a name="l00031"></a><span class="lineno"><a class="line" href="classDefaultAnalyzer.html#a04c048e5225057be769e05285d37ee6c">   31</a></span>&#160;<span class="keywordtype">void</span> <a class="code" href="classDefaultAnalyzer.html#a04c048e5225057be769e05285d37ee6c">DefaultAnalyzer::_guessWinner</a>(<span class="keywordtype">int</span> debugFlag)</div>
+<div class="line"><a name="l00032"></a><span class="lineno">   32</span>&#160;{</div>
+<div class="line"><a name="l00033"></a><span class="lineno">   33</span>&#160;    _debugFlag = debugFlag;</div>
+<div class="line"><a name="l00034"></a><span class="lineno">   34</span>&#160; </div>
+<div class="line"><a name="l00035"></a><span class="lineno">   35</span>&#160;    multimap&lt;uint8_t, TeamCredit&gt; winnerCredits;</div>
+<div class="line"><a name="l00036"></a><span class="lineno">   36</span>&#160;    uint32_t indexMax[9] = {0};</div>
+<div class="line"><a name="l00037"></a><span class="lineno">   37</span>&#160;    uint8_t indexTeam[9] = {0};</div>
+<div class="line"><a name="l00038"></a><span class="lineno">   38</span>&#160;    <a class="code" href="structTeamCredit.html">TeamCredit</a> tc;</div>
+<div class="line"><a name="l00039"></a><span class="lineno">   39</span>&#160;    uint32_t credit = 0, creditMax = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno">   40</span>&#160;    map&lt;uint8_t, TeamCredit&gt;::iterator found;</div>
+<div class="line"><a name="l00041"></a><span class="lineno">   41</span>&#160;    <span class="keywordtype">bool</span> allLived = <span class="keyword">true</span>; <span class="comment">// When nobody had resigned, that mean POV quit first, then POV is possibly lost.</span></div>
+<div class="line"><a name="l00042"></a><span class="lineno">   42</span>&#160; </div>
+<div class="line"><a name="l00043"></a><span class="lineno">   43</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : players)</div>
+<div class="line"><a name="l00044"></a><span class="lineno">   44</span>&#160;    {</div>
+<div class="line"><a name="l00045"></a><span class="lineno">   45</span>&#160;        <span class="keywordflow">if</span> (!p.valid())</div>
+<div class="line"><a name="l00046"></a><span class="lineno">   46</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00047"></a><span class="lineno">   47</span>&#160; </div>
+<div class="line"><a name="l00048"></a><span class="lineno">   48</span>&#160;        <span class="keywordflow">if</span> (p.index &lt; 0 || p.index &gt; 8)</div>
+<div class="line"><a name="l00049"></a><span class="lineno">   49</span>&#160;        {</div>
+<div class="line"><a name="l00050"></a><span class="lineno">   50</span>&#160;            logger-&gt;warn(<span class="stringliteral">&quot;Flag:{}, bad player index:{}! Name: {}&quot;</span>, _debugFlag, p.index, p.name);</div>
+<div class="line"><a name="l00051"></a><span class="lineno">   51</span>&#160;        }</div>
+<div class="line"><a name="l00052"></a><span class="lineno">   52</span>&#160;        <span class="keywordflow">if</span> (-1 == p.resigned)</div>
+<div class="line"><a name="l00053"></a><span class="lineno">   53</span>&#160;        {</div>
+<div class="line"><a name="l00054"></a><span class="lineno">   54</span>&#160;            credit = duration + 500; <span class="comment">// \note 有时候投降时间会和时长一致，那就把没投降的人分数多给一点点，这样就不会判断为已经投降的和没投降都是赢。</span></div>
+<div class="line"><a name="l00055"></a><span class="lineno">   55</span>&#160;        }</div>
+<div class="line"><a name="l00056"></a><span class="lineno">   56</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00057"></a><span class="lineno">   57</span>&#160;        {</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;            credit = p.resigned;</div>
+<div class="line"><a name="l00059"></a><span class="lineno">   59</span>&#160;            allLived = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00060"></a><span class="lineno">   60</span>&#160;        }</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160;        p.resolvedTeamID = 1 == p.resolvedTeamID ? 10 + p.index : p.resolvedTeamID;</div>
+<div class="line"><a name="l00062"></a><span class="lineno">   62</span>&#160;        indexTeam[p.index] = p.resolvedTeamID;</div>
+<div class="line"><a name="l00063"></a><span class="lineno">   63</span>&#160;        <span class="keywordflow">if</span> (credit &gt; indexMax[p.index])</div>
+<div class="line"><a name="l00064"></a><span class="lineno">   64</span>&#160;            indexMax[p.index] = credit;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160;    }</div>
+<div class="line"><a name="l00066"></a><span class="lineno">   66</span>&#160; </div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;    <span class="keywordflow">for</span> (<span class="keywordtype">int</span> i = 0; i &lt; 9; i++)</div>
+<div class="line"><a name="l00068"></a><span class="lineno">   68</span>&#160;    {</div>
+<div class="line"><a name="l00069"></a><span class="lineno">   69</span>&#160;        <span class="keywordflow">if</span> (0 == indexTeam[i])</div>
+<div class="line"><a name="l00070"></a><span class="lineno">   70</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00071"></a><span class="lineno">   71</span>&#160; </div>
+<div class="line"><a name="l00072"></a><span class="lineno">   72</span>&#160;        found = winnerCredits.find(indexTeam[i]);</div>
+<div class="line"><a name="l00073"></a><span class="lineno">   73</span>&#160;        <span class="keywordflow">if</span> (found == winnerCredits.end())</div>
+<div class="line"><a name="l00074"></a><span class="lineno">   74</span>&#160;        {</div>
+<div class="line"><a name="l00075"></a><span class="lineno">   75</span>&#160;            tc.<a class="code" href="structTeamCredit.html#af549d00827cff7cc8296684282afa380">credits</a> = indexMax[i];</div>
+<div class="line"><a name="l00076"></a><span class="lineno">   76</span>&#160;            tc.<a class="code" href="structTeamCredit.html#ad49579e99e6d8dc1a4a13b455346b3a1">count</a> = 1;</div>
+<div class="line"><a name="l00077"></a><span class="lineno">   77</span>&#160;            winnerCredits.emplace(make_pair(indexTeam[i], tc));</div>
+<div class="line"><a name="l00078"></a><span class="lineno">   78</span>&#160;        }</div>
+<div class="line"><a name="l00079"></a><span class="lineno">   79</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00080"></a><span class="lineno">   80</span>&#160;        {</div>
+<div class="line"><a name="l00081"></a><span class="lineno">   81</span>&#160;            found-&gt;second.credits += indexMax[i];</div>
+<div class="line"><a name="l00082"></a><span class="lineno">   82</span>&#160;            found-&gt;second.count++;</div>
+<div class="line"><a name="l00083"></a><span class="lineno">   83</span>&#160;        }</div>
+<div class="line"><a name="l00084"></a><span class="lineno">   84</span>&#160;    }</div>
+<div class="line"><a name="l00085"></a><span class="lineno">   85</span>&#160; </div>
+<div class="line"><a name="l00086"></a><span class="lineno">   86</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;t : winnerCredits)</div>
+<div class="line"><a name="l00087"></a><span class="lineno">   87</span>&#160;    {</div>
+<div class="line"><a name="l00088"></a><span class="lineno">   88</span>&#160;        <span class="keywordflow">if</span> (teamMode.empty())</div>
+<div class="line"><a name="l00089"></a><span class="lineno">   89</span>&#160;            teamMode.append(to_string(t.second.count));</div>
+<div class="line"><a name="l00090"></a><span class="lineno">   90</span>&#160;        <span class="keywordflow">else</span></div>
+<div class="line"><a name="l00091"></a><span class="lineno">   91</span>&#160;            teamMode.append(<span class="stringliteral">&quot;v&quot;</span>).append(to_string(t.second.count));</div>
+<div class="line"><a name="l00092"></a><span class="lineno">   92</span>&#160; </div>
+<div class="line"><a name="l00093"></a><span class="lineno">   93</span>&#160;        t.second.avg = t.second.credits / t.second.count;</div>
+<div class="line"><a name="l00094"></a><span class="lineno">   94</span>&#160;        <span class="keywordflow">if</span> (t.second.avg &gt; creditMax)</div>
+<div class="line"><a name="l00095"></a><span class="lineno">   95</span>&#160;            creditMax = t.second.avg;</div>
+<div class="line"><a name="l00096"></a><span class="lineno">   96</span>&#160;    }</div>
+<div class="line"><a name="l00097"></a><span class="lineno">   97</span>&#160; </div>
+<div class="line"><a name="l00098"></a><span class="lineno">   98</span>&#160;    <span class="keywordflow">for</span> (<span class="keyword">auto</span> &amp;p : players)</div>
+<div class="line"><a name="l00099"></a><span class="lineno">   99</span>&#160;    {</div>
+<div class="line"><a name="l00100"></a><span class="lineno">  100</span>&#160;        <span class="keywordflow">if</span> (!p.valid())</div>
+<div class="line"><a name="l00101"></a><span class="lineno">  101</span>&#160;            <span class="keywordflow">continue</span>;</div>
+<div class="line"><a name="l00102"></a><span class="lineno">  102</span>&#160; </div>
+<div class="line"><a name="l00103"></a><span class="lineno">  103</span>&#160;        found = winnerCredits.find(p.resolvedTeamID);</div>
+<div class="line"><a name="l00104"></a><span class="lineno">  104</span>&#160;        <span class="keywordflow">if</span> (found != winnerCredits.end() &amp;&amp; found-&gt;second.avg == creditMax &amp;&amp; !(p.slot == recPlayer &amp;&amp; allLived))</div>
+<div class="line"><a name="l00105"></a><span class="lineno">  105</span>&#160;            p.isWinner = <span class="keyword">true</span>;</div>
+<div class="line"><a name="l00106"></a><span class="lineno">  106</span>&#160;    }</div>
+<div class="line"><a name="l00107"></a><span class="lineno">  107</span>&#160;}</div>
+</div><!-- fragment --></div><!-- contents -->
+<div class="ttc" id="aAnalyzer_8h_html"><div class="ttname"><a href="Analyzer_8h.html">Analyzer.h</a></div></div>
+<div class="ttc" id="astructTeamCredit_html_ac5cfa86cf320d1b4b9d526bbc967a348"><div class="ttname"><a href="structTeamCredit.html#ac5cfa86cf320d1b4b9d526bbc967a348">TeamCredit::avg</a></div><div class="ttdeci">uint32_t avg</div><div class="ttdef"><b>Definition:</b> <a href="addonGuessWinner_8cpp_source.html#l00023">addonGuessWinner.cpp:23</a></div></div>
+<div class="ttc" id="astructTeamCredit_html_ad49579e99e6d8dc1a4a13b455346b3a1"><div class="ttname"><a href="structTeamCredit.html#ad49579e99e6d8dc1a4a13b455346b3a1">TeamCredit::count</a></div><div class="ttdeci">uint32_t count</div><div class="ttdef"><b>Definition:</b> <a href="addonGuessWinner_8cpp_source.html#l00022">addonGuessWinner.cpp:22</a></div></div>
+<div class="ttc" id="astructTeamCredit_html_af549d00827cff7cc8296684282afa380"><div class="ttname"><a href="structTeamCredit.html#af549d00827cff7cc8296684282afa380">TeamCredit::credits</a></div><div class="ttdeci">uint32_t credits</div><div class="ttdef"><b>Definition:</b> <a href="addonGuessWinner_8cpp_source.html#l00021">addonGuessWinner.cpp:21</a></div></div>
+<div class="ttc" id="astructTeamCredit_html"><div class="ttname"><a href="structTeamCredit.html">TeamCredit</a></div><div class="ttdef"><b>Definition:</b> <a href="addonGuessWinner_8cpp_source.html#l00019">addonGuessWinner.cpp:19</a></div></div>
+<div class="ttc" id="aclassDefaultAnalyzer_html_a04c048e5225057be769e05285d37ee6c"><div class="ttname"><a href="classDefaultAnalyzer.html#a04c048e5225057be769e05285d37ee6c">DefaultAnalyzer::_guessWinner</a></div><div class="ttdeci">void _guessWinner(int)</div><div class="ttdoc">谁赢谁输只能靠猜。逻辑是：哪一组的人均存活时间最长，哪一组就算赢。</div><div class="ttdef"><b>Definition:</b> <a href="addonGuessWinner_8cpp_source.html#l00031">addonGuessWinner.cpp:31</a></div></div>
+<!-- start footer part -->
+<hr class="footer"/><address class="footer"><small>
+制作者 &#160;<a href="http://www.doxygen.org/index.html">
+<img class="footer" src="doxygen.png" alt="doxygen"/>
+</a> 1.8.17
+</small></address>
+</body>
+</html>

@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: utils.cpp 文件参考</title>
+<title>mgxnode: utils.cpp 文件参考</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_a95fc1cc45391b3270b1ae2680110062.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_e707855903d954fa6d0bc7016550a3a5.html">default</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_87f6ca8875bf3551042b87b011df194d.html">MgxParser</a></li><li class="navelem"><a class="el" href="dir_d0f2bc951f92a124cc11b920ac8017b7.html">src</a></li><li class="navelem"><a class="el" href="dir_b149cfae3ff679dddd629d3d2e6cf8f7.html">Analyzers</a></li><li class="navelem"><a class="el" href="dir_12593e86d7e3ec72ef9766a669d73f1a.html">default</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -184,19 +184,19 @@ utils.cpp 的引用(Include)关系图:</div>
 <p>Use to convert bytes to hex string, mainly used to generate guid in HD versions. </p>
 <dl class="params"><dt>参数</dt><dd>
   <table class="params">
-    <tr><td class="paramname">data</td><td>TEXT </td></tr>
-    <tr><td class="paramname">len</td><td>TEXT </td></tr>
-    <tr><td class="paramname">skip</td><td>TEXT </td></tr>
+    <tr><td class="paramname">data</td><td>Normally a reference to _curPos(pointer to current reading position). !! Must be a reference, otherwise skip will not work. </td></tr>
+    <tr><td class="paramname">len</td><td>Bytes to convert </td></tr>
+    <tr><td class="paramname">skip</td><td>Skip read bytes (len bytes) </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>返回</dt><dd>std::string TEXT </dd></dl>
+<dl class="section return"><dt>返回</dt><dd>std::string Generated string representitive of bytes </dd></dl>
 
-<p class="definition">在文件 <a class="el" href="utils_8cpp_source.html">utils.cpp</a> 第 <a class="el" href="utils_8cpp_source.html#l00043">43</a> 行定义.</p>
+<p class="definition">在文件 <a class="el" href="utils_8cpp_source.html">utils.cpp</a> 第 <a class="el" href="utils_8cpp_source.html#l00044">44</a> 行定义.</p>
 
 <p class="reference">引用了 <a class="el" href="utils_8h_source.html#l00199">hexmap</a>.</p>
 
-<p class="reference">被这些函数引用 <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
+<p class="reference">被这些函数引用 <a class="el" href="addonGuid_8cpp_source.html#l00037">DefaultAnalyzer::_genRetroGuid()</a>, <a class="el" href="subProcHeaderDE_8cpp_source.html#l00015">DefaultAnalyzer::_headerDEAnalyzer()</a> , 以及 <a class="el" href="subProcHeaderHD_8cpp_source.html#l00015">DefaultAnalyzer::_headerHDAnalyzer()</a>.</p>
 
 </div>
 </div>

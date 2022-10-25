@@ -5,7 +5,7 @@
 <meta http-equiv="X-UA-Compatible" content="IE=9"/>
 <meta name="generator" content="Doxygen 1.8.17"/>
 <meta name="viewport" content="width=device-width, initial-scale=1"/>
-<title>MgxParser: Player.h 源文件</title>
+<title>mgxnode: Player.h 源文件</title>
 <link href="tabs.css" rel="stylesheet" type="text/css"/>
 <script type="text/javascript" src="jquery.js"></script>
 <script type="text/javascript" src="dynsections.js"></script>
@@ -21,7 +21,7 @@
  <tbody>
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
-   <div id="projectname">MgxParser
+   <div id="projectname">mgxnode
    &#160;<span id="projectnumber">0.1.0</span>
    </div>
    <div id="projectbrief">MgxParser is a C++ lib used to parse Age of Empires II game records.</div>
@@ -63,7 +63,7 @@ $(function() {
 
 <div id="nav-path" class="navpath">
   <ul>
-<li class="navelem"><a class="el" href="dir_68267d1309a1af8e8297ef4c3efbcdba.html">src</a></li><li class="navelem"><a class="el" href="dir_35aec678dab01335b0d07e9e4ae10d46.html">DataModels</a></li>  </ul>
+<li class="navelem"><a class="el" href="dir_6719ab1f1f7655efc2fa43f7eb574fd1.html">libs</a></li><li class="navelem"><a class="el" href="dir_87f6ca8875bf3551042b87b011df194d.html">MgxParser</a></li><li class="navelem"><a class="el" href="dir_d0f2bc951f92a124cc11b920ac8017b7.html">src</a></li><li class="navelem"><a class="el" href="dir_d0414749a9a6fbf4667302d206ee4da3.html">DataModels</a></li>  </ul>
 </div>
 </div><!-- top -->
 <div class="header">
@@ -110,8 +110,8 @@ $(function() {
 <div class="line"><a name="l00037"></a><span class="lineno"><a class="line" href="classPlayer.html#a28b36f6119e6012caa80d4d6b11f59f1">   37</a></span>&#160;    <span class="keywordtype">string</span> <a class="code" href="classPlayer.html#a28b36f6119e6012caa80d4d6b11f59f1">DD_AIName</a>;</div>
 <div class="line"><a name="l00038"></a><span class="lineno"><a class="line" href="classPlayer.html#acf0355128a99ee20ad9931b760fb2de1">   38</a></span>&#160;    <span class="keywordtype">string</span> name = <span class="stringliteral">&quot;&quot;</span>;</div>
 <div class="line"><a name="l00039"></a><span class="lineno"><a class="line" href="classPlayer.html#abc4dfe6fd9cfcd300467cf85bac1fca0">   39</a></span>&#160;    uint32_t type = 999; <span class="comment">///&lt; 0~6: absent, closed, human, eliminated, computer, cyborg, spectator</span></div>
-<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classPlayer.html#afe8d8704e3d40fb0152d633ab918071e">   40</a></span>&#160;<span class="comment"></span>    uint64_t HD_steamID = 0;</div>
-<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classPlayer.html#a847ef6d569773ad63cce71dcf8760dc1">   41</a></span>&#160;    uint32_t DE_profileID = 0;</div>
+<div class="line"><a name="l00040"></a><span class="lineno"><a class="line" href="classPlayer.html#afe8d8704e3d40fb0152d633ab918071e">   40</a></span>&#160;<span class="comment"></span>    uint64_t HD_steamID = 0; <span class="comment">///&lt; https://developer.valvesoftware.com/wiki/Steam_Web_API</span></div>
+<div class="line"><a name="l00041"></a><span class="lineno"><a class="line" href="classPlayer.html#a847ef6d569773ad63cce71dcf8760dc1">   41</a></span>&#160;<span class="comment"></span>    uint32_t DE_profileID = 0;</div>
 <div class="line"><a name="l00042"></a><span class="lineno"><a class="line" href="classPlayer.html#a57094b4c146e28691045582a22b68347">   42</a></span>&#160;    int32_t DD_playerNumber = -1; <span class="comment">///&lt; \todo 这个和index/slot怎么区别呢？</span></div>
 <div class="line"><a name="l00043"></a><span class="lineno"><a class="line" href="classPlayer.html#aef57dcdf05cbcdf95b2603024c35eae4">   43</a></span>&#160;<span class="comment"></span>    uint32_t DD_RMRating = 0;</div>
 <div class="line"><a name="l00044"></a><span class="lineno"><a class="line" href="classPlayer.html#a9d57111f532e93fedc75e3a62836ee22">   44</a></span>&#160;    uint32_t DD_DMRating = 0;</div>
@@ -128,7 +128,16 @@ $(function() {
 <div class="line"><a name="l00055"></a><span class="lineno"><a class="line" href="classPlayer.html#a075dd1c22cef25e23e46093ab0265564">   55</a></span>&#160;    int32_t slot = -1;             <span class="comment">///&lt; This number is not originally stored in a record. A slot means a seat in a game. Slots can operate a same index.</span></div>
 <div class="line"><a name="l00056"></a><span class="lineno"><a class="line" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">   56</a></span>&#160;<span class="comment"></span>    vector&lt;uint8_t&gt; <a class="code" href="classPlayer.html#a3f7fb7d3066b88b38f4d4ed6d545bbd8">searchPattern</a>; <span class="comment">///&lt; Used to locate player data in startinfo section</span></div>
 <div class="line"><a name="l00057"></a><span class="lineno"><a class="line" href="classPlayer.html#a28002d3d2977e7aa8c3405b62af0ff0d">   57</a></span>&#160;<span class="comment"></span>    uint32_t dataOffset = 0;       <span class="comment">///&lt; Offset from header stream start of player data in startinfo section. Keep this default 0.</span></div>
-<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span>};</div>
+<div class="line"><a name="l00058"></a><span class="lineno">   58</span>&#160;<span class="comment"></span> </div>
+<div class="line"><a name="l00059"></a><span class="lineno"><a class="line" href="classPlayer.html#a5489d4dc9b15777e3147ac13802c9400">   59</a></span>&#160;    int32_t resigned = -1;</div>
+<div class="line"><a name="l00060"></a><span class="lineno"><a class="line" href="classPlayer.html#a055491be56f51a64252bcd9adbdd2c93">   60</a></span>&#160;    <span class="keywordtype">bool</span> disconnected = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00061"></a><span class="lineno">   61</span>&#160; </div>
+<div class="line"><a name="l00062"></a><span class="lineno"><a class="line" href="classPlayer.html#a27e18ff9a17fe9d04979ca6f1166e58b">   62</a></span>&#160;    int32_t feudalTime = -1;</div>
+<div class="line"><a name="l00063"></a><span class="lineno"><a class="line" href="classPlayer.html#af8dce83eeca9f8052baa07a58a7ebd74">   63</a></span>&#160;    int32_t castleTime = -1;</div>
+<div class="line"><a name="l00064"></a><span class="lineno"><a class="line" href="classPlayer.html#a627020a1cec796c063ef2eb7f84138d4">   64</a></span>&#160;    int32_t imperialTime = -1;</div>
+<div class="line"><a name="l00065"></a><span class="lineno">   65</span>&#160; </div>
+<div class="line"><a name="l00066"></a><span class="lineno"><a class="line" href="classPlayer.html#a30c399ae460c56762b7f663e2dae9abd">   66</a></span>&#160;    <span class="keywordtype">bool</span> isWinner = <span class="keyword">false</span>;</div>
+<div class="line"><a name="l00067"></a><span class="lineno">   67</span>&#160;};</div>
 </div><!-- fragment --></div><!-- contents -->
 <div class="ttc" id="aclassPlayer_html_a13448a211a225f8e2fc7ab68f80ad8d0"><div class="ttname"><a href="classPlayer.html#a13448a211a225f8e2fc7ab68f80ad8d0">Player::DD_MPGameVersion</a></div><div class="ttdeci">uint8_t DD_MPGameVersion</div><div class="ttdef"><b>Definition:</b> <a href="Player_8h_source.html#l00032">Player.h:32</a></div></div>
 <div class="ttc" id="aDataModel_8h_html_a8f306f67570ceacaa6bc8a1227aff236"><div class="ttname"><a href="DataModel_8h.html#a8f306f67570ceacaa6bc8a1227aff236">UINT8_INIT</a></div><div class="ttdeci">#define UINT8_INIT</div><div class="ttdef"><b>Definition:</b> <a href="DataModel_8h_source.html#l00016">DataModel.h:16</a></div></div>

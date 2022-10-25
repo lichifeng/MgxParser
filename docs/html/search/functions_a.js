@@ -1,5 +1,5 @@
 var searchData=
 [
-  ['parse_537',['parse',['../namespaceMgxParser.html#ab0b60e833df62fe969c18a734e711722',1,'MgxParser::parse(const uint8_t *, size_t)'],['../namespaceMgxParser.html#a08c518fad4fd81be66769ea95e2279d6',1,'MgxParser::parse(const std::string &amp;)']]],
-  ['pyparse_538',['pyparse',['../namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57',1,'MgxParser']]]
+  ['parse_607',['parse',['../namespaceMgxParser.html#aabc1b4bd2bcc65bf0cd382c620ea1ce1',1,'MgxParser::parse(const uint8_t *, size_t, int=0)'],['../namespaceMgxParser.html#a95e91b8f69d996213a1ad379229d3985',1,'MgxParser::parse(const std::string &amp;, int=0)']]],
+  ['pyparse_608',['pyparse',['../namespaceMgxParser.html#a0352edc1e5c8a71bc17cc671641fff57',1,'MgxParser']]]
 ];
