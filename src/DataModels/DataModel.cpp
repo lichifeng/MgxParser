@@ -48,6 +48,7 @@ string DataModel::toJson()
 
     // Settings
     j["fileType"] = filetype;
+    j["filename"] = filename;
     if (!extractedName.empty())
         j["extractedName"] = extractedName;
     j["rawEncoding"] = rawEncoding;
@@ -62,6 +63,8 @@ string DataModel::toJson()
 
     if (!teamMode.empty())
         j["teamMode"] = teamMode;
+
+    j["includeAI"] = (bool)includeAI;
 
     // Map
     if (UINT32_INIT != mapSize)

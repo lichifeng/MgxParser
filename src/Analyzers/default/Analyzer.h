@@ -378,7 +378,7 @@ protected:
     void _findDisablesStart(int debugFlag = 0);
     void _findGameSettingsStart(int debugFlag = 0);
     void _findVictoryStart(int debugFlag = 0);
-    void _findScenarioHeaderStart(int debugFlag = 0);
+    void _findScenarioHeaderStart(int debugFlag = 0, bool brutal = false, float lowerLimit = 1.35, float upperLimit = 1.55);
     void _scenarioHeaderAnalyzer(int debugFlag = 0);
     void _messagesAnalyzer(int debugFlag = 0);
     void _victorySettingsAnalyzer(int debugFlag = 0);

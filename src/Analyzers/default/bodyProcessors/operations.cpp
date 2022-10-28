@@ -79,6 +79,7 @@ void DefaultAnalyzer::_handleOpChat()
 
 void DefaultAnalyzer::_handleOpCommand()
 {
+    // \todo Merge de71094 update from https://github.com/happyleavesaoc/aoc-mgz/commit/19b75b3b7e51e254075644ea2be96fdb0a7477b1 
     _readBytes(4, &cmdLen);
 
     pNext = _remainBytes() < cmdLen ? _curStream->data() + _curStream->size() : _curPos + cmdLen;

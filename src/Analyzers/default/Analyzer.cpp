@@ -158,7 +158,7 @@ void DefaultAnalyzer::_analyze()
     //   2-5: Find&Skip scenario data. Need 2-4
     //   Nothing valuable here except a filename.
     //   What is really needed is instructions data after this section,
-    //   Which is critical data to detect file encoding.
+    //   which is key to detect file encoding.
     _findScenarioHeaderStart(14);
     TRY_PHASE2_FALLBACK
 

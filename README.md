@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.1.0) was compiled on 20221025*
+*This version(0.1.0) was compiled on 20221028*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -66,6 +66,7 @@ These libraries are required to build MgxParser:
   ```sh
   sudo apt-get install doxygen graphviz
   ```
+  **googletest**: Required to run test.
 
 All dependencies of MgxParser are bundled into the executive file after compilation.
 
@@ -107,7 +108,11 @@ Then `MgxParser::parse()` should be available.
 
 ## Resources
 Find records for test: https://www.ageofempires.com/stats/ageiide
-Github: https://github.com/topics/age-of-empires
+https://github.com/topics/age-of-empires
+DE Replays Manager: https://github.com/gregstein/DE-Replays-Manager
+Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2
+https://aok.heavengames.com/blacksmith/lister.php?category=utilities
+https://aok.heavengames.com/blacksmith/lister.php?category=records
 
 ## Caution
 This project is still under development. **No warrenty for anything!**

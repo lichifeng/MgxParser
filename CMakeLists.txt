@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.0.0)
+cmake_minimum_required(VERSION 3.24.0)
 
 # Project info
 project(
@@ -25,7 +25,7 @@ set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DA
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
-add_executable("${PROJECT_NAME}_EXE" ./test/maindemo.cpp)
+add_executable("${PROJECT_NAME}_EXE" ${CMAKE_CURRENT_SOURCE_DIR}/test/maindemo.cpp)
 target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
 
 # Import dependencies
@@ -80,6 +80,22 @@ endif()
 
 # Testing configuration
 # https://coderefinery.github.io/cmake-workshop/testing/
+set(BUILD_TESTING 1)
 if(BUILD_TESTING)
+    set(CMP0135 1)
+    include(FetchContent)
+    FetchContent_Declare(
+        googletest
+        URL https://github.com/google/googletest/archive/refs/tags/release-1.12.1.zip
+    )
+    set(gtest_force_shared_crt ON CACHE BOOL "" FORCE)
+    FetchContent_MakeAvailable(googletest)
+
 	enable_testing()
+    add_executable("${PROJECT_NAME}_TEST" ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cpp)
+    target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
+    target_link_libraries("${PROJECT_NAME}_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
+    include(GoogleTest)
+    gtest_discover_tests("${PROJECT_NAME}_TEST")
 endif()

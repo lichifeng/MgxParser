@@ -140,7 +140,7 @@ public:
     uint64_t DE_numAIFiles;
 
     // data from replay section
-    uint32_t gameSpeed; ///< \todo If de/hd, use data from de/hd-specific data
+    uint32_t gameSpeed = UINT32_INIT; ///< \todo If de/hd, use data from de/hd-specific data
     uint16_t recPlayer; ///< \todo index or number of pov?? verify this.
     uint8_t numPlayers; ///< \todo gaia included, DD_numPlayers first??
     uint8_t instantBuild;
@@ -171,7 +171,7 @@ public:
     uint32_t victoryTime;
 
     // game settings
-    uint32_t mapID;
+    uint32_t mapID = UINT32_INIT;
     uint32_t difficultyID = UINT32_INIT;
     uint32_t lockTeams;
 

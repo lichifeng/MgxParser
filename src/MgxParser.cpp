@@ -15,10 +15,8 @@
 
 using namespace std;
 
-string MgxParser::parse(const string &recfile, int mapType)
+string _parse(DefaultAnalyzer &a, int mapType, string mapName)
 {
-    auto a = DefaultAnalyzer(recfile);
-
     try
     {
         a.run();
@@ -31,42 +29,49 @@ string MgxParser::parse(const string &recfile, int mapType)
     a.parseTime = a.logger->elapsed();
     a.message = a.logger->dumpStr();
 
-    if (mapType != NO_MAP) {
-        a.generateMap("testmap.png", 300, 150, mapType == HD_MAP);
+    if (mapType != NO_MAP)
+    {
+        uint32_t w = HD_MAP ? 900 : 300;
+        uint32_t h = HD_MAP ? 450 : 150;
+        try
+        {
+            a.generateMap(mapName, w, h, mapType == HD_MAP);
+        }
+        catch (const exception &e)
+        {
+            a.logger->warn("Failed to generate a map file.");
+        }
     }
 
     return a.toJson();
 }
 
-string MgxParser::parse(const uint8_t *buf, size_t n, int mapType)
+string MgxParser::parse(const string &recfile, int mapType, string mapName)
+{
+    auto a = DefaultAnalyzer(recfile);
+
+    return _parse(a, mapType, mapName);
+}
+
+string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName)
 {
     auto a = DefaultAnalyzer(buf, n);
 
-    try
-    {
-        a.run();
-    }
-    catch (const exception &e)
-    {
-        a.logger->fatal("Exception@_debugFlag#{}: {}", a.getDebugFlag(), e.what());
-    }
-
-    a.parseTime = a.logger->elapsed();
-    a.message = a.logger->dumpStr();
-
-    if (mapType != NO_MAP) {
-        a.generateMap("testmap.png", 300, 150, mapType == HD_MAP);
-    }
-
-    return a.toJson();
+    return _parse(a, mapType, mapName);
 }
 
 extern "C"
 {
+    /**
+     * \brief      This function is a early try of python integration, not tested.
+     * 
+     * \param      recfile             Path of record file
+     * \return     const char*         JSON string contains parsed information
+     */
     const char *MgxParser::pyparse(const char *recfile)
     {
         string j = MgxParser::parse(recfile).c_str();
-        char* retStr = (char*)malloc(j.size() + 1);
+        char *retStr = (char *)malloc(j.size() + 1);
         strcpy(retStr, j.c_str());
         return retStr;
     }

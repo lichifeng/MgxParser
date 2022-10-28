@@ -9,13 +9,6 @@
  *
  */
 
-// From old php version:
-//// magic
-//$head = unpack("Vsig/vver/vflag/vmeth/vmodt/vmodd/Vcrc/Vcsize/Vsize/vnamelen/vexlen", substr($data, 0, 30));
-//$filename = substr($data, 30, $head['namelen']);
-//$raw = gzinflate(substr($data, 30 + $head['namelen'] + $head['exlen'],
-//$head['csize']));
-
 #include <cstdint>
 #include <string>
 #include <fstream>
@@ -25,7 +18,10 @@
 using namespace std;
 
 #pragma pack(push) // 保存对齐状态
-#pragma pack(2)    // 设定为1字节对齐
+#pragma pack(2)    // 设定为2字节对齐
+/**
+ * \brief      Header of a zip file. https://docs.fileformat.com/compression/zip/
+ */
 struct MagicAssist
 {
     uint32_t sig;
@@ -70,6 +66,16 @@ void fetchFromZipBuffer(const uint8_t *b, ZipInfo *z)
     z->status = zipDecompress((void *)b, 2, z->rawSize, z->outBuffer);
 }
 
+/**
+ * \brief      This function uses zlib to inflate compressed data. Used to extract deflated header data in record file
+ * and fetch a record file from a .zip archive.
+ *
+ * \param      src                 Pointer to a compressed data stream. Can be a Byte(uint8_t) array or a ifstream.
+ * \param      srcType             1 for ifstream; 2 for byte array.
+ * \param      srcSize             Size in bytes of compressed data.
+ * \param      outBuffer           Destination of decompressed data. Reference to a uint8_t vector.
+ * \return     int                 0 if sucessfully decompressed.
+ */
 int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &outBuffer)
 {
     // Some settings
@@ -112,7 +118,7 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
     default:
         return 100; // invalid input type
     }
-    
+
     /* decompress until deflate stream ends or end of file */
     do
     {
