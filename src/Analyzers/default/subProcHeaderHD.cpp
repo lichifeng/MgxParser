@@ -1,12 +1,12 @@
 /**
  * \file       subProcHeaderHD.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-03
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include "Analyzer.h"
@@ -15,10 +15,10 @@
 void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
 {
     _debugFlag = debugFlag;
-    
+
     const uint8_t *tmpPos;
     _readBytes(4, &DD_version);
-    if (DD_version - 1006 < 0.0001)
+    if (DD_version >= 1005.9999)
         versionCode = HD57;
     _readBytes(4, &DD_internalVersion);
     _readBytes(4, &DD_gameOptionsVersion);
@@ -41,7 +41,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
         logger->warn(
             "{}(): Validation in HD-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 
@@ -133,7 +133,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
             _readBytes(4, &players[i].type);
             _readBytes(8, &players[i].HD_steamID);
             _readBytes(4, &players[i].DD_playerNumber);
-            if (DD_version >= 1005.9999 && versionCode != HD50_6 && versionCode != HD57)
+            if (DD_version >= 1005.9999 && versionCode != HD57) // \todo test this
             {
                 _readBytes(4, &players[i].DD_RMRating);
                 _readBytes(4, &players[i].DD_DMRating);

@@ -34,7 +34,7 @@ void DefaultAnalyzer::_victorySettingsAnalyzer(int debugFlag)
         logger->warn(
             "{}(): Check bytes following victory section seems wrong, expected 03 00 00 00. @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 }

@@ -15,15 +15,23 @@
 
 using namespace std;
 
-string _parse(DefaultAnalyzer &a, int mapType, string mapName)
+string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = false)
 {
     try
     {
         a.run();
     }
+    catch (const string &s)
+    {
+        a.logger->fatal("{}: {}", a.filename, s);
+    }
     catch (const exception &e)
     {
-        a.logger->fatal("Exception@_debugFlag#{}: {}", a.getDebugFlag(), e.what());
+        a.logger->fatal("Exception at Flag#{} in {}! {}", a.getDebugFlag(), a.filename, e.what());
+    }
+    catch (...)
+    {
+        a.logger->fatal("Exception at Flag#{} in {}!", a.getDebugFlag(), a.filename);
     }
 
     a.parseTime = a.logger->elapsed();
@@ -37,34 +45,37 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName)
         {
             a.generateMap(mapName, w, h, mapType == HD_MAP);
         }
-        catch (const exception &e)
+        catch (...)
         {
             a.logger->warn("Failed to generate a map file.");
         }
     }
 
+    if (extractHB)
+        a.extract("header.dat", "body.dat");
+
     return a.toJson();
 }
 
-string MgxParser::parse(const string &recfile, int mapType, string mapName)
+string MgxParser::parse(const string &recfile, int mapType, string mapName, bool extractHB)
 {
     auto a = DefaultAnalyzer(recfile);
 
-    return _parse(a, mapType, mapName);
+    return _parse(a, mapType, mapName, extractHB);
 }
 
-string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName)
+string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName, bool extractHB)
 {
     auto a = DefaultAnalyzer(buf, n);
 
-    return _parse(a, mapType, mapName);
+    return _parse(a, mapType, mapName, extractHB);
 }
 
 extern "C"
 {
     /**
      * \brief      This function is a early try of python integration, not tested.
-     * 
+     *
      * \param      recfile             Path of record file
      * \return     const char*         JSON string contains parsed information
      */

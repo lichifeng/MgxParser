@@ -76,11 +76,11 @@ string DataModel::toJson()
     j["message"] = message;
     if (!DD_guid.empty())
     {
-        j["guidRaw"] = DD_guid;
+        j["guid"] = DD_guid;
     }
     else if (!retroGuid.empty())
     {
-        j["guidRaw"] = retroGuid;
+        j["guid"] = retroGuid;
     }
     j["parser"] = PARSER_VERSION_VERBOSE;
 
@@ -127,6 +127,8 @@ string DataModel::toJson()
 
         j["players"].emplace_back(pJ);
     }
+
+    j["parseTime"] = parseTime;
 
     return j.dump(-1, ' ', false, json::error_handler_t::ignore);
 }

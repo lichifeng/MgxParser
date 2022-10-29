@@ -1,22 +1,22 @@
 /**
  * \file       maindemo.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
+ * \brief
  * \version    0.1
  * \date       2022-10-24
- * 
+ *
  * \copyright  Copyright (c) 2020-2022
- * 
+ *
  */
 
 #include <string>
+#include <string.h>
 #include <iostream>
-#include "../src/Analyzers/default/Analyzer.h"
 #include "../src/include/MgxParser.h"
 
 using namespace std;
 
-int main(int argc, char* argv[])
+int main(int argc, char *argv[])
 {
     if (argc <= 1)
     {
@@ -24,23 +24,25 @@ int main(int argc, char* argv[])
         return 1;
     }
 
-    auto a = DefaultAnalyzer(argv[1]);
-
-    try
+    bool mapType = NO_MAP, extractHB = false;
+    string filepath;
+    for (size_t i = 0; i < argc; i++)
     {
-        a.run();
+        const char *argm = "-m";
+        const char *argM = "-M";
+        const char *arge = "-e";
+
+        if (0 == strcmp(argm, argv[i]))
+            mapType = NORMAL_MAP;
+        else if (0 == strcmp(argM, argv[i]))
+            mapType = HD_MAP;
+        else if (0 == strcmp(arge, argv[i]))
+            extractHB = true;
+        else
+            filepath.assign(argv[i]);
     }
-    catch (const exception &e)
-    {
-        a.logger->fatal("Exception@_debugFlag#{}: {}", a.getDebugFlag(), e.what());
-    }
 
-    a.parseTime = a.logger->elapsed();
-    a.message = a.logger->dumpStr();
-
-    a.generateMap("testmap.png", 900, 450, true);
-
-    cout << a.toJson() << endl;
+    cout << MgxParser::parse(filepath, mapType, "map.png", extractHB) << endl;
 
     return 0;
 }

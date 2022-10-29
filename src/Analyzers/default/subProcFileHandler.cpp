@@ -18,9 +18,9 @@ bool DefaultAnalyzer::_loadFile()
 
     if (!filesystem::exists(path))
     {
-        _sendFailedSignal(true);
-        logger->fatal("{}(): File [{}] don't exist.", __FUNCTION__, path);
-        return false;
+        _sendExceptionSignal(
+            true,
+            logger->fmt("File [{}] don't exist.", path));
     }
 
     filename = p.filename();

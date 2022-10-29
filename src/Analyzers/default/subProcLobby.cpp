@@ -75,7 +75,7 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
             logger->warn(
                 "{}(): Pregame chat count is too big. @{}.",
                 __FUNCTION__, _distance());
-            _sendFailedSignal();
+            _sendExceptionSignal();
             numChat = 50;
         }
         while (numChat-- > 0 && _remainBytes() >= 4)

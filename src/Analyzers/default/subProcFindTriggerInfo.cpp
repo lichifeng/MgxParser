@@ -44,7 +44,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
             logger->warn(
                 "{}(): Failed to find _triggerInfoPos(AOK). @{}.",
                 __FUNCTION__, _distance());
-            _sendFailedSignal();
+            _sendExceptionSignal();
             return;
         }
         _triggerInfoPos = _curPos = &(*--rFound);
@@ -61,7 +61,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
             logger->warn(
                 "{}(): Failed to find _triggerInfoPos. @{}.",
                 __FUNCTION__, _distance());
-            _sendFailedSignal();
+            _sendExceptionSignal();
             return;
         }
         _curPos = &(*--rFound);
@@ -83,7 +83,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
         logger->warn(
             "{}(): Failed to find signNum for _triggerInfoPos. @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 

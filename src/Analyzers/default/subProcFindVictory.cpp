@@ -23,7 +23,7 @@ void DefaultAnalyzer::_findVictoryStart(int debugFlag)
         logger->warn(
             "{}(): _victoryStartPos failed pattern check. @{}.", // 9d ff ff ff
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 }

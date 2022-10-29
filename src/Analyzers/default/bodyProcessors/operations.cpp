@@ -69,7 +69,7 @@ void DefaultAnalyzer::_handleOpChat()
         catch (const exception &e)
         {
             logger->fatal("Json Parse Exception@{}: {}", _debugFlag, e.what());
-            _sendFailedSignal();
+            _sendExceptionSignal();
         }
     }
 

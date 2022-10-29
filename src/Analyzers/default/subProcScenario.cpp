@@ -26,7 +26,7 @@ void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
         logger->warn(
             "{}(): scenarioFilename is unsually long. @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 

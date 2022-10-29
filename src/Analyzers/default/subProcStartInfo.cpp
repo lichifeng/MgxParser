@@ -31,7 +31,6 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
         if (p.initialDataFound() && p.valid())
         {
             _curPos = _header.data() + p.dataOffset;
-            _skip(2 + numPlayers + 36 + 4 + 1);
             _skipPascalString();
             _skip(762);
 
@@ -67,13 +66,18 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
                 logger->warn(
                     "{}(): Bad init camera was found. @{} #{}.",
                     __FUNCTION__, _distance(), _debugFlag);
-                _sendFailedSignal();
+                _sendExceptionSignal();
                 p.initCamera[0] = p.initCamera[1] = -1.0;
                 continue;
             }
 
             if (!IS_AOK(versionCode))
-                _skip(*(int32_t *)_curPos * 8 + 4);
+            {
+                int32_t numSavedViews;
+                _readBytes(4, &numSavedViews);
+                if (numSavedViews > 0)
+                    _skip(numSavedViews * 8);
+            }
             _skip(4 + 1);
             _readBytes(1, &p.civID);
             _skip(3);

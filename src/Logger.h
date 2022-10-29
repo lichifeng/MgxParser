@@ -88,17 +88,17 @@ public:
 
     template<typename... Args>
     inline void info(Args... args) {
-        return _logger->info(args...);
+        _logger->info(args...);
     }
 
     template<typename... Args>
     inline void warn(Args... args) {
-        return _logger->warn(args...);
+        _logger->warn(args...);
     }
 
     template<typename... Args>
     inline void fatal(Args... args) {
-        return _logger->critical(args...);
+        _logger->critical(args...);
     }
 
     inline void logHex(size_t n, vector<uint8_t>::iterator it, size_t offset, string file, size_t line) {

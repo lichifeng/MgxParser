@@ -52,15 +52,51 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
             players[i].searchPattern.cend());
         if (found == itEnd)
         {
-            // \todo 如果只是当前这个没有找到，那是不是应该退回查找起始位置呢？多控的情况下只有一个玩家会有这里的信息，他们的顺序难道是固定的？
+            // \todo 如果只是当前这个没有找到，那是不是应该退回查找起始位置呢？
+            // 多控的情况下只有一个玩家会有这里的信息，他们的顺序难道是固定的？
+            found = findPosition(
+                itStart, itEnd,
+                players[i].searchPattern.cend() - trailBytes,
+                players[i].searchPattern.cend());
+
+            if (found != itEnd)
+            {
+                _curPos = &found[0] - 3;
+                // 倒着往前找字符串，一般字符串最后一个字节是'\0'，表示长度又有两个字节，所以往前退3个字节开始查找
+                for (size_t j = 3; j < 300; ++j)
+                {
+                    if (2 + *(uint16_t *)_curPos == j)
+                    {
+                        players[i].dataOffset = _curPos - _curStream->data();
+
+                        if ('\0' == *(_curPos + j - 1))
+                            players[i].name.assign((char *)(_curPos + 2));
+                        else
+                            _readPascalString(players[i].name);
+
+                        break;
+                    }
+                    --_curPos;
+                }
+            }
+        }
+        else
+        {
+            players[i].dataOffset = found - _header.cbegin();
+        }
+
+        if (0 != players[i].dataOffset)
+        {
+            indexFound[players[i].index] = true;
+            itStart = found + easySkip;
+        }
+        else
+        {
             logger->warn(
-                "{}(): Cannot find player[{}]({})'s data in startinfo. @{}.",
-                __FUNCTION__, i, players[i].name, _distance());
-            _sendFailedSignal();
+                "{}(): Cannot find data of player[{}]: {} Type:{} in startinfo. @{}.",
+                __FUNCTION__, i, players[i].name, players[i].type, _distance());
+            _sendExceptionSignal();
             continue;
         }
-        indexFound[players[i].index] = true;
-        players[i].dataOffset = found - _header.cbegin() - (2 + numPlayers + 36 + 4 + 1);
-        itStart = found + easySkip;
     }
 }

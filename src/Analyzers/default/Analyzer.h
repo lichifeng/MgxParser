@@ -96,8 +96,9 @@ public:
         }
         catch (const exception &e)
         {
-            logger->warn("Encoding Exception@{}: {}", _debugFlag, e.what());
-            _sendFailedSignal(true);
+            if (!_encodingError)
+                _encodingError = true;
+            _sendExceptionSignal();
         }
 
         return s;
@@ -169,8 +170,10 @@ protected:
 
         if (lenStr > 3000)
         {
-            logger->warn("Encountered an unexpected string length[SKIP]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
-            _sendFailedSignal();
+            logger->warn(
+                "Encountered an unexpected string length[_skipPascalString]. @{} / {}, Flag:{} in \"{}\"",
+                _distance(), _curStream->size(), _debugFlag, filename);
+            _sendExceptionSignal();
             return;
         }
 
@@ -193,7 +196,8 @@ protected:
         if (lenStr > 3000)
         {
             logger->warn("Encountered an unexpected string length[READ]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
-            _sendFailedSignal();
+            _sendExceptionSignal();
+            _skip(lenInt);
             return;
         }
 
@@ -225,7 +229,7 @@ protected:
         if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
         {
             logger->warn("_skipDEString Exception! Length:{}, [0x60 0x0a]: {} . @{} in \"{}\"", l[1], l[0], _distance(), filename);
-            _sendFailedSignal();
+            _sendExceptionSignal();
             _curPos -= 4;
             return;
         }
@@ -242,7 +246,7 @@ protected:
         if (*(uint16_t *)_curPos != 2656 || l > _remainBytes()) // 0x60 0x0a int16_t
         {
             logger->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-            _sendFailedSignal();
+            _sendExceptionSignal();
             _curPos -= 2;
             return;
         }
@@ -262,7 +266,7 @@ protected:
         {
             logger->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
             PrintHEX(4);
-            _sendFailedSignal();
+            _sendExceptionSignal();
             return;
         }
 
@@ -280,7 +284,7 @@ protected:
         if (*(uint16_t *)_curPos != 2656) // 0x60 0x0a
         {
             logger->warn("_readHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-            _sendFailedSignal();
+            _sendExceptionSignal();
             _curPos -= 2;
             return;
         }
@@ -290,7 +294,19 @@ protected:
         _skip(l);
     }
 
-    void _skip(size_t n) { _curPos += n; } ///< Skip forward n bytes.
+    inline void _skip(size_t n) // \todo n could be negtive too?
+    {
+        if (_curPos - _curStream->data() + n > _curStream->size())
+        {
+            _sendExceptionSignal(
+                true,
+                logger->fmt("Trying to escape current stream! Pos:{}", _distance()));
+        }
+        else
+        {
+            _curPos += n;
+        }
+    } ///< Skip forward n bytes. A check is deployed to avoid segment fault.
 
     void _analyze(); ///< 录像解析的主进程
 
@@ -358,14 +374,16 @@ protected:
 
     void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
 
-    void _sendFailedSignal(bool fatal = false)
+    void _sendExceptionSignal(bool throwException = false, string msg = "")
     {
         _failedSignal = true;
-        if (fatal && logger)
+        status = throwException ? "Aborted" : "Warning";
+        if (throwException)
         {
-            message = logger->dumpStr();
+            if (logger)
+                message = logger->dumpStr();
+            throw msg;
         }
-        status = fatal ? "fatal" : "warning";
     } ///< 标记解析失败的FLAG
 
     void _headerHDAnalyzer(int debugFlag = 0);
@@ -404,7 +422,7 @@ protected:
 
     ZipInfo *_zipinfo = nullptr;
     ifstream _f;             ///< 读取后的录像文件数据
-    const uint8_t *_b;       ///< 以字节数组输入时的原始数组
+    const uint8_t *_b = nullptr;       ///< 以字节数组输入时的原始数组
     size_t _bodySize;        ///< body部分的长度(bytes)
     vector<uint8_t> _body;   ///< 用于存储body数据
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
@@ -429,6 +447,7 @@ protected:
 
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
+    bool _encodingError = false;
     int _inputType = FILE_INPUT;
 
     const uint8_t *_earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。

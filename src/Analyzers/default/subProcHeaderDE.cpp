@@ -71,7 +71,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
         logger->warn(
             "{}(): Validation in DE-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 
@@ -173,7 +173,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
             logger->warn(
                 "{}(): expecting [FE FF FF FF] but disppointed @{}.",
                 __FUNCTION__, _distance());
-            _sendFailedSignal();
+            _sendExceptionSignal();
             return;
         }
         _skip(60 * 4);
@@ -185,7 +185,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
             logger->warn(
                 "Unusually DE_numAIFiles({}) in DE header, Debugflag:{}, Location:{}",
                 DE_numAIFiles, _debugFlag, _distance());
-            _sendFailedSignal();
+            _sendExceptionSignal();
             return; // \todo 有必要检查所有使用了SKIP的循环，防止越界。或者在SKIP中加上边界检查。
         }
         _skip(4);

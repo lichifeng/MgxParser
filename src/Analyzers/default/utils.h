@@ -42,6 +42,7 @@ namespace patterns
     extern std::vector<uint8_t> scenarioConstantHD;
     extern std::vector<uint8_t> scenarioConstantAOK;
     extern std::vector<uint8_t> scenarioConstantMGX2;
+    extern std::vector<uint8_t> bodyStreamBegin;
 
     constexpr char zh_pattern[] = {
         static_cast<char>(0xb5),

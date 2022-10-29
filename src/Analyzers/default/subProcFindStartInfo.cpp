@@ -35,7 +35,7 @@ void DefaultAnalyzer::_findStartInfoStart(int debugFlag)
         logger->warn(
             "{}(): Cannot find expected check value 10060/40600 in start info section. @{}.",
             __FUNCTION__, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 

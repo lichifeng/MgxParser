@@ -49,13 +49,14 @@ enum VERSIONCODE
     HD43 = 111,
     HD46_7 = 112, ///< 4.7, 4.6
     HD48 = 113,   ///< 4.8
-    HD50_6 = 114, ///< 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6
+    HD50_6 = 114, ///< 5.0, 5.1, 5.1a, 5.3, 5.5, 5.6, 5.7, 5.8
     HD57 = 115,   ///< 5.7
     HD58 = 116,   ///< 5.8
-                  // de: >=200 && <250
+    // de: >=200 && <250
     DE = 200,
     // unsupported: = 999
-    UNSUPPORTED = 999
+    UNSUPPORTED = 999,
+    UNDEFINED = 998
 };
 
 NLOHMANN_JSON_SERIALIZE_ENUM(VERSIONCODE,
@@ -81,4 +82,5 @@ NLOHMANN_JSON_SERIALIZE_ENUM(VERSIONCODE,
                               {HD57, "HD57"},
                               {HD58, "HD58"},
                               {DE, "DE"},
-                              {UNSUPPORTED, "UNSUPPORTED"}})
+                              {UNSUPPORTED, "UNSUPPORTED"},
+                              {UNDEFINED, "UNDEFINED"}})

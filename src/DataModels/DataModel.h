@@ -54,7 +54,7 @@ public:
     string toJson();
 
     // File-related members
-    string filename = "<memory buffer>";        ///< 录像的文件名
+    string filename = "<invalid file>";        ///< 录像的文件名
     string ext;             ///< 录像的扩展名 \todo 要检查扩展名
     size_t filesize = 0; ///< 录像文件大小，单位是 bytes
     string filetype = "record"; ///< Or zip/rar/7z
@@ -70,7 +70,7 @@ public:
     uint32_t logVersion = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
     char versionStr[8] = {'\0'};      ///< 代表游戏版本的原始字符串
     float saveVersion = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
-    VERSIONCODE versionCode = UNSUPPORTED; ///< 这是自己定义的一个值，用于简化版本判断
+    VERSIONCODE versionCode = UNDEFINED; ///< 这是自己定义的一个值，用于简化版本判断
     uint32_t includeAI;
 
     // HD/DE-specific data from header stream

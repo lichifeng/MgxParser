@@ -29,6 +29,7 @@ namespace patterns
   std::vector<uint8_t> scenarioConstantHD = {0xae, 0x47, 0xa1, 0x3f};
   std::vector<uint8_t> scenarioConstantAOK = {0x9a, 0x99, 0x99, 0x3f};
   std::vector<uint8_t> scenarioConstantMGX2 = {0xa4, 0x70, 0x9d, 0x3f};
+  std::vector<uint8_t> bodyStreamBegin = {0xf4, 0x01, 0x00, 0x00};
 }
 
 /**

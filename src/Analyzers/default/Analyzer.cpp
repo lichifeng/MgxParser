@@ -33,33 +33,33 @@ void DefaultAnalyzer::run()
         _debugFlag = 2;
         if (!_loadFile())
         {
-            _sendFailedSignal(true);
-            logger->fatal("{}(): Failed to open {}. ", __FUNCTION__, path.empty() ? filename : path);
-            return;
+            _sendExceptionSignal(
+                true,
+                logger->fmt("{}(): Failed to open {}. ", __FUNCTION__, path.empty() ? filename : path));
         }
+    }
+    else if (MEM_INPUT == _inputType)
+    {
+        filename = "<memory buffer>";
     }
 
     // Try to extract header&body streams
     if (!_locateStreams())
     {
-        _sendFailedSignal(true);
-        logger->fatal("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path);
-        return;
+        _sendExceptionSignal(
+            true,
+            logger->fmt("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path));
     }
 
     if (FILE_INPUT == _inputType)
         _f.close();
 
     // Start data analyzing
-    try
-    {
-        _analyze();
-    }
-    catch (const exception &e)
-    {
-        logger->fatal("Exception@{}: {}", _debugFlag, e.what());
-        _sendFailedSignal(true);
-    }
+    _analyze();
+
+    // Note encoding error
+    if (_encodingError)
+        logger->warn("Encoding is not correct, need fix.");
 }
 
 void DefaultAnalyzer::_analyze()

@@ -20,8 +20,8 @@
 
 namespace MgxParser
 {
-    std::string parse(const uint8_t *, size_t, int = 0, std::string = "minimap.png");
-    std::string parse(const std::string &, int = 0, std::string = "minimap.png");
+    std::string parse(const uint8_t *, size_t, int = 0, std::string = "minimap.png", bool extractHD = false);
+    std::string parse(const std::string &, int = 0, std::string = "minimap.png", bool extractHD = false);
     extern "C" const char* pyparse(const char*);
 }
 

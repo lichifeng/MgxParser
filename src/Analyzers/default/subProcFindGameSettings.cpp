@@ -29,7 +29,7 @@ void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
         logger->warn(
             "{}(): Failed to find _gameSettingsPos by regular separator. @{}, Flag:{}.",
             __FUNCTION__, _distance(), _debugFlag);
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
     else

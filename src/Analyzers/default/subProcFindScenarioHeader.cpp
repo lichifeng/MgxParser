@@ -38,7 +38,7 @@ void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float
         logger->warn(
             "{}(): Cannot find _scenarioHeaderPos in this {} version. @{}.",
             __FUNCTION__, versionCode, _distance());
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 

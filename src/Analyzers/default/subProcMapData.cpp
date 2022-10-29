@@ -22,13 +22,13 @@ void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {
         logger->warn("Abnormal mapsize. \"{}\"", filename);
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
     else if (mapCoord[0] != mapCoord[1])
     {
         logger->warn("Map coordinates is weird, X != Y. \"{}\"", filename);
-        _sendFailedSignal();
+        _sendExceptionSignal();
         return;
     }
 
@@ -95,9 +95,9 @@ void DefaultAnalyzer::generateMap(const string path, uint32_t width, uint32_t he
     else
     {
         logger->warn(
-            "{}(): Unknown _mapTileType. @{}.",
-            __FUNCTION__, _distance());
-        _sendFailedSignal();
+            "{}(): Unknown _mapTileType.",
+            __FUNCTION__);
+        _sendExceptionSignal();
         return;
     }
 }

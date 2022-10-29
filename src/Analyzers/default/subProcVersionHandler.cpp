@@ -61,7 +61,7 @@ int DefaultAnalyzer::_setVersionCode()
     logger->warn(
         "{}(): Detected unsupported game version: {}. @{}.",
         __FUNCTION__, versionStr, _distance());
-    _sendFailedSignal();
+    _sendExceptionSignal();
     
     return versionCode = UNSUPPORTED;
 }
