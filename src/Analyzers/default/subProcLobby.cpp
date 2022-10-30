@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
 {
@@ -72,7 +72,7 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
         _readBytes(4, &numChat);
         if (numChat > 1000) // numChat is considered <= 50. Incase future versions set a bigger limit, use 1000 here.
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): Pregame chat count is too big. @{}.",
                 __FUNCTION__, _distance());
             _sendExceptionSignal();

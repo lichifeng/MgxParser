@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 bool DefaultAnalyzer::_findEncodingPattern(const char *pattern, std::string &mapName, size_t patternLen)
 {

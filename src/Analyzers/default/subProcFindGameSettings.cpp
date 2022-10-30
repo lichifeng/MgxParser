@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
@@ -26,7 +26,7 @@ void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
         patterns::separator.rend());
     if (rFound == _header.rend())
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Failed to find _gameSettingsPos by regular separator. @{}, Flag:{}.",
             __FUNCTION__, _distance(), _debugFlag);
         _sendExceptionSignal();
@@ -39,7 +39,7 @@ void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
 
     if ((*(int32_t *)(_curPos + 68) != -1) || (*(int32_t *)(_curPos + 72) != -1))
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Find weired _gameSettingsPos. @{}, Flag:{}.",
             __FUNCTION__, _distance(), _debugFlag);
         //_sendFailedSignal();

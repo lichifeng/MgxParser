@@ -10,27 +10,26 @@
  */
 
 #include "zlib.h"
-#include "Analyzer.h"
+#include "analyzer.h"
 
 bool DefaultAnalyzer::_loadFile()
 {
-    auto p = filesystem::path(path);
+    auto p = filesystem::path(inputpath_);
 
-    if (!filesystem::exists(path))
+    if (!filesystem::exists(inputpath_))
     {
         _sendExceptionSignal(
             true,
-            logger->fmt("File [{}] don't exist.", path));
+            logger_->fmt("File [{}] don't exist.", inputpath_));
     }
 
-    filename = p.filename().generic_string();
-    ext = p.extension().generic_string();
-    filesize = filesystem::file_size(p);
+    input_filename_ = p.filename().generic_string();
+    input_size_ = filesystem::file_size(p);
 
     // Try open record file
-    _f.open(path, ifstream::in | ifstream::binary);
+    input_file_.open(inputpath_, ifstream::in | ifstream::binary);
 
-    return _f.is_open();
+    return input_file_.is_open();
 }
 
 void DefaultAnalyzer::extract(

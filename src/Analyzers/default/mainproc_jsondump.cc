@@ -1,5 +1,5 @@
 /**
- * \file       DataModel.cpp
+ * \file       datamodel.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \brief
  * \version    0.1
@@ -9,9 +9,9 @@
  *
  */
 
-#include "DataModel.h"
+#include "analyzer.h"
 
-string DataModel::toJson()
+string DefaultAnalyzer::toJson()
 {
     json j;
 
@@ -48,7 +48,7 @@ string DataModel::toJson()
 
     // Settings
     j["fileType"] = filetype;
-    j["filename"] = filename;
+    j["filename"] = input_filename_;
     if (!extractedName.empty())
         j["extractedName"] = extractedName;
     j["rawEncoding"] = rawEncoding;
@@ -71,7 +71,7 @@ string DataModel::toJson()
         j["map"]["size"] = readLang(zh::mapSize, mapSize);
 
     // Report
-    j["status"] = status;
+    j["status"] = status_;
     j["duration"] = duration;
     j["message"] = message;
     if (!DD_guid.empty())

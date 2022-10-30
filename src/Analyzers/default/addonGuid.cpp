@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "md5/md5.h"
 
 /**

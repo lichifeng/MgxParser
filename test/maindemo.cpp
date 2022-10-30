@@ -24,7 +24,8 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    int mapType = NO_MAP, extractHB = false;
+    int mapType = NO_MAP;
+    bool extractHB = false;
     string filepath;
     for (size_t i = 0; i < argc; i++)
     {
@@ -42,7 +43,8 @@ int main(int argc, char *argv[])
             filepath.assign(argv[i]);
     }
 
-    cout << MgxParser::parse(filepath, mapType, "map.png", extractHB) << endl;
+    std::string mapname = "map.png";
+    cout << MgxParser::parse(std::move(filepath), mapType, std::move(mapname), extractHB) << endl;
 
     return 0;
 }

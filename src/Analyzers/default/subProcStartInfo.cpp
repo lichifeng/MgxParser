@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
 {
@@ -39,7 +39,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
             //     x = *(float*)_curPos;
             //     y = *(float*)(_curPos+4);
             //     if (x < mapCoord[0] && x > 0 && y < mapCoord[1] && y > 0) {
-            //         logger->info("Found initPos:[{}, {}] in DE!! @{}", x, y, _distance());
+            //         logger_->info("Found initPos:[{}, {}] in DE!! @{}", x, y, _distance());
             //         break;
             //     }
             //     if (_remainBytes() > 0) ++_curPos;
@@ -63,7 +63,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
             if (
                 p.initCamera[0] < 0 || p.initCamera[0] > mapCoord[0] || p.initCamera[1] < 0 || p.initCamera[1] > mapCoord[1])
             {
-                logger->warn(
+                logger_->warn(
                     "{}(): Bad init camera was found. @{} #{}.",
                     __FUNCTION__, _distance(), _debugFlag);
                 _sendExceptionSignal();

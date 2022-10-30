@@ -12,7 +12,7 @@
 #include <map>
 #include <array>
 #include <string>
-#include "Analyzer.h"
+#include "analyzer.h"
 
 using namespace std;
 
@@ -47,7 +47,7 @@ void DefaultAnalyzer::_guessWinner(int debugFlag)
 
         if (p.index < 0 || p.index > 8)
         {
-            logger->warn("Flag:{}, bad player index:{}! Name: {}", _debugFlag, p.index, p.name);
+            logger_->warn("Flag:{}, bad player index:{}! Name: {}", _debugFlag, p.index, p.name);
         }
         if (-1 == p.resigned)
         {

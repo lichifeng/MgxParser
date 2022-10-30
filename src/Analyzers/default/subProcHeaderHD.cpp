@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
@@ -38,7 +38,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
 
     if (!_expectBytes(patterns::HDseparator))
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Validation in HD-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();

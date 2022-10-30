@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_findVictoryStart(int debugFlag)
 {
@@ -20,7 +20,7 @@ void DefaultAnalyzer::_findVictoryStart(int debugFlag)
     // Check if at correct point
     if (*(int32_t *)_victoryStartPos != -99)
     {
-        logger->warn(
+        logger_->warn(
             "{}(): _victoryStartPos failed pattern check. @{}.", // 9d ff ff ff
             __FUNCTION__, _distance());
         _sendExceptionSignal();

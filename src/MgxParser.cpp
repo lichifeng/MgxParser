@@ -10,7 +10,8 @@
  */
 
 #include <string>
-#include "Analyzers/default/Analyzer.h"
+#include <utility>
+#include "Analyzers/default/analyzer.h"
 #include "include/MgxParser.h"
 
 using namespace std;
@@ -23,19 +24,19 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     }
     catch (const string &s)
     {
-        a.logger->fatal("{}: {}", a.filename, s);
+        a.logger_->fatal("{}: {}", a.input_filename_, s);
     }
     catch (const exception &e)
     {
-        a.logger->fatal("Exception at Flag#{} in {}! {}", a.getDebugFlag(), a.filename, e.what());
+        a.logger_->fatal("Exception at Flag#{} in {}! {}", a.getDebugFlag(), a.input_filename_, e.what());
     }
     catch (...)
     {
-        a.logger->fatal("Exception at Flag#{} in {}!", a.getDebugFlag(), a.filename);
+        a.logger_->fatal("Exception at Flag#{} in {}!", a.getDebugFlag(), a.input_filename_);
     }
 
-    a.parseTime = a.logger->elapsed();
-    a.message = a.logger->dumpStr();
+    a.parseTime = a.logger_->elapsed();
+    a.message = a.logger_->dumpStr();
 
     if (mapType != NO_MAP)
     {
@@ -47,7 +48,7 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
         }
         catch (...)
         {
-            a.logger->warn("Failed to generate a map file.");
+            a.logger_->warn("Failed to generate a map file.");
         }
     }
 
@@ -57,11 +58,11 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     return a.toJson();
 }
 
-string MgxParser::parse(const string &recfile, int mapType, string mapName, bool extractHB)
+string MgxParser::parse(std::string&& inputpath, int maptype, std::string&& mapname, bool extract_stream)
 {
-    auto a = DefaultAnalyzer(recfile);
+    auto a = DefaultAnalyzer(std::move(inputpath));
 
-    return _parse(a, mapType, mapName, extractHB);
+    return _parse(a, maptype, mapname, extract_stream);
 }
 
 string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName, bool extractHB)

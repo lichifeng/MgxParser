@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_victorySettingsAnalyzer(int debugFlag)
 {
@@ -31,7 +31,7 @@ void DefaultAnalyzer::_victorySettingsAnalyzer(int debugFlag)
     // Do a simple check with Unknown section
     if (*(uint32_t *)_curPos != 3)
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Check bytes following victory section seems wrong, expected 03 00 00 00. @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();

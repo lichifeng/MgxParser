@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 int DefaultAnalyzer::_setVersionCode()
 {
@@ -58,7 +58,7 @@ int DefaultAnalyzer::_setVersionCode()
         return versionCode = MCP;
 
     // If none above match:
-    logger->warn(
+    logger_->warn(
         "{}(): Detected unsupported game version: {}. @{}.",
         __FUNCTION__, versionStr, _distance());
     _sendExceptionSignal();

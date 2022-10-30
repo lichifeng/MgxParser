@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 #define NOT_VALID_HEADERLENTGH -1
@@ -22,16 +22,16 @@ bool DefaultAnalyzer::_locateStreams()
     // headerMeta[1]: nextPos
     int32_t headerMeta[2];
     if (FILE_INPUT == _inputType)
-        _f.read((char *)headerMeta, 8);
+        input_file_.read((char *)headerMeta, 8);
     else
         memcpy(headerMeta, _b, 8);
 
-    size_t rawHeaderPos = headerMeta[1] < filesize ? 8 : 4;
+    size_t rawHeaderPos = headerMeta[1] < input_size_ ? 8 : 4;
     if (rawHeaderPos == 4)
         versionCode = AOK;
 
     // Examine header length
-    if (headerMeta[0] < 4 || headerMeta[0] > filesize)
+    if (headerMeta[0] < 4 || headerMeta[0] > input_size_)
     {
         // Is this a zip archive? The first 4 bytes should be 50 4B 03 04,
         // that is 67324752 for uint32_t.
@@ -40,38 +40,38 @@ bool DefaultAnalyzer::_locateStreams()
             _debugFlag = 31;
 
             // If this IS a zip archive, start unzip attemption
-            _zipinfo = new ZipInfo();
-            _zipinfo->rawSize = filesize;
-            _zipinfo->status = 0;
+            zipinfo_ = new ZipInfo();
+            zipinfo_->rawSize = input_size_;
+            zipinfo_->status = 0;
 
             if (MEM_INPUT == _inputType)
             {
-                fetchFromZipBuffer(_b, _zipinfo);
+                fetchFromZipBuffer(_b, zipinfo_);
             }
             else
             {
-                _f.seekg(ios_base::beg);
-                fetchFromZipFile(_f, _zipinfo);
+                input_file_.seekg(ios_base::beg);
+                fetchFromZipFile(input_file_, zipinfo_);
             }
 
-            if (0 == _zipinfo->status)
+            if (0 == zipinfo_->status)
             {
                 filetype = "zip";
-                extractedName = _zipinfo->filename;
-                _b = _zipinfo->outBuffer.data();
-                filesize = _zipinfo->outBuffer.size();
+                extractedName = zipinfo_->filename;
+                _b = zipinfo_->outBuffer.data();
+                input_size_ = zipinfo_->outBuffer.size();
                 _inputType = ZIP_INPUT;
 
                 // ofstream zipout(extractedName, ofstream::binary);
-                // zipout.write((char *)_b, filesize);
+                // zipout.write((char *)_b, input_size_);
                 // zipout.close();
 
                 return _locateStreams();
             }
             else
             {
-                if (-1 != _zipinfo->status)
-                    logger->fatal("ERRCODE:{}: Failed to unzip {}.", _zipinfo->status, path.empty() ? filename : path);
+                if (-1 != zipinfo_->status)
+                    logger_->fatal("ERRCODE:{}: Failed to unzip {}.", zipinfo_->status, inputpath_.empty() ? input_filename_ : inputpath_);
                 return false;
             }
         }
@@ -90,14 +90,14 @@ bool DefaultAnalyzer::_locateStreams()
                 patterns::bodyStreamBegin.cend());
             if (bodyStart == _header.cend())
             {
-                logger->warn("This record has an invalid header length.");
+                logger_->warn("This record has an invalid header length.");
                 return false;
             }
             else
             {
                 headerMeta[0] = bodyStart - _header.cbegin();
                 _header.resize(headerMeta[0]);
-                logger->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
+                logger_->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
             }
         }
     }
@@ -108,14 +108,14 @@ bool DefaultAnalyzer::_locateStreams()
     {
         _debugFlag = 32;
 
-        _f.clear();
-        _f.seekg(rawHeaderPos);
-        if (0 == zipDecompress(&_f, FILE_INPUT, filesize, _header))
+        input_file_.clear();
+        input_file_.seekg(rawHeaderPos);
+        if (0 == zipDecompress(&input_file_, FILE_INPUT, input_size_, _header))
         {
             if (-1 == headerMeta[0])
             {
                 headerMeta[0] = _header.size() + rawHeaderPos;
-                logger->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
+                logger_->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
             }
         }
         else
@@ -127,12 +127,12 @@ bool DefaultAnalyzer::_locateStreams()
     {
         _debugFlag = 33;
         _curPos = _b + rawHeaderPos;
-        if (0 == zipDecompress((void *)_curPos, MEM_INPUT, filesize, _header))
+        if (0 == zipDecompress((void *)_curPos, MEM_INPUT, input_size_, _header))
         {
             if (-1 == headerMeta[0])
             {
                 headerMeta[0] = _header.size() + rawHeaderPos;
-                logger->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
+                logger_->warn("This record has an invalid header length. Detected length:{}.", headerMeta[0]);
             }
         }
         else
@@ -142,13 +142,13 @@ bool DefaultAnalyzer::_locateStreams()
     }
 
     // Construct body stream
-    _bodySize = filesize - headerMeta[0];
+    _bodySize = input_size_ - headerMeta[0];
     _body.resize(_bodySize); /// \note vector 的 resize 和 reserve 是不一样的，这里因为这个问题卡了很久。reserve 并不会初始化空间，因此也不能直接读数据进去。
     if (FILE_INPUT == _inputType)
     {
-        _f.clear();
-        _f.seekg(headerMeta[0]);
-        _f.read((char *)_body.data(), _bodySize);
+        input_file_.clear();
+        input_file_.seekg(headerMeta[0]);
+        input_file_.read((char *)_body.data(), _bodySize);
     }
     else
     {

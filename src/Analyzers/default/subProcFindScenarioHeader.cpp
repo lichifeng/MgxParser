@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float lowerLimit, float upperLimit)
@@ -35,7 +35,7 @@ void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float
                 return;
             }
         }
-        logger->warn(
+        logger_->warn(
             "{}(): Cannot find _scenarioHeaderPos in this {} version. @{}.",
             __FUNCTION__, versionCode, _distance());
         _sendExceptionSignal();

@@ -9,7 +9,7 @@
  * 
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
@@ -41,7 +41,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
             patterns::gameSettingSign1.rend());
         if (rFound == _header.rend())
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): Failed to find _triggerInfoPos(AOK). @{}.",
                 __FUNCTION__, _distance());
             _sendExceptionSignal();
@@ -58,7 +58,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
             patterns::gameSettingSign.rend());
         if (rFound == _header.rend())
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): Failed to find _triggerInfoPos. @{}.",
                 __FUNCTION__, _distance());
             _sendExceptionSignal();
@@ -80,7 +80,7 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
                 ++_curPos;
             }
         }
-        logger->warn(
+        logger_->warn(
             "{}(): Failed to find signNum for _triggerInfoPos. @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();

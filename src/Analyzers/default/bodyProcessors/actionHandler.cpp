@@ -9,7 +9,7 @@
  *
  */
 #include <cstdint>
-#include "../Analyzer.h"
+#include "../analyzer.h"
 
 #include <iostream>
 
@@ -36,7 +36,7 @@ void DefaultAnalyzer::_handleAction()
             if (!players[rD[1]].disconnected)
                 players[rD[1]].disconnected = (bool)*(int32_t *)_curPos;
         }
-        // logger->info("Resigned number:{}, index:{}", rD[1], rD[2]);
+        // logger_->info("Resigned number:{}, index:{}", rD[1], rD[2]);
         break;
 
     case COMMAND_RESEARCH:
@@ -73,7 +73,7 @@ void DefaultAnalyzer::_handleAction()
             _earlyMoveCmd[_earlyMoveCnt] = _curPos;
             _earlyMoveTime[_earlyMoveCnt] = duration;
             ++_earlyMoveCnt;
-            //logger->info(hexStr(_curPos, 20, true));
+            //logger_->info(hexStr(_curPos, 20, true));
         }
         break;
 

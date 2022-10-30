@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_findStartInfoStart(int debugFlag)
 {
@@ -32,7 +32,7 @@ void DefaultAnalyzer::_findStartInfoStart(int debugFlag)
     }
     else
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Cannot find expected check value 10060/40600 in start info section. @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();

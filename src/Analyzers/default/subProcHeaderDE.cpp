@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
@@ -68,7 +68,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
 
     if (!_expectBytes(patterns::HDseparator))
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Validation in DE-specific data failed, bytes before player data is not [a3 5f 02 00] @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();
@@ -170,7 +170,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     {
         if (*(uint32_t *)_curPos != -2)
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): expecting [FE FF FF FF] but disppointed @{}.",
                 __FUNCTION__, _distance());
             _sendExceptionSignal();
@@ -182,7 +182,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     for (size_t i = 0; i < DE_numAIFiles; i++)
     {
         if (DE_numAIFiles > 1000) {
-            logger->warn(
+            logger_->warn(
                 "Unusually DE_numAIFiles({}) in DE header, Debugflag:{}, Location:{}",
                 DE_numAIFiles, _debugFlag, _distance());
             _sendExceptionSignal();

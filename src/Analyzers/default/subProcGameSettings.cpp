@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 /**
  * \brief      This method also builds some search patterns used to traverse in startinfo section

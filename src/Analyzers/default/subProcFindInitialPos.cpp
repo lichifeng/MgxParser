@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
@@ -92,7 +92,7 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
         }
         else
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): Cannot find data of player[{}]: {} Type:{} in startinfo. @{}.",
                 __FUNCTION__, i, players[i].name, players[i].type, _distance());
             _sendExceptionSignal();

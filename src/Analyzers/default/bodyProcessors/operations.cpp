@@ -10,7 +10,7 @@
  */
 
 #include <string>
-#include "../Analyzer.h"
+#include "../analyzer.h"
 #include "nlohmann_json_3/json.hpp"
 
 using json = nlohmann::json;
@@ -68,7 +68,7 @@ void DefaultAnalyzer::_handleOpChat()
         }
         catch (const exception &e)
         {
-            logger->fatal("Json Parse Exception@{}: {}", _debugFlag, e.what());
+            logger_->fatal("Json Parse Exception@{}: {}", _debugFlag, e.what());
             _sendExceptionSignal();
         }
     }

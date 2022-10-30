@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "MapTools/MapTools.h"
 
 using namespace std;
@@ -21,13 +21,13 @@ void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
     _readBytes(8, &mapCoord);
     if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000)
     {
-        logger->warn("Abnormal mapsize. \"{}\"", filename);
+        logger_->warn("Abnormal mapsize. \"{}\"", input_filename_);
         _sendExceptionSignal();
         return;
     }
     else if (mapCoord[0] != mapCoord[1])
     {
-        logger->warn("Map coordinates is weird, X != Y. \"{}\"", filename);
+        logger_->warn("Map coordinates is weird, X != Y. \"{}\"", input_filename_);
         _sendExceptionSignal();
         return;
     }
@@ -94,7 +94,7 @@ void DefaultAnalyzer::generateMap(const string path, uint32_t width, uint32_t he
     }
     else
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Unknown _mapTileType.",
             __FUNCTION__);
         _sendExceptionSignal();

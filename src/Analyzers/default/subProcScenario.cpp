@@ -9,7 +9,7 @@
  * 
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
 {
@@ -23,7 +23,7 @@ void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
 
     if (filenameLen > 224)
     {
-        logger->warn(
+        logger_->warn(
             "{}(): scenarioFilename is unsually long. @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();

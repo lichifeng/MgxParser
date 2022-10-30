@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 
 void DefaultAnalyzer::_findDisablesStart(int debugFlag)
 {
@@ -54,7 +54,7 @@ void DefaultAnalyzer::_findDisablesStart(int debugFlag)
 
         if (*(int32_t *)_disablesStartPos != -99)
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): _disablesStartPos failed pattern check. @{}.",
                 __FUNCTION__, _distance());
             _sendExceptionSignal();
@@ -62,7 +62,7 @@ void DefaultAnalyzer::_findDisablesStart(int debugFlag)
         }
         else
         {
-            logger->warn(
+            logger_->warn(
                 "{}(): _disablesStartPos was reached by reverse search, {} bytes from game game settings section. @{}.",
                 __FUNCTION__, _gameSettingsPos - _disablesStartPos, _distance());
             return;

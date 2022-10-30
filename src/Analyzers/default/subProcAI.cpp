@@ -9,7 +9,7 @@
  * 
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 
 void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
@@ -38,7 +38,7 @@ void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
     }
     if (!_expectBytes(patterns::AIdataUnknown))
     {
-        logger->warn(
+        logger_->warn(
             "{}(): Validation in AI failed, expecting [08 00] @{}.",
             __FUNCTION__, _distance());
         _sendExceptionSignal();
@@ -91,7 +91,7 @@ void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
             _readBytes(2, &numRules);
             if (numRules > 10000)
             {
-                logger->warn("{}(): numRules in AI data > 10000 (maxRules is normally 10000) @{}.", __FUNCTION__, _distance());
+                logger_->warn("{}(): numRules in AI data > 10000 (maxRules is normally 10000) @{}.", __FUNCTION__, _distance());
                 _sendExceptionSignal();
                 return;
             }

@@ -1,5 +1,5 @@
 /**
- * \file       Analyzer.cpp
+ * \file       analyzer.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \brief
  * \version    0.1
@@ -12,7 +12,7 @@
 #include <filesystem>
 #include <sstream>
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "utils.h"
 #include "MapTools/TileStructures.h"
 
@@ -35,12 +35,12 @@ void DefaultAnalyzer::run()
         {
             _sendExceptionSignal(
                 true,
-                logger->fmt("{}(): Failed to open {}. ", __FUNCTION__, path.empty() ? filename : path));
+                logger_->fmt("{}(): Failed to open {}. ", __FUNCTION__, inputpath_.empty() ? input_filename_ : inputpath_));
         }
     }
     else if (MEM_INPUT == _inputType)
     {
-        filename = "<memory buffer>";
+        input_filename_ = "<memory buffer>";
     }
 
     // Try to extract header&body streams
@@ -48,18 +48,18 @@ void DefaultAnalyzer::run()
     {
         _sendExceptionSignal(
             true,
-            logger->fmt("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, path.empty() ? filename : path));
+            logger_->fmt("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, inputpath_.empty() ? input_filename_ : inputpath_));
     }
 
     if (FILE_INPUT == _inputType)
-        _f.close();
+        input_file_.close();
 
     // Start data analyzing
     _analyze();
 
     // Note encoding error
     /*if (_encodingError)
-        logger->warn("Encoding is not correct, need fix.");*/
+        logger_->warn("Encoding is not correct, need fix.");*/
 }
 
 void DefaultAnalyzer::_analyze()

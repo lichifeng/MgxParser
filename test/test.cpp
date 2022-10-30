@@ -14,6 +14,7 @@
 #include <filesystem>
 #include <fstream>
 #include <cstdio>
+#include <utility>
 #include "../src/include/MgxParser.h"
 #include "nlohmann_json_3/json.hpp"
 
@@ -44,7 +45,7 @@ protected:
     void load(json &j, string f, int mapType = NO_MAP, string mapName = "testmap.png")
     {
         auto path = genPath(f);
-        string rawret = MgxParser::parse(path, mapType, mapName);
+        string rawret = MgxParser::parse(std::move(path), mapType, mapName);
         j = json::parse(rawret);
     }
 

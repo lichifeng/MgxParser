@@ -9,7 +9,7 @@
  *
  */
 
-#include "Analyzer.h"
+#include "analyzer.h"
 #include "bodyProcessors/helpers.h"
 
 void DefaultAnalyzer::_readBodyCommands(int debugFlag)

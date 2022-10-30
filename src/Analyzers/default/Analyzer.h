@@ -1,5 +1,5 @@
 /**
- * \file       Analyzer.h
+ * \file       analyzer.h
  * \author     PATRICK LI (lichifeng@qq.com)
  * \brief
  * \version    0.1
@@ -10,6 +10,8 @@
  */
 
 #pragma once
+
+#define RECBYTE uint8_t
 
 #define HEADER_INIT 5 * 1024 * 1024
 #define BODY_MAX 100 * 1024 * 1024
@@ -42,411 +44,451 @@
 using namespace std;
 
 /**
- * \brief      默认解析器，可以通过继续它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。
+ * \brief      默认解析器，可以通过继承它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。
  *
  */
-class DefaultAnalyzer : public DataModel
+class DefaultAnalyzer : public DataModel // \todo 这个继承的设计并不好，反而始类之间存在牵绊，正在重构。
 {
 public:
-	~DefaultAnalyzer()
-	{
-		if (nullptr != _zipinfo)
-			delete _zipinfo;
-		delete _encodingConverter;
-	}
+    // 第一阶段：初始化，读取输入并处理。
+    // 输入可以是一个文件（名），或是一个字节数组（的指针）。获得输入源后，把它们解压成
+    // header和body两个存放在vector里面的数据。以后所有的操作都应该是在这两个vector
+    // 上操作，不会再动到最初的输入。
+    // 初始化logger_也在这个阶段完成，因为读取文件阶段也可能有需要记录的事件。
+    // 在这个阶段发生任何问题，应当返回status:invalid，代表没有进入有意义的分析阶段，
+    // 连是否是一个录像文件都无法判断。
+    
+    std::string inputpath_;
+    std::string input_filename_ = "<no file>";
+    size_t input_size_ = 0; ///< 录像文件大小，单位是 bytes
+    /*
+    *   status_的含义：
+    *       waiting: 还未完成初始化，等待中
+    */
+    std::string status_ = "waiting";
+    Logger* logger_ = nullptr;
+    DataModel* record_ = nullptr; // 存放了与录像本身相关的所有信息。与解析过程相关的情况存放在这个类里。
+    
+    DefaultAnalyzer(string&& inputpath) : inputpath_(inputpath)
+    {
+        SharedInit();
+        LoadFile();
+    }
 
-	DefaultAnalyzer(const string& inputFile) : path(inputFile)
-	{
-		_init();
-	}
 
-	DefaultAnalyzer(const uint8_t* buff, size_t buffLen) : _inputType(MEM_INPUT), _b(buff)
-	{
-		_init();
-		filesize = buffLen;
-	}
 
-	void run();
 
-	inline int getDebugFlag() { return _debugFlag; }
+    DefaultAnalyzer(const uint8_t* buff, size_t buffLen) : _inputType(MEM_INPUT), _b(buff)
+    {
+        SharedInit();
+        input_size_ = buffLen;
+    }
 
-	void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
+    ~DefaultAnalyzer()
+    {
+        if (nullptr != zipinfo_)
+            delete zipinfo_;
+        delete _encodingConverter;
+    }
 
-	///< Convert a string from record file encoding to specified output
-	///< encoding. Input string not necessarily a member of this class, so its
-	///< a public function.
+    string toJson();
 
-	/**
-	 * \brief      将输入的字符串转换成设定的编码（一般是UTF-8）
-	 * \todo       正在考虑是否将编码转换的功能全部移到JSON输出前去，改用boost.locale库，Analyzer里只读原始编码的字符串？
-	 * \param      s                   要转换的字符串
-	 * \return     string&             转换后的字符串（是输入字符串的一个引用）
-	 */
-	inline string& fixEncoding(string& s)
-	{
-		if (0 == s.size())
-			return s;
+    void run();
 
-		if (0 == rawEncoding.compare(outEncoding))
-			return s;
+    inline int getDebugFlag() { return _debugFlag; }
 
-		try
-		{
-			if (nullptr != _encodingConverter)
-				_encodingConverter->convert(s, s);
-		}
-		catch (const exception& e)
-		{
-			if (!_encodingError)
-				_encodingError = true;
-			_sendExceptionSignal();
-		}
+    void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
-		return s;
-	}
+    ///< Convert a string from record file encoding to specified output
+    ///< encoding. Input string not necessarily a member of this class, so its
+    ///< a public function.
 
-	/**
-	 * \brief      Extract header&body streams into separate files
-	 *
-	 * \param      headerPath       filename of generated header file
-	 * \param      body             filename of generated body file
-	 */
-	void extract(const string, const string) const;
+    /**
+     * \brief      将输入的字符串转换成设定的编码（一般是UTF-8）
+     * \todo       正在考虑是否将编码转换的功能全部移到JSON输出前去，改用boost.locale库，Analyzer里只读原始编码的字符串？
+     * \param      s                   要转换的字符串
+     * \return     string&             转换后的字符串（是输入字符串的一个引用）
+     */
+    inline string& fixEncoding(string& s)
+    {
+        if (0 == s.size())
+            return s;
 
-	void createLogger()
-	{
-		if (!logger)
-			logger = new Logger();
-	}
+        if (0 == rawEncoding.compare(outEncoding))
+            return s;
 
-	Logger* logger = nullptr;
+        try
+        {
+            if (nullptr != _encodingConverter)
+                _encodingConverter->convert(s, s);
+        }
+        catch (const exception& e)
+        {
+            if (!_encodingError)
+                _encodingError = true;
+            _sendExceptionSignal();
+        }
 
-	string path; ///< 录像的路径
+        return s;
+    }
+
+    /**
+     * \brief      Extract header&body streams into separate files
+     *
+     * \param      headerPath       filename of generated header file
+     * \param      body             filename of generated body file
+     */
+    void extract(const string, const string) const;
 
 protected:
-	void _init()
-	{
-		createLogger();
-	}
+    // 第一阶段
+    std::ifstream input_file_;
+    std::vector<RECBYTE> input_stream_;
 
-	bool _loadFile(); ///< 从文件中加载数据流
 
-	bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
+    inline void SharedInit()
+    {
+        BindLogger();
+        BindLogger();
+    }
 
-	/**
-	 * \brief      切换当前工作的数据流（header 或者 body）
-	 *
-	 * \param      stream              HEADER_STRM/BODY_STRM
-	 */
-	inline void _switchStream(uint8_t stream = HEADER_STRM)
-	{
-		(HEADER_STRM == stream) ? _curStream = &_header
-			: _curStream = &_body;
-		_curPos = _curStream->data();
-	}
+    inline void BindLogger()
+    {
+        if (!logger_)
+            logger_ = new Logger();
+    }
 
-	inline size_t _distance() { return _curPos - _curStream->data(); } ///< 获取当前读取位置（相对于STREAM开头）
+    inline void BindRecord()
+    {
+        if (!record_)
+            record_ = new DataModel();
+    }
 
-	inline size_t _remainBytes()
-	{
-		return (_curStream->size() >= _distance()) ? (_curStream->size() - _distance()) : 0;
-	} ///< 获取当前位置之后剩余的字节数
+    bool LoadFile();
 
-	/**
-	 * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
-	 *
-	 * \param      n                   往后读取的字节数
-	 * \param      dest                指向目标变量的指针
-	 */
-	inline void _readBytes(size_t n, void* dest)
-	{
-		memcpy(dest, _curPos, n);
-		_curPos += n;
-	}
 
-	/**
-	 * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
-	 *
-	 * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
-	 */
-	inline void _skipPascalString(bool lengthLong = false)
-	{
-		uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
-		uint32_t lenInt = lengthLong ? 4 : 2;
 
-		if (lenStr > 3000)
-		{
-			logger->warn(
-				"Encountered an unexpected string length[_skipPascalString]. @{} / {}, Flag:{} in \"{}\"",
-				_distance(), _curStream->size(), _debugFlag, filename);
-			_sendExceptionSignal();
-			return;
-		}
 
-		_skip(lenInt + lenStr);
-	}
 
-	/**
-	 * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
-	 *
-	 * \param      s                   用于存储字符串的变量
-	 * \param      convertEncoding    是否对读取的字符串进行转码
-	 * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
-	 */
-	void _readPascalString(string& s, bool convertEncoding = true,
-		bool lengthLong = false)
-	{
-		uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
-		uint32_t lenInt = lengthLong ? 4 : 2;
+    ZipInfo* zipinfo_ = nullptr;
+    const uint8_t* _b = nullptr;       ///< 以字节数组输入时的原始数组
+    size_t _bodySize;        ///< body部分的长度(bytes)
+    vector<uint8_t> _body;   ///< 用于存储body数据
+    vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
 
-		if (lenStr > 3000)
-		{
-			logger->warn("Encountered an unexpected string length[READ]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, filename);
-			_sendExceptionSignal();
-			_skip(lenInt);
-			return;
-		}
 
-		_skip(lenInt);
-		s.assign((char*)_curPos, lenStr);
-		_skip(lenStr);
 
-		if (convertEncoding)
-			fixEncoding(s);
-	}
+    bool _loadFile(); ///< 从文件中加载数据流
 
-	/**
-	 * \brief      _skipPascalString的一个特殊版本
-	 */
-	inline void _skipDEString()
-	{
-		int16_t l[2];
-		_readBytes(4, l);
-		if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
-		{
-			logger->warn("_skipDEString Exception! Length:{}, [0x60 0x0a]: {} . @{} in \"{}\"", l[1], l[0], _distance(), filename);
-			_sendExceptionSignal();
-			_curPos -= 4;
-			return;
-		}
-		_skip(l[1]);
-	}
+    bool _locateStreams(); ///< 对文件流进行处理，定位 header & body 的起始位置
 
-	/**
-	 * \brief      _skipPascalString的一个特殊版本
-	 */
-	inline void _skipHDString()
-	{
-		int16_t l;
-		_readBytes(2, &l);
-		if (*(uint16_t*)_curPos != 2656 || l > _remainBytes()) // 0x60 0x0a int16_t
-		{
-			logger->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-			_sendExceptionSignal();
-			_curPos -= 2;
-			return;
-		}
-		_skip(2 + l);
-	}
+    /**
+     * \brief      切换当前工作的数据流（header 或者 body）
+     *
+     * \param      stream              HEADER_STRM/BODY_STRM
+     */
+    inline void _switchStream(uint8_t stream = HEADER_STRM)
+    {
+        (HEADER_STRM == stream) ? _curStream = &_header
+            : _curStream = &_body;
+        _curPos = _curStream->data();
+    }
 
-	/**
-	 * \brief      _readPascalString的一个特殊版本
-	 *
-	 * \param      s                   用于存储读取结果的变量
-	 */
-	inline void _readDEString(string& s)
-	{
-		uint16_t l;
+    inline size_t _distance() { return _curPos - _curStream->data(); } ///< 获取当前读取位置（相对于STREAM开头）
 
-		if (!(*(uint16_t*)_curPos == 2656)) // 0x60 0x0a
-		{
-			logger->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), filename);
-			PrintHEX(4);
-			_sendExceptionSignal();
-			return;
-		}
+    inline size_t _remainBytes()
+    {
+        return (_curStream->size() >= _distance()) ? (_curStream->size() - _distance()) : 0;
+    } ///< 获取当前位置之后剩余的字节数
 
-		_skip(2);
-		_readBytes(2, &l);
-		s.assign((char*)_curPos, l);
-		_skip(l);
-	}
+    /**
+     * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
+     *
+     * \param      n                   往后读取的字节数
+     * \param      dest                指向目标变量的指针
+     */
+    inline void _readBytes(size_t n, void* dest)
+    {
+        memcpy(dest, _curPos, n);
+        _curPos += n;
+    }
 
-	inline void _readHDString(string& s)
-	{
-		uint16_t l;
-		_readBytes(2, &l);
+    /**
+     * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
+     *
+     * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
+     */
+    inline void _skipPascalString(bool lengthLong = false)
+    {
+        uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
+        uint32_t lenInt = lengthLong ? 4 : 2;
 
-		if (*(uint16_t*)_curPos != 2656) // 0x60 0x0a
-		{
-			logger->warn("_readHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), filename);
-			_sendExceptionSignal();
-			_curPos -= 2;
-			return;
-		}
+        if (lenStr > 3000)
+        {
+            logger_->warn(
+                "Encountered an unexpected string length[_skipPascalString]. @{} / {}, Flag:{} in \"{}\"",
+                _distance(), _curStream->size(), _debugFlag, input_filename_);
+            _sendExceptionSignal();
+            return;
+        }
 
-		_skip(2);
-		s.assign((char*)_curPos, l);
-		_skip(l);
-	}
+        _skip(lenInt + lenStr);
+    }
 
-	inline void _skip(size_t n) // \todo n could be negtive too?
-	{
-		if (_curPos - _curStream->data() + n > _curStream->size())
-		{
-			_sendExceptionSignal(
-				true,
-				logger->fmt("Trying to escape current stream! Pos:{}", _distance()));
-		}
-		else
-		{
-			_curPos += n;
-		}
-	} ///< Skip forward n bytes. A check is deployed to avoid segment fault.
+    /**
+     * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
+     *
+     * \param      s                   用于存储字符串的变量
+     * \param      convertEncoding    是否对读取的字符串进行转码
+     * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
+     */
+    void _readPascalString(string& s, bool convertEncoding = true,
+        bool lengthLong = false)
+    {
+        uint32_t lenStr = lengthLong ? *(uint32_t*)_curPos : *(uint16_t*)_curPos;
+        uint32_t lenInt = lengthLong ? 4 : 2;
 
-	void _analyze(); ///< 录像解析的主进程
+        if (lenStr > 3000)
+        {
+            logger_->warn("Encountered an unexpected string length[READ]. @{}, Flag:{} in \"{}\"", _distance(), _debugFlag, input_filename_);
+            _sendExceptionSignal();
+            _skip(lenInt);
+            return;
+        }
 
-	int _setVersionCode(); ///< 这个不是原始数据，是自己归纳出的一个版本识别特征码，后面便于判断版本
+        _skip(lenInt);
+        s.assign((char*)_curPos, lenStr);
+        _skip(lenStr);
 
-	/**
-	 * \brief      Compare two C-style strings or byte sequence.
-	 *
-	 * \param      s                   string1
-	 * \param      pattern             string2
-	 * \return     true                string1 == string2
-	 * \return     false               string1 != string2
-	 */
-	inline bool _bytecmp(const void* s, const void* pattern, size_t n) const
-	{
-		return 0 == memcmp(s, pattern, n);
-	}
+        if (convertEncoding)
+            fixEncoding(s);
+    }
 
-	/**
-	 * \brief      用于检查当前位置的特征字节是否符合预期
-	 *
-	 * \param      pattern             特征字节
-	 */
+    /**
+     * \brief      _skipPascalString的一个特殊版本
+     */
+    inline void _skipDEString()
+    {
+        int16_t l[2];
+        _readBytes(4, l);
+        if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
+        {
+            logger_->warn("_skipDEString Exception! Length:{}, [0x60 0x0a]: {} . @{} in \"{}\"", l[1], l[0], _distance(), input_filename_);
+            _sendExceptionSignal();
+            _curPos -= 4;
+            return;
+        }
+        _skip(l[1]);
+    }
 
-	 /**
-	  * \brief      用于检查当前位置的特征字节是否符合预期
-	  *
-	  * \param      pattern             特征字节
-	  * \param      skip                检查完是否跳过这些字节
-	  * \return     true                验证通过
-	  * \return     false               验证失败
-	  */
-	bool _expectBytes(const vector<uint8_t>& pattern, bool skip = true);
+    /**
+     * \brief      _skipPascalString的一个特殊版本
+     */
+    inline void _skipHDString()
+    {
+        int16_t l;
+        _readBytes(2, &l);
+        if (*(uint16_t*)_curPos != 2656 || l > _remainBytes()) // 0x60 0x0a int16_t
+        {
+            logger_->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), input_filename_);
+            _sendExceptionSignal();
+            _curPos -= 2;
+            return;
+        }
+        _skip(2 + l);
+    }
 
-	/**
-	 * \brief      调用logger的功能打印出当前位置之后n个字节的16进制表示，用于调试
-	 *
-	 * \param      n                   要打印的字节数
-	 * \param      file                文件名
-	 * \param      line                行号
-	 */
-	inline void _printHex(size_t n, string file, size_t line)
-	{
-		if (nullptr == logger)
-			return;
-		if (_remainBytes() <= n)
-			n = _remainBytes();
+    /**
+     * \brief      _readPascalString的一个特殊版本
+     *
+     * \param      s                   用于存储读取结果的变量
+     */
+    inline void _readDEString(string& s)
+    {
+        uint16_t l;
 
-		logger->logHex(n, _curStream->begin() + _distance(), _distance(), file, line);
-	}
+        if (!(*(uint16_t*)_curPos == 2656)) // 0x60 0x0a
+        {
+            logger_->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(), input_filename_);
+            PrintHEX(4);
+            _sendExceptionSignal();
+            return;
+        }
 
-	/**
-	 * \brief      Used to find key bytes represents "Map name: " to determine
-	 * string encoding of record.
-	 *
-	 * \param      pattern             Key characters represents "map name:" in
-	 * different languages
-	 * \param      mapName             reference to embededMapName
-	 * \param      patternLen
-	 * \return     true
-	 * \return     false
-	 */
-	bool _findEncodingPattern(const char* pattern, std::string& mapName,
-		size_t patternLen);
+        _skip(2);
+        _readBytes(2, &l);
+        s.assign((char*)_curPos, l);
+        _skip(l);
+    }
 
-	void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
+    inline void _readHDString(string& s)
+    {
+        uint16_t l;
+        _readBytes(2, &l);
 
-	void _sendExceptionSignal(bool throwException = false, string msg = "")
-	{
-		_failedSignal = true;
-		status = throwException ? "Aborted" : "Warning";
-		if (throwException)
-		{
-			if (logger)
-				message = logger->dumpStr();
-			throw msg;
-		}
-	} ///< 标记解析失败的FLAG
+        if (*(uint16_t*)_curPos != 2656) // 0x60 0x0a
+        {
+            logger_->warn("_readHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(), input_filename_);
+            _sendExceptionSignal();
+            _curPos -= 2;
+            return;
+        }
 
-	void _headerHDAnalyzer(int debugFlag = 0);
-	void _headerDEAnalyzer(int debugFlag = 0);
-	void _AIAnalyzer(int debugFlag = 0);
-	void _replayAnalyzer(int debugFlag = 0);
-	void _mapDataAnalyzer(int debugFlag = 0);
-	void _findStartInfoStart(int debugFlag = 0);
-	void _findTriggerInfoStart(int debugFlag = 0);
-	void _findDisablesStart(int debugFlag = 0);
-	void _findGameSettingsStart(int debugFlag = 0);
-	void _findVictoryStart(int debugFlag = 0);
-	void _findScenarioHeaderStart(int debugFlag = 0, bool brutal = false, float lowerLimit = 1.35, float upperLimit = 1.55);
-	void _scenarioHeaderAnalyzer(int debugFlag = 0);
-	void _messagesAnalyzer(int debugFlag = 0);
-	void _victorySettingsAnalyzer(int debugFlag = 0);
-	void _gameSettingsAnalyzer(int debugFlag = 0);
-	void _findInitialPlayersDataPos(int debugFlag = 0);
-	void _startInfoAnalyzer(int debugFlag = 0);
-	void _triggerInfoAnalyzer(int debugFlag = 0);
-	void _lobbyAnalyzer(int debugFlag = 0);
-	void _readBodyCommands(int debugFlag = 0);
-	void _readGameStart(int debugFlag = 0);
+        _skip(2);
+        s.assign((char*)_curPos, l);
+        _skip(l);
+    }
 
-	// methods for parsing body data
-	void _handleOpSync();
-	void _handleOpViewlock();
-	void _handleOpChat();
-	void _handleOpCommand();
+    inline void _skip(size_t n) // \todo n could be negtive too?
+    {
+        if (_curPos - _curStream->data() + n > _curStream->size())
+        {
+            _sendExceptionSignal(
+                true,
+                logger_->fmt("Trying to escape current stream! Pos:{}", _distance()));
+        }
+        else
+        {
+            _curPos += n;
+        }
+    } ///< Skip forward n bytes. A check is deployed to avoid segment fault.
 
-	void _handleAction();
+    void _analyze(); ///< 录像解析的主进程
 
-	// Some additional jobs
-	void _guessWinner(int);
-	void _genRetroGuid(int);
+    int _setVersionCode(); ///< 这个不是原始数据，是自己归纳出的一个版本识别特征码，后面便于判断版本
 
-	ZipInfo* _zipinfo = nullptr;
-	ifstream _f;             ///< 读取后的录像文件数据
-	const uint8_t* _b = nullptr;       ///< 以字节数组输入时的原始数组
-	size_t _bodySize;        ///< body部分的长度(bytes)
-	vector<uint8_t> _body;   ///< 用于存储body数据
-	vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
+    /**
+     * \brief      Compare two C-style strings or byte sequence.
+     *
+     * \param      s                   string1
+     * \param      pattern             string2
+     * \return     true                string1 == string2
+     * \return     false               string1 != string2
+     */
+    inline bool _bytecmp(const void* s, const void* pattern, size_t n) const
+    {
+        return 0 == memcmp(s, pattern, n);
+    }
 
-	const uint8_t* _curPos;      ///< 当前读取数据的指针
-	vector<uint8_t>* _curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
+    /**
+     * \brief      用于检查当前位置的特征字节是否符合预期
+     *
+     * \param      pattern             特征字节
+     */
 
-	uint32_t _DD_AICount = 0; ///< \note used to skip AI section
-	const uint8_t* _startInfoPatternTrail;
-	uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
+     /**
+      * \brief      用于检查当前位置的特征字节是否符合预期
+      *
+      * \param      pattern             特征字节
+      * \param      skip                检查完是否跳过这些字节
+      * \return     true                验证通过
+      * \return     false               验证失败
+      */
+    bool _expectBytes(const vector<uint8_t>& pattern, bool skip = true);
 
-	const uint8_t* _startInfoPos = nullptr;
-	const uint8_t* _triggerInfoPos = nullptr;
-	const uint8_t* _gameSettingsPos = nullptr;
-	const uint8_t* _disablesStartPos = nullptr;
-	const uint8_t* _victoryStartPos = nullptr;
-	const uint8_t* _scenarioHeaderPos = nullptr;
-	const uint8_t* _messagesStartPos = nullptr;
-	const uint8_t* _lobbyStartPos = nullptr;
+    /**
+     * \brief      调用logger的功能打印出当前位置之后n个字节的16进制表示，用于调试
+     *
+     * \param      n                   要打印的字节数
+     * \param      file                文件名
+     * \param      line                行号
+     */
+    inline void _printHex(size_t n, string file, size_t line)
+    {
+        if (nullptr == logger_)
+            return;
+        if (_remainBytes() <= n)
+            n = _remainBytes();
 
-	EncodingConverter* _encodingConverter = nullptr;
+        logger_->logHex(n, _curStream->begin() + _distance(), _distance(), file, line);
+    }
 
-	bool _failedSignal = false; ///< Indicate some previous procedure was failed
-	int _debugFlag = 0;
-	bool _encodingError = false;
-	int _inputType = FILE_INPUT;
+    /**
+     * \brief      Used to find key bytes represents "Map name: " to determine
+     * string encoding of record.
+     *
+     * \param      pattern             Key characters represents "map name:" in
+     * different languages
+     * \param      mapName             reference to embededMapName
+     * \param      patternLen
+     * \return     true
+     * \return     false
+     */
+    bool _findEncodingPattern(const char* pattern, std::string& mapName,
+        size_t patternLen);
 
-	const uint8_t* _earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
-	uint32_t _earlyMoveTime[EARLYMOVE_USED];
-	int _earlyMoveCnt;
+    void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
+
+    void _sendExceptionSignal(bool throwException = false, string msg = "")
+    {
+        _failedSignal = true;
+        status_ = throwException ? "Aborted" : "Warning";
+        if (throwException)
+        {
+            if (logger_)
+                message = logger_->dumpStr();
+            throw msg;
+        }
+    } ///< 标记解析失败的FLAG
+
+    void _headerHDAnalyzer(int debugFlag = 0);
+    void _headerDEAnalyzer(int debugFlag = 0);
+    void _AIAnalyzer(int debugFlag = 0);
+    void _replayAnalyzer(int debugFlag = 0);
+    void _mapDataAnalyzer(int debugFlag = 0);
+    void _findStartInfoStart(int debugFlag = 0);
+    void _findTriggerInfoStart(int debugFlag = 0);
+    void _findDisablesStart(int debugFlag = 0);
+    void _findGameSettingsStart(int debugFlag = 0);
+    void _findVictoryStart(int debugFlag = 0);
+    void _findScenarioHeaderStart(int debugFlag = 0, bool brutal = false, float lowerLimit = 1.35, float upperLimit = 1.55);
+    void _scenarioHeaderAnalyzer(int debugFlag = 0);
+    void _messagesAnalyzer(int debugFlag = 0);
+    void _victorySettingsAnalyzer(int debugFlag = 0);
+    void _gameSettingsAnalyzer(int debugFlag = 0);
+    void _findInitialPlayersDataPos(int debugFlag = 0);
+    void _startInfoAnalyzer(int debugFlag = 0);
+    void _triggerInfoAnalyzer(int debugFlag = 0);
+    void _lobbyAnalyzer(int debugFlag = 0);
+    void _readBodyCommands(int debugFlag = 0);
+    void _readGameStart(int debugFlag = 0);
+
+    // methods for parsing body data
+    void _handleOpSync();
+    void _handleOpViewlock();
+    void _handleOpChat();
+    void _handleOpCommand();
+
+    void _handleAction();
+
+    // Some additional jobs
+    void _guessWinner(int);
+    void _genRetroGuid(int);
+
+    const uint8_t* _curPos;      ///< 当前读取数据的指针
+    vector<uint8_t>* _curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
+
+    uint32_t _DD_AICount = 0; ///< \note used to skip AI section
+    const uint8_t* _startInfoPatternTrail;
+    uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
+
+    const uint8_t* _startInfoPos = nullptr;
+    const uint8_t* _triggerInfoPos = nullptr;
+    const uint8_t* _gameSettingsPos = nullptr;
+    const uint8_t* _disablesStartPos = nullptr;
+    const uint8_t* _victoryStartPos = nullptr;
+    const uint8_t* _scenarioHeaderPos = nullptr;
+    const uint8_t* _messagesStartPos = nullptr;
+    const uint8_t* _lobbyStartPos = nullptr;
+
+    EncodingConverter* _encodingConverter = nullptr;
+
+    bool _failedSignal = false; ///< Indicate some previous procedure was failed
+    int _debugFlag = 0;
+    bool _encodingError = false;
+    int _inputType = FILE_INPUT;
+
+    const uint8_t* _earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
+    uint32_t _earlyMoveTime[EARLYMOVE_USED];
+    int _earlyMoveCnt;
 };
