@@ -58,8 +58,8 @@ void DefaultAnalyzer::run()
     _analyze();
 
     // Note encoding error
-    if (_encodingError)
-        logger->warn("Encoding is not correct, need fix.");
+    /*if (_encodingError)
+        logger->warn("Encoding is not correct, need fix.");*/
 }
 
 void DefaultAnalyzer::_analyze()

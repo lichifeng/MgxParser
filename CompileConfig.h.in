@@ -10,3 +10,9 @@
 #ifndef DEBUG
     #define DEBUG 0
 #endif
+
+// https://developercommunity.visualstudio.com/t/error-c2872-byte-ambiguous-symbol/93889
+#define _HAS_STD_BYTE 0
+
+#define RAW_ENCODING "cp936"
+#define OUT_ENCODING "utf-8"

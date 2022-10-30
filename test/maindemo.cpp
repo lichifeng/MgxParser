@@ -24,7 +24,7 @@ int main(int argc, char *argv[])
         return 1;
     }
 
-    bool mapType = NO_MAP, extractHB = false;
+    int mapType = NO_MAP, extractHB = false;
     string filepath;
     for (size_t i = 0; i < argc; i++)
     {

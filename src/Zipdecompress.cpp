@@ -15,6 +15,8 @@
 #include "string.h"
 #include "Zipdecompress.h"
 
+#define ZLIB_CHUNK 256 * 1024
+
 using namespace std;
 
 #pragma pack(push) // 保存对齐状态
@@ -79,7 +81,6 @@ void fetchFromZipBuffer(const uint8_t *b, ZipInfo *z)
 int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &outBuffer)
 {
     // Some settings
-    uint32_t chunk = 1024 * 1024;
     uint32_t outReserve = 5 * 1024 * 1024;
 
     ifstream *f;
@@ -89,8 +90,8 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
     int ret;
     unsigned have;
     z_stream strm;
-    uint8_t in[chunk];
-    uint8_t out[chunk];
+    uint8_t in[ZLIB_CHUNK];
+    uint8_t out[ZLIB_CHUNK];
     uint32_t remain;
 
     outBuffer.reserve(outReserve);
@@ -124,7 +125,7 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
     {
         if (1 == srcType) // File input
         {
-            f->read((char *)&in, chunk);
+            f->read((char *)&in, ZLIB_CHUNK);
             strm.avail_in = f->gcount();
             if (!f->good() && !f->eof())
             {
@@ -135,7 +136,7 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
         else
         {
             remain = srcSize - (c - b);
-            strm.avail_in = remain >= chunk ? chunk : remain;
+            strm.avail_in = remain >= ZLIB_CHUNK ? ZLIB_CHUNK : remain;
             memcpy(&in, c, strm.avail_in);
             c += strm.avail_in;
         }
@@ -147,7 +148,7 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
         /* run inflate() on input until output buffer not full */
         do
         {
-            strm.avail_out = chunk;
+            strm.avail_out = ZLIB_CHUNK;
             strm.next_out = out;
 
             ret = inflate(&strm, Z_NO_FLUSH);
@@ -162,7 +163,7 @@ int zipDecompress(void *src, int srcType, uint32_t srcSize, vector<uint8_t> &out
                 return ret;
             }
 
-            have = chunk - strm.avail_out;
+            have = ZLIB_CHUNK - strm.avail_out;
             outBuffer.insert(
                 outBuffer.end(),
                 out,

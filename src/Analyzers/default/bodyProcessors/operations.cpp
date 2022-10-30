@@ -56,7 +56,7 @@ void DefaultAnalyzer::_handleOpChat()
         if (tmpIndex > 0 && tmpIndex < 9 && 0 != tmpChat.msg.compare(3, players[tmpIndex].name.size(), players[tmpIndex].name) || tmpIndex == 0)
             return;
 
-        if ('\0' == tmpChat.msg.back() && tmpChat.msg.size() > 0)
+        if (tmpChat.msg.size() > 0 && '\0' == tmpChat.msg.back())
             tmpChat.msg.resize(tmpChat.msg.size() - 1);
     }
     else

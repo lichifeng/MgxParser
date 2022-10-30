@@ -22,7 +22,7 @@ using json = nlohmann::json;
 
 string genPath(string f)
 {
-    return filesystem::path(__FILE__).parent_path() / "testRecords" / f;
+    return (filesystem::path(__FILE__).parent_path() / "testRecords" / f).generic_string();
 }
 
 bool isPng(string f)

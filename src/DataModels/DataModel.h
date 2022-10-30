@@ -14,12 +14,12 @@
 #define UINT32_INIT 4294967295
 #define FLOAT_INIT -20000.0
 #define UINT8_INIT 255
-#define RAW_ENCODING "GB18030"
+
+#include "CompileConfig.h"
 
 #include <string>
 #include <map>
 #include "nlohmann_json_3/json.hpp"
-#include "CompileConfig.h"
 #include "Player.h"
 #include "Helper.h"
 #include "Chat.h"
@@ -194,12 +194,12 @@ public:
     uint32_t syncChecksumInterval = 500;
 
     string rawEncoding = RAW_ENCODING; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
-    string outEncoding = "utf-8";
+    string outEncoding = OUT_ENCODING;
     // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
     string status = "good";                ///< 解析完成类型：good, warning, fatal, etc.
     string message;                        ///< 对 \p status 的具体说明
-    string parseMode = "MgxParser as Node Addon"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
+    string parseMode = "Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
     double parseTime = 0;                  ///< 解析耗时（毫秒）
 
     string teamMode;

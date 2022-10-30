@@ -60,6 +60,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     {
         if (!p.valid())
             continue;
+        // \todo Encoding-related operations will change name bytes, caution!
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)p.name.data(), p.name.size());
         MGXPARSER_MD5::md5_update(&ctx, &p.civID, 1);
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&p.index, 4);

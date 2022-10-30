@@ -1,4 +1,4 @@
-cmake_minimum_required(VERSION 3.24.0)
+﻿cmake_minimum_required(VERSION 3.20.0)
 
 # Project info
 project(
@@ -13,14 +13,32 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
+set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,104857600")
+add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
+add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
-# Mac hack, libiconv and libpng was install with brew
 if (APPLE)
-    include_directories(BEFORE /opt/homebrew/opt/libpng/include)
+    # Mac hack, libiconv and libpng was install with brew
+    include_directories(/opt/homebrew/opt/libpng/include)
     link_directories(/opt/homebrew/opt/libpng/lib)
     set(MGXPARSER_LINK_TARGETS pthread png z iconv)
+elseif (WIN32)
+    # windows with vcpkg
+    include_directories(
+        "D:\\vcpkg\\vcpkg\\packages\\zlib_x64-windows-static\\include" 
+        "D:\\vcpkg\\vcpkg\\packages\\libiconv_x64-windows-static\\include" 
+        "D:\\vcpkg\\vcpkg\\packages\\libpng_x64-windows-static\\include"
+        "D:\\vcpkg\\vcpkg\\packages\\pthreads_x64-windows-static\\lib"
+    )
+    link_directories(
+        "D:\\vcpkg\\vcpkg\\packages\\zlib_x64-windows-static\\lib" 
+        "D:\\vcpkg\\vcpkg\\packages\\libiconv_x64-windows-static\\lib" 
+        "D:\\vcpkg\\vcpkg\\packages\\libpng_x64-windows-static\\lib"
+        "D:\\vcpkg\\vcpkg\\packages\\pthreads_x64-windows-static\\lib"
+    )
+    add_compile_definitions(_HAS_STD_BYTE=0)
+    set(MGXPARSER_LINK_TARGETS pthreadvc3 libpng16 zlib iconv)
 else()
-    target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
     set(MGXPARSER_LINK_TARGETS pthread png z stdc++fs)
 endif ()
 
@@ -106,4 +124,10 @@ if(BUILD_TESTING)
     target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")
+endif()
+
+# Static linking
+if (NOT APPLE)
+    target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
+    target_link_options("${PROJECT_NAME}_TEST" PRIVATE "-static")
 endif()

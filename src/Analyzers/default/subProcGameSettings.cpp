@@ -96,10 +96,10 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
             _readPascalString(players[i].name, true, true);
         }
 
-        if ('\0' == players[i].name.back())
+        // \note string::back(): This function shall not be called on empty strings.
+        if (!players[i].name.empty() && '\0' == players[i].name.back())
         {
-            if (players[i].name.size() > 0)
-                players[i].name.resize(players[i].name.size() - 1);
+            players[i].name.resize(players[i].name.size() - 1);
         }
     }
 }

@@ -23,8 +23,8 @@ bool DefaultAnalyzer::_loadFile()
             logger->fmt("File [{}] don't exist.", path));
     }
 
-    filename = p.filename();
-    ext = p.extension();
+    filename = p.filename().generic_string();
+    ext = p.extension().generic_string();
     filesize = filesystem::file_size(p);
 
     // Try open record file
