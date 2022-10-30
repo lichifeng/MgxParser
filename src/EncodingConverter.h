@@ -37,7 +37,7 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 
 #pragma once
 
-#include <errno.h>
+#include <cerrno>
 #include <iconv.h>
 #include <stdexcept>
 #include <string>

@@ -11,6 +11,7 @@
 #pragma once
 #include "CompileConfig.h"
 #include <string>
+#include <sstream>
 #include <vector>
 
 #include "spdlog/spdlog.h"

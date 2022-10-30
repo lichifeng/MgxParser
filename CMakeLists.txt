@@ -14,6 +14,16 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
 
+# Mac hack, libiconv and libpng was install with brew
+if (APPLE)
+    include_directories(BEFORE /opt/homebrew/opt/libpng/include)
+    link_directories(/opt/homebrew/opt/libpng/lib)
+    set(MGXPARSER_LINK_TARGETS pthread png z iconv)
+else()
+    target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
+    set(MGXPARSER_LINK_TARGETS pthread png z stdc++fs)
+endif ()
+
 # List source files to be compiled
 aux_source_directory(./src SRC_ROOT)
 aux_source_directory(./src/DataModels DATAMODELS)
@@ -26,11 +36,9 @@ add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_executable("${PROJECT_NAME}_EXE" ${CMAKE_CURRENT_SOURCE_DIR}/test/maindemo.cpp)
-target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
-set(MGXPARSER_LINK_TARGETS pthread png z stdc++fs)
 target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_LINK_TARGETS})
 target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
 target_link_libraries("${PROJECT_NAME}_EXE" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
@@ -57,7 +65,7 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 # Update doxygen configuration file and generate output HTML
 find_package(Doxygen)
 option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
-if(BUILD_DOCUMENTATION AND NOT NODE_ADDON)
+if(BUILD_DOCUMENTATION AND NOT NODE_ADDON AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
     if(NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif()
