@@ -71,7 +71,7 @@ string DefaultAnalyzer::toJson()
         j["map"]["size"] = readLang(zh::mapSize, mapSize);
 
     // Report
-    j["status"] = status_;
+    j["status"] = status_old_;
     j["duration"] = duration;
     j["message"] = message;
     if (!DD_guid.empty())

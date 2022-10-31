@@ -11,7 +11,7 @@
 
 #include <string>
 #include <utility>
-#include "Analyzers/default/analyzer.h"
+#include "analyzers/default/analyzer.h"
 #include "include/MgxParser.h"
 
 using namespace std;

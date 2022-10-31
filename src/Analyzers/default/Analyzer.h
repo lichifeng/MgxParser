@@ -12,6 +12,7 @@
 #pragma once
 
 #define RECBYTE uint8_t
+#define MIN_SIZE (100 * 1024)
 
 #define HEADER_INIT 5 * 1024 * 1024
 #define BODY_MAX 100 * 1024 * 1024
@@ -34,6 +35,7 @@
 #include <iterator>
 #include <vector>
 
+#include "status.h"
 #include "DataModels/DataModel.h"
 #include "EncodingConverter.h"
 #include "Logger.h"
@@ -51,44 +53,61 @@ class DefaultAnalyzer : public DataModel // \todo 这个继承的设计并不好
 {
 public:
     // 第一阶段：初始化，读取输入并处理。
-    // 输入可以是一个文件（名），或是一个字节数组（的指针）。获得输入源后，把它们解压成
-    // header和body两个存放在vector里面的数据。以后所有的操作都应该是在这两个vector
-    // 上操作，不会再动到最初的输入。
+    // 输入可以是一个文件（名），或是一个字节数组（的指针）。
+    // 这个阶段的目的，是把文件或是字节数组的输入统一到一个变量（input_cursor_）上。
     // 初始化logger_也在这个阶段完成，因为读取文件阶段也可能有需要记录的事件。
     // 在这个阶段发生任何问题，应当返回status:invalid，代表没有进入有意义的分析阶段，
     // 连是否是一个录像文件都无法判断。
     
+    Status status_;
     std::string inputpath_;
     std::string input_filename_ = "<no file>";
-    size_t input_size_ = 0; ///< 录像文件大小，单位是 bytes
-    /*
-    *   status_的含义：
-    *       waiting: 还未完成初始化，等待中
-    */
-    std::string status_ = "waiting";
-    Logger* logger_ = nullptr;
-    DataModel* record_ = nullptr; // 存放了与录像本身相关的所有信息。与解析过程相关的情况存放在这个类里。
+    size_t input_size_ = 0;
+    std::unique_ptr<Logger> logger_;
+    std::unique_ptr<DataModel> record_; // 存放了与录像本身相关的所有信息。与解析过程相关的情况存放在这个类里。
     
-    DefaultAnalyzer(string&& inputpath) : inputpath_(inputpath)
+    DefaultAnalyzer(const std::string& inputpath) : inputpath_(inputpath)
     {
         SharedInit();
-        LoadFile();
+
+        if (LoadFile())
+            status_.input_loaded_ = true;
+        else
+            throw "Invalid file.";
     }
 
-
-
-
-    DefaultAnalyzer(const uint8_t* buff, size_t buffLen) : _inputType(MEM_INPUT), _b(buff)
+    DefaultAnalyzer(const uint8_t* input_buffer, size_t bufferlen, const std::string filename = "") : _inputType(MEM_INPUT), input_cursor_(input_buffer), input_size_(bufferlen)
     {
         SharedInit();
-        input_size_ = buffLen;
+
+        input_filename_ = filename.empty() ? "<memory stream>" : filename;
+        if (input_size_ > MIN_SIZE)
+            status_.input_loaded_ = true;
+        else
+            throw "Invalid input.";
     }
+
+    // 第一阶段结束，自以往后，都只需要操作input_cursor_
+
+    // 第二阶段：获取header和body。
+    // 这个阶段首先是判断是否为ZIP文件，如果是，则解压获得原始录像文件。
+    // 然后判断录像文件是否是header长度信息，如果没有，则查找确定，
+    // 如果有，则再次解压，获得header_。body_只要复制就能获得。
+    // 其实可以不用复制，但是为了操作的统一，还是这样做了。
+
+    bool ZipDecompress();
+    bool ExtractStreams();
+
+
+
+    
 
     ~DefaultAnalyzer()
     {
         if (nullptr != zipinfo_)
             delete zipinfo_;
-        delete _encodingConverter;
+        if (nullptr != _encodingConverter)
+            delete _encodingConverter;
     }
 
     string toJson();
@@ -144,34 +163,40 @@ protected:
     // 第一阶段
     std::ifstream input_file_;
     std::vector<RECBYTE> input_stream_;
+    const RECBYTE* input_cursor_ = nullptr;       ///< 以字节数组输入时的原始数组
 
 
     inline void SharedInit()
     {
         BindLogger();
-        BindLogger();
+        BindRecord();
     }
 
     inline void BindLogger()
     {
         if (!logger_)
-            logger_ = new Logger();
+            logger_ = std::make_unique<Logger>();
     }
 
     inline void BindRecord()
     {
         if (!record_)
-            record_ = new DataModel();
+            record_ = std::make_unique<DataModel>();
     }
 
     bool LoadFile();
+    // 第一阶段结束
+
+    // 第二阶段
 
 
 
 
 
+
+    std::string status_old_ = "waiting";
     ZipInfo* zipinfo_ = nullptr;
-    const uint8_t* _b = nullptr;       ///< 以字节数组输入时的原始数组
+    
     size_t _bodySize;        ///< body部分的长度(bytes)
     vector<uint8_t> _body;   ///< 用于存储body数据
     vector<uint8_t> _header; ///< 用于存储解压缩后的header数据
@@ -422,7 +447,7 @@ protected:
     void _sendExceptionSignal(bool throwException = false, string msg = "")
     {
         _failedSignal = true;
-        status_ = throwException ? "Aborted" : "Warning";
+        status_old_ = throwException ? "Aborted" : "Warning";
         if (throwException)
         {
             if (logger_)

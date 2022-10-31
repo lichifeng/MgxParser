@@ -194,7 +194,7 @@ public:
     string outEncoding = OUT_ENCODING;
     // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
-    string message;                        ///< 对 \p status_ 的具体说明
+    string message;                        ///< 对 \p status_old_ 的具体说明
     string parseMode = "Normal"; ///< 解析模式：normal, verbose, etc. 可以在命令行中指定
     double parseTime = 0;                  ///< 解析耗时（毫秒）
 

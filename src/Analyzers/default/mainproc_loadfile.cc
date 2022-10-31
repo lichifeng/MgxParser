@@ -11,6 +11,8 @@ bool DefaultAnalyzer::LoadFile()
 
 	input_filename_ = inputpath.filename().generic_string();
 	input_size_ = filesystem::file_size(inputpath);
+	if (input_size_ < MIN_SIZE)
+		return false;
 
 	input_file_.open(inputpath_, std::ios::in | std::ios::binary);
 
@@ -23,6 +25,7 @@ bool DefaultAnalyzer::LoadFile()
 		std::istream_iterator<RECBYTE>(input_file_),
 		std::istream_iterator<RECBYTE>()
 	);
+	input_cursor_ = input_stream_.data();
 
 	input_file_.close();
 

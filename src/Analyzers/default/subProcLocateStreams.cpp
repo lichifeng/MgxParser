@@ -24,7 +24,7 @@ bool DefaultAnalyzer::_locateStreams()
     if (FILE_INPUT == _inputType)
         input_file_.read((char *)headerMeta, 8);
     else
-        memcpy(headerMeta, _b, 8);
+        memcpy(headerMeta, input_cursor_, 8);
 
     size_t rawHeaderPos = headerMeta[1] < input_size_ ? 8 : 4;
     if (rawHeaderPos == 4)
@@ -46,7 +46,7 @@ bool DefaultAnalyzer::_locateStreams()
 
             if (MEM_INPUT == _inputType)
             {
-                fetchFromZipBuffer(_b, zipinfo_);
+                fetchFromZipBuffer(input_cursor_, zipinfo_);
             }
             else
             {
@@ -58,12 +58,12 @@ bool DefaultAnalyzer::_locateStreams()
             {
                 filetype = "zip";
                 extractedName = zipinfo_->filename;
-                _b = zipinfo_->outBuffer.data();
+                input_cursor_ = zipinfo_->outBuffer.data();
                 input_size_ = zipinfo_->outBuffer.size();
                 _inputType = ZIP_INPUT;
 
                 // ofstream zipout(extractedName, ofstream::binary);
-                // zipout.write((char *)_b, input_size_);
+                // zipout.write((char *)input_cursor_, input_size_);
                 // zipout.close();
 
                 return _locateStreams();
@@ -126,7 +126,7 @@ bool DefaultAnalyzer::_locateStreams()
     else
     {
         _debugFlag = 33;
-        _curPos = _b + rawHeaderPos;
+        _curPos = input_cursor_ + rawHeaderPos;
         if (0 == zipDecompress((void *)_curPos, MEM_INPUT, input_size_, _header))
         {
             if (-1 == headerMeta[0])
@@ -152,7 +152,7 @@ bool DefaultAnalyzer::_locateStreams()
     }
     else
     {
-        memcpy(_body.data(), _b + headerMeta[0], _bodySize);
+        memcpy(_body.data(), input_cursor_ + headerMeta[0], _bodySize);
     }
 
     return true;

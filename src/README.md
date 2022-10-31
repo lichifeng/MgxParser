@@ -46,6 +46,15 @@ Pure json output without map generation is very cheap with it. Normally cost
 > ... ...   
 > Exit status: 0  
 
+## Exceptions
+Parsing an AoE record is fretful, exceptions are expected everywhere.   
+But most of the time, exceptions don't mean worthless, some part of the  
+record can still be read, so MgxParser is wrapped with an outermost   
+try-catch block to avoid easy crash.   
+When exceptions happen, they are normally caught and previously extracted   
+information are returned. Some status hints are attached, so users will  
+get notified.
+
 ## Requirements
 These libraries are required to build MgxParser:
 - **CImg(bundled)**: Used to generate mini maps. This library is bundled into `libs/CImg`

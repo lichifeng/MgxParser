@@ -13,7 +13,6 @@ project(
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
-set(CMAKE_EXE_LINKER_FLAGS "${CMAKE_EXE_LINKER_FLAGS} -Wl,--stack,104857600")
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 
@@ -44,11 +43,11 @@ endif ()
 
 # List source files to be compiled
 aux_source_directory(./src SRC_ROOT)
-aux_source_directory(./src/DataModels DATAMODELS)
-aux_source_directory(./src/Analyzers/default DEFAULT_ANALYZER)
-aux_source_directory(./src/Analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
+aux_source_directory(./src/ziptool ZIPTOOL)
+aux_source_directory(./src/analyzers/default DEFAULT_ANALYZER)
+aux_source_directory(./src/analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
 aux_source_directory(./libs/md5 MD5)
-set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${DATAMODELS} ${MD5})
+set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${ZIPTOOL} ${MD5})
 
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
@@ -66,7 +65,9 @@ set(
     PUBLIC 
     "${CMAKE_CURRENT_SOURCE_DIR}/libs/" 
     "${CMAKE_CURRENT_SOURCE_DIR}/src/" 
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/include/" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/include/"
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/ziptool/" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/DataModels/" 
     "${PROJECT_BINARY_DIR}"
     )
 target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
