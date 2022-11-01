@@ -20,13 +20,13 @@ void DefaultAnalyzer::_replayAnalyzer(int debugFlag)
     _skip(29);
     _readBytes(2, &recPlayer);
     _readBytes(1, &numPlayers); /// \note gaia included
-    if (!IS_AOK(versionCode))
+    if (!IS_AOK(version_code_))
     { /// \todo AOK condition not tested
         _readBytes(1, &instantBuild);
         _readBytes(1, &cheatsEnabled);
     }
     _skip(2); //_readBytes(2, &gameMode);
     _skip(58);
-    if (IS_DE(versionCode))
+    if (IS_DE(version_code_))
         _skip(8);
 }

@@ -45,7 +45,7 @@ protected:
     void load(json &j, string f, int mapType = NO_MAP, string mapName = "testmap.png")
     {
         auto path = genPath(f);
-        string rawret = MgxParser::parse(std::move(path), mapType, mapName);
+        string rawret = MgxParser::parse(path, mapType, mapName);
         j = json::parse(rawret);
     }
 
@@ -215,7 +215,7 @@ TEST_F(ParserTest, HDVersions)
     EXPECT_EQ(recA["message"], "");
 
     load(recA, "not-a-file.mgx");
-    EXPECT_EQ(recA["filename"], "<invalid file>");
+    EXPECT_EQ(recA["filename"], "<no file>");
     EXPECT_EQ(recA["version"]["code"], "UNDEFINED");
     EXPECT_EQ(recA["status"], "Aborted");
 }

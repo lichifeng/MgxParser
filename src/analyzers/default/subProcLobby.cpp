@@ -53,7 +53,7 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
     }
     _readBytes(1, &gameType);
     _readBytes(1, &lockDiplomacy);
-    if (IS_HD(versionCode) || IS_DE(versionCode))
+    if (IS_HD(version_code_) || IS_DE(version_code_))
     {
         _readBytes(1, &treatyLength);
         _skip(4); /// \note cheat codes used, what's this for?
@@ -64,7 +64,7 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
     }
 
     // Read lobby(pregame) talks
-    if (!IS_AOK(versionCode))
+    if (!IS_AOK(version_code_))
     {
         Chat tmpChat;
         int32_t numChat;
@@ -93,13 +93,13 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
             }
             else
             {
-                if (!IS_DE(versionCode))
+                if (!IS_DE(version_code_))
                     ++numChat; /// \todo Verify this.
             }
         }
     }
 
-    if (IS_DE(versionCode) && _remainBytes() >= 4)
+    if (IS_DE(version_code_) && _remainBytes() >= 4)
         _readBytes(4, &DE_mapSeed);
     // Let it go after this.
 }

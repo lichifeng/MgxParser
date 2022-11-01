@@ -19,7 +19,7 @@ string DefaultAnalyzer::toJson()
     j["isRecfile"] = UINT32_INIT != logVersion;
 
     // Version info
-    j["version"]["code"] = versionCode;
+    j["version"]["code"] = version_code_;
 
     if (UINT32_INIT != logVersion)
         j["version"]["logVer"] = logVersion;

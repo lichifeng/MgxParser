@@ -26,7 +26,7 @@ void DefaultAnalyzer::_findStartInfoStart(int debugFlag)
     {
         // ...
     }
-    else if ((*(uint32_t *)_curPos == 10060) && IS_AOK(versionCode))
+    else if ((*(uint32_t *)_curPos == 10060) && IS_AOK(version_code_))
     {
         // ...
     }

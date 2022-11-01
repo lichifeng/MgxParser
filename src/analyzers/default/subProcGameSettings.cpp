@@ -22,13 +22,13 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
     _curPos = _gameSettingsPos;
 
     _skip(64 + 4 + 8);
-    if (IS_HD(versionCode) && saveVersion > 12.3401)
+    if (IS_HD(version_code_) && saveVersion > 12.3401)
         _skip(16);
-    if (!IS_AOK(versionCode))
+    if (!IS_AOK(version_code_))
         _readBytes(4, &mapID);
     _readBytes(4, &difficultyID);
     _readBytes(4, &lockTeams);
-    if (IS_DE(versionCode))
+    if (IS_DE(version_code_))
     {
         _skip(29);
         if (saveVersion >= 13.0699)

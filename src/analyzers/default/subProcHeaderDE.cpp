@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "utils.h"
+#include "tools/searcher.h"
 
 void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
 {
@@ -148,14 +148,14 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     /// de-26.16.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
     /// de-26.18.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
     /// de-26.21.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    auto curItr = _header.begin() + _distance();
+    auto curItr = header_.begin() + _distance();
     for (size_t i = 0; i < 23; i++)
     {
-        curItr = findPosition(
-            curItr, _header.end(),
-            patterns::HDStringSeparator.begin(),
-            patterns::HDStringSeparator.end());
-        if (curItr != _header.end())
+        curItr = SearchPattern(
+                curItr, header_.end(),
+                patterns::HDStringSeparator.begin(),
+                patterns::HDStringSeparator.end());
+        if (curItr != header_.end())
         {
             curItr += (4 + *((uint16_t *)(&(*curItr) + 2)));
             _curPos = &(*curItr);

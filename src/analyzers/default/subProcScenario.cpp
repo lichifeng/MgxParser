@@ -32,7 +32,7 @@ void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
 
     scenarioFilename.assign((char *)(_curPos + 2), filenameLen);
     _skip(filenameLen);
-    if (IS_DE(versionCode))
+    if (IS_DE(version_code_))
     {
         _skip(64);
         if (saveVersion >= 13.3399)

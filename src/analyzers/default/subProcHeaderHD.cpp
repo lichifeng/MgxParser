@@ -19,7 +19,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
     const uint8_t *tmpPos;
     _readBytes(4, &DD_version);
     if (DD_version >= 1005.9999)
-        versionCode = HD57;
+        version_code_ = HD57;
     _readBytes(4, &DD_internalVersion);
     _readBytes(4, &DD_gameOptionsVersion);
     _readBytes(4, &DD_DLCCount);
@@ -109,7 +109,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
         _skip(16);
         _readBytes(4, &test);
         if (check != test)
-            versionCode = HD58;
+            version_code_ = HD58;
         _curPos = tmpPos;
 
         // Read player data
@@ -133,7 +133,7 @@ void DefaultAnalyzer::_headerHDAnalyzer(int debugFlag)
             _readBytes(4, &players[i].type);
             _readBytes(8, &players[i].HD_steamID);
             _readBytes(4, &players[i].DD_playerNumber);
-            if (DD_version >= 1005.9999 && versionCode != HD57) // \todo test this
+            if (DD_version >= 1005.9999 && version_code_ != HD57) // \todo test this
             {
                 _readBytes(4, &players[i].DD_RMRating);
                 _readBytes(4, &players[i].DD_DMRating);

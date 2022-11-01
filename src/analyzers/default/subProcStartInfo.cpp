@@ -30,7 +30,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
     {
         if (p.initialDataFound() && p.valid())
         {
-            _curPos = _header.data() + p.dataOffset;
+            _curPos = header_.data() + p.dataOffset;
             _skipPascalString();
             _skip(762);
 
@@ -47,14 +47,14 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
 
             if (saveVersion >= 11.7599)
                 _skip(36);
-            if (IS_DE(versionCode) || IS_HD(versionCode))
+            if (IS_DE(version_code_) || IS_HD(version_code_))
                 _skip(4 * (numHeaderData - 198));
-            if (versionCode == USERPATCH15 || versionCode == MCP)
+            if (version_code_ == USERPATCH15 || version_code_ == MCP)
             {
                 _readBytes(4, &p.modVersionID);
                 _skip(4 * 6 + 4 * 7 + 4 * 28);
             }
-            if (versionCode == MCP)
+            if (version_code_ == MCP)
                 _skip(4 * 65);
             _skip(1);
             _readBytes(8, p.initCamera);
@@ -71,7 +71,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
                 continue;
             }
 
-            if (!IS_AOK(versionCode))
+            if (!IS_AOK(version_code_))
             {
                 int32_t numSavedViews;
                 _readBytes(4, &numSavedViews);

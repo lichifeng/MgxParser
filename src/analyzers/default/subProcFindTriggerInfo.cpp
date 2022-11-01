@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "utils.h"
+#include "tools/searcher.h"
 
 void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
 {
@@ -32,14 +32,14 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
 
     vector<uint8_t>::reverse_iterator rFound;
 
-    if (IS_AOK(versionCode))
+    if (IS_AOK(version_code_))
     {
-        rFound = findPosition(
-            _header.rbegin(),
-            _header.rend(),
-            patterns::gameSettingSign1.rbegin(),
-            patterns::gameSettingSign1.rend());
-        if (rFound == _header.rend())
+        rFound = SearchPattern(
+                header_.rbegin(),
+                header_.rend(),
+                patterns::gameSettingSign1.rbegin(),
+                patterns::gameSettingSign1.rend());
+        if (rFound == header_.rend())
         {
             logger_->warn(
                 "{}(): Failed to find _triggerInfoPos(AOK). @{}.",
@@ -51,12 +51,12 @@ void DefaultAnalyzer::_findTriggerInfoStart(int debugFlag)
     }
     else
     {
-        rFound = findPosition(
-            _header.rbegin(),
-            _header.rend(),
-            patterns::gameSettingSign.rbegin(),
-            patterns::gameSettingSign.rend());
-        if (rFound == _header.rend())
+        rFound = SearchPattern(
+                header_.rbegin(),
+                header_.rend(),
+                patterns::gameSettingSign.rbegin(),
+                patterns::gameSettingSign.rend());
+        if (rFound == header_.rend())
         {
             logger_->warn(
                 "{}(): Failed to find _triggerInfoPos. @{}.",

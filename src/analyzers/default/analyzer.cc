@@ -27,32 +27,12 @@ using namespace std;
 
 void DefaultAnalyzer::run()
 {
-    _debugFlag = 1;
-    if (FILE_INPUT == _inputType)
-    {
-        _debugFlag = 2;
-        if (!_loadFile())
-        {
-            _sendExceptionSignal(
-                true,
-                logger_->fmt("{}(): Failed to open {}. ", __FUNCTION__, inputpath_.empty() ? input_filename_ : inputpath_));
-        }
-    }
-    else if (MEM_INPUT == _inputType)
-    {
-        input_filename_ = "<memory buffer>";
-    }
+    if (!status_.stream_extracted_ && !ExtractStreams())
+        throw "Unable to generate combined streams.";
 
-    // Try to extract header&body streams
-    if (!_locateStreams())
-    {
-        _sendExceptionSignal(
-            true,
-            logger_->fmt("Debugflag {}: Failed to locateStreams in {}.", _debugFlag, inputpath_.empty() ? input_filename_ : inputpath_));
-    }
 
-    if (FILE_INPUT == _inputType)
-        input_file_.close();
+
+    throw "Stopped under refactoring.";
 
     // Start data analyzing
     _analyze();
@@ -108,11 +88,11 @@ void DefaultAnalyzer::_analyze()
     _setVersionCode();
 
     //   1-2: HD/DE-specific data
-    if (IS_DE(versionCode))
+    if (IS_DE(version_code_))
     {
         _headerDEAnalyzer(4);
     }
-    else if (IS_HD(versionCode) && saveVersion > 12.3401)
+    else if (IS_HD(version_code_) && saveVersion > 12.3401)
     {
         /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
         _headerHDAnalyzer(5);

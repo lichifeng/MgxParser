@@ -43,11 +43,11 @@ endif ()
 
 # List source files to be compiled
 aux_source_directory(./src SRC_ROOT)
-aux_source_directory(./src/ziptool ZIPTOOL)
-aux_source_directory(./src/analyzers/default DEFAULT_ANALYZER)
-aux_source_directory(./src/analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
+aux_source_directory(src/tools TOOLS)
+aux_source_directory(src/analyzers/default DEFAULT_ANALYZER)
+aux_source_directory(src/analyzers/default/bodyProcessors DEFAULT_ANALYZER_BODY)
 aux_source_directory(./libs/md5 MD5)
-set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${ZIPTOOL} ${MD5})
+set(MGXPARSER_SRCS ${SRC_ROOT} ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${TOOLS} ${MD5})
 
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
@@ -66,7 +66,7 @@ set(
     "${CMAKE_CURRENT_SOURCE_DIR}/libs/" 
     "${CMAKE_CURRENT_SOURCE_DIR}/src/" 
     "${CMAKE_CURRENT_SOURCE_DIR}/src/include/"
-    "${CMAKE_CURRENT_SOURCE_DIR}/src/ziptool/" 
+    "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/"
     "${CMAKE_CURRENT_SOURCE_DIR}/src/DataModels/" 
     "${PROJECT_BINARY_DIR}"
     )

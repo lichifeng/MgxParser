@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "utils.h"
+#include "tools/searcher.h"
 
 void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
 {
@@ -19,12 +19,12 @@ void DefaultAnalyzer::_findGameSettingsStart(int debugFlag)
     _curPos = _triggerInfoPos;
 
     vector<uint8_t>::reverse_iterator rFound;
-    rFound = findPosition(
-        make_reverse_iterator(_header.begin() + (_triggerInfoPos - _header.data())),
-        _header.rend(),
-        patterns::separator.rbegin(),
-        patterns::separator.rend());
-    if (rFound == _header.rend())
+    rFound = SearchPattern(
+            make_reverse_iterator(header_.begin() + (_triggerInfoPos - header_.data())),
+            header_.rend(),
+            patterns::separator.rbegin(),
+            patterns::separator.rend());
+    if (rFound == header_.rend())
     {
         logger_->warn(
             "{}(): Failed to find _gameSettingsPos by regular separator. @{}, Flag:{}.",

@@ -37,7 +37,7 @@ void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
     _readBytes(4, &numMapZones);
     for (int i = 0; i < numMapZones; i++)
     {
-        if (IS_HD(versionCode) || IS_DE(versionCode)) /// \todo 为什么不是11.76？
+        if (IS_HD(version_code_) || IS_DE(version_code_)) /// \todo 为什么不是11.76？
             _skip(2048 + mapBits * 2);
         else
             _skip(1275 + mapBits);
@@ -50,7 +50,7 @@ void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
 
     mapDataPtr = _curPos;
     uint32_t checkVal = *(uint32_t *)(_curPos + 7 * mapBits);
-    if (IS_DE(versionCode))
+    if (IS_DE(version_code_))
     {
         _mapTileType = (saveVersion >= 13.0299 || checkVal > 1000) ? 9 : 7;
     }

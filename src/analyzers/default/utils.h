@@ -15,23 +15,7 @@
 #include <algorithm>
 #include "Helper.h"
 
-// Until 2022/10, clang on MacOS M1 don't support std::boyer_moore_searcher
-// This is a workaround for working on my laptop.
-#ifndef __cpp_lib_boyer_moore_searcher
-    #define SEARCHER std::default_searcher
-#else
-    #define SEARCHER std::boyer_moore_searcher
-#endif
-
 std::string hexStr(const unsigned char *&data, int len, bool skip = false);
-
-template <typename T>
-T findPosition(T haystackBeg, T haystackEnd, T needleBeg, T needleEnd)
-{
-    return std::search(
-        haystackBeg, haystackEnd,
-        SEARCHER(needleBeg, needleEnd));
-}
 
 namespace patterns
 {

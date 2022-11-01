@@ -22,7 +22,7 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     {
         a.run();
     }
-    catch (const string &s)
+    catch (const char* s)
     {
         a.logger_->fatal("{}: {}", a.input_filename_, s);
     }
@@ -58,9 +58,9 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     return a.toJson();
 }
 
-string MgxParser::parse(std::string&& inputpath, int maptype, std::string&& mapname, bool extract_stream)
+string MgxParser::parse(std::string inputpath, int maptype, std::string mapname, bool extract_stream)
 {
-    auto a = DefaultAnalyzer(std::move(inputpath));
+    auto a = DefaultAnalyzer(inputpath);
 
     return _parse(a, maptype, mapname, extract_stream);
 }
@@ -74,17 +74,10 @@ string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapNam
 
 extern "C"
 {
-    /**
-     * \brief      This function is a early try of python integration, not tested.
-     *
-     * \param      recfile             Path of record file
-     * \return     const char*         JSON string contains parsed information
-     */
-    const char *MgxParser::pyparse(const char *recfile)
+    const char *MgxParser::pyparse(const char *recfile, int maptype, const char *mapname, bool extract_stream)
     {
-        string j = MgxParser::parse(recfile).c_str();
-        char *retStr = (char *)malloc(j.size() + 1);
-        strcpy(retStr, j.c_str());
-        return retStr;
+        auto a = DefaultAnalyzer(recfile);
+        std::string&& ret = std::move(_parse(a, maptype, mapname, extract_stream));
+        return ret.c_str();
     }
 }

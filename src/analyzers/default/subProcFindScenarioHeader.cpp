@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "utils.h"
+#include "tools/searcher.h"
 
 void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float lowerLimit, float upperLimit)
 {
@@ -18,7 +18,7 @@ void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float
     
     // Try to locate scenario version data in DE (this float in DE varies
     // among minor game versions and relative stable in previous versions.)
-    if (IS_DE(versionCode) || brutal)
+    if (IS_DE(version_code_) || brutal)
     {
         //auto startPoint = _victoryStartPos - scenarioSearchSpan;
         //_curPos = startPoint;
@@ -36,29 +36,29 @@ void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float
             }
         }
         logger_->warn(
-            "{}(): Cannot find _scenarioHeaderPos in this {} version. @{}.",
-            __FUNCTION__, versionCode, _distance());
+                "{}(): Cannot find _scenarioHeaderPos in this {} version. @{}.",
+                __FUNCTION__, version_code_, _distance());
         _sendExceptionSignal();
         return;
     }
 
     /// \todo 这里应该是13.3399还是13.3599?
-    auto scenarioSeprator = IS_AOK(versionCode) ? \
+    auto scenarioSeprator = IS_AOK(version_code_) ? \
         patterns::scenarioConstantAOK : \
-        ((IS_HD(versionCode) && saveVersion > 11.9701) ? \
+        ((IS_HD(version_code_) && saveVersion > 11.9701) ? \
         (saveVersion >= 12.3599 ? \
         patterns::scenarioConstantHD : \
         patterns::scenarioConstantMGX2) : \
         patterns::scenarioConstantAOC);
 
     vector<uint8_t>::reverse_iterator rFound;
-    rFound = findPosition(
-        make_reverse_iterator(_header.begin() + (_victoryStartPos - _header.data())),
-        _header.rend(),
-        scenarioSeprator.rbegin(),
-        scenarioSeprator.rend());
+    rFound = SearchPattern(
+            make_reverse_iterator(header_.begin() + (_victoryStartPos - header_.data())),
+            header_.rend(),
+            scenarioSeprator.rbegin(),
+            scenarioSeprator.rend());
 
-    if (rFound == _header.rend())
+    if (rFound == header_.rend())
     {
         // \todo test/testRecords/Warning_aitest.mgx seems a record of early HD
         // versions with same scenarioVersion as AOC10C, need to look into it. 

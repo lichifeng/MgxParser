@@ -10,7 +10,6 @@
  */
 
 #include <string>
-#include <string.h>
 #include <iostream>
 #include "../src/include/MgxParser.h"
 
@@ -43,8 +42,7 @@ int main(int argc, char *argv[])
             filepath.assign(argv[i]);
     }
 
-    std::string mapname = "map.png";
-    cout << MgxParser::parse(std::move(filepath), mapType, std::move(mapname), extractHB) << endl;
+    cout << MgxParser::parse(filepath, mapType, "map.png", extractHB) << endl;
 
     return 0;
 }

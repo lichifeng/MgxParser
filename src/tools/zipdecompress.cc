@@ -59,6 +59,7 @@ int ZipDecompress(uint8_t* stream, size_t stream_size, std::vector<uint8_t>& out
 		/* done when inflate() says it's done */
 	} while (ret != Z_STREAM_END);
 
+    outbuffer.resize(strm.total_out);
 	/* clean up and return */
 	(void)inflateEnd(&strm);
 	return ret == Z_STREAM_END ? Z_OK : Z_DATA_ERROR;

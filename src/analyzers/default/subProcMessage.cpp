@@ -18,7 +18,7 @@ void DefaultAnalyzer::_messagesAnalyzer(int debugFlag)
     _curPos = _messagesStartPos;
 
     _skip(20);
-    if (!IS_AOK(versionCode))
+    if (!IS_AOK(version_code_))
         _skip(4);
 
     _readPascalString(instructions);
@@ -28,7 +28,7 @@ void DefaultAnalyzer::_messagesAnalyzer(int debugFlag)
     }
 
     /*
-    int totalStrs = IS_AOK(versionCode) ? 8 : 9; /// \todo 需要验证 AOK 的情况
+    int totalStrs = IS_AOK(version_code_) ? 8 : 9; /// \todo 需要验证 AOK 的情况
     for (size_t i = 0; i < totalStrs; i++)
         _skipPascalString();
 

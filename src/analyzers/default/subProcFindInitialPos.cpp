@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "utils.h"
+#include "tools/searcher.h"
 
 void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
 {
@@ -22,22 +22,22 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
     }
     else
     {
-        _curPos = _header.data();
+        _curPos = header_.data();
     }
 
     uint32_t easySkip = easySkipBase + mapCoord[0] * mapCoord[1];
-    auto itStart = _header.cbegin() + (_curPos - _header.data()) + easySkip;
+    auto itStart = header_.cbegin() + (_curPos - header_.data()) + easySkip;
 
     if (nullptr == _scenarioHeaderPos)
         _scenarioHeaderPos = _victoryStartPos ? _victoryStartPos
                                               : (_disablesStartPos ? _disablesStartPos : _gameSettingsPos);
-    auto itEnd = _header.cbegin() + (_scenarioHeaderPos - _header.data() - numPlayers * 1817); // Achievement section is 1817 * numPlayers bytes
+    auto itEnd = header_.cbegin() + (_scenarioHeaderPos - header_.data() - numPlayers * 1817); // Achievement section is 1817 * numPlayers bytes
 
     // Length of every player's data is at least easySkip bytes (and ususally much
     // more), we can use this to escape unnecessary search
     // First player don't need a search (and cannot, 'cuz different behavior
     // among versions)
-    players[0].dataOffset = _curPos - _header.data();
+    players[0].dataOffset = _curPos - header_.data();
 
     auto found = itStart;
     bool indexFound[9] = {false};
@@ -46,18 +46,18 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
         if (!players[i].valid() || players[i].index < 0 || players[i].index > 8 || indexFound[players[i].index])
             continue;
 
-        found = findPosition(
-            itStart, itEnd,
-            players[i].searchPattern.cbegin(),
-            players[i].searchPattern.cend());
+        found = SearchPattern(
+                itStart, itEnd,
+                players[i].searchPattern.cbegin(),
+                players[i].searchPattern.cend());
         if (found == itEnd)
         {
             // \todo 如果只是当前这个没有找到，那是不是应该退回查找起始位置呢？
             // 多控的情况下只有一个玩家会有这里的信息，他们的顺序难道是固定的？
-            found = findPosition(
-                itStart, itEnd,
-                players[i].searchPattern.cend() - trailBytes,
-                players[i].searchPattern.cend());
+            found = SearchPattern(
+                    itStart, itEnd,
+                    players[i].searchPattern.cend() - trailBytes,
+                    players[i].searchPattern.cend());
 
             if (found != itEnd)
             {
@@ -82,7 +82,7 @@ void DefaultAnalyzer::_findInitialPlayersDataPos(int debugFlag)
         }
         else
         {
-            players[i].dataOffset = found - _header.cbegin();
+            players[i].dataOffset = found - header_.cbegin();
         }
 
         if (0 != players[i].dataOffset)

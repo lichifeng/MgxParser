@@ -102,7 +102,7 @@ void DefaultAnalyzer::_guessEncoding()
     {
         rawEncoding = "windows-1252";
     }
-    else if (IS_HD(versionCode) || IS_DE(versionCode))
+    else if (IS_HD(version_code_) || IS_DE(version_code_))
     {
         rawEncoding = "utf-8";
     }
