@@ -123,8 +123,15 @@ if(BUILD_TESTING)
     target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
     target_link_libraries("${PROJECT_NAME}_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
     target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
+    add_executable(
+            "CURSOR_TEST"
+            ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
+            ${CMAKE_CURRENT_SOURCE_DIR}/src/cursor.cc
+    )
+    target_link_libraries("CURSOR_TEST" GTest::gtest_main iconv)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")
+    gtest_discover_tests("CURSOR_TEST")
 endif()
 
 # Static linking

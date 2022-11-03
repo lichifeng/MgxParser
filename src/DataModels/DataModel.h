@@ -64,9 +64,9 @@ public:
     //uint32_t scenarioSearchSpan = 10000;    ///< usually 5500~6500
 
     // Version-related members
-    uint32_t logVersion = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
-    char versionStr[8] = {'\0'};      ///< 代表游戏版本的原始字符串
-    float saveVersion = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
+    uint32_t log_version_ = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
+    char version_string_[8] = {'\0'};      ///< 代表游戏版本的原始字符串
+    float save_version_ = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
     VERSIONCODE version_code_ = UNDEFINED; ///< 这是自己定义的一个值，用于简化版本判断
     uint32_t includeAI;
 

@@ -10481,3 +10481,5 @@ test/sampleRecords/detest/vic2aoc10c.mgx
 /cmake-build-minsizerel/
 /cmake-build-release/
 /cmake-build-relwithdebinfo/
+/.idea/
+/docs/html/

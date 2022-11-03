@@ -14,14 +14,9 @@
 #define RECBYTE uint8_t
 #define MIN_SIZE (100 * 1024)
 
-#define HEADER_INIT 5 * 1024 * 1024
-#define BODY_MAX 100 * 1024 * 1024
 #define HEADER_STRM 0
 #define BODY_STRM 1
 #define PrintHEX(n) _printHex1(n, __FILE__, __LINE__)
-#define FILE_INPUT 1
-#define MEM_INPUT 2
-#define ZIP_INPUT 3
 #define EARLYMOVE_USED 5
 
 #include "CompileConfig.h"
@@ -36,8 +31,9 @@
 #include <vector>
 
 #include "status.h"
+#include "cursor.h"
 #include "DataModels/DataModel.h"
-#include "EncodingConverter.h"
+#include "encoding_converter.h"
 #include "Logger.h"
 #include "utils.h"
 #include "bodyProcessors/helpers.h"
@@ -65,7 +61,8 @@ public:
     std::unique_ptr<Logger> logger_;
     std::unique_ptr<DataModel> record_; // 存放了与录像本身相关的所有信息。与解析过程相关的情况存放在这个类里。
 
-    DefaultAnalyzer(const std::string &inputpath) : inputpath_(inputpath) {
+    DefaultAnalyzer(const std::string &inputpath)
+            : inputpath_(inputpath), cursor_(combined_stream_) {
         SharedInit();
 
         if (LoadFile())
@@ -75,7 +72,7 @@ public:
     }
 
     DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string filename = "")
-            : _inputType(MEM_INPUT), input_cursor_(input_buffer), input_size_(bufferlen) {
+            : input_cursor_(input_buffer), input_size_(bufferlen), cursor_(combined_stream_) {
         SharedInit();
 
         input_filename_ = filename.empty() ? "<memory stream>" : filename;
@@ -93,7 +90,12 @@ public:
     // 如果有，则再次解压，获得header_。body_只要复制就能获得。
     // 其实可以不用复制，但是为了操作的统一，还是这样做了。
     bool ExtractStreams();
+    std::size_t header_start_ = 0;
+    std::size_t body_start_ = 0;
     // 第二阶段结束
+
+    // 第三阶段：开始读需要连续不能出错的部分
+
 
 
 
@@ -174,6 +176,10 @@ protected:
 
     // 第二阶段
     vector<uint8_t> combined_stream_;
+    RecCursor cursor_;
+    // 第二阶段结束
+
+    // 第三阶段
 
 
 
@@ -185,8 +191,6 @@ protected:
     size_t _bodySize;        ///< body部分的长度(bytes)
 
 
-
-    bool _loadFile(); ///< 从文件中加载数据流
 
     /**
      * \brief      切换当前工作的数据流（header 或者 body）
@@ -306,7 +310,7 @@ protected:
     inline void _readDEString(string &s) {
         uint16_t l;
 
-        if (!(*(uint16_t *) _curPos == 2656)) // 0x60 0x0a
+        if (*(uint16_t *) _curPos != 2656) // 0x60 0x0a
         {
             logger_->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(),
                           input_filename_);
@@ -504,7 +508,6 @@ protected:
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
     bool _encodingError = false;
-    int _inputType = FILE_INPUT;
 
     const uint8_t *_earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
     uint32_t _earlyMoveTime[EARLYMOVE_USED];

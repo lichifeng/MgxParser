@@ -19,7 +19,7 @@
  * MgxParser uses following data to generate guid of a game (* means optional):
  *     | versionStr
  *     | saveVersion
- *     | logVersion
+ *     | log_version_
  *     | scenarioVersion
  *     | mapSize
  *     | popLimit
@@ -43,9 +43,9 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     MGXPARSER_MD5::MD5_CTX ctx;
 
     MGXPARSER_MD5::md5_init(&ctx);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)versionStr, 8);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&saveVersion, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&logVersion, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)version_string_, 8);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&save_version_, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&log_version_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&scenarioVersion, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapSize, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&populationLimit, 4);

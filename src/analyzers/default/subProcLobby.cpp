@@ -17,11 +17,11 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
     
     _curPos = _lobbyStartPos;
 
-    if (saveVersion >= 13.3399)
+    if (save_version_ >= 13.3399)
         _skip(5);
-    if (saveVersion >= 20.0599)
+    if (save_version_ >= 20.0599)
         _skip(9);
-    if (saveVersion >= 26.1599)
+    if (save_version_ >= 26.1599)
         _skip(5);
     for (size_t i = 1; i < 9; i++)
     {
@@ -34,7 +34,7 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
             _readBytes(1, &players[i].resolvedTeamID);
         }
     }
-    if (saveVersion < 12.2999)
+    if (save_version_ < 12.2999)
         _skip(1);
     _readBytes(4, &revealMap);
     _readBytes(4, &fogOfWar);
@@ -57,9 +57,9 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
     {
         _readBytes(1, &treatyLength);
         _skip(4); /// \note cheat codes used, what's this for?
-        if (saveVersion >= 13.1299)
+        if (save_version_ >= 13.1299)
             _skip(4);
-        if (saveVersion >= 25.2199)
+        if (save_version_ >= 25.2199)
             _skip(1);
     }
 

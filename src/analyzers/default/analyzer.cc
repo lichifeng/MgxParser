@@ -25,14 +25,9 @@
 
 using namespace std;
 
-void DefaultAnalyzer::run()
-{
+void DefaultAnalyzer::run() {
     if (!status_.stream_extracted_ && !ExtractStreams())
         throw "Unable to generate combined streams.";
-
-
-
-    throw "Stopped under refactoring.";
 
     // Start data analyzing
     _analyze();
@@ -42,8 +37,7 @@ void DefaultAnalyzer::run()
         logger_->warn("Encoding is not correct, need fix.");*/
 }
 
-void DefaultAnalyzer::_analyze()
-{
+void DefaultAnalyzer::_analyze() {
     //              ┌───────────────┐
     //       ┌──────┤version        │
     //       │      ├───────────────┤   Inflated header data mainly
@@ -79,21 +73,31 @@ void DefaultAnalyzer::_analyze()
     // ************
     //   Reach sections which can reach easily(no search needed).
     //   1-1: Version
+    if (version_code_ != AOK)
+        cursor_(body_start_) >> log_version_;
+    cursor_(header_start_);
+
+    cursor_ >> version_string_ >> save_version_;
+
+    throw "Stopped under refactoring.";
+
+    // ************
+    // * Phase 1: *
+    // ************
+    //   Reach sections which can reach easily(no search needed).
+    //   1-1: Version
     _switchStream(BODY_STRM);
-    _readBytes(4, &logVersion);
+    _readBytes(4, &log_version_);
     _switchStream(HEADER_STRM);
 
-    _readBytes(8, versionStr);
-    _readBytes(4, &saveVersion);
+    _readBytes(8, version_string_);
+    _readBytes(4, &save_version_);
     _setVersionCode();
 
     //   1-2: HD/DE-specific data
-    if (IS_DE(version_code_))
-    {
+    if (IS_DE(version_code_)) {
         _headerDEAnalyzer(4);
-    }
-    else if (IS_HD(version_code_) && saveVersion > 12.3401)
-    {
+    } else if (IS_HD(version_code_) && save_version_ > 12.3401) {
         /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
         _headerHDAnalyzer(5);
     }
@@ -149,7 +153,7 @@ void DefaultAnalyzer::_analyze()
     _messagesAnalyzer(16);
     // TRY_PHASE2_FALLBACK
 
-PHASE2_FALLBACK:
+    PHASE2_FALLBACK:
     //   2-7: Skip trigger info. Need 2-1
     //   This is useless data, but need to get lobby start.
     _triggerInfoAnalyzer(17);
@@ -191,8 +195,7 @@ PHASE2_FALLBACK:
     _genRetroGuid(25);
 }
 
-bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip)
-{
+bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip) {
     bool passed = _bytecmp(_curPos, pattern.data(), pattern.size());
     if (passed && skip)
         _curPos += pattern.size();

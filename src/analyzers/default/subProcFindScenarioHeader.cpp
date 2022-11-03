@@ -45,8 +45,8 @@ void DefaultAnalyzer::_findScenarioHeaderStart(int debugFlag, bool brutal, float
     /// \todo 这里应该是13.3399还是13.3599?
     auto scenarioSeprator = IS_AOK(version_code_) ? \
         patterns::scenarioConstantAOK : \
-        ((IS_HD(version_code_) && saveVersion > 11.9701) ? \
-        (saveVersion >= 12.3599 ? \
+        ((IS_HD(version_code_) && save_version_ > 11.9701) ? \
+        (save_version_ >= 12.3599 ? \
         patterns::scenarioConstantHD : \
         patterns::scenarioConstantMGX2) : \
         patterns::scenarioConstantAOC);

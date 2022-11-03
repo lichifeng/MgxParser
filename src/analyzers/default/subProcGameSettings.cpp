@@ -22,7 +22,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
     _curPos = _gameSettingsPos;
 
     _skip(64 + 4 + 8);
-    if (IS_HD(version_code_) && saveVersion > 12.3401)
+    if (IS_HD(version_code_) && save_version_ > 12.3401)
         _skip(16);
     if (!IS_AOK(version_code_))
         _readBytes(4, &mapID);
@@ -31,17 +31,17 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
     if (IS_DE(version_code_))
     {
         _skip(29);
-        if (saveVersion >= 13.0699)
+        if (save_version_ >= 13.0699)
             _skip(1);
-        if (saveVersion >= 13.3399)
+        if (save_version_ >= 13.3399)
             _skip(132);
-        if (saveVersion >= 20.0599)
+        if (save_version_ >= 20.0599)
             _skip(1);
-        if (saveVersion >= 20.1599)
+        if (save_version_ >= 20.1599)
             _skip(4);
-        if (saveVersion >= 25.0199)
+        if (save_version_ >= 25.0199)
             _skip(4 * 16);
-        if (saveVersion >= 25.0599 && saveVersion < 26.2099)
+        if (save_version_ >= 25.0599 && save_version_ < 26.2099)
             _skip(4);
     }
 

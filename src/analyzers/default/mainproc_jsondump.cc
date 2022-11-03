@@ -16,19 +16,19 @@ string DefaultAnalyzer::toJson()
     json j;
 
     // Decide whether to ditch this file
-    j["isRecfile"] = UINT32_INIT != logVersion;
+    j["isRecfile"] = UINT32_INIT != log_version_;
 
     // Version info
     j["version"]["code"] = version_code_;
 
-    if (UINT32_INIT != logVersion)
-        j["version"]["logVer"] = logVersion;
+    if (UINT32_INIT != log_version_)
+        j["version"]["logVer"] = log_version_;
 
-    if ('\0' != versionStr[0])
-        j["version"]["rawStr"] = versionStr;
+    if ('\0' != version_string_[0])
+        j["version"]["rawStr"] = version_string_;
 
-    if (FLOAT_INIT != saveVersion)
-        j["version"]["saveVer"] = saveVersion;
+    if (FLOAT_INIT != save_version_)
+        j["version"]["saveVer"] = save_version_;
 
     if (FLOAT_INIT != scenarioVersion)
         j["version"]["scenarioVersion"] = scenarioVersion;
@@ -110,7 +110,7 @@ string DefaultAnalyzer::toJson()
             pJ["DEProfileID"] = p.DE_profileID;
         if (0 != p.HD_steamID)
             pJ["HDSteamID"] = p.HD_steamID;
-        pJ["mainOp"] = p.initialDataFound() ? true : false; // \todo 要验证下。可以用这种方法确定是不是Co-Op。
+        pJ["mainOp"] = p.initialDataFound(); // \todo 要验证下。可以用这种方法确定是不是Co-Op。
         pJ["POV"] = p.slot == recPlayer;
         if (UINT32_INIT != p.handicappingLevel)
             pJ["handicappingLevel"] = p.handicappingLevel;

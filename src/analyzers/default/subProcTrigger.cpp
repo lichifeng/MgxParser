@@ -31,7 +31,7 @@ void DefaultAnalyzer::_triggerInfoAnalyzer(int debugFlag)
         textLen,
         soundFilenameLen,
         numConditions;
-    bool isHDPatch4 = saveVersion >= 12.3399;
+    bool isHDPatch4 = save_version_ >= 12.3399;
 
     _skip(1);
 

@@ -19,7 +19,7 @@ void DefaultAnalyzer::_findDisablesStart(int debugFlag)
 
     if (!IS_DE(version_code_))
     {
-        if (IS_HD(version_code_) && saveVersion < 12.3399 && saveVersion > 11.9701)
+        if (IS_HD(version_code_) && save_version_ < 12.3399 && save_version_ > 11.9701)
         {
             _disablesStartPos = _curPos - 5396;
         }
@@ -33,7 +33,7 @@ void DefaultAnalyzer::_findDisablesStart(int debugFlag)
         _disablesStartPos = _curPos - 276;
     }
 
-    if (IS_HD(version_code_) && saveVersion >= 12.3399)
+    if (IS_HD(version_code_) && save_version_ >= 12.3399)
     {
         _disablesStartPos -= 644;
     }

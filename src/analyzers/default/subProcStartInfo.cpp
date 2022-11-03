@@ -45,7 +45,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
             //     if (_remainBytes() > 0) ++_curPos;
             // }continue;
 
-            if (saveVersion >= 11.7599)
+            if (save_version_ >= 11.7599)
                 _skip(36);
             if (IS_DE(version_code_) || IS_HD(version_code_))
                 _skip(4 * (numHeaderData - 198));

@@ -35,7 +35,7 @@ void DefaultAnalyzer::_scenarioHeaderAnalyzer(int debugFlag)
     if (IS_DE(version_code_))
     {
         _skip(64);
-        if (saveVersion >= 13.3399)
+        if (save_version_ >= 13.3399)
         {
             _skip(64);
         }

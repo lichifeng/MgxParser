@@ -16,9 +16,9 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
 {
     _debugFlag = debugFlag;
 
-    if (saveVersion >= 25.2199)
+    if (save_version_ >= 25.2199)
         _readBytes(4, &DE_build);
-    if (saveVersion >= 26.1599)
+    if (save_version_ >= 26.1599)
         _readBytes(4, &DE_timestamp);
     _readBytes(4, &DD_version);
     _readBytes(4, &DD_internalVersion);
@@ -59,11 +59,11 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     _readBytes(1, &DD_turboEnabled);
     _readBytes(1, &DD_sharedExploration);
     _readBytes(1, &DD_teamPositions);
-    if (saveVersion >= 13.3399)
+    if (save_version_ >= 13.3399)
         _readBytes(4, &DD_subGameMode);
-    if (saveVersion >= 13.3399)
+    if (save_version_ >= 13.3399)
         _readBytes(4, &DD_battleRoyaleTime);
-    if (saveVersion >= 25.0599)
+    if (save_version_ >= 25.0599)
         _readBytes(1, &DD_handicap);
 
     if (!_expectBytes(patterns::HDseparator))
@@ -96,13 +96,13 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
         _readBytes(4, &players[i].DE_profileID);
         _skip(4);                                   // Should be: 00 00 00 00
         _readBytes(4, &players[i].DD_playerNumber); /// \note 不存在的话是 -1 FF FF FF FF
-        if (saveVersion < 25.2199)
+        if (save_version_ < 25.2199)
             _readBytes(4, &players[i].DD_RMRating);
-        if (saveVersion < 25.2199)
+        if (save_version_ < 25.2199)
             _readBytes(4, &players[i].DD_DMRating);
         _readBytes(1, &players[i].DE_preferRandom);
         _readBytes(1, &players[i].DE_customAI);
-        if (saveVersion >= 25.0599)
+        if (save_version_ >= 25.0599)
         {
             _skip(4);
             _readBytes(4, &players[i].handicappingLevel);
@@ -118,7 +118,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
     _readBytes(4, &DD_lobbyVisibility);
     _readBytes(1, &DE_hiddenCivs);
     _readBytes(1, &DE_matchMaking);
-    if (saveVersion >= 13.1299)
+    if (save_version_ >= 13.1299)
     {
         _readBytes(4, &DE_specDely);
         _readBytes(1, &DE_scenarioCiv);
@@ -162,7 +162,7 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
         }
     }
     _skip(4); /// \note 2a/c/d/e/f 00 00 00
-    if (saveVersion >= 25.2199)
+    if (save_version_ >= 25.2199)
     {
         _skip(4 + *(uint32_t *)_curPos * 4);
     }
@@ -192,37 +192,37 @@ void DefaultAnalyzer::_headerDEAnalyzer(int debugFlag)
         _skipDEString(); /// \todo AI FILENAMES deserve to be recorded.
         _skip(4);
     }
-    if (saveVersion >= 25.0199)
+    if (save_version_ >= 25.0199)
         _skip(8);
     DD_guid = hexStr(_curPos, 16, true);
     _readDEString(DD_lobbyName);
-    if (saveVersion >= 25.2199)
+    if (save_version_ >= 25.2199)
         _skip(8);
     _readDEString(DD_moddedDataset);
     _skip(19);
-    if (saveVersion >= 13.1299)
+    if (save_version_ >= 13.1299)
         _skip(5);
-    if (saveVersion >= 13.1699)
+    if (save_version_ >= 13.1699)
         _skip(9);
-    if (saveVersion >= 20.0599)
+    if (save_version_ >= 20.0599)
         _skip(1);
-    if (saveVersion >= 20.1599)
+    if (save_version_ >= 20.1599)
         _skip(8);
-    if (saveVersion >= 25.0599)
+    if (save_version_ >= 25.0599)
         _skip(21);
-    if (saveVersion >= 25.2199)
+    if (save_version_ >= 25.2199)
         _skip(4);
-    if (saveVersion >= 26.1599)
+    if (save_version_ >= 26.1599)
         _skip(8);
     _skipDEString();
     _skip(5);
-    if (saveVersion >= 13.1299)
+    if (save_version_ >= 13.1299)
         _skip(1);
-    if (saveVersion < 13.1699)
+    if (save_version_ < 13.1699)
     {
         _skipDEString();
         _skip(8); /// uint32 + 00 00 00 00
     }
-    if (saveVersion >= 13.1699)
+    if (save_version_ >= 13.1699)
         _skip(2);
 }

@@ -52,7 +52,7 @@ void DefaultAnalyzer::_mapDataAnalyzer(int debugFlag)
     uint32_t checkVal = *(uint32_t *)(_curPos + 7 * mapBits);
     if (IS_DE(version_code_))
     {
-        _mapTileType = (saveVersion >= 13.0299 || checkVal > 1000) ? 9 : 7;
+        _mapTileType = (save_version_ >= 13.0299 || checkVal > 1000) ? 9 : 7;
     }
     else
     {

@@ -82,7 +82,7 @@ void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
     {
         int actionSize = 24;                 // See recanalyst
         int ruleSize = 16 + 16 * actionSize; // See recanalyst
-        if (saveVersion > 11.9999)
+        if (save_version_ > 11.9999)
             ruleSize += 0x180;
 
         for (uint16_t i = 0, numRules; i < 8; i++)
@@ -101,12 +101,12 @@ void DefaultAnalyzer::_AIAnalyzer(int debugFlag)
         }
 
         _skip(1448); // 104 + 320 + 1024 \note 这里我在104个字节后发现了2624个FF，也不知道为什么，应该是1344
-        if (saveVersion >= 11.9599)
+        if (save_version_ >= 11.9599)
             _skip(1280); /// \todo 针对这个版本号边界要验证一下
         _skip(4096);     // 4096个00
     }
 
-    if (saveVersion >= 12.2999 && IS_HD(version_code_))
+    if (save_version_ >= 12.2999 && IS_HD(version_code_))
     {
         _skip(4); /// \todo 这里应该是 recanalyst 里的，需要验证。考虑到不确定性，最好加一段异常后尝试查找地图坐标位置的代码。
     }

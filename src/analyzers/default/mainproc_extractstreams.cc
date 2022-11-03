@@ -80,8 +80,14 @@ bool DefaultAnalyzer::ExtractStreams() {
     if (0 != ZipDecompress(&input_stream_[0] + headerpos, headerlen, combined_stream_))
         throw "Error when extracting header stream.";
 
+    // Mark start point of body stream
+    body_start_ = combined_stream_.size();
+
     // combine header_ and body_
-    combined_stream_.insert(combined_stream_.cend(), input_stream_.cbegin() + headerlen, input_stream_.cend());
+    combined_stream_.insert(combined_stream_.cend(), input_stream_.cbegin() + datalen, input_stream_.cend());
+
+    // Prepare cursor_
+    cursor_(0);
 
     // input stream is not intended to be use after here, release memory
     vector<uint8_t>().swap(input_stream_);
