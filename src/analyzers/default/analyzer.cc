@@ -9,35 +9,21 @@
  *
  */
 
-#include <filesystem>
 #include <sstream>
 
 #include "analyzer.h"
-#include "utils.h"
-#include "MapTools/TileStructures.h"
-
-#define STOP_ON_FAILURE \
-    if (_failedSignal)  \
-        return;
-#define TRY_PHASE2_FALLBACK \
-    if (_failedSignal)      \
-        goto PHASE2_FALLBACK;
 
 using namespace std;
 
-void DefaultAnalyzer::run() {
+void DefaultAnalyzer::Run() {
     if (!status_.stream_extracted_ && !ExtractStreams())
         throw std::string("Unable to generate combined streams.");
 
     // Start data analyzing
-    _analyze();
-
-    // Note encoding error
-    /*if (_encodingError)
-        logger_->warn("Encoding is not correct, need fix.");*/
+    Analyze();
 }
 
-void DefaultAnalyzer::_analyze() {
+void DefaultAnalyzer::Analyze() {
     //              ┌───────────────┐
     //       ┌──────┤version        │
     //       │      ├───────────────┤   Inflated header data mainly
@@ -113,20 +99,19 @@ void DefaultAnalyzer::_analyze() {
     //   2-6: Messages, ie. Instructions. Need 2-5
     AnalyzeMessages(16);
 
-    throw std::string("Stopped under refactoring.");
-
-
-PHASE2_FALLBACK:
     //   2-7: Skip trigger info. Need 2-1
     //   This is useless data, but need to get lobby start.
-    _triggerInfoAnalyzer(17);
+    SkipTriggers(17);
 
     //   2-8: Game settings part, player names first appears here (before HD/DE
     //   versions). Need 2-2
-    _gameSettingsAnalyzer(18);
+    AnalyzeGameSettings(18);
 
     //   2-9: Search initial player data postion. Need 2-5 & 2-8
-    _findInitialPlayersDataPos(19);
+    FindInitialDataPosition(19);
+
+    throw std::string("Stopped under refactoring.");
+
 
     // ************
     // * Phase 3: *
@@ -153,11 +138,4 @@ PHASE2_FALLBACK:
     // Do some additional jobs
     _guessWinner(24);
     _genRetroGuid(25);
-}
-
-bool DefaultAnalyzer::_expectBytes(const vector<uint8_t> &pattern, bool skip) {
-    bool passed = _bytecmp(_curPos, pattern.data(), pattern.size());
-    if (passed && skip)
-        _curPos += pattern.size();
-    return passed;
 }

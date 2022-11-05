@@ -19,7 +19,7 @@ void DefaultAnalyzer::AnalyzeReplay(int debug_flag) {
             >> gameSpeed
             >> 29
             >> recPlayer
-            >> numPlayers; // \note gaia included
+            >> num_players_; // \note gaia included
     if (!IS_AOK(version_code_)) // \todo AOK condition not tested
         cursor_ >> instantBuild >> cheatsEnabled;
     cursor_ >> (2 + 58); // 2: gamemode?

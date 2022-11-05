@@ -30,7 +30,7 @@ bool DefaultAnalyzer::FindEncodingPattern(const char *pattern, std::string &map_
  * \warning 不要随便更改这里的编码字符串，连大小写也不要改，其它地方的代码可能用于比对。
  */
 void DefaultAnalyzer::DetectEncoding() {
-
+    status_.encoding_detected_ = true;
     if (FindEncodingPattern(patterns::zh_pattern, embeded_mapname_, size(patterns::zh_pattern))) {
         raw_encoding_ = "cp936";
     } else if (FindEncodingPattern(patterns::zh_utf8_pattern, embeded_mapname_, size(patterns::zh_utf8_pattern))) {
@@ -67,6 +67,8 @@ void DefaultAnalyzer::DetectEncoding() {
         raw_encoding_ = "windows-1252";
     } else if (IS_HD(version_code_) || IS_DE(version_code_)) {
         raw_encoding_ = "utf-8";
+    } else {
+        status_.encoding_detected_ = false;
     }
 
     if (!raw_encoding_.empty() && !out_encoding_.empty())

@@ -75,7 +75,7 @@ These libraries are required to build MgxParser:
   ```sh
   sudo apt-get install doxygen graphviz
   ```
-  **googletest**: Required to run test.
+  **googletest**: Required for testing.
 
 All dependencies of MgxParser are bundled into the executive file after compilation.
 

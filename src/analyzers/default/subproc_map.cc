@@ -35,7 +35,7 @@ void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
 
     mapdata_ptr_ = cursor_.Ptr();
 
-    uint32_t check_val = *((uint32_t *) mapdata_ptr_ + 7 * map_bits);
+    uint32_t check_val = *(uint32_t *) (cursor_.Ptr() + 7 * map_bits);
     if (IS_DE(version_code_)) {
         maptile_type_ = (save_version_ >= 13.0299 || check_val > 1000) ? 9 : 7;
     } else {
@@ -64,4 +64,5 @@ void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
         throw std::string("Cannot find expected check value 10060/40600 in init info section.");
 
     initinfo_start_ = cursor_();
+    status_.mapdata_found_ = true;
 }

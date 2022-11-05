@@ -21,11 +21,11 @@
 using namespace std;
 
 template <typename T, typename M>
-void getMap(
-    string savePath,
-    T *analyzer,
-    uint32_t width = 300, uint32_t height = 150,
-    bool HD = false)
+void GetMap(
+        string savePath,
+        T *analyzer,
+        uint32_t width = 300, uint32_t height = 150,
+        bool HD = false)
 {
     M *mapData = (M *)analyzer->mapdata_ptr_;
 

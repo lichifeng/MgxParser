@@ -57,10 +57,6 @@ public:
     string filetype = "record"; ///< Or zip/rar/7z
     string extractedName;
 
-    // Some config parameters
-    uint16_t trailBytes = 5;               ///< 设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度
-    uint32_t easySkipBase = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
-
     // Version-related members
     uint32_t log_version_ = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
     char version_string_[8] = {'\0'};      ///< 代表游戏版本的原始字符串
@@ -137,7 +133,7 @@ public:
     // data from replay section
     uint32_t gameSpeed = UINT32_INIT; ///< \todo If de/hd, use data from de/hd-specific data
     uint16_t recPlayer; ///< \todo index or number of pov?? verify this.
-    uint8_t numPlayers; ///< \todo gaia included, DD_numPlayers first??
+    uint8_t num_players_; ///< \todo gaia included, DD_numPlayers first??
     uint8_t instantBuild;
     uint8_t cheatsEnabled = 255;
     // uint16_t gameMode;     ///< \note Unknown.
@@ -166,9 +162,9 @@ public:
     uint32_t victoryTime;
 
     // game settings
-    uint32_t mapID = UINT32_INIT;
-    uint32_t difficultyID = UINT32_INIT;
-    uint32_t lockTeams;
+    uint32_t map_id_ = UINT32_INIT;
+    uint32_t difficulty_id_ = UINT32_INIT;
+    uint32_t lock_teams_;
 
     // lobby settings
     uint32_t fogOfWar;

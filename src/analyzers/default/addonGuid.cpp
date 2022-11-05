@@ -51,7 +51,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapSize, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&population_limit_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&gameSpeed, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapID, 4); // \note Not in AOK, need a stable initialization
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&map_id_, 4); // \note Not in AOK, need a stable initialization
     for (size_t i = 0; i < _earlyMoveCnt; i++)
     {
         MGXPARSER_MD5::md5_update(&ctx, _earlyMoveCmd[i], 20);

@@ -106,19 +106,21 @@ public:
     std::size_t victory_start_ = 0;
     std::size_t scenario_start_ = 0;
     std::size_t message_start_ = 0;
+    std::size_t lobby_start_ = 0;
+
+    void Run();
 
     void Extract2Files(const string &header_path, const string &body_path);
 
+    void DrawMap(const string &path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
     ~DefaultAnalyzer() = default;
 
+
     string toJson();
 
-    void run();
 
     inline int getDebugFlag() { return _debugFlag; }
-
-    void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
 
 protected:
@@ -153,6 +155,11 @@ protected:
     // 第三阶段
     uint8_t maptile_type_ = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
     uint32_t triggerstart_search_range = 19; ///< 查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试
+    const uint8_t *initinfo_searchpattern_trail_ = nullptr;
+    uint16_t trailbyte_num_ = 5;               ///< 设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度
+    uint32_t easyskip_base_ = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
+
+    void Analyze(); ///< 录像解析的主进程
 
     void DetectVersion();
 
@@ -181,6 +188,12 @@ protected:
     bool FindEncodingPattern(const char *pattern, std::string &map_name, size_t pattern_len);
 
     void DetectEncoding();
+
+    void AnalyzeGameSettings(int debug_flag = 0);
+
+    void FindInitialDataPosition(int debug_flag = 0);
+
+    void SkipTriggers(int debug_flag = 0);
 
 
     vector<uint8_t> body_;
@@ -349,7 +362,6 @@ protected:
         }
     } ///< Skip forward n bytes. A check is deployed to avoid segment fault.
 
-    void _analyze(); ///< 录像解析的主进程
 
     /**
      * \brief      Compare two C-style strings or byte sequence.
@@ -362,22 +374,6 @@ protected:
     inline bool _bytecmp(const void *s, const void *pattern, size_t n) const {
         return 0 == memcmp(s, pattern, n);
     }
-
-    /**
-     * \brief      用于检查当前位置的特征字节是否符合预期
-     *
-     * \param      pattern             特征字节
-     */
-
-    /**
-     * \brief      用于检查当前位置的特征字节是否符合预期
-     *
-     * \param      pattern             特征字节
-     * \param      skip                检查完是否跳过这些字节
-     * \return     true                验证通过
-     * \return     false               验证失败
-     */
-    bool _expectBytes(const vector<uint8_t> &pattern, bool skip = true);
 
     /**
      * \brief      调用logger的功能打印出当前位置之后n个字节的16进制表示，用于调试
@@ -406,13 +402,9 @@ protected:
     } ///< 标记解析失败的FLAG
 
 
-    void _gameSettingsAnalyzer(int debugFlag = 0);
 
-    void _findInitialPlayersDataPos(int debugFlag = 0);
 
     void _startInfoAnalyzer(int debugFlag = 0);
-
-    void _triggerInfoAnalyzer(int debugFlag = 0);
 
     void _lobbyAnalyzer(int debugFlag = 0);
 
@@ -440,7 +432,6 @@ protected:
     vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
-    const uint8_t *_startInfoPatternTrail;
 
     const uint8_t *_startInfoPos = nullptr;
     const uint8_t *_triggerInfoPos = nullptr;

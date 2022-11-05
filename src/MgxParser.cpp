@@ -18,7 +18,7 @@ using namespace std;
 
 string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = false) {
     try {
-        a.run();
+        a.Run();
     }
     catch (std::string &s) {
         a.logger_->fatal("{}: {}", a.input_filename_, s);
@@ -37,7 +37,7 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
         uint32_t w = HD_MAP ? 900 : 300;
         uint32_t h = HD_MAP ? 450 : 150;
         try {
-            a.generateMap(mapName, w, h, mapType == HD_MAP);
+            a.DrawMap(mapName, w, h, mapType == HD_MAP);
         }
         catch (...) {
             a.logger_->warn("Failed to generate a map file.");

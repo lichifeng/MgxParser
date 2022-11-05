@@ -34,7 +34,7 @@ public:
 
     inline RECSTREAM::iterator Itr(size_t pos) { return rec_stream_.begin() + pos; }
 
-    inline RECSTREAM::iterator Itr(RECSTREAM::iterator &itr) { return current_ = itr; }
+    inline RECSTREAM::iterator Itr(RECSTREAM::iterator itr) { return current_ = itr; }
 
     inline RECSTREAM::reverse_iterator RItr(size_t pos) {
         return std::make_reverse_iterator(Itr(pos));
@@ -90,11 +90,11 @@ public:
     inline RECSTREAM &RawStream() { return rec_stream_; }
 
     // set encoding converter
-    inline void SetEncoding(const std::string& in, const std::string& out) {
+    inline void SetEncoding(const std::string &in, const std::string &out) {
         encoding_converter_ = std::make_unique<EncodingConverter>(out, in, true);
     }
 
-    void FixEncoding(std::string& s);
+    void FixEncoding(std::string &s);
 
 private:
     RECSTREAM &rec_stream_;

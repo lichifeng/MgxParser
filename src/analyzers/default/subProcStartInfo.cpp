@@ -24,7 +24,7 @@ void DefaultAnalyzer::_startInfoAnalyzer(int debugFlag)
         return;
     }
 
-    uint32_t numHeaderData = *(uint32_t *)(_startInfoPatternTrail + 1);
+    uint32_t numHeaderData = *(uint32_t *)(initinfo_searchpattern_trail_ + 1);
 
     for (auto &p : players)
     {
