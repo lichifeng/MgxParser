@@ -132,10 +132,10 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
                 >> 8
                 >> HD_customRandomMapScenarionFile
                 >> 8;
-        cursor_.BytesToHex(DD_guid, 16)
+        cursor_.Hex(DD_guid, 16)
                 >> DD_lobbyName
                 >> DD_moddedDataset;
-        cursor_.BytesToHex(HD_moddedDatasetWorkshopID, 4);
+        cursor_.Hex(HD_moddedDatasetWorkshopID, 4);
         if (dd_version_ >= 1004.9999) {
             cursor_ >> 4;
             cursor_.ScanString();

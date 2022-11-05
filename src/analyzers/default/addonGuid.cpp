@@ -11,6 +11,7 @@
 
 #include "analyzer.h"
 #include "md5/md5.h"
+#include "tools/bytestohex.h"
 
 /**
  * \brief      Guid is presented in HD/DE records, but not in older versions. Guid can be used to identify different views of same game.
@@ -68,7 +69,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
         MGXPARSER_MD5::md5_update(&ctx, &p.colorID, 1);
         MGXPARSER_MD5::md5_update(&ctx, &p.resolved_teamid_, 1);
     }
-    // \note Raw map data seems have some slite difference, but generated map file have md5 digest.
+    // \note Raw map data may have some slight difference, but generated map file have md5 digest.
     //MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)mapDataPtr, mapCoord[0] *
     //mapCoord[1] * _mapTileType);
     // ofstream mapout("test.dat", ofstream::binary);

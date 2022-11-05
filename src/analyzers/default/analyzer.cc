@@ -88,31 +88,23 @@ void DefaultAnalyzer::_analyze() {
     //   1-5: Map
     AnalyzeMap(8);
 
-    throw std::string("Stopped under refactoring.");
-
-    //   1-6: Find Startinfo
-    _findStartInfoStart(9);
-    STOP_ON_FAILURE
-
     // ************
     // * Phase 2: *
     // ************
     //   Find some key positions
     //   2-1: Trigger info start position
-    _findTriggerInfoStart(10);
-    STOP_ON_FAILURE
+    FindTrigger(10);
 
     //   2-2: Game settings start position. Need 2-1
-    _findGameSettingsStart(11);
-    STOP_ON_FAILURE
+    FindGameSettings(11);
 
     //   2-3：Disables start position. Need 2-1
-    _findDisablesStart(12);
-    TRY_PHASE2_FALLBACK
+    FindDisabledTechs(12);
 
-    //   2-4: Skip victory-related data. Need 2-3
-    _findVictoryStart(13);
-    TRY_PHASE2_FALLBACK
+    //   3-2: Victory
+    AnalyzeVictory(21);
+
+    throw std::string("Stopped under refactoring.");
 
     //   2-5: Find&Skip scenario data. Need 2-4
     //   Nothing valuable here except a filename.
@@ -147,9 +139,6 @@ void DefaultAnalyzer::_analyze() {
 
     //   3-1: Lobby data, lobby chat & some settings here. Need 2-7
     _lobbyAnalyzer(20);
-
-    //   3-2: Victory
-    _victorySettingsAnalyzer(21);
 
     //   3-3: Go back to player initial data position and rummage some useful pieces
     _startInfoAnalyzer(22);

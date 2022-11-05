@@ -1,4 +1,5 @@
 #include "cursor.h"
+#include "tools/bytestohex.h"
 
 RecCursor &RecCursor::operator()(std::size_t pos) {
     if (pos >= rec_stream_.size())
@@ -64,17 +65,11 @@ RecCursor &RecCursor::ScanString(std::string *s_ptr) {
     return *this += string_len;
 }
 
-RecCursor &RecCursor::BytesToHex(std::string &buffer, int len, bool skip) {
-    constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
-                               '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+RecCursor &RecCursor::Hex(std::string &buffer, int len, bool skip) {
+    buffer = std::move(BytesToHex(this->Ptr(), len));
 
-    std::string s(len * 2, ' ');
-    for (int i = 0; i < len; ++i) {
-        s[2 * i] = hexmap[(current_[i] & 0xF0) >> 4];
-        s[2 * i + 1] = hexmap[current_[i] & 0x0F];
-    }
-    buffer = std::move(s);
     if (skip)
         *this += len;
+
     return *this;
 }

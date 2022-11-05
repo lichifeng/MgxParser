@@ -80,7 +80,7 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
                 >> players[i].de_selected_color_
                 >> players[i].de_selected_teamid_
                 >> players[i].resolved_teamid_;
-        cursor_.BytesToHex(players[i].de_data_crc_, 8);
+        cursor_.Hex(players[i].de_data_crc_, 8);
         cursor_ >> players[i].dd_mp_gameversion_
                 >> players[i].dd_civ_id_
                 >> players[i].dd_ai_type_
@@ -167,7 +167,7 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     }
     if (save_version_ >= 25.0199)
         cursor_ >> 8;
-    cursor_.BytesToHex(DD_guid, 16) >> DD_lobbyName;
+    cursor_.Hex(DD_guid, 16) >> DD_lobbyName;
     if (save_version_ >= 25.2199)
         cursor_ >> 8;
     cursor_ >> DD_moddedDataset >> 19;

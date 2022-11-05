@@ -15,24 +15,15 @@
 #include <algorithm>
 #include "Helper.h"
 
-std::string BytesToHex(const unsigned char *&data, int len, bool skip = false);
-
 namespace patterns
 {
-    extern std::vector<uint8_t> HDseparator;
-    extern std::vector<uint8_t> HDStringSeparator;
-    extern std::vector<uint8_t> AIdataUnknown;
     extern std::vector<uint8_t> ZEROs_4096;
     extern std::vector<uint8_t> FFs_500;
-    extern std::vector<uint8_t> AIDirtyFix;
-    extern std::vector<uint8_t> gameSettingSign;
-    extern std::vector<uint8_t> gameSettingSign1;
     extern std::vector<uint8_t> separator;
     extern std::vector<uint8_t> scenarioConstantAOC;
     extern std::vector<uint8_t> scenarioConstantHD;
     extern std::vector<uint8_t> scenarioConstantAOK;
     extern std::vector<uint8_t> scenarioConstantMGX2;
-    extern std::vector<uint8_t> bodyStreamBegin;
 
     constexpr char zh_pattern[] = {
         static_cast<char>(0xb5),
@@ -186,6 +177,3 @@ namespace patterns
         static_cast<char>(0x3a),
         static_cast<char>(0x20)}; // 'Тип карты: '
 }
-
-constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
-                           '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};

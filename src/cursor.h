@@ -25,7 +25,7 @@ public:
 
     RecCursor &operator-=(long pos);
 
-    // Get pointer/interator to current position
+    // Get pointer/interator
     inline uint8_t *Ptr() { return &current_[0]; }
 
     inline RECSTREAM::iterator Itr() { return current_; }
@@ -33,6 +33,10 @@ public:
     inline RECSTREAM::iterator Itr(size_t pos) { return rec_stream_.begin() + pos; }
 
     inline RECSTREAM::iterator Itr(RECSTREAM::iterator &itr) { return current_ = itr; }
+
+    inline RECSTREAM::reverse_iterator RItr(size_t pos) {
+        return std::make_reverse_iterator(Itr(pos));
+    }
 
     // Read bytes into variable
     template<typename T>
@@ -46,9 +50,13 @@ public:
         return *this;
     }
 
+    // Peek a value
+    template<typename T>
+    inline T Peek() { return *(T *) Ptr(); }
+
     RecCursor &operator>>(std::string &s);
 
-    RecCursor &BytesToHex(std::string &buffer, int len, bool skip = true);
+    RecCursor &Hex(std::string &buffer, int len, bool skip = true);
 
     // Read/Skip string
     RecCursor &ScanString(std::string *s_ptr = nullptr);
@@ -75,6 +83,9 @@ public:
             return true;
         } else { return false; }
     }
+
+    // get underlying stream
+    inline RECSTREAM &RawStream() { return rec_stream_; }
 
 private:
     RECSTREAM &rec_stream_;

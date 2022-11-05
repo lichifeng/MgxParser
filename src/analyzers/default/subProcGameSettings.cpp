@@ -15,10 +15,9 @@
  * \brief      This method also builds some search patterns used to traverse in startinfo section
  * \todo       Game setting section is different in DE version, better look into it.
  */
-void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
-{
+void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag) {
     _debugFlag = debugFlag;
-    
+
     _curPos = _gameSettingsPos;
 
     _skip(64 + 4 + 8);
@@ -28,8 +27,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
         _readBytes(4, &mapID);
     _readBytes(4, &difficultyID);
     _readBytes(4, &lockTeams);
-    if (IS_DE(version_code_))
-    {
+    if (IS_DE(version_code_)) {
         _skip(29);
         if (save_version_ >= 13.0699)
             _skip(1);
@@ -45,10 +43,14 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
             _skip(4);
     }
 
+    // Fetch search pattern trail from first player (normally GAIA)
+    _curPos += 2 + numPlayers + 36 + 4 + 1; // \todo _curPos is initinfo_start_
+    _skipPascalString();
+    _startInfoPatternTrail = _curPos;
+
     uint16_t nameLen;
     const uint8_t *namePtr;
-    for (size_t i = 0; i < 9; i++)
-    {
+    for (size_t i = 0; i < 9; i++) {
         players[i].slot = i;
         namePtr = _curPos + 8;
         // 先获得名字长度，再把 len + lenName + trailBytes 放到 pattern 里，
@@ -63,8 +65,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
         // 注3：startinfo中的字符串有\0结尾，这里没有
 
         _readBytes(4, &players[i].index);
-        if (players[i].name.length() > 0)
-        {
+        if (players[i].name.length() > 0) {
             // Data from HD/DE header has higher priority
             _skip(4);
             nameLen = players[i].name.length() + 1;
@@ -73,19 +74,14 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
             memcpy(players[i].searchPattern.data() + 2, players[i].name.data(), nameLen);
             memcpy(players[i].searchPattern.data() + 2 + nameLen, _startInfoPatternTrail, trailBytes);
             _skipPascalString(true);
-        }
-        else
-        {
+        } else {
             _readBytes(4, &players[i].type);
             // 两处字符串前面有\0，后面有的版本有，有的版本没有，需要判断处理
-            nameLen = *(uint32_t *)namePtr;
-            if ('\0' == *(namePtr + 4 + nameLen - 1))
-            {
+            nameLen = *(uint32_t *) namePtr;
+            if ('\0' == *(namePtr + 4 + nameLen - 1)) {
                 players[i].searchPattern.resize(2 + nameLen + trailBytes);
                 memcpy(players[i].searchPattern.data() + 2, namePtr + 4, nameLen);
-            }
-            else
-            {
+            } else {
                 nameLen += 1;
                 players[i].searchPattern.resize(2 + nameLen + trailBytes);
                 players[i].searchPattern[2 + nameLen - 1] = '\0';
@@ -97,8 +93,7 @@ void DefaultAnalyzer::_gameSettingsAnalyzer(int debugFlag)
         }
 
         // \note string::back(): This function shall not be called on empty strings.
-        if (!players[i].name.empty() && '\0' == players[i].name.back())
-        {
+        if (!players[i].name.empty() && '\0' == players[i].name.back()) {
             players[i].name.resize(players[i].name.size() - 1);
         }
     }

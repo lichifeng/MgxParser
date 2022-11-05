@@ -95,11 +95,16 @@ public:
     std::size_t body_start_ = 0;
     // 第二阶段结束
 
-    // 第三阶段：开始读需要连续不能出错的部分
+    // 第三阶段：开始解析
     std::size_t version_end_ = 0;
     std::size_t ai_start_ = 0;
     std::size_t replay_start_ = 0;
     std::size_t map_start_ = 0;
+    std::size_t initinfo_start_ = 0;
+    std::size_t trigger_start_ = 0;
+    std::size_t gamesettings_start_ = 0;
+    std::size_t disabledtechs_start_ = 0;
+    std::size_t victory_start_ = 0;
 
 
     ~DefaultAnalyzer() {
@@ -150,7 +155,7 @@ public:
      * \param      headerPath       filename of generated header file
      * \param      body             filename of generated body file
      */
-    void extract(const string &headerPath, const string &bodyPath) const;
+    void extract(const string &headerPath, const string &bodyPath);
 
 protected:
     // 第一阶段
@@ -182,6 +187,9 @@ protected:
     // 第二阶段结束
 
     // 第三阶段
+    uint8_t maptile_type_ = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
+    uint32_t triggerstart_search_range = 19; ///< 查找triggerinfo位置时的参数，较早版本有0和1，DE中一般为11，如果找不到可以考虑放大范围试试
+
     void DetectVersion();
 
     void AnalyzeDEHeader(int debugFlag = 0);
@@ -193,6 +201,16 @@ protected:
     void AnalyzeReplay(int debug_flag = 0);
 
     void AnalyzeMap(int debug_flag = 0);
+
+    void FindInitInfoStart(int debug_flag = 0);
+
+    void FindTrigger(int debug_flag = 0);
+
+    void FindDisabledTechs(int debug_flag = 0);
+
+    void FindGameSettings(int debug_flag = 0);
+
+    void AnalyzeVictory(int debug_flag = 0);
 
 
     vector<uint8_t> body_;
@@ -435,25 +453,12 @@ protected:
         }
     } ///< 标记解析失败的FLAG
 
-
-    void _findStartInfoStart(int debugFlag = 0);
-
-    void _findTriggerInfoStart(int debugFlag = 0);
-
-    void _findDisablesStart(int debugFlag = 0);
-
-    void _findGameSettingsStart(int debugFlag = 0);
-
-    void _findVictoryStart(int debugFlag = 0);
-
     void
     _findScenarioHeaderStart(int debugFlag = 0, bool brutal = false, float lowerLimit = 1.35, float upperLimit = 1.55);
 
     void _scenarioHeaderAnalyzer(int debugFlag = 0);
 
     void _messagesAnalyzer(int debugFlag = 0);
-
-    void _victorySettingsAnalyzer(int debugFlag = 0);
 
     void _gameSettingsAnalyzer(int debugFlag = 0);
 
@@ -490,7 +495,6 @@ protected:
 
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
     const uint8_t *_startInfoPatternTrail;
-    uint8_t _mapTileType = 0; ///< \note 7: DETile1; 9: DETile2; 4: Tile1; 2: TileLegacy. This value is size of structure.
 
     const uint8_t *_startInfoPos = nullptr;
     const uint8_t *_triggerInfoPos = nullptr;

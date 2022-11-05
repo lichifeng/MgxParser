@@ -10,9 +10,6 @@
  */
 
 #include "analyzer.h"
-#include "MapTools/MapTools.h"
-
-using namespace std;
 
 void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
     status_.debug_flag_ = debug_flag;
@@ -34,45 +31,37 @@ void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
             cursor_ >> (1275 + map_bits);
         cursor_ >> num_floats >> (num_floats * 4 + 4);
     }
-    cursor_ >> allVisible >> 1; // fog of war
+    cursor_ >> all_visible_ >> 1; // fog of war
 
     mapdata_ptr_ = cursor_.Ptr();
 
-    uint32_t checkVal = *(uint32_t *) (_curPos + 7 * map_bits);
+    uint32_t check_val = *((uint32_t *) mapdata_ptr_ + 7 * map_bits);
     if (IS_DE(version_code_)) {
-        _mapTileType = (save_version_ >= 13.0299 || checkVal > 1000) ? 9 : 7;
+        maptile_type_ = (save_version_ >= 13.0299 || check_val > 1000) ? 9 : 7;
     } else {
-        _mapTileType = (_curPos[0] == 255) ? 4 : 2;
+        maptile_type_ = (cursor_.Ptr()[0] == 255) ? 4 : 2;
     }
-    _skip(_mapTileType * map_bits);
+    cursor_ >> (map_bits * maptile_type_);
 
-    int32_t numData, numObstructions;
-    _readBytes(4, &numData);
-    _skip(4 + numData * 4);
-    for (int i = 0; i < numData; i++) {
-        _readBytes(4, &numObstructions);
-        _skip(numObstructions * 8);
+    int32_t num_data, num_obstructions;
+    cursor_ >> num_data >> (4 + num_data * 4);
+    for (int i = 0; i < num_data; i++) {
+        cursor_ >> num_obstructions >> (num_obstructions * 8);
     }
     int32_t visibilityMapSize[2];
-    _readBytes(8, visibilityMapSize);
-    _skip(visibilityMapSize[0] * visibilityMapSize[1] * 4);
-}
+    cursor_ >> visibilityMapSize >> (visibilityMapSize[0] * visibilityMapSize[1] * 4);
 
-///< \todo 高版本的DE录像好像不能得到正确的初始视角，需要修复
-void DefaultAnalyzer::generateMap(const string path, uint32_t width, uint32_t height, bool hd) {
-    if (7 == _mapTileType) {
-        return getMap<DefaultAnalyzer, DETile1>(path, this, width, height, hd);
-    } else if (9 == _mapTileType) {
-        return getMap<DefaultAnalyzer, DETile2>(path, this, width, height, hd);
-    } else if (4 == _mapTileType) {
-        return getMap<DefaultAnalyzer, Tile1>(path, this, width, height, hd);
-    } else if (2 == _mapTileType) {
-        return getMap<DefaultAnalyzer, TileLegacy>(path, this, width, height, hd);
-    } else {
-        logger_->warn(
-                "{}(): Unknown _mapTileType.",
-                __FUNCTION__);
-        _sendExceptionSignal();
-        return;
-    }
+    // Find start point of init info
+    cursor_ >> restore_time_;
+
+    uint32_t num_particles;
+    cursor_ >> num_particles >> (27 * num_particles);
+
+    // A checkpoint, expecting 10060 with AOK and 40600 with higher version
+    // borrow local var check_val
+    cursor_ >> check_val;
+    if (40600 != check_val && 10060 != check_val) // 10060 in AOK
+        throw std::string("Cannot find expected check value 10060/40600 in init info section.");
+
+    initinfo_start_ = cursor_();
 }

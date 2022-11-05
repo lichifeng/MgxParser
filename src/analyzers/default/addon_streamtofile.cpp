@@ -9,15 +9,14 @@
  *
  */
 
-#include "zlib.h"
 #include "analyzer.h"
 
-void DefaultAnalyzer::extract(const string &headerPath, const string &bodyPath) const {
+void DefaultAnalyzer::extract(const string &headerPath, const string &bodyPath) {
     ofstream headerOut(headerPath, ofstream::binary);
     ofstream bodyOut(bodyPath, ofstream::binary);
 
-    headerOut.write((char *) header_.data(), header_.size());
-    bodyOut.write((char *) body_.data(), body_.size());
+    headerOut.write((char *)cursor_(0).Ptr(), body_start_);
+    bodyOut.write((char *)cursor_(0).Ptr(), cursor_.RawStream().size() - body_start_);
 
     headerOut.close();
     bodyOut.close();
