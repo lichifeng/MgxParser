@@ -13,7 +13,7 @@
 
 void DefaultAnalyzer::AnalyzeVictory(int debug_flag) {
     status_.debug_flag_ = debug_flag;
-    cursor_(disabledtechs_start_ - 12544 - 44)
+    cursor_(victory_start_ = disabledtechs_start_ - 12544 - 44)
             >> 4
             >> victoryIsConquest
             >> 4

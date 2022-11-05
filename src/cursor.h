@@ -5,7 +5,7 @@
 
 #include <vector>
 #include "tools/searcher.h"
-#include "encoding_converter.h"
+#include "tools/encoding_converter.h"
 
 class RecCursor {
 public:
@@ -24,6 +24,8 @@ public:
     RecCursor &operator+=(long pos);
 
     RecCursor &operator-=(long pos);
+
+    inline RecCursor &operator--() { return *this -= 1; }
 
     // Get pointer/interator
     inline uint8_t *Ptr() { return &current_[0]; }
@@ -86,6 +88,13 @@ public:
 
     // get underlying stream
     inline RECSTREAM &RawStream() { return rec_stream_; }
+
+    // set encoding converter
+    inline void SetEncoding(const std::string& in, const std::string& out) {
+        encoding_converter_ = std::make_unique<EncodingConverter>(out, in, true);
+    }
+
+    void FixEncoding(std::string& s);
 
 private:
     RECSTREAM &rec_stream_;

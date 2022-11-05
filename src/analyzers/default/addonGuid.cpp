@@ -47,7 +47,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)version_string_, 8);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&save_version_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&log_version_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&scenarioVersion, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&scenario_version_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapSize, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&population_limit_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&gameSpeed, 4);

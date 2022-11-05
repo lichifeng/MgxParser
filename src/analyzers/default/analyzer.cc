@@ -101,26 +101,22 @@ void DefaultAnalyzer::_analyze() {
     //   2-3：Disables start position. Need 2-1
     FindDisabledTechs(12);
 
-    //   3-2: Victory
+    //   2-4: Victory
     AnalyzeVictory(21);
 
-    throw std::string("Stopped under refactoring.");
-
-    //   2-5: Find&Skip scenario data. Need 2-4
+    //   2-5: Find&Skip scenario data. Need victory start detected.
     //   Nothing valuable here except a filename.
     //   What is really needed is instructions data after this section,
     //   which is key to detect file encoding.
-    _findScenarioHeaderStart(14);
-    TRY_PHASE2_FALLBACK
-
-    _scenarioHeaderAnalyzer(15);
-    TRY_PHASE2_FALLBACK
+    AnalyzeScenario(14);
 
     //   2-6: Messages, ie. Instructions. Need 2-5
-    _messagesAnalyzer(16);
-    // TRY_PHASE2_FALLBACK
+    AnalyzeMessages(16);
 
-    PHASE2_FALLBACK:
+    throw std::string("Stopped under refactoring.");
+
+
+PHASE2_FALLBACK:
     //   2-7: Skip trigger info. Need 2-1
     //   This is useless data, but need to get lobby start.
     _triggerInfoAnalyzer(17);

@@ -33,7 +33,6 @@
 #include "status.h"
 #include "cursor.h"
 #include "DataModels/DataModel.h"
-#include "encoding_converter.h"
 #include "Logger.h"
 #include "utils.h"
 #include "bodyProcessors/helpers.h"
@@ -105,11 +104,13 @@ public:
     std::size_t gamesettings_start_ = 0;
     std::size_t disabledtechs_start_ = 0;
     std::size_t victory_start_ = 0;
+    std::size_t scenario_start_ = 0;
+    std::size_t message_start_ = 0;
+
+    void Extract2Files(const string &header_path, const string &body_path);
 
 
-    ~DefaultAnalyzer() {
-        delete _encodingConverter;
-    }
+    ~DefaultAnalyzer() = default;
 
     string toJson();
 
@@ -119,43 +120,6 @@ public:
 
     void generateMap(const string path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
-    ///< Convert a string from record file encoding to specified output
-    ///< encoding. Input string not necessarily a member of this class, so its
-    ///< a public function.
-
-    /**
-     * \brief      将输入的字符串转换成设定的编码（一般是UTF-8）
-     * \todo       正在考虑是否将编码转换的功能全部移到JSON输出前去，改用boost.locale库，Analyzer里只读原始编码的字符串？
-     * \param      s                   要转换的字符串
-     * \return     string&             转换后的字符串（是输入字符串的一个引用）
-     */
-    inline string &fixEncoding(string &s) {
-        if (0 == s.size())
-            return s;
-
-        if (0 == rawEncoding.compare(outEncoding))
-            return s;
-
-        try {
-            if (nullptr != _encodingConverter)
-                _encodingConverter->convert(s, s);
-        }
-        catch (const exception &e) {
-            if (!_encodingError)
-                _encodingError = true;
-            _sendExceptionSignal();
-        }
-
-        return s;
-    }
-
-    /**
-     * \brief      Extract header&body streams into separate files
-     *
-     * \param      headerPath       filename of generated header file
-     * \param      body             filename of generated body file
-     */
-    void extract(const string &headerPath, const string &bodyPath);
 
 protected:
     // 第一阶段
@@ -202,8 +166,6 @@ protected:
 
     void AnalyzeMap(int debug_flag = 0);
 
-    void FindInitInfoStart(int debug_flag = 0);
-
     void FindTrigger(int debug_flag = 0);
 
     void FindDisabledTechs(int debug_flag = 0);
@@ -211,6 +173,14 @@ protected:
     void FindGameSettings(int debug_flag = 0);
 
     void AnalyzeVictory(int debug_flag = 0);
+
+    void AnalyzeScenario(int debug_flag = 0, bool brutal = false, float lower_limit = 1.35, float upper_limit = 1.55);
+
+    void AnalyzeMessages(int debug_flag = 0);
+
+    bool FindEncodingPattern(const char *pattern, std::string &map_name, size_t pattern_len);
+
+    void DetectEncoding();
 
 
     vector<uint8_t> body_;
@@ -291,8 +261,6 @@ protected:
         s.assign((char *) _curPos, lenStr);
         _skip(lenStr);
 
-        if (convertEncoding)
-            fixEncoding(s);
     }
 
     /**
@@ -427,22 +395,6 @@ protected:
         logger_->logHex(n, _curStream->begin() + _distance(), _distance(), file, line);
     }
 
-    /**
-     * \brief      Used to find key bytes represents "Map name: " to determine
-     * string encoding of record.
-     *
-     * \param      pattern             Key characters represents "map name:" in
-     * different languages
-     * \param      mapName             reference to embededMapName
-     * \param      patternLen
-     * \return     true
-     * \return     false
-     */
-    bool _findEncodingPattern(const char *pattern, std::string &mapName,
-                              size_t patternLen);
-
-    void _guessEncoding(); ///< 尝试推断录像文件中字符串的原始编码
-
     void _sendExceptionSignal(bool throwException = false, string msg = "") {
         _failedSignal = true;
         status_old_ = throwException ? "Aborted" : "Warning";
@@ -453,12 +405,6 @@ protected:
         }
     } ///< 标记解析失败的FLAG
 
-    void
-    _findScenarioHeaderStart(int debugFlag = 0, bool brutal = false, float lowerLimit = 1.35, float upperLimit = 1.55);
-
-    void _scenarioHeaderAnalyzer(int debugFlag = 0);
-
-    void _messagesAnalyzer(int debugFlag = 0);
 
     void _gameSettingsAnalyzer(int debugFlag = 0);
 
@@ -505,11 +451,8 @@ protected:
     const uint8_t *_messagesStartPos = nullptr;
     const uint8_t *_lobbyStartPos = nullptr;
 
-    EncodingConverter *_encodingConverter = nullptr;
-
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
-    bool _encodingError = false;
 
     const uint8_t *_earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
     uint32_t _earlyMoveTime[EARLYMOVE_USED];

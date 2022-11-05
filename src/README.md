@@ -13,7 +13,7 @@ One takes a record file path as input and returns a JSON string contains
 important information about this record.  
 The other accepts a byte(uint8_t) array and parses the data.
 
-If input is a zip archive, MgxParser will try to extract first file in the
+If input is a zip archive, MgxParser will try to Extract2Files first file in the
 archive and parse it as a record. This function is intended to tackle compressed
 record files from old version of aocrec.com.
 

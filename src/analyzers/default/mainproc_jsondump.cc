@@ -30,8 +30,8 @@ string DefaultAnalyzer::toJson()
     if (FLOAT_INIT != save_version_)
         j["version"]["saveVer"] = save_version_;
 
-    if (FLOAT_INIT != scenarioVersion)
-        j["version"]["scenarioVersion"] = scenarioVersion;
+    if (FLOAT_INIT != scenario_version_)
+        j["version"]["scenarioVersion"] = scenario_version_;
 
     if (FLOAT_INIT != dd_version_)
         j["version"]["newVer"] = dd_version_;
@@ -51,7 +51,7 @@ string DefaultAnalyzer::toJson()
     j["filename"] = input_filename_;
     if (!extractedName.empty())
         j["extractedName"] = extractedName;
-    j["rawEncoding"] = rawEncoding;
+    j["rawEncoding"] = raw_encoding_;
     j["speed"] = readLang(zh::speed, FLOAT_INIT == dd_speed_ ? gameSpeed : (uint32_t)(dd_speed_ * 1000));
     if (UINT32_INIT != dd_victorytype_id_)
         j["victory"]["type"] = readLang(zh::victoryTypes, dd_victorytype_id_);

@@ -54,13 +54,7 @@ RecCursor &RecCursor::ScanString(std::string *s_ptr) {
     else
         s_ptr->assign((const char *) this->Ptr(), string_len);
 
-    if (!s_ptr->empty() && encoding_converter_) {
-        try {
-            encoding_converter_->convert(*s_ptr, *s_ptr);
-        } catch (...) {
-            *s_ptr = "<encoding error>";
-        }
-    }
+    FixEncoding(*s_ptr);
 
     return *this += string_len;
 }
@@ -72,4 +66,14 @@ RecCursor &RecCursor::Hex(std::string &buffer, int len, bool skip) {
         *this += len;
 
     return *this;
+}
+
+void RecCursor::FixEncoding(std::string &s) {
+    if (!s.empty() && encoding_converter_) {
+        try {
+            encoding_converter_->Convert(s, s);
+        } catch (...) {
+            s = "<encoding error>";
+        }
+    }
 }

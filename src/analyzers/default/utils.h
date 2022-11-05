@@ -17,14 +17,6 @@
 
 namespace patterns
 {
-    extern std::vector<uint8_t> ZEROs_4096;
-    extern std::vector<uint8_t> FFs_500;
-    extern std::vector<uint8_t> separator;
-    extern std::vector<uint8_t> scenarioConstantAOC;
-    extern std::vector<uint8_t> scenarioConstantHD;
-    extern std::vector<uint8_t> scenarioConstantAOK;
-    extern std::vector<uint8_t> scenarioConstantMGX2;
-
     constexpr char zh_pattern[] = {
         static_cast<char>(0xb5),
         static_cast<char>(0xd8),

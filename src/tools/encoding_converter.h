@@ -34,8 +34,8 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
-
-#pragma once
+#ifndef MGXPARSER_ENCODINGCONVERTER_H_
+#define MGXPARSER_ENCODINGCONVERTER_H_
 
 #include <cerrno>
 #include <iconv.h>
@@ -46,10 +46,8 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 /**
  * @brief      用于编码转换的的工具，本质上是对 iconv 的一个封装。\n
  *             使用前需要创建一个 EncodingConverter 类的实体，指定源编码和转换后的编码。
- *
  */
-class EncodingConverter
-{
+class EncodingConverter {
 public:
     EncodingConverter();
 
@@ -65,28 +63,24 @@ public:
                       const std::string &in_encode,
                       bool ignore_error = false,
                       size_t buf_size = 1024)
-        : ignore_error_(ignore_error),
-          buf_size_(buf_size)
-    {
-        if (buf_size == 0)
-        {
-            throw std::runtime_error("buffer size must be greater than zero");
+            : ignore_error_(ignore_error),
+              buf_size_(buf_size) {
+        if (buf_size == 0) {
+            throw std::runtime_error("Buffer size must be greater than zero.");
         }
 
         iconv_t conv = ::iconv_open(out_encode.c_str(), in_encode.c_str());
-        if (conv == (iconv_t)-1)
-        {
+        if (conv == (iconv_t) -1) {
             if (errno == EINVAL)
                 throw std::runtime_error(
-                    "not supported from " + in_encode + " to " + out_encode);
+                        "Not supported from " + in_encode + " to " + out_encode);
             else
-                throw std::runtime_error("unknown error");
+                throw std::runtime_error("Unknown error");
         }
         iconv_ = conv;
     }
 
-    ~EncodingConverter()
-    {
+    ~EncodingConverter() {
         iconv_close(iconv_);
     }
 
@@ -96,8 +90,7 @@ public:
      * @param      input             源字符串（引用）
      * @param      output            转换后输出的字符串（引用）
      */
-    void convert(const std::string &input, std::string &output) const
-    {
+    void Convert(const std::string &input, std::string &output) const {
         // copy the string to a buffer as iconv function requires a non-const char
         // pointer.
         std::vector<char> in_buf(input.begin(), input.end());
@@ -106,26 +99,19 @@ public:
 
         std::vector<char> buf(buf_size_);
         std::string dst;
-        while (0 < src_size)
-        {
+        while (0 < src_size) {
             char *dst_ptr = &buf[0];
             size_t dst_size = buf.size();
             size_t res = ::iconv(iconv_, &src_ptr, &src_size, &dst_ptr, &dst_size);
-            if (res == (size_t)-1)
-            {
-                if (errno == E2BIG)
-                {
+            if (res == (size_t) -1) {
+                if (errno == E2BIG) {
                     // ignore this error
-                }
-                else if (ignore_error_)
-                {
+                } else if (ignore_error_) {
                     // skip character
                     ++src_ptr;
                     --src_size;
-                }
-                else
-                {
-                    check_convert_error();
+                } else {
+                    CheckConvertError();
                 }
             }
             dst.append(&buf[0], buf.size() - dst_size);
@@ -134,15 +120,13 @@ public:
     }
 
 private:
-    void check_convert_error() const
-    {
-        switch (errno)
-        {
-        case EILSEQ:
-        case EINVAL:
-            throw std::runtime_error("invalid multibyte chars");
-        default:
-            throw std::runtime_error("unknown error");
+    void CheckConvertError() const {
+        switch (errno) {
+            case EILSEQ:
+            case EINVAL:
+                throw std::runtime_error("invalid multibyte chars");
+            default:
+                throw std::runtime_error("Unknown error");
         }
     }
 
@@ -150,3 +134,5 @@ private:
     bool ignore_error_;
     const size_t buf_size_;
 };
+
+#endif //MGXPARSER_ENCODINGCONVERTER_H_

@@ -11,9 +11,9 @@
 
 #include "analyzer.h"
 
-void DefaultAnalyzer::extract(const string &headerPath, const string &bodyPath) {
-    ofstream headerOut(headerPath, ofstream::binary);
-    ofstream bodyOut(bodyPath, ofstream::binary);
+void DefaultAnalyzer::Extract2Files(const string &header_path, const string &body_path) {
+    ofstream headerOut(header_path, ofstream::binary);
+    ofstream bodyOut(body_path, ofstream::binary);
 
     headerOut.write((char *)cursor_(0).Ptr(), body_start_);
     bodyOut.write((char *)cursor_(0).Ptr(), cursor_.RawStream().size() - body_start_);

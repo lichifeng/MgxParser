@@ -152,7 +152,7 @@ public:
     uint32_t restore_time_;
 
     // data from scenario header
-    float scenarioVersion = FLOAT_INIT;
+    float scenario_version_ = FLOAT_INIT;
     string scenarioFilename;
     string instructions;
 
@@ -181,15 +181,15 @@ public:
     int32_t DE_mapSeed;
 
     // other data
-    string embededMapName; ///< Map name extracted from instructions, not mapped with raw number
+    string embeded_mapname_; ///< Map name extracted from instructions, not mapped with raw number
 
     // data from body
     uint32_t duration = 0;
     uint32_t isMultiplayer;
     uint32_t syncChecksumInterval = 500;
 
-    string rawEncoding = RAW_ENCODING; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
-    string outEncoding = OUT_ENCODING;
+    string raw_encoding_ = RAW_ENCODING; // \note GB18030是为兼容性考虑。这里rawEncoding不能和outEncoding一样，有地方会用这两个相等来路过转换
+    string out_encoding_ = OUT_ENCODING;
     // string playDate;                       ///< 游戏发生时间，对老录像只能推断 \todo
     ///< 有时需要从上传时间来推断，是否放在更外层的类里面？
     string message;                        ///< 对 \p status_old_ 的具体说明

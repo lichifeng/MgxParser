@@ -45,7 +45,7 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     }
 
     if (extractHB)
-        a.extract("header.dat", "body.dat");
+        a.Extract2Files("header.dat", "body.dat");
 
     return a.toJson();
 }
