@@ -7,17 +7,17 @@ bool DefaultAnalyzer::LoadFile()
 	auto inputpath = std::filesystem::path(inputpath_);
 
 	if (!std::filesystem::exists(inputpath))
-		throw "File not exists.";
+		throw std::string("File not exists.");
 
 	input_filename_ = inputpath.filename().generic_string();
 	input_size_ = filesystem::file_size(inputpath);
 	if (input_size_ < MIN_SIZE)
-		throw "Filesize is too small.";
+		throw std::string("Filesize is too small.");
 
 	input_file_.open(inputpath_, std::ios::in | std::ios::binary);
 
 	if (!input_file_.is_open())
-		throw "Failed to open file.";
+		throw std::string("Filesize is too small.");
 
     // Stop eating new lines in binary mode!!!
     input_file_.unsetf(std::ios::skipws);

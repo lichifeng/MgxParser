@@ -58,8 +58,8 @@ void DefaultAnalyzer::_guessWinner(int debugFlag)
             credit = p.resigned;
             allLived = false;
         }
-        p.resolvedTeamID = 1 == p.resolvedTeamID ? 10 + p.index : p.resolvedTeamID;
-        indexTeam[p.index] = p.resolvedTeamID;
+        p.resolved_teamid_ = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
+        indexTeam[p.index] = p.resolved_teamid_;
         if (credit > indexMax[p.index])
             indexMax[p.index] = credit;
     }
@@ -100,7 +100,7 @@ void DefaultAnalyzer::_guessWinner(int debugFlag)
         if (!p.valid())
             continue;
 
-        found = winnerCredits.find(p.resolvedTeamID);
+        found = winnerCredits.find(p.resolved_teamid_);
         if (found != winnerCredits.end() && found->second.avg == creditMax && !(p.slot == recPlayer && allLived))
             p.isWinner = true;
     }

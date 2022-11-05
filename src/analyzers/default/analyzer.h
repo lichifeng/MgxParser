@@ -68,7 +68,7 @@ public:
         if (LoadFile())
             status_.input_loaded_ = true;
         else
-            throw "Unexpected error in file loading process.";
+            throw std::string("Unable to generate combined streams.");
     }
 
     DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string filename = "")
@@ -79,7 +79,7 @@ public:
         if (input_size_ > MIN_SIZE)
             status_.input_loaded_ = true;
         else
-            throw "Size of input stream is too small.";
+            throw std::string("Unable to generate combined streams.");
     }
 
     // 第一阶段结束，自以往后，都只需要操作input_cursor_
@@ -90,14 +90,16 @@ public:
     // 如果有，则再次解压，获得header_。body_只要复制就能获得。
     // 其实可以不用复制，但是为了操作的统一，还是这样做了。
     bool ExtractStreams();
+
     std::size_t header_start_ = 0;
     std::size_t body_start_ = 0;
     // 第二阶段结束
 
     // 第三阶段：开始读需要连续不能出错的部分
-
-
-
+    std::size_t version_end_ = 0;
+    std::size_t ai_start_ = 0;
+    std::size_t replay_start_ = 0;
+    std::size_t map_start_ = 0;
 
 
     ~DefaultAnalyzer() {
@@ -180,16 +182,23 @@ protected:
     // 第二阶段结束
 
     // 第三阶段
+    void DetectVersion();
 
+    void AnalyzeDEHeader(int debugFlag = 0);
+
+    void AnalyzeHDHeader(int debugFlag = 0);
+
+    void AnalyzeAi(int debugFlag = 0);
+
+    void AnalyzeReplay(int debug_flag = 0);
+
+    void AnalyzeMap(int debug_flag = 0);
 
 
     vector<uint8_t> body_;
     vector<uint8_t> header_;
 
     std::string status_old_ = "good";
-
-    size_t _bodySize;        ///< body部分的长度(bytes)
-
 
 
     /**
@@ -356,8 +365,6 @@ protected:
 
     void _analyze(); ///< 录像解析的主进程
 
-    int _setVersionCode(); ///< 这个不是原始数据，是自己归纳出的一个版本识别特征码，后面便于判断版本
-
     /**
      * \brief      Compare two C-style strings or byte sequence.
      *
@@ -428,15 +435,6 @@ protected:
         }
     } ///< 标记解析失败的FLAG
 
-    void _headerHDAnalyzer(int debugFlag = 0);
-
-    void _headerDEAnalyzer(int debugFlag = 0);
-
-    void _AIAnalyzer(int debugFlag = 0);
-
-    void _replayAnalyzer(int debugFlag = 0);
-
-    void _mapDataAnalyzer(int debugFlag = 0);
 
     void _findStartInfoStart(int debugFlag = 0);
 

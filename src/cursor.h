@@ -15,20 +15,31 @@ public:
     // Go to position
     RecCursor &operator()(std::size_t pos);
 
+    RecCursor &operator()(RECSTREAM::iterator &itr) {
+        current_ = itr;
+        return *this;
+    }
+
     // Go forward/backward by n
     RecCursor &operator+=(long pos);
 
     RecCursor &operator-=(long pos);
 
-    // Get pointer to current position
+    // Get pointer/interator to current position
     inline uint8_t *Ptr() { return &current_[0]; }
+
+    inline RECSTREAM::iterator Itr() { return current_; }
+
+    inline RECSTREAM::iterator Itr(size_t pos) { return rec_stream_.begin() + pos; }
+
+    inline RECSTREAM::iterator Itr(RECSTREAM::iterator &itr) { return current_ = itr; }
 
     // Read bytes into variable
     template<typename T>
     RecCursor &operator>>(T &v) {
         auto T_size = sizeof(T);
         if ((*this)() + T_size > rec_stream_.size())
-            throw "Cursor go out of range when reading into a variable.";
+            throw std::string("Cursor go out of range when reading into a variable.");
 
         memcpy(&v, &current_[0], T_size);
         current_ += T_size;
@@ -37,10 +48,19 @@ public:
 
     RecCursor &operator>>(std::string &s);
 
-    // Alias to &=, useful when chaining
-    inline RecCursor &operator>>(long n) {
+    RecCursor &BytesToHex(std::string &buffer, int len, bool skip = true);
+
+    // Read/Skip string
+    RecCursor &ScanString(std::string *s_ptr = nullptr);
+
+    inline RecCursor &operator>>=(long n) {
         *this += n;
         return *this;
+    }
+
+    // skip n bytes, alias to >>=, useful when chaining
+    inline RecCursor &operator>>(long &&n) {
+        return *this >>= n;
     }
 
     // Tell current offset

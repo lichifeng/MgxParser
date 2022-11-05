@@ -2,7 +2,7 @@
 
 RecCursor &RecCursor::operator()(std::size_t pos) {
     if (pos >= rec_stream_.size())
-        throw "Cursor tried to go out of range.";
+        throw std::string("Cursor tried to go out of range.");
     current_ = rec_stream_.begin() + pos;
     return *this;
 }
@@ -10,7 +10,7 @@ RecCursor &RecCursor::operator()(std::size_t pos) {
 RecCursor &RecCursor::operator+=(long pos) {
     current_ += pos;
     if (current_ > rec_stream_.end() || current_ < rec_stream_.begin())
-        throw "Cursor tried to go out of range with '+='.";
+        throw std::string("Cursor tried to go out of range with '+='.");
     return *this;
 }
 
@@ -19,6 +19,10 @@ RecCursor &RecCursor::operator-=(long pos) {
 }
 
 RecCursor &RecCursor::operator>>(std::string &s) {
+    return ScanString(&s);
+}
+
+RecCursor &RecCursor::ScanString(std::string *s_ptr) {
     auto l = (uint16_t *) this->Ptr();
     uint16_t header_len, string_len;
     if (2656 == l[0]) { // de string
@@ -40,21 +44,37 @@ RecCursor &RecCursor::operator>>(std::string &s) {
     if (string_len > 3000)
         return *this;
 
+    if (nullptr == s_ptr)
+        return *this += string_len;
+
     // Assign bytes to string
-    if ('\0' == this->Ptr()[string_len - 1])
-        s.assign((const char *) this->Ptr(), string_len - 1);
+    if (string_len && '\0' == this->Ptr()[string_len - 1])
+        s_ptr->assign((const char *) this->Ptr(), string_len - 1);
     else
-        s.assign((const char *) this->Ptr(), string_len);
+        s_ptr->assign((const char *) this->Ptr(), string_len);
 
-    *this += string_len;
-
-    if (!s.empty() && encoding_converter_) {
+    if (!s_ptr->empty() && encoding_converter_) {
         try {
-            encoding_converter_->convert(s, s);
+            encoding_converter_->convert(*s_ptr, *s_ptr);
         } catch (...) {
-            s = "<encoding error>";
+            *s_ptr = "<encoding error>";
         }
     }
 
+    return *this += string_len;
+}
+
+RecCursor &RecCursor::BytesToHex(std::string &buffer, int len, bool skip) {
+    constexpr char hexmap[] = {'0', '1', '2', '3', '4', '5', '6', '7',
+                               '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
+
+    std::string s(len * 2, ' ');
+    for (int i = 0; i < len; ++i) {
+        s[2 * i] = hexmap[(current_[i] & 0xF0) >> 4];
+        s[2 * i + 1] = hexmap[current_[i] & 0x0F];
+    }
+    buffer = std::move(s);
+    if (skip)
+        *this += len;
     return *this;
 }

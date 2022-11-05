@@ -21,7 +21,7 @@ TEST(CURSOR_TEST, MAIN) {
 
     EXPECT_EQ(test_cursor(), 0);
     EXPECT_EQ(test_cursor(testpos)(), testpos);
-    EXPECT_THROW(test_cursor(test_stream.size()), const char*);
+    EXPECT_THROW(test_cursor(test_stream.size()), std::string);
 
     std::size_t readtestpos = 10;
     float testfloat_20221111;
@@ -82,5 +82,5 @@ TEST(CURSOR_TEST, MAIN) {
     // should infect behavior of cursor.
     int testint_resize;
     test_stream.resize(0);
-    EXPECT_THROW(test_cursor >> testint_resize, const char*);
+    EXPECT_THROW(test_cursor >> testint_resize, std::string);
 }

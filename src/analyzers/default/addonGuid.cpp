@@ -48,7 +48,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&log_version_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&scenarioVersion, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapSize, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&populationLimit, 4);
+    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&population_limit_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&gameSpeed, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&mapID, 4); // \note Not in AOK, need a stable initialization
     for (size_t i = 0; i < _earlyMoveCnt; i++)
@@ -66,7 +66,7 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&p.index, 4);
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)&p.slot, 4);
         MGXPARSER_MD5::md5_update(&ctx, &p.colorID, 1);
-        MGXPARSER_MD5::md5_update(&ctx, &p.resolvedTeamID, 1);
+        MGXPARSER_MD5::md5_update(&ctx, &p.resolved_teamid_, 1);
     }
     // \note Raw map data seems have some slite difference, but generated map file have md5 digest.
     //MGXPARSER_MD5::md5_update(&ctx, (uint8_t *)mapDataPtr, mapCoord[0] *
@@ -77,5 +77,5 @@ void DefaultAnalyzer::_genRetroGuid(int debugFlag)
 
     MGXPARSER_MD5::md5_final(&ctx, outputBuf);
 
-    retroGuid = hexStr(bufRef, 16);
+    retroGuid = BytesToHex(bufRef, 16);
 }

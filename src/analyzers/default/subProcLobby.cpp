@@ -25,26 +25,26 @@ void DefaultAnalyzer::_lobbyAnalyzer(int debugFlag)
         _skip(5);
     for (size_t i = 1; i < 9; i++)
     {
-        if (players[i].resolvedTeamID != 255)
+        if (players[i].resolved_teamid_ != 255)
         {
             _skip(1);
         }
         else
         {
-            _readBytes(1, &players[i].resolvedTeamID);
+            _readBytes(1, &players[i].resolved_teamid_);
         }
     }
     if (save_version_ < 12.2999)
         _skip(1);
-    _readBytes(4, &revealMap);
+    _readBytes(4, &revealmap_);
     _readBytes(4, &fogOfWar);
     _readBytes(4, &mapSize);
-    if (populationLimit == UINT32_INIT)
+    if (population_limit_ == UINT32_INIT)
     {
-        _readBytes(4, &populationLimit);
-        if (populationLimit < 40)
+        _readBytes(4, &population_limit_);
+        if (population_limit_ < 40)
         {
-            populationLimit *= 25;
+            population_limit_ *= 25;
         }
     }
     else

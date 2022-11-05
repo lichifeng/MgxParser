@@ -15,7 +15,7 @@
 #include <algorithm>
 #include "Helper.h"
 
-std::string hexStr(const unsigned char *&data, int len, bool skip = false);
+std::string BytesToHex(const unsigned char *&data, int len, bool skip = false);
 
 namespace patterns
 {

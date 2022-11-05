@@ -16,38 +16,30 @@
 
 using namespace std;
 
-string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = false)
-{
-    try
-    {
+string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = false) {
+    try {
         a.run();
     }
-    catch (const char* s)
-    {
+    catch (std::string &s) {
         a.logger_->fatal("{}: {}", a.input_filename_, s);
     }
-    catch (const exception &e)
-    {
-        a.logger_->fatal("Exception at Flag#{} in {}! {}", a.getDebugFlag(), a.input_filename_, e.what());
+    catch (const exception &e) {
+        std::cout << e.what() << endl;
     }
-    catch (...)
-    {
+    catch (...) {
         a.logger_->fatal("Exception at Flag#{} in {}!", a.getDebugFlag(), a.input_filename_);
     }
 
     a.parseTime = a.logger_->elapsed();
     a.message = a.logger_->dumpStr();
 
-    if (mapType != NO_MAP)
-    {
+    if (mapType != NO_MAP) {
         uint32_t w = HD_MAP ? 900 : 300;
         uint32_t h = HD_MAP ? 450 : 150;
-        try
-        {
+        try {
             a.generateMap(mapName, w, h, mapType == HD_MAP);
         }
-        catch (...)
-        {
+        catch (...) {
             a.logger_->warn("Failed to generate a map file.");
         }
     }
@@ -58,15 +50,13 @@ string _parse(DefaultAnalyzer &a, int mapType, string mapName, bool extractHB = 
     return a.toJson();
 }
 
-string MgxParser::parse(std::string inputpath, int maptype, std::string mapname, bool extract_stream)
-{
+string MgxParser::parse(std::string inputpath, int maptype, std::string mapname, bool extract_stream) {
     auto a = DefaultAnalyzer(inputpath);
 
     return _parse(a, maptype, mapname, extract_stream);
 }
 
-string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName, bool extractHB)
-{
+string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapName, bool extractHB) {
     auto a = DefaultAnalyzer(buf, n);
 
     return _parse(a, mapType, mapName, extractHB);
@@ -74,10 +64,9 @@ string MgxParser::parse(const uint8_t *buf, size_t n, int mapType, string mapNam
 
 extern "C"
 {
-    const char *MgxParser::pyparse(const char *recfile, int maptype, const char *mapname, bool extract_stream)
-    {
-        auto a = DefaultAnalyzer(recfile);
-        std::string&& ret = std::move(_parse(a, maptype, mapname, extract_stream));
-        return ret.c_str();
-    }
+const char *MgxParser::pyparse(const char *recfile, int maptype, const char *mapname, bool extract_stream) {
+    auto a = DefaultAnalyzer(recfile);
+    std::string &&ret = std::move(_parse(a, maptype, mapname, extract_stream));
+    return ret.c_str();
+}
 }

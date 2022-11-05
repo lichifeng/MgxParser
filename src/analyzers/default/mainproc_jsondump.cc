@@ -33,14 +33,14 @@ string DefaultAnalyzer::toJson()
     if (FLOAT_INIT != scenarioVersion)
         j["version"]["scenarioVersion"] = scenarioVersion;
 
-    if (FLOAT_INIT != DD_version)
-        j["version"]["newVer"] = DD_version;
+    if (FLOAT_INIT != dd_version_)
+        j["version"]["newVer"] = dd_version_;
 
-    if (UINT32_INIT != DD_internalVersion)
-        j["version"]["interVer"] = DD_internalVersion;
+    if (UINT32_INIT != dd_internal_version_)
+        j["version"]["interVer"] = dd_internal_version_;
 
-    if (UINT32_INIT != DE_build)
-        j["version"]["build"] = DE_build;
+    if (UINT32_INIT != de_build_)
+        j["version"]["build"] = de_build_;
 
     // Instruction
     if (!instructions.empty())
@@ -52,14 +52,14 @@ string DefaultAnalyzer::toJson()
     if (!extractedName.empty())
         j["extractedName"] = extractedName;
     j["rawEncoding"] = rawEncoding;
-    j["speed"] = readLang(zh::speed, FLOAT_INIT == DD_speed ? gameSpeed : (uint32_t)(DD_speed * 1000));
-    if (UINT32_INIT != DD_victoryTypeID)
-        j["victory"]["type"] = readLang(zh::victoryTypes, DD_victoryTypeID);
+    j["speed"] = readLang(zh::speed, FLOAT_INIT == dd_speed_ ? gameSpeed : (uint32_t)(dd_speed_ * 1000));
+    if (UINT32_INIT != dd_victorytype_id_)
+        j["victory"]["type"] = readLang(zh::victoryTypes, dd_victorytype_id_);
     else if (UINT32_INIT != victoryMode)
         j["victory"]["type"] = readLang(zh::victoryTypes, victoryMode); // \todo 低版本的要核实下，好像不怎么对
 
-    if (UINT32_INIT != populationLimit)
-        j["population"] = populationLimit;
+    if (UINT32_INIT != population_limit_)
+        j["population"] = population_limit_;
 
     if (!teamMode.empty())
         j["teamMode"] = teamMode;
@@ -93,16 +93,16 @@ string DefaultAnalyzer::toJson()
 
         pJ["index"] = p.index;
         pJ["slot"] = p.slot;
-        pJ["name"] = p.DD_AIType.empty() ? p.name : p.DD_AIName;
-        pJ["team"] = 1 == p.resolvedTeamID ? 10 + p.index : p.resolvedTeamID;
-        pJ["civilization"]["id"] = (UINT32_INIT == p.DD_civID) ? p.civID : p.DD_civID;
+        pJ["name"] = p.dd_ai_type_.empty() ? p.name : p.DD_AIName;
+        pJ["team"] = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
+        pJ["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civID : p.dd_civ_id_;
         pJ["civilization"]["name"] = readLang(zh::civNames, pJ["civilization"]["id"]);
         pJ["initPosition"] = {
             p.initCamera[0] == -1.0 ? 0 : p.initCamera[0],
             p.initCamera[1] == -1.0 ? 0 : p.initCamera[1]};
 
-        if (4 == p.type && !p.DD_AIType.empty())
-            pJ["type"] = readLang(zh::playerTypes, p.type) + "(" + p.DD_AIType + ")";
+        if (4 == p.type && !p.dd_ai_type_.empty())
+            pJ["type"] = readLang(zh::playerTypes, p.type) + "(" + p.dd_ai_type_ + ")";
         else
             pJ["type"] = readLang(zh::playerTypes, p.type);
 

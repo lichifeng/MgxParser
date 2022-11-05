@@ -22,17 +22,17 @@ public:
     bool valid() { return type >= 2 && type <= 5; } ///< \todo how about spectator?? Find a test record with spectators.
     bool initialDataFound() { return dataOffset > 0; }
 
-    uint32_t DD_DLCID;
-    uint32_t DD_colorID = UINT32_INIT;
-    uint8_t DE_selectedColor;
-    uint8_t DE_selectedTeamID = 255;
-    uint8_t resolvedTeamID = 255; ///< Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here
+    uint32_t dd_dlc_id_;
+    uint32_t dd_color_id_ = UINT32_INIT;
+    uint8_t de_selected_color_;
+    uint8_t de_selected_teamid_ = 255;
+    uint8_t resolved_teamid_ = 255; ///< Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here
     uint32_t HD_datCrc;
-    string DE_datCrc;
-    uint8_t DD_MPGameVersion;
+    string de_data_crc_;
+    uint8_t dd_mp_gameversion_;
     // uint32_t            HD_teamIndex = 999; ///< This looks not right, use data from lobby
-    uint32_t DD_civID = UINT32_INIT;
-    string DD_AIType; ///< in 26.21: "PromiDE";
+    uint32_t dd_civ_id_ = UINT32_INIT;
+    string dd_ai_type_; ///< in 26.21: "PromiDE";
     uint8_t DD_AICivNameIndex;
     string DD_AIName;
     string name = "";

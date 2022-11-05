@@ -27,7 +27,7 @@ void getMap(
     uint32_t width = 300, uint32_t height = 150,
     bool HD = false)
 {
-    M *mapData = (M *)analyzer->mapDataPtr;
+    M *mapData = (M *)analyzer->mapdata_ptr_;
 
     int elevation, curPos, rbPos; // rb = right bottom
 

@@ -27,7 +27,7 @@ using namespace std;
 
 void DefaultAnalyzer::run() {
     if (!status_.stream_extracted_ && !ExtractStreams())
-        throw "Unable to generate combined streams.";
+        throw std::string("Unable to generate combined streams.");
 
     // Start data analyzing
     _analyze();
@@ -73,47 +73,22 @@ void DefaultAnalyzer::_analyze() {
     // ************
     //   Reach sections which can reach easily(no search needed).
     //   1-1: Version
-    if (version_code_ != AOK)
-        cursor_(body_start_) >> log_version_;
-    cursor_(header_start_);
-
-    cursor_ >> version_string_ >> save_version_;
-
-    throw "Stopped under refactoring.";
-
-    // ************
-    // * Phase 1: *
-    // ************
-    //   Reach sections which can reach easily(no search needed).
-    //   1-1: Version
-    _switchStream(BODY_STRM);
-    _readBytes(4, &log_version_);
-    _switchStream(HEADER_STRM);
-
-    _readBytes(8, version_string_);
-    _readBytes(4, &save_version_);
-    _setVersionCode();
+    DetectVersion();
 
     //   1-2: HD/DE-specific data
-    if (IS_DE(version_code_)) {
-        _headerDEAnalyzer(4);
-    } else if (IS_HD(version_code_) && save_version_ > 12.3401) {
-        /// \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
-        _headerHDAnalyzer(5);
-    }
-    STOP_ON_FAILURE
+    AnalyzeDEHeader(4);
+    AnalyzeHDHeader(5);
 
     //   1-3: AI
-    _AIAnalyzer(6);
-    STOP_ON_FAILURE
+    AnalyzeAi(6);
 
     //   1-4: Replay
-    _replayAnalyzer(7);
-    STOP_ON_FAILURE
+    AnalyzeReplay(7);
 
     //   1-5: Map
-    _mapDataAnalyzer(8);
-    STOP_ON_FAILURE
+    AnalyzeMap(8);
+
+    throw std::string("Stopped under refactoring.");
 
     //   1-6: Find Startinfo
     _findStartInfoStart(9);

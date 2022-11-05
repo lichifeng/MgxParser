@@ -71,48 +71,48 @@ public:
     uint32_t includeAI;
 
     // HD/DE-specific data from header stream
-    uint32_t DE_build = UINT32_INIT;           ///< In recent(2022-10) steam version of DE: 66692
-    uint32_t DE_timestamp = 0;                 ///< 游戏时间，只有DE版本中有
-    float DD_version = FLOAT_INIT;             ///< hd<=4.7: 1000; hd=5.8: 1006
-    uint32_t DD_internalVersion = UINT32_INIT; ///< DE中是1000
-    uint32_t DD_gameOptionsVersion = UINT32_INIT;
-    uint32_t DD_DLCCount = 0;
-    uint32_t DD_datasetRef; ///< \todo What's this?
-    uint32_t DD_difficultyID = UINT32_INIT;
-    uint32_t DD_selectedMapID;
-    uint32_t DD_resolvedMapID;
-    uint32_t revealMap = UINT32_INIT; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
-    uint32_t DD_victoryTypeID = UINT32_INIT;
-    uint32_t DD_startingResourcesID = UINT32_INIT;
-    uint32_t DD_startingAgeID;
-    uint32_t DD_endingAgeID;
-    uint32_t DD_gameType = UINT32_INIT; ///< Only when DD_version>=1006
+    uint32_t de_build_ = UINT32_INIT;           ///< In recent(2022-10) steam version of DE: 66692
+    uint32_t de_timestamp_ = 0;                 ///< 游戏时间，只有DE版本中有
+    float dd_version_ = FLOAT_INIT;             ///< hd<=4.7: 1000; hd=5.8: 1006
+    uint32_t dd_internal_version_ = UINT32_INIT; ///< DE中是1000
+    uint32_t dd_gameoptions_version_ = UINT32_INIT;
+    uint32_t dd_dlccount_ = 0;
+    uint32_t dd_dataset_ref_; ///< \todo What's this?
+    uint32_t dd_difficulty_id_ = UINT32_INIT;
+    uint32_t dd_selectedmap_id_;
+    uint32_t dd_resolvedmap_id_;
+    uint32_t revealmap_ = UINT32_INIT; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
+    uint32_t dd_victorytype_id_ = UINT32_INIT;
+    uint32_t dd_startingresources_id_ = UINT32_INIT;
+    uint32_t dd_startingage_id_;
+    uint32_t dd_endingage_id_;
+    uint32_t dd_gametype_ = UINT32_INIT; ///< Only when DD_version>=1006
     string HD_ver1000MapName;
     // string HD_ver1000Unknown;
-    float DD_speed = FLOAT_INIT;
-    uint32_t DD_treatyLength;
+    float dd_speed_ = FLOAT_INIT;
+    uint32_t dd_treatylength_;
     // uint32_t DD_populationLimit = UINT32_INIT; ///< Store this value in populationLimit
-    uint32_t DD_numPlayers = UINT32_INIT; ///< \note Gaia not included
-    uint32_t DD_unusedPlayerColor;
-    uint32_t DD_victoryAmount = UINT32_INIT;
-    uint8_t DD_tradeEnabled;
-    uint8_t DD_teamBonusDisabled;
-    uint8_t DD_randomPositions;
-    uint8_t DD_allTechs;
-    uint8_t DD_numStartingUnits;
-    uint8_t DD_lockTeams;
-    uint8_t DD_lockSpeed;
-    uint8_t DD_multiplayer;
-    uint8_t DD_cheats = 255;
-    uint8_t DD_recordGame;
-    uint8_t DD_animalsEnabled;
-    uint8_t DD_predatorsEnabled;
-    uint8_t DD_turboEnabled;
-    uint8_t DD_sharedExploration;
-    uint8_t DD_teamPositions;
-    uint32_t DD_subGameMode;
-    uint32_t DD_battleRoyaleTime;
-    uint8_t DD_handicap = UINT8_INIT; ///< 让分
+    uint32_t dd_numplayers_ = UINT32_INIT; ///< \note Gaia not included
+    uint32_t dd_unused_playercolor_;
+    uint32_t dd_victoryamount_ = UINT32_INIT;
+    uint8_t dd_trade_enabled_;
+    uint8_t dd_teambonus_disabled_;
+    uint8_t dd_random_positions_;
+    uint8_t dd_alltechs_;
+    uint8_t dd_num_startingunits_;
+    uint8_t dd_lockteams_;
+    uint8_t dd_lockspeed_;
+    uint8_t dd_multiplayer_;
+    uint8_t dd_cheats_ = 255;
+    uint8_t dd_recordgame_;
+    uint8_t dd_animals_enabled_;
+    uint8_t dd_predators_enabled_;
+    uint8_t dd_turbo_enabled_;
+    uint8_t dd_shared_exploration_;
+    uint8_t dd_team_positions_;
+    uint32_t dd_sub_gamemode_;
+    uint32_t dd_battle_royale_time_;
+    uint8_t dd_handicap_ = UINT8_INIT; ///< 让分
 
     array<Player, 9> players;
     // uint8_t DE_fogOfWar;
@@ -146,7 +146,7 @@ public:
 
     // data from map data section
     int32_t mapCoord[2];
-    const void *mapDataPtr;
+    const void *mapdata_ptr_;
     uint8_t allVisible;
     // uint8_t fogOfWar; ///< \note Use fogOfWar in lobby
 
@@ -175,7 +175,7 @@ public:
     // lobby settings
     uint32_t fogOfWar;
     uint32_t mapSize = UINT32_INIT;
-    uint32_t populationLimit = UINT32_INIT;
+    uint32_t population_limit_ = UINT32_INIT;
     uint8_t gameType;
     uint8_t lockDiplomacy; ///< \note DE/HD数据中还有一个类似的
     uint8_t treatyLength;  ///< \note DE/HD数据中还有一个类似的
