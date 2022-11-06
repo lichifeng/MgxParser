@@ -11,7 +11,7 @@
 
 #include "analyzer.h"
 #include "md5/md5.h"
-#include "tools/bytestohex.h"
+#include "bytestohex.h"
 
 /**
  * \brief      Guid is presented in HD/DE records, but not in older versions. Guid can be used to identify different views of same game.

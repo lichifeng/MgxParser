@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "tools/searcher.h"
+#include "searcher.h"
 
 void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
     status_.debug_flag_ = debug_flag;

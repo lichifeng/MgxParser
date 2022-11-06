@@ -1,5 +1,5 @@
 #include "cursor.h"
-#include "tools/bytestohex.h"
+#include "bytestohex.h"
 
 RecCursor &RecCursor::operator()(std::size_t pos) {
     if (pos >= rec_stream_.size())

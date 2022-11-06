@@ -4,8 +4,8 @@
 #define RECSTREAM std::vector<uint8_t>
 
 #include <vector>
-#include "tools/searcher.h"
-#include "tools/encoding_converter.h"
+#include "searcher.h"
+#include "encoding_converter.h"
 
 class RecCursor {
 public:

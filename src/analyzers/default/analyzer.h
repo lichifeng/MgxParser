@@ -8,8 +8,8 @@
  * \copyright  Copyright (c) 2020-2022
  *
  */
-
-#pragma once
+#ifndef MGXPARSER_DEFAULTANALYZER_H_
+#define MGXPARSER_DEFAULTANALYZER_H_
 
 #define RECBYTE uint8_t
 #define MIN_SIZE (100 * 1024)
@@ -276,81 +276,6 @@ protected:
 
     }
 
-    /**
-     * \brief      _skipPascalString的一个特殊版本
-     */
-    inline void _skipDEString() {
-        int16_t l[2];
-        _readBytes(4, l);
-        if (l[0] != 2656 || l[1] > _remainBytes()) // 0x60 0x0a int16_t
-        {
-            logger_->warn("_skipDEString Exception! Length:{}, [0x60 0x0a]: {} . @{} in \"{}\"", l[1], l[0],
-                          _distance(), input_filename_);
-            _sendExceptionSignal();
-            _curPos -= 4;
-            return;
-        }
-        _skip(l[1]);
-    }
-
-    /**
-     * \brief      _skipPascalString的一个特殊版本
-     */
-    inline void _skipHDString() {
-        int16_t l;
-        _readBytes(2, &l);
-        if (*(uint16_t *) _curPos != 2656 || l > _remainBytes()) // 0x60 0x0a int16_t
-        {
-            logger_->warn("_skipHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(),
-                          input_filename_);
-            _sendExceptionSignal();
-            _curPos -= 2;
-            return;
-        }
-        _skip(2 + l);
-    }
-
-    /**
-     * \brief      _readPascalString的一个特殊版本
-     *
-     * \param      s                   用于存储读取结果的变量
-     */
-    inline void _readDEString(string &s) {
-        uint16_t l;
-
-        if (*(uint16_t *) _curPos != 2656) // 0x60 0x0a
-        {
-            logger_->warn("_readDEString: Encountered an unexpected DE string. @{} in \"{}\"", _distance(),
-                          input_filename_);
-            PrintHEX(4);
-            _sendExceptionSignal();
-            return;
-        }
-
-        _skip(2);
-        _readBytes(2, &l);
-        s.assign((char *) _curPos, l);
-        _skip(l);
-    }
-
-    inline void _readHDString(string &s) {
-        uint16_t l;
-        _readBytes(2, &l);
-
-        if (*(uint16_t *) _curPos != 2656) // 0x60 0x0a
-        {
-            logger_->warn("_readHDString: Encountered an unexpected HD string. @{} in \"{}\"", _distance(),
-                          input_filename_);
-            _sendExceptionSignal();
-            _curPos -= 2;
-            return;
-        }
-
-        _skip(2);
-        s.assign((char *) _curPos, l);
-        _skip(l);
-    }
-
     inline void _skip(size_t n) // \todo n could be negtive too?
     {
         if (_curPos - _curStream->data() + n > _curStream->size()) {
@@ -361,19 +286,6 @@ protected:
             _curPos += n;
         }
     } ///< Skip forward n bytes. A check is deployed to avoid segment fault.
-
-
-    /**
-     * \brief      Compare two C-style strings or byte sequence.
-     *
-     * \param      s                   string1
-     * \param      pattern             string2
-     * \return     true                string1 == string2
-     * \return     false               string1 != string2
-     */
-    inline bool _bytecmp(const void *s, const void *pattern, size_t n) const {
-        return 0 == memcmp(s, pattern, n);
-    }
 
     /**
      * \brief      调用logger的功能打印出当前位置之后n个字节的16进制表示，用于调试
@@ -434,12 +346,6 @@ protected:
     uint32_t _DD_AICount = 0; ///< \note used to skip AI section
 
     const uint8_t *_startInfoPos = nullptr;
-    const uint8_t *_triggerInfoPos = nullptr;
-    const uint8_t *_gameSettingsPos = nullptr;
-    const uint8_t *_disablesStartPos = nullptr;
-    const uint8_t *_victoryStartPos = nullptr;
-    const uint8_t *_scenarioHeaderPos = nullptr;
-    const uint8_t *_messagesStartPos = nullptr;
     const uint8_t *_lobbyStartPos = nullptr;
 
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
@@ -449,3 +355,5 @@ protected:
     uint32_t _earlyMoveTime[EARLYMOVE_USED];
     int _earlyMoveCnt;
 };
+
+#endif //MGXPARSER_DEFAULTANALYZER_H_

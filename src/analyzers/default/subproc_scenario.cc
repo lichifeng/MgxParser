@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "tools/searcher.h"
+#include "searcher.h"
 
 void DefaultAnalyzer::AnalyzeScenario(int debug_flag, bool brutal, float lower_limit, float upper_limit) {
     status_.debug_flag_ = debug_flag;

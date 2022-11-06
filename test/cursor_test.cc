@@ -1,6 +1,6 @@
 #include <gtest/gtest.h>
 #include <vector>
-#include "../src/cursor.h"
+#include "../src/tools/cursor.h"
 
 TEST(CURSOR_TEST, MAIN) {
     std::vector<uint8_t> test_stream{

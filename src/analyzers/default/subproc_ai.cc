@@ -11,7 +11,6 @@
 
 #include <algorithm>
 #include "analyzer.h"
-#include "tools/searcher.h"
 
 void DefaultAnalyzer::AnalyzeAi(int debugFlag) {
     status_.debug_flag_ = debugFlag;

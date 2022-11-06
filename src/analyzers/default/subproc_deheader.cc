@@ -10,7 +10,7 @@
  */
 
 #include "analyzer.h"
-#include "tools/searcher.h"
+#include "searcher.h"
 
 void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     if (!IS_DE(version_code_))

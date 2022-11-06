@@ -1,7 +1,7 @@
 ﻿#include <array>
 #include "analyzer.h"
-#include "tools/zipdecompress.h"
-#include "tools/searcher.h"
+#include "zipdecompress.h"
+#include "searcher.h"
 
 bool DefaultAnalyzer::ExtractStreams() {
     // Is this a zip archive? The first 4 bytes should be 50 4B 03 04,

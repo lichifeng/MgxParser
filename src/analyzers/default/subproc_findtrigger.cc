@@ -9,9 +9,9 @@
  * 
  */
 
+#include <array>
 #include "analyzer.h"
-#include "tools/searcher.h"
-#include "array"
+#include "searcher.h"
 
 void DefaultAnalyzer::FindTrigger(int debug_flag) {
     status_.debug_flag_ = debug_flag;

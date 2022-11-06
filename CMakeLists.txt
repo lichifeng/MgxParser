@@ -126,7 +126,7 @@ if(BUILD_TESTING)
     add_executable(
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
-            ${CMAKE_CURRENT_SOURCE_DIR}/src/cursor.cc
+            src/tools/cursor.cc
     )
     target_link_libraries("CURSOR_TEST" GTest::gtest_main iconv)
     include(GoogleTest)

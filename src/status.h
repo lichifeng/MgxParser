@@ -10,5 +10,5 @@ public:
     bool encoding_detected_ = false;
     bool mapdata_found_ = false;
 
-	[[nodiscard]] inline bool invalid() const { return !input_loaded_; }
+	[[nodiscard]] inline bool invalid() const { return !stream_extracted_; }
 };
