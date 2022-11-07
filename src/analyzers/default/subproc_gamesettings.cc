@@ -72,7 +72,7 @@ void DefaultAnalyzer::AnalyzeGameSettings(int debug_flag) {
             memcpy(players[i].searchpattern_.data() + 2 + namelen, initinfo_searchpattern_trail_, trailbyte_num_);
             cursor_.ScanString();
         } else {
-            cursor_ >> players[i].type;
+            cursor_ >> players[i].type_;
             // 两处字符串前面有\0，后面有的版本有，有的版本没有，需要判断处理
             namelen = *(uint32_t *) name_ptr;
             if ('\0' == *(name_ptr + 4 + namelen - 1)) {

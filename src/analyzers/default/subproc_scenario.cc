@@ -24,48 +24,49 @@ void DefaultAnalyzer::AnalyzeScenario(int debug_flag, bool brutal, float lower_l
             scenario_version_ = cursor_.Peek<float>();
             if (scenario_version_ > lower_limit && scenario_version_ < upper_limit) {
                 scenario_start_ = cursor_() - 4; // 4 bytes are 00 00 00 00 before scenario version
-                return;
+                break;
             }
         }
-
-        throw std::string("Failed to find scenario section.");
-    }
-
-    /// \todo 这里应该是13.3399还是13.3599?
-    std::array<uint8_t, 4> scenario_separator;
-    if (IS_AOK(version_code_)) {
-        scenario_separator = {0x9a, 0x99, 0x99, 0x3f};
     } else {
-        if (IS_HD(version_code_) && save_version_ > 11.9701) {
-            if (save_version_ >= 12.3599) {
-                scenario_separator = {0xae, 0x47, 0xa1, 0x3f};
-            } else {
-                scenario_separator = {0xa4, 0x70, 0x9d, 0x3f};
-            }
+        // \todo 这里应该是13.3399还是13.3599?
+        std::array<uint8_t, 4> scenario_separator;
+        if (IS_AOK(version_code_)) {
+            scenario_separator = {0x9a, 0x99, 0x99, 0x3f};
         } else {
-            scenario_separator = {0xf6, 0x28, 0x9c, 0x3f};
+            if (IS_HD(version_code_) && save_version_ > 11.9701) {
+                if (save_version_ >= 12.3599) {
+                    scenario_separator = {0xae, 0x47, 0xa1, 0x3f};
+                } else {
+                    scenario_separator = {0xa4, 0x70, 0x9d, 0x3f};
+                }
+            } else {
+                scenario_separator = {0xf6, 0x28, 0x9c, 0x3f};
+            }
+        }
+
+        auto haystack_begin = cursor_.RItr(victory_start_);
+        auto haystack_end = cursor_.RItr(0);
+        auto found = SearchPattern(
+                haystack_begin,
+                haystack_end,
+                scenario_separator.rbegin(),
+                scenario_separator.rend());
+
+        if (found == haystack_end) {
+            // \todo test/testRecords/Warning_aitest.mgx seems a record of early HD
+            // versions with same scenarioVersion as AOC10C, need to look into it.
+            AnalyzeScenario(100 + debug_flag, true, 1.19);
+        } else {
+            scenario_version_ = cursor_(haystack_end - found - 4).Peek<float>();
+            scenario_start_ = cursor_() - 4;
         }
     }
 
-    auto haystack_begin = cursor_.RItr(victory_start_);
-    auto haystack_end = cursor_.RItr(0);
-    auto found = SearchPattern(
-            haystack_begin,
-            haystack_end,
-            scenario_separator.rbegin(),
-            scenario_separator.rend());
-
-    if (found == haystack_end) {
-        // \todo test/testRecords/Warning_aitest.mgx seems a record of early HD
-        // versions with same scenarioVersion as AOC10C, need to look into it. 
-        AnalyzeScenario(100 + debug_flag, true, 1.19);
-    } else {
-        scenario_version_ = cursor_(haystack_end - found - 4).Peek<float>();
-        scenario_start_ = cursor_() - 4;
-    }
+    if (!scenario_start_)
+        throw std::string("Failed to find scenario section.");
 
     // Read scenario header info
-    cursor_(scenario_start_) >> 4433 >> scenarioFilename;
+    cursor_(scenario_start_) >> 4433 >> scenario_filename_;
 
     if (IS_DE(version_code_)) {
         cursor_ >> 64;

@@ -10,6 +10,7 @@ bool DefaultAnalyzer::LoadFile()
 		throw std::string("File not exists.");
 
 	input_filename_ = inputpath.filename().generic_string();
+    input_ext_ = inputpath.extension().generic_string();
 	input_size_ = filesystem::file_size(inputpath);
 	if (input_size_ < MIN_SIZE)
 		throw std::string("Filesize is too small.");
@@ -28,7 +29,6 @@ bool DefaultAnalyzer::LoadFile()
 		std::istream_iterator<RECBYTE>(input_file_),
 		std::istream_iterator<RECBYTE>()
 	);
-	input_cursor_ = input_stream_.data();
 
 	input_file_.close();
 

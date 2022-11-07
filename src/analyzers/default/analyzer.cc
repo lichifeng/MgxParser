@@ -110,32 +110,28 @@ void DefaultAnalyzer::Analyze() {
     //   2-9: Search initial player data postion. Need 2-5 & 2-8
     FindInitialDataPosition(19);
 
-    throw std::string("Stopped under refactoring.");
-
-
     // ************
     // * Phase 3: *
     // ************
     //   Do rest analyze. Following jobs is not necessarily ordered.
 
     //   3-1: Lobby data, lobby chat & some settings here. Need 2-7
-    _lobbyAnalyzer(20);
+    AnalyzeLobby(20);
 
     //   3-3: Go back to player initial data position and rummage some useful pieces
-    _startInfoAnalyzer(22);
+    AnalyzeInitialData(22);
 
     // ************
     // * Phase 4: *
     // ************
     // Analyze the body stream
-    _switchStream(BODY_STRM);
 
-    _readBodyCommands(23);
+    ReadBodyCommands(23);
 
     // ************
     // *  Addons  *
     // ************
     // Do some additional jobs
-    _guessWinner(24);
-    _genRetroGuid(25);
+    JudgeWinner(24);
+    CalcRetroGuid(25);
 }

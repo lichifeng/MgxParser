@@ -1,8 +1,4 @@
-//
-// Created by 李迟丰 on 2022/11/5.
-//
 #include "bytestohex.h"
-
 
 /**
  * \brief      Use to convert bytes to hex string, mainly used to generate guid

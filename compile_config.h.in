@@ -14,5 +14,5 @@
 // https://developercommunity.visualstudio.com/t/error-c2872-byte-ambiguous-symbol/93889
 #define _HAS_STD_BYTE 0
 
-#define RAW_ENCODING "cp936"
+#define RAW_ENCODING "gb18030"
 #define OUT_ENCODING "utf-8"

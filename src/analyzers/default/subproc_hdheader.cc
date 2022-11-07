@@ -111,7 +111,7 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
             if (dd_version_ >= 1004.9999)
                 cursor_ >> players[i].DD_AIName;
             cursor_ >> players[i].name
-                    >> players[i].type
+                    >> players[i].type_
                     >> players[i].HD_steamID
                     >> players[i].DD_playerNumber;
             if (dd_version_ >= 1005.9999 && version_code_ != HD57) // \todo test this

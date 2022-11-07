@@ -87,8 +87,8 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
                 >> players[i].DD_AICivNameIndex
                 >> players[i].DD_AIName
                 >> players[i].name
-                >> players[i].type;
-        if (4 == players[i].type)
+                >> players[i].type_;
+        if (4 == players[i].type_)
             ++_DD_AICount;
         cursor_ >> players[i].DE_profileID
                 >> 4 // Should be: 00 00 00 00

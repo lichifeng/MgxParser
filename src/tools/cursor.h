@@ -76,6 +76,9 @@ public:
     // Tell current offset
     inline std::size_t operator()() { return current_ - rec_stream_.begin(); }
 
+    // Remain bytes
+    inline std::size_t Remain() { return rec_stream_.end() - current_; }
+
     // Test following bytes
     inline bool Test(void *p, uint32_t len) { return 0 == memcmp(&current_[0], p, len); }
 

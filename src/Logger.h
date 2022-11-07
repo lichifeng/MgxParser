@@ -9,7 +9,7 @@
  * 
  */
 #pragma once
-#include "CompileConfig.h"
+#include "compile_config.h"
 #include <string>
 #include <sstream>
 #include <vector>

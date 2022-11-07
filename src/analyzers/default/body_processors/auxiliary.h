@@ -8,8 +8,8 @@
  * \copyright  Copyright (c) 2020-2022
  * 
  */
-
-#pragma once
+#ifndef MGXPARSER_AUXILIARY_H_
+#define MGXPARSER_AUXILIARY_H_
 
 #define OP_COMMAND              0x01
 #define OP_SYNC                 0x02
@@ -28,3 +28,5 @@
 #define RESEARCH_FEUDAL         101
 #define RESEARCH_CASTLE         102
 #define RESEARCH_IMPERIAL       103
+
+#endif //MGXPARSER_AUXILIARY_H_

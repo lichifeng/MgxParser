@@ -15,7 +15,7 @@
 #define FLOAT_INIT -20000.0
 #define UINT8_INIT 255
 
-#include "CompileConfig.h"
+#include "compile_config.h"
 
 #include <string>
 #include <map>
@@ -54,8 +54,8 @@ public:
     string toJson();
 
     // File-related members
-    string filetype = "record"; ///< Or zip/rar/7z
-    string extractedName;
+    string input_ext_; ///< Or zip/rar/7z
+    string extracted_file_;
 
     // Version-related members
     uint32_t log_version_ = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
@@ -131,8 +131,8 @@ public:
     uint64_t DE_numAIFiles;
 
     // data from replay section
-    uint32_t gameSpeed = UINT32_INIT; ///< \todo If de/hd, use data from de/hd-specific data
-    uint16_t recPlayer; ///< \todo index or number of pov?? verify this.
+    uint32_t gamespeed_ = UINT32_INIT; ///< \todo If de/hd, use data from de/hd-specific data
+    uint16_t rec_player_; ///< \todo index or number of pov?? verify this.
     uint8_t num_players_; ///< \todo gaia included, DD_numPlayers first??
     uint8_t instantBuild;
     uint8_t cheatsEnabled = 255;
@@ -149,7 +149,7 @@ public:
 
     // data from scenario header
     float scenario_version_ = FLOAT_INIT;
-    string scenarioFilename;
+    string scenario_filename_;
     string instructions;
 
     // victory conditions
@@ -167,20 +167,20 @@ public:
     uint32_t lock_teams_;
 
     // lobby settings
-    uint32_t fogOfWar;
-    uint32_t mapSize = UINT32_INIT;
+    uint32_t fogofwar_;
+    uint32_t map_size_ = UINT32_INIT;
     uint32_t population_limit_ = UINT32_INIT;
-    uint8_t gameType;
-    uint8_t lockDiplomacy; ///< \note DE/HD数据中还有一个类似的
+    uint8_t game_type_;
+    uint8_t lock_diplomacy_; ///< \note DE/HD数据中还有一个类似的
     uint8_t treatyLength;  ///< \note DE/HD数据中还有一个类似的
     vector<Chat> chat;
-    int32_t DE_mapSeed;
+    int32_t de_mapseed_;
 
     // other data
     string embeded_mapname_; ///< Map name extracted from instructions, not mapped with raw number
 
     // data from body
-    uint32_t duration = 0;
+    uint32_t duration_ = 0;
     uint32_t isMultiplayer;
     uint32_t syncChecksumInterval = 500;
 
@@ -193,5 +193,5 @@ public:
     double parseTime = 0;                  ///< 解析耗时（毫秒）
 
     string teamMode;
-    string retroGuid;
+    string retro_guid_;
 };

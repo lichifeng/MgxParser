@@ -16,8 +16,8 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
     status_.debug_flag_ = debug_flag;
     cursor_(initinfo_start_ + 2 + num_players_ + 36 + 4 + 1);
 
-    uint32_t easyskip = easyskip_base_ + mapCoord[0] * mapCoord[1];
-    auto haystack_begin = cursor_.Itr() + easyskip;
+    easyskip_base_ += mapCoord[0] * mapCoord[1];
+    auto haystack_begin = cursor_.Itr() + easyskip_base_;
     auto haystack_end = cursor_.Itr() +
                         (scenario_start_ ? scenario_start_
                                          : victory_start_ ? victory_start_
@@ -29,12 +29,12 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
     // more), we can use this to escape unnecessary search
     // First player don't need a search (and cannot, 'cuz different behavior
     // among versions)
-    players[0].dataOffset = cursor_();
+    players[0].data_offset_ = cursor_();
 
     auto found = haystack_begin;
     bool index_found[9] = {false};
     for (size_t i = 1; i < 9; i++) {
-        if (!players[i].valid() || players[i].index < 0 || players[i].index > 8 || index_found[players[i].index])
+        if (!players[i].Valid() || players[i].index < 0 || players[i].index > 8 || index_found[players[i].index])
             continue;
 
         found = SearchPattern(
@@ -54,7 +54,7 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
                 // 倒着往前找字符串，一般字符串最后一个字节是'\0'，表示长度又有两个字节，所以往前退3个字节开始查找
                 for (size_t j = 3; j < 300; ++j) {
                     if (2 + cursor_.Peek<uint16_t>() == j) {
-                        players[i].dataOffset = cursor_();
+                        players[i].data_offset_ = cursor_();
                         cursor_ >> players[i].name;
                         break;
                     }
@@ -63,12 +63,12 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
             }
         } else {
             cursor_.Itr(found);
-            players[i].dataOffset = cursor_();
+            players[i].data_offset_ = cursor_();
         }
 
-        if (0 != players[i].dataOffset) {
+        if (0 != players[i].data_offset_) {
             index_found[players[i].index] = true;
-            haystack_begin = found + easyskip;
+            haystack_begin = found + easyskip_base_;
         }
     }
 }

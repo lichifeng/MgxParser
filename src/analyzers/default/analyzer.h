@@ -19,7 +19,7 @@
 #define PrintHEX(n) _printHex1(n, __FILE__, __LINE__)
 #define EARLYMOVE_USED 5
 
-#include "CompileConfig.h"
+#include "compile_config.h"
 
 #include <array>
 #include <cstddef>
@@ -35,9 +35,6 @@
 #include "DataModels/DataModel.h"
 #include "Logger.h"
 #include "utils.h"
-#include "bodyProcessors/helpers.h"
-
-using namespace std;
 
 /**
  * \brief      默认解析器，可以通过继承它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。
@@ -67,7 +64,7 @@ public:
         if (LoadFile())
             status_.input_loaded_ = true;
         else
-            throw std::string("Unable to generate combined streams.");
+            throw std::string("Failed to load file.");
     }
 
     DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string filename = "")
@@ -78,7 +75,7 @@ public:
         if (input_size_ > MIN_SIZE)
             status_.input_loaded_ = true;
         else
-            throw std::string("Unable to generate combined streams.");
+            throw std::string("Invalid input size.");
     }
 
     // 第一阶段结束，自以往后，都只需要操作input_cursor_
@@ -158,6 +155,9 @@ protected:
     const uint8_t *initinfo_searchpattern_trail_ = nullptr;
     uint16_t trailbyte_num_ = 5;               ///< 设定用于startinfo中玩家信息搜索时的特征字节长度，影响速度
     uint32_t easyskip_base_ = 35100;         ///< 在startinfo中搜索时可以放心跳过的字节长度
+    const uint8_t *earlymove_cmd_[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
+    uint32_t earlymove_time_[EARLYMOVE_USED];
+    int earlymove_count_;
 
     void Analyze(); ///< 录像解析的主进程
 
@@ -194,6 +194,30 @@ protected:
     void FindInitialDataPosition(int debug_flag = 0);
 
     void SkipTriggers(int debug_flag = 0);
+
+    void AnalyzeInitialData(int debug_flag = 0);
+
+    void AnalyzeLobby(int debug_flag = 0);
+
+    void ReadBodyCommands(int debug_flag = 0);
+
+    void ReadGameStart(int debug_flag = 0);
+
+    // methods for parsing body data
+    void HandleSync();
+
+    void HandleViewlock();
+
+    void HandleChat();
+
+    void HandleCommand();
+
+    void HandleAction();
+
+    // Some additional jobs
+    void JudgeWinner(int);
+
+    void CalcRetroGuid(int);
 
 
     vector<uint8_t> body_;
@@ -313,33 +337,6 @@ protected:
         }
     } ///< 标记解析失败的FLAG
 
-
-
-
-    void _startInfoAnalyzer(int debugFlag = 0);
-
-    void _lobbyAnalyzer(int debugFlag = 0);
-
-    void _readBodyCommands(int debugFlag = 0);
-
-    void _readGameStart(int debugFlag = 0);
-
-    // methods for parsing body data
-    void _handleOpSync();
-
-    void _handleOpViewlock();
-
-    void _handleOpChat();
-
-    void _handleOpCommand();
-
-    void _handleAction();
-
-    // Some additional jobs
-    void _guessWinner(int);
-
-    void _genRetroGuid(int);
-
     const uint8_t *_curPos;      ///< 当前读取数据的指针
     vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
 
@@ -350,10 +347,6 @@ protected:
 
     bool _failedSignal = false; ///< Indicate some previous procedure was failed
     int _debugFlag = 0;
-
-    const uint8_t *_earlyMoveCmd[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
-    uint32_t _earlyMoveTime[EARLYMOVE_USED];
-    int _earlyMoveCnt;
 };
 
 #endif //MGXPARSER_DEFAULTANALYZER_H_

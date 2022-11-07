@@ -20,14 +20,13 @@
 
 using namespace std;
 
-template <typename T, typename M>
+template<typename T, typename M>
 void GetMap(
         string savePath,
         T *analyzer,
         uint32_t width = 300, uint32_t height = 150,
-        bool HD = false)
-{
-    M *mapData = (M *)analyzer->mapdata_ptr_;
+        bool HD = false) {
+    M *mapData = (M *) analyzer->mapdata_ptr_;
 
     int elevation, curPos, rbPos; // rb = right bottom
 
@@ -35,25 +34,23 @@ void GetMap(
     cimg_library::CImg<unsigned char> img(analyzer->mapCoord[0], analyzer->mapCoord[1], 1, 4, 0xff);
 
     // populate bits
-    cimg_forXY(img, x, y)
-    {
-        curPos = y * analyzer->mapCoord[0] + x;
-        rbPos = (y + 1) * analyzer->mapCoord[0] + (x + 1);
+    cimg_forXY(img, x, y) {
+            curPos = y * analyzer->mapCoord[0] + x;
+            rbPos = (y + 1) * analyzer->mapCoord[0] + (x + 1);
 
-        elevation = 1;
-        if (x < (analyzer->mapCoord[0] - 1) && y < (analyzer->mapCoord[1] - 1))
-        {
-            if (mapData[curPos].elevation > mapData[rbPos].elevation)
-                elevation = 0;
-            else if (mapData[curPos].elevation < mapData[rbPos].elevation)
-                elevation = 2;
+            elevation = 1;
+            if (x < (analyzer->mapCoord[0] - 1) && y < (analyzer->mapCoord[1] - 1)) {
+                if (mapData[curPos].elevation > mapData[rbPos].elevation)
+                    elevation = 0;
+                else if (mapData[curPos].elevation < mapData[rbPos].elevation)
+                    elevation = 2;
+            }
+
+            img(x, y, 0) = MAP_COLORS[mapData[curPos].terrainType][elevation][0];
+            img(x, y, 1) = MAP_COLORS[mapData[curPos].terrainType][elevation][1];
+            img(x, y, 2) = MAP_COLORS[mapData[curPos].terrainType][elevation][2];
+            img(x, y, 3) = 0xff;
         }
-
-        img(x, y, 0) = MAP_COLORS[mapData[curPos].terrainType][elevation][0];
-        img(x, y, 1) = MAP_COLORS[mapData[curPos].terrainType][elevation][1];
-        img(x, y, 2) = MAP_COLORS[mapData[curPos].terrainType][elevation][2];
-        img(x, y, 3) = 0xff;
-    }
 
     // // draw objects
     // unsigned char RGB[4];
@@ -80,20 +77,18 @@ void GetMap(
     float tcX, tcY;
 
     // Zoom the map to 3x original size
-    if (HD)
-    {
+    if (HD) {
         img.resize_tripleXY();
         factor *= 2.5;
     }
 
-    for (auto &p : analyzer->players)
-    {
-        if (!p.valid())
+    for (auto &p: analyzer->players) {
+        if (!p.Valid())
             continue;
-        tcX = HD ? p.initCamera[0] * 3 : p.initCamera[0];
-        tcY = HD ? p.initCamera[1] * 3 : p.initCamera[1];
-        img.draw_circle(tcX, tcY, factor * 8, playerColors[p.colorID], 0.3);
-        img.draw_circle(tcX, tcY, factor * 4, playerColors[p.colorID], 1);
+        tcX = HD ? p.init_camera_[0] * 3 : p.init_camera_[0];
+        tcY = HD ? p.init_camera_[1] * 3 : p.init_camera_[1];
+        img.draw_circle(tcX, tcY, factor * 8, playerColors[p.color_id_], 0.3);
+        img.draw_circle(tcX, tcY, factor * 4, playerColors[p.color_id_], 1);
     }
 
     // rotate

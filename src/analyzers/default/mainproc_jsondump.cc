@@ -11,8 +11,7 @@
 
 #include "analyzer.h"
 
-string DefaultAnalyzer::toJson()
-{
+string DefaultAnalyzer::toJson() {
     json j;
 
     // Decide whether to ditch this file
@@ -47,12 +46,12 @@ string DefaultAnalyzer::toJson()
         j["instruction"] = instructions;
 
     // Settings
-    j["fileType"] = filetype;
+    j["fileType"] = input_ext_;
     j["filename"] = input_filename_;
-    if (!extractedName.empty())
-        j["extractedName"] = extractedName;
+    if (!extracted_file_.empty())
+        j["extractedName"] = extracted_file_;
     j["rawEncoding"] = raw_encoding_;
-    j["speed"] = readLang(zh::speed, FLOAT_INIT == dd_speed_ ? gameSpeed : (uint32_t)(dd_speed_ * 1000));
+    j["speed"] = readLang(zh::speed, FLOAT_INIT == dd_speed_ ? gamespeed_ : (uint32_t) (dd_speed_ * 1000));
     if (UINT32_INIT != dd_victorytype_id_)
         j["victory"]["type"] = readLang(zh::victoryTypes, dd_victorytype_id_);
     else if (UINT32_INIT != victoryMode)
@@ -64,30 +63,26 @@ string DefaultAnalyzer::toJson()
     if (!teamMode.empty())
         j["teamMode"] = teamMode;
 
-    j["includeAI"] = (bool)includeAI;
+    j["includeAI"] = (bool) includeAI;
 
     // Map
-    if (UINT32_INIT != mapSize)
-        j["map"]["size"] = readLang(zh::mapSize, mapSize);
+    if (UINT32_INIT != map_size_)
+        j["map"]["size"] = readLang(zh::mapSize, map_size_);
 
     // Report
     j["status"] = status_old_;
-    j["duration"] = duration;
+    j["duration"] = duration_;
     j["message"] = message;
-    if (!DD_guid.empty())
-    {
+    if (!DD_guid.empty()) {
         j["guid"] = DD_guid;
-    }
-    else if (!retroGuid.empty())
-    {
-        j["guid"] = retroGuid;
+    } else if (!retro_guid_.empty()) {
+        j["guid"] = retro_guid_;
     }
     j["parser"] = PARSER_VERSION_VERBOSE;
 
     // Players
-    for (auto &p : players)
-    {
-        if (!p.valid())
+    for (auto &p: players) {
+        if (!p.Valid())
             continue;
         json pJ;
 
@@ -95,35 +90,35 @@ string DefaultAnalyzer::toJson()
         pJ["slot"] = p.slot;
         pJ["name"] = p.dd_ai_type_.empty() ? p.name : p.DD_AIName;
         pJ["team"] = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
-        pJ["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civID : p.dd_civ_id_;
+        pJ["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civ_id_ : p.dd_civ_id_;
         pJ["civilization"]["name"] = readLang(zh::civNames, pJ["civilization"]["id"]);
         pJ["initPosition"] = {
-            p.initCamera[0] == -1.0 ? 0 : p.initCamera[0],
-            p.initCamera[1] == -1.0 ? 0 : p.initCamera[1]};
+                p.init_camera_[0] == -1.0 ? 0 : p.init_camera_[0],
+                p.init_camera_[1] == -1.0 ? 0 : p.init_camera_[1]};
 
-        if (4 == p.type && !p.dd_ai_type_.empty())
-            pJ["type"] = readLang(zh::playerTypes, p.type) + "(" + p.dd_ai_type_ + ")";
+        if (4 == p.type_ && !p.dd_ai_type_.empty())
+            pJ["type"] = readLang(zh::playerTypes, p.type_) + "(" + p.dd_ai_type_ + ")";
         else
-            pJ["type"] = readLang(zh::playerTypes, p.type);
+            pJ["type"] = readLang(zh::playerTypes, p.type_);
 
         if (0 != p.DE_profileID)
             pJ["DEProfileID"] = p.DE_profileID;
         if (0 != p.HD_steamID)
             pJ["HDSteamID"] = p.HD_steamID;
-        pJ["mainOp"] = p.initialDataFound(); // \todo 要验证下。可以用这种方法确定是不是Co-Op。
-        pJ["POV"] = p.slot == recPlayer;
+        pJ["mainOp"] = p.InitialDataFound(); // \todo 要验证下。可以用这种方法确定是不是Co-Op。
+        pJ["POV"] = p.slot == rec_player_;
         if (UINT32_INIT != p.handicappingLevel)
             pJ["handicappingLevel"] = p.handicappingLevel;
-        if (-1 != p.resigned)
-            pJ["resigned"] = p.resigned;
-        if (-1 != p.feudalTime)
-            pJ["feudalTime"] = p.feudalTime;
-        if (-1 != p.castleTime)
-            pJ["castleTime"] = p.castleTime;
-        if (-1 != p.imperialTime)
-            pJ["imperialTime"] = p.imperialTime;
-        pJ["disconnected"] = p.disconnected;
-        pJ["inWinner"] = p.isWinner;
+        if (-1 != p.resigned_)
+            pJ["resigned"] = p.resigned_;
+        if (-1 != p.feudal_time_)
+            pJ["feudalTime"] = p.feudal_time_;
+        if (-1 != p.castle_time_)
+            pJ["castleTime"] = p.castle_time_;
+        if (-1 != p.imperial_time_)
+            pJ["imperialTime"] = p.imperial_time_;
+        pJ["disconnected"] = p.disconnected_;
+        pJ["inWinner"] = p.is_winner_;
 
         j["players"].emplace_back(pJ);
     }

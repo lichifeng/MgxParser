@@ -14,10 +14,7 @@
 #include <string>
 #include "analyzer.h"
 
-using namespace std;
-
-struct TeamCredit
-{
+struct TeamCredit {
     uint32_t credits;
     uint32_t count;
     uint32_t avg;
@@ -28,80 +25,65 @@ struct TeamCredit
  * \details    如果resigned == -1，那存活时间就算成duration, 如果resigned >=0，那存活时间就是resigned，需要考虑的是双控的情况。
  *
  */
-void DefaultAnalyzer::_guessWinner(int debugFlag)
-{
-    _debugFlag = debugFlag;
+void DefaultAnalyzer::JudgeWinner(int debug_flag) {
+    status_.debug_flag_ = debug_flag;
 
-    multimap<uint8_t, TeamCredit> winnerCredits;
-    uint32_t indexMax[9] = {0};
-    uint8_t indexTeam[9] = {0};
+    std::multimap<uint8_t, TeamCredit> winner_credits;
+    uint32_t index_max[9] = {0};
+    uint8_t index_team[9] = {0};
     TeamCredit tc;
-    uint32_t credit = 0, creditMax = 0;
-    map<uint8_t, TeamCredit>::iterator found;
-    bool allLived = true; // When nobody had resigned, that mean POV quit first, then POV is possibly lost.
+    uint32_t credit = 0, credit_max = 0;
+    std::map<uint8_t, TeamCredit>::iterator found;
+    bool all_survived = true; // When nobody had resigned, that mean POV quit first, then POV is possibly lost.
 
-    for (auto &p : players)
-    {
-        if (!p.valid())
+    for (auto &p: players) {
+        if (!p.Valid())
             continue;
 
-        if (p.index < 0 || p.index > 8)
-        {
-            logger_->warn("Flag:{}, bad player index:{}! Name: {}", _debugFlag, p.index, p.name);
-        }
-        if (-1 == p.resigned)
-        {
-            credit = duration + 500; // \note 有时候投降时间会和时长一致，那就把没投降的人分数多给一点点，这样就不会判断为已经投降的和没投降都是赢。
-        }
-        else
-        {
-            credit = p.resigned;
-            allLived = false;
+        if (-1 == p.resigned_) {
+            credit = duration_ + 500; // \note 有时候投降时间会和时长一致，那就把没投降的人分数多给一点点，这样就不会判断为已经投降的和没投降都是赢。
+        } else {
+            credit = p.resigned_;
+            all_survived = false;
         }
         p.resolved_teamid_ = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
-        indexTeam[p.index] = p.resolved_teamid_;
-        if (credit > indexMax[p.index])
-            indexMax[p.index] = credit;
+        index_team[p.index] = p.resolved_teamid_;
+        if (credit > index_max[p.index])
+            index_max[p.index] = credit;
     }
 
-    for (int i = 0; i < 9; i++)
-    {
-        if (0 == indexTeam[i])
+    for (int i = 0; i < 9; i++) {
+        if (0 == index_team[i])
             continue;
 
-        found = winnerCredits.find(indexTeam[i]);
-        if (found == winnerCredits.end())
-        {
-            tc.credits = indexMax[i];
+        found = winner_credits.find(index_team[i]);
+        if (found == winner_credits.end()) {
+            tc.credits = index_max[i];
             tc.count = 1;
-            winnerCredits.emplace(make_pair(indexTeam[i], tc));
-        }
-        else
-        {
-            found->second.credits += indexMax[i];
+            winner_credits.emplace(make_pair(index_team[i], tc));
+        } else {
+            found->second.credits += index_max[i];
             found->second.count++;
         }
     }
 
-    for (auto &t : winnerCredits)
-    {
+    for (auto &t: winner_credits) {
         if (teamMode.empty())
             teamMode.append(to_string(t.second.count));
         else
             teamMode.append("v").append(to_string(t.second.count));
 
         t.second.avg = t.second.credits / t.second.count;
-        if (t.second.avg > creditMax)
-            creditMax = t.second.avg;
+        if (t.second.avg > credit_max)
+            credit_max = t.second.avg;
     }
 
-    for (auto &p : players)
-    {
-        if (!p.valid())
+    for (auto &p: players) {
+        if (!p.Valid())
             continue;
 
-        found = winnerCredits.find(p.resolved_teamid_);
-        if (found != winnerCredits.end() && found->second.avg == creditMax && !(p.slot == recPlayer && allLived))
-            p.isWinner = true;
+        found = winner_credits.find(p.resolved_teamid_);
+        if (found != winner_credits.end() && found->second.avg == credit_max && !(p.slot == rec_player_ && all_survived))
+            p.is_winner_ = true;
     }
 }

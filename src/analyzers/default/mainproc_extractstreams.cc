@@ -7,7 +7,10 @@ bool DefaultAnalyzer::ExtractStreams() {
     // Is this a zip archive? The first 4 bytes should be 50 4B 03 04,
     // that is 67324752 for uint32_t.
     // Header of a zip file. https://docs.fileformat.com/compression/zip/
-    auto input_start = &input_stream_.front();
+    if (input_stream_.empty() && !input_cursor_)
+        throw std::string("No available input.");
+    auto input_start = input_stream_.empty() ? input_cursor_ : input_stream_.data();
+    auto input_end = input_stream_.empty() ? (input_cursor_ + input_size_) : &*input_stream_.cend();
     auto zipsig_p = (uint32_t *) input_start;
     uint32_t *compressed_size_p;
     uint16_t *namelen_p;
@@ -25,9 +28,11 @@ bool DefaultAnalyzer::ExtractStreams() {
                 outbuffer))
             throw "Failed to unzip input file.";
 
+        extracted_file_ = std::string((char *) (input_start + 30), *namelen_p);
         input_stream_ = std::move(outbuffer);
         input_size_ = input_stream_.size();
-        input_start = &input_stream_.front();
+        input_start = input_stream_.data();
+        input_end = input_stream_.data() + input_size_;
     }
 
     // 再看有没有有效的header长度信息
@@ -40,12 +45,12 @@ bool DefaultAnalyzer::ExtractStreams() {
         // not a valid header length info
         std::array<uint8_t, 4> body_sync_interval = {0xf4, 0x01, 0x00, 0x00};
         auto possible_bodystart = SearchPattern(
-                input_stream_.cbegin(), input_stream_.cend(),
+                input_start, input_end,
                 body_sync_interval.cbegin(), body_sync_interval.cend()
         );
-        if (possible_bodystart == input_stream_.cend())
+        if (possible_bodystart == input_end)
             throw "Invalid header length and cannot find body start.";
-        if (std::distance(input_stream_.cbegin(), possible_bodystart) < 25000)
+        if (possible_bodystart - input_start < 25000)
             throw "Invalid header length and found an invalid body start.";
 
         int32_t is_multiplayer = *(int32_t *) (&possible_bodystart[0] + 4);
@@ -61,13 +66,13 @@ bool DefaultAnalyzer::ExtractStreams() {
             // not aok
             possible_bodystart -= 4;
             headerpos = 8;
-            headerlen = std::distance(input_stream_.cbegin(), possible_bodystart) - headerpos;
         } else {
             headerpos = 4;
-            headerlen = std::distance(input_stream_.cbegin(), possible_bodystart) - headerpos;
         }
+        headerlen = possible_bodystart - input_start - headerpos;
     } else {
-        if (nextpos < input_stream_.size()) {
+        input_size_ = input_stream_.size() ? input_stream_.size() : input_size_;
+        if (nextpos < input_size_) {
             headerpos = 8;
         } else {
             headerpos = 4;
@@ -77,14 +82,14 @@ bool DefaultAnalyzer::ExtractStreams() {
     }
 
     // 如果有长度信息或者搜索到了，就解压header
-    if (0 != ZipDecompress(&input_stream_[0] + headerpos, headerlen, combined_stream_))
+    if (0 != ZipDecompress(const_cast<uint8_t *>(input_start + headerpos), headerlen, combined_stream_))
         throw "Error when extracting header stream.";
 
     // Mark start point of body stream
     body_start_ = combined_stream_.size();
 
     // combine header_ and body_
-    combined_stream_.insert(combined_stream_.cend(), input_stream_.cbegin() + datalen, input_stream_.cend());
+    combined_stream_.insert(combined_stream_.cend(), input_start + datalen, input_end);
 
     // Prepare cursor_
     cursor_(0);
