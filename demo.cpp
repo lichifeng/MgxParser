@@ -7,6 +7,7 @@
 
 #include <string>
 #include <iostream>
+#include <cstring>
 #include "include/MgxParser.h"
 
 int main(int argc, char *argv[]) {

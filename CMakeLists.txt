@@ -130,9 +130,9 @@ if (BUILD_TESTING)
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
             src/tools/cursor.cc
-            src/tools/bytestohex.cc
     )
-    target_link_libraries("CURSOR_TEST" GTest::gtest_main iconv)
+    target_link_libraries("CURSOR_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("CURSOR_TEST" GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")
     gtest_discover_tests("CURSOR_TEST")
@@ -141,5 +141,7 @@ endif ()
 # Static linking
 if (NOT APPLE)
     target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
-    target_link_options("${PROJECT_NAME}_TEST" PRIVATE "-static")
+    #warning: Using 'getaddrinfo' in statically linked applications requires at runtime 
+    #the shared libraries from the glibc version used for linking
+    #target_link_options("${PROJECT_NAME}_TEST" PRIVATE "-static")
 endif ()

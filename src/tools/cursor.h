@@ -11,6 +11,9 @@
 #define RECSTREAM std::vector<uint8_t>
 
 #include <vector>
+#include <memory>
+#include <cstring>
+#include <string>
 #include "searcher.h"
 #include "encoding_converter.h"
 
