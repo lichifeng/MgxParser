@@ -14,7 +14,7 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
 
     easyskip_base_ += map_coord_[0] * map_coord_[1];
     auto haystack_begin = cursor_.Itr() + easyskip_base_;
-    auto haystack_end = cursor_.Itr() +
+    auto haystack_end = cursor_.Itr(0) +
                         (scenario_start_ ? scenario_start_
                                          : victory_start_ ? victory_start_
                                                           : disabledtechs_start_ ? disabledtechs_start_

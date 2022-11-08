@@ -19,10 +19,10 @@
 #include <algorithm>
 
 template<typename T, typename Tn>
-T SearchPattern(T haystackBeg, T haystackEnd, Tn needleBeg, Tn needleEnd) {
+T SearchPattern(T haystack_begin, T haystack_end, Tn needle_begin, Tn needle_end) {
     return std::search(
-            haystackBeg, haystackEnd,
-            SEARCHER(needleBeg, needleEnd));
+            haystack_begin, haystack_end,
+            SEARCHER(needle_begin, needle_end));
 }
 
 #endif //MGXPARSER_SEARCHER_H_
