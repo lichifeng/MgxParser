@@ -1,15 +1,12 @@
-/**
- * \file       MapColors.h
+/***************************************************************
+ * \file       map_colors.h
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
- * \version    0.1
- * \date       2022-10-03
- * 
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- * 
- */
+ ***************************************************************/
 
-#pragma once
+#ifndef MGXPARSER_MAP_COLORS_H_
+#define MGXPARSER_MAP_COLORS_H_
 
 #include <cstdint>
 
@@ -547,3 +544,5 @@ constexpr int playerColors[][4] = {
         {255, 255, 255, 255}, //   13 = > '#ffffff',
         {255, 0,   0,   255}, //   14 = > '#ff0000',
 };
+
+#endif //MGXPARSER_MAP_COLORS_H_

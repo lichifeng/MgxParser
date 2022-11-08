@@ -1,3 +1,10 @@
+/***************************************************************
+ * \file       cursor.h
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/8
+ * \copyright  Copyright (c) 2020-2022
+ ***************************************************************/
+ 
 #ifndef MGXPARSER_CURSOR_H_
 #define MGXPARSER_CURSOR_H_
 

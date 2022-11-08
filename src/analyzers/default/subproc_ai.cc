@@ -1,13 +1,9 @@
-/**
- * \file       subProcAI.cpp
+/***************************************************************
+ * \file       subproc_ai.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
- * \version    0.1
- * \date       2022-10-03
- * 
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- * 
- */
+ ***************************************************************/
 
 #include <algorithm>
 #include "analyzer.h"
@@ -15,8 +11,8 @@
 void DefaultAnalyzer::AnalyzeAi(int debugFlag) {
     status_.debug_flag_ = debugFlag;
 
-    cursor_(ai_start_) >> includeAI;
-    if (!includeAI) {
+    cursor_(ai_start_) >> include_ai_;
+    if (!include_ai_) {
         replay_start_ = cursor_();
         return;
     }

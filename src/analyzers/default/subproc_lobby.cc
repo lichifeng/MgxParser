@@ -1,13 +1,9 @@
-/**
- * \file       subProcLobby.cpp
+/***************************************************************
+ * \file       subproc_lobby.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
@@ -42,7 +38,7 @@ void DefaultAnalyzer::AnalyzeLobby(int debug_flag) {
     }
     cursor_ >> game_type_ >> lock_diplomacy_;
     if (IS_HD(version_code_) || IS_DE(version_code_)) {
-        cursor_ >> treatyLength >> 4; // cheat code used, what's this?
+        cursor_ >> treaty_length_ >> 4; // cheat code used, what's this?
         if (save_version_ >= 13.1299)
             cursor_ >> 4;
         if (save_version_ >= 25.2199)

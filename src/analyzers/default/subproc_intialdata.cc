@@ -1,13 +1,9 @@
-/**
- * \file       subProcStartInfo.cpp
+/***************************************************************
+ * \file       subproc_intialdata.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
@@ -34,8 +30,8 @@ void DefaultAnalyzer::AnalyzeInitialData(int debug_flag) {
             cursor_ >> 1 >> p.init_camera_;
 
             // Do some check here
-            if (p.init_camera_[0] < 0 || p.init_camera_[0] > mapCoord[0] || p.init_camera_[1] < 0 ||
-                p.init_camera_[1] > mapCoord[1]) {
+            if (p.init_camera_[0] < 0 || p.init_camera_[0] > map_coord_[0] || p.init_camera_[1] < 0 ||
+                p.init_camera_[1] > map_coord_[1]) {
                 p.init_camera_[0] = p.init_camera_[1] = 0;
                 continue;
             }

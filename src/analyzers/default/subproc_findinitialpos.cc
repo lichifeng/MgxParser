@@ -1,13 +1,9 @@
-/**
- * \file       subProcFindInitialPos.cpp
+/***************************************************************
+ * \file       subproc_findinitialpos.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 #include "searcher.h"
@@ -16,7 +12,7 @@ void DefaultAnalyzer::FindInitialDataPosition(int debug_flag) {
     status_.debug_flag_ = debug_flag;
     cursor_(initinfo_start_ + 2 + num_players_ + 36 + 4 + 1);
 
-    easyskip_base_ += mapCoord[0] * mapCoord[1];
+    easyskip_base_ += map_coord_[0] * map_coord_[1];
     auto haystack_begin = cursor_.Itr() + easyskip_base_;
     auto haystack_end = cursor_.Itr() +
                         (scenario_start_ ? scenario_start_

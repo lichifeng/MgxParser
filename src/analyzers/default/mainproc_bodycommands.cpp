@@ -1,16 +1,12 @@
-/**
- * \file       subProcBody.cpp
+/***************************************************************
+ * \file       mainproc_bodycommands.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
-#include "body_processors/auxiliary.h"
+#include "auxiliary.h"
 
 void DefaultAnalyzer::ReadBodyCommands(int debug_flag) {
     status_.debug_flag_ = debug_flag;
@@ -43,10 +39,10 @@ void DefaultAnalyzer::ReadGameStart(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
     if (cursor_(body_start_).Peek<uint32_t>() != 500)
-        cursor_ >> 4; // Log version was read at the beginning
+        cursor_ >> 4; // Log version was read before
     // \note 其实规律是从这里开始读过24个字节后一直要往后走，直到遇到第一个02 00 00 00
-    cursor_ >> syncChecksumInterval
-            >> isMultiplayer
+    cursor_ >> sync_checksum_interval_
+            >> is_multiplayer_
             >> 16; // pov & revealMap & containsSequenceNumbers & numberOfChapters, duplicated
     if (cursor_.Peek<uint32_t>() == 0)
         cursor_ >> 4;

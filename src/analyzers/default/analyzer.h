@@ -1,26 +1,18 @@
-/**
+/***************************************************************
  * \file       analyzer.h
- * \author     PATRICK LI (lichifeng@qq.com)
- * \brief
- * \version    0.1
- * \date       2022-10-02
- *
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
+
 #ifndef MGXPARSER_DEFAULTANALYZER_H_
 #define MGXPARSER_DEFAULTANALYZER_H_
 
 #define RECBYTE uint8_t
-#define MIN_SIZE (100 * 1024)
-
-#define HEADER_STRM 0
-#define BODY_STRM 1
-#define PrintHEX(n) _printHex1(n, __FILE__, __LINE__)
+#define MIN_INPUT_SIZE (100 * 1024)
 #define EARLYMOVE_USED 5
 
 #include "compile_config.h"
-
 #include <array>
 #include <cstddef>
 #include <cstring>
@@ -28,43 +20,37 @@
 #include <iomanip>
 #include <iostream>
 #include <iterator>
+#include <utility>
 #include <vector>
 
 #include "status.h"
 #include "cursor.h"
-#include "DataModels/DataModel.h"
-#include "Logger.h"
-#include "utils.h"
+#include "record.h"
+#include "logger.h"
 
 /**
- * \brief      默认解析器，可以通过继承它来增加新的解析器。例如可以用来增加一个快速生成地图的版本，省略不必要的解析。
- *
+ * An analyzer loads record data and tries to extract useful information from it.
+ * This DefaultAnalyzer accepts a file path or byte buffer as input, provides methods to
+ * export reults as json string, generate mini map and extract header&body data into files.
  */
-class DefaultAnalyzer : public DataModel // \todo 这个继承的设计并不好，反而始类之间存在牵绊，正在重构。
-{
+class DefaultAnalyzer : public Record {
 public:
     // 第一阶段：初始化，读取输入并处理。
     // 输入可以是一个文件（名），或是一个字节数组（的指针）。
     // 这个阶段的目的，是把文件或是字节数组的输入统一到一个变量（input_cursor_）上。
-    // 初始化logger_也在这个阶段完成，因为读取文件阶段也可能有需要记录的事件。
-    // 在这个阶段发生任何问题，应当返回status:invalid，代表没有进入有意义的分析阶段，
-    // 连是否是一个录像文件都无法判断。
-
     Status status_;
     std::string inputpath_;
-    std::string input_filename_ = "<no file>";
+    std::string input_filename_;
     size_t input_size_ = 0;
     std::unique_ptr<Logger> logger_;
-    std::unique_ptr<DataModel> record_; // 存放了与录像本身相关的所有信息。与解析过程相关的情况存放在这个类里。
+    std::unique_ptr<Record> record_; // 存放了与录像本身相关的所有信息。DefaultAnalyzer是与解析过程相关的成员。
 
-    DefaultAnalyzer(const std::string &inputpath)
-            : inputpath_(inputpath), cursor_(combined_stream_) {
+    DefaultAnalyzer(std::string input_path)
+            : inputpath_(std::move(input_path)), cursor_(combined_stream_) {
         SharedInit();
 
         if (LoadFile())
             status_.input_loaded_ = true;
-        else
-            throw std::string("Failed to load file.");
     }
 
     DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string filename = "")
@@ -72,26 +58,27 @@ public:
         SharedInit();
 
         input_filename_ = filename.empty() ? "<memory stream>" : filename;
-        if (input_size_ > MIN_SIZE)
+        if (input_size_ > MIN_INPUT_SIZE)
             status_.input_loaded_ = true;
         else
-            throw std::string("Invalid input size.");
+            Message("Invalid input size.");
     }
 
-    // 第一阶段结束，自以往后，都只需要操作input_cursor_
+    ~DefaultAnalyzer() = default;
 
     // 第二阶段：获取header和body(合并到combined_stream_)。
     // 这个阶段首先是判断是否为ZIP文件，如果是，则解压获得原始录像文件。
     // 然后判断录像文件是否是header长度信息，如果没有，则查找确定，
     // 如果有，则再次解压，获得header_。body_只要复制就能获得。
     // 其实可以不用复制，但是为了操作的统一，还是这样做了。
+    // 从这个阶段往后，应该只需要操作cursor就可以了。
     bool ExtractStreams();
 
     std::size_t header_start_ = 0;
     std::size_t body_start_ = 0;
     // 第二阶段结束
 
-    // 第三阶段：开始解析
+    // 第三阶段：解析
     std::size_t version_end_ = 0;
     std::size_t ai_start_ = 0;
     std::size_t replay_start_ = 0;
@@ -105,20 +92,56 @@ public:
     std::size_t message_start_ = 0;
     std::size_t lobby_start_ = 0;
 
+    /**
+     * Run the parsing process. Need to be called manually after DefaultAnalyzer was initialized with valid input.
+     */
     void Run();
 
-    void Extract2Files(const string &header_path, const string &body_path);
 
-    void DrawMap(const string &path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
+    /**
+     * Extract header&body data into separator files
+     * @param header_path Path to header data
+     * @param body_path   Path to body data
+     */
+    void Extract2Files(const std::string &header_path, const std::string &body_path);
 
-    ~DefaultAnalyzer() = default;
+    /**
+     * Generate a mini map for this game
+     * @param save_path Path to saved image. Generated image is in .png format.
+     * @param width     Width of generated image
+     * @param height    Height of generated image
+     * @param hd        pass true to upscale map image by a factor 3x
+     */
+    void DrawMap(const std::string &save_path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
+    /**
+     * Translate raw numberic Info into readable terms.
+     * @param l C++ map contains localized strings
+     * @param i Raw data as key of may
+     * @param d Default string if not found
+     * @return
+     */
+    static std::string Translate(const std::map<uint32_t, std::string> &l, uint32_t i, std::string d = "-") {
+        if (!(l.find(i) == l.end())) {
+            return l.at(i);
+        } else {
+            return d;
+        }
+    }
 
-    string toJson();
+    /**
+     * Serialize record information into a json string
+     * @return C++ string. Need to be parsed.
+     */
+    std::string JsonOutput();
 
-
-    inline int getDebugFlag() { return _debugFlag; }
-
+    /**
+     * Append a message to output result.
+     */
+    inline DefaultAnalyzer &Message(std::string&& s) {
+        message_.append(s);
+        return *this;
+    }
 
 protected:
     // 第一阶段
@@ -126,6 +149,9 @@ protected:
     std::vector<RECBYTE> input_stream_;
     const RECBYTE *input_cursor_ = nullptr;
 
+    /**
+     * Initialization steps shared among construct methods
+     */
     inline void SharedInit() {
         BindLogger();
         BindRecord();
@@ -134,18 +160,19 @@ protected:
     inline void BindLogger() {
         if (!logger_)
             logger_ = std::make_unique<Logger>();
+        logger_->SetPattern("[%^%8l%$]%v");
     }
 
     inline void BindRecord() {
         if (!record_)
-            record_ = std::make_unique<DataModel>();
+            record_ = std::make_unique<Record>();
     }
 
     bool LoadFile();
     // 第一阶段结束
 
     // 第二阶段
-    vector<uint8_t> combined_stream_;
+    std::vector<uint8_t> combined_stream_;
     RecCursor cursor_;
     // 第二阶段结束
 
@@ -158,8 +185,9 @@ protected:
     const uint8_t *earlymove_cmd_[EARLYMOVE_USED]; ///< 有时候用自定义地图时，各方面初始数据会非常类似，造成无法准确判断不同视角是否属于同一局录像。所以要从BODY里的命令中提取一条，加入GUID计算中，这样重复的可能性就少了很多。MOVE的动作是几乎每局录像都会有的。
     uint32_t earlymove_time_[EARLYMOVE_USED];
     int earlymove_count_;
+    uint32_t dd_ai_count_ = 0; ///< \note used to skip AI section
 
-    void Analyze(); ///< 录像解析的主进程
+    void Analyze();
 
     void DetectVersion();
 
@@ -184,8 +212,6 @@ protected:
     void AnalyzeScenario(int debug_flag = 0, bool brutal = false, float lower_limit = 1.35, float upper_limit = 1.55);
 
     void AnalyzeMessages(int debug_flag = 0);
-
-    bool FindEncodingPattern(const char *pattern, std::string &map_name, size_t pattern_len);
 
     void DetectEncoding();
 
@@ -214,139 +240,27 @@ protected:
 
     void HandleAction();
 
-    // Some additional jobs
+    /**
+     * Guess the winner team. Only for fun, not accurate.
+     * @param debug_flag
+     */
     void JudgeWinner(int);
 
     void CalcRetroGuid(int);
 
+    template<typename T, size_t N = sizeof(T)>
+    bool FindEncodingPattern(const T (&pattern)[N]) {
+        size_t pos, pos_end;
 
-    vector<uint8_t> body_;
-    vector<uint8_t> header_;
+        if (std::string::npos != (pos = instructions.find((const char *) pattern, 0, N))) {
+            pos_end = instructions.find('\n', pos + N);
+            if (std::string::npos != pos_end)
+                embeded_mapname_ = instructions.substr(pos + N, pos_end - pos - N);
 
-    std::string status_old_ = "good";
-
-
-    /**
-     * \brief      切换当前工作的数据流（header 或者 body）
-     *
-     * \param      stream              HEADER_STRM/BODY_STRM
-     */
-    inline void _switchStream(uint8_t stream = HEADER_STRM) {
-        (HEADER_STRM == stream) ? _curStream = &header_
-                                : _curStream = &body_;
-        _curPos = _curStream->data();
-    }
-
-    inline size_t _distance() { return _curPos - _curStream->data(); } ///< 获取当前读取位置（相对于STREAM开头）
-
-    inline size_t _remainBytes() {
-        return (_curStream->size() >= _distance()) ? (_curStream->size() - _distance()) : 0;
-    } ///< 获取当前位置之后剩余的字节数
-
-    /**
-     * \brief      将当前位置往后 n 个字节的数据存储到一个变量上
-     *
-     * \param      n                   往后读取的字节数
-     * \param      dest                指向目标变量的指针
-     */
-    inline void _readBytes(size_t n, void *dest) {
-        memcpy(dest, _curPos, n);
-        _curPos += n;
-    }
-
-    /**
-     * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
-     *
-     * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
-     */
-    inline void _skipPascalString(bool lengthLong = false) {
-        uint32_t lenStr = lengthLong ? *(uint32_t *) _curPos : *(uint16_t *) _curPos;
-        uint32_t lenInt = lengthLong ? 4 : 2;
-
-        if (lenStr > 3000) {
-            logger_->warn(
-                    "Encountered an unexpected string length[_skipPascalString]. @{} / {}, Flag:{} in \"{}\"",
-                    _distance(), _curStream->size(), _debugFlag, input_filename_);
-            _sendExceptionSignal();
-            return;
+            return true;
         }
-
-        _skip(lenInt + lenStr);
+        return false;
     }
-
-    /**
-     * \brief      跳过“长度（2字节/4字节）+字符串内容”格式的字符串
-     *
-     * \param      s                   用于存储字符串的变量
-     * \param      convertEncoding    是否对读取的字符串进行转码
-     * \param      lengthLong          长度是用4个字节（true）还是2个字节（false）表示
-     */
-    void _readPascalString(string &s, bool convertEncoding = true,
-                           bool lengthLong = false) {
-        uint32_t lenStr = lengthLong ? *(uint32_t *) _curPos : *(uint16_t *) _curPos;
-        uint32_t lenInt = lengthLong ? 4 : 2;
-
-        if (lenStr > 3000) {
-            logger_->warn("Encountered an unexpected string length[READ]. @{}, Flag:{} in \"{}\"", _distance(),
-                          _debugFlag, input_filename_);
-            _sendExceptionSignal();
-            _skip(lenInt);
-            return;
-        }
-
-        _skip(lenInt);
-        s.assign((char *) _curPos, lenStr);
-        _skip(lenStr);
-
-    }
-
-    inline void _skip(size_t n) // \todo n could be negtive too?
-    {
-        if (_curPos - _curStream->data() + n > _curStream->size()) {
-            _sendExceptionSignal(
-                    true,
-                    logger_->fmt("Trying to escape current stream! Pos:{}", _distance()));
-        } else {
-            _curPos += n;
-        }
-    } ///< Skip forward n bytes. A check is deployed to avoid segment fault.
-
-    /**
-     * \brief      调用logger的功能打印出当前位置之后n个字节的16进制表示，用于调试
-     *
-     * \param      n                   要打印的字节数
-     * \param      file                文件名
-     * \param      line                行号
-     */
-    inline void _printHex1(size_t n, string file, size_t line) {
-        if (nullptr == logger_)
-            return;
-        if (_remainBytes() <= n)
-            n = _remainBytes();
-
-        logger_->logHex(n, _curStream->begin() + _distance(), _distance(), file, line);
-    }
-
-    void _sendExceptionSignal(bool throwException = false, string msg = "") {
-        _failedSignal = true;
-        status_old_ = throwException ? "Aborted" : "Warning";
-        if (throwException) {
-            if (logger_)
-                message = logger_->dumpStr();
-            throw msg;
-        }
-    } ///< 标记解析失败的FLAG
-
-    const uint8_t *_curPos;      ///< 当前读取数据的指针
-    vector<uint8_t> *_curStream; ///< 指向当前使用的数据流的底层数组的指针。 \todo 要把代码中所有的_header.data()替换成这个。
-
-    uint32_t _DD_AICount = 0; ///< \note used to skip AI section
-
-    const uint8_t *_startInfoPos = nullptr;
-    const uint8_t *_lobbyStartPos = nullptr;
-
-    bool _failedSignal = false; ///< Indicate some previous procedure was failed
-    int _debugFlag = 0;
 };
 
 #endif //MGXPARSER_DEFAULTANALYZER_H_

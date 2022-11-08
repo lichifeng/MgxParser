@@ -1,28 +1,24 @@
-/**
- * \file       subProcMapData.cpp
+/***************************************************************
+ * \file       subproc_map.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
 void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
-    cursor_(map_start_) >> mapCoord;
-    if (mapCoord[0] >= 10000 || mapCoord[1] >= 10000) {
+    cursor_(map_start_) >> map_coord_;
+    if (map_coord_[0] >= 10000 || map_coord_[1] >= 10000) {
         throw std::string("Map size too large.");
-    } else if (mapCoord[0] != mapCoord[1]) {
+    } else if (map_coord_[0] != map_coord_[1]) {
         throw std::string("Map coordinates is weird.");
     }
 
     int32_t num_mapzones, map_bits, num_floats;
-    map_bits = mapCoord[0] * mapCoord[1];
+    map_bits = map_coord_[0] * map_coord_[1];
     cursor_ >> num_mapzones;
     for (int i = 0; i < num_mapzones; i++) {
         if (IS_HD(version_code_) || IS_DE(version_code_)) /// \todo 为什么不是11.76？
@@ -61,7 +57,7 @@ void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
     // borrow local var check_val
     cursor_ >> check_val;
     if (40600 != check_val && 10060 != check_val) // 10060 in AOK
-        throw std::string("Cannot find expected check value 10060/40600 in init info section.");
+        throw std::string("Cannot find expected check value 10060/40600 in init Info section.");
 
     initinfo_start_ = cursor_();
     status_.mapdata_found_ = true;

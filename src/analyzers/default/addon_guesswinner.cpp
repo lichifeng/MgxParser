@@ -1,13 +1,9 @@
-/**
- * \file       addonGuessWinner.cpp
+/***************************************************************
+ * \file       addon_guesswinner.cpp
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-22
- *
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include <map>
 #include <array>
@@ -20,11 +16,6 @@ struct TeamCredit {
     uint32_t avg;
 };
 
-/**
- * \brief      谁赢谁输只能靠猜。逻辑是：哪一组的人均存活时间最长，哪一组就算赢。
- * \details    如果resigned == -1，那存活时间就算成duration, 如果resigned >=0，那存活时间就是resigned，需要考虑的是双控的情况。
- *
- */
 void DefaultAnalyzer::JudgeWinner(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
@@ -34,12 +25,13 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
     TeamCredit tc;
     uint32_t credit = 0, credit_max = 0;
     std::map<uint8_t, TeamCredit>::iterator found;
-    bool all_survived = true; // When nobody had resigned, that mean POV quit first, then POV is possibly lost.
+    bool all_survived = true; // If nobody had resigned, means POV quit first, then POV is possibly lost.
 
     for (auto &p: players) {
         if (!p.Valid())
             continue;
 
+        // 如果resigned == -1，那存活时间就算成duration, 如果resigned >=0，那存活时间就是resigned，需要考虑的是双控的情况。
         if (-1 == p.resigned_) {
             credit = duration_ + 500; // \note 有时候投降时间会和时长一致，那就把没投降的人分数多给一点点，这样就不会判断为已经投降的和没投降都是赢。
         } else {
@@ -60,7 +52,7 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
         if (found == winner_credits.end()) {
             tc.credits = index_max[i];
             tc.count = 1;
-            winner_credits.emplace(make_pair(index_team[i], tc));
+            winner_credits.emplace(std::make_pair(index_team[i], tc));
         } else {
             found->second.credits += index_max[i];
             found->second.count++;
@@ -68,10 +60,10 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
     }
 
     for (auto &t: winner_credits) {
-        if (teamMode.empty())
-            teamMode.append(to_string(t.second.count));
+        if (team_mode_.empty())
+            team_mode_.append(std::to_string(t.second.count));
         else
-            teamMode.append("v").append(to_string(t.second.count));
+            team_mode_.append("v").append(std::to_string(t.second.count));
 
         t.second.avg = t.second.credits / t.second.count;
         if (t.second.avg > credit_max)

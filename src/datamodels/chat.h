@@ -1,15 +1,18 @@
 /***************************************************************
- * \file       bytestohex.h
+ * \file       chat.h
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
- 
-#ifndef MGXPARSER_BYTESTOHEX_H_
-#define MGXPARSER_BYTESTOHEX_H_
+
+#ifndef MGXPARSER_DATAMODEL_CHAT_H_
+#define MGXPARSER_DATAMODEL_CHAT_H_
 
 #include <string>
 
-std::string BytesToHex(const unsigned char *data, int len);
+struct Chat {
+    uint32_t time = 0;
+    std::string msg;
+};
 
-#endif //MGXPARSER_BYTESTOHEX_H_
+#endif //MGXPARSER_DATAMODEL_CHAT_H_

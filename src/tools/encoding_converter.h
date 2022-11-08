@@ -6,7 +6,7 @@
  * @date      2022-09-21
  *
  * @copyright This file is derived from https://github.com/unnonouno/iconvpp
- *            See copyright statement in EncodingConverter.h .
+ *            See copyright statement below.
  *
  */
 
@@ -34,6 +34,7 @@ ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT LIABILITY, OR TORT
 (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE OF THIS
 SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
+
 #ifndef MGXPARSER_ENCODINGCONVERTER_H_
 #define MGXPARSER_ENCODINGCONVERTER_H_
 
@@ -43,10 +44,6 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #include <string>
 #include <vector>
 
-/**
- * @brief      用于编码转换的的工具，本质上是对 iconv 的一个封装。\n
- *             使用前需要创建一个 EncodingConverter 类的实体，指定源编码和转换后的编码。
- */
 class EncodingConverter {
 public:
     EncodingConverter();
@@ -120,7 +117,7 @@ public:
     }
 
 private:
-    void CheckConvertError() const {
+    static void CheckConvertError() {
         switch (errno) {
             case EILSEQ:
             case EINVAL:

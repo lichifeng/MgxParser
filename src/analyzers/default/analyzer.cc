@@ -1,25 +1,19 @@
-/**
+/***************************************************************
  * \file       analyzer.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-02
- *
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include <sstream>
-
 #include "analyzer.h"
 
-using namespace std;
-
 void DefaultAnalyzer::Run() {
+    if (!status_.input_loaded_)
+        throw std::string(message_);
     if (!status_.stream_extracted_ && !ExtractStreams())
         throw std::string("Unable to generate combined streams.");
 
-    // Start data analyzing
     Analyze();
 }
 
@@ -57,58 +51,57 @@ void DefaultAnalyzer::Analyze() {
     // ************
     // * Phase 1: *
     // ************
-    //   Reach sections which can reach easily(no search needed).
     //   1-1: Version
     DetectVersion();
 
     //   1-2: HD/DE-specific data
-    AnalyzeDEHeader(4);
-    AnalyzeHDHeader(5);
+    AnalyzeDEHeader(1);
+    AnalyzeHDHeader(2);
 
     //   1-3: AI
-    AnalyzeAi(6);
+    AnalyzeAi(3);
 
     //   1-4: Replay
-    AnalyzeReplay(7);
+    AnalyzeReplay(4);
 
     //   1-5: Map
-    AnalyzeMap(8);
+    AnalyzeMap(5);
 
     // ************
     // * Phase 2: *
     // ************
     //   Find some key positions
     //   2-1: Trigger info start position
-    FindTrigger(10);
+    FindTrigger(6);
 
     //   2-2: Game settings start position. Need 2-1
-    FindGameSettings(11);
+    FindGameSettings(7);
 
-    //   2-3：Disables start position. Need 2-1
-    FindDisabledTechs(12);
+    //   2-3：Disabled techs start position. Need 2-1
+    FindDisabledTechs(8);
 
     //   2-4: Victory
-    AnalyzeVictory(21);
+    AnalyzeVictory(9);
 
-    //   2-5: Find&Skip scenario data. Need victory start detected.
+    //   2-5: Find&Skip scenario data. Need victory start located.
     //   Nothing valuable here except a filename.
     //   What is really needed is instructions data after this section,
     //   which is key to detect file encoding.
-    AnalyzeScenario(14);
+    AnalyzeScenario(10);
 
-    //   2-6: Messages, ie. Instructions. Need 2-5
-    AnalyzeMessages(16);
+    //   2-6: Messages, Instructions. Need 2-5
+    AnalyzeMessages(11);
 
     //   2-7: Skip trigger info. Need 2-1
-    //   This is useless data, but need to get lobby start.
-    SkipTriggers(17);
+    //   This is useless data, but needed to reach lobby start.
+    SkipTriggers(12);
 
-    //   2-8: Game settings part, player names first appears here (before HD/DE
+    //   2-8: Game settings, player names first appears here (before HD/DE
     //   versions). Need 2-2
-    AnalyzeGameSettings(18);
+    AnalyzeGameSettings(13);
 
     //   2-9: Search initial player data postion. Need 2-5 & 2-8
-    FindInitialDataPosition(19);
+    FindInitialDataPosition(14);
 
     // ************
     // * Phase 3: *
@@ -116,22 +109,22 @@ void DefaultAnalyzer::Analyze() {
     //   Do rest analyze. Following jobs is not necessarily ordered.
 
     //   3-1: Lobby data, lobby chat & some settings here. Need 2-7
-    AnalyzeLobby(20);
+    AnalyzeLobby(15);
 
     //   3-3: Go back to player initial data position and rummage some useful pieces
-    AnalyzeInitialData(22);
+    AnalyzeInitialData(16);
 
     // ************
     // * Phase 4: *
     // ************
     // Analyze the body stream
 
-    ReadBodyCommands(23);
+    ReadBodyCommands(17);
 
     // ************
     // *  Addons  *
     // ************
     // Do some additional jobs
-    JudgeWinner(24);
-    CalcRetroGuid(25);
+    JudgeWinner(18);
+    CalcRetroGuid(19);
 }

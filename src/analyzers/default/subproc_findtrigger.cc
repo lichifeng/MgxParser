@@ -1,13 +1,9 @@
-/**
- * \file       subProcFindTriggerInfo.cpp
+/***************************************************************
+ * \file       subproc_findtrigger.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief      
- * \version    0.1
- * \date       2022-10-03
- * 
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- * 
- */
+ ***************************************************************/
 
 #include <array>
 #include "analyzer.h"
@@ -39,7 +35,7 @@ void DefaultAnalyzer::FindTrigger(int debug_flag) {
                 haystack_begin, haystack_end,
                 pattern.rbegin(), pattern.rend());
         if (found == haystack_end)
-            throw std::string("Failed to find trigger info section.");
+            throw std::string("Failed to find trigger Info section.");
 
         trigger_start_ = cursor_(haystack_end - found)();
         return;
@@ -50,7 +46,7 @@ void DefaultAnalyzer::FindTrigger(int debug_flag) {
                 haystack_begin, haystack_end,
                 pattern.rbegin(), pattern.rend());
         if (found == haystack_end)
-            throw std::string("Failed to find trigger info section.");
+            throw std::string("Failed to find trigger Info section.");
 
         cursor_(haystack_end - found);
 
@@ -65,6 +61,6 @@ void DefaultAnalyzer::FindTrigger(int debug_flag) {
             }
         }
 
-        throw std::string("Failed to find trigger info section.");
+        throw std::string("Failed to find trigger Info section.");
     }
 }

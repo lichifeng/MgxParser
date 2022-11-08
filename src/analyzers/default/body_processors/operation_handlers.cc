@@ -1,13 +1,9 @@
-/**
- * \file       body_processors.h
+/***************************************************************
+ * \file       operation_handlers.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-04
- *
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include <string>
 #include "../analyzer.h"
@@ -21,18 +17,25 @@ uint32_t cmdlen;
 int tmp_index;
 std::size_t nextcmd;
 
-int i = 0;
-
+/**
+ * https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/synchronization/Synchronization.md
+ */
 void DefaultAnalyzer::HandleSync() {
     cursor_ >> sync_data;
     duration_ += sync_data[0];
-    cursor_ >> (0 == sync_data[1] ? 28 : 0) >> 12; // \todo 这里的信息可能有用，包含了视角的的坐标
+    cursor_ >> (0 == sync_data[1] ? 28 : 0) >> 12;
 }
 
+/**
+ * "Viewpoints (for lock view) are only saved for the owner of the recorded game, together with the sychronization Info."
+ */
 void DefaultAnalyzer::HandleViewlock() {
-    cursor_ >> 12; // TODO: 看起来是视角切换的命令，比如按H切到TC这种(4byte float, 4byte float, 4byte int)
+    cursor_ >> 12; // 看起来是视角切换的命令，比如按H切到TC这种(4byte float, 4byte float, 4byte int)
 }
 
+/**
+ * https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/chat/0xFFFFFFFF%20(Chat).md
+ */
 void DefaultAnalyzer::HandleChat() {
     if (cursor_.Peek<int32_t>() != -1) {
         return;
@@ -63,6 +66,9 @@ void DefaultAnalyzer::HandleChat() {
     chat.emplace_back(tmp_chat);
 }
 
+/**
+ * https://github.com/stefan-kolb/aoc-mgx-format/tree/master/spec/body/actions
+ */
 void DefaultAnalyzer::HandleCommand() {
     // \todo Merge de71094 update from https://github.com/happyleavesaoc/aoc-mgz/commit/19b75b3b7e51e254075644ea2be96fdb0a7477b1 
     cursor_ >> cmdlen;

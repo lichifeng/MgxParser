@@ -1,20 +1,12 @@
-/**
- * \file       subProcTrigger.cpp
+/***************************************************************
+ * \file       subproc_skiptriggers.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
-/**
- * \brief      This method is not fully tested
- *
- */
 void DefaultAnalyzer::SkipTriggers(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 

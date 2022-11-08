@@ -52,7 +52,7 @@ set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${MD5} ${SRC_ROO
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
-add_executable("${PROJECT_NAME}_EXE" ${CMAKE_CURRENT_SOURCE_DIR}/test/maindemo.cpp)
+add_executable("${PROJECT_NAME}_EXE" demo.cpp)
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
@@ -67,7 +67,7 @@ set(
         "${CMAKE_CURRENT_SOURCE_DIR}/src/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/include/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/"
-        "${CMAKE_CURRENT_SOURCE_DIR}/src/DataModels/"
+        "${CMAKE_CURRENT_SOURCE_DIR}/src/datamodels/"
         "${PROJECT_BINARY_DIR}"
 )
 target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
@@ -130,6 +130,7 @@ if (BUILD_TESTING)
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
             src/tools/cursor.cc
+            src/tools/bytestohex.cc
     )
     target_link_libraries("CURSOR_TEST" GTest::gtest_main iconv)
     include(GoogleTest)

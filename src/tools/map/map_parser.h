@@ -1,13 +1,12 @@
-/**
- * \file       MapTools.h
+/***************************************************************
+ * \file       map_parser.h
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
+
+#ifndef MGXPARSER_MAP_PARSER_H_
+#define MGXPARSER_MAP_PARSER_H_
 
 #define cimg_use_png
 // https://cimg.eu/reference/structcimg__library_1_1CImgDisplay.html
@@ -15,14 +14,12 @@
 
 #include <string>
 #include "CImg/CImg.h"
-#include "MapColors.h"
-#include "TileStructures.h"
-
-using namespace std;
+#include "map_colors.h"
+#include "map_tiles.h"
 
 template<typename T, typename M>
-void GetMap(
-        string savePath,
+void ParseMapTile(
+        std::string savePath,
         T *analyzer,
         uint32_t width = 300, uint32_t height = 150,
         bool HD = false) {
@@ -31,15 +28,15 @@ void GetMap(
     int elevation, curPos, rbPos; // rb = right bottom
 
     // Init map
-    cimg_library::CImg<unsigned char> img(analyzer->mapCoord[0], analyzer->mapCoord[1], 1, 4, 0xff);
+    cimg_library::CImg<unsigned char> img(analyzer->map_coord_[0], analyzer->map_coord_[1], 1, 4, 0xff);
 
     // populate bits
     cimg_forXY(img, x, y) {
-            curPos = y * analyzer->mapCoord[0] + x;
-            rbPos = (y + 1) * analyzer->mapCoord[0] + (x + 1);
+            curPos = y * analyzer->map_coord_[0] + x;
+            rbPos = (y + 1) * analyzer->map_coord_[0] + (x + 1);
 
             elevation = 1;
-            if (x < (analyzer->mapCoord[0] - 1) && y < (analyzer->mapCoord[1] - 1)) {
+            if (x < (analyzer->map_coord_[0] - 1) && y < (analyzer->map_coord_[1] - 1)) {
                 if (mapData[curPos].elevation > mapData[rbPos].elevation)
                     elevation = 0;
                 else if (mapData[curPos].elevation < mapData[rbPos].elevation)
@@ -73,7 +70,7 @@ void GetMap(
     //     }
     // }
 
-    float factor = analyzer->mapCoord[0] / 220.0;
+    float factor = analyzer->map_coord_[0] / 220.0;
     float tcX, tcY;
 
     // Zoom the map to 3x original size
@@ -102,3 +99,5 @@ void GetMap(
 
     // img.display();
 }
+
+#endif //MGXPARSER_MAP_PARSER_H_

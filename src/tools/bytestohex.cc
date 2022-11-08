@@ -1,20 +1,22 @@
+/***************************************************************
+ * \file       bytestohex.cc
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/8
+ * \copyright  Copyright (c) 2020-2022
+ ***************************************************************/
+
 #include "bytestohex.h"
 
 /**
- * \brief      Use to convert bytes to hex string, mainly used to generate guid
- * in HD versions.
- *
- * \param      data                Normally a reference to _curPos(pointer to
- * current reading position). !! Must be a reference, otherwise skip will not work.
- * \param      len                 Bytes to convert
- * \param      skip                Skip read bytes (len bytes)
- * \return     std::string         Generated string representitive of bytes
+ * Use to convert bytes to hex string.
+ * @param data  Pointer to source bytes
+ * @param len   Length of bytes to be converted
+ * @return      Generated string representitive of bytes
  */
 std::string BytesToHex(const unsigned char *data, int len) {
     constexpr char hexmap[] = {
             '0', '1', '2', '3', '4', '5', '6', '7',
-            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'
-    };
+            '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
 
     std::string s(len * 2, ' ');
     for (int i = 0; i < len; ++i) {

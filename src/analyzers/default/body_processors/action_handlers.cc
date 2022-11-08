@@ -1,23 +1,23 @@
-/**
- * \file       cmdHandler.h
+/***************************************************************
+ * \file       action_handlers.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-22
- *
+ * \date       2022/11/7
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
+
 #include <cstdint>
 #include "../analyzer.h"
 #include "auxiliary.h"
 
+/**
+ * https://github.com/stefan-kolb/aoc-mgx-format
+ */
 void DefaultAnalyzer::HandleAction() {
     uint8_t resign_data[3];
     int8_t player_slot;
     int16_t tech_id;
 
-    uint8_t cmd = cursor_.Peek<uint8_t>();
+    auto cmd = cursor_.Peek<uint8_t>();
 
     switch (cmd) {
         case COMMAND_RESIGN:

@@ -1,13 +1,9 @@
-/**
- * \file       subProcReplay.cpp
+/***************************************************************
+ * \file       subproc_replay.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
@@ -16,12 +12,12 @@ void DefaultAnalyzer::AnalyzeReplay(int debug_flag) {
 
     cursor_(replay_start_)
             >> 12
-            >> gamespeed_
+            >> game_speed_
             >> 29
             >> rec_player_
             >> num_players_; // \note gaia included
     if (!IS_AOK(version_code_)) // \todo AOK condition not tested
-        cursor_ >> instantBuild >> cheatsEnabled;
+        cursor_ >> instant_build_ >> cheats_enabled_;
     cursor_ >> (2 + 58); // 2: gamemode?
     if (IS_DE(version_code_))
         cursor_ >> 8;

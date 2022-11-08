@@ -1,3 +1,10 @@
+/***************************************************************
+ * \file       searcher.h
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/8
+ * \copyright  Copyright (c) 2020-2022
+ ***************************************************************/
+
 #ifndef MGXPARSER_SEARCHER_H_
 #define MGXPARSER_SEARCHER_H_
 
@@ -18,4 +25,4 @@ T SearchPattern(T haystackBeg, T haystackEnd, Tn needleBeg, Tn needleEnd) {
             SEARCHER(needleBeg, needleEnd));
 }
 
-#endif
+#endif //MGXPARSER_SEARCHER_H_

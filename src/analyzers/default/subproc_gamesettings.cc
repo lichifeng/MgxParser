@@ -1,13 +1,9 @@
-/**
- * \file       subProcGameSettings.cpp
+/***************************************************************
+ * \file       subproc_gamesettings.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 
@@ -58,7 +54,7 @@ void DefaultAnalyzer::AnalyzeGameSettings(int debug_flag) {
         // 注1：HD/DE版本中，startinfo里的名字数据和HD/DE header里的一
         // 样，和这里不一样。这里显示的玩家名是“玩家1”之类。
         // 注2：startinfo中字符串长度用2字节表示，这里用4字节。
-        // \todo 这里似乎只有玩家才会在HD/DE专有区块有名字信息，GAIA和AI没有。
+        // \note 这里只有玩家才会在HD/DE专有区块有名字信息，GAIA和AI没有。
         // 注3：startinfo中的字符串有\0结尾，这里没有
 
         cursor_ >> players[i].index;

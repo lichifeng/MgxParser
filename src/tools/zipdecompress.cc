@@ -1,3 +1,10 @@
+/***************************************************************
+ * \file       zipdecompress.cc
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/8
+ * \copyright  Copyright (c) 2020-2022
+ ***************************************************************/
+
 #include "zipdecompress.h"
 #include "zlib.h"
 
@@ -9,7 +16,6 @@ int ZipDecompress(uint8_t *stream, size_t stream_size, std::vector<uint8_t> &out
 
     z_stream strm;
     int ret;
-    uint32_t have;
     uint32_t remain;
 
     /* allocate inflate state */

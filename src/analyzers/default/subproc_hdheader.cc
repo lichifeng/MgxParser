@@ -1,20 +1,14 @@
-/**
- * \file       subProcHeaderHD.cpp
+/***************************************************************
+ * \file       subproc_hdheader.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
-#include "utils.h"
 
 void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
-    if (!(IS_HD(version_code_) &&
-          save_version_ > 12.3401)) // \todo is this right cutoff point?? .mgx2 related?? see _gameSettingsAnalyzer()
+    if (!(IS_HD(version_code_) && save_version_ > 12.3401)) // \todo is this right cutoff point? Test .mgx2 file
         return;
 
     status_.debug_flag_ = debugFlag;
@@ -45,7 +39,7 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
     }
 
     if (dd_version_ == 1000) {
-        cursor_ >> HD_ver1000MapName;
+        cursor_ >> hd_ver1000_mapname_;
         cursor_.ScanString();
     }
     // Next 4 bytes should be: a3 5f 02 00
@@ -109,33 +103,33 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
                     >> players[i].dd_ai_type_
                     >> players[i].DD_AICivNameIndex;
             if (dd_version_ >= 1004.9999)
-                cursor_ >> players[i].DD_AIName;
+                cursor_ >> players[i].dd_ai_name_;
             cursor_ >> players[i].name
                     >> players[i].type_
-                    >> players[i].HD_steamID
+                    >> players[i].hd_steam_id_
                     >> players[i].DD_playerNumber;
             if (dd_version_ >= 1005.9999 && version_code_ != HD57) // \todo test this
                 cursor_ >> players[i].DD_RMRating >> players[i].DD_DMRating;
         }
 
         cursor_ >> 1 // fog of war
-                >> DD_cheatNotifications
-                >> DD_coloredChat
+                >> dd_cheat_notifications_
+                >> dd_colored_chat_
                 >> 13 // 9 bytes + a3 5f 02 00
-                >> DD_isRanked
-                >> DD_allowSpecs
-                >> DD_lobbyVisibility
-                >> HD_customRandomMapFileCrc
-                >> HD_customScenarioOrCampaignFile
+                >> dd_is_ranked_
+                >> dd_allow_specs_
+                >> dd_lobby_visibility_
+                >> hd_custom_randommap_file_crc_
+                >> hd_custom_scenario_or_campaign_file_
                 >> 8
-                >> HD_customRandomMapFile
+                >> hd_custom_randommap_file_
                 >> 8
-                >> HD_customRandomMapScenarionFile
+                >> hd_custom_randommap_scenarion_file_
                 >> 8;
-        cursor_.Hex(DD_guid, 16)
-                >> DD_lobbyName
-                >> DD_moddedDataset;
-        cursor_.Hex(HD_moddedDatasetWorkshopID, 4);
+        cursor_.Hex(dd_guid_, 16)
+                >> dd_lobbyname_
+                >> dd_modded_dataset_;
+        cursor_.Hex(hd_modded_dataset_workshop_id_, 4);
         if (dd_version_ >= 1004.9999) {
             cursor_ >> 4;
             cursor_.ScanString();

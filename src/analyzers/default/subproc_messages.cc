@@ -1,13 +1,9 @@
-/**
- * \file       subProcessMessage.cpp
- * \author     PATRICK LI (lichifeng@qq.com)
- * \brief
- * \version    0.1
- * \date       2022-09-30
- *
+/***************************************************************
+ * \file       subproc_messages.cc
+ * \author     PATRICK LI (admin@aocrec.com)
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 

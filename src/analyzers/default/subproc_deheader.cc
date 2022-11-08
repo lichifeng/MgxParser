@@ -1,13 +1,9 @@
-/**
- * \file       subProcHeaderDE.cpp
+/***************************************************************
+ * \file       subproc_deheader.cc
  * \author     PATRICK LI (admin@aocrec.com)
- * \brief
- * \version    0.1
- * \date       2022-10-03
- *
+ * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
- *
- */
+ ***************************************************************/
 
 #include "analyzer.h"
 #include "searcher.h"
@@ -85,12 +81,12 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
                 >> players[i].dd_civ_id_
                 >> players[i].dd_ai_type_
                 >> players[i].DD_AICivNameIndex
-                >> players[i].DD_AIName
+                >> players[i].dd_ai_name_
                 >> players[i].name
                 >> players[i].type_;
         if (4 == players[i].type_)
-            ++_DD_AICount;
-        cursor_ >> players[i].DE_profileID
+            ++dd_ai_count_;
+        cursor_ >> players[i].de_profile_id_
                 >> 4 // Should be: 00 00 00 00
                 >> players[i].DD_playerNumber; // 不存在的话是 -1 FF FF FF FF
         if (save_version_ < 25.2199)
@@ -100,29 +96,29 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
         cursor_ >> players[i].DE_preferRandom
                 >> players[i].DE_customAI;
         if (save_version_ >= 25.0599)
-            cursor_ >> 4 >> players[i].handicappingLevel;
+            cursor_ >> 4 >> players[i].handicapping_level_;
     }
     cursor_ >> 9
             >> 1 //_readBytes(1, &DE_fogOfWar);
-            >> DD_cheatNotifications
-            >> DD_coloredChat
+            >> dd_cheat_notifications_
+            >> dd_colored_chat_
             >> 4 // 0xa3, 0x5f, 0x02, 0x00
-            >> DD_isRanked
-            >> DD_allowSpecs
-            >> DD_lobbyVisibility
-            >> DE_hiddenCivs
-            >> DE_matchMaking;
+            >> dd_is_ranked_
+            >> dd_allow_specs_
+            >> dd_lobby_visibility_
+            >> de_hidden_civs_
+            >> de_matchmaking_;
     if (save_version_ >= 13.1299)
-        cursor_ >> DE_specDely >> DE_scenarioCiv;
+        cursor_ >> de_spec_dely_ >> de_scenario_civ_;
 
     // if (saveVersion >= 13.1299)
     //     DE_RMSCrc = BytesToHex(_curPos, 4, true);
 
-    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索乱撞过去了.下面是做
-    /// 的一些研究，找的规律
+    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索
     /// \todo aoc-mgz有更新，可以参考
     /// https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5
-    /// \note de-13.03.aoe2record : 2a 00 00 00 fe ff ff ff + 59*(fe ff ff ff)
+    /// \note
+    /// de-13.03.aoe2record : 2a 00 00 00 fe ff ff ff + 59*(fe ff ff ff)
     /// de-13.06.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
     /// de-13.07.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
     /// de-13.08.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
@@ -158,19 +154,19 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     } else {
         cursor_ >> 60 * 4;
     }
-    cursor_ >> DE_numAIFiles;
-    for (size_t i = 0; i < DE_numAIFiles; i++) {
-        if (DE_numAIFiles > 1000)
+    cursor_ >> de_num_ai_files_;
+    for (size_t i = 0; i < de_num_ai_files_; i++) {
+        if (de_num_ai_files_ > 1000)
             throw std::string("Number of Ai files too large in DE header");
         cursor_ >> 4;
         cursor_.ScanString() >> 4;
     }
     if (save_version_ >= 25.0199)
         cursor_ >> 8;
-    cursor_.Hex(DD_guid, 16) >> DD_lobbyName;
+    cursor_.Hex(dd_guid_, 16) >> dd_lobbyname_;
     if (save_version_ >= 25.2199)
         cursor_ >> 8;
-    cursor_ >> DD_moddedDataset >> 19;
+    cursor_ >> dd_modded_dataset_ >> 19;
     if (save_version_ >= 13.1299)
         cursor_ >> 5;
     if (save_version_ >= 13.1699)
