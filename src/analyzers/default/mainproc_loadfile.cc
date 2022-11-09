@@ -35,11 +35,15 @@ bool DefaultAnalyzer::LoadFile() {
     // Stop eating new lines in binary mode!!!
     input_file_.unsetf(std::ios::skipws);
 
-    input_stream_.reserve(input_size_);
-    input_stream_.insert(
-            input_stream_.begin(),
-            std::istream_iterator<RECBYTE>(input_file_),
-            std::istream_iterator<RECBYTE>());
+    // input_stream_.reserve(input_size_);
+    // input_stream_.insert(
+    //         input_stream_.begin(),
+    //         std::istream_iterator<RECBYTE>(input_file_),
+    //         std::istream_iterator<RECBYTE>());
+    // ↑ VERY SLOW!
+    // ↓ VERY FAST!
+    input_stream_.resize(input_size_);
+    input_file_.read((char*)input_stream_.data(), input_size_);
 
     input_file_.close();
 

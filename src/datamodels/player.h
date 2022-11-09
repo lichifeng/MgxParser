@@ -25,23 +25,23 @@ public:
     uint8_t de_selected_color_;
     uint8_t de_selected_teamid_ = 255;
     uint8_t resolved_teamid_ = 255; ///< Use this as final team. selected == 0x06 is random team but resolved 0x02-0x05 here
-    uint32_t HD_datCrc;
+    uint32_t hd_data_crc_;
     std::string de_data_crc_;
     uint8_t dd_mp_gameversion_;
     // uint32_t            HD_teamIndex = 999; ///< This looks not right, use data from lobby
     uint32_t dd_civ_id_ = UINT32_INIT;
     std::string dd_ai_type_; ///< in 26.21: "PromiDE";
-    uint8_t DD_AICivNameIndex;
+    uint8_t dd_ai_civname_index_;
     std::string dd_ai_name_;
     std::string name;
     uint32_t type_ = 999; ///< 0~6: absent, closed, human, eliminated, computer, cyborg, spectator
     uint64_t hd_steam_id_ = 0; ///< https://developer.valvesoftware.com/wiki/Steam_Web_API
     uint32_t de_profile_id_ = 0;
-    int32_t DD_playerNumber = -1; ///< \todo 这个和index/slot怎么区别呢？
-    uint32_t DD_RMRating = 0;
-    uint32_t DD_DMRating = 0;
-    uint8_t DE_preferRandom;
-    uint8_t DE_customAI;
+    int32_t dd_number_ = -1; ///< \todo 这个和index/slot怎么区别呢？
+    uint32_t dd_rm_rating_ = 0;
+    uint32_t dd_dm_rating_ = 0;
+    uint8_t de_prefer_random_;
+    uint8_t de_custom_ai_;
     uint32_t handicapping_level_ = UINT32_INIT;
     float modversion_id_;
     float init_camera_[2] = {-1.0, -1.0};

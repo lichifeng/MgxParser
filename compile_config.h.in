@@ -11,6 +11,8 @@
     #define DEBUG 0
 #endif
 
+#define USE_BM_SEARCH @USE_BM_SEARCH@
+
 // https://developercommunity.visualstudio.com/t/error-c2872-byte-ambiguous-symbol/93889
 #define _HAS_STD_BYTE 0
 

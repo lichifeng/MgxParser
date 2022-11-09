@@ -9,7 +9,7 @@
 #define MGXPARSER_DEFAULTANALYZER_H_
 
 #define RECBYTE uint8_t
-#define MIN_INPUT_SIZE (100 * 1024)
+#define MIN_INPUT_SIZE (30 * 1024)
 #define EARLYMOVE_USED 5
 
 #include "compile_config.h"
@@ -142,6 +142,9 @@ public:
         message_.append(s);
         return *this;
     }
+
+    inline std::size_t Position() { return cursor_(); }
+    inline std::size_t TotalSize() { return cursor_.RawStream().size(); }
 
 protected:
     // 第一阶段

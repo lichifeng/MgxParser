@@ -15,13 +15,13 @@ std::string _parse(DefaultAnalyzer &a, int map_type, std::string &&map_name, boo
         a.Run();
     }
     catch (std::string &s) {
-        a.logger_->Fatal("Debugflag#{}: {}", a.status_.debug_flag_, s);
+        a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), s);
     }
     catch (const std::exception &e) {
-        a.logger_->Fatal("Debugflag#{}: {}", a.status_.debug_flag_, e.what());
+        a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), e.what());
     }
     catch (...) {
-        a.logger_->Fatal("Debugflag#{}: Unknown Exception!", a.status_.debug_flag_);
+        a.logger_->Fatal("Df#{}@{}/{}: Unknown Exception!", a.status_.debug_flag_, a.Position(), a.TotalSize());
     }
 
     a.parse_time_ = a.logger_->Elapsed();

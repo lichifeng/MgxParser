@@ -3,7 +3,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.1.0
+        VERSION 0.2.0
         LANGUAGES CXX
         HOMEPAGE_URL "aocrec.com"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -15,12 +15,14 @@ set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
 add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
 add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
+set(USE_BM_SEARCH 1)
 
 if (APPLE)
     # Mac hack, libiconv and libpng was install with brew
     include_directories(/opt/homebrew/opt/libpng/include)
     link_directories(/opt/homebrew/opt/libpng/lib)
     set(MGXPARSER_LINK_TARGETS pthread png z iconv)
+    set(USE_BM_SEARCH 0)
 elseif (WIN32)
     # windows with vcpkg
     include_directories(

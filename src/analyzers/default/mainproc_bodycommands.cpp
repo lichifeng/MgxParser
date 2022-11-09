@@ -33,6 +33,7 @@ void DefaultAnalyzer::ReadBodyCommands(int debug_flag) {
                 break;
         }
     }
+    status_.body_scanned_ = true;
 }
 
 void DefaultAnalyzer::ReadGameStart(int debug_flag) {
@@ -44,8 +45,8 @@ void DefaultAnalyzer::ReadGameStart(int debug_flag) {
     cursor_ >> sync_checksum_interval_
             >> is_multiplayer_
             >> 16; // pov & revealMap & containsSequenceNumbers & numberOfChapters, duplicated
-    if (cursor_.Peek<uint32_t>() == 0)
+    if (cursor_.Remain() >= 4 && cursor_.Peek<uint32_t>() == 0)
         cursor_ >> 4;
-    if (cursor_.Peek<uint32_t>() != 2)
+    if (cursor_.Remain() >= 8 && cursor_.Peek<uint32_t>() != 2)
         cursor_ >> 8;
 }

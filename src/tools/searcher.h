@@ -10,7 +10,7 @@
 
 // Until 2022/10, clang on MacOS M1 don't support std::boyer_moore_searcher
 // This is a workaround for working on my laptop.
-#ifndef __cpp_lib_boyer_moore_searcher
+#ifndef USE_BM_SEARCH
 #define SEARCHER std::default_searcher
 #else
 #define SEARCHER std::boyer_moore_searcher

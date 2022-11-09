@@ -96,20 +96,20 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
             if (dd_version_ >= 1005.9999)
                 cursor_ >> 1;
             cursor_ >> 2
-                    >> players[i].HD_datCrc
+                    >> players[i].hd_data_crc_
                     >> players[i].dd_mp_gameversion_
                     >> 4 // Not correct team index
                     >> players[i].dd_civ_id_
                     >> players[i].dd_ai_type_
-                    >> players[i].DD_AICivNameIndex;
+                    >> players[i].dd_ai_civname_index_;
             if (dd_version_ >= 1004.9999)
                 cursor_ >> players[i].dd_ai_name_;
             cursor_ >> players[i].name
                     >> players[i].type_
                     >> players[i].hd_steam_id_
-                    >> players[i].DD_playerNumber;
+                    >> players[i].dd_number_;
             if (dd_version_ >= 1005.9999 && version_code_ != HD57) // \todo test this
-                cursor_ >> players[i].DD_RMRating >> players[i].DD_DMRating;
+                cursor_ >> players[i].dd_rm_rating_ >> players[i].dd_dm_rating_;
         }
 
         cursor_ >> 1 // fog of war

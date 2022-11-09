@@ -23,16 +23,16 @@ JSON response.
 
 Mini maps can be generated two forms, too.
 
-With `-m mapname.png`, a typical map was generated, and
+With `-m`, a typical map was generated, and
 
-with `-M HDmapname.png`, a prettier HD map was generated.
+with `-M`, a prettier HD map was generated.
 
 ## Performance
 I did't do elegent profiling for it, simply measured its performance by `\time -v
 MgxParser recordfile.mgx`
 
-Pure json output without map generation is very cheap with it. Normally cost
-<50ms and <10m peak memory( on my synology DS1621+ NAS docker container).
+Pure json output without map generation is very fast. Normally cost
+<50ms and <10m peak memory( in my synology DS1621+ NAS docker container).
 
 > Command being timed: "/Workspace/mgxParserCPP-master/build/MgxParser
 > test/sampleRecords/AOC10_4v4_5_5e3b2a7e.mgx"  
@@ -66,6 +66,7 @@ These libraries are required to build MgxParser:
   sudo apt-get install libpng-dev
   ```
 - **libz**: Required by **libpng** and header data decompressing.
+- **iconv**: Used to convert encoding of old records.
 - **nlohmann/json**: Required to generate JSON output. A single-header version
   of `nlohmann/json` is bundled into `libs/nlohmann_json_3` and compiled with
   MgxParser.
@@ -112,6 +113,8 @@ Node.js addon.
 Then `MgxParser::parse()` should be available.
 
 ## Version log
+- **0.2.0**: Reoragnized source files, tested with 130000+ records in
+  aocrec.com.
 - **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded
   record. All operations are done in memory without file storage.
 

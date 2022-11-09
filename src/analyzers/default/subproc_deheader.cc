@@ -80,7 +80,7 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
         cursor_ >> players[i].dd_mp_gameversion_
                 >> players[i].dd_civ_id_
                 >> players[i].dd_ai_type_
-                >> players[i].DD_AICivNameIndex
+                >> players[i].dd_ai_civname_index_
                 >> players[i].dd_ai_name_
                 >> players[i].name
                 >> players[i].type_;
@@ -88,13 +88,13 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
             ++dd_ai_count_;
         cursor_ >> players[i].de_profile_id_
                 >> 4 // Should be: 00 00 00 00
-                >> players[i].DD_playerNumber; // 不存在的话是 -1 FF FF FF FF
+                >> players[i].dd_number_; // 不存在的话是 -1 FF FF FF FF
         if (save_version_ < 25.2199)
-            cursor_ >> players[i].DD_RMRating;
+            cursor_ >> players[i].dd_rm_rating_;
         if (save_version_ < 25.2199)
-            cursor_ >> players[i].DD_DMRating;
-        cursor_ >> players[i].DE_preferRandom
-                >> players[i].DE_customAI;
+            cursor_ >> players[i].dd_dm_rating_;
+        cursor_ >> players[i].de_prefer_random_
+                >> players[i].de_custom_ai_;
         if (save_version_ >= 25.0599)
             cursor_ >> 4 >> players[i].handicapping_level_;
     }

@@ -65,7 +65,7 @@ bool DefaultAnalyzer::ExtractStreams() {
         int32_t reveal_map = *(int32_t *) (&possible_bodystart[0] + 12);
         bool bodystart_valid =
                 (0 == is_multiplayer || 1 == is_multiplayer)
-                && (0 == reveal_map || 1 == reveal_map);
+                && (reveal_map >= 0 || reveal_map < 10); // reveal_map: [0, 3]
         if (!bodystart_valid)
             throw std::string("Invalid header length and found an invalid body start.");
 

@@ -9,16 +9,16 @@
 #include "bytestohex.h"
 
 RecCursor &RecCursor::operator()(std::size_t pos) {
-    if (pos >= rec_stream_.size())
-        throw std::string("Cursor tried to go out of range.");
+    if (pos > rec_stream_.size())
+        throw std::string("Cursor tried to land out of range.");
     current_ = rec_stream_.begin() + pos;
     return *this;
 }
 
 RecCursor &RecCursor::operator+=(long pos) {
+    if (Remain() > RawStream().size() || Remain() < 0)
+        throw std::string("Cursor tried to go out of range(operator+=).");
     current_ += pos;
-    if (current_ > rec_stream_.end() || current_ < rec_stream_.begin())
-        throw std::string("Cursor tried to go out of range with '+='.");
     return *this;
 }
 

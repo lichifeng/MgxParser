@@ -80,7 +80,7 @@ void ParseMapTile(
     }
 
     for (auto &p: analyzer->players) {
-        if (!p.Valid())
+        if (!p.Valid() && p.init_camera_[0] != 0.0 && p.init_camera_[1] != 0.0)
             continue;
         tcX = HD ? p.init_camera_[0] * 3 : p.init_camera_[0];
         tcY = HD ? p.init_camera_[1] * 3 : p.init_camera_[1];

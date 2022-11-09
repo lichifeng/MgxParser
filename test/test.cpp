@@ -23,7 +23,7 @@ using json = nlohmann::json;
 
 string genPath(string f)
 {
-    return (filesystem::path(__FILE__).parent_path() / "testRecords" / f).generic_string();
+    return (filesystem::path(__FILE__).parent_path() / "test_records" / f).generic_string();
 }
 
 bool isPng(string f)
@@ -127,7 +127,7 @@ TEST_F(ParserTest, AOC10cMixTeamMode)
 // Test: parsing byte stream
 TEST_F(ParserTest, AIinStream)
 {
-    auto p = filesystem::path(__FILE__).parent_path() / "testRecords" / "Warning_aitest.mgx";
+    auto p = filesystem::path(__FILE__).parent_path() / "test_records" / "Warning_aitest.mgx";
     auto filesize = filesystem::file_size(p);
     vector<uint8_t> fBuffer;
     fBuffer.resize(filesize);
@@ -155,7 +155,7 @@ TEST_F(ParserTest, UserPatchVersions)
 
     load(recA, "up-1.4.mgz");
     EXPECT_EQ(recA["version"]["code"], "UP14");
-    EXPECT_EQ(recA["status"], "good");
+    EXPECT_EQ(recA["status"], "perfect");
 }
 
 // Test: mgx2 record
@@ -214,7 +214,7 @@ TEST_F(ParserTest, DE66692)
     EXPECT_EQ(recA["version"]["build"], 66692);
     EXPECT_EQ(recA["version"]["code"], "DE");
     EXPECT_EQ(recA["version"]["interVer"], 1000);
-    EXPECT_EQ(recA["status"], "good");
+    EXPECT_EQ(recA["status"], "perfect");
     EXPECT_EQ(recA["duration"], 27790);
     EXPECT_EQ(recA["guid"], "7fc8c9d8ea8750418ebcd182bca75055");
 }
@@ -225,7 +225,7 @@ TEST_F(ParserTest, InitialDataBrutalSearch)
     load(recA, "de-12.97-6byte-tile.aoe2record");
     EXPECT_EQ(recA["teamMode"], "1v1");
     EXPECT_EQ(recA["version"]["code"], "DE");
-    EXPECT_EQ(recA["status"], "good");
+    EXPECT_EQ(recA["status"], "perfect");
     for (auto &p : recA["players"])
     {
         if (1 == p["index"])
@@ -240,4 +240,17 @@ TEST_F(ParserTest, InitialDataBrutalSearch)
             EXPECT_EQ(p["DEProfileID"], 312663);
         }
     }
+}
+
+// Test: Records with triggers
+TEST_F(ParserTest, Triggers)
+{
+    load(recA, "trigger_test/AOC10_3v4_2_fc362460.zip");
+    EXPECT_EQ(recA["status"], "perfect");
+    load(recA, "trigger_test/AOCUP14_1v1v1v1v1v1v1v1_2_611d777b.zip");
+    EXPECT_EQ(recA["status"], "perfect");
+    load(recB, "trigger_test/AOCUP15_1v1v1v1v1_1_97159b00.zip");
+    EXPECT_EQ(recB["status"], "perfect");
+    load(recB, "trigger_test/HDEdition46_混战_1_bd52a416.zip");
+    EXPECT_EQ(recB["status"], "perfect");
 }

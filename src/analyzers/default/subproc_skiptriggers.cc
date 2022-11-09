@@ -7,6 +7,7 @@
 
 #include "analyzer.h"
 
+// https://github.com/goto-bus-stop/recanalyst/blob/bfc7223fec05cbafb4ec8487791bb94f4e369b71/src/Analyzers/HeaderAnalyzer.php#L374
 void DefaultAnalyzer::SkipTriggers(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
@@ -40,7 +41,6 @@ void DefaultAnalyzer::SkipTriggers(int debug_flag) {
                     >> (text_len > 0 ? text_len : 0)
                     >> sound_filename_len
                     >> (sound_filename_len > 0 ? sound_filename_len : 0)
-                    >> num_selected_objs
                     >> (4 * num_selected_objs);
         }
         cursor_ >> (4 * num_effects)

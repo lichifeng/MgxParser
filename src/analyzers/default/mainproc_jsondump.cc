@@ -48,12 +48,12 @@ std::string DefaultAnalyzer::JsonOutput() {
     j["message"] = message_;
     j["parseTime"] = parse_time_;
     j["parser"] = PARSER_VERSION_VERBOSE;
-    j["status"] = status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
+    j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
     j["fileType"] = input_ext_;
     j["filename"] = input_filename_;
     if (!extracted_file_.empty())
         j["extractedName"] = extracted_file_;
-    if (duration_)
+    if (status_.body_scanned_)
         j["duration"] = duration_;
     if (!dd_guid_.empty()) {
         j["guid"] = dd_guid_;
@@ -106,11 +106,14 @@ std::string DefaultAnalyzer::JsonOutput() {
     if (!team_mode_.empty())
         j["teamMode"] = team_mode_;
 
-    j["includeAI"] = (bool) include_ai_;
+    if (ai_start_)
+        j["includeAI"] = (bool) include_ai_;
 
     // Map
     if (UINT32_INIT != map_size_)
         j["map"]["size"] = Translate(zh::mapSize, map_size_);
+    if (!embeded_mapname_.empty())
+        j["map"]["name"] = embeded_mapname_;
 
     // Chat
     for (auto &c: chat) {
