@@ -1,0 +1,20 @@
+// the configured options and settings for MGXPARSER
+// Auto generated, do not modified!
+#pragma once
+
+#define MGXPARSER_VERSION_MAJOR @MgxParser_VERSION_MAJOR@
+#define MGXPARSER_VERSION_MINOR @MgxParser_VERSION_MINOR@
+#define PARSER_VERSION @PROJECT_VERSION@
+#define PARSER_VERSION_VERBOSE "@PROJECT_NAME@(@CMAKE_SYSTEM_NAME@ @CMAKE_HOST_SYSTEM_VERSION@) @PROJECT_VERSION@"
+
+#ifndef DEBUG
+    #define DEBUG 0
+#endif
+
+#define USE_BM_SEARCH @USE_BM_SEARCH@
+
+// https://developercommunity.visualstudio.com/t/error-c2872-byte-ambiguous-symbol/93889
+#define _HAS_STD_BYTE 0
+
+#define RAW_ENCODING "gb18030"
+#define OUT_ENCODING "utf-8"
