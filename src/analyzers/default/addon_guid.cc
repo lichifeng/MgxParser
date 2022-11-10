@@ -49,7 +49,7 @@ void DefaultAnalyzer::CalcRetroGuid(int debug_flag) {
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &game_speed_, 4);
     MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &map_id_, 4); // \note Not in AOK, need a stable default value
     for (size_t i = 0; i < earlymove_count_; i++) {
-        MGXPARSER_MD5::md5_update(&ctx, earlymove_cmd_[i], 20);
+        MGXPARSER_MD5::md5_update(&ctx, earlymove_cmd_[i], 19); // https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/actions/03-move.md
         MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &earlymove_time_[i], 4);
     }
     for (auto &p: players) {

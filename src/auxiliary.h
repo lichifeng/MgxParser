@@ -21,6 +21,7 @@
 #define COMMAND_TRIBUTE         0x6c
 #define COMMAND_POSTGAME        0xff
 #define COMMAND_MOVE            0x03
+#define COMMAND_SAVE            0x1b
 
 #define RESEARCH_FEUDAL         101
 #define RESEARCH_CASTLE         102

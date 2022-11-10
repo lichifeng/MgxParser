@@ -64,7 +64,7 @@ TEST_F(ParserTest, AOC10ZipwithMap)
 {
     load(recA, "AOC10_4v4_5_5e3b2a7e.mgx");
     EXPECT_EQ(recA["version"]["code"], "AOC10");
-    EXPECT_EQ(recA["guid"], "a7ed6be00825bc6fd2f41fc7f2169732");
+    EXPECT_EQ(recA["guid"], "d46a6ae13bea04e1744043f5017f9786");
     EXPECT_EQ(recA["duration"], 8035485);
     EXPECT_EQ(recA["message"], "");
 
@@ -88,7 +88,7 @@ TEST_F(ParserTest, AOC10CZip)
     EXPECT_EQ(recA["version"]["code"], "AOC10C");
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(recA["duration"], 3223100);
-    EXPECT_EQ(recA["guid"], "4cad9c9c93fce1ef0d6939fc7d5d1758");
+    EXPECT_EQ(recA["guid"], "104f4775ddc346c2b3dd5d771ba8b0ff");
 }
 
 // Test: parsing zipped aok record
@@ -118,7 +118,7 @@ TEST_F(ParserTest, AOC10cMixTeamMode)
     EXPECT_EQ(recA["version"]["code"], "AOC10C");
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(recA["duration"], 17040679);
-    EXPECT_EQ(recA["guid"], "0b81ccc8cf1f3ccefbd189f36defbfef");
+    EXPECT_EQ(recA["guid"], "07a47274f462a2487fc96ad81be8ebe1");
     EXPECT_EQ(recA["filename"], "AOC10c_MIX_1_7ce24dd2.mgx");
     EXPECT_EQ(recA["fileType"], ".mgx");
     EXPECT_EQ(recA["teamMode"], "1v1v1v1v1v1v1v1");
@@ -140,7 +140,7 @@ TEST_F(ParserTest, AIinStream)
     
     loadBytes(recA, fBuffer.data(), filesize);
     EXPECT_EQ(recA["filename"], "<memory stream>");
-    EXPECT_EQ(recA["guid"], "68db2945f53a25f0ec3a2946b21ee13d");
+    EXPECT_EQ(recA["guid"], "f35e36abd7dcb31ccb493c36cf83caa0");
     EXPECT_EQ(recA["version"]["code"], "HD");
     EXPECT_TRUE(recA["includeAI"]);
     EXPECT_EQ(recA["message"], "");

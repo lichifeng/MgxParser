@@ -4,7 +4,7 @@
  * \date       2022/11/8
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
- 
+
 #ifndef MGXPARSER_CURSOR_H_
 #define MGXPARSER_CURSOR_H_
 
@@ -64,7 +64,7 @@ public:
 
     // Peek a value
     template<typename T>
-    inline T Peek() { return *(T *) Ptr(); }
+    inline T Peek(int skip = 0) { return *(T *) (Ptr() + skip); }
 
     RecCursor &operator>>(std::string &s);
 

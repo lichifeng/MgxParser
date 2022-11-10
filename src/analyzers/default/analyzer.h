@@ -241,7 +241,7 @@ protected:
 
     void HandleCommand();
 
-    void HandleAction();
+    void HandleAction(uint32_t &cmdlen);
 
     /**
      * Guess the winner team. Only for fun, not accurate.

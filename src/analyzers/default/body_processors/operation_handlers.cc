@@ -61,9 +61,10 @@ void DefaultAnalyzer::HandleChat() {
             tmp_chat.msg = "<json error>";
         }
     }
-
-    tmp_chat.time = duration_;
-    chat.emplace_back(tmp_chat);
+    if (!tmp_chat.msg.empty()) {
+        tmp_chat.time = duration_;
+        chat.emplace_back(tmp_chat);
+    }
 }
 
 /**
@@ -74,7 +75,7 @@ void DefaultAnalyzer::HandleCommand() {
     cursor_ >> cmdlen;
     nextcmd = cursor_.Remain() < cmdlen ? (cursor_() + cursor_.Remain()) : (cursor_() + cmdlen);
 
-    HandleAction();
+    HandleAction(cmdlen);
 
     cursor_(nextcmd);
 }
