@@ -11,6 +11,12 @@
 #include "searcher.h"
 
 bool DefaultAnalyzer::ExtractStreams() {
+    // Check status
+    if (StreamReady())
+        return true;
+    if (!status_.input_loaded_)
+        throw std::string(message_);
+        
     // Is this a zip archive? The first 4 bytes should be 50 4B 03 04,
     // that is 67324752 for uint32_t.
     // Header of a zip file. https://docs.fileformat.com/compression/zip/

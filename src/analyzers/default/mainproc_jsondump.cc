@@ -49,7 +49,7 @@ std::string DefaultAnalyzer::JsonOutput() {
     j["parseTime"] = parse_time_;
     j["parser"] = PARSER_VERSION_VERBOSE;
     j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
-    j["fileType"] = input_ext_;
+    j["filetype"] = input_ext_;
     j["filename"] = input_filename_;
     if (!extracted_file_.empty())
         j["extractedName"] = extracted_file_;

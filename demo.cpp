@@ -5,9 +5,10 @@
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
 
-#include <string>
-#include <iostream>
 #include <cstring>
+#include <iostream>
+#include <string>
+
 #include "include/MgxParser.h"
 
 int main(int argc, char *argv[]) {
@@ -34,7 +35,13 @@ int main(int argc, char *argv[]) {
             file_path.assign(argv[i]);
     }
 
-    std::cout << MgxParser::parse(file_path, map_type, "map.png", extract) << std::endl;
+    MgxParser::Settings _ = {.input_path = file_path,
+                             .map_type = map_type,
+                             .map_width = 900,
+                             .map_height = 450,
+                             .map_name = "map.png",
+                             .extract_stream = extract};
+    std::cout << MgxParser::parse(_) << std::endl;
 
     return 0;
 }

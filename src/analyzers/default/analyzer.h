@@ -16,12 +16,14 @@
 #include <array>
 #include <cstddef>
 #include <cstring>
+#include <cstdio>
 #include <fstream>
 #include <iomanip>
 #include <iostream>
 #include <iterator>
 #include <utility>
 #include <vector>
+#include <filesystem>
 
 #include "status.h"
 #include "cursor.h"
@@ -53,10 +55,12 @@ public:
             status_.input_loaded_ = true;
     }
 
-    DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string filename = "")
-            : input_cursor_(input_buffer), input_size_(bufferlen), cursor_(combined_stream_) {
+    DefaultAnalyzer(const uint8_t *input_buffer, size_t bufferlen, const std::string input_path = "")
+            : input_cursor_(input_buffer), input_size_(bufferlen), cursor_(combined_stream_), inputpath_(std::move(input_path)) {
         SharedInit();
 
+        auto inputpath = std::filesystem::path(inputpath_);
+        auto filename = inputpath.filename().generic_string();
         input_filename_ = filename.empty() ? "<memory stream>" : filename;
         if (input_size_ > MIN_INPUT_SIZE)
             status_.input_loaded_ = true;
@@ -113,6 +117,15 @@ public:
      * @param hd        pass true to upscale map image by a factor 3x
      */
     void DrawMap(const std::string &save_path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
+    
+    /**
+     * Generate a mini map for this game
+     * @param dest      A FILE* handler
+     * @param width     Width of generated image
+     * @param height    Height of generated image
+     * @param hd        pass true to upscale map image by a factor 3x
+     */
+    void DrawMap(FILE *dest, uint32_t width = 300, uint32_t height = 150, bool hd = false);
 
     /**
      * Translate raw numberic Info into readable terms.
@@ -145,6 +158,8 @@ public:
 
     inline std::size_t Position() { return cursor_(); }
     inline std::size_t TotalSize() { return cursor_.RawStream().size(); }
+    inline bool StreamReady() { return status_.stream_extracted_; }
+    inline bool MapReady() { return status_.mapdata_found_; }
 
 protected:
     // 第一阶段
@@ -191,6 +206,8 @@ protected:
     uint32_t dd_ai_count_ = 0; ///< \note used to skip AI section
 
     void Analyze();
+
+    void Analyze2Map();
 
     void DetectVersion();
 

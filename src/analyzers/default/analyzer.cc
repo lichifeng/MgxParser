@@ -9,10 +9,8 @@
 #include "analyzer.h"
 
 void DefaultAnalyzer::Run() {
-    if (!status_.input_loaded_)
-        throw std::string(message_);
-    if (!status_.stream_extracted_ && !ExtractStreams())
-        throw std::string("Unable to generate combined streams.");
+    if (!ExtractStreams())
+        throw std::string("Failed to assemble streams.");
 
     Analyze();
 }
@@ -51,21 +49,7 @@ void DefaultAnalyzer::Analyze() {
     // ************
     // * Phase 1: *
     // ************
-    //   1-1: Version
-    DetectVersion();
-
-    //   1-2: HD/DE-specific data
-    AnalyzeDEHeader(1);
-    AnalyzeHDHeader(2);
-
-    //   1-3: AI
-    AnalyzeAi(3);
-
-    //   1-4: Replay
-    AnalyzeReplay(4);
-
-    //   1-5: Map
-    AnalyzeMap(5);
+    Analyze2Map();
 
     // ************
     // * Phase 2: *
@@ -127,4 +111,27 @@ void DefaultAnalyzer::Analyze() {
     // Do some additional jobs
     JudgeWinner(18);
     CalcRetroGuid(19);
+}
+
+void DefaultAnalyzer::Analyze2Map() {
+    if (MapReady())
+        return;
+
+    ExtractStreams();
+
+    //   1-1: Version
+    DetectVersion();
+
+    //   1-2: HD/DE-specific data
+    AnalyzeDEHeader(1);
+    AnalyzeHDHeader(2);
+
+    //   1-3: AI
+    AnalyzeAi(3);
+
+    //   1-4: Replay
+    AnalyzeReplay(4);
+
+    //   1-5: Map
+    AnalyzeMap(5);
 }

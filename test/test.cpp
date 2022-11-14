@@ -45,13 +45,15 @@ protected:
     void load(json &j, string f, int mapType = NO_MAP, string mapName = "testmap.png")
     {
         auto path = genPath(f);
-        string rawret = MgxParser::parse(path, mapType, mapName);
+        MgxParser::Settings _ = {.input_path = path, .map_type = mapType, .map_name = mapName};
+        string rawret = MgxParser::parse(_);
         j = json::parse(rawret);
     }
 
     void loadBytes(json &j, const uint8_t *b, uint32_t size, int mapType = NO_MAP, string mapName = "testmap.png")
     {
-        string rawret = MgxParser::parse(b, size, mapType, mapName);
+        MgxParser::Settings _ = {.input_stream = b, .input_size = size, .map_type = mapType, .map_name = mapName};
+        string rawret = MgxParser::parse(_);
         j = json::parse(rawret);
     }
 
@@ -101,7 +103,7 @@ TEST_F(ParserTest, AOKwithMap)
     EXPECT_EQ(recA["duration"], 2364525);
     //EXPECT_EQ(recA["guid"], "c4616f6dce68f7649ded5a2c3706d080");
     EXPECT_EQ(recA["extractedName"], "AOK_1v1_2_64b2d6dd.mgl");
-    EXPECT_EQ(recA["fileType"], ".zip");
+    EXPECT_EQ(recA["filetype"], ".zip");
 
     // A map file is successfully generated,
     EXPECT_TRUE(filesystem::exists(filesystem::path(mapName)));
@@ -120,7 +122,7 @@ TEST_F(ParserTest, AOC10cMixTeamMode)
     EXPECT_EQ(recA["duration"], 17040679);
     EXPECT_EQ(recA["guid"], "07a47274f462a2487fc96ad81be8ebe1");
     EXPECT_EQ(recA["filename"], "AOC10c_MIX_1_7ce24dd2.mgx");
-    EXPECT_EQ(recA["fileType"], ".mgx");
+    EXPECT_EQ(recA["filetype"], ".mgx");
     EXPECT_EQ(recA["teamMode"], "1v1v1v1v1v1v1v1");
 }
 

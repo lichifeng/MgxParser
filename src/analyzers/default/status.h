@@ -16,6 +16,4 @@ public:
     bool encoding_detected_ = false;
     bool mapdata_found_ = false;
     bool body_scanned_ = false;
-
-    [[nodiscard]] inline bool Invalid() const { return !stream_extracted_; }
 };
