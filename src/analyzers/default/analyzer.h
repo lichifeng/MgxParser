@@ -46,6 +46,10 @@ public:
     size_t input_size_ = 0;
     std::unique_ptr<Logger> logger_;
     std::unique_ptr<Record> record_; // 存放了与录像本身相关的所有信息。DefaultAnalyzer是与解析过程相关的成员。
+    bool calc_md5_ = true;
+    std::string unzip_;
+    char **unzip_buffer_ = nullptr;
+    std::size_t *unzip_size_ptr_;
 
     DefaultAnalyzer(std::string input_path)
             : inputpath_(std::move(input_path)), cursor_(combined_stream_) {
@@ -268,6 +272,8 @@ protected:
 
     void CalcRetroGuid(int);
 
+    static std::string CalcFileMd5(const uint8_t *, std::size_t);
+
     template<typename T, size_t N = sizeof(T)>
     bool FindEncodingPattern(const T (&pattern)[N]) {
         size_t pos, pos_end;
@@ -276,7 +282,6 @@ protected:
             pos_end = instructions.find('\n', pos + N);
             if (std::string::npos != pos_end)
                 embeded_mapname_ = instructions.substr(pos + N, pos_end - pos - N);
-
             return true;
         }
         return false;

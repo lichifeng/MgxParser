@@ -25,7 +25,7 @@ B: elevation code 0, 1, 2
 C: {R, G, B} of color
 */
 
-constexpr uint8_t MAP_COLORS[100][3][3] = {{\
+constexpr uint8_t kMapColors[100][3][3] = {{\
 {0, 169, 0}, \
 {51, 151, 39}, \
 {0, 141, 0}, \
@@ -527,7 +527,7 @@ constexpr uint8_t MAP_COLORS[100][3][3] = {{\
 }\
 };
 
-constexpr int playerColors[][4] = {
+constexpr int kPlayerColors[][4] = {
         {0,   0,   255, 255}, //   0 = > '#0000ff',
         {255, 0,   0,   255}, //   1 = > '#ff0000',
         {0,   255, 0,   255}, //   2 = > '#00ff00',

@@ -12,9 +12,14 @@
 
 std::string _parse(DefaultAnalyzer &&a, int map_type, FILE *map_dest, const std::string &map_name, int map_width,
                    int map_height, bool extract = false, const std::string &header_path = "",
-                   const std::string &body_path = "", bool full_parse = true) {
+                   const std::string &body_path = "", bool full_parse = true, bool md5 = true,
+                   const std::string &unzip = "", char **unzip_buffer = nullptr, std::size_t *unzip_size_ptr = nullptr) {
     if (full_parse) {
         try {
+            a.calc_md5_ = md5;
+            a.unzip_ = unzip;
+            a.unzip_buffer_ = unzip_buffer;
+            a.unzip_size_ptr_ = unzip_size_ptr;
             a.Run();
         } catch (std::string &s) {
             a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), s);
@@ -26,7 +31,7 @@ std::string _parse(DefaultAnalyzer &&a, int map_type, FILE *map_dest, const std:
         a.parse_time_ = a.logger_->Elapsed();
     }
 
-    if (a.MapReady() && map_type != NO_MAP) {
+    if (map_type != NO_MAP) {
         if (map_width < 0)
             map_width = 300;
         if (map_height < 0)
@@ -43,7 +48,7 @@ std::string _parse(DefaultAnalyzer &&a, int map_type, FILE *map_dest, const std:
         }
     }
 
-    if (a.StreamReady() && (extract || !header_path.empty() || !body_path.empty())) {
+    if (extract || !header_path.empty() || !body_path.empty()) {
         a.Extract2Files(header_path, body_path);
     }
 
@@ -56,11 +61,13 @@ std::string MgxParser::parse(Settings &settings) {
     if (settings.input_stream && settings.input_size > 0) {
         return _parse(DefaultAnalyzer(settings.input_stream, settings.input_size, settings.input_path),
                       settings.map_type, settings.map_dest, settings.map_name, settings.map_width, settings.map_height,
-                      settings.extract_stream, settings.header_path, settings.body_path, settings.full_parse);
+                      settings.extract_stream, settings.header_path, settings.body_path, settings.full_parse,
+                      settings.md5, settings.unzip, settings.unzip_buffer, settings.unzip_size_ptr);
     } else {
         return _parse(DefaultAnalyzer(settings.input_path), settings.map_type, settings.map_dest, settings.map_name,
                       settings.map_width, settings.map_height, settings.extract_stream, settings.header_path,
-                      settings.body_path, settings.full_parse);
+                      settings.body_path, settings.full_parse, settings.md5, settings.unzip, settings.unzip_buffer,
+                      settings.unzip_size_ptr);
     }
 }
 

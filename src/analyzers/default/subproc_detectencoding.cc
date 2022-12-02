@@ -48,7 +48,7 @@ void DefaultAnalyzer::DetectEncoding() {
     } else if (FindEncodingPattern(patterns::kNl)) {
         raw_encoding_ = "windows-1252";
     } else if (IS_HD(version_code_) || IS_DE(version_code_)) {
-        raw_encoding_ = "utf-8";
+        raw_encoding_ = "utf-8"; // \todo embeded map name is not extracted here
     } else {
         status_.encoding_detected_ = false;
     }

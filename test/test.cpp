@@ -64,9 +64,12 @@ protected:
 // Test: parsing aoc10 record & handling .zip archive
 TEST_F(ParserTest, AOC10ZipwithMap)
 {
+    // this record takes < 20ms to parse on synology ds1621+ docker container without md5 calculation
+    // and ~60ms with md5 calc.
     load(recA, "AOC10_4v4_5_5e3b2a7e.mgx");
     EXPECT_EQ(recA["version"]["code"], "AOC10");
     EXPECT_EQ(recA["guid"], "d46a6ae13bea04e1744043f5017f9786");
+    EXPECT_EQ(recA["filemd5"], "5e3b2a7e604f71c8a3793d41f522639c");
     EXPECT_EQ(recA["duration"], 8035485);
     EXPECT_EQ(recA["message"], "");
 
@@ -81,6 +84,7 @@ TEST_F(ParserTest, AOC10ZipwithMap)
 
     // Test for different views of a same game
     EXPECT_EQ(recB["guid"], recA["guid"]);
+    EXPECT_EQ(recB["filemd5"], "192a8268f8e188190837c2ff08d1ca6e");
 }
 
 // Test: parsing aoc10c record & handling .zip archive
@@ -219,6 +223,7 @@ TEST_F(ParserTest, DE66692)
     EXPECT_EQ(recA["status"], "perfect");
     EXPECT_EQ(recA["duration"], 27790);
     EXPECT_EQ(recA["guid"], "7fc8c9d8ea8750418ebcd182bca75055");
+    EXPECT_EQ(recA["gameTime"], 1665150274);
 }
 
 // Test: Brutal search for player data position in initial section

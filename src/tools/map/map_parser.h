@@ -45,9 +45,9 @@ void ParseMapTile(
                 elevation = 2;
         }
 
-        img(x, y, 0) = MAP_COLORS[mapdata_ptr[cur_pos].terrainType][elevation][0];
-        img(x, y, 1) = MAP_COLORS[mapdata_ptr[cur_pos].terrainType][elevation][1];
-        img(x, y, 2) = MAP_COLORS[mapdata_ptr[cur_pos].terrainType][elevation][2];
+        img(x, y, 0) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][0];
+        img(x, y, 1) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][1];
+        img(x, y, 2) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][2];
         img(x, y, 3) = 0xff;
     }
 
@@ -86,8 +86,8 @@ void ParseMapTile(
             continue;
         tcX = hd ? p.init_camera_[0] * 3 : p.init_camera_[0];
         tcY = hd ? p.init_camera_[1] * 3 : p.init_camera_[1];
-        img.draw_circle(tcX, tcY, factor * 8, playerColors[p.color_id_], 0.3);
-        img.draw_circle(tcX, tcY, factor * 4, playerColors[p.color_id_], 1);
+        img.draw_circle(tcX, tcY, factor * 8, kPlayerColors[p.color_id_], 0.3);
+        img.draw_circle(tcX, tcY, factor * 4, kPlayerColors[p.color_id_], 1);
     }
 
     // rotate

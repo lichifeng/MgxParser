@@ -28,6 +28,13 @@ namespace MgxParser {
  * @param map_name       Name of generated map file
  * @param map_dest       A C-style FILE handler to store map
  * @param extract_stream Extract header&body streams to files. Default filenames: header.dat, body.dat
+ * @param header_path
+ * @param body_path
+ * @param full_parse
+ * @param md5
+ * @param extract_stream
+ * @param unzip
+ * @param unzip_buffer
  */
 struct Settings {
     const uint8_t *input_stream = nullptr;
@@ -42,6 +49,10 @@ struct Settings {
     std::string header_path;
     std::string body_path;
     bool full_parse = true;
+    bool md5 = true;
+    std::string unzip;
+    char **unzip_buffer;
+    std::size_t *unzip_size_ptr;
 };
 
 /**
