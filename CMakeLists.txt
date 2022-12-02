@@ -3,7 +3,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.2.0
+        VERSION 0.3.0
         LANGUAGES CXX
         HOMEPAGE_URL "aocrec.com"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -63,15 +63,17 @@ target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
 target_link_libraries("${PROJECT_NAME}_EXE" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
 
 set(
-        MGXPARSER_INCLUDE
+        MGXPARSER_INCLUDE_
         PUBLIC
         "${CMAKE_CURRENT_SOURCE_DIR}/libs/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/include/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/tools/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/datamodels/"
-        "${PROJECT_BINARY_DIR}"
+        "${PROJECT_BINARY_DIR}" 
 )
+set(MGXPARSER_INCLUDE ${MGXPARSER_INCLUDE_})
+set(MGXPARSER_INCLUDE ${MGXPARSER_INCLUDE_} PARENT_SCOPE)
 target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
 target_include_directories("${PROJECT_NAME}_SHARED" PRIVATE ${MGXPARSER_INCLUDE})
 target_include_directories("${PROJECT_NAME}_STATIC" PRIVATE ${MGXPARSER_INCLUDE})

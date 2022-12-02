@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.2.0) was compiled on 20221109*
+*This version(0.3.0) was compiled on 20221202*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -126,6 +126,7 @@ Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2
 https://aok.heavengames.com/blacksmith/lister.php?category=utilities
 https://aok.heavengames.com/blacksmith/lister.php?category=records   
 AoE II Development Collective https://siegeengineers.org/
+https://www.twaoe2wiki.com/
 
 ## Caution
 This project is still under development. **No warrenty for anything!**

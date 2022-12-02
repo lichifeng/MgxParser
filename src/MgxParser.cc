@@ -7,60 +7,73 @@
 
 #include <string>
 #include <utility>
-#include "analyzers/default/analyzer.h"
 #include "include/MgxParser.h"
+#include "analyzers/default/analyzer.h"
 
-std::string _parse(DefaultAnalyzer &a, int map_type, std::string &&map_name, bool extract = false) {
-    try {
-        a.Run();
+std::string _parse(DefaultAnalyzer &&a, int map_type, FILE *map_dest, const std::string &map_name, int map_width,
+                   int map_height, bool extract = false, const std::string &header_path = "",
+                   const std::string &body_path = "", bool full_parse = true, bool md5 = true,
+                   const std::string &unzip = "", char **unzip_buffer = nullptr, std::size_t *unzip_size_ptr = nullptr) {
+    if (full_parse) {
+        try {
+            a.calc_md5_ = md5;
+            a.unzip_ = unzip;
+            a.unzip_buffer_ = unzip_buffer;
+            a.unzip_size_ptr_ = unzip_size_ptr;
+            a.Run();
+        } catch (std::string &s) {
+            a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), s);
+        } catch (const std::exception &e) {
+            a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), e.what());
+        } catch (...) {
+            a.logger_->Fatal("Df#{}@{}/{}: Unknown Exception!", a.status_.debug_flag_, a.Position(), a.TotalSize());
+        }
+        a.parse_time_ = a.logger_->Elapsed();
     }
-    catch (std::string &s) {
-        a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), s);
-    }
-    catch (const std::exception &e) {
-        a.logger_->Fatal("Df#{}@{}/{}: {}", a.status_.debug_flag_, a.Position(), a.TotalSize(), e.what());
-    }
-    catch (...) {
-        a.logger_->Fatal("Df#{}@{}/{}: Unknown Exception!", a.status_.debug_flag_, a.Position(), a.TotalSize());
-    }
-
-    a.parse_time_ = a.logger_->Elapsed();
 
     if (map_type != NO_MAP) {
-        uint32_t w = HD_MAP ? 900 : 300;
-        uint32_t h = HD_MAP ? 450 : 150;
+        if (map_width < 0)
+            map_width = 300;
+        if (map_height < 0)
+            map_height = 150;
         try {
-            a.DrawMap(map_name, w, h, map_type == HD_MAP);
-        }
-        catch (...) {
+            if (map_dest) {
+                a.DrawMap(map_dest, map_width, map_height, map_type == HD_MAP);
+            }
+            if (!map_name.empty()) {
+                a.DrawMap(map_name, map_width, map_height, map_type == HD_MAP);
+            }
+        } catch (...) {
             a.logger_->Warn("Failed to generate a map file.");
         }
     }
 
-    a.message_ = std::move(a.logger_->DumpStr());
+    if (extract || !header_path.empty() || !body_path.empty()) {
+        a.Extract2Files(header_path, body_path);
+    }
 
-    if (extract)
-        a.Extract2Files("header.dat", "body.dat");
+    a.message_ = std::move(a.logger_->DumpStr());
 
     return a.JsonOutput();
 }
 
-std::string MgxParser::parse(std::string input_path, int map_type, std::string map_name, bool extract_stream) {
-    auto a = DefaultAnalyzer(std::move(input_path));
-    return _parse(a, map_type, std::move(map_name), extract_stream);
+std::string MgxParser::parse(Settings &settings) {
+    if (settings.input_stream && settings.input_size > 0) {
+        return _parse(DefaultAnalyzer(settings.input_stream, settings.input_size, settings.input_path),
+                      settings.map_type, settings.map_dest, settings.map_name, settings.map_width, settings.map_height,
+                      settings.extract_stream, settings.header_path, settings.body_path, settings.full_parse,
+                      settings.md5, settings.unzip, settings.unzip_buffer, settings.unzip_size_ptr);
+    } else {
+        return _parse(DefaultAnalyzer(settings.input_path), settings.map_type, settings.map_dest, settings.map_name,
+                      settings.map_width, settings.map_height, settings.extract_stream, settings.header_path,
+                      settings.body_path, settings.full_parse, settings.md5, settings.unzip, settings.unzip_buffer,
+                      settings.unzip_size_ptr);
+    }
 }
 
-std::string
-MgxParser::parse(const uint8_t *input, size_t input_size, int map_type, std::string map_name, bool extract_stream) {
-    auto a = DefaultAnalyzer(input, input_size);
-    return _parse(a, map_type, std::move(map_name), extract_stream);
-}
-
-extern "C"
-{
+extern "C" {
 const char *MgxParser::pyparse(const char *input_path, int map_type, const char *map_name, bool extract_stream) {
-    auto a = DefaultAnalyzer(input_path);
-    std::string &&result = std::move(_parse(a, map_type, map_name, extract_stream));
+    std::string &&result = std::move(_parse(DefaultAnalyzer(input_path), map_type, NULL, map_name, 300, 150));
     return result.c_str();
 }
 }

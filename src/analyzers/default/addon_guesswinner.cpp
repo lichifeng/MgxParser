@@ -19,7 +19,7 @@ struct TeamCredit {
 void DefaultAnalyzer::JudgeWinner(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
-    std::multimap<uint8_t, TeamCredit> winner_credits;
+    std::multimap<uint8_t, TeamCredit, std::greater<uint8_t>> winner_credits;
     uint32_t index_max[9] = {0};
     uint8_t index_team[9] = {0};
     TeamCredit tc;

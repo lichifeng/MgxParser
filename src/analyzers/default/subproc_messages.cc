@@ -17,4 +17,5 @@ void DefaultAnalyzer::AnalyzeMessages(int debug_flag) {
     DetectEncoding();
 
     cursor_.FixEncoding(instructions);
+    cursor_.FixEncoding(embeded_mapname_);
 }

@@ -6,11 +6,18 @@
  ***************************************************************/
 
 #include <array>
+
 #include "analyzer.h"
-#include "zipdecompress.h"
 #include "searcher.h"
+#include "zipdecompress.h"
 
 bool DefaultAnalyzer::ExtractStreams() {
+    // Check status
+    if (StreamReady())
+        return true;
+    if (!status_.input_loaded_)
+        throw std::string(message_);
+
     // Is this a zip archive? The first 4 bytes should be 50 4B 03 04,
     // that is 67324752 for uint32_t.
     // Header of a zip file. https://docs.fileformat.com/compression/zip/
@@ -19,57 +26,66 @@ bool DefaultAnalyzer::ExtractStreams() {
 
     auto input_start = input_stream_.empty() ? input_cursor_ : input_stream_.data();
     auto input_end = input_stream_.empty() ? (input_cursor_ + input_size_) : &*input_stream_.cend();
-    auto zipsig_p = (uint32_t *) input_start;
+    auto zipsig_p = (uint32_t *)input_start;
     uint32_t *compressed_size_p;
     uint16_t *namelen_p;
     uint16_t *exlen_p;
 
     if (67324752 == *zipsig_p) {
-        compressed_size_p = (uint32_t *) (input_start + 18);
-        namelen_p = (uint16_t *) (input_start + 26);
-        exlen_p = (uint16_t *) (input_start + 28);
+        compressed_size_p = (uint32_t *)(input_start + 18);
+        namelen_p = (uint16_t *)(input_start + 26);
+        exlen_p = (uint16_t *)(input_start + 28);
 
         std::vector<RECBYTE> outbuffer;
-        if (0 != ZipDecompress(
-                const_cast<uint8_t *>(input_start + 30 + *namelen_p + *exlen_p),
-                *compressed_size_p,
-                outbuffer))
+        if (0 != ZipDecompress(const_cast<uint8_t *>(input_start + 30 + *namelen_p + *exlen_p),
+                               input_size_,  // zip64 have compressed_size == 0, so use input_size instead.
+                                             // https://pkware.cachefly.net/webdocs/casestudies/APPNOTE.TXT
+                               outbuffer))
             throw std::string("Failed to unzip input file.");
 
-        extracted_file_ = std::string((char *) (input_start + 30), *namelen_p);
+        extracted_file_ = std::string((char *)(input_start + 30), *namelen_p);
         input_stream_ = std::move(outbuffer);
         input_size_ = input_stream_.size();
         input_start = input_stream_.data();
         input_end = input_stream_.data() + input_size_;
+
+        if (unzip_buffer_) {
+            // remember to free memory if using this!!!
+            *unzip_buffer_ = (char *)malloc(*unzip_size_ptr_ = input_size_);
+            memcpy(*unzip_buffer_, input_stream_.data(), input_size_);
+        } else if (unzip_.size() > 0 && unzip_.size() < 255) {
+            std::string unzip_filename =
+                (unzip_ == "original" && extracted_file_.size() > 0) ? extracted_file_ : unzip_;
+            std::ofstream raw(unzip_filename, std::ofstream::binary);
+            raw.write((char *)input_stream_.data(), input_size_);
+            raw.close();
+        }
     }
 
     // 再看有没有有效的header长度信息
-    auto datalen = *(uint32_t *) input_start;
-    auto nextpos = *(uint32_t *) (input_start + 4);
+    auto datalen = *(uint32_t *)input_start;
+    auto nextpos = *(uint32_t *)(input_start + 4);
     uint32_t headerlen, headerpos;
 
     // 如果没有，那就尝试搜索
     if (datalen < 25000 || datalen > input_size_) {
         // not a valid header length info
         std::array<uint8_t, 4> body_sync_interval = {0xf4, 0x01, 0x00, 0x00};
-        auto possible_bodystart = SearchPattern(
-                input_start, input_end,
-                body_sync_interval.cbegin(), body_sync_interval.cend()
-        );
+        auto possible_bodystart =
+            SearchPattern(input_start, input_end, body_sync_interval.cbegin(), body_sync_interval.cend());
         if (possible_bodystart == input_end)
             throw std::string("Invalid header length and cannot find body start.");
         if (possible_bodystart - input_start < 25000)
             throw std::string("Invalid header length and found an invalid body start.");
 
-        int32_t is_multiplayer = *(int32_t *) (&possible_bodystart[0] + 4);
-        int32_t reveal_map = *(int32_t *) (&possible_bodystart[0] + 12);
+        int32_t is_multiplayer = *(int32_t *)(&possible_bodystart[0] + 4);
+        int32_t reveal_map = *(int32_t *)(&possible_bodystart[0] + 12);
         bool bodystart_valid =
-                (0 == is_multiplayer || 1 == is_multiplayer)
-                && (reveal_map >= 0 || reveal_map < 10); // reveal_map: [0, 3]
+            (0 == is_multiplayer || 1 == is_multiplayer) && (reveal_map >= 0 || reveal_map < 10);  // reveal_map: [0, 3]
         if (!bodystart_valid)
             throw std::string("Invalid header length and found an invalid body start.");
 
-        int32_t log_version = *(int32_t *) (&possible_bodystart[0] - 4);
+        int32_t log_version = *(int32_t *)(&possible_bodystart[0] - 4);
         if (log_version > 0 && log_version < 10) {
             // not aok
             possible_bodystart -= 4;
@@ -101,6 +117,10 @@ bool DefaultAnalyzer::ExtractStreams() {
 
     // Prepare cursor_
     cursor_(0);
+
+    // Calc md5 of real record file
+    if (calc_md5_)
+        file_md5_ = CalcFileMd5(input_start, input_size_);
 
     // input stream is not intended to be use after here, release memory
     std::vector<uint8_t>().swap(input_stream_);

@@ -49,8 +49,10 @@ std::string DefaultAnalyzer::JsonOutput() {
     j["parseTime"] = parse_time_;
     j["parser"] = PARSER_VERSION_VERBOSE;
     j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
-    j["fileType"] = input_ext_;
+    j["filetype"] = input_ext_;
     j["filename"] = input_filename_;
+    if (!file_md5_.empty())
+        j["filemd5"] = file_md5_;
     if (!extracted_file_.empty())
         j["extractedName"] = extracted_file_;
     if (status_.body_scanned_)
@@ -60,6 +62,12 @@ std::string DefaultAnalyzer::JsonOutput() {
     } else if (!retro_guid_.empty()) {
         j["guid"] = retro_guid_;
     }
+    j["recPlayer"] = rec_player_;
+    if (status_.body_scanned_)
+        j["isMultiplayer"] =
+            (IS_DE(version_code_) || IS_HD(version_code_)) ? (bool)dd_multiplayer_ : (bool)is_multiplayer_;
+    if (de_timestamp_)
+        j["gameTime"] = de_timestamp_;
 
     // Version info
     if (status_.version_detected_)
@@ -94,11 +102,11 @@ std::string DefaultAnalyzer::JsonOutput() {
     if (status_.encoding_detected_)
         j["rawEncoding"] = raw_encoding_;
     if (FLOAT_INIT != dd_speed_ || UINT32_INIT != game_speed_)
-        j["speed"] = Translate(zh::speed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
+        j["speed"] = Translate(zh::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
     if (UINT32_INIT != dd_victorytype_id_)
-        j["victory"]["type"] = Translate(zh::victoryTypes, dd_victorytype_id_);
+        j["victory"]["type"] = Translate(zh::kVictoryTypes, dd_victorytype_id_);
     else if (UINT32_INIT != victory_mode_)
-        j["victory"]["type"] = Translate(zh::victoryTypes, victory_mode_); // \todo 低版本的要核实下，好像不怎么对
+        j["victory"]["type"] = Translate(zh::kVictoryTypes, victory_mode_); // \todo 低版本的要核实下，好像不怎么对
 
     if (UINT32_INIT != population_limit_)
         j["population"] = population_limit_;
@@ -111,7 +119,7 @@ std::string DefaultAnalyzer::JsonOutput() {
 
     // Map
     if (UINT32_INIT != map_size_)
-        j["map"]["size"] = Translate(zh::mapSize, map_size_);
+        j["map"]["size"] = Translate(zh::kMapSize, map_size_);
     if (!embeded_mapname_.empty())
         j["map"]["name"] = embeded_mapname_;
 
@@ -136,22 +144,21 @@ std::string DefaultAnalyzer::JsonOutput() {
         pj["name"] = p.dd_ai_type_.empty() ? p.name : p.dd_ai_name_;
         pj["team"] = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
         pj["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civ_id_ : p.dd_civ_id_;
-        pj["civilization"]["name"] = Translate(zh::civNames, pj["civilization"]["id"]);
+        pj["civilization"]["name"] = Translate(zh::kCivNames, pj["civilization"]["id"]);
         pj["initPosition"] = {
                 p.init_camera_[0] == -1.0 ? 0 : p.init_camera_[0],
                 p.init_camera_[1] == -1.0 ? 0 : p.init_camera_[1]};
 
         if (4 == p.type_ && !p.dd_ai_type_.empty())
-            pj["type"] = Translate(zh::playerTypes, p.type_) + "(" + p.dd_ai_type_ + ")";
+            pj["type"] = Translate(zh::kPlayerTypes, p.type_) + "(" + p.dd_ai_type_ + ")";
         else
-            pj["type"] = Translate(zh::playerTypes, p.type_);
+            pj["type"] = Translate(zh::kPlayerTypes, p.type_);
 
         if (0 != p.de_profile_id_)
             pj["DEProfileID"] = p.de_profile_id_;
         if (0 != p.hd_steam_id_)
             pj["HDSteamID"] = p.hd_steam_id_;
         pj["mainOp"] = p.InitialDataFound(); // \todo 要验证下。可以用这种方法确定是不是Co-Op。
-        pj["POV"] = p.slot == rec_player_;
         if (UINT32_INIT != p.handicapping_level_)
             pj["handicappingLevel"] = p.handicapping_level_;
         if (-1 != p.resigned_)
@@ -164,8 +171,9 @@ std::string DefaultAnalyzer::JsonOutput() {
             pj["imperialTime"] = p.imperial_time_;
         pj["disconnected"] = p.disconnected_;
         pj["inWinner"] = p.is_winner_;
+        pj["colorIndex"] = p.color_id_;
 
-        j["players"].emplace_back(pj);
+        j["players"][std::to_string(p.slot)] = std::move(pj);
     }
 
     return j.dump(-1, ' ', false, json::error_handler_t::ignore);

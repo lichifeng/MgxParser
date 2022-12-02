@@ -9,7 +9,7 @@
 #include <string>
 
 namespace zh {
-    const std::map<uint32_t, std::string> civNames = {
+    const std::map<uint32_t, std::string> kCivNames = {
             {0,  "随机"},
             {1,  "不列颠"},
             {2,  "法兰克"},
@@ -60,7 +60,7 @@ namespace zh {
             {47, "ReservedCivP"},
             {48, "ReservedCivQ"}};
 
-    const std::map<uint32_t, std::string> playerTypes = {
+    const std::map<uint32_t, std::string> kPlayerTypes = {
             {0, "空缺"},
             {1, "关闭"},
             {2, "人类"},
@@ -68,7 +68,7 @@ namespace zh {
             {4, "AI"},
             {5, "旁观者"}};
 
-    const std::map<uint32_t, std::string> victoryTypes = {
+    const std::map<uint32_t, std::string> kVictoryTypes = {
             {0,  "默认"},
             {1,  "征服"},
             {2,  "探索"},
@@ -79,7 +79,7 @@ namespace zh {
             {10, "弑君模式"},
             {11, "最后的存活者"}};
 
-    const std::map<uint32_t, std::string> victoryAmount = {
+    const std::map<uint32_t, std::string> kVictoryAmount = {
             {15000, "1500 年 (2 小时)"},
             {13000, "1300 年 (105 分钟)"},
             {11000, "1100 年 (1.5 小时)"},
@@ -88,7 +88,7 @@ namespace zh {
             {5000,  "500 年 (40 分钟)"},
             {3000,  "300 年 (25 分钟)"}};
 
-    const std::map<uint32_t, std::string> difficulty = {
+    const std::map<uint32_t, std::string> kDifficulty = {
             {0, "极难"},
             {1, "难"}, // \todo DE中怎么选难是5？
             {2, "中等"},
@@ -97,7 +97,7 @@ namespace zh {
             {5, "极限"},
     }; // \todo aoc-mgz 里有一个extreme
 
-    const std::map<uint32_t, std::string> resources = {
+    const std::map<uint32_t, std::string> kResources = {
             {0, "标准"},
             {1, "低"},
             {2, "中"},
@@ -106,7 +106,7 @@ namespace zh {
             {5, "无限"},
             {6, "随机"}};
 
-    const std::map<uint32_t, std::string> speed = {
+    const std::map<uint32_t, std::string> kSpeed = {
             {100,  "慢"},
             {150,  "正常"},
             {200,  "快"},
@@ -115,13 +115,13 @@ namespace zh {
             {1690, "正常"},
             {2000, "快"}};
 
-    const std::map<uint32_t, std::string> revealMap = {
+    const std::map<uint32_t, std::string> kRevealMap = {
             {0, "正常"},
             {1, "已探索"},
             {2, "全部可视"},
             {3, "无战雾"}};
 
-    const std::map<uint32_t, std::string> mapSize = {
+    const std::map<uint32_t, std::string> kMapSize = {
             {0, "微型 (2 个玩家)"},
             {1, "小型 (3 个玩家)"},
             {2, "中型 (4 个玩家)"},

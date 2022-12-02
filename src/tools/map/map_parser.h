@@ -12,42 +12,44 @@
 // https://cimg.eu/reference/structcimg__library_1_1CImgDisplay.html
 #define cimg_display 0
 
+#include <cstdio>
 #include <string>
+
 #include "CImg/CImg.h"
 #include "map_colors.h"
 #include "map_tiles.h"
 
-template<typename T, typename M>
+template <typename T, typename M>
 void ParseMapTile(
-        std::string savePath,
-        T *analyzer,
-        uint32_t width = 300, uint32_t height = 150,
-        bool HD = false) {
-    M *mapData = (M *) analyzer->mapdata_ptr_;
+    FILE *save_dest,
+    T *analyzer,
+    uint32_t width = 300, uint32_t height = 150,
+    bool hd = false) {
+    M *mapdata_ptr = (M *)analyzer->mapdata_ptr_;
 
-    int elevation, curPos, rbPos; // rb = right bottom
+    int elevation, cur_pos, rb_pos;  // rb = right bottom
 
     // Init map
     cimg_library::CImg<unsigned char> img(analyzer->map_coord_[0], analyzer->map_coord_[1], 1, 4, 0xff);
 
     // populate bits
     cimg_forXY(img, x, y) {
-            curPos = y * analyzer->map_coord_[0] + x;
-            rbPos = (y + 1) * analyzer->map_coord_[0] + (x + 1);
+        cur_pos = y * analyzer->map_coord_[0] + x;
+        rb_pos = (y + 1) * analyzer->map_coord_[0] + (x + 1);
 
-            elevation = 1;
-            if (x < (analyzer->map_coord_[0] - 1) && y < (analyzer->map_coord_[1] - 1)) {
-                if (mapData[curPos].elevation > mapData[rbPos].elevation)
-                    elevation = 0;
-                else if (mapData[curPos].elevation < mapData[rbPos].elevation)
-                    elevation = 2;
-            }
-
-            img(x, y, 0) = MAP_COLORS[mapData[curPos].terrainType][elevation][0];
-            img(x, y, 1) = MAP_COLORS[mapData[curPos].terrainType][elevation][1];
-            img(x, y, 2) = MAP_COLORS[mapData[curPos].terrainType][elevation][2];
-            img(x, y, 3) = 0xff;
+        elevation = 1;
+        if (x < (analyzer->map_coord_[0] - 1) && y < (analyzer->map_coord_[1] - 1)) {
+            if (mapdata_ptr[cur_pos].elevation > mapdata_ptr[rb_pos].elevation)
+                elevation = 0;
+            else if (mapdata_ptr[cur_pos].elevation < mapdata_ptr[rb_pos].elevation)
+                elevation = 2;
         }
+
+        img(x, y, 0) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][0];
+        img(x, y, 1) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][1];
+        img(x, y, 2) = kMapColors[mapdata_ptr[cur_pos].terrainType][elevation][2];
+        img(x, y, 3) = 0xff;
+    }
 
     // // draw objects
     // unsigned char RGB[4];
@@ -74,18 +76,18 @@ void ParseMapTile(
     float tcX, tcY;
 
     // Zoom the map to 3x original size
-    if (HD) {
+    if (hd) {
         img.resize_tripleXY();
         factor *= 2.5;
     }
 
-    for (auto &p: analyzer->players) {
+    for (auto &p : analyzer->players) {
         if (!p.Valid() && p.init_camera_[0] != 0.0 && p.init_camera_[1] != 0.0)
             continue;
-        tcX = HD ? p.init_camera_[0] * 3 : p.init_camera_[0];
-        tcY = HD ? p.init_camera_[1] * 3 : p.init_camera_[1];
-        img.draw_circle(tcX, tcY, factor * 8, playerColors[p.color_id_], 0.3);
-        img.draw_circle(tcX, tcY, factor * 4, playerColors[p.color_id_], 1);
+        tcX = hd ? p.init_camera_[0] * 3 : p.init_camera_[0];
+        tcY = hd ? p.init_camera_[1] * 3 : p.init_camera_[1];
+        img.draw_circle(tcX, tcY, factor * 8, kPlayerColors[p.color_id_], 0.3);
+        img.draw_circle(tcX, tcY, factor * 4, kPlayerColors[p.color_id_], 1);
     }
 
     // rotate
@@ -95,9 +97,9 @@ void ParseMapTile(
     img.resize(width, height);
 
     // save png
-    img.save_png(savePath.c_str());
+    img.save_png(save_dest);
 
     // img.display();
 }
 
-#endif //MGXPARSER_MAP_PARSER_H_
+#endif  // MGXPARSER_MAP_PARSER_H_
