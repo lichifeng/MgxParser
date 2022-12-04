@@ -17,6 +17,7 @@
 #endif
 
 #include <algorithm>
+#include <functional>
 
 template<typename T, typename Tn>
 T SearchPattern(T haystack_begin, T haystack_end, Tn needle_begin, Tn needle_end) {
