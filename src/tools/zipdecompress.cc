@@ -8,7 +8,7 @@
 #include "zipdecompress.h"
 #include "zlib.h"
 
-int ZipDecompress(uint8_t *stream, size_t stream_size, std::vector<uint8_t> &outbuffer) {
+int ZipDecompress(uint8_t *stream, std::size_t stream_size, std::vector<uint8_t> &outbuffer) {
     // Some settings
     constexpr uint32_t reserved = 5 * 1024 * 1024;
     constexpr uint32_t chunk = 10 * 1024 * 1024;
