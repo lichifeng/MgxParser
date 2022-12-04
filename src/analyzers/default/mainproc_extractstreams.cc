@@ -48,18 +48,6 @@ bool DefaultAnalyzer::ExtractStreams() {
         input_size_ = input_stream_.size();
         input_start = input_stream_.data();
         input_end = input_stream_.data() + input_size_;
-
-        if (unzip_buffer_) {
-            // remember to free memory if using this!!!
-            *unzip_buffer_ = (char *)malloc(*unzip_size_ptr_ = input_size_);
-            memcpy(*unzip_buffer_, input_stream_.data(), input_size_);
-        } else if (unzip_.size() > 0 && unzip_.size() < 255) {
-            std::string unzip_filename =
-                (unzip_ == "original" && extracted_file_.size() > 0) ? extracted_file_ : unzip_;
-            std::ofstream raw(unzip_filename, std::ofstream::binary);
-            raw.write((char *)input_stream_.data(), input_size_);
-            raw.close();
-        }
     }
 
     // 再看有没有有效的header长度信息
@@ -121,6 +109,22 @@ bool DefaultAnalyzer::ExtractStreams() {
     // Calc md5 of real record file
     if (calc_md5_)
         file_md5_ = CalcFileMd5(input_start, input_size_);
+
+    // Unzip the record if requested
+    // 这儿要注意的问题是不能放在上面解压的代码那里，因为刚解压完并不知道压缩包里这个文件是不是有效录像，所以那时候解压出来没意义
+    if (67324752 == *zipsig_p) {
+        if (unzip_buffer_) {
+            // remember to free memory if using this!!!
+            *unzip_buffer_ = (char *)malloc(*unzip_size_ptr_ = input_size_);
+            memcpy(*unzip_buffer_, input_stream_.data(), input_size_);
+        } else if (!unzip_.empty() && unzip_.size() > 0 && unzip_.size() < 255) {
+            std::string unzip_filename =
+                (unzip_ == "original" && extracted_file_.size() > 0) ? extracted_file_ : unzip_;
+            std::ofstream raw(unzip_filename, std::ofstream::binary);
+            raw.write((char *)input_stream_.data(), input_size_);
+            raw.close();
+        }
+    }
 
     // input stream is not intended to be use after here, release memory
     std::vector<uint8_t>().swap(input_stream_);

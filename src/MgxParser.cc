@@ -17,7 +17,8 @@ std::string _parse(DefaultAnalyzer &&a, int map_type, FILE *map_dest, const std:
     if (full_parse) {
         try {
             a.calc_md5_ = md5;
-            a.unzip_ = unzip;
+            if (!unzip.empty())
+                a.unzip_ = unzip;
             a.unzip_buffer_ = unzip_buffer;
             a.unzip_size_ptr_ = unzip_size_ptr;
             a.Run();
