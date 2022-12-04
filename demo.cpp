@@ -45,6 +45,8 @@ int main(int argc, char *argv[]) {
                              .map_height = 450,
                              .map_name = "map.png",
                              .extract_stream = extract,
+                             .header_path = extract ? "header.dat" : "",
+                             .body_path = extract ? "body.dat" : "",
                              .unzip = unzip_filename};
     std::cout << MgxParser::parse(_) << std::endl;
 

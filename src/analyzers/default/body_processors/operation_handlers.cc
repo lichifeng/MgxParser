@@ -50,6 +50,7 @@ void DefaultAnalyzer::HandleChat() {
         // Filter junk info like being attacked by animals, etc.
         if (tmp_index > 0 && tmp_index < 9
             && 0 != tmp_chat.msg.compare(3, players[tmp_index].name.size(), players[tmp_index].name)
+            || players[tmp_index].name.empty()
             || tmp_index == 0)
             return;
     } else {

@@ -49,7 +49,7 @@ public:
     bool calc_md5_ = true;
     std::string unzip_;
     char **unzip_buffer_ = nullptr;
-    std::size_t *unzip_size_ptr_;
+    std::size_t *unzip_size_ptr_ = nullptr;
 
     DefaultAnalyzer(std::string input_path)
             : inputpath_(std::move(input_path)), cursor_(combined_stream_) {

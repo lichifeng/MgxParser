@@ -51,8 +51,8 @@ struct Settings {
     bool full_parse = true;
     bool md5 = true;
     std::string unzip;
-    char **unzip_buffer;
-    std::size_t *unzip_size_ptr;
+    char **unzip_buffer = nullptr;
+    std::size_t *unzip_size_ptr = nullptr;
 };
 
 /**
