@@ -5,6 +5,7 @@
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
 
+#include <map>
 #include "analyzer.h"
 
 void DefaultAnalyzer::AnalyzeInitialData(int debug_flag) {
@@ -15,6 +16,7 @@ void DefaultAnalyzer::AnalyzeInitialData(int debug_flag) {
 
     uint32_t num_headerdata = *(uint32_t *) (initinfo_searchpattern_trail_ + 1);
 
+    std::map<int32_t, Player*> main_op;
     for (auto &p: players) {
         if (p.InitialDataFound() && p.Valid()) {
             cursor_(p.data_offset_).ScanString() >> 762;
@@ -44,6 +46,20 @@ void DefaultAnalyzer::AnalyzeInitialData(int debug_flag) {
             }
 
             cursor_ >> 5 >> p.civ_id_ >> 3 >> p.color_id_;
+
+            main_op.try_emplace(p.index, &p);
+        }
+    }
+
+    for (auto& p : players) {
+        if (!p.InitialDataFound() && p.Valid()) {
+            auto index_main = main_op.find(p.index);
+            if (index_main != main_op.end()) {
+                p.civ_id_ = index_main->second->civ_id_;
+                p.color_id_ = index_main->second->color_id_;
+                p.init_camera_[0] = index_main->second->init_camera_[0];
+                p.init_camera_[1] = index_main->second->init_camera_[1];
+            }
         }
     }
 }

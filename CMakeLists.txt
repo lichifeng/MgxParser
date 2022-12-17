@@ -3,7 +3,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.3.0
+        VERSION 0.3.3
         LANGUAGES CXX
         HOMEPAGE_URL "aocrec.com"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -54,7 +54,7 @@ set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${MD5} ${SRC_ROO
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
-add_executable("${PROJECT_NAME}_EXE" demo.cpp)
+add_executable("${PROJECT_NAME}_EXE" demo.cc)
 
 # Import dependencies
 # WARNING: png depends on libz, so put it before z
@@ -125,7 +125,7 @@ if (BUILD_TESTING)
     enable_testing()
     add_executable(
             "${PROJECT_NAME}_TEST"
-            ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cpp
+            ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cc
     )
     target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
     target_link_libraries("${PROJECT_NAME}_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})

@@ -94,7 +94,7 @@ TEST_F(ParserTest, AOC10CZip)
     EXPECT_EQ(recA["version"]["code"], "AOC10C");
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(recA["duration"], 3223100);
-    EXPECT_EQ(recA["guid"], "104f4775ddc346c2b3dd5d771ba8b0ff");
+    EXPECT_EQ(recA["guid"], "7bc37bf3d04c3a9c91c78cf36a08870a");
 }
 
 // Test: parsing zipped aok record
