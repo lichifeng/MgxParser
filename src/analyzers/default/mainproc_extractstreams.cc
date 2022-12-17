@@ -26,12 +26,12 @@ bool DefaultAnalyzer::ExtractStreams() {
 
     auto input_start = input_stream_.empty() ? input_cursor_ : input_stream_.data();
     auto input_end = input_stream_.empty() ? (input_cursor_ + input_size_) : &*input_stream_.cend();
-    auto zipsig_p = (uint32_t *)input_start;
+    bool is_zip = 67324752 == *(uint32_t *)input_start;
     uint32_t *compressed_size_p;
     uint16_t *namelen_p;
     uint16_t *exlen_p;
 
-    if (67324752 == *zipsig_p) {
+    if (is_zip) {
         compressed_size_p = (uint32_t *)(input_start + 18);
         namelen_p = (uint16_t *)(input_start + 26);
         exlen_p = (uint16_t *)(input_start + 28);
@@ -112,7 +112,7 @@ bool DefaultAnalyzer::ExtractStreams() {
 
     // Unzip the record if requested
     // 这儿要注意的问题是不能放在上面解压的代码那里，因为刚解压完并不知道压缩包里这个文件是不是有效录像，所以那时候解压出来没意义
-    if (67324752 == *zipsig_p) {
+    if (is_zip) {
         if (unzip_buffer_) {
             // remember to free memory if using this!!!
             *unzip_buffer_ = (char *)malloc(*unzip_size_ptr_ = input_size_);

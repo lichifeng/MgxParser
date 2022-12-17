@@ -158,7 +158,7 @@ std::string DefaultAnalyzer::JsonOutput() {
             pj["DEProfileID"] = p.de_profile_id_;
         if (0 != p.hd_steam_id_)
             pj["HDSteamID"] = p.hd_steam_id_;
-        pj["mainOp"] = p.InitialDataFound(); // \todo 要验证下。可以用这种方法确定是不是Co-Op。
+        pj["mainOp"] = p.InitialDataFound();
         if (UINT32_INIT != p.handicapping_level_)
             pj["handicappingLevel"] = p.handicapping_level_;
         if (-1 != p.resigned_)
@@ -170,10 +170,10 @@ std::string DefaultAnalyzer::JsonOutput() {
         if (-1 != p.imperial_time_)
             pj["imperialTime"] = p.imperial_time_;
         pj["disconnected"] = p.disconnected_;
-        pj["inWinner"] = p.is_winner_;
+        pj["isWinner"] = p.is_winner_;
         pj["colorIndex"] = p.color_id_;
 
-        j["players"][std::to_string(p.slot)] = std::move(pj);
+        j["players"].emplace_back(std::move(pj));
     }
 
     return j.dump(-1, ' ', false, json::error_handler_t::ignore);

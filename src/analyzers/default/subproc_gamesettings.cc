@@ -20,7 +20,8 @@ void DefaultAnalyzer::AnalyzeGameSettings(int debug_flag) {
     initinfo_searchpattern_trail_ = cursor_.Ptr();
 
     cursor_(gamesettings_start_) >> (64 + 4 + 8);
-    if (IS_HD(version_code_) && save_version_ > 11.9701)
+    // \todo not sure 12.20 is right, recanalyst uses 12.3
+    if (IS_HD(version_code_) && save_version_ > 12.2001)
         cursor_ >> 16;
     if (!IS_AOK(version_code_))
         cursor_ >> map_id_;
