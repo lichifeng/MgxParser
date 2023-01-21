@@ -5,9 +5,10 @@
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
 
-#include <array>
+#include <vector>
 #include <map>
 #include <string>
+#include <algorithm>
 
 #include "analyzer.h"
 
@@ -82,20 +83,27 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
         }
     }
 
-    for (auto &t : winner_credits) {
-        // 顺便利用这里的信息生成组队模式（1v1, 4v4, 1v7, etc.）：
-        if (team_mode_.empty())
-            team_mode_.append(std::to_string(t.second.count));
-        else
-            team_mode_.append("v").append(std::to_string(t.second.count));
+    std::vector<uint32_t> teamMembers; // 用来生成组队模式（1v1, 4v4, 1v7, etc.）
+    teamMembers.reserve(winner_credits.size());
+    for (auto& t : winner_credits) {
+        teamMembers.emplace_back(t.second.count);
 
-        // 再算下队伍里的人均积分：
+        // 算队伍里的人均积分：
         t.second.avg = t.second.credits / t.second.count;
         if (t.second.avg < duration_ + 500)
             all_survived = false;
         if (t.second.avg > credit_max) {
             credit_max = t.second.avg;
         }
+    }
+
+    // 生成组队字符串
+    std::sort(teamMembers.begin(), teamMembers.end());
+    for (auto& c : teamMembers) {
+        if (team_mode_.empty())
+            team_mode_.append(std::to_string(c));
+        else
+            team_mode_.append("v").append(std::to_string(c));
     }
 
     for (auto &p : players) {
