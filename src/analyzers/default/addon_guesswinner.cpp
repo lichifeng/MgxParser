@@ -106,9 +106,18 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
             team_mode_.append("v").append(std::to_string(c));
     }
 
+    // 有一种偶尔会出现的情况，就是HD版中玩家组队都为0，无法区分组队
+    // 这种情况就把投降的玩家设定为输，没投降就算赢
+    if (team_mode_.size() < 3) team_mode_ = "-";
+
     for (auto &p : players) {
         if (!p.Valid())
             continue;
+
+        if (team_mode_.size() < 3) {
+            p.is_winner_ = -1 == p.resigned_ ? true : false;
+            continue;
+        }
 
         auto found = winner_credits.find(p.resolved_teamid_);
         if (found != winner_credits.end() && found->second.avg == credit_max &&
