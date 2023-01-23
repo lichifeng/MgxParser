@@ -261,3 +261,7 @@ TEST_F(ParserTest, Triggers)
     load(recB, "trigger_test/HDEdition46_混战_1_bd52a416.zip");
     EXPECT_EQ(recB["status"], "perfect");
 }
+
+// \todo
+// test filemd5: 54633e3a28299e84c700ad6e928e5521
+// this records has a log version value of 0

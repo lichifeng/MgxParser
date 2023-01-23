@@ -120,8 +120,11 @@ std::string DefaultAnalyzer::JsonOutput() {
     // Map
     if (UINT32_INIT != map_size_)
         j["map"]["size"] = Translate(zh::kMapSize, map_size_);
-    if (!embeded_mapname_.empty())
+    if (embeded_mapname_.empty()) {
+        j["map"]["name"] = Translate(zh::kMapNames, map_id_ == UINT32_INIT ? dd_resolvedmap_id_ : map_id_);
+    } else {
         j["map"]["name"] = embeded_mapname_;
+    }
 
     // Chat
     for (auto &c: chat) {

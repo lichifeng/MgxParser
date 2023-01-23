@@ -5,9 +5,10 @@
  * \copyright  Copyright (c) 2020-2022
  ***************************************************************/
 
-#include <array>
+#include <vector>
 #include <map>
 #include <string>
+#include <algorithm>
 
 #include "analyzer.h"
 
@@ -82,14 +83,12 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
         }
     }
 
-    for (auto &t : winner_credits) {
-        // 顺便利用这里的信息生成组队模式（1v1, 4v4, 1v7, etc.）：
-        if (team_mode_.empty())
-            team_mode_.append(std::to_string(t.second.count));
-        else
-            team_mode_.append("v").append(std::to_string(t.second.count));
+    std::vector<uint32_t> teamMembers; // 用来生成组队模式（1v1, 4v4, 1v7, etc.）
+    teamMembers.reserve(winner_credits.size());
+    for (auto& t : winner_credits) {
+        teamMembers.emplace_back(t.second.count);
 
-        // 再算下队伍里的人均积分：
+        // 算队伍里的人均积分：
         t.second.avg = t.second.credits / t.second.count;
         if (t.second.avg < duration_ + 500)
             all_survived = false;
@@ -98,9 +97,27 @@ void DefaultAnalyzer::JudgeWinner(int debug_flag) {
         }
     }
 
+    // 生成组队字符串
+    std::sort(teamMembers.begin(), teamMembers.end());
+    for (auto& c : teamMembers) {
+        if (team_mode_.empty())
+            team_mode_.append(std::to_string(c));
+        else
+            team_mode_.append("v").append(std::to_string(c));
+    }
+
+    // 有一种偶尔会出现的情况，就是HD版中玩家组队都为0，无法区分组队
+    // 这种情况就把投降的玩家设定为输，没投降就算赢
+    if (team_mode_.size() < 3) team_mode_ = "-";
+
     for (auto &p : players) {
         if (!p.Valid())
             continue;
+
+        if (team_mode_.size() < 3) {
+            p.is_winner_ = -1 == p.resigned_ ? true : false;
+            continue;
+        }
 
         auto found = winner_credits.find(p.resolved_teamid_);
         if (found != winner_credits.end() && found->second.avg == credit_max &&

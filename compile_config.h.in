@@ -1,5 +1,5 @@
 // the configured options and settings for MGXPARSER
-// Auto generated, do not modified!
+// Auto generated, do not modify!
 #pragma once
 
 #define MGXPARSER_VERSION_MAJOR @MgxParser_VERSION_MAJOR@

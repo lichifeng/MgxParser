@@ -19,7 +19,8 @@ void DefaultAnalyzer::DetectVersion() {
     } else if (0 == strcmp(version_string_, "VER 9.3")) {
         version_code_ = AOK;
     } else if (0 == strcmp(version_string_, "VER 9.4")) {
-        if (log_version_ == 3) {
+        if (log_version_ == 3 || log_version_ == 0) {
+            // \warn log_version_ is sometimes 0 in aoc10 && VER 9.4, not fully sure
             version_code_ = AOC10;
         } else if (log_version_ == 5 || save_version_ >= 12.9699) {
             version_code_ = DE;
