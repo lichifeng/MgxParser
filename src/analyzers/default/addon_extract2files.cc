@@ -20,7 +20,7 @@ void DefaultAnalyzer::Extract2Files(const std::string &header_path, const std::s
 
     if (!body_path.empty()) {
         std::ofstream bodyOut(body_path, std::ofstream::binary);
-        bodyOut.write((char *)cursor_(0).Ptr(), cursor_.RawStream().size() - body_start_);
+        bodyOut.write((char *)cursor_(body_start_).Ptr(), cursor_.RawStream().size() - body_start_);
         bodyOut.close();
     }
 }

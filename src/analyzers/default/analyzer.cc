@@ -108,7 +108,9 @@ void DefaultAnalyzer::Analyze() {
     // ************
     // *  Addons  *
     // ************
-    // Do some additional jobs
+    // Do some additional jobs.
+    // \note Postgame data of UP14+ version will pop new data to players, 
+    // so JudgeWinner() & CalcRetroGuid() must put behind ReadBodyCommands()
     JudgeWinner(18);
     CalcRetroGuid(19);
 }

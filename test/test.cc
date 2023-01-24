@@ -164,6 +164,16 @@ TEST_F(ParserTest, UserPatchVersions)
     EXPECT_EQ(recA["status"], "perfect");
 }
 
+// Test: player civ/team/color updated by postgame data
+// test/test_records/AOCUP15_4v4_8_POSTGAMETEST.zip
+TEST_F(ParserTest, UserPatchPostGameData)
+{
+    load(recA, "AOCUP15_4v4_8_POSTGAMETEST.zip");
+    EXPECT_EQ(recA["version"]["code"], "UP15");
+
+    EXPECT_EQ(recA["guid"], "0723c926d1a9571a5a3fd6d56dcc7054");
+}
+
 // Test: mgx2 record
 TEST_F(ParserTest, HDMgx2)
 {

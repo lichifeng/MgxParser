@@ -3,7 +3,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.3.4
+        VERSION 0.4.0
         LANGUAGES CXX
         HOMEPAGE_URL "aocrec.com"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -114,6 +114,7 @@ endif ()
 set(BUILD_TESTING 1)
 if (BUILD_TESTING)
     set(CMP0135 1)
+    set(DOWNLOAD_EXTRACT_TIMESTAMP 1)
     include(FetchContent)
     FetchContent_Declare(
             googletest
