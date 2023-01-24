@@ -62,6 +62,7 @@ public:
     int32_t imperial_time_ = -1;
 
     bool is_winner_ = false;
+    bool updatedByPostgameBlock = false;
 };
 
 #endif //MGXPARSER_DATAMODEL_PLAYER_H_

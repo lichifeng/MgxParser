@@ -144,7 +144,7 @@ std::string DefaultAnalyzer::JsonOutput() {
 
         pj["index"] = p.index;
         pj["slot"] = p.slot;
-        pj["name"] = p.dd_ai_type_.empty() ? p.name : p.dd_ai_name_;
+        pj["name"] = p.dd_ai_type_.empty() ? p.name : (p.dd_ai_name_.empty() ? p.dd_ai_type_ : p.dd_ai_name_);
         pj["team"] = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
         pj["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civ_id_ : p.dd_civ_id_;
         pj["civilization"]["name"] = Translate(zh::kCivNames, pj["civilization"]["id"]);
