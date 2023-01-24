@@ -25,8 +25,9 @@ void DefaultAnalyzer::AnalyzeInitialData(int debug_flag) {
                 cursor_ >> 36;
             if (IS_DE(version_code_) || IS_HD(version_code_))
                 cursor_ >> (4 * (num_headerdata - 198));
-            if (version_code_ == USERPATCH15 || version_code_ == MCP)
-                cursor_ >> p.modversion_id_ >> (4 * 6 + 4 * 7 + 4 * 28);
+            if (version_code_ == USERPATCH15 || version_code_ == MCP) {
+                cursor_ >> p.modversion_raw_ >> (4 * 6 + 4 * 7 + 4 * 28);
+            }
             if (version_code_ == MCP)
                 cursor_ >> (4 * 65);
             cursor_ >> 1 >> p.init_camera_;

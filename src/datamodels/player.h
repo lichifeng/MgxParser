@@ -43,7 +43,7 @@ public:
     uint8_t de_prefer_random_;
     uint8_t de_custom_ai_;
     uint32_t handicapping_level_ = UINT32_INIT;
-    float modversion_id_;
+    float modversion_raw_;
     float init_camera_[2] = {-1.0, -1.0};
     uint8_t civ_id_ = UINT8_INIT;
     uint8_t color_id_ = UINT8_INIT;

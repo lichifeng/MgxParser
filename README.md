@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.3.6) was compiled on 20230124*
+*This version(0.4.6) was compiled on 20230124*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -21,11 +21,11 @@ No error was expected even if something unexpected happend in parsing process.
 Users should check parsing result by the value of key `status` and `message` in
 JSON response.
 
-Mini maps can be generated two forms, too.
-
-With `-m`, a typical map was generated, and
-
+Mini maps can be generated two forms, too.   
+With `-m`, a typical map was generated, and   
 with `-M`, a prettier HD map was generated.
+
+With `-e` to extract header and body data to .dat files for development usage.
 
 ## Performance
 I did't do elegent profiling for it, simply measured its performance by `\time -v
@@ -94,7 +94,7 @@ recommended. Other compilers may work, but I never tested, too.
 ```sh
 sudo apt-get install g++-8
 #AND
-sudo apt-get install clang++-10
+sudo apt-get install clang
 #Then, build the source file
 cmake . -DCMAKE_CXX_COMPILER=/usr/bin/clang++-10 -DCMAKE_BUILD_TYPE=Release --fresh
 #Last, compile it!
@@ -113,6 +113,8 @@ Node.js addon.
 Then `MgxParser::parse()` should be available.
 
 ## Version log
+- **0.4.0**: Prepare to go online. Add english language pack. Fixed more bugs.
+- **0.3.x**: Bug fix and some changes to meet requirements of mgxhub.
 - **0.2.0**: Reoragnized source files, tested with 130000+ records in
   aocrec.com.
 - **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded

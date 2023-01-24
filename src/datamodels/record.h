@@ -51,7 +51,7 @@ public:
     uint32_t dd_dataset_ref_; ///< \todo What's this?
     uint32_t dd_difficulty_id_ = UINT32_INIT;
     uint32_t dd_selectedmap_id_;
-    uint32_t dd_resolvedmap_id_;
+    uint32_t dd_resolvedmap_id_ = UINT32_INIT;
     uint32_t revealmap_ = UINT32_INIT; ///< 0x00:通常，0x01:已开发，0x02:全部显示, 0x03:no fog
     uint32_t dd_victorytype_id_ = UINT32_INIT;
     uint32_t dd_startingresources_id_ = UINT32_INIT;

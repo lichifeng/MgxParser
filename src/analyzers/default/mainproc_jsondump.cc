@@ -8,6 +8,8 @@
 #include "analyzer.h"
 #include "nlohmann_json_3/json.hpp"
 #include "auxiliary.h"
+#include "lang/zh.h"
+#include "lang/en.h"
 
 using json = nlohmann::json;
 
@@ -101,12 +103,18 @@ std::string DefaultAnalyzer::JsonOutput() {
     // Settings
     if (status_.encoding_detected_)
         j["rawEncoding"] = raw_encoding_;
-    if (FLOAT_INIT != dd_speed_ || UINT32_INIT != game_speed_)
+    if (FLOAT_INIT != dd_speed_ || UINT32_INIT != game_speed_) {
         j["speed"] = Translate(zh::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
-    if (UINT32_INIT != dd_victorytype_id_)
+        j["speedEn"] = Translate(en::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
+    }
+    if (UINT32_INIT != dd_victorytype_id_) {
         j["victory"]["type"] = Translate(zh::kVictoryTypes, dd_victorytype_id_);
-    else if (UINT32_INIT != victory_mode_)
+        j["victory"]["typeEn"] = Translate(en::kVictoryTypes, dd_victorytype_id_);
+    }
+    else if (UINT32_INIT != victory_mode_) {
         j["victory"]["type"] = Translate(zh::kVictoryTypes, victory_mode_); // \todo 低版本的要核实下，好像不怎么对
+        j["victory"]["typeEn"] = Translate(en::kVictoryTypes, victory_mode_);
+    }
 
     if (UINT32_INIT != population_limit_)
         j["population"] = population_limit_;
@@ -118,10 +126,13 @@ std::string DefaultAnalyzer::JsonOutput() {
         j["includeAI"] = (bool) include_ai_;
 
     // Map
-    if (UINT32_INIT != map_size_)
+    if (UINT32_INIT != map_size_) {
         j["map"]["size"] = Translate(zh::kMapSize, map_size_);
+        j["map"]["sizeEn"] = Translate(en::kMapSize, map_size_);
+    }
     if (embeded_mapname_.empty()) {
-        j["map"]["name"] = Translate(zh::kMapNames, map_id_ == UINT32_INIT ? dd_resolvedmap_id_ : map_id_);
+        j["map"]["name"] = Translate(IS_DE(version_code_) ? zh::kDEMapNames : zh::kMapNames, dd_resolvedmap_id_ == UINT32_INIT ? map_id_ : dd_resolvedmap_id_);
+        j["map"]["nameEn"] = Translate(IS_DE(version_code_) ? en::kDEMapNames : en::kMapNames, dd_resolvedmap_id_ == UINT32_INIT ? map_id_ : dd_resolvedmap_id_);
     } else {
         j["map"]["name"] = embeded_mapname_;
     }
@@ -148,14 +159,19 @@ std::string DefaultAnalyzer::JsonOutput() {
         pj["team"] = 1 == p.resolved_teamid_ ? 10 + p.index : p.resolved_teamid_;
         pj["civilization"]["id"] = (UINT32_INIT == p.dd_civ_id_) ? p.civ_id_ : p.dd_civ_id_;
         pj["civilization"]["name"] = Translate(zh::kCivNames, pj["civilization"]["id"]);
+        pj["civilization"]["nameEn"] = Translate(en::kCivNames, pj["civilization"]["id"]);
         pj["initPosition"] = {
-                p.init_camera_[0] == -1.0 ? 0 : p.init_camera_[0],
-                p.init_camera_[1] == -1.0 ? 0 : p.init_camera_[1]};
+            p.init_camera_[0] == -1.0 ? 0 : p.init_camera_[0],
+            p.init_camera_[1] == -1.0 ? 0 : p.init_camera_[1]
+        };
 
-        if (4 == p.type_ && !p.dd_ai_type_.empty())
+        if (4 == p.type_ && !p.dd_ai_type_.empty()) {
             pj["type"] = Translate(zh::kPlayerTypes, p.type_) + "(" + p.dd_ai_type_ + ")";
-        else
+            pj["typeEn"] = Translate(en::kPlayerTypes, p.type_) + "(" + p.dd_ai_type_ + ")";
+        } else {
             pj["type"] = Translate(zh::kPlayerTypes, p.type_);
+            pj["typeEn"] = Translate(en::kPlayerTypes, p.type_);
+        }
 
         if (0 != p.de_profile_id_)
             pj["DEProfileID"] = p.de_profile_id_;
