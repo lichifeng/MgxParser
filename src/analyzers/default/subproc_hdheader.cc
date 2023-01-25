@@ -108,6 +108,8 @@ void DefaultAnalyzer::AnalyzeHDHeader(int debugFlag) {
                     >> players[i].type_
                     >> players[i].hd_steam_id_
                     >> players[i].dd_number_;
+            if (4 == players[i].type_)
+                ++dd_ai_count_;
             if (dd_version_ >= 1005.9999 && version_code_ != HD57) // \todo test this
                 cursor_ >> players[i].dd_rm_rating_ >> players[i].dd_dm_rating_;
         }

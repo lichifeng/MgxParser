@@ -85,5 +85,9 @@ void DefaultAnalyzer::AnalyzeGameSettings(int debug_flag) {
             memcpy(players[i].searchpattern_.data() + 2 + namelen, initinfo_searchpattern_trail_, trailbyte_num_);
             cursor_ >> players[i].name;
         }
+
+        // sometimes ai included records have includeAI == true, mainly found in up record with barbarian AI
+        if (players[i].type_ == 4)
+            include_ai_ = 0x01;
     }
 }
