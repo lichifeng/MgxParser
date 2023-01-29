@@ -39,7 +39,7 @@ public:
     char version_string_[8] = {'\0'};      ///< 代表游戏版本的原始字符串
     float save_version_ = FLOAT_INIT;       ///< \warning float有精度，进行比较的时候注意要合理处理，比如>11.76要写成>11.7599这种
     VERSIONCODE version_code_ = UNDEFINED; ///< 这是自己定义的一个值，用于简化版本判断
-    uint32_t include_ai_;
+    uint32_t include_ai_ = 0;
 
     // HD/DE-specific data from header stream
     uint32_t de_build_ = UINT32_INIT;           ///< In recent(2022-10) steam version of DE: 66692
