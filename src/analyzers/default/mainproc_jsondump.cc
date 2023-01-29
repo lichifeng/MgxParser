@@ -122,8 +122,7 @@ std::string DefaultAnalyzer::JsonOutput() {
     if (!team_mode_.empty())
         j["teamMode"] = team_mode_;
 
-    if (ai_start_)
-        j["includeAI"] = (bool) include_ai_;
+    j["includeAI"] = (bool) include_ai_;
 
     // Map
     if (UINT32_INIT != map_size_) {
