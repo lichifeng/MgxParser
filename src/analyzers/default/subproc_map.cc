@@ -51,13 +51,7 @@ void DefaultAnalyzer::AnalyzeMap(int debug_flag) {
     cursor_ >> restore_time_;
 
     uint32_t num_particles;
-    cursor_ >> num_particles >> (27 * num_particles);
-
-    // A checkpoint, expecting 10060 with AOK and 40600 with higher version
-    // borrow local var check_val
-    cursor_ >> check_val;
-    if (40600 != check_val && 10060 != check_val) // 10060 in AOK
-        throw std::string("Cannot find expected check value 10060/40600 in init Info section.");
+    cursor_ >> num_particles >> (27 * num_particles) >> 4;
 
     initinfo_start_ = cursor_();
     status_.mapdata_found_ = true;

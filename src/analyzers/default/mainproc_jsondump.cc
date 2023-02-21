@@ -53,6 +53,8 @@ std::string DefaultAnalyzer::JsonOutput() {
     j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
     j["filetype"] = input_ext_;
     j["filename"] = input_filename_;
+    if (!modified_date_.empty())
+        j["modifiedDate"] = modified_date_;
     if (!file_md5_.empty())
         j["filemd5"] = file_md5_;
     if (!extracted_file_.empty())
@@ -189,7 +191,7 @@ std::string DefaultAnalyzer::JsonOutput() {
             pj["imperialTime"] = p.imperial_time_;
         pj["disconnected"] = p.disconnected_;
         pj["isWinner"] = p.is_winner_;
-        pj["colorIndex"] = p.color_id_;
+        pj["colorIndex"] = UINT32_INIT == p.dd_color_id_ ? p.dd_color_id_ : p.color_id_;
 
         j["players"].emplace_back(std::move(pj));
     }

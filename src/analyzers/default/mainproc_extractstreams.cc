@@ -6,6 +6,7 @@
  ***************************************************************/
 
 #include <array>
+#include <sstream>
 
 #include "analyzer.h"
 #include "searcher.h"
@@ -30,11 +31,32 @@ bool DefaultAnalyzer::ExtractStreams() {
     uint32_t *compressed_size_p;
     uint16_t *namelen_p;
     uint16_t *exlen_p;
+    uint16_t *raw_msdos_time_p;
+    uint16_t *raw_msdos_date_p;
 
     if (is_zip) {
         compressed_size_p = (uint32_t *)(input_start + 18);
         namelen_p = (uint16_t *)(input_start + 26);
         exlen_p = (uint16_t *)(input_start + 28);
+
+        // get modified time of file, https://groups.google.com/g/comp.os.msdos.programmer/c/ffAVUFN2NbA
+        raw_msdos_time_p = (uint16_t *)(input_start + 10);
+        raw_msdos_date_p = (uint16_t *)(input_start + 12);
+        int year, mon, day, hour, minute, sec;
+        year = (int)(((*raw_msdos_date_p) >> 9) & 0x7f) + 1980;
+        mon = ((*raw_msdos_date_p) >> 5) & 0x0f;
+        day = (*raw_msdos_date_p) & 0x1f;
+        hour = (*raw_msdos_time_p) >> 11;
+        minute = ((*raw_msdos_time_p) >> 5) & 0x3f;
+        sec = (*raw_msdos_time_p) & 0x1f * 2;
+        std::stringstream iso_time_str;
+        iso_time_str << std::setfill ('0') << std::setw(4) << year << '-' 
+                     << std::setw(2) << mon << '-' 
+                     << std::setw(2) << day << 'T' 
+                     << std::setw(2) << hour << ':' 
+                     << std::setw(2) << minute << ':' 
+                     << std::setw(2) << sec << ".000Z";
+        modified_date_ = iso_time_str.str();
 
         std::vector<RECBYTE> outbuffer;
         if (0 != ZipDecompress(const_cast<uint8_t *>(input_start + 30 + *namelen_p + *exlen_p),

@@ -17,6 +17,8 @@ void DefaultAnalyzer::AnalyzeLobby(int debug_flag) {
         cursor_ >> 9;
     if (save_version_ >= 26.1599)
         cursor_ >> 5;
+    if (save_version_ >= 36.9999)
+        cursor_ >> 8;
     for (size_t i = 1; i < 9; i++) {
         if (players[i].resolved_teamid_ != 255) {
             cursor_ >> 1;

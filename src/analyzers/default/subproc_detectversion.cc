@@ -11,6 +11,12 @@ void DefaultAnalyzer::DetectVersion() {
     if (version_code_ != AOK)
         cursor_(body_start_) >> log_version_;
     cursor_(header_start_) >> version_string_ >> save_version_;
+    // From DE version 75350
+    if (save_version_ == -1) {
+        uint32_t new_saveversion;
+        cursor_ >> new_saveversion;
+        save_version_ = (float)new_saveversion;
+    }
     version_end_ = ai_start_ = cursor_();
 
     /// \todo Every condition needs to be tested!

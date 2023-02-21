@@ -236,6 +236,18 @@ TEST_F(ParserTest, DE66692)
     EXPECT_EQ(recA["gameTime"], 1665150274);
 }
 
+// Test: de build 75350
+TEST_F(ParserTest, DE75350)
+{
+    load(recA, "de-versions/AgeIIDE_Replay_212394317.zip");
+    EXPECT_EQ(recA["version"]["build"], 75350);
+    EXPECT_EQ(recA["version"]["code"], "DE");
+    EXPECT_EQ(recA["version"]["interVer"], 1000);
+    EXPECT_EQ(recA["status"], "perfect");
+    EXPECT_EQ(recA["guid"], "3cf58e536108d3459b8f62554e2159c9");
+    EXPECT_EQ(recA["gameTime"], 1676955878);
+}
+
 // Test: Brutal search for player data position in initial section
 TEST_F(ParserTest, InitialDataBrutalSearch)
 {
