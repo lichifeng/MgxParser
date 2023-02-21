@@ -8,6 +8,15 @@
 #include "analyzer.h"
 #include "searcher.h"
 
+void SkipStringBlock(RecCursor& cursor) {
+    uint32_t crc;
+    cursor >> crc;
+    if (0 == crc || crc > 255) {
+        cursor.ScanString();
+        SkipStringBlock(cursor);
+    }
+}
+
 void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     if (!IS_DE(version_code_))
         return;
@@ -70,7 +79,8 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     }
 
     // Read player data
-    for (size_t i = 1; i < 9; i++) {
+    uint32_t total_players = save_version_ > 36.9999 ? dd_numplayers_ + 1 : 9; // actually 8 players
+    for (size_t i = 1; i < total_players; i++) {
         cursor_ >> players[i].dd_dlc_id_
                 >> players[i].dd_color_id_
                 >> players[i].de_selected_color_
@@ -101,8 +111,15 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     cursor_ >> 9
             >> 1 //_readBytes(1, &DE_fogOfWar);
             >> dd_cheat_notifications_
-            >> dd_colored_chat_
-            >> 4 // 0xa3, 0x5f, 0x02, 0x00
+            >> dd_colored_chat_;
+    if (save_version_ > 36.9999) {
+        cursor_ >> 4 * 3;
+        cursor_.ScanString();
+        cursor_ >> 1;
+        cursor_.ScanString().ScanString();
+        cursor_ >> (22 + 4 * 2 + 8);
+    }
+    cursor_ >> 4 // 0xa3, 0x5f, 0x02, 0x00
             >> dd_is_ranked_
             >> dd_allow_specs_
             >> dd_lobby_visibility_
@@ -111,46 +128,15 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
     if (save_version_ >= 13.1299)
         cursor_ >> de_spec_dely_ >> de_scenario_civ_;
 
-    // if (saveVersion >= 13.1299)
-    //     DE_RMSCrc = BytesToHex(_curPos, 4, true);
-
-    /// \warning 实话我也不知道这一段是什么鬼东西，只好用搜索
-    /// \todo aoc-mgz有更新，可以参考
-    /// https://github.com/happyleavesaoc/aoc-mgz/commit/4ffe9ad918b888531fc2e94c2b184cbd04ca9fb5
-    /// \note
-    /// de-13.03.aoe2record : 2a 00 00 00 fe ff ff ff + 59*(fe ff ff ff)
-    /// de-13.06.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-13.07.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
-    /// de-13.08.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(fe ff ff ff)
-    /// de-13.13.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-13.15.aoe2record : 2A 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-13.17.aoe2record : 2C 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-13.20.aoe2record : 2C 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-13.34.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-20.06.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-20.16.aoe2record : 2D 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-25.01.aoe2record : 2E 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-25.02.aoe2record : 2E 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-25.06.aoe2record : 2F 00 00 00 FE FF FF FF + 59*(00 00 00 00)
-    /// de-25.22.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    /// de-26.16.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    /// de-26.18.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    /// de-26.21.aoe2record : 2F 00 00 00 00 00 00 00 + NOTHING
-    std::array<uint8_t, 2> hdstring_separator = {0x60, 0x0a};
-    auto found = cursor_.Itr();
-    auto header_end = cursor_.Itr(body_start_);
-    for (size_t i = 0; i < 23; i++) {
-        found = SearchPattern(
-                found, header_end,
-                hdstring_separator.begin(),
-                hdstring_separator.end());
-        if (found != header_end)
-            found += (4 + *((uint16_t *) (&(*found) + 2)));
+    // https://github.com/happyleavesaoc/aoc-mgz/blob/dd4d122259e3b97fe09ac08aa75fe7ff5a75c72d/mgz/header/de.py#L130
+    SkipStringBlock(cursor_);
+    cursor_ >> 8;
+    for (size_t i = 0; i < 20; i++) {
+        SkipStringBlock(cursor_);
     }
-    cursor_(found) >> 4; // 2a/c/d/e/f 00 00 00
     if (save_version_ >= 25.2199) {
-        int tmp_len;
-        cursor_ >> tmp_len >> 4 * tmp_len;
+        int num_sn;
+        cursor_ >> num_sn >> 4 * num_sn;
     } else {
         cursor_ >> 60 * 4;
     }
@@ -181,6 +167,8 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
         cursor_ >> 4;
     if (save_version_ >= 26.1599)
         cursor_ >> 8;
+    if (save_version_ >= 36.9999)
+        cursor_ >> 3;
     cursor_.ScanString() >> 5;
     if (save_version_ >= 13.1299)
         cursor_ >> 1;
@@ -188,6 +176,8 @@ void DefaultAnalyzer::AnalyzeDEHeader(int debugFlag) {
         cursor_.ScanString() >> 8; // uint32 + 00 00 00 00
     if (save_version_ >= 13.1699)
         cursor_ >> 2;
+    if (save_version_ >= 36.9999)
+        cursor_ >> 8;
 
     ai_start_ = cursor_();
 }

@@ -33,6 +33,7 @@ public:
     std::string input_ext_; ///< .zip/.mgx/.aoe2record/.mgz/.mgx2, etc.
     std::string extracted_file_; ///< filename of extracted record from .zip archive
     std::string file_md5_;
+    std::string modified_date_; // only for unzipped files
 
     // Version-related members
     uint32_t log_version_ = UINT32_INIT;     ///< body 的前4个字节，与版本有关，可以识别A/C版
