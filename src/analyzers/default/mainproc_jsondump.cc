@@ -191,7 +191,7 @@ std::string DefaultAnalyzer::JsonOutput() {
             pj["imperialTime"] = p.imperial_time_;
         pj["disconnected"] = p.disconnected_;
         pj["isWinner"] = p.is_winner_;
-        pj["colorIndex"] = UINT32_INIT == p.dd_color_id_ ? p.dd_color_id_ : p.color_id_;
+        pj["colorIndex"] = (UINT32_INIT == p.dd_color_id_) ? (int)p.color_id_ : p.dd_color_id_;
 
         j["players"].emplace_back(std::move(pj));
     }
