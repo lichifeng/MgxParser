@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.4.3) was compiled on 20230301*
+*This version(0.5.0) was compiled on 20240205*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -113,6 +113,7 @@ Node.js addon.
 Then `MgxParser::parse()` should be available.
 
 ## Version log
+- **0.5.0**: Organized CMake compile files, removed unnecessary historical code.
 - **0.4.0**: Prepare to go online. Add english language pack. Fixed more bugs.
 - **0.3.x**: Bug fix and some changes to meet requirements of mgxhub.
 - **0.2.0**: Reoragnized source files, tested with 130000+ records in
@@ -121,14 +122,14 @@ Then `MgxParser::parse()` should be available.
   record. All operations are done in memory without file storage.
 
 ## Resources
-Find records for test: https://www.ageofempires.com/stats/ageiide
-https://github.com/topics/age-of-empires
-DE Replays Manager: https://github.com/gregstein/DE-Replays-Manager
-Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2
-https://aok.heavengames.com/blacksmith/lister.php?category=utilities
+Find records for test: https://www.ageofempires.com/stats/ageiide   
+https://github.com/topics/age-of-empires   
+DE Replays Manager: https://github.com/gregstein/DE-Replays-Manager   
+Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2   
+https://aok.heavengames.com/blacksmith/lister.php?category=utilities   
 https://aok.heavengames.com/blacksmith/lister.php?category=records   
-AoE II Development Collective https://siegeengineers.org/
-https://www.twaoe2wiki.com/
+AoE II Development Collective https://siegeengineers.org/   
+https://www.twaoe2wiki.com/   
 
 ## Caution
 This project is still under development. **No warrenty for anything!**
