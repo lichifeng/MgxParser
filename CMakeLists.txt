@@ -5,7 +5,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.4.2
+        VERSION 0.4.4
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -114,7 +114,7 @@ endif ()
 
 # Testing configuration
 # https://coderefinery.github.io/cmake-workshop/testing/
-set(BUILD_TESTING 1)
+set(BUILD_TESTING 0)
 if (BUILD_TESTING)
     set(CMP0135 1)
     set(DOWNLOAD_EXTRACT_TIMESTAMP 1)
