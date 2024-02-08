@@ -1,6 +1,6 @@
 #include <napi.h>
 #include <cstdio>
-
+#include "compile_config.h"
 #include "MgxParser.h"
 
 static Napi::Object Method(const Napi::CallbackInfo &info)
@@ -151,9 +151,18 @@ static Napi::Object Method(const Napi::CallbackInfo &info)
     return obj;
 }
 
+static Napi::String ParseInfo(const Napi::CallbackInfo &info) {
+    std::string s = "Version: ";
+    s += PARSER_VERSION_VERBOSE;
+    s += "\nCompiler: ";
+    s += PARSER_COMPILER;
+    return Napi::String::New(info.Env(), s);
+}
+
 static Napi::Object Init(Napi::Env env, Napi::Object exports)
 {
     exports.Set("parse", Napi::Function::New(env, Method));
+    exports.Set("info", Napi::Function::New(env, ParseInfo));
     return exports;
 }
 
