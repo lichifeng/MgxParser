@@ -2,7 +2,7 @@
  * \file       mainproc_jsondump.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/7
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include "analyzer.h"
@@ -43,7 +43,7 @@ NLOHMANN_JSON_SERIALIZE_ENUM
      { UNDEFINED, "UNDEFINED" }
  });
 
-std::string DefaultAnalyzer::JsonOutput() {
+std::string DefaultAnalyzer::JsonOutput(int indent) {
     json j;
 
     // Report
@@ -196,5 +196,5 @@ std::string DefaultAnalyzer::JsonOutput() {
         j["players"].emplace_back(std::move(pj));
     }
 
-    return j.dump(-1, ' ', false, json::error_handler_t::ignore);
+    return j.dump(indent, ' ', false, json::error_handler_t::ignore);
 }

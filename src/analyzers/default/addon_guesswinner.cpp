@@ -2,7 +2,7 @@
  * \file       addon_guesswinner.cpp
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/7
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include <vector>

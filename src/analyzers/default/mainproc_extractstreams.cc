@@ -2,7 +2,7 @@
  * \file       mainproc_extractstreams.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/7
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include <array>
@@ -135,7 +135,7 @@ bool DefaultAnalyzer::ExtractStreams() {
     // Unzip the record if requested
     // 这儿要注意的问题是不能放在上面解压的代码那里，因为刚解压完并不知道压缩包里这个文件是不是有效录像，所以那时候解压出来没意义
     if (is_zip) {
-        if (unzip_buffer_) {
+        if (unzip_ == "buffer" && unzip_size_ptr_) {
             // remember to free memory if using this!!!
             *unzip_buffer_ = (char *)malloc(*unzip_size_ptr_ = input_size_);
             memcpy(*unzip_buffer_, input_stream_.data(), input_size_);

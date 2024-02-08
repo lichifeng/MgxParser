@@ -2,7 +2,7 @@
  * \file       addon_filemd5.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/30
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include <string>

@@ -2,7 +2,7 @@
  * \file       cursor.cc
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/8
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include "cursor.h"

@@ -1,49 +1,24 @@
 ﻿cmake_minimum_required(VERSION 3.20.0)
 
+# This configuration is for linux only
+
 # Project info
 project(
         MgxParser
-        VERSION 0.4.3
+        VERSION 0.4.2
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
 )
+message("Build type: ${CMAKE_BUILD_TYPE}")
 
 # Some basic configurations
 set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
-add_compile_options("$<$<C_COMPILER_ID:MSVC>:/utf-8>")
-add_compile_options("$<$<CXX_COMPILER_ID:MSVC>:/utf-8>")
 set(USE_BM_SEARCH 1)
 
-if (APPLE)
-    # Mac hack, libiconv and libpng was install with brew
-    include_directories(/opt/homebrew/opt/libpng/include)
-    link_directories(/opt/homebrew/opt/libpng/lib)
-    set(MGXPARSER_LINK_TARGETS pthread png z iconv)
-    set(USE_BM_SEARCH 0)
-elseif (WIN32)
-    # windows with vcpkg
-    include_directories(
-            "D:\\vcpkg\\vcpkg\\packages\\zlib_x64-windows-static\\include"
-            "D:\\vcpkg\\vcpkg\\packages\\libiconv_x64-windows-static\\include"
-            "D:\\vcpkg\\vcpkg\\packages\\libpng_x64-windows-static\\include"
-            "D:\\vcpkg\\vcpkg\\packages\\pthreads_x64-windows-static\\lib"
-    )
-    link_directories(
-            "D:\\vcpkg\\vcpkg\\packages\\zlib_x64-windows-static\\lib"
-            "D:\\vcpkg\\vcpkg\\packages\\libiconv_x64-windows-static\\lib"
-            "D:\\vcpkg\\vcpkg\\packages\\libpng_x64-windows-static\\lib"
-            "D:\\vcpkg\\vcpkg\\packages\\pthreads_x64-windows-static\\lib"
-    )
-    add_compile_definitions(_HAS_STD_BYTE=0)
-    set(MGXPARSER_LINK_TARGETS pthreadvc3 libpng16 zlib iconv)
-else ()
-    set(MGXPARSER_LINK_TARGETS pthread png z stdc++fs)
-endif ()
-
-# List source files to be compiled
+# Prepare source files to be compiled
 aux_source_directory(./src SRC_ROOT)
 aux_source_directory(src/tools TOOLS)
 aux_source_directory(src/analyzers/default DEFAULT_ANALYZER)
@@ -51,19 +26,26 @@ aux_source_directory(src/analyzers/default/body_processors DEFAULT_ANALYZER_BODY
 aux_source_directory(./libs/md5 MD5)
 set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${MD5} ${SRC_ROOT} ${TOOLS})
 
+# Prepare dependency libraries
+# WARNING: png depends on libz, so put it before z
+set(MGXPARSER_DEPENDENCIES png z)
+
+# Create static and shared libraries
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
-add_executable("${PROJECT_NAME}_EXE" demo.cc)
+target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_DEPENDENCIES})
+target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_DEPENDENCIES})
 
-# Import dependencies
-# WARNING: png depends on libz, so put it before z
-target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_LINK_TARGETS})
-target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
-target_link_libraries("${PROJECT_NAME}_EXE" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+# Create static and shared executables
+add_executable("${PROJECT_NAME}_S_EXE" demo.cc)
+target_link_libraries("${PROJECT_NAME}_S_EXE" ${PROJECT_NAME}_STATIC)
+target_link_options("${PROJECT_NAME}_S_EXE" PRIVATE "-static")
+add_executable("${PROJECT_NAME}_D_EXE" demo.cc)
+target_link_libraries("${PROJECT_NAME}_D_EXE" ${PROJECT_NAME}_SHARED)
 
 set(
-        MGXPARSER_INCLUDE_
+        MGXPARSER_INCLUDE
         PUBLIC
         "${CMAKE_CURRENT_SOURCE_DIR}/libs/"
         "${CMAKE_CURRENT_SOURCE_DIR}/src/"
@@ -72,12 +54,32 @@ set(
         "${CMAKE_CURRENT_SOURCE_DIR}/src/datamodels/"
         "${PROJECT_BINARY_DIR}" 
 )
-set(MGXPARSER_INCLUDE ${MGXPARSER_INCLUDE_})
-set(MGXPARSER_INCLUDE ${MGXPARSER_INCLUDE_} PARENT_SCOPE)
 target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
-target_include_directories("${PROJECT_NAME}_SHARED" PRIVATE ${MGXPARSER_INCLUDE})
-target_include_directories("${PROJECT_NAME}_STATIC" PRIVATE ${MGXPARSER_INCLUDE})
-target_include_directories("${PROJECT_NAME}_EXE" PRIVATE ${MGXPARSER_INCLUDE})
+target_include_directories("${PROJECT_NAME}_D_EXE" PRIVATE ${MGXPARSER_INCLUDE})
+target_include_directories("${PROJECT_NAME}_S_EXE" PRIVATE ${MGXPARSER_INCLUDE})
+
+# Compile Node.js Addon
+add_definitions(-DNAPI_VERSION=3)
+# 检查napi.h是否存在于CMAKE_JS_INC目录中
+find_path(NAPI_H_FOUND "node_api.h" PATHS ${CMAKE_JS_INC})
+
+# 如果napi.h和CMAKE_JS_LIB都存在，创建mgxnodeS库
+if(NAPI_H_FOUND)
+        # Include Node-API wrappers
+        execute_process(COMMAND node -p "require('node-addon-api').include"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        OUTPUT_VARIABLE NODE_ADDON_API_DIR
+        )
+        string(REGEX REPLACE "[\r\n\"]" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+
+        set(NODE_ADDON_NAME "mgxnode")
+        add_library(${NODE_ADDON_NAME} SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT> mgxnode.cc)
+        set_target_properties(${NODE_ADDON_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
+        target_link_libraries(${NODE_ADDON_NAME} ${CMAKE_JS_LIB} ${MGXPARSER_DEPENDENCIES})
+        target_include_directories(${NODE_ADDON_NAME} PRIVATE ${MGXPARSER_INCLUDE} ${CMAKE_JS_INC} ${NODE_ADDON_API_DIR})
+else()
+        message("cmake-js not found, mgxnode library will not be created.")
+endif()
 
 # Import some environment variables and generate docs, etc.
 string(TIMESTAMP COMPILEDATE "%Y%m%d")
@@ -85,10 +87,11 @@ target_compile_definitions("${PROJECT_NAME}_OBJECT" PRIVATE "DEBUG=$<CONFIG:Debu
 configure_file(compile_config.h.in compile_config.h)
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/src/README.md ${CMAKE_CURRENT_SOURCE_DIR})
 add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
+
 # Update doxygen configuration file and generate output HTML
 find_package(Doxygen)
 option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
-if (BUILD_DOCUMENTATION AND NOT NODE_ADDON AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
+if (BUILD_DOCUMENTATION AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
     if (NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif ()
@@ -129,24 +132,16 @@ if (BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cc
     )
     target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
-    target_link_libraries("${PROJECT_NAME}_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("${PROJECT_NAME}_TEST" ${PROJECT_NAME}_STATIC)
     target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
     add_executable(
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
             src/tools/cursor.cc
     )
-    target_link_libraries("CURSOR_TEST" "${PROJECT_NAME}_STATIC" ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("CURSOR_TEST" ${PROJECT_NAME}_STATIC)
     target_link_libraries("CURSOR_TEST" GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")
     gtest_discover_tests("CURSOR_TEST")
-endif ()
-
-# Static linking
-if (NOT APPLE)
-    target_link_options("${PROJECT_NAME}_EXE" PRIVATE "-static")
-    #warning: Using 'getaddrinfo' in statically linked applications requires at runtime 
-    #the shared libraries from the glibc version used for linking
-    #target_link_options("${PROJECT_NAME}_TEST" PRIVATE "-static")
 endif ()

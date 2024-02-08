@@ -2,7 +2,7 @@
  * \file       logger.h
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/8
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #ifndef MGXPARSER_LOGGER_H_
