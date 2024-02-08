@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.4.4) was compiled on 20240208*
+*This version(0.4.5) was compiled on 20240208*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -18,7 +18,7 @@ Then, send a record file and a json command to it:
 ```sh
 curl -X POST -F "file=@/path/to/record.mgx" -F "json={\"map\":\"HD\"}" http://localhost:4400/parse
 ```
-To build the docker image manually, use the `Dockerfile` in `docker` directory.
+To build the docker image manually, use the `Dockerfile` in root directory.
 ```sh
 docker build -t mgxparser .
 docker run -it -p 4400:4400 --rm mgxparser
@@ -151,7 +151,7 @@ The compiled node addon will be in `build/Release` directory.
 A demo of node addon is in `test/node_addon_test.js` directory.
 
 ## Version log
-- **0.4.4**: Reorganized source code. Refactored `parse()` function. Add node addon support.   
+- **0.4.5**: Reorganized source code. Refactored `parse()` function. Add node addon support. Add docker workflow.   
 - **0.4.2**: A version used on aocrec.com before Feb. 2024.
 - **0.4.0**: Prepare to go online. Add english language pack. Fixed more bugs.
 - **0.3.x**: Bug fix and some changes to meet requirements of mgxhub.
