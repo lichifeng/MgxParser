@@ -2,7 +2,7 @@
  * \file       analyzer.h
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/7
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #ifndef MGXPARSER_DEFAULTANALYZER_H_
@@ -148,9 +148,11 @@ public:
 
     /**
      * Serialize record information into a json string
+     * @param indent Indentation of output JSON string. Default is -1.
+     * 
      * @return C++ string. Need to be parsed.
      */
-    std::string JsonOutput();
+    std::string JsonOutput(int indent = -1);
 
     /**
      * Append a message to output result.

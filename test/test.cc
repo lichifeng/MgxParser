@@ -42,17 +42,17 @@ bool isPng(string f)
 class ParserTest : public testing::Test
 {
 protected:
-    void load(json &j, string f, int mapType = NO_MAP, string mapName = "testmap.png")
+    void load(json &j, string f, MgxParser::MapType mapType = MgxParser::NO_MAP, string mapName = "testmap.png")
     {
         auto path = genPath(f);
-        MgxParser::Settings _ = {.input_path = path, .map_type = mapType, .map_name = mapName};
+        MgxParser::Settings _ = {.input_path = path, .map_type = mapType, .map_path = mapName};
         string rawret = MgxParser::parse(_);
         j = json::parse(rawret);
     }
 
-    void loadBytes(json &j, const uint8_t *b, uint32_t size, int mapType = NO_MAP, string mapName = "testmap.png")
+    void loadBytes(json &j, const uint8_t *b, uint32_t size, MgxParser::MapType mapType = MgxParser::NO_MAP, string mapName = "testmap.png")
     {
-        MgxParser::Settings _ = {.input_stream = b, .input_size = size, .map_type = mapType, .map_name = mapName};
+        MgxParser::Settings _ = {.input_stream = b, .input_size = size, .map_type = mapType, .map_path = mapName};
         string rawret = MgxParser::parse(_);
         j = json::parse(rawret);
     }
@@ -74,7 +74,7 @@ TEST_F(ParserTest, AOC10ZipwithMap)
     EXPECT_EQ(recA["message"], "");
 
     string mapName = "testmap.png";
-    load(recB, "AOC10_4v4_3_192a8268.zip", HD_MAP, mapName);
+    load(recB, "AOC10_4v4_3_192a8268.zip", MgxParser::HD_MAP, mapName);
     // A map file is successfully generated,
     EXPECT_TRUE(filesystem::exists(filesystem::path(mapName)));
     // and is a valid png file.
@@ -101,7 +101,7 @@ TEST_F(ParserTest, AOC10CZip)
 TEST_F(ParserTest, AOKwithMap)
 {
     string mapName = "中文名地图.png";
-    load(recA, "AOK_1v1_2_64b2d6dd.zip", NORMAL_MAP, mapName);
+    load(recA, "AOK_1v1_2_64b2d6dd.zip", MgxParser::NORMAL_MAP, mapName);
     EXPECT_EQ(recA["version"]["code"], "AOK");
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(recA["duration"], 2364525);

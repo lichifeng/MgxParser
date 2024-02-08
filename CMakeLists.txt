@@ -5,11 +5,12 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.5.0
+        VERSION 0.4.2
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
 )
+message("Build type: ${CMAKE_BUILD_TYPE}")
 
 # Some basic configurations
 set(CMAKE_CXX_STANDARD 17)
@@ -57,6 +58,29 @@ target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE}
 target_include_directories("${PROJECT_NAME}_D_EXE" PRIVATE ${MGXPARSER_INCLUDE})
 target_include_directories("${PROJECT_NAME}_S_EXE" PRIVATE ${MGXPARSER_INCLUDE})
 
+# Compile Node.js Addon
+add_definitions(-DNAPI_VERSION=3)
+# 检查napi.h是否存在于CMAKE_JS_INC目录中
+find_path(NAPI_H_FOUND "node_api.h" PATHS ${CMAKE_JS_INC})
+
+# 如果napi.h和CMAKE_JS_LIB都存在，创建mgxnodeS库
+if(NAPI_H_FOUND)
+        # Include Node-API wrappers
+        execute_process(COMMAND node -p "require('node-addon-api').include"
+        WORKING_DIRECTORY ${CMAKE_SOURCE_DIR}
+        OUTPUT_VARIABLE NODE_ADDON_API_DIR
+        )
+        string(REGEX REPLACE "[\r\n\"]" "" NODE_ADDON_API_DIR ${NODE_ADDON_API_DIR})
+
+        set(NODE_ADDON_NAME "mgxnode")
+        add_library(${NODE_ADDON_NAME} SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT> mgxnode.cc)
+        set_target_properties(${NODE_ADDON_NAME} PROPERTIES PREFIX "" SUFFIX ".node")
+        target_link_libraries(${NODE_ADDON_NAME} ${CMAKE_JS_LIB} ${MGXPARSER_DEPENDENCIES})
+        target_include_directories(${NODE_ADDON_NAME} PRIVATE ${MGXPARSER_INCLUDE} ${CMAKE_JS_INC} ${NODE_ADDON_API_DIR})
+else()
+        message("cmake-js not found, mgxnode library will not be created.")
+endif()
+
 # Import some environment variables and generate docs, etc.
 string(TIMESTAMP COMPILEDATE "%Y%m%d")
 target_compile_definitions("${PROJECT_NAME}_OBJECT" PRIVATE "DEBUG=$<CONFIG:Debug>")
@@ -67,7 +91,7 @@ add_definitions(-DCMAKE_EXPORT_COMPILE_COMMANDS=ON)
 # Update doxygen configuration file and generate output HTML
 find_package(Doxygen)
 option(BUILD_DOCUMENTATION "Create and install the HTML based API documentation (requires Doxygen)" ${DOXYGEN_FOUND})
-if (BUILD_DOCUMENTATION AND NOT NODE_ADDON AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
+if (BUILD_DOCUMENTATION AND (CMAKE_BUILD_TYPE STREQUAL "Release"))
     if (NOT DOXYGEN_FOUND)
         message(FATAL_ERROR "Doxygen is needed to build the documentation.")
     endif ()
@@ -90,7 +114,7 @@ endif ()
 
 # Testing configuration
 # https://coderefinery.github.io/cmake-workshop/testing/
-set(BUILD_TESTING 0)
+set(BUILD_TESTING 1)
 if (BUILD_TESTING)
     set(CMP0135 1)
     set(DOWNLOAD_EXTRACT_TIMESTAMP 1)
@@ -108,18 +132,16 @@ if (BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cc
     )
     target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
-    target_link_libraries("${PROJECT_NAME}_TEST" ${PROJECT_NAME}_STATIC ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("${PROJECT_NAME}_TEST" ${PROJECT_NAME}_STATIC)
     target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
     add_executable(
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
             src/tools/cursor.cc
     )
-    target_link_libraries("CURSOR_TEST" ${PROJECT_NAME}_STATIC ${MGXPARSER_LINK_TARGETS})
+    target_link_libraries("CURSOR_TEST" ${PROJECT_NAME}_STATIC)
     target_link_libraries("CURSOR_TEST" GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")
     gtest_discover_tests("CURSOR_TEST")
 endif ()
-
-message("Build type: ${CMAKE_BUILD_TYPE}")

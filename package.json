@@ -1,0 +1,11 @@
+{
+  "dependencies": {
+    "cmake-js": "^7.3.0",
+    "node-addon-api": "^7.1.0"
+  },
+  "binary": {
+    "napi_versions": [
+      7
+    ]
+  }
+}

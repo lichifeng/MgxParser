@@ -2,7 +2,7 @@
  * \file       mainproc_bodycommands.cpp
  * \author     PATRICK LI (admin@aocrec.com)
  * \date       2022/11/7
- * \copyright  Copyright (c) 2020-2022
+ * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
 #include "analyzer.h"
