@@ -5,7 +5,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.4.6
+        VERSION 0.4.7
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."

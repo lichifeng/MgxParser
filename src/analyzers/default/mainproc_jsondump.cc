@@ -65,6 +65,8 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
         j["guid"] = dd_guid_;
     } else if (!retro_guid_.empty()) {
         j["guid"] = retro_guid_;
+    } else {
+        j["guid"] = file_md5_;
     }
     j["recPlayer"] = rec_player_;
     if (status_.body_scanned_)

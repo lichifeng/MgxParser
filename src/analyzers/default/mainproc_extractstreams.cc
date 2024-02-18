@@ -129,8 +129,9 @@ bool DefaultAnalyzer::ExtractStreams() {
     cursor_(0);
 
     // Calc md5 of real record file
-    if (calc_md5_)
-        file_md5_ = CalcFileMd5(input_start, input_size_);
+    // From v4.7.0, the md5 of the record file is always calculated as a preventive replacement of missing guid
+    // if (calc_md5_)
+    file_md5_ = CalcFileMd5(input_start, input_size_);
 
     // Unzip the record if requested
     // 这儿要注意的问题是不能放在上面解压的代码那里，因为刚解压完并不知道压缩包里这个文件是不是有效录像，所以那时候解压出来没意义

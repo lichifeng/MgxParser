@@ -61,6 +61,28 @@ Notice: if -b/-B is provided, -m/-M will be ignored.
 For node addon usage, see `src/node/README.md`,    
 See **Compile node addon with cmake-js** for details.
 
+## JSON output
+The JSON output of MgxParser is a string contains parsed information of a record.   
+Some keys are optional, they will be omitted if not available.   
+Those keys are ensured to be in the output:   
+- **status**: A string indicates the status of parsing.   
+- **guid**: A string of 32 characters, the unique identifier of this record.   
+- **md5**: A string of 32 characters, the md5 of the record file.   
+
+### About 'status'
+The 'status' value can be checked to determine whether the parsing was successful:   
+- 'perfect': Means all data in the record was parsed.
+- 'good': Means the main data in header part was scanned, and at least the map can be generated.
+- 'valid': Means the header and body parts can be decompressed, but there are problems in parsing.
+- 'invalid': Means the record is invalid or cannot be parsed, but MgxParser worked fine.
+
+### About 'guid'
+The 'guid' value is a 32 characters string, it is the unique identifier of this record:   
+- In higher versions(HD, DE), it is contained in the record file.   
+- In earlier versions, it is generated from some stable data in the record, records from the same game are expected to have a same guid.   
+In very rare cases, like some players quit at the **very very beginning** of the game and others continued, the guid may be different.
+- If the record is invalid and no enough info for generating a guid, the md5 of the record file will be used.
+
 ## Performance
 I did't do elegent profiling for it, simply measured its performance    
 by `\time -v MgxParser recordfile.mgx`   
