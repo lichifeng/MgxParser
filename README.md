@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.4.5) was compiled on 20240208*
+*This version(0.4.6) was compiled on 20240218*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -16,7 +16,7 @@ docker run -e MAX_CONNECTIONS=100 -p 4400:4400 lichifeng/mgxparser
 ```
 Then, send a record file and a json command to it:
 ```sh
-curl -X POST -F "file=@/path/to/record.mgx" -F "json={\"map\":\"HD\"}" http://localhost:4400/parse
+curl -X POST -F "file=@/path/to/record.mgx" -F "json={\"map\":\"HD\"}" http://localhost:4400/
 ```
 To build the docker image manually, use the `Dockerfile` in root directory.
 ```sh
@@ -50,10 +50,12 @@ Usage: ./mgxparser [options] [file]
 Options:
   -m    Generate a normal map
   -M    Generate a HD map
+  -b/-B Generate base64 encoded normal/HD mapdata
   -u    Extract the original file in .zip archive
-  -j    Indentation of the json string. i.e. -j2
+  -n    Indentation of the json string. i.e. -n2
   --help Display this help message
-Example: ./mgxparser -m -j2 demo.mgx
+Example: ./mgxparser -m -n2 demo.mgx
+Notice: if -b/-B is provided, -m/-M will be ignored.
 ```
 
 For node addon usage, see `src/node/README.md`,    
@@ -151,6 +153,7 @@ The compiled node addon will be in `build/Release` directory.
 A demo of node addon is in `test/node_addon_test.js` directory.
 
 ## Version log
+- **0.4.6**: Replace md5 with openssl MD5 algorithm. Add ability to generate base64 encoded map data.
 - **0.4.5**: Reorganized source code. Refactored `parse()` function. Add node addon support. Add docker workflow.   
 - **0.4.2**: A version used on aocrec.com before Feb. 2024.
 - **0.4.0**: Prepare to go online. Add english language pack. Fixed more bugs.
@@ -161,14 +164,14 @@ A demo of node addon is in `test/node_addon_test.js` directory.
   record. All operations are done in memory without file storage.
 
 ## Resources
-Find records for test: https://www.ageofempires.com/stats/ageiide
-https://github.com/topics/age-of-empires
-DE Replays Manager: https://github.com/gregstein/DE-Replays-Manager
-Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2
-https://aok.heavengames.com/blacksmith/lister.php?category=utilities
+Find records for test: https://www.ageofempires.com/stats/ageiide    
+https://github.com/topics/age-of-empires    
+DE Replays Manager: https://github.com/gregstein/DE-Replays-Manager   
+Awesome Age of Empires II resources: https://github.com/Arkanosis/awesome-aoe2   
+https://aok.heavengames.com/blacksmith/lister.php?category=utilities   
 https://aok.heavengames.com/blacksmith/lister.php?category=records   
-AoE II Development Collective https://siegeengineers.org/
-https://www.twaoe2wiki.com/
+AoE II Development Collective https://siegeengineers.org/   
+https://www.twaoe2wiki.com/   
 
 ## Caution
 This project is still under development. **No warrenty for anything!**

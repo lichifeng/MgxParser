@@ -137,6 +137,16 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     } else {
         j["map"]["name"] = embeded_mapname_;
     }
+    try {
+        if (map_type_ == MgxParser::BASE64_NORMAL) {
+            j["map"]["base64"] = DrawMap(300, 150);
+        } else if (map_type_ == MgxParser::BASE64_HD) {
+            j["map"]["base64"] = DrawMap(900, 450);
+        }
+    } catch (...) {
+        // ...
+    }
+    
 
     // Chat
     for (auto &c: chat) {

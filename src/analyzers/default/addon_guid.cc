@@ -5,8 +5,8 @@
  * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
+#include <openssl/md5.h>
 #include "analyzer.h"
-#include "md5/md5.h"
 #include "bytestohex.h"
 
 /**
@@ -31,41 +31,40 @@
  *
  * \return     string              Guid of this record
  */
+
 void DefaultAnalyzer::CalcRetroGuid(int debug_flag) {
     status_.debug_flag_ = debug_flag;
 
     std::vector<uint8_t> input;
-    uint8_t output_buf[16];
-    const uint8_t *output_ref = output_buf;
-    MGXPARSER_MD5::MD5_CTX ctx;
+    unsigned char output_buf[MD5_DIGEST_LENGTH];
+    const unsigned char *output_ref = output_buf;
+    MD5_CTX ctx;
 
-    MGXPARSER_MD5::md5_init(&ctx);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) version_string_, 8);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &save_version_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &log_version_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &scenario_version_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &map_size_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &population_limit_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &game_speed_, 4);
-    MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &map_id_, 4); // \note Not in AOK, need a stable default value
+    MD5_Init(&ctx);
+    MD5_Update(&ctx, version_string_, 8);
+    MD5_Update(&ctx, &save_version_, 4);
+    MD5_Update(&ctx, &log_version_, 4);
+    MD5_Update(&ctx, &scenario_version_, 4);
+    MD5_Update(&ctx, &map_size_, 4);
+    MD5_Update(&ctx, &population_limit_, 4);
+    MD5_Update(&ctx, &game_speed_, 4);
+    MD5_Update(&ctx, &map_id_, 4); // \note Not in AOK, need a stable default value
     for (size_t i = 0; i < earlymove_count_; i++) {
-        MGXPARSER_MD5::md5_update(&ctx, earlymove_cmd_[i], 19); // https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/actions/03-move.md
-        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &earlymove_time_[i], 4);
+        MD5_Update(&ctx, earlymove_cmd_[i], 19); // https://github.com/stefan-kolb/aoc-mgx-format/blob/master/spec/body/actions/03-move.md
+        MD5_Update(&ctx, &earlymove_time_[i], 4);
     }
     for (auto &p: players) {
         if (!p.Valid())
             continue;
-        // \note Encoding-related operations will change name bytes, caution!
-        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) p.name.data(), p.name.size());
-        MGXPARSER_MD5::md5_update(&ctx, &p.civ_id_, 1);
-        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &p.index, 4);
-        MGXPARSER_MD5::md5_update(&ctx, (uint8_t *) &p.slot, 4);
-        MGXPARSER_MD5::md5_update(&ctx, &p.color_id_, 1);
-        MGXPARSER_MD5::md5_update(&ctx, &p.resolved_teamid_, 1);
+        MD5_Update(&ctx, p.name.data(), p.name.size());
+        MD5_Update(&ctx, &p.civ_id_, 1);
+        MD5_Update(&ctx, &p.index, 4);
+        MD5_Update(&ctx, &p.slot, 4);
+        MD5_Update(&ctx, &p.color_id_, 1);
+        MD5_Update(&ctx, &p.resolved_teamid_, 1);
     }
-    // \note Raw map data may have some difference, but generated map file have same md5 digest?
 
-    MGXPARSER_MD5::md5_final(&ctx, output_buf);
+    MD5_Final(output_buf, &ctx);
 
-    retro_guid_ = BytesToHex(output_ref, 16);
+    retro_guid_ = BytesToHex(output_ref, MD5_DIGEST_LENGTH);
 }

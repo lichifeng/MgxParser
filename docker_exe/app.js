@@ -29,7 +29,7 @@ app.get('/', (req, res) => {
 });
 
 // 定义/parse路由，同时处理JSON和文件上传
-app.post('/parse', upload.single('file'), (req, res) => {
+app.post('/', upload.single('file'), (req, res) => {
     const data = req.body;
     
     // 如果上传了文件，则使用parser处理数据

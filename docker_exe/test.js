@@ -19,13 +19,13 @@ async function handleRequests(n, b = 100) {
             const form = new FormData();
 
             // 添加JSON数据
-            form.append('command', JSON.stringify({ map: "hd" }));
+            form.append('command', JSON.stringify({ map: "normal" }));
 
             // 添加文件
             form.append('file', fs.createReadStream(filePath));
 
             // 返回新的请求
-            return axios.post('http://localhost:4400/parse', form, {
+            return axios.post('http://localhost:4400/', form, {
                 headers: form.getHeaders()
             });
         });
@@ -38,7 +38,7 @@ async function handleRequests(n, b = 100) {
             for (const response of responses) {
                 // 如果状态码是200，打印guid键的值
                 if (response.status === 200) {
-                    // console.log(response.data?.result);
+                    console.log(response.data);
                 } else {
                     console.error(response.data.status);
                 }
@@ -53,4 +53,4 @@ async function handleRequests(n, b = 100) {
     console.timeEnd("Running Time");
 }
 
-handleRequests(20, 10);
+handleRequests(1, 1);

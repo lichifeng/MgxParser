@@ -8,7 +8,7 @@ COPY . .
 RUN apt-get update && apt-get install -y \
     build-essential \
     cmake \
-    libpng-dev
+    libpng-dev libssl-dev
 RUN npm install
 RUN npx cmake-js rebuild -p $(nproc)
 
@@ -22,7 +22,7 @@ COPY --from=builder /app/build/Release/mgxnode.node .
 COPY --from=builder /app/docker_exe/app.js .
 COPY --from=builder /app/docker_exe/package.json .
 
-RUN apt-get update && apt-get install -y libpng16-16
+RUN apt-get update && apt-get install -y libpng16-16 openssl
 RUN npm install
 
 CMD ["node", "app.js"]
