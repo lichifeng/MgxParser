@@ -5,7 +5,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.4.5
+        VERSION 0.4.6
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -28,7 +28,7 @@ set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${MD5} ${SRC_ROO
 
 # Prepare dependency libraries
 # WARNING: png depends on libz, so put it before z
-set(MGXPARSER_DEPENDENCIES png z)
+set(MGXPARSER_DEPENDENCIES ssl crypto png z)
 
 # Create static and shared libraries
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
@@ -43,6 +43,10 @@ target_link_libraries("${PROJECT_NAME}_S_EXE" ${PROJECT_NAME}_STATIC)
 target_link_options("${PROJECT_NAME}_S_EXE" PRIVATE "-static")
 add_executable("${PROJECT_NAME}_D_EXE" demo.cc)
 target_link_libraries("${PROJECT_NAME}_D_EXE" ${PROJECT_NAME}_SHARED)
+set_target_properties(${PROJECT_NAME}_D_EXE PROPERTIES
+    BUILD_WITH_INSTALL_RPATH TRUE
+    INSTALL_RPATH "$ORIGIN"
+)
 
 set(
         MGXPARSER_INCLUDE

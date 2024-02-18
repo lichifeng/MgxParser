@@ -40,16 +40,18 @@ static std::string _parse(DefaultAnalyzer &&a, MgxParser::Settings &s)
 
     if (s.map_type != MgxParser::NO_MAP)
     {
+        a.map_type_ = s.map_type;
         try
         {
             if (s.map_dest)
             {
-                a.DrawMap(s.map_dest, s.map_width, s.map_height, s.map_type == MgxParser::HD_MAP);
+                a.DrawMap(s.map_dest, s.map_width, s.map_height);
             }
-            else
+            else if (s.map_type != MgxParser::BASE64_NORMAL && s.map_type != MgxParser::BASE64_HD)
             {
-                a.DrawMap(s.map_path.empty() ? "minimap.png" : s.map_path, s.map_width, s.map_height, s.map_type == MgxParser::HD_MAP);
+                a.DrawMap(s.map_path.empty() ? "minimap.png" : s.map_path, s.map_width, s.map_height);
             }
+            // if base64 is required, json output will handle it.
         }
         catch (...)
         {

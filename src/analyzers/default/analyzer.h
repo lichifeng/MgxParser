@@ -29,6 +29,7 @@
 #include "cursor.h"
 #include "record.h"
 #include "logger.h"
+#include "include/MgxParser.h"
 
 /**
  * An analyzer loads record data and tries to extract useful information from it.
@@ -47,6 +48,7 @@ public:
     std::unique_ptr<Logger> logger_;
     std::unique_ptr<Record> record_; // 存放了与录像本身相关的所有信息。DefaultAnalyzer是与解析过程相关的成员。
     bool calc_md5_ = true;
+    MgxParser::MapType map_type_ = MgxParser::NO_MAP;
     std::string unzip_;
     char **unzip_buffer_ = nullptr;
     std::size_t *unzip_size_ptr_ = nullptr;
@@ -118,18 +120,24 @@ public:
      * @param save_path Path to saved image. Generated image is in .png format.
      * @param width     Width of generated image
      * @param height    Height of generated image
-     * @param hd        pass true to upscale map image by a factor 3x
      */
-    void DrawMap(const std::string &save_path, uint32_t width = 300, uint32_t height = 150, bool hd = false);
+    void DrawMap(const std::string &save_path, uint32_t width = 300, uint32_t height = 150);
     
     /**
      * Generate a mini map for this game
      * @param dest      A FILE* handler
      * @param width     Width of generated image
      * @param height    Height of generated image
-     * @param hd        pass true to upscale map image by a factor 3x
      */
-    void DrawMap(FILE *dest, uint32_t width = 300, uint32_t height = 150, bool hd = false);
+    void DrawMap(FILE *dest, uint32_t width = 300, uint32_t height = 150);
+
+    /**
+     * Generate a base64 encoded string of mini map for this game
+     * @param width     Width of generated image
+     * @param height    Height of generated image
+     * @return          A base64 encoded string of the map image
+     */
+    std::string DrawMap(uint32_t width = 300, uint32_t height = 150);
 
     /**
      * Translate raw numberic Info into readable terms.

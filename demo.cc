@@ -20,13 +20,19 @@ int main(int argc, char *argv[]) {
     int json_indent = -1;
 
     int opt;
-    while ((opt = getopt(argc, argv, "mMun:")) != -1) {
+    while ((opt = getopt(argc, argv, "mMbBun:")) != -1) {
         switch (opt) {
             case 'm':
                 map_type = MgxParser::NORMAL_MAP;
                 break;
             case 'M':
                 map_type = MgxParser::HD_MAP;
+                break;
+            case 'b':
+                map_type = MgxParser::BASE64_NORMAL;
+                break;
+            case 'B':
+                map_type = MgxParser::BASE64_HD;
                 break;
             case 'u':
                 unzip_filename = "original"; // use original filename in .zip archive
@@ -43,10 +49,12 @@ int main(int argc, char *argv[]) {
                           << "Options:\n"
                           << "  -m    Generate a normal map\n"
                           << "  -M    Generate a HD map\n"
+                          << "  -b/-B Generate base64 encoded normal/HD mapdata\n"
                           << "  -u    Extract the original file in .zip archive\n"
-                          << "  -n    Indentation of the json string. i.e. -2\n"
+                          << "  -n    Indentation of the json string. i.e. -n2\n"
                           << "  --help Display this help message\n"
-                          << "Example: ./mgxparser -m -n4 demo.mgx\n";
+                          << "Example: ./mgxparser -m -n4 demo.mgx\n"
+                          << "Notice: if -b/-B is provided, -m/-M will be ignored.\n";
                 return 1;
         }
     }

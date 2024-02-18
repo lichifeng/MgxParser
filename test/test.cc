@@ -66,12 +66,16 @@ TEST_F(ParserTest, AOC10ZipwithMap)
 {
     // this record takes < 20ms to parse on synology ds1621+ docker container without md5 calculation
     // and ~60ms with md5 calc.
-    load(recA, "AOC10_4v4_5_5e3b2a7e.mgx");
+    load(recA, "AOC10_4v4_5_5e3b2a7e.mgx", MgxParser::BASE64_NORMAL);
     EXPECT_EQ(recA["version"]["code"], "AOC10");
     EXPECT_EQ(recA["guid"], "d46a6ae13bea04e1744043f5017f9786");
     EXPECT_EQ(recA["filemd5"], "5e3b2a7e604f71c8a3793d41f522639c");
     EXPECT_EQ(recA["duration"], 8035485);
     EXPECT_EQ(recA["message"], "");
+    EXPECT_EQ(
+        recA["map"]["base64"].get<string>().substr(0, 135), 
+        "iVBORw0KGgoAAAANSUhEUgAAASwAAACWCAYAAABkW7XSAAAgAElEQVR4nOy9eWBk6Vne+/vOXntpKe1qqafVM9Ntj+mJL8YhYAM3MQYTIBgwFy672QwOELCxgfHCgG1CMMaAw3I"
+        );
 
     string mapName = "testmap.png";
     load(recB, "AOC10_4v4_3_192a8268.zip", MgxParser::HD_MAP, mapName);

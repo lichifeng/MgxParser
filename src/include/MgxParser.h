@@ -23,7 +23,9 @@ namespace MgxParser
     {
         NO_MAP = 0,
         NORMAL_MAP,
-        HD_MAP
+        HD_MAP,
+        BASE64_NORMAL,
+        BASE64_HD
     };
 
     /**
