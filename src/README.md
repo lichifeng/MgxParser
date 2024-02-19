@@ -68,6 +68,12 @@ Those keys are ensured to be in the output:
 - **status**: A string indicates the status of parsing.   
 - **guid**: A string of 32 characters, the unique identifier of this record.   
 - **md5**: A string of 32 characters, the md5 of the record file.   
+- **fileext**: File extension with leading dot of original input file. e.g. .mgx, .mgz, .aoe2record, .zip, etc. NOT THE EXTRACTED FILE EXTENSION!   
+- **filename**: File name of original input file with extension. e.g. "rec.mgz", "rec.zip", etc. NOT THE EXTRACTED FILE NAME!
+- **realfile**: File name of the extracted file in .zip archive. e.g. "rec.mgx", "rec.aoe2record", etc.
+- **realext**: File extension of the extracted file in .zip archive. e.g. .mgx, .aoe2record, etc.
+- **lastModified**: Last modified time of the record file. If the input stream is not a file, will be current time.
+- **message**: A string contains some hints about the parsing process.
 
 ### About 'status'
 The 'status' value can be checked to determine whether the parsing was successful:   
@@ -175,14 +181,14 @@ The compiled node addon will be in `build/Release` directory.
 A demo of node addon is in `test/node_addon_test.js` directory.
 
 ## Version log
+- **0.5.0**: Refactored json output, make some keys mandatory. **Some key names changed!**
 - **0.4.6**: Replace md5 with openssl MD5 algorithm. Add ability to generate base64 encoded map data.
 - **0.4.5**: Reorganized source code. Refactored `parse()` function. Add node addon support. Add docker workflow.   
 - **0.4.2**: A version used on aocrec.com before Feb. 2024.
 - **0.4.0**: Prepare to go online. Add english language pack. Fixed more bugs.
 - **0.3.x**: Bug fix and some changes to meet requirements of mgxhub.
-- **0.2.0**: Reoragnized source files, tested with 130000+ records in
-  aocrec.com.
-- **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded
+- **0.2.0**: Reoragnized source files, tested with 130000+ records in aocrec.com.   
+- **0.1.0**: Now MgxParser can work with Node.js(Fastify) and parse a uploaded.
   record. All operations are done in memory without file storage.
 
 ## Resources

@@ -5,6 +5,10 @@
  * \copyright  Copyright (c) 2020-2024
  ***************************************************************/
 
+#include <filesystem>
+#include <iostream>
+#include <iomanip>
+#include <chrono>
 #include "analyzer.h"
 #include "nlohmann_json_3/json.hpp"
 #include "auxiliary.h"
@@ -51,14 +55,35 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     j["parseTime"] = parse_time_;
     j["parser"] = PARSER_VERSION_VERBOSE;
     j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
-    j["filetype"] = input_ext_;
-    j["filename"] = input_filename_;
-    if (!modified_date_.empty())
-        j["modifiedDate"] = modified_date_;
-    if (!file_md5_.empty())
-        j["filemd5"] = file_md5_;
-    if (!extracted_file_.empty())
-        j["extractedName"] = extracted_file_;
+    j["fileext"] = input_ext_; // File extension with leading dot of original input file. e.g. .mgx, .mgz, .aoe2record, .zip, etc. NOT THE EXTRACTED FILE EXTENSION!
+    j["filename"] = input_filename_; // File name of original input file with extension. e.g. "rec.mgz", "rec.mgx", "rec.aoe2record", "rec.zip", etc. NOT THE EXTRACTED FILE NAME!
+    j["md5"] = file_md5_;
+    if (!modified_date_.empty()) {
+        j["lastModified"] = modified_date_;
+    } else if (std::filesystem::exists(inputpath_)) {
+        auto ftime = std::filesystem::last_write_time(inputpath_);
+        auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(ftime - std::filesystem::file_time_type::clock::now() + std::chrono::system_clock::now());
+        std::time_t ctime = std::chrono::system_clock::to_time_t(sctp);
+        std::tm tm = *std::gmtime(&ctime);
+        std::ostringstream oss;
+        oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << ".000Z";
+        j["lastModified"] = oss.str();
+    } else {
+        // current time
+        auto now = std::chrono::system_clock::now();
+        auto now_c = std::chrono::system_clock::to_time_t(now);
+        std::tm tm = *std::gmtime(&now_c);
+        std::ostringstream oss;
+        oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << ".000Z";
+        j["lastModified"] = oss.str();
+    }
+    if (extracted_file_.empty()) {
+        j["realfile"] = input_filename_;
+        j["realext"] = input_ext_;
+    } else {
+        j["realfile"] = extracted_file_;
+        j["realext"] = std::filesystem::path(extracted_file_).extension().generic_string();
+    }
     if (status_.body_scanned_)
         j["duration"] = duration_;
     if (!dd_guid_.empty()) {
