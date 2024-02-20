@@ -5,7 +5,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.4.6
+        VERSION 0.5.0
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -23,8 +23,7 @@ aux_source_directory(./src SRC_ROOT)
 aux_source_directory(src/tools TOOLS)
 aux_source_directory(src/analyzers/default DEFAULT_ANALYZER)
 aux_source_directory(src/analyzers/default/body_processors DEFAULT_ANALYZER_BODY)
-aux_source_directory(./libs/md5 MD5)
-set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${MD5} ${SRC_ROOT} ${TOOLS})
+set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${SRC_ROOT} ${TOOLS})
 
 # Prepare dependency libraries
 # WARNING: png depends on libz, so put it before z
@@ -118,7 +117,7 @@ endif ()
 
 # Testing configuration
 # https://coderefinery.github.io/cmake-workshop/testing/
-set(BUILD_TESTING 0)
+set(BUILD_TESTING 1)
 if (BUILD_TESTING)
     set(CMP0135 1)
     set(DOWNLOAD_EXTRACT_TIMESTAMP 1)

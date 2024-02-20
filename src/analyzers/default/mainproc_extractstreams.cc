@@ -7,6 +7,8 @@
 
 #include <array>
 #include <sstream>
+#include <chrono>
+#include <ctime>
 
 #include "analyzer.h"
 #include "searcher.h"
@@ -49,14 +51,23 @@ bool DefaultAnalyzer::ExtractStreams() {
         hour = (*raw_msdos_time_p) >> 11;
         minute = ((*raw_msdos_time_p) >> 5) & 0x3f;
         sec = (*raw_msdos_time_p) & 0x1f * 2;
-        std::stringstream iso_time_str;
-        iso_time_str << std::setfill ('0') << std::setw(4) << year << '-' 
-                     << std::setw(2) << mon << '-' 
-                     << std::setw(2) << day << 'T' 
-                     << std::setw(2) << hour << ':' 
-                     << std::setw(2) << minute << ':' 
-                     << std::setw(2) << sec << ".000Z";
-        modified_date_ = iso_time_str.str();
+        // std::stringstream iso_time_str;
+        // iso_time_str << std::setfill ('0') << std::setw(4) << year << '-' 
+        //              << std::setw(2) << mon << '-' 
+        //              << std::setw(2) << day << 'T' 
+        //              << std::setw(2) << hour << ':' 
+        //              << std::setw(2) << minute << ':' 
+        //              << std::setw(2) << sec << ".000Z";
+        // modified_date_ = iso_time_str.str();
+        std::tm tm = {};
+        tm.tm_year = year - 1900; // std::tm 的年份是从 1900 年开始的
+        tm.tm_mon = mon - 1;      // std::tm 的月份是从 0 开始的
+        tm.tm_mday = day;
+        tm.tm_hour = hour;
+        tm.tm_min = minute;
+        tm.tm_sec = sec;
+        auto tp = std::chrono::system_clock::from_time_t(std::mktime(&tm));
+        modified_date_ = std::chrono::duration_cast<std::chrono::seconds>(tp.time_since_epoch()).count();
 
         std::vector<RECBYTE> outbuffer;
         if (0 != ZipDecompress(const_cast<uint8_t *>(input_start + 30 + *namelen_p + *exlen_p),
@@ -129,8 +140,9 @@ bool DefaultAnalyzer::ExtractStreams() {
     cursor_(0);
 
     // Calc md5 of real record file
-    if (calc_md5_)
-        file_md5_ = CalcFileMd5(input_start, input_size_);
+    // From v4.7.0, the md5 of the record file is always calculated as a preventive replacement of missing guid
+    // if (calc_md5_)
+    file_md5_ = CalcFileMd5(input_start, input_size_);
 
     // Unzip the record if requested
     // 这儿要注意的问题是不能放在上面解压的代码那里，因为刚解压完并不知道压缩包里这个文件是不是有效录像，所以那时候解压出来没意义

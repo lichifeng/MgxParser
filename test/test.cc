@@ -69,7 +69,7 @@ TEST_F(ParserTest, AOC10ZipwithMap)
     load(recA, "AOC10_4v4_5_5e3b2a7e.mgx", MgxParser::BASE64_NORMAL);
     EXPECT_EQ(recA["version"]["code"], "AOC10");
     EXPECT_EQ(recA["guid"], "d46a6ae13bea04e1744043f5017f9786");
-    EXPECT_EQ(recA["filemd5"], "5e3b2a7e604f71c8a3793d41f522639c");
+    EXPECT_EQ(recA["md5"], "5e3b2a7e604f71c8a3793d41f522639c");
     EXPECT_EQ(recA["duration"], 8035485);
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(
@@ -88,7 +88,7 @@ TEST_F(ParserTest, AOC10ZipwithMap)
 
     // Test for different views of a same game
     EXPECT_EQ(recB["guid"], recA["guid"]);
-    EXPECT_EQ(recB["filemd5"], "192a8268f8e188190837c2ff08d1ca6e");
+    EXPECT_EQ(recB["md5"], "192a8268f8e188190837c2ff08d1ca6e");
 }
 
 // Test: parsing aoc10c record & handling .zip archive
@@ -110,8 +110,8 @@ TEST_F(ParserTest, AOKwithMap)
     EXPECT_EQ(recA["message"], "");
     EXPECT_EQ(recA["duration"], 2364525);
     //EXPECT_EQ(recA["guid"], "c4616f6dce68f7649ded5a2c3706d080");
-    EXPECT_EQ(recA["extractedName"], "AOK_1v1_2_64b2d6dd.mgl");
-    EXPECT_EQ(recA["filetype"], ".zip");
+    EXPECT_EQ(recA["realfile"], "AOK_1v1_2_64b2d6dd.mgl");
+    EXPECT_EQ(recA["fileext"], ".zip");
 
     // A map file is successfully generated,
     EXPECT_TRUE(filesystem::exists(filesystem::path(mapName)));
@@ -130,7 +130,7 @@ TEST_F(ParserTest, AOC10cMixTeamMode)
     EXPECT_EQ(recA["duration"], 17040679);
     EXPECT_EQ(recA["guid"], "07a47274f462a2487fc96ad81be8ebe1");
     EXPECT_EQ(recA["filename"], "AOC10c_MIX_1_7ce24dd2.mgx");
-    EXPECT_EQ(recA["filetype"], ".mgx");
+    EXPECT_EQ(recA["fileext"], ".mgx");
     EXPECT_EQ(recA["teamMode"], "1v1v1v1v1v1v1v1");
 }
 
