@@ -72,7 +72,7 @@ Those keys are ensured to be in the output:
 - **filename**: File name of original input file with extension. e.g. "rec.mgz", "rec.zip", etc. NOT THE EXTRACTED FILE NAME!
 - **realfile**: File name of the extracted file in .zip archive. e.g. "rec.mgx", "rec.aoe2record", etc.
 - **realext**: File extension of the extracted file in .zip archive. e.g. .mgx, .aoe2record, etc.
-- **lastModified**: Last modified time of the record file. If the input stream is not a file, will be current time.
+- **gameTime**: Time when this game played. Later DE versions have this recorded. Older versions use last modified time of the record file. If the input stream is not a file, will be current time.
 - **message**: A string contains some hints about the parsing process.
 
 ### About 'status'

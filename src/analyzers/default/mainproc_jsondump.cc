@@ -58,24 +58,26 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     j["fileext"] = input_ext_; // File extension with leading dot of original input file. e.g. .mgx, .mgz, .aoe2record, .zip, etc. NOT THE EXTRACTED FILE EXTENSION!
     j["filename"] = input_filename_; // File name of original input file with extension. e.g. "rec.mgz", "rec.mgx", "rec.aoe2record", "rec.zip", etc. NOT THE EXTRACTED FILE NAME!
     j["md5"] = file_md5_;
-    if (!modified_date_.empty()) {
-        j["lastModified"] = modified_date_;
-    } else if (std::filesystem::exists(inputpath_)) {
-        auto ftime = std::filesystem::last_write_time(inputpath_);
-        auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(ftime - std::filesystem::file_time_type::clock::now() + std::chrono::system_clock::now());
-        std::time_t ctime = std::chrono::system_clock::to_time_t(sctp);
-        std::tm tm = *std::gmtime(&ctime);
-        std::ostringstream oss;
-        oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << ".000Z";
-        j["lastModified"] = oss.str();
+    if (de_timestamp_) {
+        j["gameTime"] = de_timestamp_;
     } else {
-        // current time
-        auto now = std::chrono::system_clock::now();
-        auto now_c = std::chrono::system_clock::to_time_t(now);
-        std::tm tm = *std::gmtime(&now_c);
-        std::ostringstream oss;
-        oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << ".000Z";
-        j["lastModified"] = oss.str();
+        if (modified_date_ > 0) {
+            j["gameTime"] = modified_date_;
+        } else if (std::filesystem::exists(inputpath_)) {
+            auto ftime = std::filesystem::last_write_time(inputpath_);
+            auto sctp = std::chrono::time_point_cast<std::chrono::system_clock::duration>(ftime - std::filesystem::file_time_type::clock::now() + std::chrono::system_clock::now());
+            std::time_t ctime = std::chrono::system_clock::to_time_t(sctp);
+            j["gameTime"] = ctime;
+        } else {
+            // current time
+            auto now = std::chrono::system_clock::now();
+            auto now_c = std::chrono::system_clock::to_time_t(now);
+            j["gameTime"] = now_c;
+            // std::tm tm = *std::gmtime(&now_c);
+            // std::ostringstream oss;
+            // oss << std::put_time(&tm, "%Y-%m-%dT%H:%M:%S") << ".000Z";
+            // j["lastModified"] = oss.str();
+        }
     }
     if (extracted_file_.empty()) {
         j["realfile"] = input_filename_;
@@ -97,8 +99,6 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     if (status_.body_scanned_)
         j["isMultiplayer"] =
             (IS_DE(version_code_) || IS_HD(version_code_)) ? (bool)dd_multiplayer_ : (bool)is_multiplayer_;
-    if (de_timestamp_)
-        j["gameTime"] = de_timestamp_;
 
     // Version info
     if (status_.version_detected_)
