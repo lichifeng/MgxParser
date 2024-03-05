@@ -18,9 +18,18 @@ jobs:
           username: ${{ secrets.DOCKERHUB_USERNAME  }}
           password: ${{ secrets.DOCKERHUB_TOKEN  }}
 
-      - name: Build and push Docker image
+      - name: Build and push Docker image (default)
         uses: docker/build-push-action@v5
         with:
           context: .
           push: true
           tags: lichifeng/mgxparser:latest
+          file: Dockerfile
+
+      - name: Build and push Docker image (alpine)
+        uses: docker/build-push-action@v5
+        with:
+          context: .
+          push: true
+          tags: lichifeng/mgxparser:alpine
+          file: Dockerfile.alpine

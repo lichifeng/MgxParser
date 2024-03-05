@@ -101,9 +101,12 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
             (IS_DE(version_code_) || IS_HD(version_code_)) ? (bool)dd_multiplayer_ : (bool)is_multiplayer_;
 
     // Version info
-    if (status_.version_detected_)
+    if (status_.version_detected_) {
         j["version"]["code"] = version_code_;
-
+    } else {
+        j["version"]["code"] = "UNSUPPORTED";
+    }
+        
     if (UINT32_INIT != log_version_)
         j["version"]["logVer"] = log_version_;
 
@@ -130,8 +133,11 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
         j["instruction"] = instructions;
 
     // Settings
-    if (status_.encoding_detected_)
+    if (status_.encoding_detected_) {
         j["rawEncoding"] = raw_encoding_;
+    } else {
+        j["rawEncoding"] = "UNKNOWN";
+    }
     if (FLOAT_INIT != dd_speed_ || UINT32_INIT != game_speed_) {
         j["speed"] = Translate(zh::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
         j["speedEn"] = Translate(en::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
@@ -148,8 +154,11 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     if (UINT32_INIT != population_limit_)
         j["population"] = population_limit_;
 
-    if (!team_mode_.empty())
-        j["teamMode"] = team_mode_;
+    if (!team_mode_.empty()) {
+        j["matchup"] = team_mode_;
+    } else {
+        j["matchup"] = "N/A";
+    }
 
     j["includeAI"] = (bool) include_ai_;
 
