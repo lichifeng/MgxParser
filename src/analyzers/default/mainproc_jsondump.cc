@@ -101,9 +101,12 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
             (IS_DE(version_code_) || IS_HD(version_code_)) ? (bool)dd_multiplayer_ : (bool)is_multiplayer_;
 
     // Version info
-    if (status_.version_detected_)
+    if (status_.version_detected_) {
         j["version"]["code"] = version_code_;
-
+    } else {
+        j["version"]["code"] = "UNSUPPORTED";
+    }
+        
     if (UINT32_INIT != log_version_)
         j["version"]["logVer"] = log_version_;
 
@@ -149,7 +152,10 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
         j["population"] = population_limit_;
 
     if (!team_mode_.empty())
-        j["teamMode"] = team_mode_;
+        j["matchup"] = team_mode_;
+    else {
+        j["matchup"] = "N/A";
+    }
 
     j["includeAI"] = (bool) include_ai_;
 

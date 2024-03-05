@@ -1,5 +1,5 @@
 # **MgxParser**
-*This version(0.5.0) was compiled on 20240220*
+*This version(0.5.0) was compiled on 20240305*
 
 ## Introduction
 MgxParser is a C++ lib used to parse Age of Empires II game records.
@@ -74,6 +74,8 @@ Those keys are ensured to be in the output:
 - **realext**: File extension of the extracted file in .zip archive. e.g. .mgx, .aoe2record, etc.
 - **gameTime**: Time when this game played. Later DE versions have this recorded. Older versions use last modified time of the record file. If the input stream is not a file, will be current time.
 - **message**: A string contains some hints about the parsing process.
+- **matchup**: Matchup of this game. e.g. "1v1", "4v4", "1v2v3", etc. "N/A" if not available.
+- **version.code**: A string indicates the version of the record. e.g. "AOC10C", "DE", etc. "UNSUPPORTED" if not available.
 
 ### About 'status'
 The 'status' value can be checked to determine whether the parsing was successful:   
@@ -121,7 +123,6 @@ get notified.
 These libraries are required to build MgxParser:
 - **CImg(bundled)**: Used to generate mini maps. This library is bundled into `libs/CImg`
   and compiled with MgxParser.
-- **movfuscator**: md5 function in this project was used to generate retroGuid
   of record. [Project page](https://github.com/xoreaxeaxeax/movfuscator/blob/ea37dae93fbcd93f642c71a53878da588bd7ddb4/validation/crypto-algorithms/md5_test.c)
 - **libpng**: Required by CImg. 
   ```sh
@@ -147,10 +148,6 @@ To compile this project, latest version of CMake is recommended. See
 https://apt.kitware.com/ for details on this. I use CMake `3.24.1` and never
 tested other versions. On Ubuntu18 and newer versions, fresh version of cmake
 can be installed by:
-```sh
-sudo snap install cmake --classic
-```
-or
 ```sh
 sudo apt-get install cmake
 ```
