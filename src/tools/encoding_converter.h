@@ -39,10 +39,10 @@ SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 #define MGXPARSER_ENCODINGCONVERTER_H_
 
 #include <cerrno>
-#include <iconv.h>
 #include <stdexcept>
 #include <string>
 #include <vector>
+#include <iconv.h>
 
 class EncodingConverter {
 public:

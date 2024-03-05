@@ -133,8 +133,11 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
         j["instruction"] = instructions;
 
     // Settings
-    if (status_.encoding_detected_)
+    if (status_.encoding_detected_) {
         j["rawEncoding"] = raw_encoding_;
+    } else {
+        j["rawEncoding"] = "UNKNOWN";
+    }
     if (FLOAT_INIT != dd_speed_ || UINT32_INIT != game_speed_) {
         j["speed"] = Translate(zh::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
         j["speedEn"] = Translate(en::kSpeed, FLOAT_INIT == dd_speed_ ? game_speed_ : (uint32_t) (dd_speed_ * 1000));
@@ -151,9 +154,9 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     if (UINT32_INIT != population_limit_)
         j["population"] = population_limit_;
 
-    if (!team_mode_.empty())
+    if (!team_mode_.empty()) {
         j["matchup"] = team_mode_;
-    else {
+    } else {
         j["matchup"] = "N/A";
     }
 

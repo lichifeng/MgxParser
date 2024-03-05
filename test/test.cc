@@ -131,7 +131,7 @@ TEST_F(ParserTest, AOC10cMixTeamMode)
     EXPECT_EQ(recA["guid"], "07a47274f462a2487fc96ad81be8ebe1");
     EXPECT_EQ(recA["filename"], "AOC10c_MIX_1_7ce24dd2.mgx");
     EXPECT_EQ(recA["fileext"], ".mgx");
-    EXPECT_EQ(recA["teamMode"], "1v1v1v1v1v1v1v1");
+    EXPECT_EQ(recA["matchup"], "1v1v1v1v1v1v1v1");
 }
 
 // Test: parsing byte stream
@@ -256,7 +256,7 @@ TEST_F(ParserTest, DE75350)
 TEST_F(ParserTest, InitialDataBrutalSearch)
 {
     load(recA, "de-12.97-6byte-tile.aoe2record");
-    EXPECT_EQ(recA["teamMode"], "1v1");
+    EXPECT_EQ(recA["matchup"], "1v1");
     EXPECT_EQ(recA["version"]["code"], "DE");
     EXPECT_EQ(recA["status"], "perfect");
     for (auto &p : recA["players"])

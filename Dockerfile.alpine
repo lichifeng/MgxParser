@@ -1,4 +1,8 @@
-FROM node:20-alpine as builder
+# Usage: docker build -t mgxparser-alpine -f Dockerfile.alpine .
+#        curl -X POST -F "file=@/root/projects/MgxParser/MgxParser/test/test_records/aitest.mgx2" -F "command={\"map\":\"HD\"}" http://localhost:4400
+
+# Phase 1: Compile the native module
+FROM node:20.11.1-alpine3.19 as builder
 
 WORKDIR /app
 
@@ -9,18 +13,19 @@ RUN apk add --no-cache \
     cmake \
     libpng-dev openssl-dev
 RUN npm install
-RUN npx cmake-js rebuild -p $(nproc)
+RUN npx cmake-js rebuild --CDBUILD_STATIC=OFF -p $(nproc)
 
-# FROM node:20-slim
 
-# WORKDIR /parser
+# Phase 2: Deploy the native module and the app
+FROM node:20.11.1-alpine3.19
 
-# # 从构建阶段复制文件
-# COPY --from=builder /app/build/Release/mgxnode.node .
-# COPY --from=builder /app/docker_exe/app.js .
-# COPY --from=builder /app/docker_exe/package.json .
+WORKDIR /parser
 
-# RUN apt-get update && apt-get install -y libpng16-16 openssl
-# RUN npm install
+COPY --from=builder /app/build/Release/mgxnode.node .
+COPY --from=builder /app/docker_exe/app.js .
+COPY --from=builder /app/docker_exe/package.json .
 
-# CMD ["node", "app.js"]
+RUN apk update && apk add libpng openssl
+RUN npm install
+
+CMD ["node", "app.js"]

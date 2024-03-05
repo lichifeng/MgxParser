@@ -1,4 +1,8 @@
-# 使用多阶段构建，第一阶段用于编译
+# Usage: docker build -t mgxparser-alpine -f Dockerfile.alpine .
+#        url -X POST -F "file=@/root/projects/MgxParser/MgxParser/test/test_records/aitest.mgx2" -F "command={\"map\":\"HD\"}" http://localhost:4400
+
+# Phase 1: Compile the native module
+
 FROM node:20-slim as builder
 
 WORKDIR /app
@@ -12,12 +16,11 @@ RUN apt-get update && apt-get install -y \
 RUN npm install
 RUN npx cmake-js rebuild -p $(nproc)
 
-# 第二阶段用于运行
+# Phase 2: Deploy the native module and the app
 FROM node:20-slim
 
 WORKDIR /parser
 
-# 从构建阶段复制文件
 COPY --from=builder /app/build/Release/mgxnode.node .
 COPY --from=builder /app/docker_exe/app.js .
 COPY --from=builder /app/docker_exe/package.json .

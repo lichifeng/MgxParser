@@ -5,7 +5,7 @@
 # Project info
 project(
         MgxParser
-        VERSION 0.5.0
+        VERSION 0.5.2
         LANGUAGES CXX
         HOMEPAGE_URL "https://github.com/lichifeng/MgxParser"
         DESCRIPTION "MgxParser is a C++ lib used to parse Age of Empires II game records."
@@ -17,6 +17,7 @@ set(CMAKE_CXX_STANDARD 17)
 set(CMAKE_CXX_STANDARD_REQUIRED True)
 set(CMAKE_POSITION_INDEPENDENT_CODE true)
 set(USE_BM_SEARCH 1)
+set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/Release)
 
 # Prepare source files to be compiled
 aux_source_directory(./src SRC_ROOT)
@@ -29,22 +30,31 @@ set(MGXPARSER_SRCS ${DEFAULT_ANALYZER} ${DEFAULT_ANALYZER_BODY} ${SRC_ROOT} ${TO
 # WARNING: png depends on libz, so put it before z
 set(MGXPARSER_DEPENDENCIES ssl crypto png z)
 
+# Create an option for building static libraries
+OPTION(BUILD_STATIC "Build static libraries" ON)
+
 # Create static and shared libraries
 add_library("${PROJECT_NAME}_OBJECT" OBJECT ${MGXPARSER_SRCS})
 add_library("${PROJECT_NAME}_SHARED" SHARED $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
-add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
 target_link_libraries("${PROJECT_NAME}_SHARED" ${MGXPARSER_DEPENDENCIES})
-target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_DEPENDENCIES})
+
+if(BUILD_STATIC)
+        add_library("${PROJECT_NAME}_STATIC" STATIC $<TARGET_OBJECTS:${PROJECT_NAME}_OBJECT>)
+        target_link_libraries("${PROJECT_NAME}_STATIC" ${MGXPARSER_DEPENDENCIES})
+endif()
 
 # Create static and shared executables
-add_executable("${PROJECT_NAME}_S_EXE" demo.cc)
-target_link_libraries("${PROJECT_NAME}_S_EXE" ${PROJECT_NAME}_STATIC)
-target_link_options("${PROJECT_NAME}_S_EXE" PRIVATE "-static")
+if(BUILD_STATIC)
+        add_executable("${PROJECT_NAME}_S_EXE" demo.cc)
+        target_link_libraries("${PROJECT_NAME}_S_EXE" ${PROJECT_NAME}_STATIC)
+        target_link_options("${PROJECT_NAME}_S_EXE" PRIVATE "-static")
+endif()
+
 add_executable("${PROJECT_NAME}_D_EXE" demo.cc)
 target_link_libraries("${PROJECT_NAME}_D_EXE" ${PROJECT_NAME}_SHARED)
 set_target_properties(${PROJECT_NAME}_D_EXE PROPERTIES
-    BUILD_WITH_INSTALL_RPATH TRUE
-    INSTALL_RPATH "$ORIGIN"
+        BUILD_WITH_INSTALL_RPATH TRUE
+        INSTALL_RPATH "$ORIGIN"
 )
 
 set(
@@ -59,14 +69,16 @@ set(
 )
 target_include_directories("${PROJECT_NAME}_OBJECT" PRIVATE ${MGXPARSER_INCLUDE})
 target_include_directories("${PROJECT_NAME}_D_EXE" PRIVATE ${MGXPARSER_INCLUDE})
-target_include_directories("${PROJECT_NAME}_S_EXE" PRIVATE ${MGXPARSER_INCLUDE})
+if(BUILD_STATIC)
+        target_include_directories("${PROJECT_NAME}_S_EXE" PRIVATE ${MGXPARSER_INCLUDE})
+endif()
 
 # Compile Node.js Addon
 add_definitions(-DNAPI_VERSION=3)
 # 检查napi.h是否存在于CMAKE_JS_INC目录中
 find_path(NAPI_H_FOUND "node_api.h" PATHS ${CMAKE_JS_INC})
 
-# 如果napi.h和CMAKE_JS_LIB都存在，创建mgxnodeS库
+# 如果napi.h和CMAKE_JS_LIB都存在，创建mgxnode库，node-addon必然是动态库
 if(NAPI_H_FOUND)
         # Include Node-API wrappers
         execute_process(COMMAND node -p "require('node-addon-api').include"
@@ -135,14 +147,14 @@ if (BUILD_TESTING)
             ${CMAKE_CURRENT_SOURCE_DIR}/test/test.cc
     )
     target_include_directories("${PROJECT_NAME}_TEST" PRIVATE ${MGXPARSER_INCLUDE})
-    target_link_libraries("${PROJECT_NAME}_TEST" ${PROJECT_NAME}_STATIC)
+    target_link_libraries("${PROJECT_NAME}_TEST" ${PROJECT_NAME}_SHARED)
     target_link_libraries("${PROJECT_NAME}_TEST" GTest::gtest_main)
     add_executable(
             "CURSOR_TEST"
             ${CMAKE_CURRENT_SOURCE_DIR}/test/cursor_test.cc
             src/tools/cursor.cc
     )
-    target_link_libraries("CURSOR_TEST" ${PROJECT_NAME}_STATIC)
+    target_link_libraries("CURSOR_TEST" ${PROJECT_NAME}_SHARED)
     target_link_libraries("CURSOR_TEST" GTest::gtest_main)
     include(GoogleTest)
     gtest_discover_tests("${PROJECT_NAME}_TEST")

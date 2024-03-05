@@ -10,17 +10,18 @@
 /**
  * \todo aoc-mgz 中有更多关于编码和语言的关键字映射关系，可以套用过来。目前还有不少录像不能正确识别编码，比如 test/testRecords/AOC10c_2v2_4_717cd3fc.zip
  * \warning 不要随便更改这里的编码字符串，连大小写也不要改，其它地方的代码可能用于比对。
+ * 2024/3/5: alpine的musl libc的iconv库不支持cp936等，所以改用GBK
  */
 void DefaultAnalyzer::DetectEncoding() {
     status_.encoding_detected_ = true;
     if (FindEncodingPattern(patterns::kZh)) {
-        raw_encoding_ = "cp936";
+        raw_encoding_ = "GBK"; // cp936
     } else if (FindEncodingPattern(patterns::kZhUtf8)) {
         raw_encoding_ = "utf-8";
     } else if (FindEncodingPattern(patterns::kZhWide)) {
-        raw_encoding_ = "cp936";
+        raw_encoding_ = "GBK";
     } else if (FindEncodingPattern(patterns::kZhTw)) {
-        raw_encoding_ = "cp950";
+        raw_encoding_ = "Big5"; // cp950
     } else if (FindEncodingPattern(patterns::kBr)) {
         raw_encoding_ = "windows-1252";
     } else if (FindEncodingPattern(patterns::kDe)) {
@@ -34,11 +35,11 @@ void DefaultAnalyzer::DetectEncoding() {
     } else if (FindEncodingPattern(patterns::kIt)) {
         raw_encoding_ = "windows-1252";
     } else if (FindEncodingPattern(patterns::kJp)) {
-        raw_encoding_ = "cp932";
+        raw_encoding_ = "Shift_JIS"; // cp932
     } else if (FindEncodingPattern(patterns::kJpUtf8)) {
         raw_encoding_ = "utf-8";
     } else if (FindEncodingPattern(patterns::kKo)) {
-        raw_encoding_ = "cp949";
+        raw_encoding_ = "EUC-KR"; // cp949
     } else if (FindEncodingPattern(patterns::kKoUtf8)) {
         raw_encoding_ = "utf-8";
     } else if (FindEncodingPattern(patterns::kRu)) {
