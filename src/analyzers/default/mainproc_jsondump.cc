@@ -57,6 +57,7 @@ std::string DefaultAnalyzer::JsonOutput(int indent) {
     j["status"] = status_.body_scanned_ ? "perfect" : status_.mapdata_found_ ? "good" : status_.stream_extracted_ ? "valid" : "invalid";
     j["fileext"] = input_ext_; // File extension with leading dot of original input file. e.g. .mgx, .mgz, .aoe2record, .zip, etc. NOT THE EXTRACTED FILE EXTENSION!
     j["filename"] = input_filename_; // File name of original input file with extension. e.g. "rec.mgz", "rec.mgx", "rec.aoe2record", "rec.zip", etc. NOT THE EXTRACTED FILE NAME!
+    j["realsize"] = input_size_; // File size of original record file in bytes.
     j["md5"] = file_md5_;
     if (de_timestamp_) {
         j["gameTime"] = de_timestamp_;
